@@ -1,0 +1,6 @@
+.container {
+	@apply fixed bg-componentBG h-14 w-screen;
+	.contentContainer {
+		@apply max-w-[1200px] flex justify-end items-center h-full;
+	}
+}
