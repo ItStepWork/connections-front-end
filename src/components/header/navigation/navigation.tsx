@@ -8,7 +8,7 @@ export const Navigation: FC = () => {
     <>
       <nav className={styles.nav}>
         <Dropdown>
-          <Dropdown.Button flat>Pages</Dropdown.Button>
+          <Dropdown.Button flat color='secondary'>Pages</Dropdown.Button>
           <Dropdown.Menu aria-label="Static Actions">
             <Dropdown.Item key="1">Albums</Dropdown.Item>
             <Dropdown.Item key="2">Messaging</Dropdown.Item>
