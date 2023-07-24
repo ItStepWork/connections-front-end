@@ -22,4 +22,4 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 1. TailwindCSS
 2. next-pwa plugin
-
+3. Sass
