@@ -1,5 +1,5 @@
 .header {
-	@apply w-full h-14 fixed bg-componentBG;
+	@apply w-full h-14 fixed bg-slate-200 dark:bg-componentBG;
 	.contentContainer {
 		@apply flex items-center m-auto max-w-[1200px] justify-between h-14;
 	}
