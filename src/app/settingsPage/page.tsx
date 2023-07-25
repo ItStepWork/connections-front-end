@@ -1,6 +1,6 @@
 import { AccountSettings } from "@/components/profileSettings/accountSettings/accountSettings";
 import { ChangePassword } from "@/components/profileSettings/changePassword/changePassword";
-import { LeftBar } from "@/components/profileSettings/leftBar/leftbar";
+import { LeftBar } from "@/components/profileSettings/leftBar/leftBar";
 import styles from './styles.module.scss';
 
 export default function LoginPage() {
