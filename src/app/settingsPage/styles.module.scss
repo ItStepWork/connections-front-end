@@ -4,10 +4,10 @@
 		@apply flex flex-col w-full;
 	}
 	.wrapper {
-		@apply flex flex-row;
+		@apply flex flex-col md:flex-row;
 	}
 	.leftMenu {
-		@apply mr-6 w-[40%];
+		@apply mr-6 w-full md:w-[40%];
 	}
 	.accSettings {
 		@apply mb-6;
