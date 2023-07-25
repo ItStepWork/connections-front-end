@@ -5,7 +5,7 @@ export const AccountSettings: FC = () => {
   return (
     <>
       <section className={styles.container}>
-        <div>
+        <div className={styles.description}>
           <h2>Account Settings</h2>
           <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate alias debitis tempora ullam nesciunt autem architecto dolorem dignissimos rerum doloremque esse perspiciatis tempore aspernatur rem, ea provident sapiente maxime veniam!</span>
         </div>
@@ -22,6 +22,22 @@ export const AccountSettings: FC = () => {
             <div className={styles.inputContainer}>
               <label htmlFor="text" className={styles.inputLabel}>Никнейм</label>
               <input type="text" id="sNickname" className={styles.label} placeholder="введите никнейм" required />
+            </div>
+          </div>
+          <div className={styles.namesBlock}>
+            <div className={styles.inputContainer}>
+              <label htmlFor="tel" className={styles.inputLabel}>Телефон</label>
+              <input type="tel" id="tel" className={styles.label} placeholder="тел.(123-456-7890)" required />
+            </div>
+            <div className={styles.inputContainer}>
+              <label htmlFor="email" className={styles.inputLabel}>Эл. почта</label>
+              <input type="email" id="email" className={styles.label} placeholder="mail@gmail.com" required />
+            </div>
+          </div>
+          <div className={styles.namesBlock}>
+            <div className={styles.textAreaContainer}>
+              <label htmlFor="message" className={styles.textLabel}>Ваше сообщение</label>
+              <textarea rows={4} id="message" className={styles.textArea} placeholder="Оставьте свой коментарий..."></textarea>
             </div>
           </div>
         </form>
