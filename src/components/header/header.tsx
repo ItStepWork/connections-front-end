@@ -3,6 +3,7 @@ import { FC } from 'react'
 import styles from './header.module.scss'
 
 export const Header: FC = () => {
+
   return (
     <>
       <header className={styles.header}>
@@ -11,7 +12,6 @@ export const Header: FC = () => {
             <Link href='/settingsPage'>settings</Link>
             <Link href='/loginPage'>Log In</Link>
           </div>
-
         </div>
       </header>
     </>
