@@ -36,4 +36,5 @@ next-env.d.ts
 
 #VS
 .vs
+/public/sw.js.map
 public/sw.js.map
