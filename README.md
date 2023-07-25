@@ -30,5 +30,8 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 ## Used techologies
 
 1. TailwindCSS
-2. next-pwa plugin
-3. Sass
+
+## Used Packages
+1. next-pwa plugin
+2. Sass
+3. next-themes
