@@ -4,7 +4,7 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  background-color: #ffff;
+  background-color: #eff2f6;
 }
 
 @media (prefers-color-scheme: dark) {

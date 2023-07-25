@@ -6,7 +6,7 @@ export const AccountSettings: FC = () => {
     <>
       <section className={styles.container}>
         <div className={styles.description}>
-          <h2>Account Settings</h2>
+          <h2>Настройки Аккаунта</h2>
           <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate alias debitis tempora ullam nesciunt autem architecto dolorem dignissimos rerum doloremque esse perspiciatis tempore aspernatur rem, ea provident sapiente maxime veniam!</span>
         </div>
         <form className={styles.form}>
@@ -20,8 +20,8 @@ export const AccountSettings: FC = () => {
               <input type="text" id="sName" className={styles.label} placeholder="введите фамилию" required />
             </div>
             <div className={styles.inputContainer}>
-              <label htmlFor="text" className={styles.inputLabel}>Никнейм</label>
-              <input type="text" id="sNickname" className={styles.label} placeholder="введите никнейм" required />
+              <label htmlFor="date" className={styles.inputLabel}>Дата рождения</label>
+              <input type="date" id="date" className={styles.label} placeholder="введите никнейм" required />
             </div>
           </div>
           <div className={styles.namesBlock}>
@@ -39,6 +39,10 @@ export const AccountSettings: FC = () => {
               <label htmlFor="message" className={styles.textLabel}>Ваше сообщение</label>
               <textarea rows={4} id="message" className={styles.textArea} placeholder="Оставьте свой коментарий..."></textarea>
             </div>
+          </div>
+          <div className={styles.formButton}>
+            <button type="submit" className={styles.button}>Сохранить изменения</button>
+
           </div>
         </form>
       </section>
