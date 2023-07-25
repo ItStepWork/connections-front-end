@@ -1,5 +1,5 @@
 .container {
-	@apply bg-componentBG h-14 w-[100%] fixed;
+	@apply bg-slate-50 h-14 w-[100%] fixed dark:bg-slate-900;
 	.contentContainer {
 		margin: 0 auto;
 		@apply max-w-[1200px] flex justify-between items-center h-full;
