@@ -1,7 +1,7 @@
 
 export default function Home() {
   return (
-    <main className="flex w-screen justify-center items-center " >
+    <main>
       123
     </main>
   )

@@ -2,7 +2,7 @@ import styles from './styles.module.scss'
 export default function LoginPage() {
   return (
     <>
-      <div className={styles.container}>
+      <main>
         <form>
           <div className={styles.formContainer}>
             <div className="mb-6">
@@ -16,7 +16,7 @@ export default function LoginPage() {
             <button type="submit" className={styles.button}>Submit</button>
           </div>
         </form>
-      </div>
+      </main>
     </>
   )
 }

@@ -22,13 +22,15 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-  min-width: 100%;
-  margin: 0 auto;
+    margin: 0;
+    padding: 0;
 }
 
-.wrapper{
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
+.container {
+  margin: 0 auto;
+  max-width: 1200px; 
+}
+
+h2{ 
+  font-weight: 700;
 }

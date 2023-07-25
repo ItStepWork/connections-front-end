@@ -15,6 +15,7 @@ module.exports = {
 			colors: {
 				mainBG: '#191a1f',
 				componentBG: '#141519',
+				componentBorder: '#313235',
 				darkModeBg: '#191a1f',
 				darkModeFg: '#ffff',
 				whiteModeBg: '#ffff',

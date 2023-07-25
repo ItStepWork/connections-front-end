@@ -1,7 +1,6 @@
-.container {
-	@apply bg-slate-50 h-14 w-[100%] fixed dark:bg-slate-900;
+.header {
+	@apply w-full h-14 fixed bg-componentBG;
 	.contentContainer {
-		margin: 0 auto;
-		@apply max-w-[1200px] flex justify-between items-center h-full;
+		@apply flex items-center m-auto max-w-[1200px] justify-between h-14;
 	}
 }
