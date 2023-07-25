@@ -1,7 +1,8 @@
 import { AccountSettings } from "@/components/profileSettings/accountSettings/accountSettings";
 import { ChangePassword } from "@/components/profileSettings/changePassword/changePassword";
-import { LeftBar } from "@/components/profileSettings/leftBar/leftBar";
+import { LeftSettingsMenu } from "@/components/profileSettings/leftSettingsMenu/leftSettingsMenu";
 import styles from './styles.module.scss';
+
 
 export default function LoginPage() {
   return (
@@ -9,9 +10,17 @@ export default function LoginPage() {
       <main>
         <div className={styles.container}>
           <div className={styles.contentContainer}>
-            <LeftBar />
-            <AccountSettings />
-            <ChangePassword />
+            <div className={styles.wrapper}>
+              <div className={styles.leftMenu}>
+                <LeftSettingsMenu />
+              </div>
+              <div className={styles.accSettings}>
+                <AccountSettings />
+              </div>
+            </div>
+            <div className={styles.changePass}>
+              <ChangePassword />
+            </div>
           </div>
         </div>
       </main>

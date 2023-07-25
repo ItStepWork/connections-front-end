@@ -1,9 +1,8 @@
 import Link from "next/link"
 import { FC } from "react"
 import { FcAdvertising, FcBusinessman, FcFaq, FcFullTrash, FcPrivacy } from 'react-icons/fc'
-import styles from "./leftBar.module.scss"
-
-export const LeftBar: FC = () => {
+import styles from './leftSettingsMenu.module.scss'
+export const LeftSettingsMenu: FC = () => {
   return (
     <>
       <section className={styles.container}>
@@ -30,7 +29,7 @@ export const LeftBar: FC = () => {
           </div>
         </div>
         <div className={styles.profile}>
-          Смотреть профиль
+          <Link href='/profilePage'>Смотреть профиль</Link>
         </div>
       </section>
     </>

@@ -1,6 +1,18 @@
 .container {
 	@apply pt-20 flex justify-center;
 	.contentContainer {
-		@apply flex justify-between items-center flex-col;
+		@apply flex flex-col w-full;
+	}
+	.wrapper {
+		@apply flex flex-row;
+	}
+	.leftMenu {
+		@apply mr-6 w-[40%];
+	}
+	.accSettings {
+		@apply mb-6;
+	}
+	.changePass {
+		@apply mb-6;
 	}
 }
