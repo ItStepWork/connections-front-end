@@ -1,8 +1,9 @@
-import { Header } from '@/components/header/header'
-import type { Metadata } from 'next'
-import { ThemeProvider } from 'next-themes'
-import { Inter } from 'next/font/google'
-import './globals.css'
+'use client';
+import { Header } from '@/components/header/header';
+import type { Metadata } from 'next';
+import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
+import { Inter } from 'next/font/google';
+import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,6 +25,10 @@ export default function RootLayout({
         <Header />
         <div className="container">
           <main>{children}</main>
+          <ProgressBar height="4px"
+            color="#016FB9"
+            options={{ showSpinner: false }}
+            shallowRouting />
         </div>
       </body>
     </html>

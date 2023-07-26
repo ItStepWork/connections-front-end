@@ -8,23 +8,33 @@ export const LeftSettingsMenu: FC = () => {
       <section className={styles.container}>
         <div className={styles.linksContainer}>
           <div className={styles.link}>
-            <FcBusinessman />
+            <div className={styles.icon}>
+              <FcBusinessman size={24} />
+            </div>
             <Link href={'/'}>Аккаунт</Link>
           </div>
           <div className={styles.link}>
-            <FcAdvertising />
+            <div className={styles.icon}>
+              <FcAdvertising size={24} />
+            </div>
             <Link href={'/'}>Оповещения</Link>
           </div>
           <div className={styles.link}>
-            <FcPrivacy />
+            <div className={styles.icon}>
+              <FcPrivacy size={24} />
+            </div>
             <Link href={'/'}>Приватность и защита</Link>
           </div>
           <div className={styles.link}>
-            <FcFaq />
+            <div className={styles.icon}>
+              <FcFaq size={24} />
+            </div>
             <Link href={'/'}>Обмен сообщениями</Link>
           </div>
           <div className={styles.link}>
-            <FcFullTrash />
+            <div className={styles.icon}>
+              <FcFullTrash size={24} />
+            </div>
             <Link href={'/'}>Закрыть аккаунт</Link>
           </div>
         </div>

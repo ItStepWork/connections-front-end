@@ -10,6 +10,7 @@ export const Header: FC = () => {
         <div >
           <div className={styles.contentContainer}>
             <Link href='/settingsPage'>settings</Link>
+            <Link href='/profilePage'>Профиль</Link>
             <Link href='/loginPage'>Log In</Link>
           </div>
         </div>
