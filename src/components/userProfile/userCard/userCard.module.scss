@@ -1,0 +1,74 @@
+.container {
+	@apply flex flex-col mt-20 w-full bg-white text-gray-900 border border-whiteModeBorder rounded-xl
+  dark:text-componentText object-contain overflow-hidden dark:bg-componentBG dark:border-componentBorder;
+	.bannerImage {
+		@apply h-[200px] w-full relative;
+	}
+	.cardBody {
+		@apply relative flex flex-col;
+		.topInfo {
+			@apply relative flex items-center flex-col
+      md:justify-between lg:justify-between md:flex-row lg:flex-row;
+			.avatarName {
+				@apply flex flex-col md:flex-row lg:flex-row relative;
+				.avatarContainer {
+					@apply flex md:block lg:block md:justify-normal lg:justify-normal justify-center relative;
+					.avatar {
+						@apply mb-6 rounded-full overflow-hidden border-[3px] border-white top-[-30px] h-20 w-20
+            absolute md:bottom-[-40px] lg:bottom-[-40px] md:w-32 md:h-32 md:ml-6 lg:w-32 lg:h-32 lg:ml-6;
+					}
+				}
+			}
+			.buttonBlock {
+				@apply flex items-center gap-2;
+				.buttonLink {
+					@apply text-buttonRed flex items-center bg-redOpacity transition-all duration-300 hover:bg-buttonRed hover:text-white focus:ring-4 focus:outline-none focus:ring-buttonRed font-medium rounded-md text-sm px-4 py-2.5 text-center dark:bg-redOpacity dark:hover:bg-buttonRed dark:focus:ring-buttonRed;
+					span {
+						@apply mr-2;
+					}
+				}
+				.button {
+					@apply px-3 py-3 md:mr-6 lg:mr-6 text-gray-900 bg-whiteModeButtonBg rounded-lg transition-all duration-300 hover:bg-whiteModeBorder dark:hover:bg-componentText dark:text-white dark:bg-darkModeButtonBg;
+				}
+			}
+		}
+		.nameBlock {
+			@apply flex flex-col items-center justify-start mt-16 
+      md:pt-4 lg:pt-4 md:ml-36 lg:ml-36 md:mb-0 lg:mb-0 mb-4 md:pl-6 lg:pl-6 md:mt-0 lg:mt-0 md:items-start lg:items-start;
+			.name {
+				@apply flex items-center;
+				span {
+					@apply text-buttonGreen ml-1;
+				}
+			}
+		}
+		.bottomInfo {
+			@apply flex justify-center p-6 flex-wrap
+      md:flex-nowrap md:justify-start lg:justify-start lg:flex-nowrap md:mt-6 lg:mt-6;
+			p {
+				@apply flex items-center pr-4;
+			}
+			p span {
+				@apply mr-2;
+			}
+		}
+	}
+	.cardNav {
+		@apply flex p-6 w-full items-center justify-center gap-6 border-t flex-wrap 
+    md:flex-nowrap md:justify-start lg:justify-start lg:flex-nowrap 
+    dark:border-componentBorder;
+		.counterLink {
+			@apply flex items-center;
+			.counter {
+				@apply ml-1 text-lg bg-greenOpacity px-2  rounded-md text-buttonGreen;
+			}
+		}
+		.link {
+			@apply hover:text-blue-500 transition-all duration-300 font-bold;
+		}
+	}
+
+	h2 {
+		@apply text-gray-900 dark:text-white text-xl;
+	}
+}
