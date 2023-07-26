@@ -11,7 +11,6 @@ export const AboutCard = () => {
     email: 'google.mail.@gmail.com'
   }
 
-
   return (
     <>
       <div className={styles.container}>

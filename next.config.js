@@ -4,5 +4,8 @@ const withPWA = require('next-pwa')({
 })
 
 module.exports = withPWA({
-	// next.js config
+	images: {
+		domains: ['loremflickr.com', 'picsum.photos'],
+		formats: ['image/avif', 'image/webp'],
+	},
 })

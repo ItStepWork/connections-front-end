@@ -7,7 +7,7 @@ export const AccountSettings: FC = () => {
       <section className={styles.container}>
         <div className={styles.description}>
           <h2>Настройки Аккаунта</h2>
-          <span>Здесь будет описание профиля которое человек запишет в text-area ниже потенциально тут может быть много текста, в оригинале что-то про геев было написано, короче непонятно</span>
+          <span>Здесь будет описание профиля которое человек запишет в text-area ниже потенцифльно тут может быть много текста, в оригинале что-то про геев было написано, короче непонятно</span>
         </div>
         <form className={styles.form}>
           <div className={styles.namesBlock}>

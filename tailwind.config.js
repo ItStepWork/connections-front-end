@@ -22,6 +22,7 @@ module.exports = {
 				whiteModeBg: '#eff2f6',
 				whiteModeFg: '#676a79',
 				whiteModeBorder: '#e1e4e6',
+				buttonBlueOpacity: '#0f6fec1a',
 			},
 		},
 	},
