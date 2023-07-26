@@ -7,16 +7,16 @@
 	.fio {
 		@apply flex flex-col text-sm items-center;
 		h4 {
-			@apply text-white text-sm font-bold;
+			@apply text-gray-900 dark:text-white text-sm font-bold;
 		}
 	}
 	.buttons {
 		@apply flex justify-center items-center;
 		.redButton {
-			@apply text-white bg-buttonRed rounded-md py-3 px-5 m-1;
+			@apply text-white bg-buttonRed transition-all duration-300 rounded-md py-3 px-5 m-1 hover:bg-[#a11f2f];
 		}
 		.blueButton {
-			@apply text-white bg-buttonBlue rounded-md py-3 px-5 m-1;
+			@apply text-white bg-buttonBlue transition-all duration-300 rounded-md py-3 px-5 m-1 hover:bg-[#0b53b1];
 		}
 	}
 }
