@@ -1,0 +1,22 @@
+.container {
+	@apply flex flex-col items-center pt-6 pb-2 px-2 w-full bg-white text-gray-900 border border-whiteModeBorder rounded-xl
+  dark:text-componentText dark:bg-componentBG dark:border-componentBorder;
+	.avatar {
+		@apply flex rounded-full overflow-hidden mb-4;
+	}
+	.fio {
+		@apply flex flex-col text-sm items-center;
+		h4 {
+			@apply text-white text-sm font-bold;
+		}
+	}
+	.buttons {
+		@apply flex justify-center items-center;
+		.redButton {
+			@apply text-white bg-buttonRed rounded-md py-3 px-5 m-1;
+		}
+		.blueButton {
+			@apply text-white bg-buttonBlue rounded-md py-3 px-5 m-1;
+		}
+	}
+}
