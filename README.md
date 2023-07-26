@@ -35,3 +35,4 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 1. next-pwa plugin
 2. Sass
 3. next-themes
+4. next-nprogress-bar
