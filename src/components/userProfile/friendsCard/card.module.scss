@@ -1,5 +1,5 @@
 .container {
-	@apply flex flex-col items-center pt-6 pb-2 px-2 w-full bg-white text-gray-900 border border-whiteModeBorder rounded-xl
+	@apply flex flex-col justify-between items-center pt-6 pb-2 px-2 w-full bg-white text-gray-900 border border-whiteModeBorder rounded-xl
   dark:text-componentText dark:bg-componentBG dark:border-componentBorder;
 	.avatar {
 		@apply flex rounded-full overflow-hidden mb-4;
@@ -7,7 +7,7 @@
 	.fio {
 		@apply flex flex-col text-sm items-center;
 		h4 {
-			@apply text-gray-900 dark:text-white text-sm font-bold;
+			@apply text-gray-900 dark:text-white text-sm text-center font-bold;
 		}
 	}
 	.buttons {
