@@ -8,7 +8,12 @@ import { AiOutlineSetting } from "react-icons/ai";
 import { BiPowerOff } from "react-icons/bi";
 import { BsCircleHalf } from "react-icons/bs";
 import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
+import { signOut } from "next-auth/react"
 import styles from './dropMenu.module.scss';
+
+async function logOut(){
+  signOut();
+}
 
 export const DropMenuProfile: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,7 +51,7 @@ export const DropMenuProfile: FC = () => {
             </Link>
             <div className={styles.signOutContainer}>
               <BiPowerOff size={20} />
-              <button>Выход</button>
+              <button onClick={logOut}>Выход</button>
             </div>
             <div className={styles.modeContainer}>
               <p>Тема:</p>
