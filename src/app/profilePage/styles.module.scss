@@ -1,6 +1,9 @@
 .container {
-	@apply grid grid-cols-12;
-	.aboutContainer {
-		@apply col-start-8 col-span-4;
+	@apply flex;
+	.leftContainer {
+		@apply flex flex-col gap-6 w-full;
+	}
+	.rightContainer {
+		@apply flex flex-col gap-6 ml-6;
 	}
 }
