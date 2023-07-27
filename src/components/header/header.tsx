@@ -11,7 +11,7 @@ export const Header: FC = () => {
           <div className={styles.contentContainer}>
             <Link href='/settingsPage'>settings</Link>
             <Link href='/profilePage'>Профиль</Link>
-            <Link href='/loginPage'>Log In</Link>
+            <Link href='/signinPage'>Sign In</Link>
           </div>
         </div>
       </header>

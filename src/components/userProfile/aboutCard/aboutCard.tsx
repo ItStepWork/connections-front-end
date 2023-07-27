@@ -1,8 +1,12 @@
 import { BsCalendarDate, BsEnvelope, BsHeart } from 'react-icons/bs'
 import styles from './aboutCard.module.scss'
+import { authConfig } from "@/configs/auth";
+import { getServerSession } from "next-auth/next";
 
+export const AboutCard = async () => {
 
-export const AboutCard = () => {
+  const session = await getServerSession(authConfig);
+  console.log(session);
 
   const tmpData = {
     description: 'Описание о человеке профиля будет браться из профиля.',
@@ -34,7 +38,7 @@ export const AboutCard = () => {
           <div className={styles.icon}>
             <BsEnvelope size={18} />
           </div>
-          <p>Почта: <span>{tmpData.email}</span></p>
+          <p>Почта: <span>{session?.user?.email}</span></p>
         </div>
       </div>
     </>
