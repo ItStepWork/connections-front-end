@@ -5,7 +5,7 @@ const withPWA = require('next-pwa')({
 	skipWaiting: true,
 })
 
-module.exports = withPWA({
+module.exports = {
 	images: {
 		domains: [
 			'loremflickr.com',
@@ -15,4 +15,5 @@ module.exports = withPWA({
 		],
 		formats: ['image/avif', 'image/webp'],
 	},
-})
+	withPWA,
+}

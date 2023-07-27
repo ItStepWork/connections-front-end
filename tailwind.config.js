@@ -4,6 +4,8 @@ module.exports = {
 		'./src/pages/**/*.{js,ts,jsx,tsx,mdx}',
 		'./src/components/**/*.{js,ts,jsx,tsx,mdx}',
 		'./src/app/**/*.{js,ts,jsx,tsx,mdx}',
+		'./pages/**/*.{ts,tsx}',
+		'./public/**/*.html',
 	],
 	theme: {
 		extend: {
@@ -24,6 +26,7 @@ module.exports = {
 				whiteModeButtonBg: '#eef0f2',
 				whiteModeFg: '#676a79',
 				whiteModeBorder: '#e1e4e6',
+				whiteModeHoverBg: '#caccce',
 				buttonBlueOpacity: '#0f6fec1a',
 				redOpacity: '#d6293e1a',
 				greenOpacity: '#0cbc871a',

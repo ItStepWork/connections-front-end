@@ -1,12 +1,12 @@
 'use client';
+import { Providers } from "@/components/Providers";
 import { Header } from '@/components/header/header';
 import type { Metadata } from 'next';
 import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
-import { Inter } from 'next/font/google';
-import { Providers } from "@/components/Providers";
+import { Montserrat } from 'next/font/google';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Montserrat({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Connections',

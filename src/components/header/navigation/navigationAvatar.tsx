@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { FC } from 'react';
 import styles from './navigation.module.scss';
 
-export const NavigationAvatarButton: FC = () => {
+export const NavigationAvatar: FC = () => {
   return (
     <>
       <div className={styles.avatar}>
