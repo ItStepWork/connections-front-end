@@ -1,7 +1,13 @@
-import { FC } from "react"
-import styles from "./accountSettings.module.scss"
+"use client"
+import { useSession } from "next-auth/react";
+import { FC } from "react";
+import styles from "./accountSettings.module.scss";
 
 export const AccountSettings: FC = () => {
+
+  const { data: session } = useSession();
+  console.log(session)
+
   return (
     <>
       <section className={styles.container}>
