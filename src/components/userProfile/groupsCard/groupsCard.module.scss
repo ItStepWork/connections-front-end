@@ -22,4 +22,11 @@
 	h2 {
 		@apply text-gray-900 dark:text-white text-2xl;
 	}
-}
+// 	dialog{
+// 		@apply w-56 h-32 p-2 flex flex-wrap justify-center;
+// 	}
+	.dialogButton_div{
+		@apply flex flex-wrap justify-center  w-full;
+
+	}
+ }
