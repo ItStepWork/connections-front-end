@@ -11,9 +11,12 @@ export default function Signup() {
   } = useForm();
 
   const onSubmit = async (data: any) => {
-    let response = await fetch("http://localhost:5288/Auth/SignUp?email=" + data.email + "&password=" + data.password, {method: "POST"});
-    let result = await response.text();
-    alert(result);
+    if (data.password === data.confirmPassword){
+      let response = await fetch("http://localhost:5288/Auth/SignUp?email=" + data.email + "&password=" + data.password, {method: "POST"});
+      let result = await response.text();
+      alert(result);
+    }
+    else alert("Password mismatch");
   }
 
   return (
