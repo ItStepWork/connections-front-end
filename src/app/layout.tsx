@@ -1,5 +1,5 @@
 'use client';
-import { Providers } from "@/components/Providers";
+import { Providers } from "@/providers/Providers";
 import { Header } from '@/components/header/header';
 import type { Metadata } from 'next';
 import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
