@@ -61,6 +61,7 @@ export const UserCard = () => {
           <Link className={styles.link} href='/'>Медиа</Link>
           <Link className={styles.link} href='/'>Видео</Link>
           <Link className={styles.link} href='/'>Активность</Link>
+          <Link className={styles.link} href='/groupsPage'>Сообщества</Link>
         </div>
       </div>
     </>
