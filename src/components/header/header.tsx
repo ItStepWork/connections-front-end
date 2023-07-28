@@ -12,9 +12,6 @@ export const Header: FC = () => {
   const router = useRouter();
 
   const { data: session } = useSession();
-  if (session === null) {
-    router.push("/signinPage");
-  }
 
   return (
     <>
