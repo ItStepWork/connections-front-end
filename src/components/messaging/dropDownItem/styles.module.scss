@@ -1,0 +1,7 @@
+.container {
+	@apply relative mx-2 mt-2;
+	.dropMenu {
+		@apply absolute flex flex-col top-[50px] left-[-120px] items-center w-[160px] bg-white text-gray-900 border border-whiteModeBorder rounded-lg
+  		dark:text-componentText dark:bg-componentBG dark:border-componentBorder;
+	}
+}

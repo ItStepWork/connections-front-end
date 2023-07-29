@@ -36,6 +36,23 @@ h2{
 }
 
 
+.textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.textarea {
+  display: block;
+  overflow: hidden;
+  resize: none;
+  min-height: 40px;
+  line-height: 20px;
+}
+
+.textarea[contenteditable]:empty::before {
+  content: "Type a message";
+  color: gray;
+}
 
  /* Input File Style */
 .input-div {
