@@ -13,15 +13,15 @@ export const ChangePassword: FC = () => {
           <div className={styles.namesBlock}>
             <div className={styles.inputContainer}>
               <label htmlFor="CurrentPassword" className={styles.inputLabel}>Текущий пароль</label>
-              <input type="text" id="CurrentPassword" className={styles.label} placeholder="" required />
+              <input type="text" id="CurrentPassword" className={styles.label} placeholder="введите старый пароль" required />
             </div>
             <div className={styles.inputContainer}>
               <label htmlFor="password" className={styles.inputLabel}>Новый пароль</label>
-              <input type="password" id="password" className={styles.label} placeholder="введите пароль" required />
+              <input type="password" id="password" className={styles.label} placeholder="введите новый пароль" required />
             </div>
             <div className={styles.inputContainer}>
               <label htmlFor="ConfirmPassword" className={styles.inputLabel}>Подтвердите пароль</label>
-              <input type="text" id="ConfirmPassword" className={styles.label} placeholder="" required />
+              <input type="text" id="ConfirmPassword" className={styles.label} placeholder="подтвердите новый пароль" required />
             </div>
           </div>
           <div className={styles.formButton}>

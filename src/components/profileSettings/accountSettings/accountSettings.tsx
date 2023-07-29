@@ -27,13 +27,13 @@ export const AccountSettings: FC = () => {
             </div>
             <div className={styles.inputContainer}>
               <label htmlFor="date" className={styles.inputLabel}>Дата рождения</label>
-              <input type="date" id="date" className={styles.label} placeholder="введите никнейм" required />
+              <input type="date" id="date" className={styles.label} />
             </div>
           </div>
           <div className={styles.namesBlock}>
             <div className={styles.inputContainer}>
               <label htmlFor="tel" className={styles.inputLabel}>Телефон</label>
-              <input type="tel" id="tel" className={styles.label} placeholder="тел.(123-456-7890)" required />
+              <input type="tel" id="tel" className={styles.label} placeholder="тел.(123-456-7890)" />
             </div>
             <div className={styles.inputContainer}>
               <label htmlFor="email" className={styles.inputLabel}>Эл. почта</label>
