@@ -75,6 +75,7 @@ export const authConfig: AuthOptions = {
           gender: u.gender,
           phone: u.phone,
           familyStatus: u.familyStatus,
+          accessToken: u.accessToken,
         };
       }
       return token;
