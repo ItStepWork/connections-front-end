@@ -1,0 +1,19 @@
+.container {
+	@apply flex justify-between items-center p-2;
+	
+	.user{
+		@apply flex m-2 cursor-pointer;
+	}
+	.userImage{
+		@apply w-10 h-10 rounded-full;
+	}
+	.userInfo{
+		@apply px-2 flex flex-col overflow-hidden;
+	}
+	.userStatus{
+		@apply text-xs whitespace-nowrap;
+	}
+}
+.hr{
+	@apply border-zinc-200 bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-700;
+}

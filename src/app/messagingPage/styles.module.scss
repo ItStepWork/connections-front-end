@@ -1,0 +1,30 @@
+.container {
+	@apply flex h-screen;
+	.centerContainer{
+		@apply flex mt-20 mb-10 justify-center w-full  border rounded-lg border-zinc-200 dark:border-zinc-700 bg-white dark:bg-componentBG;
+	}
+	.leftContainer {
+		@apply flex flex-col w-1/4;
+	}
+	.rightContainer {
+		@apply flex flex-col justify-between ml-1 w-3/4;
+	}
+	.users{
+		@apply m-3;
+	}
+	.user{
+		@apply flex my-3 p-2 cursor-pointer;
+	}
+	.userImage{
+		@apply w-10 h-10 rounded-full;
+	}
+	.userInfo{
+		@apply px-2 flex flex-col overflow-hidden;
+	}
+	.userMessage{
+		@apply text-xs whitespace-nowrap;
+	}
+	.hr{
+		@apply w-px h-full border-zinc-200 bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-700;
+	}
+}
