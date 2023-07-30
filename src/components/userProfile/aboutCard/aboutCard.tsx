@@ -6,7 +6,6 @@ import styles from './aboutCard.module.scss';
 export const AboutCard = async () => {
 
   const session = await getServerSession(authConfig);
-  //console.log(session);
 
   return (
     <>
