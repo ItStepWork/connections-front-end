@@ -9,15 +9,15 @@ export const AccountSettings: FC = () => {
   const options = [
     {
       label: "Не указано",
-      value: 0,
+      value: '0',
     },
     {
       label: "Мужской",
-      value: 1,
+      value: '1',
     },
     {
       label: "Женский",
-      value: 2,
+      value: '2',
     },
   ];
   const { data: session, update } = useSession();
@@ -135,11 +135,10 @@ export const AccountSettings: FC = () => {
           <div className={styles.namesBlock}>
             <div className={styles.inputContainer}>
               <label htmlFor="gender" className={styles.inputLabel}>Пол</label>
-
-
               <select
                 className={styles.label}
                 id="gender"
+                {...register('gender')}
                 key={session?.user?.id}
               >
                 {options.map((option, index) => (
