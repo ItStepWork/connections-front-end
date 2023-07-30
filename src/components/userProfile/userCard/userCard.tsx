@@ -1,16 +1,15 @@
-import { authConfig } from '@/configs/auth';
+"use client"
 import { faker } from '@faker-js/faker';
-import { getServerSession } from 'next-auth';
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
 import { BsBriefcase, BsCalendar2Plus, BsFillPatchCheckFill, BsGeoAlt, BsPencilFill, BsThreeDots } from 'react-icons/bs';
 import styles from './userCard.module.scss';
 
-export const UserCard: FC = async () => {
+export const UserCard: FC = () => {
 
-  const data = await getServerSession(authConfig);
-  console.log(data)
+  const { data: session } = useSession();
 
   return (
     <>
@@ -45,7 +44,7 @@ export const UserCard: FC = async () => {
               </div>
               <div className={styles.nameBlock}>
                 <div className={styles.name}>
-                  <h2>{data?.user?.firstName + ' ' + data?.user?.lastName}</h2>
+                  <h2>{session?.user?.firstName + ' ' + session?.user?.lastName}</h2>
                   <span><BsFillPatchCheckFill size={18} /></span>
                 </div>
                 <p>{faker.number.int(22)} связей</p>
@@ -58,16 +57,16 @@ export const UserCard: FC = async () => {
 
           </div>
           <div className={styles.bottomInfo}>
-            <p><span><BsBriefcase /></span> Lead Developer</p>
-            <p><span><BsGeoAlt /></span> New Hampshire</p>
-            <p><span><BsCalendar2Plus /></span>Присоединился: 26 Октября, 2019</p>
+            <p><span><BsBriefcase /></span>{session?.user?.work}</p>
+            <p><span><BsGeoAlt /></span>{session?.user?.location}</p>
+            <p><span><BsCalendar2Plus /></span>Присоединился: {session?.user?.joined}</p>
           </div>
         </div>
         <div className={styles.cardNav}>
           <Link className={styles.link} href='/'>Посты</Link>
-          <Link className={styles.link} href='/'>Обо мне</Link>
+          <Link className={styles.link} href='/aboutMePage'>Обо мне</Link>
           <div className={styles.counterLink}>
-            <Link className={styles.link} href='/'>Связи</Link>
+            <Link className={styles.linkUnderline} href='/profilePage'>Связи</Link>
             <div className={styles.counter}>{faker.number.int(322)}</div>
           </div>
           <Link className={styles.link} href='/'>Медиа</Link>

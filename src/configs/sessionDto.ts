@@ -12,6 +12,9 @@ export interface IUser {
   born: string
   aboutMe: string
   email: string
+  work: string
+  location: string
+  joined: string
 }
 export const getUser = (token: string, user: IUser) => {
   user.accessToken = token
