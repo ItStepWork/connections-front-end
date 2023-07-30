@@ -1,5 +1,6 @@
 import type { AuthOptions } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
+import { getUser, IUser } from './sessionDto';
 
 export const authConfig: AuthOptions = {
   secret: process.env.AUTH_SECRET,
@@ -46,37 +47,15 @@ export const authConfig: AuthOptions = {
     session: ({ session, token }) => {
       return {
         ...session,
-        user: {
-          id: token.id,
-          email: token.email,
-          firstName: token.firstName,
-          lastName: token.lastName,
-          gender: token.gender,
-          phone: token.phone,
-          role: token.role,
-          status: token.status,
-          lastVisit: token.lastVisit,
-          familyStatus: token.familyStatus,
-        },
-        token: token.accessToken
+        user: token,
       };
     },
-    jwt: ({ token, user }) => {
+    jwt: ({ token, user, trigger, session }) => {
+      if (trigger === "update") {
+        return getUser(token.accessToken as string, session.user as IUser);
+      }
       if (user) {
-        const u = user as unknown as any;
-        return {
-          ...token,
-          id: u.id,
-          role: u.role,
-          status: u.status,
-          lastVisit: u.lastVisit,
-          firstName: u.firstName,
-          lastName: u.lastName,
-          gender: u.gender,
-          phone: u.phone,
-          familyStatus: u.familyStatus,
-          accessToken: u.accessToken,
-        };
+        return user as IUser | any
       }
       return token;
     },

@@ -1,6 +1,7 @@
 'use client';
 import { NavigationAvatar } from "@/components/header/navigation/navigationAvatar";
 import { faker } from "@faker-js/faker";
+import { signOut } from "next-auth/react";
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC, useState } from "react";
@@ -8,10 +9,9 @@ import { AiOutlineSetting } from "react-icons/ai";
 import { BiPowerOff } from "react-icons/bi";
 import { BsCircleHalf } from "react-icons/bs";
 import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
-import { signOut } from "next-auth/react"
 import styles from './dropMenu.module.scss';
 
-async function logOut(){
+async function logOut() {
   signOut();
 }
 
@@ -33,7 +33,7 @@ export const DropMenuProfile: FC = () => {
                   width={48}
                   height={48}
                   quality={80}
-                  objectFit='cover'
+                  style={{ objectFit: "cover" }}
                   alt="avatar"
                 />
               </div>

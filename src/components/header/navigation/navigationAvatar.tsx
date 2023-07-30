@@ -12,7 +12,7 @@ export const NavigationAvatar: FC = () => {
           width={40}
           height={40}
           quality={80}
-          objectFit='cover'
+          style={{ objectFit: "cover" }}
           alt="avatar"
         />
       </div>

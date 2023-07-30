@@ -2,7 +2,7 @@
 	@apply flex flex-col mt-20 w-full bg-white text-gray-900 border border-whiteModeBorder rounded-xl
   dark:text-componentText object-contain overflow-hidden dark:bg-componentBG dark:border-componentBorder;
 	.bannerImage {
-		@apply h-[200px] w-full relative;
+		@apply h-[200px] w-full relative overflow-hidden m-auto;
 	}
 	.cardBody {
 		@apply relative flex flex-col;
@@ -70,5 +70,8 @@
 
 	h2 {
 		@apply text-gray-900 dark:text-white text-xl;
+	}
+	.image {
+		@apply w-full h-auto;
 	}
 }

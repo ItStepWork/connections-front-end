@@ -11,7 +11,7 @@ export const LeftSettingsMenu: FC = () => {
             <div className={styles.icon}>
               <FcBusinessman size={24} />
             </div>
-            <Link href={'/'}>Аккаунт</Link>
+            <Link href={'/profilePage'}>Аккаунт</Link>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>

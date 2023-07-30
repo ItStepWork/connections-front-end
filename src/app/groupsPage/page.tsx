@@ -10,10 +10,8 @@ export default function Profile() {
     <>
       <main>
         <div className={styles.container}>
-            <UserCard />
-            <GroupsCard />
-          
-         
+          <UserCard />
+          <GroupsCard />
         </div>
       </main>
     </>

@@ -21,6 +21,9 @@
 				 dark:bg-mainBG dark:border-componentBorder dark:placeholder-gray-400 dark:text-componentText dark:focus:ring-blue-500 dark:focus:border-blue-500;
 				}
 			}
+			input[type='file']::file-selector-button {
+				@apply dark:bg-mainBG dark:text-componentText text-whiteModeFg;
+			}
 		}
 		.namesBlock:nth-last-child(n-1) {
 			@apply pt-2;
