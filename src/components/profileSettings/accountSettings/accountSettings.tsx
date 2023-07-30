@@ -21,7 +21,7 @@ export const AccountSettings: FC = () => {
     },
   ];
   const { data: session, update } = useSession();
-  console.log(session);
+
 
 
   const {
@@ -39,6 +39,12 @@ export const AccountSettings: FC = () => {
         lastName: data.lastName,
         aboutMe: data.aboutMe,
         phone: data.phone,
+        location: data.location,
+        work: data.work,
+        joined: data.joined,
+        familyStatus: data.familyStatus,
+        born: data.born,
+        gender: data.gender
       },
 
     };
@@ -153,13 +159,13 @@ export const AccountSettings: FC = () => {
                 {...register('work')} />
             </div>
             <div className={styles.inputContainer}>
-              <label htmlFor="live" className={styles.inputLabel}>Место жительства</label>
+              <label htmlFor="location" className={styles.inputLabel}>Место жительства</label>
               <input
                 type="text"
-                id="live"
+                id="location"
                 className={styles.label}
                 placeholder={(session?.user?.location!) === undefined ? 'не указано' : session?.user?.location!}
-                {...register('live')} />
+                {...register('location')} />
             </div>
           </div>
 
@@ -188,7 +194,7 @@ export const AccountSettings: FC = () => {
               <textarea rows={4}
                 id="message"
                 className={styles.textArea}
-                //placeholder={(session?.user?.aboutMe!) === undefined ? 'Оставьте свой коментарий...' : session?.user?.aboutMe!}
+                placeholder={(session?.user?.aboutMe!) === undefined ? 'Оставьте свой коментарий...' : session?.user?.aboutMe!}
                 {...register('aboutMe')}></textarea>
             </div>
           </div>

@@ -1,7 +1,7 @@
 "use client"
 
-import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import type { FormEventHandler } from "react";
 import styles from './styles.module.scss';
 
@@ -27,7 +27,7 @@ export default function Signin() {
   };
 
   return (
-    
+
     <div className={styles.mainContainer}>
       <div className={styles.centerContainer}>
         <div className={styles.verticalContainer}>
@@ -39,11 +39,11 @@ export default function Signin() {
             <form className={styles.formSignUp} onSubmit={handleSubmit}>
               <div className={styles.inputGroup}>
                 <label htmlFor="email" className={styles.inputLabel}>Email address</label>
-                <input type="email" name="email" className={styles.input} placeholder="email@gmail.com" required/>
+                <input type="email" name="email" className={styles.input} placeholder="email@gmail.com" required />
               </div>
               <div className={styles.inputGroup}>
                 <label htmlFor="password" className={styles.inputLabel}>Password</label>
-                <input type="password" name="password" className={styles.input} placeholder="•••••••••" required/>
+                <input type="password" name="password" className={styles.input} placeholder="•••••••••" required />
               </div>
               <div className={styles.centerContainer}>
                 <button className={styles.button} type='submit'>Sign In</button>
