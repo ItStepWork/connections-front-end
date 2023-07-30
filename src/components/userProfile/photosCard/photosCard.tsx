@@ -17,6 +17,7 @@ export const PhotosCard = () => {
               src={faker.image.url()}
               width={163}
               height={163}
+              style={{ objectFit: "contain" }}
               alt="Picture of the author"
             />
           </div>
@@ -25,6 +26,7 @@ export const PhotosCard = () => {
               src={faker.image.url()}
               width={163}
               height={163}
+              style={{ objectFit: "contain" }}
               alt="Picture of the author"
             />
           </div>
@@ -35,6 +37,7 @@ export const PhotosCard = () => {
               src={faker.image.url()}
               width={106}
               height={106}
+              style={{ objectFit: "contain" }}
               alt="Picture of the author"
             />
           </div>
@@ -43,6 +46,7 @@ export const PhotosCard = () => {
               src={faker.image.url()}
               width={106}
               height={106}
+              style={{ objectFit: "contain" }}
               alt="Picture of the author"
             />
           </div>
@@ -51,6 +55,7 @@ export const PhotosCard = () => {
               src={faker.image.url()}
               width={106}
               height={106}
+              style={{ objectFit: "contain" }}
               alt="Picture of the author"
             />
           </div>

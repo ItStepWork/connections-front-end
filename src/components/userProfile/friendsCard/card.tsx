@@ -16,6 +16,7 @@ export const Card = () => {
             src={faker.image.avatar()}
             width={76}
             height={76}
+            style={{ objectFit: "contain" }}
             alt="Picture of the author"
           />
         </div>

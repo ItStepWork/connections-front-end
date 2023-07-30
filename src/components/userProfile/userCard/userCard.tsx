@@ -1,19 +1,31 @@
+import { authConfig } from '@/configs/auth';
 import { faker } from '@faker-js/faker';
+import { getServerSession } from 'next-auth';
 import Image from 'next/image';
 import Link from 'next/link';
+import { FC } from 'react';
 import { BsBriefcase, BsCalendar2Plus, BsFillPatchCheckFill, BsGeoAlt, BsPencilFill, BsThreeDots } from 'react-icons/bs';
 import styles from './userCard.module.scss';
 
-export const UserCard = () => {
+export const UserCard: FC = async () => {
+
+  const data = await getServerSession(authConfig);
+  console.log(data)
+
   return (
     <>
       <div className={styles.container}>
         <div className={styles.bannerImage}>
           <Image
             src={faker.image.url()}
-            fill={true}
+
+            sizes="100vw"
+            priority={true}
             quality={80}
             alt="bg"
+            layout='fill'
+            style={{ objectFit: "cover" }}
+            className={styles.image}
           />
         </div>
         <div className={styles.cardBody}>
@@ -26,21 +38,21 @@ export const UserCard = () => {
                     width={128}
                     height={128}
                     quality={80}
-                    objectFit='contain'
+                    style={{ objectFit: "contain" }}
                     alt="avatar"
                   />
                 </div>
               </div>
               <div className={styles.nameBlock}>
                 <div className={styles.name}>
-                  <h2>{faker.person.fullName()}</h2>
+                  <h2>{data?.user?.firstName + ' ' + data?.user?.lastName}</h2>
                   <span><BsFillPatchCheckFill size={18} /></span>
                 </div>
                 <p>{faker.number.int(22)} связей</p>
               </div>
             </div>
             <div className={styles.buttonBlock}>
-              <Link href='/' className={styles.buttonLink}><span><BsPencilFill size={15} /></span>Редактировать профиль</Link>
+              <Link href='/settingsPage' className={styles.buttonLink}><span><BsPencilFill size={15} /></span>Редактировать профиль</Link>
               <button className={styles.button}><BsThreeDots /></button>
             </div>
 

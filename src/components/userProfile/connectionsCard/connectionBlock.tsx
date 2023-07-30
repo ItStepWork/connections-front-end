@@ -14,7 +14,7 @@ export const ConnectionBlock: FC = () => {
               width={48}
               height={48}
               quality={80}
-              objectFit='cover'
+              style={{ objectFit: "contain" }}
               alt="avatar"
             />
           </div>

@@ -20,7 +20,7 @@ export const Header: FC = () => {
           <div className={styles.contentContainer}>
             <Link className={styles.navText} href='/profilePage'>Мой профиль</Link>
             <Link className={styles.navButton} href='/settingsPage'><AiOutlineSetting size={20} /></Link>
-            {session?(<DropMenuProfile />):(<Link className={styles.navButton} href='/signinPage'><FiLogIn size={20} /></Link>)}
+            {session ? (<DropMenuProfile />) : (<Link className={styles.navButton} href='/signinPage'><FiLogIn size={20} /></Link>)}
           </div>
         </div>
       </header>
