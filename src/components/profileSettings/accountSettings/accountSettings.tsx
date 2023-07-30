@@ -30,13 +30,6 @@ export const AccountSettings: FC = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = async (data: any) => {
-    /*
-    data.aboutMe = "123";
-    let d = {
-      ...session?.user,
-    };
-    d.aboutMe = "123"
-    */
 
     const newSession = {
       ...session,
@@ -49,12 +42,7 @@ export const AccountSettings: FC = () => {
       },
 
     };
-    /*
-    update({ aboutMe: "123" })
-        update();
-        console.log(d)
-        console.log(session?.user)
-    */
+
     console.log(session?.expires)
     let response = await fetch("http://localhost:5288/User/UpdateUser", {
       method: "POST",
@@ -71,8 +59,6 @@ export const AccountSettings: FC = () => {
       await update(newSession);
     alert(result);
   }
-
-
 
   return (
     <>
