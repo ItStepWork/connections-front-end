@@ -38,13 +38,13 @@
 		@apply	text-base p-2 flex justify-between dark:bg-componentBG;
 	}
 	.dialogDivBody{
-		@apply 	text-base p-4 border border-gray-700 dark:bg-componentBG;
+		@apply 	text-base p-6 border border-gray-700 dark:bg-componentBG;
 	}
 	.checkDiv{
 		@apply flex m-4 ;
 	}
 	.dialogDivFooter{
-		@apply w-72	text-base p-2 flex justify-end border border-gray-700 dark:bg-componentBG;
+		@apply  w-80 text-base p-2 flex justify-end dark:bg-componentBG;
 	}
 
 
