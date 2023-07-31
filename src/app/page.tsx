@@ -8,7 +8,7 @@ import { Stories } from "@/components/main/stories/stories";
 export default function Home() {
   return (
     <main>
-      <div className="container">
+      <div className="flex">
         <div className="main__left">
           <LeftUserBlock />
           <LeftBlockFooter />

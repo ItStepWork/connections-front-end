@@ -1,0 +1,4 @@
+.container {
+	@apply flex flex-col mt-6 p-6 w-full bg-white text-gray-900 border border-whiteModeBorder rounded-xl
+  dark:text-componentText dark:bg-componentBG dark:border-componentBorder;
+}
