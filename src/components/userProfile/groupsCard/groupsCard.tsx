@@ -8,7 +8,16 @@ import { useForm } from "react-hook-form";
 import { useSession } from "next-auth/react";
 
 export function GroupsCard() {
-
+  const options = [
+    {
+      label: "Public",
+      value: '0',
+    },
+    {
+      label: "Private",
+      value: '1',
+    },
+  ];
   const closeDialog = () => { document.querySelector("dialog")?.close(); }
   const openDialog = () => { document.querySelector("dialog")?.showModal(); }
   const { data: session, update } = useSession();
@@ -31,10 +40,10 @@ export function GroupsCard() {
     });
 
     let result = await response.text();
-    if (result.toString()=='Group added')
+    if (result.toString() == 'Group added')
       closeDialog;
     alert(result);
-   // closeDialog();
+    // closeDialog();
   }
   return (
     <>
@@ -100,7 +109,7 @@ export function GroupsCard() {
                 <div >
                   <label className="form-label d-block">Select audience</label>
                   <div className={styles.checkDiv}>
-                    <div className="form-check form-check-inline">
+                    {/* <div className="form-check form-check-inline">
                       <input {...register("audience",{required:true})} className={styles.radioButton} type="radio" 
                       name="PublicRadioOptions" id="publicRadio1" value='0' checked/>
                       <label className="form-check-label" htmlFor="publicRadio1">Public</label>
@@ -109,7 +118,17 @@ export function GroupsCard() {
                       <input {...register("audience",{required:true})} className={styles.radioButton} type="radio"
                        name="PublicRadioOptions" id="privateRadio2" value='1'/>
                       <label className="form-check-label" htmlFor="privateRadio2">Private</label>
-                    </div>
+                    </div> */}
+                    <select
+                      className={styles.select}
+                      id="audience"
+                      {...register('audience')}
+                      key={session?.user?.id}
+                    >
+                      {options.map((option, index) => (
+                        <option key={index} value={option.value} typeof="number">{option.label}</option>
+                      ))}
+                    </select>
                   </div>
 
                 </div>
