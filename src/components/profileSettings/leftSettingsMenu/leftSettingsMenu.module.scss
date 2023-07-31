@@ -4,7 +4,7 @@
 		@apply flex flex-col justify-center items-center p-6  w-full;
 	}
 	.link {
-		@apply flex w-full items-center m-3 hover:text-blue-500 transition-all duration-300;
+		@apply flex w-full text-sm dark:text-componentText text-gray-900 items-center m-3 font-bold hover:text-blue-500 transition-all duration-300;
 	}
 	.link:last-child {
 		@apply hover:text-red-500;

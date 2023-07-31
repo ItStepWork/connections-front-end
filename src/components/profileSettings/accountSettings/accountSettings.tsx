@@ -81,6 +81,7 @@ export const AccountSettings: FC = () => {
                 type="text"
                 id="firstName"
                 className={styles.label}
+                autoComplete="new-fName"
                 placeholder={(session?.user?.firstName!) === undefined ? 'не указано' : session?.user?.firstName!}
                 {...register('firstName')} required />
             </div>
@@ -90,6 +91,7 @@ export const AccountSettings: FC = () => {
               <input
                 type="text"
                 id="lastName"
+                autoComplete="new-lName"
                 className={styles.label}
                 key={session?.user?.id}
                 placeholder={(session?.user?.lastName!) === undefined ? 'не указано' : session?.user?.lastName!}
@@ -107,6 +109,7 @@ export const AccountSettings: FC = () => {
               <input
                 type="tel"
                 id="phone"
+                autoComplete="new-phone"
                 key={session?.user?.id}
                 className={styles.label}
                 placeholder={(session?.user?.phone!) === undefined ? 'не указано' : session?.user?.phone!}
@@ -119,6 +122,7 @@ export const AccountSettings: FC = () => {
                 id="email"
                 key={session?.user?.id}
                 className={styles.label}
+                autoComplete="new-email"
                 placeholder={(session?.user?.email!) === undefined ? 'не указано' : session?.user?.email!}
                 required {...register('email')} />
             </div>
