@@ -119,7 +119,8 @@ export function GroupsCard() {
                        name="PublicRadioOptions" id="privateRadio2" value='1'/>
                       <label className="form-check-label" htmlFor="privateRadio2">Private</label>
                     </div> */}
-                    <select
+                    <div></div>
+                    <select 
                       className={styles.select}
                       id="audience"
                       {...register('audience')}
