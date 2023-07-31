@@ -3,14 +3,18 @@ import RigthMessage from '../rigthMassage/page'
 import TopMessage from '../topMessage/page'
 import styles from './styles.module.scss'
 
-export default function MainBlock() {
-
+export default function MainBlock(props: any) {
+  console.log("mesaa");
+console.log(props);
   return (
     <>
       <div className={styles.container}>
-        <TopMessage />
+        {props.messages.map((message: any, index: number)=>{
+          return(<RigthMessage key={index} message={message}/>)
+        })}
+        {/* <TopMessage />
         <LeftMessage />
-        <RigthMessage />
+        <RigthMessage /> */}
       </div>
     </>
   )

@@ -1,14 +1,15 @@
 import styles from './styles.module.scss'
 
-export default function RigthMessage() {
+export default function RigthMessage(props: any) {
+
 
   return (
     <>
       <div className={styles.container}>
         <div className={styles.content}>
-          No visited raising gravity outward subject my cottage Mr be.
+          {props.message.text}
         </div>
-        <div>6:20 AM</div>
+        <div>{new Date(props.message.createTime).toLocaleTimeString([], { minute: "2-digit", second: "2-digit" })}</div>
       </div>
     </>
   )
