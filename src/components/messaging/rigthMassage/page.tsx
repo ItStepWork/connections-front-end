@@ -9,7 +9,7 @@ export default function RigthMessage(props: any) {
         <div className={styles.content}>
           {props.message.text}
         </div>
-        <div>{new Date(props.message.createTime).toLocaleTimeString([], { minute: "2-digit", second: "2-digit" })}</div>
+        <div className={styles.time}>{new Date(props.message.createTime).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</div>
       </div>
     </>
   )

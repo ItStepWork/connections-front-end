@@ -3,4 +3,7 @@
 	.content{
 		@apply w-auto p-2 bg-blue-600 text-white rounded-lg;
 	}
+	.time{
+		@apply text-xs m-1;
+	}
 }

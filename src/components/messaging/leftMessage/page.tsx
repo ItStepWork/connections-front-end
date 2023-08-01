@@ -1,14 +1,17 @@
 import styles from './styles.module.scss'
 
-export default function LeftMessage() {
+export default function LeftMessage(props: any) {
 
   return (
     <>
       <div className={styles.container}>
-        <div className={styles.content}>
-          Applauded no discovery in newspaper allowance am northward😊
+        <img className={styles.userImage} src="../favicon.ico" alt="Rounded avatar" />
+        <div className={styles.verticalContainer}>
+          <div className={styles.content}>
+            {props.message.text}
+          </div>
+          <div className={styles.time}>{new Date(props.message.createTime).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</div>
         </div>
-        <div>6:20 AM</div>
       </div>
     </>
   )

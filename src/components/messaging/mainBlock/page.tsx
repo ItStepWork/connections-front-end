@@ -10,7 +10,12 @@ console.log(props);
     <>
       <div className={styles.container}>
         {props.messages.map((message: any, index: number)=>{
-          return(<RigthMessage key={index} message={message}/>)
+          if(message.senderId === props.myId) {
+            return(<RigthMessage key={index} message={message}/>)
+          }
+          else {
+            return(<LeftMessage key={index} message={message}/>)
+          }
         })}
         {/* <TopMessage />
         <LeftMessage />
