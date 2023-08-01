@@ -37,3 +37,6 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 3. next-themes
 4. next-nprogress-bar
 5. faker js
+6. react-icons
+7. react-hook-form
+8. next-auth
