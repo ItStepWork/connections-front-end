@@ -12,7 +12,18 @@ export default function Signup() {
 
   const onSubmit = async (data: any) => {
     if (data.password === data.confirmPassword){
-      let response = await fetch("http://localhost:5288/Auth/SignUp?email=" + data.email + "&password=" + data.password, {method: "POST"});
+      let response = await fetch("http://localhost:5288/Auth/SignUp", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: data.email,
+          password: data.password,
+          firstName: data.firstName,
+          lastName: data.lastName,
+        }),
+      });
       let result = await response.text();
       alert(result);
     }
@@ -25,27 +36,35 @@ export default function Signup() {
         <div className={styles.verticalContainer}>
           <div className={styles.cardSignUp}>
             <div className={styles.textCenter}>
-              <h2 className={styles.textH2}>Sign up</h2>
-              <span>Already have an account? <a className={styles.link} href="signinPage">Sign in here</a></span>
+              <h2 className={styles.textH2}>Регистрация</h2>
+              <span>У вас уже есть аккаунт? <a className={styles.link} href="signinPage">Войти</a></span>
             </div>
             <form className={styles.formSignUp} onSubmit={handleSubmit(onSubmit)}>
               <div className={styles.inputGroup}>
-                <label htmlFor="email" className={styles.inputLabel}>Email address</label>
-                <input type="email" className={styles.input} placeholder="Enter email" {...register('email')} />
+                <label htmlFor="firstName" className={styles.inputLabel}>Имя</label>
+                <input type="text" className={styles.input} placeholder="Введите имя" {...register('firstName')} />
               </div>
               <div className={styles.inputGroup}>
-                <label htmlFor="password" className={styles.inputLabel}>Password</label>
-                <input type="password"  className={styles.input} placeholder="Enter password" {...register('password')}/>
+                <label htmlFor="lastName" className={styles.inputLabel}>Фамилия</label>
+                <input type="text" className={styles.input} placeholder="Введите фамилию" {...register('lastName')} />
               </div>
               <div className={styles.inputGroup}>
-                <label htmlFor="confirmPassword" className={styles.inputLabel}>Confirm password</label>
-                <input type="password" className={styles.input} placeholder="Enter confirm password" {...register('confirmPassword')}/>
+                <label htmlFor="email" className={styles.inputLabel}>Почта</label>
+                <input type="email" className={styles.input} placeholder="Введите почту" {...register('email')} />
+              </div>
+              <div className={styles.inputGroup}>
+                <label htmlFor="password" className={styles.inputLabel}>Пароль</label>
+                <input type="password"  className={styles.input} placeholder="***************" {...register('password')}/>
+              </div>
+              <div className={styles.inputGroup}>
+                <label htmlFor="confirmPassword" className={styles.inputLabel}>Подтверждение пароля</label>
+                <input type="password" className={styles.input} placeholder="***************" {...register('confirmPassword')}/>
               </div>
               <div className={styles.centerContainer}>
-                <button className={styles.button} type='submit'>Sign Up</button>
+                <button className={styles.button} type='submit'>Регистрация</button>
               </div>
             </form>
-            <p>©2023 <a className={styles.link} target="_blank" href={process.env.NEXTAUTH_URL}>Connections.</a> All rights reserved</p>
+            <p>©2023 <a className={styles.link} target="_blank" href={process.env.NEXTAUTH_URL}>Connections.</a> Все права защищены</p>
           </div>
         </div>
       </div>
