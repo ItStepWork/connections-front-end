@@ -1,6 +1,6 @@
 import type { AuthOptions } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
-import { getUser, IUser } from './sessionDto';
+import { getUser, IUser } from '../dto/sessionDto';
 
 export const authConfig: AuthOptions = {
   secret: process.env.AUTH_SECRET,

@@ -1,3 +1,4 @@
+"use client"
 import { AboutCard } from '@/components/userProfile/aboutCard/aboutCard'
 import { FriendsCard } from '@/components/userProfile/friendsCard/friendsCard'
 import { GroupsCard } from '@/components/userProfile/groupsCard/groupsCard'

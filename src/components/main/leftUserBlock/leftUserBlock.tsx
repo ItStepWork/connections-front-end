@@ -40,22 +40,22 @@ export const LeftUserBlock = () => {
             />
           </div>
           <h3>{session?.user?.firstName + ' ' + session?.user?.lastName}</h3>
-          <p className={styles.work}>{session?.user?.work}</p>
-          <p className={styles.aboutMe}>{session?.user?.aboutMe}</p>
+          <div className={styles.work}>{session?.user?.work}</div>
+          <div className={styles.aboutMe}>{session?.user?.aboutMe}</div>
           <div className={styles.followsBlock}>
             <div className={styles.followers}>
               <h3 >{faker.number.int(111)}</h3>
-              <p >Посты</p>
+              <div >Посты</div>
             </div>
             <div className={styles.vr}></div>
             <div className={styles.followers}>
               <h3>{faker.number.int(111)}</h3>
-              <p>Подписчики</p>
+              <div>Подписчики</div>
             </div>
             <div className={styles.vr}></div>
             <div className={styles.followers}>
               <h3>{faker.number.int(111)}</h3>
-              <p>Подписки</p>
+              <div>Подписки</div>
             </div>
           </div>
         </div>

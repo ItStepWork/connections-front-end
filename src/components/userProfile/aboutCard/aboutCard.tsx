@@ -1,12 +1,13 @@
-import { authConfig } from "@/configs/auth";
-import { getServerSession } from "next-auth/next";
+"use client"
+import { useSession } from "next-auth/react";
 import { BsCalendarDate, BsEnvelope, BsHeart } from 'react-icons/bs';
 import styles from './aboutCard.module.scss';
 
-export const AboutCard = async () => {
 
-  const session = await getServerSession(authConfig);
+export const AboutCard = () => {
 
+  const { data: session } = useSession();
+  //const [aboutMe, born, familyStatus, email] = useStore((state) => [state.aboutMe, state.born, state.email, state.familyStatus])
   return (
     <>
       <div className={styles.container}>

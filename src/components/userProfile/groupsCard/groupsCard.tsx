@@ -40,13 +40,13 @@ export function GroupsCardMain(props: any) {
     });
 
     let result = await response.text();
-    if (response.ok){
+    if (response.ok) {
       getGroups();
       closeDialog();
     }
     alert(result);
-     //closeDialog();
-   
+    //closeDialog();
+
   }
   const [grups, setGroups] = useState([]);
   useEffect(() => {
@@ -87,7 +87,9 @@ export function GroupsCardMain(props: any) {
               </button>
             </div>
             <div className={styles.dialogDivBody}>
-              <div>
+
+              <div >
+
                 <div className="mb-3">
                   <label>Group name</label>
                   <br></br>
@@ -99,9 +101,7 @@ export function GroupsCardMain(props: any) {
                     <div className="avatar-uploader me-3">
                       <div className="input-div">
                         <input className="input" name="file" type="file"></input>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" stroke-linejoin="round" stroke-linecap="round" viewBox="0 0 24 24"
-                          stroke-width="2" fill="none" stroke="currentColor" className="icon"><polyline points="16 16 12 12 8 16"></polyline>
-                          <line y2="21" x2="12" y1="12" x1="12"></line><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path><polyline points="16 16 12 12 8 16"></polyline></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" stroke-linejoin="round" stroke-linecap="round" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" class="icon"><polyline points="16 16 12 12 8 16"></polyline><line y2="21" x2="12" y1="12" x1="12"></line><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path><polyline points="16 16 12 12 8 16"></polyline></svg>
                       </div>
                     </div>
                     <div className="avatar-remove">
@@ -112,6 +112,17 @@ export function GroupsCardMain(props: any) {
                 <div >
                   <label className="form-label d-block">Select audience</label>
                   <div className={styles.checkDiv}>
+                    {/* <div className="form-check form-check-inline">
+                      <input {...register("audience",{required:true})} className={styles.radioButton} type="radio" 
+                      name="PublicRadioOptions" id="publicRadio1" value='0' checked/>
+                      <label className="form-check-label" htmlFor="publicRadio1">Public</label>
+                    </div>
+                    <div className="form-check form-check-inline">
+                      <input {...register("audience",{required:true})} className={styles.radioButton} type="radio"
+                       name="PublicRadioOptions" id="privateRadio2" value='1'/>
+                      <label className="form-check-label" htmlFor="privateRadio2">Private</label>
+                    </div> */}
+                    <div></div>
                     <select
                       className={styles.select}
                       id="audience"
@@ -149,7 +160,7 @@ export function GroupsCardMain(props: any) {
         <div className={styles.cardsContainer}>
           <div className={styles.cards}>
             {grups.map((group, index) => {
-             return(<Card key={index} group={group} ></Card>)
+              return (<Card key={index} group={group} ></Card>)
             })}
           </div>
         </div>

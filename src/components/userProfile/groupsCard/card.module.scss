@@ -1,5 +1,9 @@
 .container {
+<<<<<<< HEAD
 	@apply flex flex-col w-56 mt-5 items-center pt-6 pb-2 px-2  bg-white text-gray-900 border border-whiteModeBorder rounded-xl
+=======
+	@apply flex flex-col items-center p-6  bg-white text-gray-900 border border-whiteModeBorder rounded-xl
+>>>>>>> 859a5e8 (Fixed: styles)
   dark:text-componentText dark:bg-componentBG dark:border-componentBorder;
 //   @apply flex flex-col justify-between items-center pt-6 pb-2 px-2 w-full bg-white text-gray-900 border border-whiteModeBorder rounded-xl
 //   dark:text-componentText dark:bg-componentBG dark:border-componentBorder;
@@ -7,7 +11,7 @@
 		@apply flex rounded-full overflow-hidden mb-4;
 	}
 	.fio {
-		@apply flex flex-col text-sm items-center;
+		@apply flex flex-col mt-4 text-sm items-center;
 		h4 {
 			@apply text-gray-900 dark:text-white text-sm text-center font-bold;
 		}

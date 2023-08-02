@@ -14,10 +14,10 @@
 		}
 	}
 	.cardsContainer {
-		@apply flex flex-col justify-center gap-6;
+		@apply flex justify-center;
 	}
 	.cards {
-		@apply flex flex-wrap justify-center gap-x-6;
+		@apply w-full flex items-center justify-center  flex-wrap gap-6;
 	}
 	h2 {
 		@apply text-gray-900 dark:text-white text-2xl;
@@ -25,35 +25,34 @@
 	label {
 		@apply text-base mb-2 mr-2 text-gray-900 dark:text-gray-400;
 	}
-// 	dialog{
-// 		@apply w-56 h-32 p-2 flex flex-wrap justify-center;
-// 	}
-	.dialogDivLitle{
+	// 	dialog{
+	// 		@apply w-56 h-32 p-2 flex flex-wrap justify-center;
+	// 	}
+	.dialogDivLitle {
 		@apply w-56 h-48 p-2 flex flex-wrap justify-center border border-gray-700 dark:bg-componentBG;
 	}
-	.dialogDiv{
-		@apply  border border-gray-700 dark:bg-componentBG;
+	.dialogDiv {
+		@apply border border-gray-700 dark:bg-componentBG;
 	}
-	.dialogDivHeader{
-		@apply	text-base p-2 flex justify-between dark:bg-componentBG;
+	.dialogDivHeader {
+		@apply text-base p-2 flex justify-between dark:bg-componentBG;
 	}
-	.dialogDivBody{
-		@apply 	text-base p-6 border border-gray-700 dark:bg-componentBG;
+	.dialogDivBody {
+		@apply text-base p-6 border border-gray-700 dark:bg-componentBG;
 	}
-	.checkDiv{
-		@apply flex m-4 ;
+	.checkDiv {
+		@apply flex m-4;
 	}
-	.dialogDivFooter{
-		@apply  w-80 text-base p-2 flex justify-end dark:bg-componentBG;
+	.dialogDivFooter {
+		@apply w-80 text-base p-2 flex justify-end dark:bg-componentBG;
 	}
 
-
-	.dialogButtonDiv{
+	.dialogButtonDiv {
 		@apply flex flex-wrap justify-center  w-full;
-
 	}
-	.grInput{
-		@apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg mt-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;	}
+	.grInput {
+		@apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg mt-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+	}
 	.redButton {
 		@apply text-white bg-buttonRed transition-all duration-300 rounded-md py-3 px-5 m-1 hover:bg-[#a11f2f];
 	}
@@ -61,17 +60,17 @@
 		@apply text-white bg-gray-900 transition-all duration-300 rounded-md py-3 px-5 m-1 hover:bg-gray-400;
 	}
 	.closeButton {
-		@apply  p-2 inline-flex items-center justify-center text-gray-500 hover:text-gray-400 dark:bg-componentBG;
+		@apply p-2 inline-flex items-center justify-center text-gray-500 hover:text-gray-400 dark:bg-componentBG;
 	}
 	.greenButton {
 		@apply text-green-400 bg-buttonGreen bg-opacity-25 transition-all duration-300 rounded-md py-3 px-5 m-1 hover:bg-buttonGreen hover:bg-opacity-75 hover:text-white;
 	}
-	.radioButton{
-		@apply  accent-gray-500 accent-slate-400 m-1;
+	.radioButton {
+		@apply accent-slate-400 m-1;
 	}
 	.select {
 		@apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
 		focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 
 	 	dark:bg-mainBG dark:border-componentBorder dark:placeholder-gray-400 dark:text-componentText dark:focus:ring-blue-500 dark:focus:border-blue-500;
 	}
- }
+}

@@ -23,6 +23,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/providers/reduxProvider.js", "src/providers/UserStateProvider.js", "src/providers/UserStateProvider.js"],
   "exclude": ["node_modules"]
 }
