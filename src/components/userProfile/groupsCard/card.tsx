@@ -1,10 +1,10 @@
 import { faker } from '@faker-js/faker';
 import Image from 'next/image';
 import Link from 'next/link';
-import { BsChatLeftText, BsPersonAdd } from 'react-icons/bs';
+import {AiOutlineUsergroupAdd } from 'react-icons/ai';
 import styles from './card.module.scss';
 
-export const Card = () => {
+export const Card = (props:any) => {
 
 
 
@@ -21,11 +21,12 @@ export const Card = () => {
           />
         </div>
         <div className={styles.fio}>
-          <h4>{faker.person.fullName()}</h4>
-          <p>{faker.number.int(22)} общих друзей</p>
+          <h4>{props.group.name}</h4>
+          <p>{props.group.description}</p>
+          <p>{faker.number.int(500)} учасников</p>
         </div>
         <div className={styles.buttons}>
-          <Link href='/' className={styles.blueButton} ><BsPersonAdd size={16} /></Link>
+          <Link href='/' className={styles.blueButton} ><AiOutlineUsergroupAdd size={16} /></Link>
         </div>
       </div>
     </>

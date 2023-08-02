@@ -1,4 +1,13 @@
-.container {
-	@apply flex flex-col gap-6 w-full;;
+// .container {
+// 	@apply flex flex-col gap-6 w-full;;
 	
+// }
+.container {
+	@apply flex flex-col md:flex-row lg:flex-row;
+	.leftContainer {
+		@apply flex flex-col md:gap-6 lg:gap-6 w-full;
+	}
+	.rightContainer {
+		@apply flex flex-col gap-6 md:ml-6 lg:ml-6;
+	}
 }

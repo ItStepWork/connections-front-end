@@ -1,5 +1,5 @@
 import { AboutCard } from '@/components/userProfile/aboutCard/aboutCard'
-import { ConnectionsCard } from '@/components/userProfile/connectionsCard/connectionsCard'
+import { FriendsCard } from '@/components/userProfile/friendsCard/friendsCard'
 import { GroupsCard } from '@/components/userProfile/groupsCard/groupsCard'
 import { PhotosCard } from '@/components/userProfile/photosCard/photosCard'
 import { UserCard } from '@/components/userProfile/userCard/userCard'
@@ -10,8 +10,15 @@ export default function Profile() {
     <>
       <main>
         <div className={styles.container}>
-          <UserCard />
-          <GroupsCard />
+          <div className={styles.leftContainer}>
+            <UserCard />
+            <GroupsCard />
+          </div>
+          <div className={styles.rightContainer}>
+            <AboutCard />
+            <PhotosCard />
+            <FriendsCard />
+          </div>
         </div>
       </main>
     </>
