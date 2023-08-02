@@ -1,12 +1,10 @@
 'use client';
 import { Header } from '@/components/header/header';
 import { Providers } from "@/providers/Providers";
-import UserStateProvider from '@/providers/UserStateProvider';
 import type { Metadata } from 'next';
 import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
 import { Montserrat } from 'next/font/google';
 import './globals.css';
-import { GetState } from '@/dto/getState';
 
 const inter = Montserrat({ subsets: ['latin'] })
 
@@ -34,7 +32,7 @@ export default function RootLayout({
         <Providers>
           <Header />
           <div className="container">
-            <main><UserStateProvider>{children}</UserStateProvider></main>
+            <main>{children}</main>
             <ProgressBar height="4px"
               color="#016FB9"
               options={{ showSpinner: false }}
