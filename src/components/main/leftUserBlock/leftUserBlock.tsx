@@ -71,6 +71,7 @@ export const LeftUserBlock = () => {
               <FcBusinessman size={20} />
             </div>
             <Link href={'/profilePage'}>Связи</Link>
+            {/* <button onClick={()=>{window.open(`/profilePage?component="groups"`);}}>Связи</button> */}
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
@@ -88,7 +89,7 @@ export const LeftUserBlock = () => {
             <div className={styles.icon}>
               <FcCollaboration size={20} />
             </div>
-            <Link href={'/groupsPage'}>Группы</Link>
+            <Link href={'/profilePage'}>Группы</Link>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>

@@ -7,7 +7,7 @@ import { FC } from 'react';
 import { BsBriefcase, BsCalendar2Plus, BsFillPatchCheckFill, BsGeoAlt, BsPencilFill, BsThreeDots } from 'react-icons/bs';
 import styles from './userCard.module.scss';
 
-export const UserCard: FC = () => {
+export function UserCard(props: any) {
 
   const { data: session } = useSession();
 
@@ -66,13 +66,13 @@ export const UserCard: FC = () => {
           <Link className={styles.link} href='/'>Посты</Link>
           <Link className={styles.link} href='/aboutMePage'>Обо мне</Link>
           <div className={styles.counterLink}>
-            <Link className={styles.linkUnderline} href='/profilePage'>Связи</Link>
+            <button className={styles.linkUnderline} onClick={()=>{props.setComponent("connections")}}>Связи</button>
             <div className={styles.counter}>{faker.number.int(322)}</div>
           </div>
           <Link className={styles.link} href='/'>Медиа</Link>
           <Link className={styles.link} href='/'>Видео</Link>
           <Link className={styles.link} href='/'>Активность</Link>
-          <Link className={styles.link} href='/groupsPage'>Сообщества</Link>
+          <button className={styles.link} onClick={()=>{props.setComponent("groups")}}>Сообщества</button>
         </div>
       </div>
     </>
