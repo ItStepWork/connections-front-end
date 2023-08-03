@@ -6,7 +6,7 @@ import Link from "next/link"
 import { FcAdvertising, FcBusinessman, FcCalendar, FcCollaboration, FcHome, FcNews, FcSettings } from "react-icons/fc"
 import styles from "./leftUserBlock.module.scss"
 
-export const LeftUserBlock = () => {
+export const LeftUserBlock = (props:any) => {
 
   const { data: session } = useSession();
 
@@ -71,7 +71,6 @@ export const LeftUserBlock = () => {
               <FcBusinessman size={20} />
             </div>
             <Link href={'/profilePage'}>Связи</Link>
-            {/* <button onClick={()=>{window.open(`/profilePage?component="groups"`);}}>Связи</button> */}
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
@@ -89,7 +88,8 @@ export const LeftUserBlock = () => {
             <div className={styles.icon}>
               <FcCollaboration size={20} />
             </div>
-            <Link href={'/profilePage'}>Группы</Link>
+            {/* <Link href={'/profilePage'}>Группы</Link> */}
+            <button onClick={()=>{props.setComponent("groups")}}>Группы</button>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>

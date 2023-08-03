@@ -13,7 +13,7 @@ export default function Profile(props:any) {
   const ChangeComponent =() =>{
     if(component === "groups") return(<GroupsCard />)
     else if(component === "connections") return(<ConnectionsCard />)
-    else return(<></>)
+    else return(<ConnectionsCard/>)
   }
   return (
     <>
