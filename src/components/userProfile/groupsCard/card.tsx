@@ -19,8 +19,6 @@ export const Card = (props:any) => {
     let result = await response.text();
     alert(result);
   }
-  var result = Object.entries(props.group.users);
-console.log(result.length);
   return (
     <>
       <div className={styles.container}>
