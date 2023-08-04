@@ -33,7 +33,7 @@ export default function RootLayout({
         <Providers>
           <Header />
           <div className="container">
-            <main><UserStateProvider>{children}</UserStateProvider></main>
+            <main>{children}</main>
             <ProgressBar height="4px"
               color="#016FB9"
               options={{ showSpinner: false }}
