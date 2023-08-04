@@ -3,12 +3,15 @@ import { faker } from "@faker-js/faker"
 import { useSession } from "next-auth/react"
 import Image from 'next/image'
 import Link from "next/link"
+import { useEffect } from "react"
 import { FcAdvertising, FcBusinessman, FcCalendar, FcCollaboration, FcHome, FcNews, FcSettings } from "react-icons/fc"
 import styles from "./leftUserBlock.module.scss"
 
 export const LeftUserBlock = (props:any) => {
 
   const { data: session } = useSession();
+
+  useEffect(() => { }, [session])
 
   return (
     <>

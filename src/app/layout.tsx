@@ -5,6 +5,7 @@ import type { Metadata } from 'next';
 import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
 import { Montserrat } from 'next/font/google';
 import './globals.css';
+import UserStateProvider from '@/providers/UserStateProvider';
 
 const inter = Montserrat({ subsets: ['latin'] })
 

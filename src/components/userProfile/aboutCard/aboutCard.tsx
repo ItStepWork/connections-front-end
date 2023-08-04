@@ -2,6 +2,7 @@
 import { useSession } from "next-auth/react";
 import { BsCalendarDate, BsEnvelope, BsHeart } from 'react-icons/bs';
 import styles from './aboutCard.module.scss';
+import { useStore } from "zustand";
 
 
 export const AboutCard = () => {
