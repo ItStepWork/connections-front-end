@@ -14,7 +14,7 @@ export default function Home(props: any) {
     if (component === "groups") return (<GroupsCard />)
    
 
-    else return (<></>)
+    else return (<h4>empty</h4>)
   }
   return (
     <main>

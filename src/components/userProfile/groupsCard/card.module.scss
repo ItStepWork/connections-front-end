@@ -16,4 +16,7 @@
 			@apply dark:text-white text-gray-900 bg-buttonBlueOpacity transition-all duration-300 rounded-md py-3 px-14 m-1 mb-0 hover:bg-[#0b53b1] hover:text-white;
 		}
 	}
+	p{
+		@apply max-w-[15ch] whitespace-nowrap overflow-hidden ;
+	}
 }
