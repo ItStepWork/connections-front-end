@@ -5,6 +5,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
 import { BsBriefcase, BsCalendar2Plus, BsFillPatchCheckFill, BsGeoAlt, BsPencilFill, BsThreeDots } from 'react-icons/bs';
+import{AiOutlinePlus}from 'react-icons/ai'
+import{BiSolidUserCheck}from 'react-icons/bi'
 import styles from './groupCard.module.scss';
 
 export function GroupCard(props: any) {
@@ -44,15 +46,15 @@ export function GroupCard(props: any) {
               </div>
               <div className={styles.nameBlock}>
                 <div className={styles.name}>
-                  <h2>{session?.user?.firstName + ' ' + session?.user?.lastName}</h2>
+                  <h2>{faker.person.fullName()}</h2>
                   <span><BsFillPatchCheckFill size={18} /></span>
                 </div>
                 <p>{faker.number.int(22)} связей</p>
               </div>
             </div>
             <div className={styles.buttonBlock}>
-              <Link href='/settingsPage' className={styles.buttonLink}><span><BsPencilFill size={15} /></span>Редактировать профиль</Link>
-              <button className={styles.button}><BsThreeDots /></button>
+              <button className={styles.blueButton}><BiSolidUserCheck size={16}/>Joined</button>
+              <button className={styles.greenButton}><AiOutlinePlus />Invite</button>
             </div>
 
           </div>

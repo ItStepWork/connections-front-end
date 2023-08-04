@@ -15,26 +15,34 @@
 					@apply flex md:block lg:block md:justify-normal lg:justify-normal justify-center relative;
 					.avatar {
 						@apply mb-6 rounded-full overflow-hidden border-[3px] border-white top-[10px] h-20 w-20
-            absolute md:bottom-[-40px] lg:bottom-[-40px] md:w-32 md:h-32 md:ml-6 lg:w-32 lg:h-32 lg:ml-6;
+            relative md:bottom-[-40px] lg:bottom-[-40px] md:w-32 md:h-32 md:ml-6 lg:w-32 lg:h-32 lg:ml-6;
 					}
 				}
 			}
 			.buttonBlock {
 				@apply flex items-center gap-2;
-				.buttonLink {
-					@apply text-buttonRed flex items-center bg-redOpacity transition-all duration-300 hover:bg-buttonRed hover:text-white focus:ring-4 focus:outline-none focus:ring-buttonRed font-medium rounded-md text-sm px-2 py-2.5 md:px-1.5 lg:px-1.5 text-center dark:bg-redOpacity dark:hover:bg-buttonRed dark:focus:ring-buttonRed;
+				.blueButton {
+					@apply text-buttonBlue flex items-center bg-buttonBlueOpacity transition-all duration-300 hover:bg-[#0b53b1] hover:text-white focus:ring-4 focus:outline-none focus:ring-buttonBlue font-medium rounded-md text-sm px-2 py-2.5 md:px-1.5 lg:px-1.5 text-center ;
 					span {
 						@apply mr-2;
 					}
 				}
-				.button {
-					@apply px-3 py-3 md:mr-6 lg:mr-6 text-gray-900 bg-whiteModeButtonBg rounded-lg transition-all duration-300 hover:bg-whiteModeBorder dark:hover:bg-componentText dark:text-white dark:bg-darkModeButtonBg;
+				.greenButton {
+					@apply text-green-400 flex items-center bg-buttonGreen bg-opacity-25 transition-all duration-300 hover:bg-buttonGreen hover:bg-opacity-75 hover:text-white focus:ring-4 focus:outline-none focus:ring-buttonGreen font-medium rounded-md text-sm px-2 py-2.5 md:px-1.5 lg:px-1.5 text-center ;
+					span {
+						@apply mr-2;
+					}
 				}
+				.greenButton {
+					@apply text-green-400 bg-buttonGreen bg-opacity-25 transition-all duration-300 rounded-md py-3 px-5 m-1 hover:bg-buttonGreen hover:bg-opacity-75 hover:text-white;
+				}
+				
 			}
 		}
 		.nameBlock {
 			@apply flex flex-col items-center justify-start mt-16 
-      md:pt-4 lg:pt-4 md:ml-36 lg:ml-36 md:mb-0 lg:mb-0 mb-4 md:pl-6 lg:pl-6 md:mt-0 lg:mt-0 md:items-start lg:items-start;
+      md:pt-4 lg:pt-4 md:ml-36 lg:ml-6 md:mb-0 lg:mb-0 mb-4 md:pl-6 
+	  lg:pl-6 md:mt-0 lg:mt-0 md:items-start lg:items-start;
 			.name {
 				@apply flex items-center;
 				span {
@@ -77,4 +85,7 @@
 	.image {
 		@apply w-full h-auto;
 	}
+
+
+	
 }
