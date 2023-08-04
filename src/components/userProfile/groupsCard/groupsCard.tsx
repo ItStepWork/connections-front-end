@@ -1,15 +1,14 @@
 'use client'
 import { faker } from '@faker-js/faker';
-import Link from 'next/link';
+import { useSession } from "next-auth/react";
+import { useEffect, useState } from 'react';
+import { useForm } from "react-hook-form";
 import { Card } from './card';
 import styles from './groupsCard.module.scss';
-import { Button } from 'flowbite-react';
-import { useForm } from "react-hook-form";
-import { useSession } from "next-auth/react";
-import React, { useState, useEffect } from 'react';
 import { AiOutlineClose,AiOutlinePlus } from 'react-icons/ai';
 import { FaRegUser } from 'react-icons/fa';
 import { GrAdd } from 'react-icons/gr';
+
 
 export function GroupsCardMain(props: any) {
   const options = [
@@ -91,6 +90,7 @@ export function GroupsCardMain(props: any) {
                       <div className="input-div">
                         <input className="input" name="file" type="file"></input>
                           <FaRegUser size={36} className="dark:fill-white" ></FaRegUser>
+
                       </div>
                     <div className="avatar-remove">
                       <button type="button" id="avatar-reset-img" className={styles.grayButton}>Delete</button>

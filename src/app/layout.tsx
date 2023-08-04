@@ -5,6 +5,7 @@ import type { Metadata } from 'next';
 import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
 import { Montserrat } from 'next/font/google';
 import './globals.css';
+import UserStateProvider from '@/providers/UserStateProvider';
 
 const inter = Montserrat({ subsets: ['latin'] })
 
@@ -32,7 +33,7 @@ export default function RootLayout({
         <Providers>
           <Header />
           <div className="container">
-            <main>{children}</main>
+            <main><UserStateProvider>{children}</UserStateProvider></main>
             <ProgressBar height="4px"
               color="#016FB9"
               options={{ showSpinner: false }}

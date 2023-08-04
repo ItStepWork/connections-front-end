@@ -2,12 +2,13 @@
 import { useSession } from "next-auth/react";
 import { BsCalendarDate, BsEnvelope, BsHeart } from 'react-icons/bs';
 import styles from './aboutCard.module.scss';
+import { useStore } from "zustand";
 
 
 export const AboutCard = () => {
 
   const { data: session } = useSession();
-  //const [aboutMe, born, familyStatus, email] = useStore((state) => [state.aboutMe, state.born, state.email, state.familyStatus])
+  const [aboutMe, born, familyStatus, email] = useStore((state) => [state.aboutMe, state.born, state.email, state.familyStatus])
   return (
     <>
       <div className={styles.container}>
