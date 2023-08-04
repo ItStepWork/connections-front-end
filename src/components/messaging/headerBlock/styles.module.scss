@@ -10,6 +10,9 @@
 	.userInfo{
 		@apply px-2 flex flex-col overflow-hidden;
 	}
+	.userName{
+		@apply whitespace-nowrap;
+	}
 	.userStatus{
 		@apply text-xs whitespace-nowrap;
 	}

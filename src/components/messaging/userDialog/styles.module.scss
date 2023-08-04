@@ -1,0 +1,15 @@
+.user{
+	@apply flex my-3 p-2 cursor-pointer;
+}
+.userImage{
+	@apply w-10 h-10 rounded-full;
+}
+.userInfo{
+	@apply px-2 flex flex-col overflow-hidden;
+}
+.userName{
+	@apply whitespace-nowrap;
+}
+.userMessage{
+	@apply text-xs whitespace-nowrap;
+}

@@ -50,13 +50,16 @@
 	@apply m-3;
 }
 .user{
-	@apply flex my-3 p-2 cursor-pointer;
+	@apply flex my-3 p-2 items-center cursor-pointer;
 }
 .userImage{
 	@apply w-10 h-10 rounded-full;
 }
 .userInfo{
-	@apply px-2 flex flex-col overflow-hidden;
+	@apply px-2 flex flex-col overflow-hidden w-auto;
+}
+.userName{
+	@apply whitespace-nowrap;
 }
 .horizontalHr{
 	@apply border-zinc-200 bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-700;

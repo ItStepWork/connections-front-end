@@ -5,11 +5,12 @@ import styles from './styles.module.scss'
 import React from 'react';
 import MainBlock from '@/components/messaging/mainBlock/page';
 import FooterBlock from '@/components/messaging/footerBlock/page';
-import { IUser } from '@/configs/sessionDto';
+import { IUser } from '@/dto/sessionDto';
 import { HiMiniPencilSquare } from 'react-icons/hi2';
 import { IoMdClose } from 'react-icons/io';
 import { FaCircleUser } from 'react-icons/fa6';
 import { BsFillSendFill } from 'react-icons/bs';
+import UserDialog from '@/components/messaging/userDialog/page';
 
 
 type MyProps = {
@@ -116,13 +117,17 @@ class Messaging extends React.Component<MyProps, MyState>{
 
   async sendMessage(){
     if(this.state.findUser !== null){
-      const response = await fetch(process.env.NEXT_PUBLIC_STRAPI_API + "User/SendMessage?id=" + this.state.findUser.id +"&text=" + this.state.message, {
+      const formData = new FormData();
+      formData.append("id", this.state.findUser.id);
+      formData.append("text", this.state.message);
+
+      const response = await fetch(process.env.NEXT_PUBLIC_STRAPI_API + "User/SendMessage", {
         method: "POST",
         headers: {
           "Accept": "application/json",
-          'Content-Type': 'application/json',
           "Authorization": "Bearer " + this.props.token
         },
+        body: formData,
       });
   
       this.setState({message: ""});
@@ -151,13 +156,7 @@ class Messaging extends React.Component<MyProps, MyState>{
               <ul className={styles.users}>
                 {this.state.dialogs.map((dialog: any, index: any) =>
                   <li key={index} onClick={() => this.click(dialog.user)} {...this.state.user?.id === dialog.user.id ? { className: "bg-slate-200 rounded-lg dark:bg-zinc-700" } : { className: "" }}>
-                    <div className={styles.user}>
-                      <img className={styles.userImage} src="../favicon.ico" alt="Rounded avatar" />
-                      <div className={styles.userInfo}>
-                        <span>{dialog.user.email}</span>
-                        <span className={styles.userMessage}>{dialog.lastMessage.text}</span>
-                      </div>
-                    </div>
+                    <UserDialog dialog={dialog}/>
                   </li>
                 )}
               </ul>
@@ -198,7 +197,7 @@ class Messaging extends React.Component<MyProps, MyState>{
                     <div className={styles.user}>
                       <img className={styles.userImage} src="../favicon.ico" alt="Rounded avatar" />
                       <div className={styles.userInfo}>
-                        <span>{user.email}</span>
+                        <span className={styles.userName}>{user.firstName} {user.lastName}</span>
                       </div>
                     </div>
                   </li>

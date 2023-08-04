@@ -4,8 +4,7 @@ import TopMessage from '../topMessage/page'
 import styles from './styles.module.scss'
 
 export default function MainBlock(props: any) {
-  console.log("mesaa");
-console.log(props);
+  
   return (
     <>
       <div className={styles.container}>

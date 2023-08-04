@@ -1,7 +1,7 @@
 .container {
 	@apply flex flex-col items-end m-1;
 	.content{
-		@apply w-auto p-2 bg-blue-600 text-white rounded-lg;
+		@apply text-right w-auto p-2 bg-blue-600 text-white rounded-lg;
 	}
 	.time{
 		@apply mx-1 text-xs;

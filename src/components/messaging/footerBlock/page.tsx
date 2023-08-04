@@ -1,22 +1,32 @@
 import styles from './styles.module.scss'
 import React, { useState } from 'react';
 import { BsFillSendFill } from 'react-icons/bs';
+import { ImAttachment } from 'react-icons/im';
 
 export default function FooterBlock(props: any) {
-  
+
   const [text, setText] = useState("");
+  const [file, setFile] = useState(null);
+
+  const saveFile = (e: any) => {
+    setFile(e.target.files[0]);
+  }
 
   const click = async () => {
-    if(props.friendId !== undefined){
-      const response = await fetch(process.env.NEXT_PUBLIC_STRAPI_API + "User/SendMessage?id=" + props.friendId+"&text=" + text, {
+    if (props.friendId !== undefined) {
+      const formData = new FormData();
+      formData.append("id", props.friendId);
+      formData.append("text", text);
+      if(file !== null) formData.append("file", file);
+      const response = await fetch(process.env.NEXT_PUBLIC_STRAPI_API + "User/SendMessage", {
         method: "POST",
         headers: {
           "Accept": "application/json",
-          'Content-Type': 'application/json',
           "Authorization": "Bearer " + props.token
         },
+        body: formData,
       });
-  
+
       setText("");
       if (response.ok) {
         let result = await response.json();
@@ -33,12 +43,22 @@ export default function FooterBlock(props: any) {
   return (
     <>
       <div className={styles.container}>
-        <hr className={styles.hr}/>
+        <hr className={styles.hr} />
         <div className={styles.verticalContainer}>
           <textarea className={styles.textarea} onChange={handleChange} value={text}></textarea>
+
+          <div className="flex items-end justify-center">
+            <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center  border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+              <div className="flex flex-col items-center justify-center px-2 py-1">
+                <ImAttachment className="fill-black dark:fill-white" />
+              </div>
+              <input id="dropzone-file" type="file" className="hidden" onChange={saveFile} />
+            </label>
+          </div>
+
           <div className={styles.buttonContainer}>
             <button className={styles.button} onClick={click}>
-              <BsFillSendFill className='fill-white'/>
+              <BsFillSendFill className='fill-white' />
             </button>
           </div>
         </div>
