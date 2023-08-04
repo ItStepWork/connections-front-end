@@ -21,7 +21,8 @@ export default function FooterBlock(props: any) {
       if (response.ok) {
         let result = await response.json();
         console.log(result);
-        props.load(props.friendId, props.token);
+        props.loadMessages(props.friendId);
+        props.loadDialogs();
       }
     }
   }

@@ -11,6 +11,7 @@ import { IoMdClose } from 'react-icons/io';
 import { FaCircleUser } from 'react-icons/fa6';
 import { BsFillSendFill } from 'react-icons/bs';
 
+
 type MyProps = {
   token: string,
   id: string,
@@ -56,19 +57,24 @@ class Messaging extends React.Component<MyProps, MyState>{
     this.click = this.click.bind(this);
     this.select = this.select.bind(this);
     this.changeSearch = this.changeSearch.bind(this);
+    this.loadDialogs = this.loadDialogs.bind(this);
+    this.loadUsers = this.loadUsers.bind(this);
   }
 
+  
+
   componentDidMount(): void {
+
     this.loadDialogs();
     this.loadUsers();
   }
 
-  async loadMessages(id: string, token: string) {
+  async loadMessages(id: string) {
     const response = await fetch(process.env.NEXT_PUBLIC_STRAPI_API + "User/GetMessages?id=" + id, {
       headers: {
         "Accept": "application/json",
         'Content-Type': 'application/json',
-        "Authorization": "Bearer " + token
+        "Authorization": "Bearer " + this.props.token
       },
     });
 
@@ -82,7 +88,7 @@ class Messaging extends React.Component<MyProps, MyState>{
     if (user !== this.state.user) {
 
       this.setState({ user: user });
-      this.loadMessages(user.id, this.props.token);
+      this.loadMessages(user.id);
     }
   }
 
@@ -102,7 +108,8 @@ class Messaging extends React.Component<MyProps, MyState>{
       this.setState({filterUsers: this.state.users});
     }
     else{
-      let users = this.state.users.filter(u=>u.firstName?.includes(event.target.value) || u.lastName?.includes(event.target.value) || u.email?.includes(event.target.value));
+      let search = event.target.value.toLowerCase();
+      let users = this.state.users.filter(u=>u.firstName?.toLowerCase().includes(search) || u.lastName?.toLowerCase().includes(search) || u.email?.toLowerCase().includes(search) || u.phone?.toLowerCase().includes(search) || (u.firstName?.toLowerCase() + " " + u.lastName?.toLowerCase()).includes(search) || (u.lastName?.toLowerCase() + " " + u.firstName?.toLowerCase()).includes(search));
       this.setState({filterUsers: users});
     }
   }
@@ -143,7 +150,7 @@ class Messaging extends React.Component<MyProps, MyState>{
               </div>
               <ul className={styles.users}>
                 {this.state.dialogs.map((dialog: any, index: any) =>
-                  <li key={index} onClick={() => this.click(dialog.user)} {...this.state.user === dialog.user ? { className: "bg-slate-200 rounded-lg dark:bg-zinc-700" } : { className: "" }}>
+                  <li key={index} onClick={() => this.click(dialog.user)} {...this.state.user?.id === dialog.user.id ? { className: "bg-slate-200 rounded-lg dark:bg-zinc-700" } : { className: "" }}>
                     <div className={styles.user}>
                       <img className={styles.userImage} src="../favicon.ico" alt="Rounded avatar" />
                       <div className={styles.userInfo}>
@@ -161,7 +168,7 @@ class Messaging extends React.Component<MyProps, MyState>{
                 <>
                   <HeaderBlock user={this.state.user} />
                   <MainBlock messages={this.state.messages} myId={this.props.id} friendId={this.state.user.id} />
-                  <FooterBlock friendId={this.state.user.id} token={this.props.token} load={this.loadMessages} />
+                  <FooterBlock friendId={this.state.user.id} token={this.props.token} loadMessages={this.loadMessages} loadDialogs={this.loadDialogs} />
                 </>
               ) : (<></>)}
 
