@@ -10,6 +10,7 @@ import { BiPowerOff } from "react-icons/bi";
 import { BsCircleHalf } from "react-icons/bs";
 import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 import styles from './dropMenu.module.scss';
+import { useStore } from "@/stores/userDataStore";
 
 async function logOut() {
   signOut();
@@ -17,7 +18,7 @@ async function logOut() {
 
 export const DropMenuProfile: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const [avatar, firsName, lastName, work] = useStore((state) => [state.avatar, state.firstName, state.lastName, state.work])
   return (
     <>
       <div className={styles.container}>
@@ -29,7 +30,7 @@ export const DropMenuProfile: FC = () => {
             <div className={styles.avatarContainer}>
               <div className={styles.avatar}>
                 <Image
-                  src={faker.image.avatar()}
+                  src={avatar}
                   width={48}
                   height={48}
                   quality={80}
@@ -38,8 +39,8 @@ export const DropMenuProfile: FC = () => {
                 />
               </div>
               <div className={styles.textContainer}>
-                <h4>{faker.person.fullName()}</h4>
-                <p>Full-Stack Developer</p>
+                <h4>{firsName + ' ' + lastName}</h4>
+                <p>{work}</p>
               </div>
             </div>
             <Link href='/profilePage' className={styles.buttonViewProfile}>Профиль</Link>

@@ -7,8 +7,10 @@ import { LeftUserBlock } from "@/components/main/leftUserBlock/leftUserBlock";
 import { News } from "@/components/main/news/news";
 import { Stories } from "@/components/main/stories/stories";
 import { GroupsCard } from "@/components/userProfile/groupsCard/groupsCard";
+import { UserStoreDto } from '@/dto/userDataDto';
 
 export default function Home(props: any) {
+
   const [component, setComponent] = useState("");
   const ChangeComponent = () => {
     if (component === "groups") return (<GroupsCard />)
@@ -18,6 +20,7 @@ export default function Home(props: any) {
   }
   return (
     <main>
+      
       <div className="flex ">
         <div className="main__left">
           <LeftUserBlock setComponent={setComponent} />

@@ -1,23 +1,20 @@
 "use client"
-import { faker } from '@faker-js/faker';
-import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FC } from 'react';
 import { BsBriefcase, BsCalendar2Plus, BsFillPatchCheckFill, BsGeoAlt, BsPencilFill, BsThreeDots } from 'react-icons/bs';
 import styles from './userCard.module.scss';
+import { useStore } from '@/stores/userDataStore';
 
 export function UserCard(props: any) {
 
-  const { data: session } = useSession();
-
+  const [avatar, bg, firstName, lastName, joined, work, location, friendsCount] = useStore((state) => 
+  [state.avatar, state.BgImage, state.firstName, state.lastName, state.joined, state.work, state.location, state.friendsCount])
   return (
     <>
       <div className={styles.container}>
         <div className={styles.bannerImage}>
           <Image
-            src={faker.image.url()}
-
+            src={bg}
             sizes="100vw"
             priority={true}
             quality={80}
@@ -33,7 +30,7 @@ export function UserCard(props: any) {
               <div className={styles.avatarContainer}>
                 <div className={styles.avatar}>
                   <Image
-                    src={faker.image.avatar()}
+                    src={avatar}
                     width={128}
                     height={128}
                     quality={80}
@@ -44,10 +41,10 @@ export function UserCard(props: any) {
               </div>
               <div className={styles.nameBlock}>
                 <div className={styles.name}>
-                  <h2>{session?.user?.firstName + ' ' + session?.user?.lastName}</h2>
+                  <h2>{firstName + ' ' + lastName}</h2>
                   <span><BsFillPatchCheckFill size={18} /></span>
                 </div>
-                <p>{faker.number.int(22)} связей</p>
+                <p>{friendsCount} связей</p>
               </div>
             </div>
             <div className={styles.buttonBlock}>
@@ -57,9 +54,9 @@ export function UserCard(props: any) {
 
           </div>
           <div className={styles.bottomInfo}>
-            <p><span><BsBriefcase /></span>{session?.user?.work}</p>
-            <p><span><BsGeoAlt /></span>{session?.user?.location}</p>
-            <p><span><BsCalendar2Plus /></span>Присоединился: {session?.user?.joined}</p>
+            <p><span><BsBriefcase /></span>{work}</p>
+            <p><span><BsGeoAlt /></span>{location}</p>
+            <p><span><BsCalendar2Plus /></span>Присоединился: {joined}</p>
           </div>
         </div>
         <div className={styles.cardNav}>
@@ -67,7 +64,7 @@ export function UserCard(props: any) {
           <Link className={styles.link} href='/aboutMePage'>Обо мне</Link>
           <div className={styles.counterLink}>
             <button className={styles.linkUnderline} onClick={()=>{props.setComponent("connections")}}>Связи</button>
-            <div className={styles.counter}>{faker.number.int(322)}</div>
+            <div className={styles.counter}>{friendsCount}</div>
           </div>
           <Link className={styles.link} href='/'>Медиа</Link>
           <Link className={styles.link} href='/'>Видео</Link>

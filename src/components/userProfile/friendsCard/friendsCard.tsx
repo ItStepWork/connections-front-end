@@ -1,11 +1,12 @@
-import { faker } from '@faker-js/faker';
+"use client"
 import Link from 'next/link';
 import { Card } from './card';
 import styles from './friendsCard.module.scss';
+import { useStore } from '@/stores/userDataStore';
 
 export const FriendsCard = () => {
 
-
+  const friendCount = useStore((state) => state.friendsCount);
 
   return (
     <>
@@ -13,7 +14,7 @@ export const FriendsCard = () => {
         <div className={styles.header}>
           <div className={styles.friends}>
             <h2>Друзья</h2>
-            <div className={styles.counter}>{faker.number.int(322)}</div>
+            <div className={styles.counter}>{friendCount}</div>
           </div>
           <Link href='/' className={styles.button}>Все друзья</Link>
         </div>
