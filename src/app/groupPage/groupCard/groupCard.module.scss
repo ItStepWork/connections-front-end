@@ -15,12 +15,12 @@
 					@apply flex md:block lg:block md:justify-normal lg:justify-normal justify-center relative;
 					.avatar {
 						@apply mb-6 rounded-full overflow-hidden border-[3px] border-white top-[10px] h-20 w-20
-            relative md:bottom-[-40px] lg:bottom-[-40px] md:w-32 md:h-32 md:ml-6 lg:w-32 lg:h-32 lg:ml-6;
+            relative md:bottom-[-40px] lg:bottom-[-40px] md:w-32 md:h-32 md:ml-6 lg:w-24 lg:h-24 lg:ml-6;
 					}
 				}
 			}
 			.buttonBlock {
-				@apply flex items-center gap-2;
+				@apply flex  items-center gap-2 m-3 mt-0;
 				.blueButton {
 					@apply text-buttonBlue flex items-center bg-buttonBlueOpacity transition-all duration-300 hover:bg-[#0b53b1] hover:text-white focus:ring-4 focus:outline-none focus:ring-buttonBlue font-medium rounded-md text-sm px-2 py-2.5 md:px-1.5 lg:px-1.5 text-center ;
 					span {
@@ -28,13 +28,10 @@
 					}
 				}
 				.greenButton {
-					@apply text-green-400 flex items-center bg-buttonGreen bg-opacity-25 transition-all duration-300 hover:bg-buttonGreen hover:bg-opacity-75 hover:text-white focus:ring-4 focus:outline-none focus:ring-buttonGreen font-medium rounded-md text-sm px-2 py-2.5 md:px-1.5 lg:px-1.5 text-center ;
+					@apply p-3 text-green-400 flex items-center bg-buttonGreen bg-opacity-25 transition-all duration-300 hover:bg-buttonGreen hover:bg-opacity-75 hover:text-white focus:ring-4 focus:outline-none focus:ring-buttonGreen font-medium rounded-md text-sm px-2 py-2.5 md:px-1.5 lg:px-1.5 text-center ;
 					span {
 						@apply mr-2;
 					}
-				}
-				.greenButton {
-					@apply text-green-400 bg-buttonGreen bg-opacity-25 transition-all duration-300 rounded-md py-3 px-5 m-1 hover:bg-buttonGreen hover:bg-opacity-75 hover:text-white;
 				}
 				
 			}
@@ -50,6 +47,27 @@
 				}
 			}
 		}
+		.membesContainer{
+			@apply flex gap-6 flex-wrap  lg:justify-start sm:justify-center;
+			.members{
+				@apply flex m-2 ;
+				.memberIco{
+					@apply w-8 h-8 rounded-full absolute;
+				}
+				.membersDiv{
+					@apply w-8 h-8 rounded-full absolute bg-blue-500 text-center text-white;
+				}
+			}
+			.membersNames{
+				@apply flex  m-4 sm:ml-8;
+			}
+		}
+		
+
+
+
+
+
 		.bottomInfo {
 			@apply flex justify-center p-6 flex-wrap
       md:flex-nowrap md:justify-start lg:justify-start lg:flex-nowrap md:mt-6 lg:mt-6;

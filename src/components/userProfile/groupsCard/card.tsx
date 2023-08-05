@@ -22,11 +22,12 @@ export const Card = (props:any) => {
   return (
     <>
       <div className={styles.container}>
+        
         <div className={styles.avatar}>
           <Image
             src={faker.image.avatar()}
-            width={76}
-            height={76}
+            width={84}
+            height={84}
             style={{ objectFit: "contain" }}
             alt="Picture of the author"
           />
@@ -34,7 +35,17 @@ export const Card = (props:any) => {
         <div className={styles.fio}>
           <h4>{props.group.name}</h4>
           <p>{props.group.description}</p>
-          <p>{Object.entries(props.group.users).length} учасников</p>
+          <div className={styles.membesContainer}>
+            <div className={styles.members}>
+              <div className="w-4"><img className={styles.memberIco} src={faker.image.avatar()}></img></div>
+              <div className="w-4"><img className={styles.memberIco} src={faker.image.avatar()}></img></div>
+              <div className="w-4"><img className={styles.memberIco} src={faker.image.avatar()}></img></div>
+              <div className="w-4"><img className={styles.memberIco} src={faker.image.avatar()}></img></div>
+              <div className="w-4"><div className={styles.membersDiv}>+{Object.entries(props.group.users).length} </div></div>
+            </div>
+
+          </div>
+          <p className='mt-8'>{Object.entries(props.group.users).length} учасников</p>
         </div>
         <div className={styles.buttons}>
           <button className={styles.blueButton} onClick={JoinGroup} ><AiOutlineUsergroupAdd size={16} /></button>
