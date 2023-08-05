@@ -11,7 +11,7 @@ export const LeftSettingsMenu: FC = () => {
             <div className={styles.icon}>
               <FcBusinessman size={24} />
             </div>
-            <Link href={'/profilePage'}>Аккаунт</Link>
+            <Link href={'/profile'}>Аккаунт</Link>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
@@ -39,7 +39,7 @@ export const LeftSettingsMenu: FC = () => {
           </div>
         </div>
         <div className={styles.profile}>
-          <Link href='/profilePage'>Смотреть профиль</Link>
+          <Link href='/profile'>Смотреть профиль</Link>
         </div>
       </section>
     </>

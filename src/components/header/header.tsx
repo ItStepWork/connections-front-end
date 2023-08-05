@@ -18,13 +18,14 @@ export const Header: FC = () => {
           <div className={styles.contentContainer}>
             {session ?
               (<>
-                <Link className={styles.navText} href='/profilePage'>Мой профиль</Link>
-                <Link className={styles.navButton} href='/messagingPage'><MdOutlineMessage size={20} /></Link>
-                <Link className={styles.navButton} href='/settingsPage'><AiOutlineSetting size={20} /></Link>
+                <Link className={styles.navText} href='/main'>Главная</Link>
+                <Link className={styles.navText} href='/profile'>Мой профиль</Link>
+                <Link className={styles.navButton} href='/messaging'><MdOutlineMessage size={20} /></Link>
+                <Link className={styles.navButton} href='/settings'><AiOutlineSetting size={20} /></Link>
                 <DropMenuProfile />
               </>)
               :
-              (<Link className={styles.navButton} href='/signinPage'><FiLogIn size={20} /></Link>)}
+              (<Link className={styles.navButton} href='/signIn'><FiLogIn size={20} /></Link>)}
           </div>
         </div>
       </header>

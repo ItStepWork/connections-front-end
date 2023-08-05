@@ -48,7 +48,7 @@ export function UserCard(props: any) {
               </div>
             </div>
             <div className={styles.buttonBlock}>
-              <Link href='/settingsPage' className={styles.buttonLink}><span><BsPencilFill size={15} /></span>Редактировать профиль</Link>
+              <Link href='/settings' className={styles.buttonLink}><span><BsPencilFill size={15} /></span>Редактировать профиль</Link>
               <button className={styles.button}><BsThreeDots /></button>
             </div>
 
@@ -61,7 +61,7 @@ export function UserCard(props: any) {
         </div>
         <div className={styles.cardNav}>
           <Link className={styles.link} href='/'>Посты</Link>
-          <Link className={styles.link} href='/aboutMePage'>Обо мне</Link>
+          <Link className={styles.link} href='/aboutMe'>Обо мне</Link>
           <div className={styles.counterLink}>
             <button className={styles.linkUnderline} onClick={()=>{props.setComponent("connections")}}>Связи</button>
             <div className={styles.counter}>{friendsCount}</div>

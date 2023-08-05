@@ -7,12 +7,12 @@ export const LeftBlockFooter = () => {
     <>
       <div className={styles.container}>
         <div className={styles.Line}>
-          <Link className={styles.anim} href='/aboutUsPage'>О нас</Link>
-          <Link className={styles.anim} href='/settingsPage'>Настройки</Link>
-          <Link className={styles.anim} href='/helpPage'>Помощь</Link>
+          <Link className={styles.anim} href='/aboutUs'>О нас</Link>
+          <Link className={styles.anim} href='/settings'>Настройки</Link>
+          <Link className={styles.anim} href='/help'>Помощь</Link>
         </div>
         <div className={styles.Line}>
-          <Link className={styles.anim} href='/privacyPage'>Конфедициальность и условия</Link>
+          <Link className={styles.anim} href='/privacy'>Конфедициальность и условия</Link>
         </div>
         <div className={styles.Line}>
           <BiCopyright />

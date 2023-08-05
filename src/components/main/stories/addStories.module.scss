@@ -1,0 +1,16 @@
+.container {
+	@apply flex flex-col mt-6 md:mt-20 border-dashed lg:mt-20 p-6 min-w-[150px] bg-white text-gray-900 border border-whiteModeBorder rounded-xl
+  dark:text-componentText dark:bg-componentBG dark:border-componentBorder;
+  .postStoryBlock{
+    @apply flex-col flex justify-center items-center cursor-pointer;
+    .plusButton{
+      @apply mb-2 p-2 rounded-full bg-[#464950] dark:text-white text-gray-900 hover:bg-[#5f5f68] cursor-pointer transition-all duration-300;
+    }
+    p{
+      @apply dark:text-componentText text-gray-900;
+    }
+  }
+  .storyBlock{
+
+  }
+}
