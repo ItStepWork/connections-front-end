@@ -4,11 +4,60 @@ import Link from 'next/link';
 import { BsBriefcase, BsCalendar2Plus, BsFillPatchCheckFill, BsGeoAlt, BsPencilFill, BsThreeDots } from 'react-icons/bs';
 import styles from './userCard.module.scss';
 import { useStore } from '@/stores/userDataStore';
+import { useSession } from 'next-auth/react';
+import { HiMiniPencilSquare } from 'react-icons/hi2';
 
 export function UserCard(props: any) {
 
   const [avatar, bg, firstName, lastName, joined, work, location, friendsCount] = useStore((state) => 
   [state.avatar, state.BgImage, state.firstName, state.lastName, state.joined, state.work, state.location, state.friendsCount])
+
+  const { data: session } = useSession();
+
+  const saveAvatar = async (e: any) => {
+    if(session?.user.accessToken != null){
+      if(e.target.files[0].name.endsWith('.jpg') || e.target.files[0].name.endsWith('.jpeg') || e.target.files[0].name.endsWith('.png')){
+  
+        var formData = new FormData();
+        formData.append('file', e.target.files[0]);
+        const response = await fetch(process.env.NEXT_PUBLIC_STRAPI_API + "User/SaveAvatar", {
+          method: "POST",
+          headers: {
+            "Accept": "application/json",
+            "Authorization": "Bearer " + session.user.accessToken
+          },
+          body: formData,
+        });
+    
+        if (response.ok) {
+          let result = await response.json();
+        }
+      }
+    }
+  }
+
+  const saveBackground = async (e: any) => {
+    if(session?.user.accessToken != null){
+      if(e.target.files[0].name.endsWith('.jpg') || e.target.files[0].name.endsWith('.jpeg') || e.target.files[0].name.endsWith('.png')){
+  
+        var formData = new FormData();
+        formData.append('file', e.target.files[0]);
+        const response = await fetch(process.env.NEXT_PUBLIC_STRAPI_API + "User/SaveBackground", {
+          method: "POST",
+          headers: {
+            "Accept": "application/json",
+            "Authorization": "Bearer " + session.user.accessToken
+          },
+          body: formData,
+        });
+    
+        if (response.ok) {
+          let result = await response.json();
+        }
+      }
+    }
+  }
+
   return (
     <>
       <div className={styles.container}>
@@ -23,6 +72,14 @@ export function UserCard(props: any) {
             style={{ objectFit: "cover" }}
             className={styles.image}
           />
+          <div className='absolute ml-5 mt-5'>
+            <label htmlFor="background-file" className="flex rounded-full cursor-pointer transition-all duration-300 bg-buttonBlue bg-opacity-60 hover:bg-opacity-100">
+              <div className="flex p-1 md:p-2 lg:p-3">
+                <HiMiniPencilSquare className="fill-white" />
+              </div>
+              <input id="background-file" type="file" className="hidden" onChange={saveBackground} />
+            </label>
+          </div>
         </div>
         <div className={styles.cardBody}>
           <div className={styles.topInfo}>
@@ -37,6 +94,14 @@ export function UserCard(props: any) {
                     style={{ objectFit: "contain" }}
                     alt="avatar"
                   />
+                </div>
+                <div className='absolute ml-12 mt-7 md:ml-28 md:mt-16 lg:ml-28 lg:mt-14'>
+                  <label htmlFor="avatar-file" className="flex rounded-full cursor-pointer transition-all duration-300 bg-buttonBlue bg-opacity-60 hover:bg-opacity-100">
+                    <div className="flex p-1 md:p-2 lg:p-3">
+                      <HiMiniPencilSquare className="fill-white" />
+                    </div>
+                    <input id="avatar-file" type="file" className="hidden" onChange={saveAvatar} />
+                  </label>
                 </div>
               </div>
               <div className={styles.nameBlock}>
