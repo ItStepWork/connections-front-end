@@ -6,9 +6,10 @@ import Link from "next/link"
 import { useEffect } from "react"
 import { FcAdvertising, FcBusinessman, FcCalendar, FcCollaboration, FcHome, FcNews, FcSettings } from "react-icons/fc"
 import styles from "./leftUserBlock.module.scss"
+import { useStore } from "@/stores/userDataStore"
 
 export const LeftUserBlock = (props:any) => {
-
+  const [avatar, bg] = useStore((state) => [state.avatar, state.BgImage])
   const { data: session } = useSession();
 
   useEffect(() => { }, [session])
@@ -19,7 +20,7 @@ export const LeftUserBlock = (props:any) => {
         <div className={styles.imagesBlock}>
           <div className={styles.bg}>
             <Image
-              src={faker.image.url()}
+              src={bg}
               sizes="100vw"
               priority={true}
               quality={80}
@@ -34,7 +35,7 @@ export const LeftUserBlock = (props:any) => {
         <div className={styles.aboutMeBlock}>
           <div className={styles.avatar}>
             <Image
-              src={faker.image.avatar()}
+              src={avatar}
               width={64}
               height={64}
               quality={80}
