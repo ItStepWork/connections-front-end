@@ -5,6 +5,7 @@ import {AiOutlineUsergroupAdd } from 'react-icons/ai';
 import styles from './card.module.scss';
 import { useSession } from "next-auth/react";
 
+
 export const Card = (props:any) => {
   const { data: session, update } = useSession();
   let JoinGroup = async()=>{
@@ -22,9 +23,9 @@ export const Card = (props:any) => {
   return (
     <>
       <div className={styles.container}>
-        
+      <Link href={"/groupPage?id=" + props.group.id}>
         <div className={styles.avatar}>
-          <Image
+          <Image className='rounded-full'
             src={faker.image.avatar()}
             width={84}
             height={84}
@@ -32,8 +33,10 @@ export const Card = (props:any) => {
             alt="Picture of the author"
           />
         </div>
+        
         <div className={styles.fio}>
-          <h4>{props.group.name}</h4>
+         
+            <h4 className={styles.link}>{props.group.name}</h4>
           <p>{props.group.description}</p>
           <div className={styles.membesContainer}>
             <div className={styles.members}>
@@ -47,6 +50,7 @@ export const Card = (props:any) => {
           </div>
           <p className='mt-8'>{Object.entries(props.group.users).length} учасников</p>
         </div>
+        </Link>
         <div className={styles.buttons}>
           <button className={styles.blueButton} onClick={JoinGroup} ><AiOutlineUsergroupAdd size={16} /></button>
         </div>

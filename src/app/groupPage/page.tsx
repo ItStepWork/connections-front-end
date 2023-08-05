@@ -12,14 +12,22 @@ import { Stories } from '@/components/main/stories/stories'
 import { Follows } from '@/components/main/follows/follows'
 import { News } from '@/components/main/news/news'
 import { useState } from 'react'
+import { useRouter } from "next/router";
 export default function Group() {
+  // const router = useRouter();
   const [component, setComponent] = useState("");
+  const [groupId, setGroupId] = useState("");
   const ChangeComponent = () => {
     if (component === "groups") return (<GroupsCard />)
    
 
     else return ( <GroupCard />)
   }
+  const getGroupId=()=>{
+    
+  }
+  // let id = router.query;
+  // console.log(id);
   return (
     <>
       <main>

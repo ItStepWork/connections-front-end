@@ -1,8 +1,11 @@
 .container {
 	@apply flex flex-col items-center p-6  bg-white text-gray-900 border border-whiteModeBorder rounded-xl
   dark:text-componentText dark:bg-componentBG dark:border-componentBorder;
-	.avatar {
-		@apply flex rounded-full overflow-hidden mb-2;
+	.linkContainer{
+		@apply flex flex-col items-center p-6 ;          ;
+	}
+  .avatar {
+		@apply flex justify-center mb-2;
 	}
 	.fio {
 		@apply flex flex-col mt-0 text-sm items-center;
@@ -20,18 +23,19 @@
 		@apply max-w-[15ch] whitespace-nowrap overflow-hidden ;
 	}
 	
-		@apply flex gap-6 flex-wrap  lg:justify-start sm:justify-center;
-		.members{
-			@apply flex m-2 justify-center;
-			.memberIco{
-				@apply w-8 h-8 rounded-full absolute;
-			}
-			.membersDiv{
-				@apply w-8 h-8 rounded-full absolute bg-blue-500 text-center text-white;
-			}
+	.members{
+		@apply flex m-2 justify-center;
+		.memberIco{
+			@apply w-8 h-8 rounded-full border border-white border-2 absolute;
 		}
-		.membersNames{
-			@apply flex  m-4 sm:ml-8;
+		.membersDiv{
+			@apply w-8 h-8 rounded-full border border-white border-2 absolute bg-blue-500 text-center text-white;
 		}
-	
+	}
+	.membersNames{
+		@apply flex  m-4 sm:ml-8;
+	}
+	.link{
+		@apply hover:text-green-900; 
+	}
 }
