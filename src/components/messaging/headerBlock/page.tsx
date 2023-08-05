@@ -48,7 +48,7 @@ export default function HeaderBlock(props: any) {
               }
             </div>
           </div>
-          <DropDownItem />
+          <DropDownItem removeDialog={props.removeDialog} id={props.user.id} />
         </div>
         <hr className={styles.hr} />
       </div>

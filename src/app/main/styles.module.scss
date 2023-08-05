@@ -1,0 +1,6 @@
+.container{
+  @apply flex gap-6;
+  .storiesBlock{
+    @apply flex;
+  }
+}

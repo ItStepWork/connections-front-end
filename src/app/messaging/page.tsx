@@ -60,12 +60,10 @@ class Messaging extends React.Component<MyProps, MyState>{
     this.changeSearch = this.changeSearch.bind(this);
     this.loadDialogs = this.loadDialogs.bind(this);
     this.loadUsers = this.loadUsers.bind(this);
+    this.removeDialog = this.removeDialog.bind(this);
   }
 
-  
-
   componentDidMount(): void {
-
     this.loadDialogs();
     this.loadUsers();
   }
@@ -137,6 +135,21 @@ class Messaging extends React.Component<MyProps, MyState>{
     }
   }
 
+  async removeDialog(id: string){
+    const response = await fetch(process.env.NEXT_PUBLIC_STRAPI_API + "User/RemoveDialog?id=" + id, {
+      method:"DELETE",
+      headers: {
+        "Accept": "application/json",
+        "Authorization": "Bearer " + this.props.token
+      },
+    });
+
+    if (response.ok) {
+      this.loadDialogs();
+      this.setState({ messages: [], user: null });
+    }
+  }
+
   render() {
     return (
       <>
@@ -165,7 +178,7 @@ class Messaging extends React.Component<MyProps, MyState>{
             <div className={styles.rightContainer}>
               {this.state.user ? (
                 <>
-                  <HeaderBlock user={this.state.user} />
+                  <HeaderBlock user={this.state.user} removeDialog={this.removeDialog}/>
                   <MainBlock messages={this.state.messages} myId={this.props.id} friendId={this.state.user.id} />
                   <FooterBlock friendId={this.state.user.id} token={this.props.token} loadMessages={this.loadMessages} loadDialogs={this.loadDialogs} />
                 </>

@@ -2,6 +2,7 @@ import styles from './styles.module.scss'
 import React, { useState } from 'react';
 import { BsFillSendFill } from 'react-icons/bs';
 import { ImAttachment } from 'react-icons/im';
+import { FaRegWindowClose } from 'react-icons/fa';
 
 export default function FooterBlock(props: any) {
 
@@ -9,7 +10,9 @@ export default function FooterBlock(props: any) {
   const [file, setFile] = useState(null);
 
   const saveFile = (e: any) => {
-    setFile(e.target.files[0]);
+    if(e.target.files[0].name.endsWith('.jpg') || e.target.files[0].name.endsWith('.jpeg') || e.target.files[0].name.endsWith('.png')){
+      setFile(e.target.files[0]);
+    }
   }
 
   const click = async () => {
@@ -28,6 +31,7 @@ export default function FooterBlock(props: any) {
       });
 
       setText("");
+      setFile(null);
       if (response.ok) {
         let result = await response.json();
         console.log(result);
@@ -45,7 +49,10 @@ export default function FooterBlock(props: any) {
       <div className={styles.container}>
         <hr className={styles.hr} />
         <div className={styles.verticalContainer}>
-          <textarea className={styles.textarea} onChange={handleChange} value={text}></textarea>
+          <div className='flex flex-col w-11/12'>
+            {file?(<div className='flex'>Прикреплён файл<button onClick={()=>{setFile(null)}}><FaRegWindowClose className="m-1 fill-red-500 hover:fill-red-700"/></button></div>):(<></>)}
+            <textarea className={styles.textarea} onChange={handleChange} value={text}></textarea>
+          </div>
 
           <div className="flex items-end justify-center">
             <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center  border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">

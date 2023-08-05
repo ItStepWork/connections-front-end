@@ -68,25 +68,25 @@ export const LeftUserBlock = (props:any) => {
             <div className={styles.icon}>
               <FcHome size={20} />
             </div>
-            <Link href={'/profilePage'}>Лента</Link>
+            <Link href={'/profile'}>Лента</Link>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
               <FcBusinessman size={20} />
             </div>
-            <Link href={'/profilePage'}>Связи</Link>
+            <Link href={'/profile'}>Связи</Link>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
               <FcNews size={20} />
             </div>
-            <Link href={'/newsPage'}>Последние новости</Link>
+            <Link href={'/news'}>Последние новости</Link>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
               <FcCalendar size={20} />
             </div>
-            <Link href={'/eventsPage'}>События</Link>
+            <Link href={'/events'}>События</Link>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
@@ -99,7 +99,7 @@ export const LeftUserBlock = (props:any) => {
             <div className={styles.icon}>
               <FcAdvertising size={20} />
             </div>
-            <Link href={'/notificationsPage'}>Уведомления</Link>
+            <Link href={'/notifications'}>Уведомления</Link>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
@@ -109,7 +109,7 @@ export const LeftUserBlock = (props:any) => {
           </div>
         </div>
         <div className={styles.viewProfile}>
-          <Link className={styles.button} href='/profilePage'>Смотреть профиль</Link>
+          <Link className={styles.button} href='/profile'>Смотреть профиль</Link>
         </div>
       </div>
     </>

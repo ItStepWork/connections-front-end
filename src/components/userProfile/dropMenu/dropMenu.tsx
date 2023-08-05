@@ -43,8 +43,8 @@ export const DropMenuProfile: FC = () => {
                 <p>{work}</p>
               </div>
             </div>
-            <Link href='/profilePage' className={styles.buttonViewProfile}>Профиль</Link>
-            <Link href='/settingsPage'>
+            <Link href='/profile' className={styles.buttonViewProfile}>Профиль</Link>
+            <Link href='/settings'>
               <div className={styles.settingsContainer}>
                 <AiOutlineSetting size={20} />
                 <p>Настройки</p>

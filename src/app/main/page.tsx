@@ -5,9 +5,10 @@ import { Follows } from "@/components/main/follows/follows";
 import { LeftBlockFooter } from "@/components/main/leftBlockFooter/leftBlockFooter";
 import { LeftUserBlock } from "@/components/main/leftUserBlock/leftUserBlock";
 import { News } from "@/components/main/news/news";
-import { Stories } from "@/components/main/stories/stories";
+import { AddStories } from "@/components/main/stories/addStories";
 import { GroupsCard } from "@/components/userProfile/groupsCard/groupsCard";
-import { UserStoreDto } from '@/dto/userDataDto';
+import styles from './styles.module.scss'
+import { Stories } from '@/components/main/stories/stories';
 
 export default function Home(props: any) {
 
@@ -19,20 +20,22 @@ export default function Home(props: any) {
     else return (<h4>empty</h4>)
   }
   return (
-    <main>
-      
-      <div className="flex ">
-        <div className="main__left">
+    <main>  
+      <div className={styles.container}>
+        <div className={styles.containerLeft}>
           <LeftUserBlock setComponent={setComponent} />
           <LeftBlockFooter />
         </div>
-        <div className="main__center">
+        <div className={styles.containerCenter}>
+          <div className={styles.storiesBlock}>
+            <AddStories/>
+            <Stories />
+          </div>
           <Feed />
-          <Stories />
 
           {ChangeComponent()}
         </div>
-        <div className="main__right">
+        <div className={styles.containerRight}>
           <Follows />
           <News />
         </div>
