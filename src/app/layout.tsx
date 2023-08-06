@@ -1,11 +1,13 @@
 'use client';
 import { Header } from '@/components/header/header';
+import { UserStoreDto } from '@/dto/userDataDto';
 import { Providers } from "@/providers/Providers";
+import { Loading } from '@nextui-org/react';
 import type { Metadata } from 'next';
 import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
 import { Montserrat } from 'next/font/google';
+import { Suspense } from 'react';
 import './globals.css';
-import { UserStoreDto } from '@/dto/userDataDto';
 
 const inter = Montserrat({ subsets: ['latin'] })
 
@@ -34,9 +36,9 @@ export default function RootLayout({
           <Header />
           <div className="container">
           <UserStoreDto/>
-            <main>
-              {children}
-              </main>
+          <Suspense fallback={<Loading/>}>
+            <main> {children}</main>
+          </Suspense>
             <ProgressBar height="4px"
               color="#016FB9"
               options={{ showSpinner: false }}

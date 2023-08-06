@@ -12,6 +12,7 @@ export const PhotosCard = () => {
           <Link href='/' className={styles.button}>Смотреть все</Link>
         </div>
         <div className={styles.photoContainer}>
+
           <div className={styles.photo}>
             <Image
               src={faker.image.url()}
@@ -19,7 +20,7 @@ export const PhotosCard = () => {
               height='163'
               style={{ objectFit: "contain" }}
               alt="Picture of the author"
-            />
+              />
           </div>
           <div className={styles.photo}>
             <Image
@@ -39,7 +40,7 @@ export const PhotosCard = () => {
               height='163'
               style={{ objectFit: "contain" }}
               alt="Picture of the author"
-            />
+              />
           </div>
           <div className={styles.photo}>
             <Image
@@ -57,7 +58,7 @@ export const PhotosCard = () => {
               height='163'
               style={{ objectFit: "contain" }}
               alt="Picture of the author"
-            />
+              />
           </div>
         </div>
       </div>
