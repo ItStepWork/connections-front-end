@@ -1,18 +1,13 @@
 "use client"
-import { AboutCard } from '@/components/userProfile/aboutCard/aboutCard'
-import { FriendsCard } from '@/components/userProfile/friendsCard/friendsCard'
-import { GroupsCard } from '@/components/userProfile/groupsCard/groupsCard'
-import { PhotosCard } from '@/components/userProfile/photosCard/photosCard'
-import { GroupCard } from './groupCard/groupCard'
-import styles from './styles.module.scss'
-import { LeftUserBlock } from '@/components/main/leftUserBlock/leftUserBlock'
-import { LeftBlockFooter } from '@/components/main/leftBlockFooter/leftBlockFooter'
 import { Feed } from '@/components/main/feed/feed'
-import { Stories } from '@/components/main/stories/addStories'
-import { Follows } from '@/components/main/follows/follows'
+import { Follows } from '@/components/main/follows/followsBlock'
+import { LeftBlockFooter } from '@/components/main/leftBlockFooter/leftBlockFooter'
+import { LeftUserBlock } from '@/components/main/leftUserBlock/leftUserBlock'
 import { News } from '@/components/main/news/news'
+import { Stories } from '@/components/main/stories/addStories'
+import { GroupsCard } from '@/components/userProfile/groupsCard/groupsCard'
 import { useState } from 'react'
-import { useRouter } from "next/router";
+import { GroupCard } from './groupCard/groupCard'
 export default function Group() {
   // const router = useRouter();
   const [component, setComponent] = useState("");

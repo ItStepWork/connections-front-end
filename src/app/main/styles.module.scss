@@ -1,6 +1,6 @@
-.container{
-  @apply flex gap-6;
-  .storiesBlock{
-    @apply flex;
-  }
+.container {
+	@apply flex gap-6 flex-col md:flex-row lg:flex-row;
+	.storiesBlock {
+		@apply flex overflow-hidden;
+	}
 }

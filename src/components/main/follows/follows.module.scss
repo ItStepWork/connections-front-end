@@ -1,4 +1,31 @@
 .container {
-	@apply flex flex-col mt-6 md:mt-20 lg:mt-20 p-6 w-full bg-white text-gray-900 border border-whiteModeBorder rounded-xl
+	@apply flex flex-col mt-6 md:mt-20 lg:mt-20 p-6 w-full md:w-[300px] lg:w-[300px] bg-white text-gray-900 border border-whiteModeBorder rounded-xl
   dark:text-componentText dark:bg-componentBG dark:border-componentBorder;
+	h2 {
+		@apply text-gray-900 dark:text-white text-lg;
+	}
+	.followersBlock {
+		@apply flex flex-col items-center;
+	}
+	.button {
+		@apply text-[#0f6fec] bg-buttonBlueOpacity transition-all duration-300 hover:bg-blue-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-3 text-center dark:bg-buttonBlueOpacity dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+	}
+	.buttonChecked {
+		@apply text-white bg-blue-500 transition-all duration-300 hover:bg-blue-800 hover:text-white focus:ring-4  focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-3 text-center dark:bg-[#0f6fec] dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+	}
+	.followerContainer {
+		@apply flex justify-between pt-4 w-full bg-white dark:bg-componentBG text-gray-900;
+		.userInfo {
+			@apply flex flex-col mx-1 w-[160px];
+			p {
+				@apply text-gray-900 dark:text-white text-sm font-bold overflow-hidden truncate text-ellipsis;
+			}
+			span {
+				@apply text-gray-900 dark:text-componentText text-xs text-ellipsis truncate;
+			}
+		}
+		.avatar {
+			@apply flex justify-around w-12 h-12 overflow-hidden rounded-full;
+		}
+	}
 }

@@ -1,14 +1,14 @@
 "use client"
-import React, { useState } from 'react';
 import { Feed } from "@/components/main/feed/feed";
-import { Follows } from "@/components/main/follows/follows";
+import { FollowsBlock } from "@/components/main/follows/followsBlock";
 import { LeftBlockFooter } from "@/components/main/leftBlockFooter/leftBlockFooter";
 import { LeftUserBlock } from "@/components/main/leftUserBlock/leftUserBlock";
 import { News } from "@/components/main/news/news";
 import { AddStories } from "@/components/main/stories/addStories";
-import { GroupsCard } from "@/components/userProfile/groupsCard/groupsCard";
-import styles from './styles.module.scss'
 import { Stories } from '@/components/main/stories/stories';
+import { GroupsCard } from "@/components/userProfile/groupsCard/groupsCard";
+import { useState } from 'react';
+import styles from './styles.module.scss';
 
 export default function Home(props: any) {
 
@@ -36,7 +36,7 @@ export default function Home(props: any) {
           {ChangeComponent()}
         </div>
         <div className={styles.containerRight}>
-          <Follows />
+          <FollowsBlock />
           <News />
         </div>
       </div>
