@@ -1,11 +1,11 @@
 "use client"
+import { useStore } from '@/stores/userDataStore';
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { BsBriefcase, BsCalendar2Plus, BsFillPatchCheckFill, BsGeoAlt, BsPencilFill, BsThreeDots } from 'react-icons/bs';
-import styles from './userCard.module.scss';
-import { useStore } from '@/stores/userDataStore';
-import { useSession } from 'next-auth/react';
 import { HiMiniPencilSquare } from 'react-icons/hi2';
+import styles from './userCard.module.scss';
 
 export function UserCard(props: any) {
 
@@ -88,8 +88,8 @@ export function UserCard(props: any) {
                 <div className={styles.avatar}>
                   <Image
                     src={avatar}
-                    width={128}
-                    height={128}
+                    width='128'
+                    height='128'
                     quality={80}
                     style={{ objectFit: "contain" }}
                     alt="avatar"

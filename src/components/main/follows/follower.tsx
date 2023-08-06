@@ -12,7 +12,7 @@ export const Follower:FC<IFollowerProps> = ({checked}) => {
   return (
     <>
       <div className={styles.followerContainer}>
-        <div className={styles.avatar}>
+        <div  className={styles.avatar}>
         <Image
               src={faker.image.avatar()}
               width={48}

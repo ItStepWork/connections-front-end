@@ -15,8 +15,8 @@ export const PhotosCard = () => {
           <div className={styles.photo}>
             <Image
               src={faker.image.url()}
-              width={163}
-              height={163}
+              width='163'
+              height='163'
               style={{ objectFit: "contain" }}
               alt="Picture of the author"
             />
@@ -24,8 +24,8 @@ export const PhotosCard = () => {
           <div className={styles.photo}>
             <Image
               src={faker.image.url()}
-              width={163}
-              height={163}
+              width='163'
+              height='163'
               style={{ objectFit: "contain" }}
               alt="Picture of the author"
             />
@@ -35,8 +35,8 @@ export const PhotosCard = () => {
           <div className={styles.photo}>
             <Image
               src={faker.image.url()}
-              width={106}
-              height={106}
+              width='163'
+              height='163'
               style={{ objectFit: "contain" }}
               alt="Picture of the author"
             />
@@ -44,8 +44,8 @@ export const PhotosCard = () => {
           <div className={styles.photo}>
             <Image
               src={faker.image.url()}
-              width={106}
-              height={106}
+              width='163'
+              height='163'
               style={{ objectFit: "contain" }}
               alt="Picture of the author"
             />
@@ -53,8 +53,8 @@ export const PhotosCard = () => {
           <div className={styles.photo}>
             <Image
               src={faker.image.url()}
-              width={106}
-              height={106}
+              width='163'
+              height='163'
               style={{ objectFit: "contain" }}
               alt="Picture of the author"
             />

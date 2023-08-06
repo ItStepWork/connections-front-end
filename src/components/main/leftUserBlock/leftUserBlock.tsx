@@ -1,19 +1,25 @@
 "use client"
+import { useStore } from "@/stores/userDataStore"
 import { faker } from "@faker-js/faker"
 import { useSession } from "next-auth/react"
 import Image from 'next/image'
 import Link from "next/link"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { FcAdvertising, FcBusinessman, FcCalendar, FcCollaboration, FcHome, FcNews, FcSettings } from "react-icons/fc"
 import styles from "./leftUserBlock.module.scss"
-import { useStore } from "@/stores/userDataStore"
 
 export const LeftUserBlock = (props:any) => {
   const [avatar, bg] = useStore((state) => [state.avatar, state.BgImage])
   const { data: session } = useSession();
-
-  useEffect(() => { }, [session])
-
+  const [hydrated, setHydrated] = useState(false);
+  
+  useEffect(() => {
+    setHydrated(true);
+  }, [session])
+  if (!hydrated) {
+    // Returns null on first render, so the client and server match
+    return null;
+}
   return (
     <>
       <div className={styles.container}>

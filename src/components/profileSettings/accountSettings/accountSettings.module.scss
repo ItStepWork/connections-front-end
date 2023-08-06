@@ -13,10 +13,10 @@
 			.inputContainer {
 				@apply md:w-1/2 lg:w-1/2 w-full pl-6 pr-6;
 				.inputLabel {
-					@apply block mb-2  font-light text-whiteModeFg dark:text-componentText;
+					@apply block mb-2 font-light text-whiteModeFg dark:text-componentText;
 				}
 				.label {
-					@apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+					@apply bg-gray-50 outline-none border border-gray-300 text-gray-900 text-sm rounded-lg
          focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 
 				 dark:bg-mainBG dark:border-componentBorder dark:placeholder-gray-400 dark:text-componentText dark:focus:ring-blue-500 dark:focus:border-blue-500;
 				}
@@ -31,10 +31,10 @@
 		.textAreaContainer {
 			@apply w-full m-6;
 			.textLabel {
-				@apply block mb-2 text-sm  text-whiteModeFg dark:text-componentText;
+				@apply block mb-2 text-sm outline-none text-whiteModeFg dark:text-componentText;
 			}
 			.textArea {
-				@apply block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-whiteModeBorder focus:ring-blue-500 focus:border-blue-500 
+				@apply block p-2.5 outline-none w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-whiteModeBorder focus:ring-blue-500 focus:border-blue-500 
 				dark:bg-mainBG dark:border-componentBorder dark:placeholder-gray-400 dark:text-componentText dark:focus:ring-blue-500 dark:focus:border-blue-500;
 			}
 		}
