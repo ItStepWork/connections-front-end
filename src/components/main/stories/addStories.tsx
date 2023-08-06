@@ -12,9 +12,6 @@ export const AddStories = () => {
             </div>
             <p>Добавить </p>
             <p>историю </p>
-            </div>
-          <div className={styles.storyBlock}>
-
           </div>
       </div>
     </>

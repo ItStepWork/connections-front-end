@@ -11,6 +11,23 @@
   :root {
     --foreground-rgb: 255, 255, 255;
     background-color: #191a1f;
+    /* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #474950;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #a0a0a7;
+  border-radius: 10px;
+}
   }
 }
 
@@ -53,6 +70,34 @@ h2{
   content: "Type a message";
   color: gray;
 }
+
+/* Модифицированный Scrollbar
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #eef0f2;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #a0a0a7;
+  border-radius: 10px;
+  height: 20px;
+}
+
+/* Handle on hover */
+/*
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+*/
+/*Модифицированный Scrollbar*/
 
  /* Input File Style */
 .input-div {
