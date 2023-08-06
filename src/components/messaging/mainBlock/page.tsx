@@ -13,7 +13,7 @@ export default function MainBlock(props: any) {
             return(<RigthMessage key={index} message={message}/>)
           }
           else {
-            return(<LeftMessage key={index} message={message}/>)
+            return(<LeftMessage key={index} message={message} user={props.user}/>)
           }
         })}
         {/* <TopMessage />

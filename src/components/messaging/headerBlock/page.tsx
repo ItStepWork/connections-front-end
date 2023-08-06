@@ -1,6 +1,7 @@
 import { DropDownItem } from '../dropDownItem/page'
 import styles from './styles.module.scss'
 import { GoDotFill } from 'react-icons/go';
+import { FaUserCircle } from 'react-icons/fa';
 
 export default function HeaderBlock(props: any) {
 
@@ -38,7 +39,7 @@ export default function HeaderBlock(props: any) {
       <div>
         <div className={styles.container}>
           <div className={styles.user}>
-            <img className={styles.userImage} src="../favicon.ico" alt="Rounded avatar" />
+            {props.user.avatarUrl?(<img className={styles.userImage} src={props.user.avatarUrl}/>):(<FaUserCircle className={styles.userImage} />)}
             <div className={styles.userInfo}>
               <span className={styles.userName}>{props.user.lastName} {props.user.firstName}</span>
               {minutes < 5 ?

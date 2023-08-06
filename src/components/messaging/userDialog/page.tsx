@@ -1,5 +1,6 @@
 import styles from './styles.module.scss'
 import { GoDotFill } from 'react-icons/go';
+import { FaUserCircle } from 'react-icons/fa';
 
 export default function UserDialog(props: any) {
 
@@ -9,7 +10,7 @@ export default function UserDialog(props: any) {
 
     return (
         <div className={styles.user}>
-            <img className={styles.userImage} src="../favicon.ico" alt="Rounded avatar" />
+            {props.dialog.user.avatarUrl?(<img className={styles.userImage} src={props.dialog.user.avatarUrl}/>):(<FaUserCircle className={styles.userImage} />)}
             {minutes < 5?(<GoDotFill className="absolute fill-green-500 ml-7" />):(<GoDotFill className="absolute fill-red-500 ml-7" />)}
             <div className={styles.userInfo}>
                 <span className={styles.userName}>{props.dialog.user.lastName} {props.dialog.user.firstName}</span>

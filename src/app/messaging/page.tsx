@@ -10,6 +10,7 @@ import { HiMiniPencilSquare } from 'react-icons/hi2';
 import { IoMdClose } from 'react-icons/io';
 import { FaCircleUser } from 'react-icons/fa6';
 import { BsFillSendFill } from 'react-icons/bs';
+import { FaUserCircle } from 'react-icons/fa';
 import UserDialog from '@/components/messaging/userDialog/page';
 
 
@@ -179,7 +180,7 @@ class Messaging extends React.Component<MyProps, MyState>{
               {this.state.user ? (
                 <>
                   <HeaderBlock user={this.state.user} removeDialog={this.removeDialog}/>
-                  <MainBlock messages={this.state.messages} myId={this.props.id} friendId={this.state.user.id} />
+                  <MainBlock messages={this.state.messages} myId={this.props.id} user={this.state.user} />
                   <FooterBlock friendId={this.state.user.id} token={this.props.token} loadMessages={this.loadMessages} loadDialogs={this.loadDialogs} />
                 </>
               ) : (<></>)}
@@ -208,7 +209,7 @@ class Messaging extends React.Component<MyProps, MyState>{
                 {this.state.filterUsers.map((user: any, index: any) =>
                   <li key={index} onClick={() => this.select(user)} {...this.state.findUser === user ? { className: "mx-2 bg-slate-200 rounded-lg dark:bg-zinc-700" } : { className: "mx-2" }}>
                     <div className={styles.user}>
-                      <img className={styles.userImage} src="../favicon.ico" alt="Rounded avatar" />
+                      {user.avatarUrl?(<img className={styles.userImage} src={user.avatarUrl}/>):(<FaUserCircle className={styles.userImage} />)}
                       <div className={styles.userInfo}>
                         <span className={styles.userName}>{user.firstName} {user.lastName}</span>
                       </div>

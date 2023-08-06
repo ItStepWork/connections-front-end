@@ -1,11 +1,12 @@
 import styles from './styles.module.scss'
+import { FaUserCircle } from 'react-icons/fa';
 
 export default function LeftMessage(props: any) {
 
   return (
     <>
       <div className={styles.container}>
-        <img className={styles.userImage} src="../favicon.ico" alt="Rounded avatar" />
+        {props.user.avatarUrl?(<img className={styles.userImage} src={props.user.avatarUrl}/>):(<FaUserCircle className={styles.userImage} />)}
         <div className={styles.verticalContainer}>
           <div className={styles.content}>
             {props.message.link?(<img src={props.message.link} alt="Rounded avatar" />):(<></>)}
