@@ -40,3 +40,4 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 6. react-icons
 7. react-hook-form
 8. next-auth
+9. Zustand
