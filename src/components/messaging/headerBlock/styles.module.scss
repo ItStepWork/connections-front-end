@@ -5,7 +5,7 @@
 		@apply flex m-2 cursor-pointer;
 	}
 	.userImage{
-		@apply w-10 h-10 rounded-full;
+		@apply w-10 h-10 rounded-full border border-gray-500;
 	}
 	.userInfo{
 		@apply px-2 flex flex-col overflow-hidden;
