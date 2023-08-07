@@ -1,13 +1,14 @@
 "use client"
-import { Feed } from '@/components/main/feed/feed'
-import { Follows } from '@/components/main/follows/followsBlock'
+import { AddPost } from '@/components/main/addPost/addPost'
+// import { Follows } from '@/components/main/follows/followsBlock'
 import { LeftBlockFooter } from '@/components/main/leftBlockFooter/leftBlockFooter'
 import { LeftUserBlock } from '@/components/main/leftUserBlock/leftUserBlock'
 import { News } from '@/components/main/news/news'
-import { Stories } from '@/components/main/stories/addStories'
+import { Stories } from '@/components/main/stories/stories'
 import { GroupsCard } from '@/components/userProfile/groupsCard/groupsCard'
 import { useState } from 'react'
 import { GroupCard } from './groupCard/groupCard'
+import styles from './styles.module.scss';
 export default function Group() {
   // const router = useRouter();
   const [component, setComponent] = useState("");
@@ -25,7 +26,7 @@ export default function Group() {
   // console.log(id);
   return (
     <>
-      <main>
+      <main  className={styles.container}>
         {/* <div className={styles.container}>
           <div className={styles.leftContainer}>
             <UserCard />
@@ -37,23 +38,20 @@ export default function Group() {
             <FriendsCard />
           </div>
         </div> */}
-        <div className="flex ">
-        <div className="main__left">
+        {/* <div className={styles.container}> */}
+        <div className={"main__left"}>
           <LeftUserBlock setComponent={setComponent} />
           <LeftBlockFooter />
         </div>
-        <div className="main__center">
+        <div className={styles.rightContainer}>
        
         {ChangeComponent()}
-          <Feed />
-          <Stories />
+          <AddPost/>
+          {/* <Stories /> */}
 
         </div>
-        <div className="main__right">
-          <Follows />
-          <News />
-        </div>
-      </div>
+        
+      {/* </div> */}
       </main>
     </>
   )

@@ -1,9 +1,7 @@
 .container {
 	@apply flex flex-col mt-20 w-full bg-white text-gray-900 border border-whiteModeBorder rounded-xl
   dark:text-componentText object-contain overflow-hidden dark:bg-componentBG dark:border-componentBorder;
-	.bannerImage {
-		@apply h-[200px] w-full relative overflow-hidden m-auto;
-	}
+	
 	.cardBody {
 		@apply relative flex flex-col;
 		.topInfo {
@@ -52,7 +50,7 @@
 			.members{
 				@apply flex m-2 ;
 				.memberIco{
-					@apply w-8 h-8 rounded-full absolute;
+					@apply w-8 h-8 rounded-full absolute border-white border-2;
 				}
 				.membersDiv{
 					@apply w-8 h-8 rounded-full absolute bg-blue-500 text-center text-white;
