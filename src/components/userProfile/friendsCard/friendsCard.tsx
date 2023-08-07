@@ -1,12 +1,32 @@
 "use client"
+import { useStore } from '@/stores/userDataStore';
 import Link from 'next/link';
 import { Card } from './card';
 import styles from './friendsCard.module.scss';
-import { useStore } from '@/stores/userDataStore';
+import { FriendsPreloader } from '@/loaders/friendsPreloader';
+import { useEffect, useState } from 'react';
 
 export const FriendsCard = () => {
 
   const friendCount = useStore((state) => state.friendsCount);
+
+  const [aboutMe, born, email, familyStatus] = 
+  useStore((state) => [state.aboutMe, state.born, state.email, state.familyStatus])
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const delay = 1000;
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, delay);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+
+    return <FriendsPreloader />;
+  }
 
   return (
     <>

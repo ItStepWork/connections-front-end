@@ -3,10 +3,14 @@ import { AboutCard } from '@/components/userProfile/aboutCard/aboutCard';
 import { ConnectionsCard } from '@/components/userProfile/connectionsCard/connectionsCard';
 import { FriendsCard } from '@/components/userProfile/friendsCard/friendsCard';
 import { GroupsCard } from '@/components/userProfile/groupsCard/groupsCard';
-import { PhotosCard } from '@/components/userProfile/photosCard/photosCard';
+//import { PhotosCard } from '@/components/userProfile/photosCard/photosCard';
+import PhotosCard from '@/components/userProfile/photosCard/photosCard';
 import { UserCard } from '@/components/userProfile/userCard/userCard';
 import { useState } from 'react';
 import styles from './styles.module.scss';
+
+//const PhotosCard = lazy(() => import('../../components/userProfile/photosCard/photosCard'));
+
 
 export default function Profile(props:any) {
   const [component, setComponent] = useState("");
@@ -24,9 +28,11 @@ export default function Profile(props:any) {
             {ChangeComponent()}
           </div>
           <div className={styles.rightContainer}>
-            <AboutCard />   
-            <PhotosCard />
-            <FriendsCard />
+            
+              <AboutCard />   
+              <PhotosCard />
+              <FriendsCard />
+            
           </div>
         </div>
       </main>

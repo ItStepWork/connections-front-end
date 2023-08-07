@@ -1,9 +1,28 @@
+import { ImagePreloader } from '@/loaders/imagePreloader';
 import { faker } from '@faker-js/faker';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import styles from './photosCard.module.scss';
 
-export const PhotosCard = () => {
+export default function PhotosCard() {
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+ 
+    const delay = 1000;
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, delay);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+
+    return <ImagePreloader />;
+  }
+
   return (
     <>
       <div className={styles.container}>
@@ -12,7 +31,6 @@ export const PhotosCard = () => {
           <Link href='/' className={styles.button}>Смотреть все</Link>
         </div>
         <div className={styles.photoContainer}>
-
           <div className={styles.photo}>
             <Image
               src={faker.image.url()}

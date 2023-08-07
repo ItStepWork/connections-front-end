@@ -23,3 +23,19 @@
 		@apply text-gray-900 dark:text-white text-2xl;
 	}
 }
+
+.preloaderContainer {
+	@apply max-w-sm p-4 md:w-full lg:w-full border  border-gray-200 rounded shadow animate-pulse md:p-6 dark:border-gray-700;
+}
+.preloaderContainer2 {
+	@apply flex items-center justify-center h-36 mb-4 bg-gray-300 rounded dark:bg-gray-700;
+}
+.preloaderStr1 {
+	@apply h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 min-w-full mb-4;
+}
+.preloaderStr2 {
+	@apply h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5;
+}
+.preloaderSVG {
+	@apply w-10 h-10 text-gray-200 dark:text-gray-600;
+}

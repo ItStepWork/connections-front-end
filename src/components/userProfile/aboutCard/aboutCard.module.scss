@@ -17,3 +17,16 @@
 		@apply font-bold;
 	}
 }
+
+.preloaderContainer {
+	@apply flex flex-col max-w-sm md:w-full animate-pulse;
+	.preloaderStr1 {
+		@apply h-2.5 my-6 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4;
+	}
+	.preloaderStr2 {
+		@apply h-2 my-2 bg-gray-200 rounded-full dark:bg-gray-700 w-60 mb-2.5;
+	}
+	.preloaderStr3 {
+		@apply h-2 my-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5;
+	}
+}

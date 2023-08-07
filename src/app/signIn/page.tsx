@@ -20,7 +20,7 @@ export default function Signin() {
     });
 
     if (res && !res.error) {
-      router.push("/profilePage");
+      router.push("/profile");
     } else {
       console.log(res);
     }

@@ -23,3 +23,13 @@
 		@apply text-gray-900 dark:text-white text-2xl;
 	}
 }
+
+.preloaderContainer {
+	@apply space-y-8 max-w-sm animate-pulse md:space-y-0 md:space-x-8 md:flex md:items-center;
+	.preloaderDiv {
+		@apply flex items-center justify-center w-full h-48 bg-gray-300 rounded dark:bg-gray-700;
+		.preloaderSVG {
+			@apply w-10 h-10 text-gray-200 dark:text-gray-600;
+		}
+	}
+}
