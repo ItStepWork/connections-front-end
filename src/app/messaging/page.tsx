@@ -8,6 +8,7 @@ import FooterBlock from '@/components/messaging/footerBlock/page';
 import { IUser } from '@/dto/sessionDto';
 import { Dialogues } from '@/components/messaging/dialogues/page';
 import { NewMessage } from '@/components/messaging/newMessage/page';
+import { DropDownDialogues } from '@/components/messaging/dropDownDialogues/page';
 
 
 type MyProps = {
@@ -73,9 +74,9 @@ class Messaging extends React.Component<MyProps, MyState>{
   }
 
 
-  async removeDialog(id: string){
+  async removeDialog(id: string) {
     const response = await fetch(process.env.NEXT_PUBLIC_STRAPI_API + "User/RemoveDialog?id=" + id, {
-      method:"DELETE",
+      method: "DELETE",
       headers: {
         "Accept": "application/json",
         "Authorization": "Bearer " + this.props.token
@@ -92,16 +93,24 @@ class Messaging extends React.Component<MyProps, MyState>{
     return (
       <>
         <div className={styles.container}>
+
+          <div className='absolute flex mt-16 lg:invisible'>
+            <DropDownDialogues dialogs={this.state.dialogs} click={this.click} user={this.state.user}/><h2 className='my-1 mx-2'>Чаты</h2>
+          </div>
           <div className={styles.centerContainer}>
+
+
             <div className={styles.leftContainer}>
-              <NewMessage length={this.state.dialogs.length} users={this.state.users} loadDialogs={this.loadDialogs} token={this.props.token}/>
-              <Dialogues dialogs={this.state.dialogs} click={this.click} user={this.state.user}/>
+              <NewMessage length={this.state.dialogs.length} users={this.state.users} loadDialogs={this.loadDialogs} token={this.props.token} />
+              <div className='invisible h-0 lg:visible lg:h-auto overflow-y-auto'>
+                <Dialogues dialogs={this.state.dialogs} click={this.click} user={this.state.user} />
+              </div>
             </div>
             <hr className={styles.verticalHr} />
             <div className={styles.rightContainer}>
               {this.state.user ? (
                 <>
-                  <HeaderBlock user={this.state.user} removeDialog={this.removeDialog}/>
+                  <HeaderBlock user={this.state.user} removeDialog={this.removeDialog} />
                   <MainBlock messages={this.state.messages} myId={this.props.id} user={this.state.user} />
                   <FooterBlock friendId={this.state.user.id} token={this.props.token} loadMessages={this.loadMessages} loadDialogs={this.loadDialogs} />
                 </>

@@ -11,7 +11,7 @@ export function DropDownEmoji(props: any) {
   return (
     <>
       <div className={styles.container}>
-        <button type="button"  {...isOpen?{className:"bg-buttonRed rounded-lg px-2 py-1 fill-white"}:{className:"bg-redOpacity rounded-lg px-2 py-1 fill-buttonBlue"}} onClick={() => {if(!isOpen)setIsOpen(true)}} onFocus={() => {if(isOpen)setIsOpen(true)}} onBlur={() => setIsOpen(false)}>
+        <button type="button"  {...isOpen?{className:"bg-buttonRed rounded-lg px-2 py-1"}:{className:"bg-redOpacity rounded-lg px-2 py-1"}} onClick={() => {if(!isOpen)setIsOpen(true)}} onFocus={() => {if(isOpen)setIsOpen(true)}} onBlur={() => setIsOpen(false)}>
           <FaSmile {...isOpen?{className:"fill-white"}:{className:"fill-buttonRed"}}/>
           
           {isOpen &&

@@ -58,7 +58,7 @@ export function NewMessage(props: any) {
 
   return (
     <div>
-      <div className='m-5 flex justify-between items-center'>
+      <div className='m-3 flex justify-between items-center'>
         <h2>Активные чаты <span className={styles.chats}>{props.length}</span></h2>
         <button onClick={() => { setIsOpen(!isOpen); setIsOpenNewMessage(true); }} onFocus={() => { if (isOpen) setIsOpen(true) }} onBlur={() => setIsOpen(false)} >
 

@@ -1,11 +1,11 @@
 .user{
-	@apply flex my-3 p-2 cursor-pointer;
+	@apply relative flex my-3 p-2 cursor-pointer;
 }
 .userImage{
 	@apply w-10 h-10 rounded-full border border-gray-500;
 }
 .userInfo{
-	@apply px-2 flex flex-col overflow-hidden;
+	@apply px-2 flex flex-col overflow-hidden text-left;
 }
 .userName{
 	@apply whitespace-nowrap;

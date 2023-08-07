@@ -2,7 +2,7 @@
 	@apply flex justify-between items-center p-2;
 	
 	.user{
-		@apply flex m-2 cursor-pointer;
+		@apply flex m-2 cursor-pointer w-9/12;
 	}
 	.userImage{
 		@apply w-10 h-10 rounded-full border border-gray-500;
