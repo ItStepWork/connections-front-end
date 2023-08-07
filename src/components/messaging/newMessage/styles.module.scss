@@ -1,0 +1,54 @@
+.chats {
+	@apply bg-greenOpacity text-buttonGreen px-2 py-1 rounded-lg;
+}
+.newMessage {
+	@apply fixed w-96 dark:text-white bottom-0 right-0;
+	.newMessageContainer {
+		@apply m-5 border rounded-lg border-zinc-200 dark:border-zinc-700 bg-white dark:bg-black aspect-square;
+	}
+	.newMessageHeader {
+		@apply flex p-3 justify-between items-center;
+	}
+	.newMessageContent {
+		@apply h-3/4 flex flex-col m-3 justify-between;
+	}
+	.buttonClose {
+		@apply p-1 rounded-lg fill-gray-500 hover:bg-darkModeButtonBg;
+	}
+	.inputSearch {
+		@apply rounded-none outline-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-darkModeBg dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+	}
+	.iconSearch {
+		@apply inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600;
+	}
+	.buttonContainer {
+		@apply flex items-end;
+	}
+	.button {
+		@apply bg-blue-600 rounded px-2 py-1 transition duration-300 hover:bg-blue-700;
+	}
+	.textarea {
+		@apply w-4/5 pt-1 pl-2.5 text-gray-900 outline-none bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-darkModeBg dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+	}
+}
+.users {
+	@apply m-3;
+}
+.user {
+	@apply flex my-3 p-2 items-center cursor-pointer;
+}
+.userImage {
+	@apply w-10 h-10 rounded-full border border-gray-500;
+}
+.userInfo {
+	@apply px-2 flex flex-col overflow-hidden w-auto;
+}
+.userName {
+	@apply whitespace-nowrap;
+}
+.horizontalHr {
+	@apply border-zinc-200 bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-700;
+}
+.verticalHr {
+	@apply w-px h-full border-zinc-200 bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-700;
+}

@@ -8,7 +8,7 @@ export default function RigthMessage(props: any) {
     <>
       <div className={styles.container}>
         <div className={styles.content}>
-          {props.message.link?(<img src={props.message.link} alt="Rounded avatar" />):(<></>)}
+          {props.message.link?(<img src={props.message.link} alt="Image" />):(<></>)}
           {props.message.text}
         </div>
         <div className='flex m-1'>
