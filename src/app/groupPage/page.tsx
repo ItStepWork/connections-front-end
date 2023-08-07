@@ -15,43 +15,30 @@ export default function Group() {
   const [groupId, setGroupId] = useState("");
   const ChangeComponent = () => {
     if (component === "groups") return (<GroupsCard />)
-   
 
-    else return ( <GroupCard />)
+
+    else return (<GroupCard />)
   }
-  const getGroupId=()=>{
-    
+  const getGroupId = () => {
+
   }
   // let id = router.query;
   // console.log(id);
   return (
     <>
-      <main  className={styles.container}>
-        {/* <div className={styles.container}>
-          <div className={styles.leftContainer}>
-            <UserCard />
-            <GroupsCard />
-          </div>
-          <div className={styles.rightContainer}>
-            <AboutCard />
-            <PhotosCard />
-            <FriendsCard />
-          </div>
-        </div> */}
-        {/* <div className={styles.container}> */}
+      <main className={styles.container}>
+
         <div className={"main__left"}>
           <LeftUserBlock setComponent={setComponent} />
           <LeftBlockFooter />
         </div>
         <div className={styles.rightContainer}>
-       
-        {ChangeComponent()}
-          <AddPost/>
-          {/* <Stories /> */}
+
+          {ChangeComponent()}
+          <AddPost />
 
         </div>
-        
-      {/* </div> */}
+
       </main>
     </>
   )
