@@ -6,28 +6,40 @@ import { BsCameraReelsFill } from 'react-icons/bs'
 import { BsCalendar2EventFill } from 'react-icons/bs'
 import { BsFillEmojiSmileFill } from 'react-icons/bs'
 import { BsThreeDots } from 'react-icons/bs'
-import { AiOutlineClose } from 'react-icons/ai'
-import { MdLocationPin } from 'react-icons/md'
-import { MdLocalOffer } from 'react-icons/md'
+import {CreatePost} from '../createPost/createPost'
+import {PostPhoto} from '../postPhoto/postPhoto'
+import {PostVideo} from '../postVideo/postVideo'
+import { useState } from "react";
 
 export const AddPost = () => {
   const closeDialog = () => { document.querySelector("dialog")?.close(); }
   const openDialog = () => { document.querySelector("dialog")?.showModal(); }
   const { data: session, update } = useSession();
-  const options = [
-    {
-      label: "Public",
-      value: '0',
-    },
-    {
-      label: "Only Me",
-      value: '1',
-    },
-    {
-      label: "Friends",
-      value: '2',
-    },
-  ];
+  const [component,setComponent]=useState("");
+  
+  const getComponent=(value:string)=>{
+    setComponent(value)
+    openDialog();
+  }
+  const showComponent=()=>{
+    if(component=="createPost")return<CreatePost></CreatePost>
+    else if(component=="postPhoto")return<PostPhoto></PostPhoto>
+    else if(component=="postVideo")return<PostVideo></PostVideo>
+  }
+  // const options = [
+  //   {
+  //     label: "Public",
+  //     value: '0',
+  //   },
+  //   {
+  //     label: "Only Me",
+  //     value: '1',
+  //   },
+  //   {
+  //     label: "Friends",
+  //     value: '2',
+  //   },
+  // ];
   return (
     <>
 
@@ -36,14 +48,14 @@ export const AddPost = () => {
       <div className={styles.container}>
         <div className={styles.topDiv}>
           <img className={styles.userIco} src={faker.image.avatar()}></img>
-          <input type="text" className={styles.grInput} onClick={openDialog} placeholder="Share your thougs..."></input>
+          <input type="text" className={styles.grInput} onClick={()=>{getComponent("createPost")}} placeholder="Share your thougs..."></input>
         </div>
         <div className={styles.bottomDiv}>
-          <div className={styles.btnDiv}>
+          <div className={styles.btnDiv} onClick={()=>{getComponent("postPhoto")}}>
             <HiPhoto size={16} className="fill-green-500"></HiPhoto>
             <a>Photo</a>
           </div>
-          <div className={styles.btnDiv}>
+          <div className={styles.btnDiv} onClick={()=>{getComponent("postVideo")}}>
             <BsCameraReelsFill size={16} className="fill-blue-500"></BsCameraReelsFill>
             <a>Video</a>
           </div>
@@ -51,8 +63,8 @@ export const AddPost = () => {
             <BsCalendar2EventFill size={16} className="fill-red-500"></BsCalendar2EventFill>
             <a>Event</a>
           </div>
-          <div className={styles.btnDiv}>
-            <BsFillEmojiSmileFill size={16} className="fill-yellow-500"></BsFillEmojiSmileFill>
+          <div className={styles.btnDiv} onClick={()=>{getComponent("createPost")}}>
+            <BsFillEmojiSmileFill size={16} className="fill-yellow-500" ></BsFillEmojiSmileFill>
             <a>Feeling/Activity</a>
           </div>
           <div className={styles.btnDivEnd}>
@@ -63,11 +75,11 @@ export const AddPost = () => {
         </div>
       </div>
       <div className={styles.bottomDiv}></div>
+<dialog>{showComponent()}</dialog>
 
 
 
-
-      <dialog >
+      {/* <dialog >
         <form className={styles.dialogDiv} >
           <div className={styles.dialogDivHeader}>
             <h2 className={styles.labels}>Create post</h2>
@@ -124,11 +136,14 @@ export const AddPost = () => {
           </div>
           
           <div className={styles.dialogDivFooter}>
-          <button className={styles.redButton}>Live video</button>
+          <div className={styles.redButton}>
+            <BsFillCameraVideoFill className="m-1"></BsFillCameraVideoFill>
+            <a>Live video</a>
+            </div>
           <button className={styles.greenButton}>Post</button>
           </div>
         </form>
-      </dialog>
+      </dialog> */}
     </>
   )
 }
