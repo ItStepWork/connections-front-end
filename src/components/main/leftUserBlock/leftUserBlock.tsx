@@ -105,7 +105,7 @@ export const LeftUserBlock = (props:any) => {
             <div className={styles.icon}>
               <FcStackOfPhotos size={20} />
             </div>
-            <button onClick={()=>{props.setComponent("photos")}}>Фотографии</button>
+            <button onClick={()=>{props.setComponent("gallery")}}>Галерея</button>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>

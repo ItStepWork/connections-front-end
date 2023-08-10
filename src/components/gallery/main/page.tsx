@@ -3,14 +3,14 @@ import styles from './styles.module.scss';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { useState } from 'react';
 
-export function Photos(props: any) {
+export function Gallery(props: any) {
 
   const [component, setComponent] = useState("");
 
   return (
     <div className={styles.container}>
       <div className="flex justify-between items-center">
-        <h2>Фотографии</h2>
+        <h2>Галерея</h2>
         <button className={styles.button}><AiOutlinePlus />&nbsp; Создать альбом</button>
       </div>
       <div className={styles.nav}>
@@ -32,6 +32,6 @@ export default () => {
   }
   else
     return (
-      <Photos user={user} />
+      <Gallery user={user} />
     )
 }
