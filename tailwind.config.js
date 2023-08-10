@@ -33,6 +33,7 @@ module.exports = {
 				buttonBlue: '#0f6fec',
 				buttonRed: '#d6293e',
 				buttonGreen: '#0cbc87',
+				blackOpacity: 'rgba(0, 0, 0, 0.7)',
 			},
 		},
 	},
