@@ -2,7 +2,7 @@
 	@apply flex flex-col w-full p-6 bg-white text-gray-900 border border-whiteModeBorder rounded-xl
   dark:text-componentText dark:bg-componentBG dark:border-componentBorder;
 	.button{
-    @apply flex items-center p-2 rounded-lg text-buttonBlue bg-buttonBlueOpacity hover:bg-buttonBlue hover:text-white;
+    @apply flex items-center transition duration-300 p-2 rounded-lg text-buttonBlue bg-buttonBlueOpacity hover:bg-buttonBlue hover:text-white;
   }
   h2 {
     @apply text-gray-900 dark:text-white text-xl;
