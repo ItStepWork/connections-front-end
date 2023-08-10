@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react"
 import Image from 'next/image'
 import Link from "next/link"
 import { useEffect, useState } from "react"
-import { FcAdvertising, FcBusinessman, FcCalendar, FcCollaboration, FcHome, FcNews, FcSettings } from "react-icons/fc"
+import { FcAdvertising, FcBusinessman, FcCalendar, FcCollaboration, FcHome, FcNews, FcSettings, FcStackOfPhotos } from "react-icons/fc"
 import styles from "./leftUserBlock.module.scss"
 
 export const LeftUserBlock = (props:any) => {
@@ -100,6 +100,12 @@ export const LeftUserBlock = (props:any) => {
             </div>
             {/* <Link href={'/profilePage'}>Группы</Link> */}
             <button onClick={()=>{props.setComponent("groups")}}>Группы</button>
+          </div>
+          <div className={styles.link}>
+            <div className={styles.icon}>
+              <FcStackOfPhotos size={20} />
+            </div>
+            <button onClick={()=>{props.setComponent("gallery")}}>Галерея</button>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>

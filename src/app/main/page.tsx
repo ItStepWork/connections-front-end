@@ -9,14 +9,14 @@ import { Stories } from '@/components/main/stories/stories';
 import { GroupsCard } from "@/components/userProfile/groupsCard/groupsCard";
 import { useState } from 'react';
 import styles from './styles.module.scss';
+import { Gallery } from "@/components/gallery/main/page";
 
 export default function Home(props: any) {
 
   const [component, setComponent] = useState("");
   const ChangeComponent = () => {
     if (component === "groups") return (<GroupsCard />)
-
-
+    else if (component === "gallery") return (<Gallery />)
     else return (
       <>
         <div>
