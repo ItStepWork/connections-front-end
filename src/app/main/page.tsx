@@ -15,29 +15,33 @@ export default function Home(props: any) {
   const [component, setComponent] = useState("");
   const ChangeComponent = () => {
     if (component === "groups") return (<GroupsCard />)
-   
 
-    else return (<h4>empty</h4>)
-  }
-  return (
-    <main>  
-      <div className={styles.container}>
-        <div className={styles.containerLeft}>
-          <LeftUserBlock setComponent={setComponent} />
-          <LeftBlockFooter />
-        </div>
-        <div className={styles.containerCenter}>
+
+    else return (
+      <>
+        <div>
           <div className={styles.storiesBlock}>
-            <AddStories/>
+            <AddStories />
             <Stories />
           </div>
           <Feed />
 
-          {ChangeComponent()}
         </div>
-        <div className={styles.containerRight}>
+        <div>
           <FollowsBlock />
           <News />
+        </div>
+      </>)
+  }
+  return (
+    <main>
+      <div className={styles.container}>
+        <div className={styles.containerContent}>
+          <div>
+            <LeftUserBlock setComponent={setComponent} />
+            <LeftBlockFooter />
+          </div>
+          {ChangeComponent()}
         </div>
       </div>
     </main>

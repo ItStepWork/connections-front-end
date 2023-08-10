@@ -1,6 +1,9 @@
 .container {
-	@apply flex gap-6 flex-col md:flex-row lg:flex-row;
+	@apply flex flex-col md:flex-row lg:flex-row;
 	.storiesBlock {
 		@apply flex overflow-hidden;
 	}
+}
+.containerContent{
+	@apply flex gap-6  md:mt-20 lg:mt-20;
 }

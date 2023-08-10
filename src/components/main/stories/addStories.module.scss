@@ -1,5 +1,5 @@
 .container {
-	@apply flex flex-col md:mt-20 border-dashed  justify-center lg:mt-20 p-6 min-w-[100px] md:min-w-[150px] lg:min-w-[150px] bg-white text-gray-900 border-2 border-whiteModeBorder rounded-xl
+	@apply flex flex-col border-dashed  justify-center p-6 min-w-[100px] md:min-w-[150px] lg:min-w-[150px] bg-white text-gray-900 border-2 border-whiteModeBorder rounded-xl
   dark:text-componentText dark:bg-componentBG dark:border-componentBorder;
 	.postStoryBlock {
 		@apply flex-col flex justify-center items-center cursor-pointer;
