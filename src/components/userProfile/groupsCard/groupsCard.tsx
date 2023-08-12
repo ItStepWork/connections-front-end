@@ -130,7 +130,7 @@ export function GroupsCardMain(props: any) {
         <div className={styles.header}>
           <div className={styles.groups}>
             <h2>Сообщества</h2>
-            <div className={styles.counter}>{faker.number.int(322)}</div>
+            <div className={styles.counter}>{grups.length}</div>
           </div>
           <button className={styles.button} onClick={openDialog} >
             <AiOutlinePlus className="dark:fill-white" size={20}></AiOutlinePlus>
@@ -139,7 +139,7 @@ export function GroupsCardMain(props: any) {
         <div className={styles.cardsContainer}>
           <div className={styles.cards}>
             {grups.map((group, index) => {
-              return (<Card key={index} group={group} ></Card>)
+              return (<Card key={index} group={group} getGroups={getGroups} ></Card>)
             })}
           </div>
         </div>
