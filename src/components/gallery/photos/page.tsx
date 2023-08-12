@@ -69,11 +69,10 @@ export default function Photos(props: any) {
       </label>
       </div>
       {photos.map((photo: any, index) => {
-        console.log(photo.url);
         return (
           <div key={index} className='relative'>
             <div className='absolute right-0 bottom-0'>
-              <PhotoAction/>
+              <PhotoAction get={get} accessToken={props.session.user.accessToken} photo={photo}/>
             </div>
             <img className={styles.image} src={photo.url} onClick={()=>{select(index)}}/>
           </div>

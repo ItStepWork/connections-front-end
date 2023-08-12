@@ -3,8 +3,8 @@ import styles from './styles.module.scss'
 import { useState } from "react";
 import { AiFillLike } from 'react-icons/ai'
 import { BsFillSendFill } from 'react-icons/bs';
-import { ImAttachment } from 'react-icons/im';
 import { Comment } from '../comment/page';
+import { Avatar } from '../avatar/page';
 
 export function InfoPhoto(props: any) {
 
@@ -48,7 +48,8 @@ export function InfoPhoto(props: any) {
 
   return (
     <div className={styles.container}>
-      <div className='flex justify-between m-2'>
+      <Avatar myId={props.myId} accessToken={props.accessToken}/>
+      <div className='flex justify-between m-3'>
         {props.photo.likes.includes(props.myId) ? (
           <button onClick={like} className='flex items-center text-buttonBlue'>
             <AiFillLike className="fill-buttonBlue" />

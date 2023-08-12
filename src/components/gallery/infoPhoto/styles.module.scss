@@ -1,5 +1,5 @@
 .container {
-	@apply relative w-1/4 h-full text-sm bg-white dark:bg-darkModeBg;
+	@apply  w-1/4 min-w-max h-full text-sm bg-white dark:bg-darkModeBg;
 	.verticalContainer {
 		@apply flex m-3 justify-between;
 	}

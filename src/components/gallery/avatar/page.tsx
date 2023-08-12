@@ -2,12 +2,12 @@ import styles from './styles.module.scss'
 import { useState, useEffect } from "react";
 import { FaUserCircle } from 'react-icons/fa';
 
-export function Comment(props: any) {
+export function Avatar(props: any) {
 
   const [user, setUser] = useState<any>(null);
 
   const getUser = async () => {
-    const response = await fetch(process.env.NEXT_PUBLIC_STRAPI_API + "User/GetUser?id=" + props.comment.senderId, {
+    const response = await fetch(process.env.NEXT_PUBLIC_STRAPI_API + "User/GetUser?id=" + props.myId, {
       headers: {
         "Accept": "application/json",
         "Authorization": "Bearer " + props.accessToken
@@ -32,7 +32,6 @@ export function Comment(props: any) {
           {user?.avatarUrl ? (<img className={styles.userImage} src={user.avatarUrl} />) : (<FaUserCircle className={styles.userImage} />)}
           <div className={styles.userInfo}>
             <span className={styles.userName}>{user.lastName} {user.firstName}</span>
-            <span className='text-xs'>{props.comment.text}</span>
           </div>
         </div>
       ) : (<></>)}
