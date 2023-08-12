@@ -1,7 +1,11 @@
 .container {
 	@apply relative;
-	.dropMenu {
-		@apply absolute p-2 flex flex-wrap justify-center bottom-[100px] left-[-200px] items-center bg-white text-gray-900 border border-whiteModeBorder rounded-lg
+	.dropMenuUpper {
+		@apply absolute p-2 flex flex-wrap justify-center bottom-[30px] left-[-200px] items-center bg-white text-gray-900 border border-whiteModeBorder rounded-lg
+  		dark:text-componentText dark:bg-componentBG dark:border-componentBorder;
+	}
+	.dropMenuLower {
+		@apply absolute p-2 flex flex-wrap justify-center top-[30px] left-[-200px] items-center bg-white text-gray-900 border border-whiteModeBorder rounded-lg
   		dark:text-componentText dark:bg-componentBG dark:border-componentBorder;
 	}
 }

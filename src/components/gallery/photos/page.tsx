@@ -5,6 +5,7 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { MdClose } from 'react-icons/md';
 import { useState } from 'react';
 import { PhotoAction } from '../photoAction/page';
+import { InfoPhoto } from '../infoPhoto/page';
 
 export default function Photos(props: any) {
 
@@ -79,13 +80,13 @@ export default function Photos(props: any) {
         );
       })}
       {isSelected?(
-      <div className='fixed z-50 flex flex-col left-0 top-0 h-screen w-full p-5 bg-blackOpacity '>
+      <div className='fixed z-50 flex flex-col left-0 top-0 h-screen w-full p-5 bg-black bg-opacity-70 '>
         <div className='flex h-1/5 w-full justify-end items-start'>
           <button onClick={()=>{setIsSelected(false)}}><MdClose size={40}/></button>
         </div>
         <div className='flex h-3/5 w-full justify-between items-center'>
           <button className='w-1/12' onClick={()=>{if((selectedIndex - 1) >= 0) setSelectedIndex(selectedIndex - 1)}}><FaChevronLeft size={40}/></button>
-          {photos[selectedIndex]?(<div className='w-10/12 h-full flex items-center justify-center'><img className='max-h-full' src={photos[selectedIndex].url}/></div>):(<></>)}
+          {photos[selectedIndex]?(<div className='w-10/12 h-full flex items-center justify-center'><InfoPhoto photo={photos[selectedIndex]} myId={props.session.user.id} userId={props.session.user.id} accessToken={props.session.user.accessToken} get={get}/><img className='max-h-full' src={photos[selectedIndex].url}/></div>):(<></>)}
           <button className='w-1/12 flex justify-end' onClick={()=>{if(photos.length > (selectedIndex + 1)) setSelectedIndex(selectedIndex + 1)}}><FaChevronRight size={40}/></button>
         </div>
       </div>

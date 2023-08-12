@@ -61,7 +61,7 @@ export default function FooterBlock(props: any) {
 
           <div className={styles.buttonContainer}>
             <div className='mx-1'>
-              <DropDownEmoji addEmoji={addEmoji}/>
+              <DropDownEmoji addEmoji={addEmoji} isLower={false}/>
             </div>
             <div className='mx-1 my-0.5'>
               <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center  border-gray-300 rounded-md cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
