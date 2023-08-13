@@ -20,7 +20,9 @@ export const authConfig: AuthOptions = {
           const response = await fetch(url);
 
           if (response.ok) {
-            return await response.json();
+            let result = await response.json();
+            result.user.accessToken = result.accessToken;
+            return await result.user;
           }
           else {
             return null;
