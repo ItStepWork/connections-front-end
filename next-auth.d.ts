@@ -15,8 +15,8 @@ declare module "next-auth" {
       familyStatus: string | null;
       born: string | null;
       aboutMe: string | null;
-      avatarImg: string | null;
-      BgImg: string | null;
+      avatarUrl: string | null;
+      backgroundUrl: string | null;
       accessToken: string;
       location: string | null;
       work: string | null;

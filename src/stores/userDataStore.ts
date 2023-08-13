@@ -1,5 +1,3 @@
-
-import { faker } from '@faker-js/faker';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
@@ -38,8 +36,8 @@ interface User {
 export const useStore = create<User>()(
   persist(
     (set) => ({
-      avatar: faker.image.avatar(),
-      BgImage: faker.image.url(),
+      avatar:'',
+      BgImage:'',
       id: '',
       firstName: '',
       lastName: '',

@@ -1,5 +1,6 @@
 "use client"
 import { UserCardPreloader } from '@/loaders/userCardPreloader';
+import userService from '@/services/user.service';
 import { useStore } from '@/stores/userDataStore';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
@@ -22,44 +23,23 @@ export function UserCard(props: any) {
   
         var formData = new FormData();
         formData.append('file', e.target.files[0]);
-        const response = await fetch(process.env.NEXT_PUBLIC_STRAPI_API + "User/SaveAvatar", {
-          method: "POST",
-          headers: {
-            "Accept": "application/json",
-            "Authorization": "Bearer " + session.user.accessToken
-          },
-          body: formData,
-        });
-    
-        if (response.ok) {
-          let result = await response.json();
-        }
-      }
+        userService.setUserAvatarImage(session.user.accessToken, formData)
     }
   }
+}
+
 
   const saveBackground = async (e: any) => {
     if(session?.user.accessToken != null){
       if(e.target.files[0].name.endsWith('.jpg') || e.target.files[0].name.endsWith('.jpeg') || e.target.files[0].name.endsWith('.png')){
-  
+        
         var formData = new FormData();
-        formData.append('file', e.target.files[0]);
-        const response = await fetch(process.env.NEXT_PUBLIC_STRAPI_API + "User/SaveBackground", {
-          method: "POST",
-          headers: {
-            "Accept": "application/json",
-            "Authorization": "Bearer " + session.user.accessToken
-          },
-          body: formData,
-        });
-    
-        if (response.ok) {
-          let result = await response.json();
-        }
+        formData.append('file', e.target.files[0])
+
+        userService.setUserBgImage(session.user.accessToken, formData)
       }
     }
   }
-
   
 
   useEffect(() => {
@@ -79,16 +59,19 @@ export function UserCard(props: any) {
     <>
       <div className={styles.container}>
         <div className={styles.bannerImage}>
-          <Image
-            src={bg}
-            sizes="100vw"
-            priority={true}
-            quality={80}
-            alt="bg"
-            layout='fill'
-            style={{ objectFit: "cover" }}
-            className={styles.image}
-          />
+          {
+            bg &&
+            <Image
+              src={bg}
+              sizes="100vw"
+              priority={true}
+              quality={80}
+              alt="bg"
+              layout='fill'
+              style={{ objectFit: "cover" }}
+              className={styles.image}
+            />
+          }
           <div className='absolute ml-5 mt-5'>
             <label htmlFor="background-file" className="flex rounded-full cursor-pointer transition-all duration-300 bg-buttonBlue bg-opacity-60 hover:bg-opacity-100">
               <div className="flex p-1 md:p-2 lg:p-3">
@@ -103,14 +86,17 @@ export function UserCard(props: any) {
             <div className={styles.avatarName}>
               <div className={styles.avatarContainer}>
                 <div className={styles.avatar}>
-                  <Image
-                    src={avatar}
-                    width='128'
-                    height='128'
-                    quality={80}
-                    style={{ objectFit: "contain" }}
-                    alt="avatar"
-                  />
+                  {
+                    avatar &&
+                    <Image
+                      src={avatar}
+                      width='128'
+                      height='128'
+                      quality={80}
+                      style={{ objectFit: "contain" }}
+                      alt="avatar"
+                    />
+                  }
                 </div>
                 <div className='absolute ml-12 mt-7 md:ml-28 md:mt-16 lg:ml-28 lg:mt-14'>
                   <label htmlFor="avatar-file" className="flex rounded-full cursor-pointer transition-all duration-300 bg-buttonBlue bg-opacity-60 hover:bg-opacity-100">

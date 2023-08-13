@@ -15,6 +15,8 @@ export interface IUser {
   work: string
   location: string
   joined: string
+  avatarUrl: string
+  backgroundUrl: string
 }
 export const getUser = (token: string, user: IUser) => {
   user.accessToken = token

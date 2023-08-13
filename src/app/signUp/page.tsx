@@ -1,7 +1,6 @@
 "use client"
-import styles from './styles.module.scss';
-import React from 'react';
 import { useForm } from 'react-hook-form';
+import styles from './styles.module.scss';
 
 export default function Signup() {
   const {
@@ -37,7 +36,7 @@ export default function Signup() {
           <div className={styles.cardSignUp}>
             <div className={styles.textCenter}>
               <h2 className={styles.textH2}>Регистрация</h2>
-              <span>У вас уже есть аккаунт? <a className={styles.link} href="signinPage">Войти</a></span>
+              <span>У вас уже есть аккаунт? <a className={styles.link} href="signIn">Войти</a></span>
             </div>
             <form className={styles.formSignUp} onSubmit={handleSubmit(onSubmit)}>
               <div className={styles.inputGroup}>

@@ -34,7 +34,7 @@ export default function Signin() {
           <div className={styles.cardSignUp}>
             <div className={styles.textCenter}>
               <h2 className={styles.textH2}>Sign In</h2>
-              <span>Don't have an account? <a className={styles.link} href="signupPage">Click here to sign up</a></span>
+              <span>Don't have an account? <a className={styles.link} href="signUp">Click here to sign up</a></span>
             </div>
             <form className={styles.formSignUp} onSubmit={handleSubmit}>
               <div className={styles.inputGroup}>

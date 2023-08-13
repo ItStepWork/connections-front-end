@@ -1,6 +1,6 @@
 'use client';
 import { NavigationAvatar } from "@/components/header/navigation/navigationAvatar";
-import { faker } from "@faker-js/faker";
+import { useStore } from "@/stores/userDataStore";
 import { signOut } from "next-auth/react";
 import Image from 'next/image';
 import Link from 'next/link';
@@ -10,7 +10,6 @@ import { BiPowerOff } from "react-icons/bi";
 import { BsCircleHalf } from "react-icons/bs";
 import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 import styles from './dropMenu.module.scss';
-import { useStore } from "@/stores/userDataStore";
 
 async function logOut() {
   signOut();
@@ -29,14 +28,17 @@ export const DropMenuProfile: FC = () => {
           <div className={styles.dropMenu}>
             <div className={styles.avatarContainer}>
               <div className={styles.avatar}>
-                <Image
-                  src={avatar}
-                  width={48}
-                  height={48}
-                  quality={80}
-                  style={{ objectFit: "cover" }}
-                  alt="avatar"
-                />
+                {
+                  avatar &&
+                  <Image
+                    src={avatar}
+                    width={48}
+                    height={48}
+                    quality={80}
+                    style={{ objectFit: "cover" }}
+                    alt="avatar"
+                  />
+                }
               </div>
               <div className={styles.textContainer}>
                 <h4>{firsName + ' ' + lastName}</h4>

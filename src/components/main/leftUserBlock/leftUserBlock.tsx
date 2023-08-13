@@ -25,7 +25,8 @@ export const LeftUserBlock = (props:any) => {
       <div className={styles.container}>
         <div className={styles.imagesBlock}>
           <div className={styles.bg}>
-            <Image
+            {
+              bg && <Image
               src={bg}
               sizes="100vw"
               priority={true}
@@ -35,19 +36,23 @@ export const LeftUserBlock = (props:any) => {
               style={{ objectFit: "cover" }}
               className={styles.image}
             />
+            }        
           </div>
 
         </div>
         <div className={styles.aboutMeBlock}>
           <div className={styles.avatar}>
-            <Image
-              src={avatar}
-              width={64}
-              height={64}
-              quality={80}
-              style={{ objectFit: "contain" }}
-              alt="avatar"
-            />
+            {
+              avatar &&
+              <Image
+                src={avatar}
+                width={64}
+                height={64}
+                quality={80}
+                style={{ objectFit: "contain" }}
+                alt="avatar"
+              />
+            }
           </div>
           <h3>{session?.user?.firstName + ' ' + session?.user?.lastName}</h3>
           <div className={styles.work}>{session?.user?.work}</div>

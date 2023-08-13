@@ -109,6 +109,7 @@ h2{
 /* width */
 ::-webkit-scrollbar {
   width: 4px;
+  height: 10px;
 }
 
 /* Track */

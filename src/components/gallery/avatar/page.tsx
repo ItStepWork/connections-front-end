@@ -1,6 +1,6 @@
-import styles from './styles.module.scss'
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FaUserCircle } from 'react-icons/fa';
+import styles from './styles.module.scss';
 
 export function Avatar(props: any) {
 
@@ -19,11 +19,10 @@ export function Avatar(props: any) {
       setUser(result);
     }
   }
-
   useEffect(() => {
     getUser();
   }, []);
-
+  
 
   return (
     <div className={styles.container}>
