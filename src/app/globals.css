@@ -5,7 +5,7 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   background-color: #eff2f6;
-  background: url('../../public/image.png') repeat 0 0;
+  background: url('../../public/whiteModeBgImage.png') repeat 0 0;
   -webkit-animation: bg-scrolling-reverse 8s infinite;
     /* Safari 4+ */
     -moz-animation: bg-scrolling-reverse 8s infinite;
@@ -24,7 +24,7 @@
   :root {
     --foreground-rgb: 255, 255, 255;
     background-color: #191a1f;
-    background: url('../../public/darkBgImg.png') repeat 0 0;
+    background: url('../../public/darkModeBgImage.png') repeat 0 0;
     -webkit-animation: bg-scrolling-reverse 8s infinite;
     /* Safari 4+ */
     -moz-animation: bg-scrolling-reverse 8s infinite;
