@@ -1,6 +1,6 @@
 import { AboutCard } from '@/components/userProfile/aboutCard/aboutCard'
 import { FriendsCard } from '@/components/userProfile/friendsCard/friendsCard'
-import { PhotosCard } from '@/components/userProfile/photosCard/photosCard'
+import PhotosCard from '@/components/userProfile/photosCard/photosCard'
 import { ProfileInfo } from '@/components/userProfile/profileInfo/profileInfo'
 import { UserCard } from '@/components/userProfile/userCard/userCard'
 import styles from './styles.module.scss'
