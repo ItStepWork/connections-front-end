@@ -1,3 +1,4 @@
+"use client"
 import { ImagePreloader } from '@/loaders/imagePreloader';
 import { faker } from '@faker-js/faker';
 import Image from 'next/image';
