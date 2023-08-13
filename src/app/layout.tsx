@@ -1,9 +1,7 @@
-'use client';
 import { Header } from '@/components/header/header';
 import { UserStoreDto } from '@/dto/userDataDto';
 import { Providers } from "@/providers/Providers";
 import type { Metadata } from 'next';
-import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
 import { Montserrat } from 'next/font/google';
 import './globals.css';
 
@@ -36,11 +34,8 @@ export default function RootLayout({
           <Header />        
           <div className="container">
           <UserStoreDto/>
-            <main>{children}</main> 
-            <ProgressBar height="4px"
-              color="#016FB9"
-              options={{ showSpinner: false }}
-              shallowRouting />
+            <main>{children}</main>         
+            
           </div>
         </Providers>
       </body>
