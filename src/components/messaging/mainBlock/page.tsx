@@ -4,7 +4,6 @@ import RigthMessage from '../rigthMassage/page'
 import TopMessage from '../topMessage/page'
 import styles from './styles.module.scss'
 import { getSession } from 'next-auth/react';
-import { IUser } from '@/dto/sessionDto';
 
 export default function MainBlock(props: any) {
 
@@ -15,7 +14,7 @@ export default function MainBlock(props: any) {
     setUser(session?.user)
   }
 
-  getUser();
+  if (user === null) getUser();
   
   return (
     <>

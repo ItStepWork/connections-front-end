@@ -2,7 +2,7 @@
 	@apply bg-greenOpacity text-buttonGreen px-2 py-1 rounded-lg;
 }
 .newMessage {
-	@apply fixed w-96 dark:text-white bottom-0 right-0;
+	@apply fixed w-80 lg:w-96 md:w-96 dark:text-white bottom-0 right-0;
 	.newMessageContainer {
 		@apply m-5 border rounded-lg border-zinc-200 dark:border-zinc-700 bg-white dark:bg-black aspect-square;
 	}
@@ -41,7 +41,7 @@
 	@apply w-10 h-10 rounded-full border border-gray-500;
 }
 .userInfo {
-	@apply px-2 flex flex-col overflow-hidden w-auto;
+	@apply px-2 flex flex-col overflow-hidden w-auto text-sm;
 }
 .userName {
 	@apply whitespace-nowrap;
