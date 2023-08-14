@@ -2,10 +2,10 @@
 import { UserService } from "@/services/user.service";
 import { useStore } from "@/stores/userDataStore";
 import { faker } from "@faker-js/faker";
-import { useSession } from "next-auth/react";
+import { getSession } from 'next-auth/react';
 
 import { useEffect } from "react";
-export const UserStoreDtoMain = (props: any) => {
+export const UserStoreDto = () => {
   
   let [avatarImg, bgImg, firstName, lastName, id, phone, 
     familyStatus, born, aboutMe, email, work, location, joined, friends] = useStore((state) => 
@@ -15,8 +15,8 @@ export const UserStoreDtoMain = (props: any) => {
 
       
       const getData = async () => {
-        UserService.token = props.session?.user?.accessToken!;
-        const userData = await UserService.getUser(props.session?.user?.id!);
+        const session = await getSession();
+        const userData = await UserService.getUser(session?.user?.id!);
         avatarImg(userData.avatarUrl ? userData.avatarUrl : faker.image.avatar());
         bgImg(userData.backgroundUrl! ? userData.backgroundUrl! : faker.image.avatar());
         firstName(userData.firstName!);
@@ -38,14 +38,4 @@ export const UserStoreDtoMain = (props: any) => {
   },[])
  
   return (<> </>)
-}
-export const UserStoreDto = () => {
-  const { data: session } = useSession();
-  if (session === undefined) {
-    return (<></>);
-  }
-  else
-    return (
-      <UserStoreDtoMain session={session} />
-    )
 }

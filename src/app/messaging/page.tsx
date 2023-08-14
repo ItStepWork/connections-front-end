@@ -9,6 +9,8 @@ import { IUser } from '@/dto/sessionDto';
 import { Dialogues } from '@/components/messaging/dialogues/page';
 import { NewMessage } from '@/components/messaging/newMessage/page';
 import { DropDownDialogues } from '@/components/messaging/dropDownDialogues/page';
+import { UserService } from '@/services/user.service';
+import { MessagingService } from '@/services/messaging.service';
 
 
 type MyProps = {
@@ -125,19 +127,8 @@ class Messaging extends React.Component<MyProps, MyState>{
   }
 
   async loadDialogs() {
-
-    const response = await fetch(process.env.NEXT_PUBLIC_STRAPI_API + "User/GetDialogs", {
-      headers: {
-        "Accept": "application/json",
-        'Content-Type': 'application/json',
-        "Authorization": "Bearer " + this.props.token
-      },
-    });
-
-    if (response.ok) {
-      let result = await response.json();
-      this.setState({ dialogs: result });
-    }
+    let result = await MessagingService.GetDialogs();
+    this.setState({ dialogs: result });
   }
 
   async loadUsers() {
