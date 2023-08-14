@@ -11,10 +11,10 @@ import styles from './userCard.module.scss';
 
 export function UserCard(props: any) {
 
-  const [avatar, bg, firstName, lastName, joined, work, location, friendsCount, fetch] = useStore((state) =>
+  const [avatar, bg, firstName, lastName, joined, work, location, friendsCount, fetchUser] = useStore((state) =>
     [state.avatar, state.BgImage, state.firstName, state.lastName, state.joined, state.work, state.location, state.friendsCount, state.fetchUser])
   const [loading, setLoading] = useState(true);
-console.log("12e1" + avatar)
+  
   const saveAvatar = async (e: any) => {
     if (e.target.files[0].name.endsWith('.jpg') || e.target.files[0].name.endsWith('.jpeg') || e.target.files[0].name.endsWith('.png')) {
 
@@ -111,7 +111,7 @@ console.log("12e1" + avatar)
             </div>
             <div className={styles.buttonBlock}>
               <Link href='/settings' className={styles.buttonLink}><span><BsPencilFill size={15} /></span>Редактировать профиль</Link>
-              <button className={styles.button}><BsThreeDots /></button>
+              <button className={styles.button} onClick={fetchUser}><BsThreeDots /></button>
             </div>
 
           </div>

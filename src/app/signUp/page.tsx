@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form';
 import styles from './styles.module.scss';
 
 export default function Signup() {
-  
   const {
     register,
     handleSubmit,

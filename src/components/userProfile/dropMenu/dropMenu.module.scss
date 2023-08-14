@@ -46,4 +46,7 @@
 			@apply dark:text-componentText text-whiteModeFg;
 		}
 	}
+	.navText {
+		@apply font-bold text-gray-900 dark:text-componentText hover:text-blue-500 transition-all duration-300;
+	}
 }

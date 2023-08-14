@@ -1,12 +1,27 @@
 .header {
 	@apply w-full h-14 fixed z-10 bg-white dark:bg-componentBG;
 	.contentContainer {
-		@apply flex items-center m-auto max-w-[1200px] justify-end gap-6 h-14;
+		@apply flex items-center z-10 m-auto max-w-[1200px] justify-between gap-6 h-14;
 	}
 	.navButton {
 		@apply py-3 px-3 flex items-center dark:bg-darkModeButtonBg hover:bg-whiteModeHoverBg transition-all duration-300 bg-whiteModeButtonBg rounded-lg;
 	}
 	.navText {
 		@apply font-bold text-gray-900 dark:text-componentText hover:text-blue-500 transition-all duration-300;
+	}
+	.logo {
+		@apply self-center text-2xl font-semibold whitespace-nowrap dark:text-white;
+	}
+	.burgerButton {
+		@apply mr-2 md:hidden block;
+	}
+	.navList {
+		@apply md:flex md:items-center md:pb-0 pb-12 absolute rounded-lg md:static md:z-auto z-[-10] left-4 w-11/12 md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in bg-white md:dark:bg-componentBG dark:bg-darkModeButtonBg;
+	}
+	.listItem {
+		@apply py-2 md:mx-2;
+	}
+	.logoLink {
+		@apply flex items-center ml-2 md:ml-0 lg:ml-0;
 	}
 }

@@ -45,9 +45,9 @@ export const useStore = create<User>()(
       friendsCount: 0,
        
       fetchUser: async () => {
-        const id: string | undefined = await sessionData();
+        const session = await getSession()
         try {
-          const response = await UserService.getUser(id as string)
+          const response = await UserService.getUser(session?.user.id as string)
           
           set({ avatar: response.avatarUrl!});
           set((state) => ({ BgImage: (state.BgImage = response.backgroundUrl!)}));
