@@ -1,16 +1,27 @@
 import styles from './styles.module.scss';
 import { AiOutlinePlus } from 'react-icons/ai';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Photos from "../photos/page";
 import Albums from "../albums/page";
+import { getSession } from 'next-auth/react';
 
 export default function Gallery(props: any) {
 
   const [component, setComponent] = useState("photos");
+  const [user, setUser] = useState<any>(null);
+
+  const getUser = async()=>{
+    const session = await getSession();
+    setUser(session?.user)
+  }
+  
+  useEffect(() => {
+    getUser();
+  }, []);
 
   const render = () => {
     if(component === "photos"){
-      return (<Photos session={props.session}/>);
+      return (<Photos user={user}/>);
     }
     else if(component === "albums"){
       return (<Albums/>);

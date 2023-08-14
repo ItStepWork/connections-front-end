@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import LeftMessage from '../leftMessage/page'
 import RigthMessage from '../rigthMassage/page'
 import TopMessage from '../topMessage/page'
@@ -14,7 +14,9 @@ export default function MainBlock(props: any) {
     setUser(session?.user)
   }
 
-  if (user === null) getUser();
+  useEffect(() => {
+    getUser();
+  }, []);
   
   return (
     <>

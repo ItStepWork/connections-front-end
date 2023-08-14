@@ -5,37 +5,21 @@ import { AiFillLike } from 'react-icons/ai'
 import { BsFillSendFill } from 'react-icons/bs';
 import { Comment } from '../comment/page';
 import { Avatar } from '../avatar/page';
+import { GalleryService } from '@/services/gallery.service';
 
 export function InfoPhoto(props: any) {
 
   const [text, setText] = useState("");
 
   const like = async () => {
-    const response = await fetch(process.env.NEXT_PUBLIC_STRAPI_API + `Gallery/SetLikePhoto?userId=${props.userId}&photoId=${props.photo.id}`, {
-      method: "POST",
-      headers: {
-        "Accept": "application/json",
-        "Authorization": "Bearer " + props.accessToken
-      },
-    });
-
-    if (response.ok) {
-      props.get();
-    }
+    await GalleryService.setLikePhoto(props.userId, props.photo.id);
+    props.get();
   }
 
   const sendComment = async () => {
-    const response = await fetch(process.env.NEXT_PUBLIC_STRAPI_API + `Gallery/SendCommentPhoto?userId=${props.userId}&photoId=${props.photo.id}&text=${text}`, {
-      method: "POST",
-      headers: {
-        "Accept": "application/json",
-        "Authorization": "Bearer " + props.accessToken
-      },
-    });
+    await GalleryService.sendCommentPhoto(props.userId, props.photo.id, text);
     setText("");
-    if (response.ok) {
-      props.get();
-    }
+    props.get();
   }
 
   function handleChange(event: any) {
@@ -80,7 +64,7 @@ export function InfoPhoto(props: any) {
         </div>
       </div>
       {Object.entries(props.photo.comments).map(([key, value])=>{
-        return(<Comment comment={value} accessToken={props.accessToken}/>);
+        return(<Comment comment={value}/>);
       })}
     </div>
   )

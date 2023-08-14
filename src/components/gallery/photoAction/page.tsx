@@ -3,45 +3,22 @@ import styles from './styles.module.scss'
 import { useState } from "react";
 import { BsPencilFill, BsDownload, BsXLg } from 'react-icons/bs'
 import { PiUserFocusBold, PiUserCircleBold } from 'react-icons/pi'
+import { GalleryService } from '@/services/gallery.service';
 
 export function PhotoAction(props: any) {
   const [isOpen, setIsOpen] = useState(false);
 
   const setAvatar = async () => {
-    const response = await fetch(process.env.NEXT_PUBLIC_STRAPI_API + "Gallery/SetAvatar?url=" + props.photo.url, {
-      headers: {
-        "Accept": "application/json",
-        "Authorization": "Bearer " + props.accessToken
-      },
-    });
-    if (response.ok) {
-      
-    }
+    await GalleryService.setAvatar(props.photo.url);
   }
 
   const setBackground = async () => {
-    const response = await fetch(process.env.NEXT_PUBLIC_STRAPI_API + "Gallery/SetBackground?url=" + props.photo.url, {
-      headers: {
-        "Accept": "application/json",
-        "Authorization": "Bearer " + props.accessToken
-      },
-    });
-    if (response.ok) {
-      
-    }
+    await GalleryService.setBackground(props.photo.url);
   }
 
   const removePhoto = async () => {
-    const response = await fetch(process.env.NEXT_PUBLIC_STRAPI_API + "Gallery/RemovePhoto?id=" + props.photo.id, {
-      method: "DELETE",
-      headers: {
-        "Accept": "application/json",
-        "Authorization": "Bearer " + props.accessToken
-      },
-    });
-    if (response.ok) {
-      props.get();
-    }
+    await GalleryService.removePhoto(props.photo.id);
+    props.get();
   }
 
   return (

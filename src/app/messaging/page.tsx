@@ -54,7 +54,6 @@ export default class Messaging extends React.Component<MyState>{
     }
   }
 
-
   async removeDialog(id: string) {
     await MessagingService.removeDialog(id);
     this.loadDialogs();
