@@ -1,5 +1,4 @@
 'use client'
-import { useSession } from 'next-auth/react';
 import HeaderBlock from '@/components/messaging/headerBlock/page';
 import styles from './styles.module.scss'
 import React from 'react';
@@ -12,11 +11,6 @@ import { DropDownDialogues } from '@/components/messaging/dropDownDialogues/page
 import { UserService } from '@/services/user.service';
 import { MessagingService } from '@/services/messaging.service';
 
-
-type MyProps = {
-  token: string,
-  id: string,
-};
 type MyState = {
   messages: [],
   dialogs: [],
@@ -24,12 +18,7 @@ type MyState = {
   user: IUser | null,
 };
 
-class Messaging extends React.Component<MyProps, MyState>{
-
-  props: MyProps = {
-    token: "",
-    id: "",
-  }
+export default class Messaging extends React.Component<MyState>{
 
   state: MyState = {
     messages: [],
@@ -53,18 +42,8 @@ class Messaging extends React.Component<MyProps, MyState>{
   }
 
   async loadMessages(id: string) {
-    const response = await fetch(process.env.NEXT_PUBLIC_STRAPI_API + "User/GetMessages?id=" + id, {
-      headers: {
-        "Accept": "application/json",
-        'Content-Type': 'application/json',
-        "Authorization": "Bearer " + this.props.token
-      },
-    });
-
-    if (response.ok) {
-      let result = await response.json();
-      this.setState({ messages: result });
-    }
+    const result = await MessagingService.getMessages(id);
+    this.setState({ messages: result });
   }
 
   click(user: IUser) {
@@ -77,18 +56,9 @@ class Messaging extends React.Component<MyProps, MyState>{
 
 
   async removeDialog(id: string) {
-    const response = await fetch(process.env.NEXT_PUBLIC_STRAPI_API + "User/RemoveDialog?id=" + id, {
-      method: "DELETE",
-      headers: {
-        "Accept": "application/json",
-        "Authorization": "Bearer " + this.props.token
-      },
-    });
-
-    if (response.ok) {
-      this.loadDialogs();
-      this.setState({ messages: [], user: null });
-    }
+    await MessagingService.removeDialog(id);
+    this.loadDialogs();
+    this.setState({ messages: [], user: null });
   }
 
   render() {
@@ -103,7 +73,7 @@ class Messaging extends React.Component<MyProps, MyState>{
 
 
             <div className={styles.leftContainer}>
-              <NewMessage length={this.state.dialogs.length} users={this.state.users} loadDialogs={this.loadDialogs} token={this.props.token} />
+              <NewMessage length={this.state.dialogs.length} users={this.state.users} loadDialogs={this.loadDialogs} />
               <div className='invisible h-0 lg:visible lg:h-auto overflow-y-auto'>
                 <Dialogues dialogs={this.state.dialogs} click={this.click} user={this.state.user} />
               </div>
@@ -113,8 +83,8 @@ class Messaging extends React.Component<MyProps, MyState>{
               {this.state.user ? (
                 <>
                   <HeaderBlock user={this.state.user} removeDialog={this.removeDialog} />
-                  <MainBlock messages={this.state.messages} myId={this.props.id} user={this.state.user} />
-                  <FooterBlock friendId={this.state.user.id} token={this.props.token} loadMessages={this.loadMessages} loadDialogs={this.loadDialogs} />
+                  <MainBlock messages={this.state.messages} user={this.state.user} />
+                  <FooterBlock friendId={this.state.user.id} loadMessages={this.loadMessages} loadDialogs={this.loadDialogs} />
                 </>
               ) : (<></>)}
 
@@ -127,36 +97,13 @@ class Messaging extends React.Component<MyProps, MyState>{
   }
 
   async loadDialogs() {
-    let result = await MessagingService.GetDialogs();
+    let result = await MessagingService.getDialogs();
     this.setState({ dialogs: result });
   }
 
   async loadUsers() {
 
-    const response = await fetch(process.env.NEXT_PUBLIC_STRAPI_API + "User/GetUsers", {
-      headers: {
-        "Accept": "application/json",
-        'Content-Type': 'application/json',
-        "Authorization": "Bearer " + this.props.token
-      },
-    });
-
-    if (response.ok) {
-      let result = await response.json();
-      this.setState({ users: result });
-    }
+    let result = await UserService.getUsers();
+    this.setState({ users: result });
   }
-}
-
-export default () => {
-  const { data: session } = useSession();
-  let token: string = session?.user?.accessToken as string;
-  let id: string = session?.user?.id as string;
-  if (session === undefined) {
-    return (<></>);
-  }
-  else
-    return (
-      <Messaging token={token} id={id} />
-    )
 }

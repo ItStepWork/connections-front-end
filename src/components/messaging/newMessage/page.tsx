@@ -6,6 +6,7 @@ import { BsFillSendFill } from 'react-icons/bs';
 import { FaUserCircle } from 'react-icons/fa';
 import { useState } from "react";
 import { IUser } from '@/dto/sessionDto';
+import { MessagingService } from '@/services/messaging.service';
 
 export function NewMessage(props: any) {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,26 +34,15 @@ export function NewMessage(props: any) {
     }
   }
 
-
   const sendMessage = async (mess:string, find: IUser) => {
     if (findUser !== null) {
       const formData = new FormData();
       formData.append("id", find.id);
       formData.append("text", mess);
 
-      const response = await fetch(process.env.NEXT_PUBLIC_STRAPI_API + "User/SendMessage", {
-        method: "POST",
-        headers: {
-          "Accept": "application/json",
-          "Authorization": "Bearer " + props.token
-        },
-        body: formData,
-      });
-
+      await MessagingService.sendMessage(formData);
       setMessage("");
-      if (response.ok) {
-        props.loadDialogs();
-      }
+      props.loadDialogs();
     }
   }
 

@@ -35,4 +35,14 @@ export class UserService {
       },
     }).then(response => response.data)
   }
+
+  static async getUsers() {
+    const session = await getSession();
+    return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + "User/GetUsers", {
+      headers: {
+        "Accept": "application/json",
+        "Authorization": "Bearer " + session?.user.accessToken,     
+      },
+    }).then(response => response.data)
+  }
 } 

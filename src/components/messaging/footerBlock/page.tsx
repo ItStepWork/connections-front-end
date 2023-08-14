@@ -4,6 +4,7 @@ import { FaRegWindowClose } from 'react-icons/fa';
 import { ImAttachment } from 'react-icons/im';
 import styles from './styles.module.scss';
 import { DropDownEmoji } from '../dropDownEmoji/page';
+import { MessagingService } from '@/services/messaging.service';
 
 export default function FooterBlock(props: any) {
 
@@ -22,23 +23,13 @@ export default function FooterBlock(props: any) {
       formData.append("id", props.friendId);
       formData.append("text", text);
       if(file !== null) formData.append("file", file);
-      const response = await fetch(process.env.NEXT_PUBLIC_STRAPI_API + "User/SendMessage", {
-        method: "POST",
-        headers: {
-          "Accept": "application/json",
-          "Authorization": "Bearer " + props.token
-        },
-        body: formData,
-      });
+      await MessagingService.sendMessage(formData);
 
       setText("");
       setFile(null);
-      if (response.ok) {
-        let result = await response.json();
-        console.log(result);
-        props.loadMessages(props.friendId);
-        props.loadDialogs();
-      }
+      
+      props.loadMessages(props.friendId);
+      props.loadDialogs();
     }
   }
   function handleChange(event: any) {
