@@ -3,6 +3,8 @@ import { useSession } from "next-auth/react";
 import { FC } from "react";
 import { useForm } from "react-hook-form";
 import styles from "./accountSettings.module.scss";
+import { useStore } from "@/stores/userDataStore";
+
 
 export const AccountSettings: FC = () => {
 
@@ -21,8 +23,7 @@ export const AccountSettings: FC = () => {
     },
   ];
   const { data: session, update } = useSession();
-
-
+  const { fetchUser } = useStore((state) => state);
 
   const {
     register,
@@ -203,7 +204,7 @@ export const AccountSettings: FC = () => {
             </div>
           </div>
           <div className={styles.formButton}>
-            <button type="submit" className={styles.button}>Сохранить изменения</button>
+            <button type="submit" onClick={fetchUser} className={styles.button}>Сохранить изменения</button>
 
           </div>
         </form>

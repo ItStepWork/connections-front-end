@@ -1,5 +1,6 @@
 "use client"
 import { UserCardPreloader } from '@/loaders/userCardPreloader';
+import { UserService } from '@/services/user.service';
 import { useStore } from '@/stores/userDataStore';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -7,14 +8,13 @@ import { useEffect, useState } from 'react';
 import { BsBriefcase, BsCalendar2Plus, BsFillPatchCheckFill, BsGeoAlt, BsPencilFill, BsThreeDots } from 'react-icons/bs';
 import { HiMiniPencilSquare } from 'react-icons/hi2';
 import styles from './userCard.module.scss';
-import { UserService } from '@/services/user.service';
 
 export function UserCard(props: any) {
 
-  const [avatar, bg, firstName, lastName, joined, work, location, friendsCount] = useStore((state) =>
-    [state.avatar, state.BgImage, state.firstName, state.lastName, state.joined, state.work, state.location, state.friendsCount])
+  const [avatar, bg, firstName, lastName, joined, work, location, friendsCount, fetch] = useStore((state) =>
+    [state.avatar, state.BgImage, state.firstName, state.lastName, state.joined, state.work, state.location, state.friendsCount, state.fetchUser])
   const [loading, setLoading] = useState(true);
-
+console.log("12e1" + avatar)
   const saveAvatar = async (e: any) => {
     if (e.target.files[0].name.endsWith('.jpg') || e.target.files[0].name.endsWith('.jpeg') || e.target.files[0].name.endsWith('.png')) {
 
@@ -45,7 +45,7 @@ export function UserCard(props: any) {
   }, []);
 
   if (loading) {
-
+    
     return <UserCardPreloader />;
   }
 

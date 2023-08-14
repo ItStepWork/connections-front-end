@@ -1,5 +1,6 @@
 "use client"
 
+import { useStore } from "@/stores/userDataStore";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import type { FormEventHandler } from "react";
@@ -7,7 +8,7 @@ import styles from './styles.module.scss';
 
 export default function Signin() {
   const router = useRouter();
-
+  const { fetchUser } = useStore((state) => state)
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
 
@@ -33,23 +34,23 @@ export default function Signin() {
         <div className={styles.verticalContainer}>
           <div className={styles.cardSignUp}>
             <div className={styles.textCenter}>
-              <h2 className={styles.textH2}>Sign In</h2>
-              <span>Don't have an account? <a className={styles.link} href="signUp">Click here to sign up</a></span>
+              <h2 className={styles.textH2}>Вход</h2>
+              <span>У вас нет аккаунта? <a className={styles.link} href="signUp">перейти к регистрации</a></span>
             </div>
             <form className={styles.formSignUp} onSubmit={handleSubmit}>
               <div className={styles.inputGroup}>
-                <label htmlFor="email" className={styles.inputLabel}>Email address</label>
+                <label htmlFor="email" className={styles.inputLabel}>Email</label>
                 <input type="email" name="email" className={styles.input} placeholder="email@gmail.com" required />
               </div>
               <div className={styles.inputGroup}>
-                <label htmlFor="password" className={styles.inputLabel}>Password</label>
+                <label htmlFor="password" className={styles.inputLabel}>Пароль</label>
                 <input type="password" name="password" className={styles.input} placeholder="•••••••••" required />
               </div>
               <div className={styles.centerContainer}>
-                <button className={styles.button} type='submit'>Sign In</button>
+                <button className={styles.button} onClick={fetchUser} type='submit'>Войти</button>
               </div>
             </form>
-            <p>©2023 <a className={styles.link} target="_blank" href={process.env.NEXTAUTH_URL}>Connections.</a> All rights reserved</p>
+            <p>©2023 <a className={styles.link} target="_blank" href={process.env.NEXTAUTH_URL}>Connections.</a> Все права защищены</p>
           </div>
         </div>
       </div>

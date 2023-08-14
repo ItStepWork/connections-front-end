@@ -1,5 +1,4 @@
 import { Header } from '@/components/header/header';
-import { UserStoreDto } from '@/dto/userDataDto';
 import { Providers } from "@/providers/Providers";
 import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
@@ -33,9 +32,7 @@ export default function RootLayout({
         <Providers>
           <Header />        
           <div className="container">
-          <UserStoreDto/>
-            <main>{children}</main>         
-            
+            <main>{children}</main>                   
           </div>
         </Providers>
       </body>

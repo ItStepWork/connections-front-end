@@ -1,3 +1,5 @@
+import { UserService } from '@/services/user.service';
+import { getSession } from 'next-auth/react';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
@@ -16,27 +18,18 @@ interface User {
   location: string;
   joined: string;
   friendsCount: number;
-  setAvatarImg: (avatar: string) => void;
-  setBgImg: (BgImage: string) => void;
-  setFirstName: (firstName: string) => void;
-  setLastName: (lastName: string) => void;
-  setId: (id: string) => void;
-  setBorn: (born: string) => void;
-  setFamilyStatus: (familyStatus: string) => void;
-  setPhone: (phone: string) => void;
-  setAboutMe: (aboutMe: string) => void;
-  setEmail: (email: string) => void;
-  setWork: (work: string) => void;
-  setLocation: (location: string) => void;
-  setJoined: (joined: string) => void;
-  setFriends: (friends: number) => void;
+  fetchUser: any;
 }
 
+const sessionData = async () => {
+  const session = await getSession()
+  return session?.user?.id;
+}
 
 export const useStore = create<User>()(
   persist(
     (set) => ({
-      avatar:'',
+      avatar:'', 
       BgImage:'',
       id: '',
       firstName: '',
@@ -50,21 +43,31 @@ export const useStore = create<User>()(
       location: '',
       joined: '',
       friendsCount: 0,
-      setAvatarImg: (state) => {set({ avatar: state})},
-      setBgImg:(state) => {set({ BgImage: state})},
-      setFirstName: (state) => {set({ firstName: state})},
-      setLastName: (state) => {set({ lastName: state})},
-      setId: (state) => {set({ id: state})},
-      setBorn: (state) => {set({ born: state})},
-      setFamilyStatus: (state) => {set({ familyStatus: state})},
-      setPhone: (state) => {set({ phone: state})},
-      setAboutMe: (aboutMe) => {set({ aboutMe: aboutMe})},
-      setEmail: (state) => {set({ email: state})},
-      setWork: (state) => {set({ work: state})},
-      setLocation: (state) => {set({ location: state})},
-      setJoined: (state) => {set({ joined: state})},
-      setFriends: (state) => {set({friendsCount: state})}
- 
-    }), { name: 'userStorage', version: 1 })
+       
+      fetchUser: async () => {
+        const id: string | undefined = await sessionData();
+        try {
+          const response = await UserService.getUser(id as string)
+          
+          set({ avatar: response.avatarUrl!});
+          set((state) => ({ BgImage: (state.BgImage = response.backgroundUrl!)}));
+          set((state) => ({ id: (state.id = response.id!)}));
+          set((state) => ({ firstName: (state.firstName = response.firstName!)}));
+          set((state) => ({ lastName: (state.lastName = response.lastName!)}));
+          set((state) => ({ phone: (state.phone = response.phone!)}));
+          set((state) => ({ familyStatus: (state.familyStatus = response.familyStatus!)}));
+          set((state) => ({ born: (state.born = response.born!)}));
+          set((state) => ({ aboutMe: (state.aboutMe = response.aboutMe!)}));
+          set((state) => ({ email: (state.email = response.email!)}));
+          set((state) => ({ work: (state.work = response.work!)}));
+          set((state) => ({ location: (state.location = response.location!)}));
+          set((state) => ({ joined: (state.joined = response.joined!)}));
+          set((state) => ({ friendsCount: state.friendsCount = 42}));
+        }catch (error){
+          console.log(error)
+        }
+      }
+      
+    }), { name: 'userStorage', version: 2.0 })
 
 )
