@@ -1,40 +1,36 @@
 import { IUser } from '@/interfaces/user.interface';
 import axios from 'axios';
 
-class UserService {
+export class UserService {
 
-  private _saveBackground: string = "User/SaveBackground";
-  private _saveAvatar: string = "User/SaveAvatar";
-  private _getUser: string = "User/GetUser?id=";
+  static token: string = "";
 
-  async setUserBgImage(id: string, formData: FormData){
-    return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + this._saveBackground, formData, {
+  static async setUserBgImage(formData: FormData){
+    return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "User/SaveBackground", formData, {
       headers: {
         "Accept": "application/json",
-        "Authorization": "Bearer " + id,
+        "Authorization": "Bearer " + this.token,
         'Content-Type': 'multipart/form-data',
       },
     });
   }
 
-  async setUserAvatarImage(id: string, formData: FormData){
-    return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + this._saveAvatar, formData, {
+  static async setUserAvatarImage(formData: FormData){
+    return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "User/SaveAvatar", formData, {
       headers: {
         "Accept": "application/json",
-        "Authorization": "Bearer " + id,
+        "Authorization": "Bearer " + this.token,
         'Content-Type': 'multipart/form-data',
       },
     });
   }
 
-  async getUser(id: string, token:string) {
-    return await axios.get<IUser>(process.env.NEXT_PUBLIC_STRAPI_API + this._getUser + id, {
+  static async getUser(id: string) {
+    return await axios.get<IUser>(process.env.NEXT_PUBLIC_STRAPI_API + "User/GetUser?id=" + id, {
       headers: {
         "Accept": "application/json",
-        "Authorization": "Bearer " + token,     
+        "Authorization": "Bearer " + this.token,     
       },
     }).then(response => response.data)
-
   }
 } 
-export default new UserService();

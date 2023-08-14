@@ -1,13 +1,11 @@
 'use client'
-import userService from "@/services/user.service";
+import { UserService } from "@/services/user.service";
 import { useStore } from "@/stores/userDataStore";
 import { faker } from "@faker-js/faker";
 import { useSession } from "next-auth/react";
 
 import { useEffect } from "react";
-export const UserStoreDto = () => {
-
-  const { data: session } = useSession();
+export const UserStoreDtoMain = (props: any) => {
   
   let [avatarImg, bgImg, firstName, lastName, id, phone, 
     familyStatus, born, aboutMe, email, work, location, joined, friends] = useStore((state) => 
@@ -17,7 +15,8 @@ export const UserStoreDto = () => {
 
       
       const getData = async () => {
-        const userData = await userService.getUser(session?.user?.id!, session?.user?.accessToken!)
+        UserService.token = props.session?.user?.accessToken!;
+        const userData = await UserService.getUser(props.session?.user?.id!);
         avatarImg(userData.avatarUrl ? userData.avatarUrl : faker.image.avatar());
         bgImg(userData.backgroundUrl! ? userData.backgroundUrl! : faker.image.avatar());
         firstName(userData.firstName!);
@@ -39,4 +38,14 @@ export const UserStoreDto = () => {
   },[])
  
   return (<> </>)
+}
+export const UserStoreDto = () => {
+  const { data: session } = useSession();
+  if (session === undefined) {
+    return (<></>);
+  }
+  else
+    return (
+      <UserStoreDtoMain session={session} />
+    )
 }

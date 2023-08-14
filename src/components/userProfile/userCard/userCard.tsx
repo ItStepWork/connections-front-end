@@ -1,46 +1,40 @@
 "use client"
 import { UserCardPreloader } from '@/loaders/userCardPreloader';
-import userService from '@/services/user.service';
 import { useStore } from '@/stores/userDataStore';
-import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { BsBriefcase, BsCalendar2Plus, BsFillPatchCheckFill, BsGeoAlt, BsPencilFill, BsThreeDots } from 'react-icons/bs';
 import { HiMiniPencilSquare } from 'react-icons/hi2';
 import styles from './userCard.module.scss';
+import { UserService } from '@/services/user.service';
 
 export function UserCard(props: any) {
 
-  const [avatar, bg, firstName, lastName, joined, work, location, friendsCount] = useStore((state) => 
-  [state.avatar, state.BgImage, state.firstName, state.lastName, state.joined, state.work, state.location, state.friendsCount])
+  const [avatar, bg, firstName, lastName, joined, work, location, friendsCount] = useStore((state) =>
+    [state.avatar, state.BgImage, state.firstName, state.lastName, state.joined, state.work, state.location, state.friendsCount])
   const [loading, setLoading] = useState(true);
-  const { data: session } = useSession();
 
   const saveAvatar = async (e: any) => {
-    if(session?.user.accessToken != null){
-      if(e.target.files[0].name.endsWith('.jpg') || e.target.files[0].name.endsWith('.jpeg') || e.target.files[0].name.endsWith('.png')){
-  
-        var formData = new FormData();
-        formData.append('file', e.target.files[0]);
-        userService.setUserAvatarImage(session.user.accessToken, formData)
+    if (e.target.files[0].name.endsWith('.jpg') || e.target.files[0].name.endsWith('.jpeg') || e.target.files[0].name.endsWith('.png')) {
+
+      var formData = new FormData();
+      formData.append('file', e.target.files[0]);
+      UserService.setUserAvatarImage(formData)
     }
   }
-}
 
 
   const saveBackground = async (e: any) => {
-    if(session?.user.accessToken != null){
-      if(e.target.files[0].name.endsWith('.jpg') || e.target.files[0].name.endsWith('.jpeg') || e.target.files[0].name.endsWith('.png')){
-        
-        var formData = new FormData();
-        formData.append('file', e.target.files[0])
+    if (e.target.files[0].name.endsWith('.jpg') || e.target.files[0].name.endsWith('.jpeg') || e.target.files[0].name.endsWith('.png')) {
 
-        userService.setUserBgImage(session.user.accessToken, formData)
-      }
+      var formData = new FormData();
+      formData.append('file', e.target.files[0])
+
+      UserService.setUserBgImage(formData)
     }
   }
-  
+
 
   useEffect(() => {
     const delay = 1000;
@@ -131,13 +125,13 @@ export function UserCard(props: any) {
           <Link className={styles.link} href='/'>Посты</Link>
           <Link className={styles.link} href='/aboutMe'>Обо мне</Link>
           <div className={styles.counterLink}>
-            <button className={styles.linkUnderline} onClick={()=>{props.setComponent("connections")}}>Связи</button>
+            <button className={styles.linkUnderline} onClick={() => { props.setComponent("connections") }}>Связи</button>
             <div className={styles.counter}>{friendsCount}</div>
           </div>
           <Link className={styles.link} href='/'>Медиа</Link>
           <Link className={styles.link} href='/'>Видео</Link>
           <Link className={styles.link} href='/'>Активность</Link>
-          <button className={styles.link} onClick={()=>{props.setComponent("groups")}}>Сообщества</button>
+          <button className={styles.link} onClick={() => { props.setComponent("groups") }}>Сообщества</button>
         </div>
       </div>
     </>
