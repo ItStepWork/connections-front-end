@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Photos from "../photos/page";
 import Albums from "../albums/page";
 import { getSession } from 'next-auth/react';
+import { CreateAlbum } from '../createAlbum/page';
 
 export default function Gallery(props: any) {
 
@@ -35,7 +36,7 @@ export default function Gallery(props: any) {
     <div className={styles.container}>
       <div className="flex justify-between items-center">
         <h2>Галерея</h2>
-        <button className={styles.button}><AiOutlinePlus />&nbsp; Создать альбом</button>
+        <CreateAlbum/>
       </div>
       <div className={styles.nav}>
         <div {...component === "photos" ? { className: `${styles.counterLink}` } : { className: "" }} >

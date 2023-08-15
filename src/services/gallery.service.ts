@@ -77,4 +77,30 @@ export class GalleryService {
             },
         }).then(response => response.data);
     }
+
+    static async getAlbums() {
+        const session = await getSession();
+        return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + "Gallery/GetAlbums", {
+            headers: {
+                "Accept": "application/json",
+                "Authorization": "Bearer " + session?.user.accessToken,
+            },
+        }).then(response => response.data);
+    }
+
+    static async addAlbum(name: string, files: any[]) {
+        const formData = new FormData();
+        formData.append("name", name);
+        for (const iterator of files) {
+            formData.append("files", iterator);
+        }
+        const session = await getSession();
+        return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "Gallery/AddAlbum", formData,{
+            headers: {
+                "Accept": "application/json",
+                'Content-Type': 'multipart/form-data',
+                "Authorization": "Bearer " + session?.user.accessToken,
+            },
+        }).then(response => response.data);
+    }
 } 

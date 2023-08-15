@@ -1,9 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import { MdOutlineAddAPhoto } from "react-icons/md";
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { MdClose } from 'react-icons/md';
-import { useState } from 'react';
 import { PhotoAction } from '../photoAction/page';
 import { InfoPhoto } from '../infoPhoto/page';
 import { GalleryService } from '@/services/gallery.service';

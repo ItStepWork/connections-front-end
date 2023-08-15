@@ -64,7 +64,7 @@ export function InfoPhoto(props: any) {
         </div>
       </div>
       {Object.entries(props.photo.comments).map(([key, value])=>{
-        return(<Comment comment={value}/>);
+        return(<Comment key={key} comment={value}/>);
       })}
     </div>
   )
