@@ -1,8 +1,8 @@
 import { faker } from '@faker-js/faker';
 import Image from 'next/image';
 import Link from 'next/link';
-import { AiOutlineUsergroupAdd } from 'react-icons/ai';
-import { AiOutlineUsergroupDelete } from 'react-icons/ai';
+import { RiGitRepositoryPrivateLine } from 'react-icons/ri';
+import { AiOutlineUsergroupDelete, AiOutlineUsergroupAdd } from 'react-icons/ai';
 import { MdOutlineAdminPanelSettings } from 'react-icons/md';
 import styles from './card.module.scss';
 import { useSession } from "next-auth/react";
@@ -34,7 +34,16 @@ export const Card = (props: any) => {
   return (
     <>
       <div className={styles.container}>
-        <Link href={"/groupPage?id=" + props.group.id}>
+        
+        <div className={styles.audienceDiv}>
+        {(props.group.audience==="Private")
+          ?<RiGitRepositoryPrivateLine className="absolute" title="Private"></RiGitRepositoryPrivateLine>
+          :<></>}
+        </div>
+        
+        
+        <Link className='pt-5' href={"/groupPage/"+props.group.id}>
+
           <div className={styles.avatar}>
             <img className='rounded-full w-[84px] h-[84px]'
               src={props.group.pictureUrl}
@@ -42,7 +51,7 @@ export const Card = (props: any) => {
             />
           </div>
           <div className={styles.fio}>
-            <h4 className={styles.link}>{props.group.name}</h4>
+            <h4>{props.group.name}</h4>
             <p>{props.group.description}</p>
             <div className={styles.membesContainer}>
               <div className={styles.members}>
