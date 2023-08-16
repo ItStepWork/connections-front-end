@@ -68,8 +68,6 @@ body {
     rgb(var(--background-start-rgb));
     margin: 0;
     padding: 0;
-    
-    
 }
 
 #particle-canvas {

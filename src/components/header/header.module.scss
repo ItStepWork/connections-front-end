@@ -1,5 +1,5 @@
 .header {
-	@apply w-full h-14 fixed z-10 bg-white dark:bg-componentBG;
+	@apply w-full h-14 fixed z-10 bg-white dark:bg-glassOpacity dark:backdrop-blur-[3px];
 	.contentContainer {
 		@apply flex items-center z-10 m-auto max-w-[1200px] justify-between gap-6 h-14;
 	}
@@ -10,7 +10,7 @@
 		@apply font-bold text-gray-900 dark:text-componentText hover:text-blue-500 transition-all duration-300;
 	}
 	.logo {
-		@apply self-center text-2xl font-semibold whitespace-nowrap dark:text-white;
+		@apply self-center font-semibold whitespace-nowrap dark:text-white;
 	}
 	.burgerButton {
 		@apply mr-2 md:hidden block;

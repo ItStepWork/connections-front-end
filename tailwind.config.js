@@ -14,6 +14,9 @@ module.exports = {
 				'gradient-conic':
 					'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
 			},
+			boxShadow: {
+        'customTransparent': '0 8px 32px 0 rgba(31, 38, 31, 0.37)',
+      },
 			colors: {
 				mainBG: '#191a1f',
 				componentBG: '#141519',
@@ -33,7 +36,9 @@ module.exports = {
 				buttonBlue: '#0f6fec',
 				buttonRed: '#d6293e',
 				buttonGreen: '#0cbc87',
-				blackOpacity: 'rgba(0, 0, 0, 0.7)',
+				blackOpacity: 'rgba(0,0,0,0.7)',
+				glassOpacity: 'rgba(49, 50, 53, 0.2 )',
+
 			},
 		},
 	},

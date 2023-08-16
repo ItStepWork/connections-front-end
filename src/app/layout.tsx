@@ -6,6 +6,7 @@ import './globals.css';
 
 const inter = Montserrat({ subsets: ['latin'] })
 
+
 export const metadata: Metadata = {
   title: 'Connections',
   description: 'Connections Social Network',
@@ -27,6 +28,7 @@ export default function RootLayout({
           rel="manifest"
           href="/manifest.json"
         />
+            
       </head>
       <body className={inter.className}>
         <Providers>
