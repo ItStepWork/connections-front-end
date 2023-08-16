@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import { MdOutlineAddAPhoto } from "react-icons/md";
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import { MdClose } from 'react-icons/md';
 import { PhotoAction } from '../photoAction/page';
-import { InfoPhoto } from '../infoPhoto/page';
 import { GalleryService } from '@/services/gallery.service';
+import SelectedPhoto from '../selectedPhoto/page';
 
 export default function Photos(props: any) {
 
@@ -59,18 +57,7 @@ export default function Photos(props: any) {
           </div>
         );
       })}
-      {isSelected?(
-      <div className='fixed z-50 flex flex-col left-0 top-0 h-screen w-full p-5 bg-black bg-opacity-70 '>
-        <div className='flex h-1/5 w-full justify-end items-start'>
-          <button onClick={()=>{setIsSelected(false)}}><MdClose size={40}/></button>
-        </div>
-        <div className='flex h-3/5 w-full justify-between items-center'>
-          <button className='w-1/12' onClick={()=>{if((selectedIndex - 1) >= 0) setSelectedIndex(selectedIndex - 1)}}><FaChevronLeft size={40}/></button>
-          {photos[selectedIndex]?(<div className='w-10/12 h-full flex items-center justify-center'><InfoPhoto photo={photos[selectedIndex]} myId={props.user.id} userId={props.user.id} get={get}/><img className='max-h-full' src={photos[selectedIndex].url}/></div>):(<></>)}
-          <button className='w-1/12 flex justify-end' onClick={()=>{if(photos.length > (selectedIndex + 1)) setSelectedIndex(selectedIndex + 1)}}><FaChevronRight size={40}/></button>
-        </div>
-      </div>
-      ):(<></>)}
+      <SelectedPhoto isSelected={isSelected} setIsSelected={setIsSelected} photos={photos} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} user={props.user} get={get}/>
     </div>
   );
 }

@@ -3,7 +3,7 @@ import styles from './styles.module.scss';
 import { useEffect, useState } from 'react';
 import Album from '../album/page';
 
-export default function Albums() {
+export default function Albums(props: any) {
   const [albums, setAlbums] = useState<any[]>([]);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export default function Albums() {
     <div className={styles.container}>
       {albums.map((album: any, index) => {
         return (
-          <Album key={index} album={album} />
+          <Album key={index} album={album} user={props.user} />
         );
       })}
     </div>

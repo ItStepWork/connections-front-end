@@ -13,6 +13,29 @@ export class GalleryService {
         }).then(response => response.data);
     }
 
+    static async getPhoto(userId: string, photoId: string) {
+        const session = await getSession();
+        return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + `Gallery/GetPhoto?userId=${userId}&photoId=${photoId}`, {
+            headers: {
+                "Accept": "application/json",
+                "Authorization": "Bearer " + session?.user.accessToken,
+            },
+        }).then(response => response.data);
+    }
+
+    static async getPhotosById(userId: string, photos: string[]) {
+        const session = await getSession();
+        return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + `Gallery/GetPhotosById`, {
+            params:{
+                userId: userId, filesId: JSON.stringify(photos)
+            },
+            headers: {
+                "Accept": "application/json",
+                "Authorization": "Bearer " + session?.user.accessToken,
+            },
+        }).then(response => response.data);
+    }
+
     static async addPhoto(formData: FormData) {
         const session = await getSession();
         return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "Gallery/AddPhoto", formData, {
@@ -26,7 +49,7 @@ export class GalleryService {
 
     static async setAvatar(url: string) {
         const session = await getSession();
-        return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "Gallery/SetAvatar",{ url: url }, {
+        return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "Gallery/SetAvatar", { url: url }, {
             headers: {
                 "Accept": "application/json",
                 'Content-Type': 'application/json',
@@ -37,7 +60,7 @@ export class GalleryService {
 
     static async setBackground(url: string) {
         const session = await getSession();
-        return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "Gallery/SetBackground",{ url: url }, {
+        return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "Gallery/SetBackground", { url: url }, {
             headers: {
                 "Accept": "application/json",
                 'Content-Type': 'application/json',
@@ -69,7 +92,7 @@ export class GalleryService {
 
     static async sendCommentPhoto(userId: string, photoId: string, text: string) {
         const session = await getSession();
-        return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "Gallery/SendCommentPhoto", { userId: userId, photoId: photoId, text: text },{
+        return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "Gallery/SendCommentPhoto", { userId: userId, photoId: photoId, text: text }, {
             headers: {
                 "Accept": "application/json",
                 'Content-Type': 'application/json',
@@ -95,7 +118,7 @@ export class GalleryService {
             formData.append("files", iterator);
         }
         const session = await getSession();
-        return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "Gallery/AddAlbum", formData,{
+        return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "Gallery/AddAlbum", formData, {
             headers: {
                 "Accept": "application/json",
                 'Content-Type': 'multipart/form-data',

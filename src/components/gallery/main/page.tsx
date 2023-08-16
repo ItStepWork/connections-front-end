@@ -25,7 +25,7 @@ export default function Gallery(props: any) {
       return (<Photos user={user}/>);
     }
     else if(component === "albums"){
-      return (<Albums/>);
+      return (<Albums user={user}/>);
     }
     else {
       return(<></>);
