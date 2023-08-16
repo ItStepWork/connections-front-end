@@ -10,7 +10,12 @@ import { MdOutlineClose, MdOutlineMessage } from 'react-icons/md'
 import { DropMenuProfile } from '../userProfile/dropMenu/dropMenu'
 import styles from './header.module.scss'
 
-const arenq = localFont({ src: '../../fonts/Arenq.otf'})
+const arenq = localFont({ 
+  src: '../../fonts/Arenq.otf',
+  variable: "--logo-font",
+})
+const lombok = localFont({ src: '../../fonts/Lombok Regular.ttf'})
+const oneDay = localFont({ src: '../../fonts/ONEDAY.ttf'})
 
 export const Header: FC = () => {
 
@@ -23,7 +28,7 @@ export const Header: FC = () => {
         <div >
           <div className={styles.contentContainer}>
           <Link href="http://localhost:3000/" className={styles.logoLink}>
-              <span className={styles.logo}>Connections</span>
+              <span className={styles.logo}><p className={oneDay.className}>Connections</p></span>
           </Link>
             {session ?
               (<>

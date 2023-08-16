@@ -38,8 +38,12 @@ module.exports = {
 				buttonGreen: '#0cbc87',
 				blackOpacity: 'rgba(0,0,0,0.7)',
 				glassOpacity: 'rgba(49, 50, 53, 0.2 )',
+				glassWhite: 'rgba( 255, 255, 255, 0 )',
 
 			},
+			fontFamily: {
+				logo : '--logo-font',
+			}
 		},
 	},
 	plugins: [],

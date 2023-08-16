@@ -1,5 +1,6 @@
 import { Header } from '@/components/header/header';
 import { Providers } from "@/providers/Providers";
+import localFont from '@next/font/local';
 import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
 import './globals.css';

@@ -1,6 +1,6 @@
 .container {
 	@apply flex flex-col justify-center items-center py-2 w-full text-gray-900 rounded-xl mt-6
-  dark:text-componentText dark:bg-glassOpacity dark:shadow-customTransparent dark:backdrop-blur-[3px];
+  dark:text-componentText dark:bg-glassOpacity dark:shadow-customTransparent bg-glassWhite border dark:border-0 backdrop-blur-[2px] border-whiteModeBorder;
 	.Line {
 		@apply flex justify-center items-center text-sm gap-2 text-gray-900 dark:text-componentText;
 		.anim {
