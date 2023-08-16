@@ -10,9 +10,6 @@ import { BiSolidUserCheck } from 'react-icons/bi'
 import styles from './groupCard.module.scss';
 
 export function GroupCard(props: any) {
-
-  const { data: session } = useSession();
-
   return (
     <>
       <div className={styles.container}>
@@ -35,7 +32,7 @@ export function GroupCard(props: any) {
               <div className={styles.avatarContainer}>
                 <div className={styles.avatar}>
                   <Image
-                    src={faker.image.avatar()}
+                    src={props.group.pictureUrl}
                     width={128}
                     height={128}
                     quality={80}
@@ -46,10 +43,10 @@ export function GroupCard(props: any) {
               </div>
               <div className={styles.nameBlock}>
                 <div className={styles.name}>
-                  <h2>{faker.person.fullName()}</h2>
+                  <h2>{props.group.name}</h2>
                   <span><BsFillPatchCheckFill size={18} /></span>
                 </div>
-                <p> Private</p>
+                <p> {props.group.audience}</p>
               </div>
             </div>
             <div className={styles.buttonBlock}>

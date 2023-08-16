@@ -40,6 +40,15 @@ export class GroupService {
           },
         }).then(response => response.data)
       }
+      static async getGroup(id: string) {
+        const session = await getSession();
+        return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + "Group/GetGroup?id=" + id, {
+            headers: {
+                "Accept": "application/json",
+                "Authorization": "Bearer " + session?.user.accessToken,
+            },
+        }).then(response => response.data);
+      }
 
 
 

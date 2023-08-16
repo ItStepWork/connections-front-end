@@ -69,7 +69,7 @@ export const AddPost = () => {
           </div>
           <div className={styles.btnDivEnd}>
             <div className={styles.btnDiv}>
-              <BsThreeDots class="ml-2 mr-2" size={16}></BsThreeDots>
+              <BsThreeDots className="ml-2 mr-2" size={16}></BsThreeDots>
             </div>
           </div>
         </div>

@@ -1,16 +1,17 @@
 .container {
-	@apply flex flex-col items-center p-6  bg-white text-gray-900 border border-whiteModeBorder rounded-xl h-72 w-48
+	@apply flex flex-col items-center p-1  bg-white text-gray-900 border border-whiteModeBorder rounded-xl h-72 w-48
   dark:text-componentText dark:bg-componentBG dark:border-componentBorder;
-	.linkContainer{
-		@apply flex flex-col items-center p-6 ;          ;
+	.audienceDiv{
+		@apply w-full flex justify-end;
 	}
+
   .avatar {
 		@apply flex justify-center mb-2;
 	}
 	.fio {
 		@apply flex flex-col mt-0 text-sm items-center;
 		h4 {
-			@apply text-gray-900 dark:text-white text-sm text-center font-bold;
+			@apply text-gray-900 dark:text-white text-sm text-center font-bold hover:text-green-900;
 		}
 	}
 	.buttons {
@@ -54,9 +55,6 @@
 	}
 	.membersNames{
 		@apply flex  m-4 sm:ml-8;
-	}
-	.link{
-		@apply hover:text-green-900; 
 	}
 }
 

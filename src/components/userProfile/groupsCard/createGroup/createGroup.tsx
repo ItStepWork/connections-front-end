@@ -26,15 +26,19 @@ export function CreateGroup(props: any) {
         formState: { errors },
     } = useForm();
     const onSubmit = async (data: any) => {
-        let formData = new FormData();
-        formData.append("file", data.file[0]);
-        formData.append("name", data.name);
-        formData.append("audience", data.audience);
-        formData.append("description", data.description);
-        let result = await GroupService.addGroup(formData);
-        alert(result.statusText);
-        props.getGroups();
-        closeDialog();
+        if( data.file[0].name.endsWith('.jpg') ||  data.file[0].name.endsWith('.jpeg') ||  data.file[0].name.endsWith('.png')){
+            let formData = new FormData();
+            formData.append("file", data.file[0]);
+            formData.append("name", data.name);
+            formData.append("audience", data.audience);
+            formData.append("description", data.description);
+            let result = await GroupService.addGroup(formData);
+            alert(result.statusText);
+            props.getGroups();
+            closeDialog();
+        }
+        else alert("Wrong picture format");
+       
     }
     return (
         <>
@@ -56,13 +60,13 @@ export function CreateGroup(props: any) {
                         <div className={styles.dialogDivHeader}>
                             <div className="input-div">
                                 <input className="input" type="file" accept=".jpg, .jpeg, .png" {...register('file')} required onChange={(e: any) => { setAvatar(e.target.files[0]) }}></input>
-                                {avatar === null ? (<FaRegUser size={36} className="dark:fill-white" ></FaRegUser>) : (<img src={URL.createObjectURL(avatar)} ></img>)}
+                                {(avatar === null||avatar===undefined) ? (<FaRegUser size={36} className="dark:fill-white" ></FaRegUser>) : (<img src={URL.createObjectURL(avatar)} ></img>)}
                             </div>
-                            <div className="avatar-remove">
+                            {/* <div className="avatar-remove">
                                 <button type="button" id="avatar-reset-img" className={styles.grayButton} onClick={() => {
                                     setAvatar(null);
                                 }}>Delete</button>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <div >
