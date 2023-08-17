@@ -1,17 +1,23 @@
 import { faker } from '@faker-js/faker';
-import Image from 'next/image';
 import Link from 'next/link';
 import { RiGitRepositoryPrivateLine } from 'react-icons/ri';
 import { AiOutlineUsergroupDelete, AiOutlineUsergroupAdd } from 'react-icons/ai';
 import { MdOutlineAdminPanelSettings } from 'react-icons/md';
 import styles from './card.module.scss';
 import { useSession } from "next-auth/react";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { GroupService } from '@/services/group.service';
 
 export const Card = (props: any) => {
   const { data: session, update } = useSession();
-  const [render, setRender] = useState(false);
+  const [users, setUsers] = useState<any[]>([])
+  useEffect(() => {
+    GetUsers();
+  }, []);
+  let GetUsers = async () => {
+    let result = await GroupService.getUsersGroup(props.group.id);
+    setUsers(result);
+  }
   let JoinGroup = async () => {
     let result = await GroupService.joinGroup(props.group.id);
     alert(result.data);
@@ -34,16 +40,12 @@ export const Card = (props: any) => {
   return (
     <>
       <div className={styles.container}>
-        
         <div className={styles.audienceDiv}>
-        {(props.group.audience==="Private")
-          ?<RiGitRepositoryPrivateLine className="absolute" title="Private"></RiGitRepositoryPrivateLine>
-          :<></>}
+          {(props.group.audience === "Private")
+            ? <RiGitRepositoryPrivateLine className="absolute" title="Private"></RiGitRepositoryPrivateLine>
+            : <></>}
         </div>
-        
-        
-        <Link className='pt-5' href={"/groupPage/"+props.group.id}>
-
+        <Link className='pt-5' href={"/groupPage/" + props.group.id}>
           <div className={styles.avatar}>
             <img className='rounded-full w-[84px] h-[84px]'
               src={props.group.pictureUrl}
@@ -55,9 +57,11 @@ export const Card = (props: any) => {
             <p>{props.group.description}</p>
             <div className={styles.membesContainer}>
               <div className={styles.members}>
-                {Object.entries(props.group.users).map((user, index) => {
-                  if (index < 6)
-                    return (<div key={index} className="w-4"><img className={styles.memberIco} src={faker.image.avatar()}></img></div>)
+                {users.map((user: any, index) => {
+                  if (index < 6) {
+                    if (user.avatarUrl !== undefined && user.avatarUrl !== null && user.avatarUrl !== "") return (<div key={index} className="w-4"><img className={styles.memberIco} src={user.avatarUrl}></img></div>)
+                    else return (<div key={index} className="w-4"><img className={styles.memberIco} src={faker.image.avatar()}></img></div>)
+                  }
                 })}
                 <div className="w-4"><div className={styles.membersDiv}>+{Object.entries(props.group.users).length} </div></div>
               </div>
