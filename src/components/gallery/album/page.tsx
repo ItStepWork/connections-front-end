@@ -1,7 +1,6 @@
 import { GalleryService } from '@/services/gallery.service';
 import styles from './styles.module.scss';
 import { useEffect, useState } from 'react';
-import { MdClose } from 'react-icons/md';
 import SelectedPhoto from '../selectedPhoto/page';
 
 export default function Album(props: any) {
@@ -20,7 +19,7 @@ export default function Album(props: any) {
   }, []);
 
   const get = async () => {
-    let array = await GalleryService.getPhotosById(props.user.id, props.album.photos);
+    let array = await GalleryService.getAlbumPhotos(props.user.id, props.album.id);
     setPhotos(array);
   }
 

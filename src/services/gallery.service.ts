@@ -23,12 +23,9 @@ export class GalleryService {
         }).then(response => response.data);
     }
 
-    static async getPhotosById(userId: string, photos: string[]) {
+    static async getAlbumPhotos(userId: string, albumId: string) {
         const session = await getSession();
-        return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + `Gallery/GetPhotosById`, {
-            params:{
-                userId: userId, filesId: JSON.stringify(photos)
-            },
+        return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + `Gallery/GetAlbumPhotos?userId=${userId}&albumId=${albumId}`, {
             headers: {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,
@@ -61,6 +58,17 @@ export class GalleryService {
     static async setBackground(url: string) {
         const session = await getSession();
         return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "Gallery/SetBackground", { url: url }, {
+            headers: {
+                "Accept": "application/json",
+                'Content-Type': 'application/json',
+                "Authorization": "Bearer " + session?.user.accessToken,
+            },
+        }).then(response => response.data);
+    }
+
+    static async setAlbum(photoId: string, albumId: string) {
+        const session = await getSession();
+        return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "Gallery/SetAlbum", { photoId: photoId, albumId: albumId }, {
             headers: {
                 "Accept": "application/json",
                 'Content-Type': 'application/json',

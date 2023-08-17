@@ -23,11 +23,12 @@ export function CreateAlbum(props: any) {
   }
 
   const createAlbum = async () => {
-    if(files.length > 0 && text.length > 0){
+    if (files.length > 0 && text.length > 0) {
       await GalleryService.addAlbum(text, files);
+      setText("");
+      setFiles([]);
+      props.get();
     }
-    setText("");
-    setFiles([]);
   }
 
   return (
@@ -48,32 +49,32 @@ export function CreateAlbum(props: any) {
           <div className={styles.createAlbumContent}>
             <div className="flex">
               <span className={styles.icon}>
-                <MdDriveFileRenameOutline size={20} className="fill-white"/>
+                <MdDriveFileRenameOutline size={20} className="fill-white" />
               </span>
               <input type="text" className={styles.input} placeholder="Введите название" onChange={(e) => { setText(e.target.value); }} value={text} />
-              
+
               <span className={styles.iconGallery}>
                 <label className='cursor-pointer'>
-                  <LiaPhotoVideoSolid size={20}  className="fill-white"/>
+                  <LiaPhotoVideoSolid size={20} className="fill-white" />
                   <input type='file' multiple className='hidden' onChange={(e) => { changeFiles(e) }}></input>
                 </label>
               </span>
-              
+
               <span className={styles.iconSend} onClick={createAlbum}>
-                <BsFillSendFill size={20}  className="fill-white"/>
+                <BsFillSendFill size={20} className="fill-white" />
               </span>
             </div>
             <div className='flex flex-wrap overflow-y-auto'>
 
-            {files.length > 0 ? (<>
-              {files.map((file: any, index: number) => {
-                return (
-                  <div key={index} className={styles.imageFile}>
-                    <img className='max-h-full max-w-full' src={URL.createObjectURL(file)}></img>
-                  </div>
-                );
-              })}
-            </>) : (<></>)}
+              {files.length > 0 ? (<>
+                {files.map((file: any, index: number) => {
+                  return (
+                    <div key={index} className={styles.imageFile}>
+                      <img className='max-h-full max-w-full' src={URL.createObjectURL(file)}></img>
+                    </div>
+                  );
+                })}
+              </>) : (<></>)}
             </div>
           </div>
         </div>

@@ -1,0 +1,9 @@
+.action{
+	@apply flex items-center text-componentText hover:text-buttonBlue;
+}
+.actionRed{
+	@apply flex items-center text-buttonRed hover:text-buttonBlue;
+}
+.name{
+	@apply flex items-center text-componentText hover:text-buttonBlue whitespace-nowrap max-w-[8rem] overflow-hidden;
+}
