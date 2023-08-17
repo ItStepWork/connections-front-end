@@ -1,15 +1,48 @@
 "use client"
 import { faker } from '@faker-js/faker';
+import { useState,useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
 import { BsBriefcase, BsCalendar2Plus, BsFillPatchCheckFill, BsGeoAlt, BsPencilFill, BsThreeDots } from 'react-icons/bs';
+import { AiOutlineUsergroupDelete, AiOutlineUsergroupAdd } from 'react-icons/ai';
+import { MdOutlineAdminPanelSettings } from 'react-icons/md';
 import { AiOutlinePlus } from 'react-icons/ai'
 import { BiSolidUserCheck } from 'react-icons/bi'
 import styles from './groupCard.module.scss';
+import { AddPost } from '@/components/main/addPost/addPost'
+import { GroupService } from '@/services/group.service';
 
 export function GroupCard(props: any) {
+  const { data: session, update } = useSession();
+  const[users,setUsers]=useState <any[]>([])
+  useEffect(() => {
+    GetUsers();
+}, []);
+  let GetUsers=async()=>{
+    let result = await GroupService.getUsersGroup(props.group.id);
+    setUsers(result);
+  }
+  let JoinGroup = async () => {
+    let result = await GroupService.joinGroup(props.group.id);
+    alert(result.data);
+    props.getGroup();
+  }
+  let LeaveGroup = async () => {
+    let result = await GroupService.leaveGroup(props.group.id);
+    alert(result);
+    props.getGroup();
+  }
+  let IfInGroup = () => {
+    let find = Object.entries(props.group.users).find(([key, value]) => key === session?.user.id);
+    if (find === undefined) return false;
+    else return true;
+  };
+  let IfAdmin = () => {
+    if (props.group.adminId === session?.user.id) return true;
+    else return false;
+  };
   return (
     <>
       <div className={styles.container}>
@@ -31,13 +64,17 @@ export function GroupCard(props: any) {
             <div className={styles.avatarName}>
               <div className={styles.avatarContainer}>
                 <div className={styles.avatar}>
-                  <Image
+                  {/* <Image
                     src={props.group.pictureUrl}
                     width={128}
                     height={128}
                     quality={80}
                     style={{ objectFit: "contain" }}
                     alt="avatar"
+                  /> */}
+                  <img className='rounded-full w-full h-full'
+                    src={props.group.pictureUrl}
+                    alt="Picture of the author"
                   />
                 </div>
               </div>
@@ -47,26 +84,49 @@ export function GroupCard(props: any) {
                   <span><BsFillPatchCheckFill size={18} /></span>
                 </div>
                 <p> {props.group.audience}</p>
+                <div className={styles.description}>
+                <p className="  word-break: break-all"> {props.group.description}</p>
+                </div>
+                
               </div>
             </div>
             <div className={styles.buttonBlock}>
-              <button className={styles.blueButton}><BiSolidUserCheck size={16} />Joined</button>
-              <button className={styles.greenButton}><AiOutlinePlus />Invite</button>
+              {IfInGroup()
+                ? IfAdmin()
+                  ? <div title='Ты админ' className={styles.greenButton}><MdOutlineAdminPanelSettings className={styles.btnPict + " " + styles.greenPict}/>Админ</div>
+                  : <button title='Покинуть группу' className={styles.redButton} onClick={LeaveGroup}><BiSolidUserCheck className={styles.btnPict + " " + styles.redPict}/>Покинуть</button>
+                : <button title="Вступить в группу" className={styles.blueButton} onClick={JoinGroup} ><AiOutlineUsergroupAdd className={styles.btnPict + " " + styles.bluePict}/>Вступить</button>}
+              <button title="Пригласить в группу" className={styles.greenButton}><AiOutlinePlus />Пригласить</button>
+              
             </div>
 
           </div>
 
           <div className={styles.membesContainer}>
             <div className={styles.members}>
+            {users.map((user:any, index) => {
+                  if (index < 12){
+                    if(user.avatarUrl!==undefined&&user.avatarUrl!==null&&user.avatarUrl!=="") return (<div key={index} className="w-4"><img className={styles.memberIco} src={user.avatarUrl}></img></div>)
+                    else return (<div key={index} className="w-4"><img className={styles.memberIco} src={faker.image.avatar()}></img></div>)
+                  }
+                    
+                })}
+              {/* <div className="w-4"><img className={styles.memberIco} src={faker.image.avatar()}></img></div>
               <div className="w-4"><img className={styles.memberIco} src={faker.image.avatar()}></img></div>
               <div className="w-4"><img className={styles.memberIco} src={faker.image.avatar()}></img></div>
-              <div className="w-4"><img className={styles.memberIco} src={faker.image.avatar()}></img></div>
-              <div className="w-4"><img className={styles.memberIco} src={faker.image.avatar()}></img></div>
-              <div className="w-4"><div className={styles.membersDiv}>+12</div></div>
+              <div className="w-4"><img className={styles.memberIco} src={faker.image.avatar()}></img></div> */}
+              <div className="w-4"><div className={styles.membersDiv}>{Object.entries(users).length}</div></div>
             </div>
 
             <div className={styles.membersNames}>
-              <p>{faker.person.fullName()}, {faker.person.fullName()}, {faker.person.fullName()}</p>
+              <p>
+              {users.map((user:any, index) => {
+                  if (index < 6){
+                    if(user.firstName||user.lastName) return (<a>{user.firstName+" "+ user.lastName} ,</a>)
+                    else return(<a>no name,</a>)
+                  }
+                    
+                })}</p>
             </div>
 
           </div>
@@ -82,9 +142,10 @@ export function GroupCard(props: any) {
           <Link className={styles.link} href='/'>Медиа</Link>
           <Link className={styles.link} href='/'>Видео</Link>
           <Link className={styles.link} href='/'>Активность</Link>
-          <button className={styles.link} onClick={() => { props.setComponent("groups") }}>Сообщества</button>
+          {/* <button className={styles.link} onClick={() => { props.setComponent("groups") }}>Сообщества</button> */}
         </div>
       </div>
+      <AddPost></AddPost>
     </>
   )
 }
