@@ -77,6 +77,24 @@
 	.image {
 		@apply w-full h-auto;
 	}
+	.editAvatar {
+		@apply absolute ml-12 mt-7 md:ml-28 md:mt-16 lg:ml-28 lg:mt-14;
+		.avatarLabel {
+			@apply flex rounded-full cursor-pointer transition-all duration-300 bg-buttonBlue bg-opacity-60 hover:bg-opacity-100;
+		}
+		.avatarIcon {
+			@apply flex p-1 md:p-2 lg:p-3;
+		}
+	}
+	.editBgImage {
+		@apply absolute ml-5 mt-5;
+		.backgroundImageLabel {
+			@apply flex rounded-full cursor-pointer transition-all duration-300 bg-buttonBlue bg-opacity-60 hover:bg-opacity-100;
+		}
+		.backgroundIcon {
+			@apply flex p-1 md:p-2 lg:p-3;
+		}
+	}
 }
 
 .preloaderContainer {
