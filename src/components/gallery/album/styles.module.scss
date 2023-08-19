@@ -1,9 +1,12 @@
 .album{
-	@apply relative flex flex-col items-center cursor-pointer p-2 border border-whiteModeBorder dark:border-componentBorder h-[130px] md:h-[150px] lg:h-[180px] w-[130px] md:w-[150px] lg:w-[180px] rounded-lg;
+	@apply relative flex flex-col items-center p-2 border border-whiteModeBorder dark:border-componentBorder h-[130px] md:h-[150px] lg:h-[180px] w-[130px] md:w-[150px] lg:w-[180px] rounded-lg;
 }
 .photos{
-	@apply flex flex-wrap justify-center overflow-hidden;
+	@apply flex flex-wrap justify-center cursor-pointer overflow-hidden;
 }
 .photo{
 	@apply m-1 w-[36px] md:w-[48px] lg:w-[56px] h-[36px] md:h-[48px] lg:h-[56px];
+}
+.button{
+	@apply w-56 m-4 bg-blue-600 rounded px-2 py-1 transition duration-300 hover:bg-blue-700;
 }

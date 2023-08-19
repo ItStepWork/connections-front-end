@@ -87,6 +87,26 @@ export class GalleryService {
         }).then(response => response.data);
     }
 
+    static async removeAlbum(id: string) {
+        const session = await getSession();
+        return await axios.delete(process.env.NEXT_PUBLIC_STRAPI_API + "Gallery/RemoveAlbum?id=" + id, {
+            headers: {
+                "Accept": "application/json",
+                "Authorization": "Bearer " + session?.user.accessToken,
+            },
+        }).then(response => response.data);
+    }
+
+    static async removeAlbumAndPhotos(id: string) {
+        const session = await getSession();
+        return await axios.delete(process.env.NEXT_PUBLIC_STRAPI_API + "Gallery/RemoveAlbumAndPhotos?id=" + id, {
+            headers: {
+                "Accept": "application/json",
+                "Authorization": "Bearer " + session?.user.accessToken,
+            },
+        }).then(response => response.data);
+    }
+
     static async setLikePhoto(userId: string, photoId: string) {
         const session = await getSession();
         return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "Gallery/SetLikePhoto", { userId: userId, photoId: photoId }, {
