@@ -1,4 +1,4 @@
-import localFont from '@next/font/local'
+import localFont from "next/font/local"
 import styles from './home.module.scss'
 
 const arenq = localFont({ src: '../fonts/Arenq.otf'})

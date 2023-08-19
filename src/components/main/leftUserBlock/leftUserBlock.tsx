@@ -97,7 +97,7 @@ export const LeftUserBlock = (props:any) => {
             <div className={styles.icon}>
               <FcCalendar size={20} />
             </div>
-            <Link href={'/events'}>События</Link>
+            <button onClick={()=>{props.setComponent("celebration")}}>События</button>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>

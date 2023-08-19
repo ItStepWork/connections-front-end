@@ -7,7 +7,7 @@ export const ChangePassword: FC = () => {
       <section className={styles.container}>
         <div className={styles.description}>
           <h2>Измените ваш пароль</h2>
-          <span>В макете тут написан тупорылый текст но я думаю что это не правильно</span>
+          <span>Для смены пароля необходимо ввести старый пароль, далее ввести новый пароль и подтвердить его, новый пароль и подтверждение пароля должны совпадать.</span>
         </div>
         <form className={styles.form}>
           <div className={styles.namesBlock}>

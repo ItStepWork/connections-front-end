@@ -1,6 +1,6 @@
 "use client"
-import localFont from '@next/font/local'
 import { useSession } from 'next-auth/react'
+import localFont from "next/font/local"
 import Link from 'next/link'
 import { FC, useState } from 'react'
 import { AiOutlineSetting } from 'react-icons/ai'
@@ -37,6 +37,9 @@ export const Header: FC = () => {
                     <ul className={`md:flex md:items-center md:pb-0 pb-12 dark:shadow-customTransparent dark:backdrop-blur-[3px] md:backdrop-blur-0 absolute rounded-lg md:static md:z-auto z-[-10] left-4 w-11/12 md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in bg-white md:dark:bg-transparent dark:bg-darkModeButtonBg ${open ? 'top-14 opacity-100' : 'top-[-500px] md:opacity-100 opacity-0'}`}>
                       <li className={styles.listItem}>
                         <Link className={ styles.navText} href='/main'>Главная</Link>    
+                      </li>
+                      <li className={styles.listItem}>
+                        <Link className={styles.navText} href='/profile'>Праздники</Link>
                       </li>
                       <li className={styles.listItem}>
                         <Link className={styles.navText} href='/profile'>Мой профиль</Link>

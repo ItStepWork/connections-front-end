@@ -1,18 +1,15 @@
 "use client"
-import { faker } from '@faker-js/faker';
-import { useState,useEffect } from 'react';
-import { useSession } from 'next-auth/react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { FC } from 'react';
-import { BsBriefcase, BsCalendar2Plus, BsFillPatchCheckFill, BsGeoAlt, BsPencilFill, BsThreeDots } from 'react-icons/bs';
-import { AiOutlineUsergroupDelete, AiOutlineUsergroupAdd } from 'react-icons/ai';
-import { MdOutlineAdminPanelSettings } from 'react-icons/md';
-import { AiOutlinePlus } from 'react-icons/ai'
-import { BiSolidUserCheck } from 'react-icons/bi'
-import styles from './groupCard.module.scss';
-import { AddPost } from '@/components/main/addPost/addPost'
+import { AddPost } from '@/components/main/addPost/addPost';
 import { GroupService } from '@/services/group.service';
+import { faker } from '@faker-js/faker';
+import { useSession } from 'next-auth/react';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { AiOutlinePlus, AiOutlineUsergroupAdd } from 'react-icons/ai';
+import { BiSolidUserCheck } from 'react-icons/bi';
+import { BsFillPatchCheckFill } from 'react-icons/bs';
+import { MdOutlineAdminPanelSettings } from 'react-icons/md';
+import styles from './groupCard.module.scss';
 
 export function GroupCard(props: any) {
   const { data: session, update } = useSession();

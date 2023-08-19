@@ -19,9 +19,7 @@
 	.cards {
 		@apply w-full flex items-center justify-center flex-wrap gap-6;
 	}
-	h2 {
-		@apply text-gray-900 dark:text-white text-2xl;
-	}
+
 	label {
 		@apply text-base mb-2 mr-2 text-gray-900 dark:text-gray-400;
 	}

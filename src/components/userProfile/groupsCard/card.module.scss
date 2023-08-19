@@ -1,11 +1,11 @@
 .container {
 	@apply flex flex-col items-center p-1  bg-white text-gray-900 border border-whiteModeBorder rounded-xl h-72 w-48
   dark:text-componentText dark:bg-componentBG dark:border-componentBorder;
-	.audienceDiv{
+	.audienceDiv {
 		@apply w-full flex justify-end;
 	}
 
-  .avatar {
+	.avatar {
 		@apply flex justify-center mb-2;
 	}
 	.fio {
@@ -17,44 +17,42 @@
 	.buttons {
 		@apply flex justify-center items-center;
 		.blueButton {
-			@apply bg-buttonBlueOpacity transition-all duration-300 rounded-md  m-1 mb-0 hover:bg-[#0b53b1] ;
+			@apply bg-buttonBlueOpacity transition-all duration-300 rounded-md  m-1 mb-0 hover:bg-[#0b53b1];
 		}
 		.greenButton {
 			@apply bg-green-900 bg-opacity-20 transition-all duration-300 rounded-md  m-1 mb-0 hover:bg-opacity-100;
 		}
 		.redButton {
-			@apply bg-redOpacity transition-all duration-300 rounded-md m-1 mb-0 hover:bg-buttonRed ;		
+			@apply bg-redOpacity transition-all duration-300 rounded-md m-1 mb-0 hover:bg-buttonRed;
 		}
-		.btnPict{
+		.btnPict {
 			@apply w-[130px] h-[30px] transition-all duration-300;
 		}
-		.bluePict{
+		.bluePict {
 			@apply fill-blue-800 hover:fill-white;
 		}
-		.redPict{
+		.redPict {
 			@apply fill-red-800 hover:fill-white;
 		}
-		.greenPict{
+		.greenPict {
 			@apply fill-green-800 hover:fill-white;
 		}
-		
 	}
-	
-	p{
-		@apply max-w-[15ch] whitespace-nowrap overflow-hidden ;
+
+	p {
+		@apply max-w-[15ch] whitespace-nowrap overflow-hidden;
 	}
-	
-	.members{
+
+	.members {
 		@apply flex m-2 justify-center;
-		.memberIco{
-			@apply w-8 h-8 rounded-full border border-white border-2 absolute;
+		.memberIco {
+			@apply w-8 h-8 rounded-full border border-white absolute;
 		}
-		.membersDiv{
-			@apply w-8 h-8 rounded-full border border-white border-2 absolute bg-blue-500 text-center text-white;
+		.membersDiv {
+			@apply w-8 h-8 rounded-full border border-white absolute bg-blue-500 text-center text-white;
 		}
 	}
-	.membersNames{
+	.membersNames {
 		@apply flex  m-4 sm:ml-8;
 	}
 }
-
