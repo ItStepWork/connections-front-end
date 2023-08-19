@@ -17,6 +17,9 @@ module.exports = withPWA({
 		],
 		formats: ['image/avif', 'image/webp'],
 	},
+  experimental: {
+    serverActions: true,
+  },
   /*
 	async headers() {
     return [

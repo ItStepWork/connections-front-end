@@ -18,9 +18,12 @@
   }
   .dialogDivBody {
     @apply flex flex-wrap text-base p-6 border border-gray-700 dark:bg-componentBG w-full;
+    a{
+      @apply text-gray-600 m-2 cursor-pointer;
+    }
   }
   .inputPhoto{
-    @apply w-full border-dashed border-2 rounded-lg h-40 m-1 mt-4 flex flex-col items-center;
+    @apply w-full border-dashed border-2 rounded-lg h-40  flex flex-col items-center;
     a{
       @apply text-gray-600 m-2 cursor-pointer;
     }
