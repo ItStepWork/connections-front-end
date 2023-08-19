@@ -10,7 +10,7 @@ import { AiOutlinePlus, AiOutlineUsergroupAdd } from 'react-icons/ai';
 import { BiSolidUserCheck } from 'react-icons/bi';
 import { BsFillPatchCheckFill } from 'react-icons/bs';
 import { MdOutlineAdminPanelSettings } from 'react-icons/md';
-import styles from './groupCard.module.scss';
+import styles from './styles.module.scss';
 
 export function GroupCard(props: any) {
   const { data: session, update } = useSession();
@@ -60,10 +60,10 @@ export function GroupCard(props: any) {
                   <h2>{props.group.name}</h2>
                   <span><BsFillPatchCheckFill size={18} /></span>
                 </div>
-                <p> {props.group.audience}</p>
-                <div className={styles.description}>
+                <p> {props.group.audience} группа - {Object.entries(users).length} участников</p>
+                {/* <div className={styles.description}>
                   <p className="  word-break: break-all"> {props.group.description}</p>
-                </div>
+                </div> */}
 
               </div>
             </div>
