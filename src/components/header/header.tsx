@@ -1,4 +1,5 @@
 "use client"
+import { useStore } from '@/stores/userDataStore'
 import { useSession } from 'next-auth/react'
 import localFont from "next/font/local"
 import Link from 'next/link'
@@ -18,13 +19,13 @@ const lombok = localFont({ src: '../../fonts/Lombok Regular.ttf'})
 const oneDay = localFont({ src: '../../fonts/ONEDAY.ttf'})
 
 export const Header: FC = () => {
-
+  const [fetch] = useStore((state) => [state.fetchUser])
   const { data: session } = useSession();
   const [open, setOpen] = useState(false);
 
   return (
     <>
-      <header className={styles.header}>
+      <header className={styles.header} onLoad={fetch}>
         <div >
           <div className={styles.contentContainer}>
           <Link href="http://localhost:3000/" className={styles.logoLink}>

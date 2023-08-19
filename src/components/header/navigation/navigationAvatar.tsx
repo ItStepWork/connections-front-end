@@ -4,10 +4,10 @@ import { FC } from 'react';
 import styles from './navigation.module.scss';
 
 export const NavigationAvatar: FC = () => {
-  const [avatar] = useStore((state) => [state.avatar])
+  const [avatar, fetch] = useStore((state) => [state.avatar, state.fetchUser])
   return (
     <>
-      <div className={styles.avatar}>
+      <div className={styles.avatar} onLoad={fetch}>
         {
           avatar && 
           <Image
