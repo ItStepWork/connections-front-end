@@ -2,8 +2,8 @@ import { faker } from '@faker-js/faker';
 import { BsTrash } from 'react-icons/bs';
 import { IoIosNotificationsOutline } from 'react-icons/io';
 import { MdOutlineNotificationsOff } from 'react-icons/md';
-import CardItem from '../cardItem.tsx/cardItem';
 import styles from './celebration.module.scss';
+import CardItem from './cardItem/cardItem';
 
 const Celebration = () => {
  return (

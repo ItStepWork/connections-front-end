@@ -4,13 +4,13 @@ import { BsCameraReels } from 'react-icons/bs'
 import { BsFillCameraVideoFill } from 'react-icons/bs'
 import { AiOutlineClose } from 'react-icons/ai'
 
-export const PostVideo = () => {
+export const PostVideo = (props:any) => {
   const closeDialog = () => { document.querySelector("dialog")?.close(); }
   return (
     <>
       <form className={styles.dialogDiv} >
         <div className={styles.dialogDivHeader}>
-          <h2 className={styles.labels}>Add post video</h2>
+          <h2 className={styles.labels}>Опубликовать видео</h2>
           <button type="button" className={styles.closeButton} onClick={closeDialog}>
             <AiOutlineClose size={16}></AiOutlineClose>
           </button>
@@ -18,23 +18,26 @@ export const PostVideo = () => {
         <div className={styles.dialogDivBody}>
           <div className="m-1 w-full">
             <div className={styles.topDiv}>
-              <img className={styles.userIco} src={faker.image.avatar()}></img>
-              <textarea className={styles.grInput} rows={2} placeholder="Share your thougts..." required></textarea>
+            {props.user?.avatarUrl
+                ? <img className={styles.userIco} src={props.user.avatarUrl}></img>
+                : <img className={styles.userIco} src={faker.image.avatar()}></img>
+              }
+              <textarea className={styles.grInput} rows={2} placeholder="Поделитесь своими мыслями..." required></textarea>
             </div>
           </div>
-          <a>Upload attachment</a>
+          <a>Загрузить вложение</a>
           <label className={styles.inputPhoto}>
             <BsCameraReels className="fill-gray-600 mt-5" size={50}></BsCameraReels>
-            <a>Drag here or click to upload video.</a>
+            <a>Перетащите сюда или нажмите, чтобы загрузить видео.</a>
             <input type="file" className="hidden"></input>
           </label>
         </div>
         <div className={styles.dialogDivFooter}>
           <div className={styles.redButton}>
             <BsFillCameraVideoFill className="m-1"></BsFillCameraVideoFill>
-            <a>Live video</a>
+            <a>Запись</a>
           </div>
-          <button className={styles.greenButton}>Post</button>
+          <button className={styles.greenButton}>Опубликовать</button>
         </div>
       </form>
     </>

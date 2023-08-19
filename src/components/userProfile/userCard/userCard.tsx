@@ -44,14 +44,13 @@ export function UserCard(props: any) {
     return () => clearTimeout(timer);
   }, []);
 
-  if (loading) {
-    
+  if (loading) { 
     return <UserCardPreloader />;
   }
 
   return (
     <>
-      <div className={styles.container}>
+      <div className={styles.container} onLoad={fetchUser}>
         <div className={styles.bannerImage}>
           {
             bg &&
@@ -66,9 +65,9 @@ export function UserCard(props: any) {
               className={styles.image}
             />
           }
-          <div className='absolute ml-5 mt-5'>
-            <label htmlFor="background-file" className="flex rounded-full cursor-pointer transition-all duration-300 bg-buttonBlue bg-opacity-60 hover:bg-opacity-100">
-              <div className="flex p-1 md:p-2 lg:p-3">
+          <div className={styles.editBgImage}>
+            <label htmlFor="background-file" className={styles.backgroundImageLabel}>
+              <div className={styles.backgroundIcon}>
                 <HiMiniPencilSquare className="fill-white" />
               </div>
               <input id="background-file" type="file" className="hidden" onChange={saveBackground} />
@@ -92,9 +91,9 @@ export function UserCard(props: any) {
                     />
                   }
                 </div>
-                <div className='absolute ml-12 mt-7 md:ml-28 md:mt-16 lg:ml-28 lg:mt-14'>
-                  <label htmlFor="avatar-file" className="flex rounded-full cursor-pointer transition-all duration-300 bg-buttonBlue bg-opacity-60 hover:bg-opacity-100">
-                    <div className="flex p-1 md:p-2 lg:p-3">
+                <div className={styles.editAvatar}>
+                  <label htmlFor="avatar-file" className={styles.avatarLabel}>
+                    <div className={styles.avatarIcon}>
                       <HiMiniPencilSquare className="fill-white" />
                     </div>
                     <input id="avatar-file" type="file" className="hidden" onChange={saveAvatar} />

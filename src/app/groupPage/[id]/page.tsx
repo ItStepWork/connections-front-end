@@ -1,5 +1,5 @@
-// 'use server'
-import Group from "../groupCard/group"
+'use server'
+import Group from "@/components/group/group"
 import type { GetServerSideProps } from 'next'
 
 export const getServerSideProps: GetServerSideProps = async (context: any) => {

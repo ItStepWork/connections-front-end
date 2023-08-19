@@ -10,20 +10,20 @@ import { AiOutlineClose } from 'react-icons/ai'
 import { MdLocationPin } from 'react-icons/md'
 import { MdLocalOffer } from 'react-icons/md'
 
-export const CreatePost = () => {
+export const CreatePost = (props: any) => {
   const closeDialog = () => { document.querySelector("dialog")?.close(); }
   const { data: session, update } = useSession();
   const options = [
     {
-      label: "Public",
+      label: "Для всех",
       value: '0',
     },
     {
-      label: "Only Me",
+      label: "Только я",
       value: '1',
     },
     {
-      label: "Friends",
+      label: "Друзья",
       value: '2',
     },
   ];
@@ -31,7 +31,7 @@ export const CreatePost = () => {
     <>
       <form className={styles.dialogDiv} >
         <div className={styles.dialogDivHeader}>
-          <h2 className={styles.labels}>Create post</h2>
+          <h2 className={styles.labels}>Создать пост</h2>
           <button type="button" className={styles.closeButton} onClick={closeDialog}>
             <AiOutlineClose size={16}></AiOutlineClose>
           </button>
@@ -39,50 +39,53 @@ export const CreatePost = () => {
         <div className={styles.dialogDivBody}>
           <div className="m-1 w-full">
             <div className={styles.topDiv}>
-              <img className={styles.userIco} src={faker.image.avatar()}></img>
-              <textarea className={styles.grInput} rows={4} placeholder="Share your thougts..." required></textarea>
+              {props.user?.avatarUrl
+                ? <img className={styles.userIco} src={props.user.avatarUrl}></img>
+                : <img className={styles.userIco} src={faker.image.avatar()}></img>
+              }
+              <textarea className={styles.grInput} rows={4} placeholder="Поделитесь своими мыслями..." required></textarea>
             </div>
           </div>
           <div className={styles.bottomDiv}>
             <div className={styles.roundedDiv + " bg-green-900 "}>
-              <HiPhoto size={16} title="Photo" className="fill-green-500"></HiPhoto>
+              <HiPhoto size={16} title="Фото" className="fill-green-500"></HiPhoto>
             </div>
             <div className={styles.roundedDiv + " bg-blue-900 "}>
-              <BsCameraReelsFill title="Video" size={16} className="fill-blue-500"></BsCameraReelsFill>
+              <BsCameraReelsFill title="Видео" size={16} className="fill-blue-500"></BsCameraReelsFill>
             </div>
             <div className={styles.roundedDiv + " bg-red-900 "}>
-              <BsCalendar2EventFill title="Events" size={16} className="fill-red-500"></BsCalendar2EventFill>
+              <BsCalendar2EventFill title="Событие" size={16} className="fill-red-500"></BsCalendar2EventFill>
             </div>
             <div className={styles.roundedDiv + " bg-yellow-900 "}>
-              <BsFillEmojiSmileFill title="Feeling/Activity" size={16} className="fill-yellow-500"></BsFillEmojiSmileFill>
+              <BsFillEmojiSmileFill title="Чувство/Деятельность" size={16} className="fill-yellow-500"></BsFillEmojiSmileFill>
             </div>
             <div className={styles.roundedDiv + " bg-green-900 "}>
-              <MdLocationPin title="Chech in" className="fill-gray-500" size={16}></MdLocationPin>
+              <MdLocationPin title="Локация" className="fill-gray-500" size={16}></MdLocationPin>
             </div>
             <div className={styles.roundedDiv + " bg-blue-900 "}>
-              <MdLocalOffer title="Tag people on top" className="fill-blue-500" size={16}></MdLocalOffer>
+              <MdLocalOffer title="Отметить людей" className="fill-blue-500" size={16}></MdLocalOffer>
             </div>
           </div>
           <div className={styles.checkDiv}>
-          <select
-            className={styles.select}
-            id="audience"
-            key={session?.user?.id}
-          >
-            {options.map((option, index) => (
-              <option key={index} value={option.value} typeof="number">{option.label}</option>
-            ))}
-          </select>
+            <select
+              className={styles.select}
+              id="audience"
+              key={session?.user?.id}
+            >
+              {options.map((option, index) => (
+                <option key={index} value={option.value} typeof="number">{option.label}</option>
+              ))}
+            </select>
+          </div>
         </div>
-        </div>
-        
+
 
         <div className={styles.dialogDivFooter}>
           <div className={styles.redButton}>
             <BsFillCameraVideoFill className="m-1"></BsFillCameraVideoFill>
-            <a>Live video</a>
+            <a>Видео</a>
           </div>
-          <button className={styles.greenButton}>Post</button>
+          <button className={styles.greenButton}>Публикация</button>
         </div>
       </form>
     </>

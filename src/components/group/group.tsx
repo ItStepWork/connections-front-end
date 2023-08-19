@@ -6,10 +6,10 @@ import { News } from '@/components/main/news/news'
 import { Stories } from '@/components/main/stories/stories'
 import { GroupsCard } from '@/components/userProfile/groupsCard/groupsCard'
 import { useState, useEffect } from 'react'
-import { GroupCard } from '../groupCard/groupCard'
-import styles from './group.module.scss';
+import { GroupCard } from './headerBlock/headerBlock'
+import styles from './styles.module.scss';
 import { GroupService } from '@/services/group.service';
-
+import { AboutCard } from './aboutBlock/aboutCard'
 
 export default function Group(props: any) {
     const [group, setGroup] = useState<any>(null);
@@ -30,12 +30,13 @@ export default function Group(props: any) {
             <main className={styles.container}>
 
                 <div className={styles.leftContainer + " mt-20"}>
-                    <LeftUserBlock setComponent={setComponent} />
-                    <LeftBlockFooter />
-                </div>
-                <div className={styles.rightContainer + " mt-20"}>
-
+                    {/* <LeftUserBlock setComponent={setComponent} />
+                    <LeftBlockFooter /> */}
                     {ChangeComponent()}
+                </div>
+                <div className={styles.rightContainer}>
+                    <AboutCard group={group}></AboutCard>
+
                     {/* <AddPost /> */}
 
                 </div>
