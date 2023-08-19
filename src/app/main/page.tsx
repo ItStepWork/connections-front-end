@@ -1,6 +1,6 @@
 "use client"
 import Gallery from "@/components/gallery/main/page";
-import Celebration from "@/components/main/celebrations/main/page";
+
 import { Feed } from "@/components/main/feed/feed";
 import { FollowsBlock } from "@/components/main/follows/followsBlock";
 import { LeftBlockFooter } from "@/components/main/leftBlockFooter/leftBlockFooter";
@@ -12,6 +12,7 @@ import { GroupsCard } from "@/components/userProfile/groupsCard/groupsCard";
 import { useSession } from "next-auth/react";
 import { useState } from 'react';
 import styles from './styles.module.scss';
+import Celebration from "@/components/main/celebrations/page";
 
 export default function Home(props: any) {
 

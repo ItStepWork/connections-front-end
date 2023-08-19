@@ -1,6 +1,9 @@
 import { faker } from '@faker-js/faker';
-import CardItem from '../cardItem.tsx/cardItem';
+import { BsTrash } from 'react-icons/bs';
+import { IoIosNotificationsOutline } from 'react-icons/io';
+import { MdOutlineNotificationsOff } from 'react-icons/md';
 import styles from './celebration.module.scss';
+import CardItem from './cardItem/cardItem';
 
 const Celebration = () => {
  return (
@@ -8,10 +11,10 @@ const Celebration = () => {
     <div className={styles.container}>
       <div className={styles.contentContainer}>
         <h2>Сегодня празднуют</h2>
-          <CardItem date='' avatar={faker.image.avatar()} fullName={faker.person.fullName()} howCelebrating='Отправить поздравление'/>
-          <CardItem date='' avatar={faker.image.avatar()} fullName={faker.person.fullName()} howCelebrating='Отправить поздравление'/>
-          <CardItem date='' avatar={faker.image.avatar()} fullName={faker.person.fullName()} howCelebrating='Отправить поздравление'/>
-          <CardItem date='' avatar={faker.image.avatar()} fullName={faker.person.fullName()} howCelebrating='Отправить поздравление'/>
+        <CardItem date='' avatar={faker.image.avatar()} fullName={faker.person.fullName()} howCelebrating='Отправить поздравление'/>
+        <CardItem date='' avatar={faker.image.avatar()} fullName={faker.person.fullName()} howCelebrating='Отправить поздравление'/>
+        <CardItem date='' avatar={faker.image.avatar()} fullName={faker.person.fullName()} howCelebrating='Отправить поздравление'/>
+        <CardItem date='' avatar={faker.image.avatar()} fullName={faker.person.fullName()} howCelebrating='Отправить поздравление'/>
       </div>
      
       <div className={styles.contentContainer}>

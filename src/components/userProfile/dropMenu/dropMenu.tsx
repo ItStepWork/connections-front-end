@@ -28,7 +28,10 @@ export const DropMenuProfile: FC<IDrop> = ({navbarOpen}) => {
         { navbarOpen ? 
             <button className={styles.navText} onClick={logOut}>Выход</button> 
           :
-          <button className={styles.dropButton} type="button" onClick={() => setIsOpen((prev) => !prev)}>
+          <button className={styles.dropButton} type="button" 
+          onClick={() => { if (!isOpen) setIsOpen(true) }} 
+          onFocus={() => { if (!isOpen) setIsOpen(true) }} 
+          onBlur={() => setIsOpen(false)} >
             <NavigationAvatar />
           </button>       
         }
