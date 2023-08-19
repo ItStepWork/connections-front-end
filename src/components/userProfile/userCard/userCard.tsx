@@ -44,14 +44,13 @@ export function UserCard(props: any) {
     return () => clearTimeout(timer);
   }, []);
 
-  if (loading) {
-    
+  if (loading) { 
     return <UserCardPreloader />;
   }
 
   return (
     <>
-      <div className={styles.container}>
+      <div className={styles.container} onLoad={fetchUser}>
         <div className={styles.bannerImage}>
           {
             bg &&
