@@ -5,7 +5,7 @@ export const Feed = () => {
   return (
     <>
       <div className={styles.container}>
-
+        Тут будут посты, наверняка
       </div>
     </>
   )

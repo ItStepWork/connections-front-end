@@ -11,9 +11,9 @@ export const Stories = () => {
             <Image
               src={faker.image.url({height: 150, width: 120})}
               width={120}
-              height={250}
+              height={150}
               quality={80}
-              //style={{ objectFit: "cover" }}
+              style={{ objectFit: "cover" }}
               alt="story"
             />
             <p>{faker.person.fullName()}</p>
@@ -22,9 +22,9 @@ export const Stories = () => {
             <Image
               src={faker.image.url({height: 150, width: 120})}
               width={120}
-              height={250}
+              height={150}
               quality={80}
-              //style={{ objectFit: "cover" }}
+              style={{ objectFit: "cover" }}
               alt="story"
             />
              <p>{faker.person.fullName()}</p>
@@ -33,9 +33,9 @@ export const Stories = () => {
             <Image
               src={faker.image.url({height: 150, width: 120})}
               width={120}
-              height={250}
+              height={150}
               quality={80}
-              //style={{ objectFit: "cover" }}
+              style={{ objectFit: "cover" }}
               alt="story"
             />
              <p>{faker.person.fullName()}</p>
@@ -44,9 +44,9 @@ export const Stories = () => {
             <Image
               src={faker.image.url({height: 150, width: 120})}
               width={120}
-              height={250}
+              height={150}
               quality={80}
-              //style={{ objectFit: "cover" }}
+              style={{ objectFit: "cover" }}
               alt="story"
             />
              <p>{faker.person.fullName()}</p>
@@ -55,20 +55,20 @@ export const Stories = () => {
             <Image
               src={faker.image.url({height: 150, width: 120})}
               width={120}
-              height={250}
+              height={150}
               quality={80}
-              //style={{ objectFit: "cover" }}
+              style={{ objectFit: "cover" }}
               alt="story"
             />
              <p>{faker.person.fullName()}</p>
           </div>
           <div className={styles.img}>
             <Image
-              src={faker.image.url({height: 150, width: 120})}
+              src={faker.image.url({height: 150, width: 150})}
               width={120}
-              height={250}
+              height={150}
               quality={80}
-              //style={{ objectFit: "cover" }}
+              style={{ objectFit: "cover" }}
               alt="story"
             />
              <p>{faker.person.fullName()}</p>

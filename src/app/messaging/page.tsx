@@ -1,15 +1,15 @@
 'use client'
-import HeaderBlock from '@/components/messaging/headerBlock/page';
-import styles from './styles.module.scss'
-import React from 'react';
-import MainBlock from '@/components/messaging/mainBlock/page';
-import FooterBlock from '@/components/messaging/footerBlock/page';
-import { IUser } from '@/dto/sessionDto';
 import { Dialogues } from '@/components/messaging/dialogues/page';
-import { NewMessage } from '@/components/messaging/newMessage/page';
 import { DropDownDialogues } from '@/components/messaging/dropDownDialogues/page';
-import { UserService } from '@/services/user.service';
+import FooterBlock from '@/components/messaging/footerBlock/page';
+import HeaderBlock from '@/components/messaging/headerBlock/page';
+import MainBlock from '@/components/messaging/mainBlock/page';
+import { NewMessage } from '@/components/messaging/newMessage/page';
+import { IUser } from '@/dto/sessionDto';
 import { MessagingService } from '@/services/messaging.service';
+import { UserService } from '@/services/user.service';
+import React from 'react';
+import styles from './styles.module.scss';
 
 type MyState = {
   messages: [],
