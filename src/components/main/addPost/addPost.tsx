@@ -1,16 +1,12 @@
-import styles from "./styles.module.scss"
-import { useSession } from "next-auth/react";
-import { faker } from '@faker-js/faker';
-import { HiPhoto } from 'react-icons/hi2'
-import { BsCameraReelsFill } from 'react-icons/bs'
-import { BsCalendar2EventFill } from 'react-icons/bs'
-import { BsFillEmojiSmileFill } from 'react-icons/bs'
-import { BsThreeDots } from 'react-icons/bs'
-import { CreatePost } from '../createPost/createPost'
-import { PostPhoto } from '../postPhoto/postPhoto'
-import { PostVideo } from '../postVideo/postVideo'
-import { useState, useEffect } from "react";
 import { UserService } from '@/services/user.service';
+import { faker } from '@faker-js/faker';
+import { useEffect, useState } from "react";
+import { BsCalendar2EventFill, BsCameraReelsFill, BsFillEmojiSmileFill } from 'react-icons/bs';
+import { HiPhoto } from 'react-icons/hi2';
+import { CreatePost } from '../createPost/createPost';
+import { PostPhoto } from '../postPhoto/postPhoto';
+import { PostVideo } from '../postVideo/postVideo';
+import styles from "./styles.module.scss";
 
 export const AddPost = () => {
   // const closeDialog = () => { document.querySelector("dialog")?.close(); }
@@ -60,11 +56,6 @@ export const AddPost = () => {
           <div className={styles.btnDiv} onClick={() => { getComponent("createPost") }}>
             <BsFillEmojiSmileFill size={16} className="fill-yellow-500" ></BsFillEmojiSmileFill>
             <a>Чувство/Деятельность</a>
-          </div>
-          <div className={styles.btnDivEnd}>
-            <div className={styles.btnDiv}>
-              <BsThreeDots className="ml-2 mr-2" size={16}></BsThreeDots>
-            </div>
           </div>
         </div>
       </div>

@@ -12,8 +12,8 @@
 				.avatarContainer {
 					@apply flex md:block lg:block md:justify-normal lg:justify-normal justify-center relative;
 					.avatar {
-						@apply lg:mb-6 md:mb-4 rounded-full overflow-hidden border-[3px] border-white top-[10px] h-20 w-20
-            relative md:bottom-[-40px] lg:bottom-[-40px] w-24 h-24;
+						@apply lg:mb-6 md:mb-4 rounded-full overflow-hidden border-[3px] border-white top-[10px]
+            relative md:bottom-[-40px] lg:bottom-[-40px] w-24 h-24 md:ml-6  lg:ml-6;
 					}
 				}
 			}
@@ -32,7 +32,7 @@
 					}
 				}
 				.greenButton {
-					@apply w-32 p-3 text-green-400 flex items-center flex justify-center bg-buttonGreen bg-opacity-25 transition-all duration-300 hover:bg-buttonGreen hover:bg-opacity-75 hover:text-white focus:ring-4 focus:outline-none focus:ring-buttonGreen font-medium rounded-md text-sm px-2 py-2.5 md:px-1.5 lg:px-1.5 text-center;
+					@apply w-32 p-3 text-green-400 flex items-center flex justify-center bg-button_green_BG bg-opacity-25 transition-all duration-300 hover:bg-button_green_BG hover:bg-opacity-75 hover:text-white focus:ring-4 focus:outline-none focus:ring-button_green_BG font-medium rounded-md text-sm px-2 py-2.5 md:px-1.5 lg:px-1.5 text-center;
 					span {
 						@apply mr-2;
 					}
