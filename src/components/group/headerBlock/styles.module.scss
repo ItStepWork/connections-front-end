@@ -1,6 +1,6 @@
 .container {
-	@apply flex flex-col w-full bg-white text-gray-900 border border-whiteModeBorder rounded-xl
-  dark:text-componentText object-contain overflow-hidden dark:bg-componentBG dark:border-componentBorder;
+	@apply flex flex-col w-full bg-white text-gray-900 border border-light_border rounded-xl
+  dark:text-dark_text_gray object-contain overflow-hidden dark:bg-dark_background dark:border-dark_border p-6;
 
 	.cardBody {
 		@apply relative flex flex-col;
@@ -18,15 +18,15 @@
 				}
 			}
 			.buttonBlock {
-				@apply flex flex-row  flex-wrap items-center gap-2 mr-3 md:ml-10;
+				@apply flex flex-row  flex-wrap items-center gap-2 mr-3 md:ml-10 md:absolute md:right-0 md:top-0 lg:absolute lg:right-0 lg:top-0;
 				.blueButton {
-					@apply w-32 text-buttonBlue flex justify-center items-center bg-buttonBlueOpacity transition-all duration-300 hover:bg-[#0b53b1] hover:text-white focus:ring-4 focus:outline-none focus:ring-buttonBlue font-medium rounded-md text-sm px-2 py-2.5 md:px-1.5 lg:px-1.5 text-center;
+					@apply w-32 text-button_blue_BG flex justify-center items-center bg-button_blue_opacity transition-all duration-300 hover:bg-[#0b53b1] hover:text-white focus:ring-4 focus:outline-none focus:ring-button_blue_BG font-medium rounded-md text-sm px-2 py-2.5 md:px-1.5 lg:px-1.5 text-center;
 					span {
 						@apply mr-2;
 					}
 				}
 				.redButton {
-					@apply w-32 text-buttonRed flex justify-center items-center bg-redOpacity transition-all duration-300 hover:bg-buttonRed hover:text-white focus:ring-4 focus:outline-none focus:ring-buttonRed font-medium rounded-md text-sm px-2 py-2.5 md:px-1.5 lg:px-1.5 text-center;
+					@apply w-32 text-button_red_BG flex justify-center items-center bg-button_red_opacity transition-all duration-300 hover:bg-button_red_BG hover:text-white focus:ring-4 focus:outline-none focus:ring-button_red_BG font-medium rounded-md text-sm px-2 py-2.5 md:px-1.5 lg:px-1.5 text-center;
 					span {
 						@apply mr-2;
 					}
@@ -50,7 +50,7 @@
 				}
 			}
 		}
-		.membesContainer {
+		.membersContainer {
 			@apply flex  gap-6 flex-wrap lg:justify-start md:justify-start justify-center;
 			.members {
 				@apply flex m-2;
