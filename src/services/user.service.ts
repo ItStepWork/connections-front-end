@@ -1,10 +1,17 @@
 import { IUser } from '@/interfaces/user.interface';
 import axios from 'axios';
 import { getSession } from 'next-auth/react';
+import { signOut } from "next-auth/react";
 
 export class UserService {
 
-  static async setUserBgImage(formData: FormData){
+  static checkLogin(response: any) {
+    if (response.status === 401) {
+      signOut();
+    }
+  }
+
+  static async setUserBgImage(formData: FormData) {
     const session = await getSession();
     return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "User/SaveBackground", formData, {
       headers: {
@@ -12,10 +19,13 @@ export class UserService {
         "Authorization": "Bearer " + session?.user.accessToken,
         'Content-Type': 'multipart/form-data',
       },
+    }).then(response => {
+      this.checkLogin(response);
+      return response.data;
     });
   }
 
-  static async setUserAvatarImage(formData: FormData){
+  static async setUserAvatarImage(formData: FormData) {
     const session = await getSession();
     return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "User/SaveAvatar", formData, {
       headers: {
@@ -23,6 +33,9 @@ export class UserService {
         "Authorization": "Bearer " + session?.user.accessToken,
         'Content-Type': 'multipart/form-data',
       },
+    }).then(response => {
+      this.checkLogin(response);
+      return response.data;
     });
   }
 
@@ -31,9 +44,12 @@ export class UserService {
     return await axios.get<IUser>(process.env.NEXT_PUBLIC_STRAPI_API + "User/GetUser?id=" + id, {
       headers: {
         "Accept": "application/json",
-        "Authorization": "Bearer " + session?.user.accessToken,     
+        "Authorization": "Bearer " + session?.user.accessToken,
       },
-    }).then(response => response.data)
+    }).then(response => {
+      this.checkLogin(response);
+      return response.data;
+    });
   }
 
   static async getCurrentUser() {
@@ -41,9 +57,12 @@ export class UserService {
     return await axios.get<IUser>(process.env.NEXT_PUBLIC_STRAPI_API + "User/GetUser?id=" + session?.user.id, {
       headers: {
         "Accept": "application/json",
-        "Authorization": "Bearer " + session?.user.accessToken,     
+        "Authorization": "Bearer " + session?.user.accessToken,
       },
-    }).then(response => response.data)
+    }).then(response => {
+      this.checkLogin(response);
+      return response.data;
+    });
   }
 
   static async getUsers() {
@@ -51,8 +70,11 @@ export class UserService {
     return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + "User/GetUsers", {
       headers: {
         "Accept": "application/json",
-        "Authorization": "Bearer " + session?.user.accessToken,     
+        "Authorization": "Bearer " + session?.user.accessToken,
       },
-    }).then(response => response.data)
+    }).then(response => {
+      this.checkLogin(response);
+      return response.data;
+    });
   }
 } 

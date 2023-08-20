@@ -1,7 +1,15 @@
 import axios from 'axios';
 import { getSession } from 'next-auth/react';
+import { signOut } from "next-auth/react";
 
 export class GroupService {
+
+    static checkLogin(response: any){
+        if(response.status === 401){
+            signOut();
+        }
+    } 
+
     static async getGroups() {
         const session = await getSession();
         return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + "Group/GetGroups", {
@@ -9,7 +17,10 @@ export class GroupService {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,
             },
-        }).then(response => response.data);
+        }).then(response => {
+            this.checkLogin(response);
+            return response.data;
+        });
     }
     static async addGroup(formData: FormData) {
         const session = await getSession();
@@ -19,6 +30,9 @@ export class GroupService {
                 "Authorization": "Bearer " + session?.user.accessToken,
                 'Content-Type': 'multipart/form-data',
             },
+        }).then(response => {
+            this.checkLogin(response);
+            return response.data;
         });
     }
     static async joinGroup(id:string) {
@@ -29,6 +43,9 @@ export class GroupService {
                 "Authorization": "Bearer " + session?.user.accessToken,
                 'Content-Type': 'application/json',
             },
+        }).then(response => {
+            this.checkLogin(response);
+            return response.data;
         });
     }
     static async leaveGroup(id: string) {
@@ -38,7 +55,10 @@ export class GroupService {
             "Accept": "application/json",
             "Authorization": "Bearer " + session?.user.accessToken,     
           },
-        }).then(response => response.data)
+        }).then(response => {
+            this.checkLogin(response);
+            return response.data;
+        })
       }
       static async getGroup(id: string) {
         const session = await getSession();
@@ -47,7 +67,10 @@ export class GroupService {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,
             },
-        }).then(response => response.data);
+        }).then(response => {
+            this.checkLogin(response);
+            return response.data;
+        });
       }
       static async getUsersGroup(id:string) {
         const session = await getSession();
@@ -56,7 +79,10 @@ export class GroupService {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,
             },
-        }).then(response => response.data);
+        }).then(response => {
+            this.checkLogin(response);
+            return response.data;
+        });
     }
 
 
