@@ -1,7 +1,6 @@
 "use client"
 import { AddPost } from '@/components/main/addPost/addPost';
 import { GroupService } from '@/services/group.service';
-import { UserService } from '@/services/user.service';
 import { faker } from '@faker-js/faker';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
@@ -12,7 +11,7 @@ import { BsFillPatchCheckFill } from 'react-icons/bs';
 import { MdOutlineAdminPanelSettings } from 'react-icons/md';
 import styles from './styles.module.scss';
 
-export function GroupCard(props: any) {
+export function HeaderBlock(props: any) {
   const { data: session, update } = useSession();
   const [users, setUsers] = useState<any[]>([])
   useEffect(() => {
@@ -61,9 +60,9 @@ export function GroupCard(props: any) {
                   <span><BsFillPatchCheckFill size={18} /></span>
                 </div>
                 <p> {props.group.audience} группа - {Object.entries(users).length} участников</p>
-                {/* <div className={styles.description}>
+                <div className={styles.description}>
                   <p className="  word-break: break-all"> {props.group.description}</p>
-                </div> */}
+                </div>
 
               </div>
             </div>
@@ -79,7 +78,7 @@ export function GroupCard(props: any) {
 
           </div>
 
-          <div className={styles.membesContainer}>
+          <div className={styles.membersContainer}>
             <div className={styles.members}>
               {users.map((user: any, index) => {
                 if (index < 12) {

@@ -1,12 +1,12 @@
-import { faker } from '@faker-js/faker';
-import Link from 'next/link';
-import { RiGitRepositoryPrivateLine } from 'react-icons/ri';
-import { AiOutlineUsergroupDelete, AiOutlineUsergroupAdd } from 'react-icons/ai';
-import { MdOutlineAdminPanelSettings } from 'react-icons/md';
-import styles from './card.module.scss';
-import { useSession } from "next-auth/react";
-import { useState, useEffect } from 'react';
 import { GroupService } from '@/services/group.service';
+import { faker } from '@faker-js/faker';
+import { useSession } from "next-auth/react";
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { AiOutlineUsergroupAdd, AiOutlineUsergroupDelete } from 'react-icons/ai';
+import { MdOutlineAdminPanelSettings } from 'react-icons/md';
+import { RiGitRepositoryPrivateLine } from 'react-icons/ri';
+import styles from './card.module.scss';
 
 export const Card = (props: any) => {
   const { data: session, update } = useSession();
@@ -45,7 +45,7 @@ export const Card = (props: any) => {
             ? <RiGitRepositoryPrivateLine className="absolute" title="Private"></RiGitRepositoryPrivateLine>
             : <></>}
         </div>
-        <Link className='pt-5' href={"/groupPage/" + props.group.id}>
+        <Link className='pt-5' href={"/group/" + props.group.id}>
           <div className={styles.avatar}>
             <img className='rounded-full w-[84px] h-[84px]'
               src={props.group.pictureUrl}
@@ -55,7 +55,7 @@ export const Card = (props: any) => {
           <div className={styles.fio}>
             <h4>{props.group.name}</h4>
             <p>{props.group.description}</p>
-            <div className={styles.membesContainer}>
+            <div className={styles.membersContainer}>
               <div className={styles.members}>
                 {users.map((user: any, index) => {
                   if (index < 6) {
@@ -66,7 +66,7 @@ export const Card = (props: any) => {
                 <div className="w-4"><div className={styles.membersDiv}>+{Object.entries(props.group.users).length} </div></div>
               </div>
             </div>
-            <p className='mt-8'>{Object.entries(props.group.users).length} учасников</p>
+            <p className='mt-8'>{Object.entries(props.group.users).length} участников</p>
           </div>
         </Link>
         <div className={styles.buttons}>
