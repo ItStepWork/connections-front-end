@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { AiOutlineCheck, AiOutlineCloudUpload } from 'react-icons/ai';
+import { IoMdImages } from 'react-icons/io';
 import styles from './styles.module.scss';
-import { IoMdImages } from 'react-icons/io'
-import { AiOutlineCloudUpload, AiOutlineCheck } from 'react-icons/ai'
 
 export default function Select(props: any) {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,8 +32,8 @@ export default function Select(props: any) {
                 </div>
               </div>
               <div className='h-0 m-0 p-0'>
-                <div className='absolute bg-white dark:bg-componentBG'>
-                  <div className='flex flex-col text-start px-1 w-40 overflow-hidden border dark:border-componentBorder'>
+                <div className='absolute bg-white dark:bg-dark_background'>
+                  <div className='flex flex-col text-start px-1 w-40 overflow-hidden border dark:border-dark_border'>
                     <div className={styles.action + " justify-between whitespace-nowrap"} onClick={() => { if (isOpen) { props.setSelected({ id: "", name: "Без альбома" }); setIsOpen(false); } }}>
                       Без альбома
                       {props.albums.find((album: any) => album.id === props.photo.albumId) === undefined ? (<AiOutlineCheck className="mx-1" />) : (<></>)}

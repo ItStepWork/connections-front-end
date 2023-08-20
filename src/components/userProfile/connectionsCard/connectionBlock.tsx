@@ -27,8 +27,8 @@ export const ConnectionBlock: FC = () => {
           </div>
         </div>
         <div className={styles.buttonsContainer}>
-          <button className={styles.buttonRed}>Удалить</button>
-          <button className={styles.buttonBlue}>Написать</button>
+          <button className={styles.button_red_BG}>Удалить</button>
+          <button className={styles.button_blue_BG}>Написать</button>
         </div>
       </div>
     </>

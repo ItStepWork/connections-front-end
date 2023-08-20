@@ -13,23 +13,23 @@
 				@apply flex flex-col md:flex-row lg:flex-row md:items-center lg:items-center md:gap-1 lg:gap-1;
 			}
 			.description {
-				@apply text-sm text-whiteModeFg dark:text-componentText;
+				@apply text-sm text-light_text dark:text-dark_text_gray;
 			}
 			span {
 				@apply text-gray-900 text-lg dark:text-white font-bold;
 			}
 			span:last-child {
-				@apply text-sm font-light dark:text-componentText text-whiteModeFg;
+				@apply text-sm font-light dark:text-dark_text_gray text-light_text;
 			}
 		}
 	}
 	.buttonsContainer {
 		@apply flex items-center gap-4 mt-5 md:mt-0 lg:mt-0;
-		.buttonRed {
-			@apply text-buttonRed flex items-center bg-redOpacity transition-all duration-300 ease-in hover:bg-buttonRed hover:text-white focus:ring-4 focus:outline-none focus:ring-buttonRed font-medium rounded-md text-sm px-4 py-2.5 text-center dark:bg-redOpacity dark:hover:bg-buttonRed dark:focus:ring-buttonRed;
+		.button_red_BG {
+			@apply text-button_red_BG flex items-center bg-button_red_opacity transition-all duration-300 ease-in hover:bg-button_red_BG hover:text-white focus:ring-4 focus:outline-none focus:ring-button_red_BG font-medium rounded-md text-sm px-4 py-2.5 text-center dark:bg-button_red_opacity dark:hover:bg-button_red_BG dark:focus:ring-button_red_BG;
 		}
-		.buttonBlue {
-			@apply text-[#0f6fec] bg-buttonBlueOpacity transition-all duration-300 ease-in hover:bg-blue-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center dark:bg-buttonBlueOpacity dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+		.button_blue_BG {
+			@apply text-[#0f6fec] bg-button_blue_opacity transition-all duration-300 ease-in hover:bg-blue-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center dark:bg-button_blue_opacity dark:hover:bg-blue-700 dark:focus:ring-blue-800;
 		}
 	}
 }

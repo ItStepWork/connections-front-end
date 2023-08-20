@@ -1,8 +1,8 @@
-.container{
-	@apply fixed z-50 h-full lg:invisible left-0 top-0 h-screen bg-whiteModeBg dark:bg-darkModeBg bg-gradient-to-r from-gray-400 dark:from-gray-800;
+.container {
+	@apply fixed z-50 h-full lg:invisible left-0 top-0 h-screen bg-light_background dark:bg-dark_background bg-gradient-to-r from-gray-400 dark:from-gray-800;
 }
 .dropMenu {
-	@apply h-5/6 overflow-y-auto bg-whiteModeBg dark:bg-darkModeBg  border rounded-sm border-zinc-200 dark:border-zinc-700 bg-white dark:bg-componentBG;
+	@apply h-5/6 overflow-y-auto bg-light_background dark:bg-dark_background  border rounded-sm border-zinc-200 dark:border-zinc-700;
 }
 .buttonClose {
 	@apply p-1 rounded-lg fill-gray-500 hover:fill-gray-300;

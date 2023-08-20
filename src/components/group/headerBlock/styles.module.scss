@@ -1,6 +1,6 @@
 .container {
 	@apply flex flex-col w-full bg-white text-gray-900 border border-whiteModeBorder rounded-xl
-  dark:text-componentText object-contain overflow-hidden dark:bg-componentBG dark:border-componentBorder p-6;
+  dark:text-componentText object-contain overflow-hidden dark:bg-componentBG dark:border-componentBorder;
 
 	.cardBody {
 		@apply relative flex flex-col;
@@ -46,11 +46,11 @@
 			.name {
 				@apply flex items-center;
 				span {
-					@apply text-buttonGreen ml-1;
+					@apply text-button_green_BG ml-1;
 				}
 			}
 		}
-		.membersContainer {
+		.membesContainer {
 			@apply flex  gap-6 flex-wrap lg:justify-start md:justify-start justify-center;
 			.members {
 				@apply flex m-2;
@@ -66,8 +66,7 @@
 			}
 		}
 		.description {
-			@apply max-w-[65ch]  overflow-hidden;
-			/* w-56 lg:w-56 flex flex-wrap md:w-32 justify-center md:justify-start lg:justify-start; */
+			@apply w-56 lg:w-56 flex flex-wrap md:w-32 justify-center md:justify-start lg:justify-start;
 		}
 
 		.bottomInfo {
@@ -84,18 +83,18 @@
 	.cardNav {
 		@apply flex px-6 w-full items-center justify-center gap-6 border-t flex-wrap 
     md:flex-nowrap md:justify-start lg:justify-start lg:flex-nowrap 
-    dark:border-componentBorder;
+    dark:border-dark_border;
 		.counterLink {
 			@apply flex items-center h-full border-b-4 border-b-blue-500;
 			.counter {
-				@apply ml-1 text-lg bg-greenOpacity px-2  rounded-md text-buttonGreen;
+				@apply ml-1 text-lg bg-button_green_opacity px-2  rounded-md text-button_green_BG;
 			}
 		}
 		.link {
 			@apply my-4  hover:text-blue-500 transition-all duration-300 font-bold;
 		}
 		.linkUnderline {
-			@apply text-buttonBlue my-4 hover:text-blue-500 transition-all duration-300 font-bold;
+			@apply text-button_blue_BG my-4 hover:text-blue-500 transition-all duration-300 font-bold;
 		}
 	}
 

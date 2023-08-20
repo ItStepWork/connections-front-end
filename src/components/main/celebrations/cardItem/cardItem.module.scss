@@ -1,5 +1,5 @@
 .container {
-	@apply flex flex-col md:flex-row lg:flex-row py-6 border-b border-whiteModeBorder dark:border-componentBorder;
+	@apply flex flex-col md:flex-row lg:flex-row py-6 border-b border-light_border dark:border-dark_border;
 	.avatarContainer {
 		@apply flex items-center mr-6 w-[70px] md:w-auto lg:w-auto rounded-full overflow-hidden;
 	}
@@ -9,10 +9,10 @@
 		.headBlock {
 			@apply flex relative justify-between items-center md:mt-0 lg:mt-0 mt-2;
 			.dropMenu {
-				@apply absolute z-50 top-6 right-0 gap-2 p-2 flex flex-col  bg-white text-gray-900 border border-whiteModeBorder rounded-lg
-							dark:text-componentText dark:bg-componentBG dark:border-componentBorder;
+				@apply absolute z-50 top-6 right-0 gap-2 p-2 flex flex-col  bg-white text-gray-900 border border-light_border rounded-lg
+							dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border;
 				.item {
-					@apply flex items-center p-1 transition-all duration-500 gap-1 cursor-pointer rounded-lg hover:bg-whiteModeBorder dark:hover:bg-componentBorder;
+					@apply flex items-center p-1 transition-all duration-500 gap-1 cursor-pointer rounded-lg hover:bg-light_border dark:hover:bg-dark_border;
 				}
 			}
 			.name {
@@ -25,11 +25,11 @@
 		.sendForm {
 			@apply flex items-center gap-4;
 			.textarea {
-				@apply block p-2.5 outline-none w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-whiteModeBorder focus:ring-blue-500 focus:border-blue-500 
-            dark:bg-mainBG dark:border-componentBorder dark:placeholder-gray-400 dark:text-componentText dark:focus:ring-blue-500 dark:focus:border-blue-500;
+				@apply block p-2.5 outline-none w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-light_border focus:ring-blue-500 focus:border-blue-500 
+            dark:bg-main_background dark:border-dark_border dark:placeholder-gray-400 dark:text-dark_text_gray dark:focus:ring-blue-500 dark:focus:border-blue-500;
 			}
 			.button {
-				@apply text-[#0f6fec] relative bg-buttonBlueOpacity transition-all duration-300 hover:bg-blue-800 hover:text-white focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-3 text-center dark:bg-buttonBlueOpacity dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+				@apply text-[#0f6fec] relative bg-button_blue_opacity transition-all duration-300 hover:bg-blue-800 hover:text-white focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-3 text-center dark:bg-button_blue_opacity dark:hover:bg-blue-700 dark:focus:ring-blue-800;
 			}
 			.buttonChecked {
 				@apply text-white bg-blue-500 transition-all duration-300 hover:bg-blue-800 hover:text-white focus:ring-4  focus:outline-none focus:ring-blue-300 font-medium rounded-sm text-sm p-3 text-center dark:bg-[#0f6fec] dark:hover:bg-blue-700 dark:focus:ring-blue-800;

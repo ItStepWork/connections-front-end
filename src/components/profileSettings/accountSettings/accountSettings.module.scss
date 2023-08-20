@@ -1,7 +1,7 @@
 .container {
-	@apply w-full border rounded-lg border-whiteModeBorder dark:border-componentBorder bg-white dark:bg-componentBG;
+	@apply w-full border rounded-lg border-light_border dark:border-dark_border bg-white dark:bg-dark_background;
 	.description {
-		@apply p-6 leading-6 text-whiteModeFg dark:text-componentText;
+		@apply p-6 leading-6 text-light_text dark:text-dark_text_gray;
 		h2 {
 			@apply text-gray-900 dark:text-white text-2xl;
 		}
@@ -13,16 +13,16 @@
 			.inputContainer {
 				@apply md:w-1/2 lg:w-1/2 w-full pl-6 pr-6;
 				.inputLabel {
-					@apply block mb-2 font-light text-whiteModeFg dark:text-componentText;
+					@apply block mb-2 font-light text-light_text dark:text-dark_text_gray;
 				}
 				.label {
 					@apply bg-gray-50 outline-none border border-gray-300 text-gray-900 text-sm rounded-lg
          focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 
-				 dark:bg-mainBG dark:border-componentBorder dark:placeholder-gray-400 dark:text-componentText dark:focus:ring-blue-500 dark:focus:border-blue-500;
+				 dark:bg-main_background dark:border-dark_border dark:placeholder-gray-400 dark:text-dark_text_gray dark:focus:ring-blue-500 dark:focus:border-blue-500;
 				}
 			}
 			input[type='file']::file-selector-button {
-				@apply dark:bg-mainBG dark:text-componentText text-whiteModeFg;
+				@apply dark:bg-main_background dark:text-dark_text_gray text-light_text;
 			}
 		}
 		.namesBlock:nth-last-child(n-1) {
@@ -31,11 +31,11 @@
 		.textAreaContainer {
 			@apply w-full m-6;
 			.textLabel {
-				@apply block mb-2 text-sm outline-none text-whiteModeFg dark:text-componentText;
+				@apply block mb-2 text-sm outline-none text-light_text dark:text-dark_text_gray;
 			}
 			.textArea {
-				@apply block p-2.5 outline-none w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-whiteModeBorder focus:ring-blue-500 focus:border-blue-500 
-				dark:bg-mainBG dark:border-componentBorder dark:placeholder-gray-400 dark:text-componentText dark:focus:ring-blue-500 dark:focus:border-blue-500;
+				@apply block p-2.5 outline-none w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-light_border focus:ring-blue-500 focus:border-blue-500 
+				dark:bg-main_background dark:border-dark_border dark:placeholder-gray-400 dark:text-dark_text_gray dark:focus:ring-blue-500 dark:focus:border-blue-500;
 			}
 		}
 		.formButton {

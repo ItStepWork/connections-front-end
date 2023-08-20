@@ -1,7 +1,7 @@
-import styles from './styles.module.scss'
 import { useState } from "react";
-import { FaSmile } from 'react-icons/fa'
+import { FaSmile } from 'react-icons/fa';
 import { Emoji } from '../emoji/page';
+import styles from './styles.module.scss';
 
 export function DropDownEmoji(props: any) {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,8 +11,8 @@ export function DropDownEmoji(props: any) {
   return (
     <>
       <div className={styles.container}>
-        <button type="button"  {...isOpen ? { className: "bg-buttonRed rounded-lg px-2 py-1" } : { className: "bg-redOpacity rounded-lg px-2 py-1" }} onClick={() => { if (!isOpen) setIsOpen(true) }} onFocus={() => { if (isOpen) setIsOpen(true) }} onBlur={() => setIsOpen(false)}>
-          <FaSmile {...isOpen ? { className: "fill-white" } : { className: "fill-buttonRed" }} />
+        <button type="button"  {...isOpen ? { className: "bg-button_red_BG rounded-lg px-2 py-1" } : { className: "bg-button_red_opacity rounded-lg px-2 py-1" }} onClick={() => { if (!isOpen) setIsOpen(true) }} onFocus={() => { if (isOpen) setIsOpen(true) }} onBlur={() => setIsOpen(false)}>
+          <FaSmile {...isOpen ? { className: "fill-white" } : { className: "fill-button_red_BG" }} />
 
           {isOpen &&
             <>

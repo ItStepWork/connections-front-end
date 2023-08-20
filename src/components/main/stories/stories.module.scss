@@ -5,7 +5,7 @@
 		.img {
 			@apply min-w-[120px] relative min-h-[155px] flex overflow-hidden rounded-lg overflow-x-auto;
 			p {
-				@apply absolute text-sm font-semibold bottom-0 left-0 right-0 w-full text-center bg-gradient-to-t from-black text-whiteModeBg pb-1;
+				@apply absolute text-sm font-semibold bottom-0 left-0 right-0 w-full text-center bg-gradient-to-t from-black text-light_background pb-1;
 			}
 		}
 	}

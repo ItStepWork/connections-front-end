@@ -1,49 +1,46 @@
-.topDiv{
-    @apply flex flex-row w-full gap-2 ;
-    .userIco{
-      @apply w-10 h-10 m-2 rounded-full border border-blue-500 border-2 ;
-    }
-    .grInput {
-      @apply w-full flex bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg mt-2
+.topDiv {
+	@apply flex flex-row w-full gap-2;
+	.userIco {
+		@apply w-10 h-10 m-2 rounded-full border border-blue-500 border-2;
+	}
+	.grInput {
+		@apply w-full flex bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg mt-2
        focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 
        dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
-    }
-  }
-  .dialogDiv {
-    @apply border border-gray-700 w-80  lg:w-96 dark:bg-componentBG;
-  }
-  .dialogDivHeader {
-    @apply text-base p-2 flex justify-between dark:bg-componentBG w-full;
-    
-  }
-  .dialogDivBody {
-    @apply flex flex-wrap text-base p-6 border border-gray-700 dark:bg-componentBG w-full;
-    a{
-      @apply text-gray-600 m-2 cursor-pointer;
-    }
-  }
-  .inputPhoto{
-    @apply w-full border-dashed border-2 rounded-lg h-40 flex flex-col items-center;
-   
-  }
-  .dialogDivFooter {
-    @apply text-base p-2 flex justify-end dark:bg-componentBG w-full;
-  }
-  
-  .dialogButtonDiv {
-    @apply flex flex-wrap justify-center  w-full;
-  }
-  
-  .redButton {
-    @apply flex flex-row gap-2 text-buttonRed bg-redOpacity transition-all duration-300 rounded-md py-3 px-5 m-1 hover:bg-buttonRed hover:text-white;
-  }
-  .closeButton {
-    @apply p-2 inline-flex items-center justify-center text-gray-500 hover:text-gray-400 dark:bg-componentBG;
-  }
-  .greenButton {
-    @apply text-green-400 bg-buttonGreen bg-opacity-25 transition-all duration-300 rounded-md py-3 px-5 m-1 hover:bg-buttonGreen hover:bg-opacity-75 hover:text-white;
-  }
-  .labels {
-    @apply text-gray-900 dark:text-white text-2xl;
-  }
-  
+	}
+}
+.dialogDiv {
+	@apply border border-gray-700 w-80  lg:w-96 dark:bg-dark_background;
+}
+.dialogDivHeader {
+	@apply text-base p-2 flex justify-between dark:bg-dark_background w-full;
+}
+.dialogDivBody {
+	@apply flex flex-wrap text-base p-6 border border-gray-700 dark:bg-dark_background w-full;
+	a {
+		@apply text-gray-600 m-2 cursor-pointer;
+	}
+}
+.inputPhoto {
+	@apply w-full border-dashed border-2 rounded-lg h-40 flex flex-col items-center;
+}
+.dialogDivFooter {
+	@apply text-base p-2 flex justify-end dark:bg-dark_background w-full;
+}
+
+.dialogButtonDiv {
+	@apply flex flex-wrap justify-center  w-full;
+}
+
+.redButton {
+	@apply flex flex-row gap-2 text-button_red_BG bg-button_red_opacity transition-all duration-300 rounded-md py-3 px-5 m-1 hover:bg-button_red_BG hover:text-white;
+}
+.closeButton {
+	@apply p-2 inline-flex items-center justify-center text-gray-500 hover:text-gray-400 dark:bg-dark_background;
+}
+.greenButton {
+	@apply text-green-400 bg-button_green_BG bg-opacity-25 transition-all duration-300 rounded-md py-3 px-5 m-1 hover:bg-button_green_BG hover:bg-opacity-75 hover:text-white;
+}
+.labels {
+	@apply text-gray-900 dark:text-white text-2xl;
+}

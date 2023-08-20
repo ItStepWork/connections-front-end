@@ -1,15 +1,15 @@
 .container {
 	@apply relative m-3;
-	.user{
+	.user {
 		@apply flex w-full;
 	}
-	.userImage{
+	.userImage {
 		@apply w-10 h-10 rounded-full border border-gray-500;
 	}
-	.userInfo{
-		@apply px-2 ml-2 w-full flex flex-col overflow-hidden bg-whiteModeBg dark:bg-componentBG rounded-lg border border-whiteModeBorder dark:border-componentBorder;
+	.userInfo {
+		@apply px-2 ml-2 w-full flex flex-col overflow-hidden bg-light_background dark:bg-dark_background rounded-lg border border-light_border dark:border-dark_border;
 	}
-	.userName{
+	.userName {
 		@apply whitespace-nowrap font-bold;
 	}
 }

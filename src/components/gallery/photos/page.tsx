@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import styles from './styles.module.scss';
+import { GalleryService } from '@/services/gallery.service';
+import { useState } from 'react';
 import { MdOutlineAddAPhoto } from "react-icons/md";
 import { PhotoAction } from '../photoAction/page';
-import { GalleryService } from '@/services/gallery.service';
 import SelectedPhoto from '../selectedPhoto/page';
+import styles from './styles.module.scss';
 
 export default function Photos(props: any) {
 
@@ -34,7 +34,7 @@ export default function Photos(props: any) {
     <div className={styles.container}>
       <div>
       <label className={styles.addPhoto}>
-        <MdOutlineAddAPhoto size={50} className="fill-buttonBlue" />
+        <MdOutlineAddAPhoto size={50} className="fill-button_blue_BG" />
         <p className='text-center'>Добавить фото</p>
         <input type='file' className='hidden' onChange={change}></input>
       </label>

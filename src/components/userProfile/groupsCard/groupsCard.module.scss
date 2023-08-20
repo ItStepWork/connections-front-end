@@ -1,15 +1,15 @@
 .container {
-	@apply flex flex-col w-full justify-center p-6 bg-white text-gray-900 border border-whiteModeBorder rounded-xl
-  dark:text-componentText dark:bg-componentBG dark:border-componentBorder;
+	@apply flex flex-col w-full justify-center p-6 bg-white text-gray-900 border border-light_border rounded-xl
+  dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border;
 	.button {
-		@apply text-[#0f6fec] bg-buttonBlueOpacity transition-all duration-300 hover:bg-blue-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center dark:bg-buttonBlueOpacity dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+		@apply text-[#0f6fec] bg-button_blue_opacity transition-all duration-300 hover:bg-blue-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center dark:bg-button_blue_opacity dark:hover:bg-blue-700 dark:focus:ring-blue-800;
 	}
 	.header {
 		@apply flex justify-between items-center mb-6;
 		.groups {
 			@apply flex items-center;
 			.counter {
-				@apply text-xl bg-redOpacity ml-2 px-4 py-1 rounded-md text-[#d6293e];
+				@apply text-xl bg-button_red_opacity ml-2 px-4 py-1 rounded-md text-[#d6293e];
 			}
 		}
 	}
@@ -24,22 +24,22 @@
 		@apply text-base mb-2 mr-2 text-gray-900 dark:text-gray-400;
 	}
 	.dialogDivLitle {
-		@apply w-56 h-48 p-2 flex flex-wrap justify-center border border-gray-700 dark:bg-componentBG;
+		@apply w-56 h-48 p-2 flex flex-wrap justify-center border border-gray-700 dark:bg-dark_background;
 	}
 	.dialogDiv {
-		@apply border border-gray-700 dark:bg-componentBG;
+		@apply border border-gray-700 dark:bg-dark_background;
 	}
 	.dialogDivHeader {
-		@apply text-base p-2 flex justify-between dark:bg-componentBG;
+		@apply text-base p-2 flex justify-between dark:bg-dark_background;
 	}
 	.dialogDivBody {
-		@apply text-base p-6 border border-gray-700 dark:bg-componentBG;
+		@apply text-base p-6 border border-gray-700 dark:bg-dark_background;
 	}
 	.checkDiv {
 		@apply flex m-4;
 	}
 	.dialogDivFooter {
-		@apply w-80 text-base p-2 flex justify-end dark:bg-componentBG;
+		@apply w-80 text-base p-2 flex justify-end dark:bg-dark_background;
 	}
 
 	.dialogButtonDiv {
@@ -49,16 +49,16 @@
 		@apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg mt-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
 	}
 	.redButton {
-		@apply text-white bg-buttonRed transition-all duration-300 rounded-md py-3 px-5 m-1 hover:bg-[#a11f2f];
+		@apply text-white bg-button_red_BG transition-all duration-300 rounded-md py-3 px-5 m-1 hover:bg-[#a11f2f];
 	}
 	.grayButton {
 		@apply text-white bg-gray-900 transition-all duration-300 rounded-md py-3 px-5 m-1 hover:bg-gray-400;
 	}
 	.closeButton {
-		@apply p-2 inline-flex items-center justify-center text-gray-500 hover:text-gray-400 dark:bg-componentBG;
+		@apply p-2 inline-flex items-center justify-center text-gray-500 hover:text-gray-400 dark:bg-dark_background;
 	}
 	.greenButton {
-		@apply text-green-400 bg-buttonGreen bg-opacity-25 transition-all duration-300 rounded-md py-3 px-5 m-1 hover:bg-buttonGreen hover:bg-opacity-75 hover:text-white;
+		@apply text-green-400 bg-button_green_BG bg-opacity-25 transition-all duration-300 rounded-md py-3 px-5 m-1 hover:bg-button_green_BG hover:bg-opacity-75 hover:text-white;
 	}
 	.radioButton {
 		@apply accent-slate-400 m-1;
@@ -66,6 +66,6 @@
 	.select {
 		@apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
 		focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 
-	 	dark:bg-mainBG dark:border-componentBorder dark:placeholder-gray-400 dark:text-componentText dark:focus:ring-blue-500 dark:focus:border-blue-500;
+	 	dark:bg-main_background dark:border-dark_border dark:placeholder-gray-400 dark:text-dark_text_gray dark:focus:ring-blue-500 dark:focus:border-blue-500;
 	}
 }
