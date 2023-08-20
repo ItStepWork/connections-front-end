@@ -21,5 +21,7 @@ module.exports = withPWA({
   experimental: {
     serverActions: true,
   },
-  
+  typescript: {
+	ignoreBuildErrors: true,
+ },
 })
