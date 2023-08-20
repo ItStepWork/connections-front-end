@@ -1,7 +1,6 @@
 import { IUser } from '@/interfaces/user.interface';
 import axios from 'axios';
-import { getSession } from 'next-auth/react';
-import { signOut } from "next-auth/react";
+import { getSession, signOut } from 'next-auth/react';
 
 export class UserService {
 
@@ -68,6 +67,33 @@ export class UserService {
   static async getUsers() {
     const session = await getSession();
     return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + "User/GetUsers", {
+      headers: {
+        "Accept": "application/json",
+        "Authorization": "Bearer " + session?.user.accessToken,
+      },
+    }).then(response => {
+      this.checkLogin(response);
+      return response.data;
+    });
+  }
+
+  static async addFriend(id: string) {
+    const session = await getSession();
+    return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "User/AddFriend", {userId: id}, {
+      headers: {
+        "Accept": "application/json",
+        'Content-Type': 'application/json',
+        "Authorization": "Bearer " + session?.user.accessToken,
+      },
+    }).then(response => {
+      this.checkLogin(response);
+      return response.data;
+    });
+  }
+
+  static async getFriends() {
+    const session = await getSession();
+    return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + "User/GetFriends", {
       headers: {
         "Accept": "application/json",
         "Authorization": "Bearer " + session?.user.accessToken,
