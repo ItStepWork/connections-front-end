@@ -1,11 +1,11 @@
 import { DropDownEmoji } from '@/components/messaging/dropDownEmoji/page';
-import styles from './styles.module.scss'
-import { useState } from "react";
-import { AiFillLike } from 'react-icons/ai'
-import { BsFillSendFill } from 'react-icons/bs';
-import { Comment } from '../comment/page';
-import { Avatar } from '../avatar/page';
 import { GalleryService } from '@/services/gallery.service';
+import { useState } from "react";
+import { AiFillLike } from 'react-icons/ai';
+import { BsFillSendFill } from 'react-icons/bs';
+import { Avatar } from '../avatar/page';
+import { Comment } from '../comment/page';
+import styles from './styles.module.scss';
 
 export function InfoPhoto(props: any) {
 
@@ -35,8 +35,8 @@ export function InfoPhoto(props: any) {
       <Avatar myId={props.myId} accessToken={props.accessToken}/>
       <div className='flex justify-between m-3'>
         {props.photo.likes.includes(props.myId) ? (
-          <button onClick={like} className='flex items-center text-buttonBlue'>
-            <AiFillLike className="fill-buttonBlue" />
+          <button onClick={like} className='flex items-center text-button_blue_BG'>
+            <AiFillLike className="fill-button_blue_BG" />
             Liked ({props.photo.likes.length})
           </button>
         ) : (

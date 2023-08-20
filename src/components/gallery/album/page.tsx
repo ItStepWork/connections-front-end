@@ -1,8 +1,8 @@
 import { GalleryService } from '@/services/gallery.service';
-import styles from './styles.module.scss';
 import { useEffect, useState } from 'react';
-import SelectedPhoto from '../selectedPhoto/page';
 import { MdClose } from 'react-icons/md';
+import SelectedPhoto from '../selectedPhoto/page';
+import styles from './styles.module.scss';
 
 export default function Album(props: any) {
 
@@ -57,7 +57,7 @@ export default function Album(props: any) {
       <SelectedPhoto isSelected={isSelected} setIsSelected={setIsSelected} photos={photos} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} user={props.user} get={get} />
       {isSelectedRemove ? (
         <div className='fixed z-50 flex flex-col justify-center items-center left-0 top-0 h-screen w-full p-5 bg-black bg-opacity-70 '>
-          <div className='relative flex flex-col w-72 h-60 border rounded-lg bg-whiteModeBg dark:bg-darkModeBg border-whiteModeBorder dark:border-componentBorder'>
+          <div className='relative flex flex-col w-72 h-60 border rounded-lg bg-light_background dark:bg-dark_background border-light_border dark:border-dark_border'>
             <div className='absolute right-0'>
               <button onClick={() => { setIsSelectedRemove(false) }}><MdClose size={40} className="hover:fill-red-500"/></button>
             </div>

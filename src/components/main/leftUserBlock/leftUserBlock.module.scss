@@ -1,9 +1,9 @@
 .container {
-	@apply flex flex-col relative overflow-hidden w-full bg-white text-gray-900 border border-whiteModeBorder rounded-xl
-  dark:text-componentText dark:bg-componentBG dark:border-componentBorder;
+	@apply flex flex-col relative overflow-hidden w-full bg-white text-gray-900 border border-light_border rounded-xl
+  dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border;
 	.navigationBlock {
 		.link {
-			@apply flex w-full text-sm dark:text-whiteModeBg text-gray-900 mx-5 items-center my-5 font-bold hover:text-blue-500 transition-all duration-300;
+			@apply flex w-full text-sm dark:text-light_background text-gray-900 mx-5 items-center my-5 font-bold hover:text-blue-500 transition-all duration-300;
 		}
 		.icon {
 			@apply mr-2;
@@ -18,7 +18,7 @@
 	.aboutMeBlock {
 		@apply relative w-full pt-14 flex flex-col items-center;
 		h3 {
-			@apply dark:text-whiteModeBg text-gray-900 font-bold;
+			@apply dark:text-light_background text-gray-900 font-bold;
 		}
 		.work {
 			@apply text-xs mt-1;
@@ -27,7 +27,7 @@
 			@apply my-3;
 		}
 		p {
-			@apply dark:text-componentText text-gray-900 text-sm;
+			@apply dark:text-dark_text_gray text-gray-900 text-sm;
 		}
 		.avatar {
 			@apply border rounded-md overflow-hidden top-[-10%] text-center left-[40%] absolute;
@@ -38,12 +38,12 @@
 				@apply flex flex-col justify-center items-center;
 			}
 			.vr {
-				@apply inline-block items-stretch w-[1px] min-h-[2em] mx-2 bg-componentBorder;
+				@apply inline-block items-stretch w-[1px] min-h-[2em] mx-2 bg-dark_border;
 			}
 		}
 	}
 	.viewProfile {
-		@apply w-full flex justify-center items-center h-full cursor-pointer border-t py-3 border-whiteModeBorder dark:border-componentBorder;
+		@apply w-full flex justify-center items-center h-full cursor-pointer border-t py-3 border-light_border dark:border-dark_border;
 		.button {
 			@apply text-blue-500 hover:text-blue-900 text-sm transition-all duration-300;
 		}

@@ -1,14 +1,14 @@
 .container {
 	@apply relative;
 	.dropButton {
-		@apply relative overflow-hidden flex items-center dark:bg-darkModeButtonBg bg-whiteModeButtonBg rounded-lg;
+		@apply relative overflow-hidden flex items-center dark:bg-dark_button_BG bg-light_button_BG rounded-lg;
 	}
 	.dropMenu {
-		@apply absolute flex flex-col top-[46px] left-[-200px] items-center w-[240px] bg-white text-gray-900 border border-whiteModeBorder rounded-lg
-  dark:text-componentText dark:bg-componentBG dark:border-componentBorder;
+		@apply absolute flex flex-col top-[46px] left-[-200px] items-center w-[240px] bg-white text-gray-900 border border-light_border rounded-lg
+  dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border;
 	}
 	.buttonViewProfile {
-		@apply text-[#0f6fec] w-[85%] py-2.5 mt-3  bg-buttonBlueOpacity transition-all duration-300 hover:bg-blue-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm  text-center dark:bg-buttonBlueOpacity dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+		@apply text-[#0f6fec] w-[85%] py-2.5 mt-3  bg-button_blue_opacity transition-all duration-300 hover:bg-blue-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm  text-center dark:bg-button_blue_opacity dark:hover:bg-blue-700 dark:focus:ring-blue-800;
 	}
 	.avatarContainer {
 		@apply flex items-center justify-between gap-3 mx-4 mt-4;
@@ -32,7 +32,7 @@
 		}
 	}
 	.signOutContainer {
-		@apply flex items-center justify-center py-4 border-t border-b hover:text-blue-500 transition-all duration-300 border-whiteModeBorder w-full dark:border-componentBorder;
+		@apply flex items-center justify-center py-4 border-t border-b hover:text-blue-500 transition-all duration-300 border-light_border w-full dark:border-dark_border;
 		button {
 			@apply ml-2;
 		}
@@ -40,13 +40,13 @@
 	.modeContainer {
 		@apply flex items-center justify-between p-4 w-full;
 		.modeButton {
-			@apply py-3 px-3 flex items-center dark:bg-darkModeButtonBg bg-whiteModeButtonBg rounded-lg;
+			@apply py-3 px-3 flex items-center dark:bg-dark_button_BG bg-light_button_BG rounded-lg;
 		}
 		p {
-			@apply dark:text-componentText text-whiteModeFg;
+			@apply dark:text-dark_text_gray text-light_text;
 		}
 	}
 	.navText {
-		@apply font-bold text-gray-900 dark:text-componentText hover:text-blue-500 transition-all duration-300;
+		@apply font-bold text-gray-900 dark:text-dark_text_gray hover:text-blue-500 transition-all duration-300;
 	}
 }

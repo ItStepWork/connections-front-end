@@ -4,11 +4,11 @@
 		@apply flex justify-center items-center;
 	}
 	.verticalContainer {
-		@apply h-auto w-auto flex flex-col justify-center items-center  border rounded-lg border-whiteModeBorder dark:border-componentBorder bg-white dark:bg-componentBG;
+		@apply h-auto w-auto flex flex-col justify-center items-center  border rounded-lg border-light_border dark:border-dark_border bg-white dark:bg-dark_background;
 		.textCenter {
 			@apply text-center;
 			span {
-				@apply dark:text-componentText text-gray-900;
+				@apply dark:text-dark_text_gray text-gray-900;
 			}
 		}
 		.cardSignUp {
@@ -18,7 +18,7 @@
 			@apply mb-2 text-2xl;
 		}
 		.inputLabel {
-			@apply block mb-2 text-sm font-medium text-gray-900 dark:text-componentText;
+			@apply block mb-2 text-sm font-medium text-gray-900 dark:text-dark_text_gray;
 		}
 		.input {
 			@apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
@@ -36,7 +36,7 @@
 			@apply my-4;
 		}
 		p {
-			@apply dark:text-componentText text-gray-900 flex justify-center items-center;
+			@apply dark:text-dark_text_gray text-gray-900 flex justify-center items-center;
 			a {
 				@apply px-2;
 			}

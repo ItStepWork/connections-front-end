@@ -1,15 +1,15 @@
 .container {
-	@apply flex flex-col w-full justify-center p-6 bg-white text-gray-900 border border-whiteModeBorder rounded-xl
-  dark:text-componentText dark:bg-componentBG dark:border-componentBorder;
+	@apply flex flex-col w-full justify-center p-6 bg-white text-gray-900 border border-light_border rounded-xl
+  dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border;
 	.button {
-		@apply text-[#0f6fec] bg-buttonBlueOpacity transition-all duration-300 hover:bg-blue-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center dark:bg-buttonBlueOpacity dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+		@apply text-[#0f6fec] bg-button_blue_opacity transition-all duration-300 hover:bg-blue-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center dark:bg-button_blue_opacity dark:hover:bg-blue-700 dark:focus:ring-blue-800;
 	}
 	.header {
 		@apply flex justify-between items-center mb-6;
 		.friends {
 			@apply flex items-center;
 			.counter {
-				@apply text-xl bg-redOpacity ml-2 px-4 py-1 rounded-md text-[#d6293e];
+				@apply text-xl bg-button_red_opacity ml-2 px-4 py-1 rounded-md text-[#d6293e];
 			}
 		}
 	}

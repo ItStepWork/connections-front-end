@@ -1,6 +1,6 @@
 .container {
-	@apply flex flex-col items-center p-1  bg-white text-gray-900 border border-whiteModeBorder rounded-xl h-72 w-48
-  dark:text-componentText dark:bg-componentBG dark:border-componentBorder;
+	@apply flex flex-col items-center p-1  bg-white text-gray-900 border border-light_border rounded-xl h-72 w-48
+  dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border;
 	.audienceDiv {
 		@apply w-full flex justify-end;
 	}
@@ -17,13 +17,13 @@
 	.buttons {
 		@apply flex justify-center items-center;
 		.blueButton {
-			@apply bg-buttonBlueOpacity transition-all duration-300 rounded-md  m-1 mb-0 hover:bg-[#0b53b1];
+			@apply bg-button_blue_opacity transition-all duration-300 rounded-md  m-1 mb-0 hover:bg-[#0b53b1];
 		}
 		.greenButton {
 			@apply bg-green-900 bg-opacity-20 transition-all duration-300 rounded-md  m-1 mb-0 hover:bg-opacity-100;
 		}
 		.redButton {
-			@apply bg-redOpacity transition-all duration-300 rounded-md m-1 mb-0 hover:bg-buttonRed;
+			@apply bg-button_red_opacity transition-all duration-300 rounded-md m-1 mb-0 hover:bg-button_red_BG;
 		}
 		.btnPict {
 			@apply w-[130px] h-[30px] transition-all duration-300;

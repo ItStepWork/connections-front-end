@@ -1,5 +1,5 @@
 .chats {
-	@apply bg-greenOpacity text-buttonGreen px-2 py-1 rounded-lg;
+	@apply bg-button_green_opacity text-button_green_BG px-2 py-1 rounded-lg;
 }
 .createAlbum {
 	@apply fixed w-80 lg:w-96 md:w-96 dark:text-white bottom-0 right-0;
@@ -13,19 +13,19 @@
 		@apply h-3/4 flex flex-col m-3 justify-between;
 	}
 	.buttonClose {
-		@apply p-1 rounded-lg fill-gray-500 hover:bg-darkModeButtonBg;
+		@apply p-1 rounded-lg fill-gray-500 hover:bg-dark_button_BG;
 	}
 	.input {
-		@apply rounded-none outline-none bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-darkModeBg dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+		@apply rounded-none outline-none bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-dark_background dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
 	}
 	.icon {
 		@apply inline-flex items-center px-3 text-sm text-gray-900 bg-gray-400 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600;
 	}
 	.iconGallery {
-		@apply inline-flex items-center px-3 cursor-pointer hover:bg-buttonBlue text-sm text-gray-900 bg-gray-400 border border-l-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600;
+		@apply inline-flex items-center px-3 cursor-pointer hover:bg-button_blue_BG text-sm text-gray-900 bg-gray-400 border border-l-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600;
 	}
 	.iconSend {
-		@apply inline-flex items-center px-3 cursor-pointer hover:bg-buttonBlue text-sm text-gray-900 bg-gray-400 border border-l-0 border-gray-300 rounded-r-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600;
+		@apply inline-flex items-center px-3 cursor-pointer hover:bg-button_blue_BG text-sm text-gray-900 bg-gray-400 border border-l-0 border-gray-300 rounded-r-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600;
 	}
 	.buttonContainer {
 		@apply flex items-end;
@@ -55,9 +55,9 @@
 .verticalHr {
 	@apply w-px h-full border-zinc-200 bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-700;
 }
-.button{
-    @apply flex items-center transition duration-300 p-2 rounded-lg text-buttonBlue bg-buttonBlueOpacity hover:bg-buttonBlue hover:text-white;
-  }
-.imageFile{
+.button {
+	@apply flex items-center transition duration-300 p-2 rounded-lg text-button_blue_BG bg-button_blue_opacity hover:bg-button_blue_BG hover:text-white;
+}
+.imageFile {
 	@apply h-[50px] w-[50px] flex justify-center items-center p-0.5 m-1 border;
 }

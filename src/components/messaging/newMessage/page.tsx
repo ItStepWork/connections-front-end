@@ -1,12 +1,12 @@
-import styles from './styles.module.scss'
-import { HiMiniPencilSquare } from 'react-icons/hi2';
-import { IoMdClose } from 'react-icons/io';
-import { FaCircleUser } from 'react-icons/fa6';
-import { BsFillSendFill } from 'react-icons/bs';
-import { FaUserCircle } from 'react-icons/fa';
-import { useState } from "react";
 import { IUser } from '@/dto/sessionDto';
 import { MessagingService } from '@/services/messaging.service';
+import { useState } from "react";
+import { BsFillSendFill } from 'react-icons/bs';
+import { FaUserCircle } from 'react-icons/fa';
+import { FaCircleUser } from 'react-icons/fa6';
+import { HiMiniPencilSquare } from 'react-icons/hi2';
+import { IoMdClose } from 'react-icons/io';
+import styles from './styles.module.scss';
 
 export function NewMessage(props: any) {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,7 +52,7 @@ export function NewMessage(props: any) {
         <h2>Активные чаты <span className={styles.chats}>{props.length}</span></h2>
         <button onClick={() => { setIsOpen(!isOpen); setIsOpenNewMessage(true); }} onFocus={() => { if (isOpen) setIsOpen(true) }} onBlur={() => setIsOpen(false)} >
 
-          <HiMiniPencilSquare size={40} {...isOpen ? { className: "bg-buttonBlue p-3 rounded-full fill-white" } : { className: "bg-buttonBlueOpacity p-3 rounded-full fill-buttonBlue" }} />
+          <HiMiniPencilSquare size={40} {...isOpen ? { className: "bg-button_blue_BG p-3 rounded-full fill-white" } : { className: "bg-button_blue_opacity p-3 rounded-full fill-button_blue_BG" }} />
         </button>
       </div>
       <hr className={styles.horizontalHr} />

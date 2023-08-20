@@ -1,12 +1,12 @@
 .container {
 	@apply flex flex-wrap gap-4 mt-4 w-full;
-	.album{
-		@apply relative flex flex-col items-center cursor-pointer p-2 border border-whiteModeBorder dark:border-componentBorder h-[130px] md:h-[150px] lg:h-[180px] w-[130px] md:w-[150px] lg:w-[180px] rounded-lg;
+	.album {
+		@apply relative flex flex-col items-center cursor-pointer p-2 border border-light_border dark:border-dark_border h-[130px] md:h-[150px] lg:h-[180px] w-[130px] md:w-[150px] lg:w-[180px] rounded-lg;
 	}
-	.photos{
+	.photos {
 		@apply flex flex-wrap justify-center overflow-hidden;
 	}
-	.photo{
+	.photo {
 		@apply m-1 w-[36px] md:w-[48px] lg:w-[56px] h-[36px] md:h-[48px] lg:h-[56px];
 	}
 }

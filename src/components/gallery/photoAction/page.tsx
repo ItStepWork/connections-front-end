@@ -1,10 +1,9 @@
-import Link from 'next/link';
-import styles from './styles.module.scss'
-import { useState } from "react";
-import { BsPencilFill, BsDownload, BsXLg } from 'react-icons/bs'
-import { PiUserFocusBold, PiUserCircleBold } from 'react-icons/pi'
 import { GalleryService } from '@/services/gallery.service';
+import { useState } from "react";
+import { BsPencilFill, BsXLg } from 'react-icons/bs';
+import { PiUserCircleBold, PiUserFocusBold } from 'react-icons/pi';
 import Select from '../select/page';
+import styles from './styles.module.scss';
 
 export function PhotoAction(props: any) {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,7 +31,7 @@ export function PhotoAction(props: any) {
     <>
       <div className={styles.container}>
         <button type="button" onClick={() => { if (!isOpen) setIsOpen(true) }} onFocus={() => { if (!isOpen) setIsOpen(true) }} onBlur={() => setIsOpen(false)} className='rounded-full overflow-hidden'>
-          <BsPencilFill size={40} {...isOpen ? { className: "bg-buttonBlue p-3 fill-white" } : { className: "bg-buttonBlueOpacity p-3 fill-buttonBlue" }} />
+          <BsPencilFill size={40} {...isOpen ? { className: "bg-button_blue_BG p-3 fill-white" } : { className: "bg-button_blue_opacity p-3 fill-button_blue_BG" }} />
 
           {isOpen &&
             <div className={styles.dropMenu}>
