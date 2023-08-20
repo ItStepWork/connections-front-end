@@ -1,8 +1,7 @@
-'use client'
 import { Header } from '@/components/header/header';
+import MyProgressBar from '@/components/progressBar/progresbar';
 import { Providers } from "@/providers/Providers";
 import type { Metadata } from 'next';
-import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
 import { Montserrat } from 'next/font/google';
 import './globals.css';
 
@@ -34,13 +33,8 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <Providers>
-          <Header />
-          <ProgressBar
-          height="4px"
-          color="#fffd00"
-          options={{ showSpinner: false }}
-          shallowRouting
-        />        
+          <MyProgressBar/>
+          <Header />    
           <div className="container">
             <main>{children}</main>                   
           </div>
