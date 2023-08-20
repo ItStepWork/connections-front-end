@@ -22,7 +22,7 @@
 			.buttonBlock {
 				@apply flex items-center gap-2;
 				.buttonLink {
-					@apply text-buttonRed flex items-center bg-redOpacity transition-all duration-300 hover:bg-buttonRed hover:text-white focus:ring-4 focus:outline-none focus:ring-buttonRed font-medium rounded-md text-sm px-2 py-2.5 md:px-1.5 lg:px-1.5 text-center dark:bg-redOpacity dark:hover:bg-buttonRed dark:focus:ring-buttonRed;
+					@apply text-buttonRed flex items-center bg-redOpacity transition-all duration-300 ease-in hover:bg-buttonRed hover:text-white focus:ring-4 focus:outline-none focus:ring-buttonRed font-medium rounded-md text-sm px-2 py-2.5 md:px-1.5 lg:px-1.5 text-center dark:bg-redOpacity dark:hover:bg-buttonRed dark:focus:ring-buttonRed;
 					span {
 						@apply mr-2;
 					}
@@ -80,7 +80,7 @@
 	.editAvatar {
 		@apply absolute ml-12 mt-7 md:ml-28 md:mt-16 lg:ml-28 lg:mt-14;
 		.avatarLabel {
-			@apply flex rounded-full cursor-pointer transition-all duration-300 bg-buttonBlue bg-opacity-60 hover:bg-opacity-100;
+			@apply flex rounded-full cursor-pointer transition-all duration-500 ease-in-out bg-buttonBlue bg-opacity-60 hover:bg-opacity-100;
 		}
 		.avatarIcon {
 			@apply flex p-1 md:p-2 lg:p-3;
@@ -89,7 +89,7 @@
 	.editBgImage {
 		@apply absolute ml-5 mt-5;
 		.backgroundImageLabel {
-			@apply flex rounded-full cursor-pointer transition-all duration-300 bg-buttonBlue bg-opacity-60 hover:bg-opacity-100;
+			@apply flex rounded-full cursor-pointer transition-all duration-500 ease-in-out bg-buttonBlue bg-opacity-60 hover:bg-opacity-100;
 		}
 		.backgroundIcon {
 			@apply flex p-1 md:p-2 lg:p-3;

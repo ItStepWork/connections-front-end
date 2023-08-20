@@ -1,20 +1,21 @@
+import { GroupService } from '@/services/group.service';
 import { useSession } from "next-auth/react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import styles from './styles.module.scss';
 import { AiOutlineClose } from 'react-icons/ai';
 import { FaRegUser } from 'react-icons/fa';
-import { GroupService } from '@/services/group.service';
-import { useState } from "react";
+import styles from './styles.module.scss';
+import { BsUpload } from 'react-icons/bs';
 
 export function CreateGroup(props: any) {
     const [avatar, setAvatar] = useState<any>(null);
     const options = [
         {
-            label: "Public",
+            label: "Открытая",
             value: '0',
         },
         {
-            label: "Private",
+            label: "Закрытая",
             value: '1',
         },
     ];
@@ -44,23 +45,23 @@ export function CreateGroup(props: any) {
         <>
             <form className={styles.dialogDiv} onSubmit={handleSubmit(onSubmit)}>
                 <div className={styles.dialogDivHeader}>
-                    <h2 className={styles.h2}>Create Group</h2>
+                    <h2 className={styles.h2}>Создать группу</h2>
                     <button type="button" className={styles.closeButton} onClick={closeDialog}>
                         <AiOutlineClose size={16}></AiOutlineClose>
                     </button>
                 </div>
                 <div className={styles.dialogDivBody}>
                     <div className="mb-3">
-                        <label className={styles.label}>Group name</label>
+                        <label className={styles.label}>Название группы</label>
                         <br></br>
-                        <input type="text" className={styles.grInput} placeholder="Add Group name here" {...register('name')} required></input>
+                        <input type="text" className={styles.grInput} placeholder="Имя группы здесь..." {...register('name')} required></input>
                     </div>
                     <div className="mb-3">
-                        <label className={styles.label}>Group picture</label>
+                        <label className={styles.label}>Изображение группы</label>
                         <div className={styles.dialogDivHeader}>
-                            <div className="input-div">
-                                <input className="input" type="file" accept=".jpg, .jpeg, .png" {...register('file')} required onChange={(e: any) => { setAvatar(e.target.files[0]) }}></input>
-                                {(avatar === null||avatar===undefined) ? (<FaRegUser size={36} className="dark:fill-white" ></FaRegUser>) : (<img src={URL.createObjectURL(avatar)} ></img>)}
+                            <div className={styles.input_div}>
+                                <input className={styles.input} type="file" accept=".jpg, .jpeg, .png" {...register('file')} required onChange={(e: any) => { setAvatar(e.target.files[0]) }}></input>
+                                {(avatar === null || avatar === undefined) ? (<BsUpload size={36} className="dark:fill-white" ></BsUpload>) : (<img src={URL.createObjectURL(avatar)} ></img>)}
                             </div>
                             {/* <div className="avatar-remove">
                                 <button type="button" id="avatar-reset-img" className={styles.grayButton} onClick={() => {
@@ -70,7 +71,7 @@ export function CreateGroup(props: any) {
                         </div>
                     </div>
                     <div >
-                        <label className={styles.label}>Select audience</label>
+                        <label className={styles.label}>Тип группы</label>
                         <div className={styles.checkDiv}>
                             <select
                                 className={styles.select}
@@ -89,12 +90,12 @@ export function CreateGroup(props: any) {
                   <input type="text" className={styles.grInput} placeholder="Add friend name here"></input>
                 </div> */}
                     <div className="mb-3">
-                        <label className={styles.label}>Group description </label>
-                        <textarea className={styles.grInput} rows={2} placeholder="Description here" {...register('description')} required></textarea>
+                        <label className={styles.label}>Описание группы </label>
+                        <textarea className={styles.grInput} rows={2} placeholder="Ваше описание здесь..." {...register('description')} required></textarea>
                     </div>
                 </div>
                 <div className={styles.dialogDivFooter}>
-                    <button type="submit" className={styles.greenButton}>Create now</button>
+                    <button type="submit" className={styles.greenButton}>Создать</button>
                 </div>
             </form>
         </>

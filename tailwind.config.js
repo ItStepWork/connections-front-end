@@ -16,6 +16,7 @@ module.exports = {
 			},
 			boxShadow: {
         'customTransparent': '0 8px 32px 0 rgba(31, 38, 31, 0.37)',
+				'animateDropButton':	'0 0 100px rgb(12 188 135) , inset 0 0 10px rgb(12 188 135),0 0 5px rgb(255, 255, 255)'
       },
 			colors: {
 				mainBG: '#191a1f',
