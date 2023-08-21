@@ -61,6 +61,7 @@ export function UserCard(props: any) {
               quality={80}
               alt="bg"
               layout='fill'
+              loading="lazy"
               style={{ objectFit: "cover" }}
               className={styles.image}
             />
@@ -88,6 +89,7 @@ export function UserCard(props: any) {
                       quality={80}
                       style={{ objectFit: "contain" }}
                       alt="avatar"
+                      loading="lazy"
                     />
                   }
                 </div>

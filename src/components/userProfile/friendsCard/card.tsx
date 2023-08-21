@@ -18,6 +18,7 @@ export const Card = () => {
             height={76}
             style={{ objectFit: "contain" }}
             alt="Picture of the author"
+            loading="lazy"
           />
         </div>
         <div className={styles.fio}>

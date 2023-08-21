@@ -12,7 +12,7 @@ export const Stories = () => {
               src={faker.image.url({height: 150, width: 120})}
               width={120}
               height={150}
-              quality={80}
+              loading="lazy"
               style={{ objectFit: "cover" }}
               alt="story"
             />
@@ -23,7 +23,7 @@ export const Stories = () => {
               src={faker.image.url({height: 150, width: 120})}
               width={120}
               height={150}
-              quality={80}
+              loading="lazy"
               style={{ objectFit: "cover" }}
               alt="story"
             />
@@ -34,7 +34,7 @@ export const Stories = () => {
               src={faker.image.url({height: 150, width: 120})}
               width={120}
               height={150}
-              quality={80}
+              loading="lazy"
               style={{ objectFit: "cover" }}
               alt="story"
             />
@@ -45,9 +45,9 @@ export const Stories = () => {
               src={faker.image.url({height: 150, width: 120})}
               width={120}
               height={150}
-              quality={80}
+              loading="lazy"
               style={{ objectFit: "cover" }}
-              alt="story"
+              alt="story"  
             />
              <p>{faker.person.fullName()}</p>
           </div>
@@ -56,7 +56,7 @@ export const Stories = () => {
               src={faker.image.url({height: 150, width: 120})}
               width={120}
               height={150}
-              quality={80}
+              loading="lazy"
               style={{ objectFit: "cover" }}
               alt="story"
             />
@@ -67,7 +67,7 @@ export const Stories = () => {
               src={faker.image.url({height: 150, width: 150})}
               width={120}
               height={150}
-              quality={80}
+              loading="lazy"
               style={{ objectFit: "cover" }}
               alt="story"
             />

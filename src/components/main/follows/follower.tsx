@@ -45,6 +45,7 @@ export const Follower:FC<IFollowerProps> = ({checked, firstName, lastName, work,
               quality={80}
               style={{ objectFit: "contain" }}
               alt="avatar"
+              loading="lazy"
             />
         </div>
         <div className={styles.userInfo}>

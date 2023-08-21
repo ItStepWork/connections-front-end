@@ -48,6 +48,7 @@ export const DropMenuProfile: FC<IDrop> = ({navbarOpen}) => {
                       quality={80}
                       style={{ objectFit: "cover" }}
                       alt="avatar"
+                      loading="lazy"
                     />
                   }
                 </div>

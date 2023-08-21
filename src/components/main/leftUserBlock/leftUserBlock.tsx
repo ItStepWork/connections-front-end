@@ -35,6 +35,7 @@ export const LeftUserBlock = (props:any) => {
               layout='fill'
               style={{ objectFit: "cover" }}
               className={styles.image}
+              loading="lazy"
             />
             }        
           </div>
@@ -51,6 +52,7 @@ export const LeftUserBlock = (props:any) => {
                 quality={80}
                 style={{ objectFit: "contain" }}
                 alt="avatar"
+                loading="lazy"
               />
             }
           </div>

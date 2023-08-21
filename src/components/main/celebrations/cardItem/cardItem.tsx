@@ -27,6 +27,7 @@ const CardItem:FC<ICardProps> = ({howCelebrating, avatar, fullName, date}) => {
                 quality={80}
                 style={{ objectFit: "contain" }}
                 alt="avatar"
+                loading="lazy"
               />
         </div>
         <div className={styles.fromContainer}>

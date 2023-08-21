@@ -39,6 +39,7 @@ export default function PhotosCard() {
               height='163'
               style={{ objectFit: "contain" }}
               alt="Picture of the author"
+              loading="lazy"
               />
           </div>
           <div className={styles.photo}>
@@ -48,6 +49,7 @@ export default function PhotosCard() {
               height='163'
               style={{ objectFit: "contain" }}
               alt="Picture of the author"
+              loading="lazy"
             />
           </div>
         </div>
@@ -59,6 +61,7 @@ export default function PhotosCard() {
               height='163'
               style={{ objectFit: "contain" }}
               alt="Picture of the author"
+              loading="lazy"
               />
           </div>
           <div className={styles.photo}>
@@ -68,6 +71,7 @@ export default function PhotosCard() {
               height='163'
               style={{ objectFit: "contain" }}
               alt="Picture of the author"
+              loading="lazy"
             />
           </div>
           <div className={styles.photo}>
@@ -77,6 +81,7 @@ export default function PhotosCard() {
               height='163'
               style={{ objectFit: "contain" }}
               alt="Picture of the author"
+              loading="lazy"
               />
           </div>
         </div>

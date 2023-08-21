@@ -16,6 +16,7 @@ export const ConnectionBlock: FC = () => {
               quality={80}
               style={{ objectFit: "contain" }}
               alt="avatar"
+              loading="lazy"
             />
           </div>
           <div className={styles.textContainer}>
