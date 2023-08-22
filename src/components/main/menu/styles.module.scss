@@ -1,5 +1,5 @@
 .containerMenu{
-	@apply relative w-full flex mt-20 md:flex-row flex-col;
+	@apply relative flex mt-20 md:flex-row flex-col;
 }
 .actionOpen{
 	@apply flex m-3 cursor-pointer lg:absolute hover:text-button_blue_BG;
