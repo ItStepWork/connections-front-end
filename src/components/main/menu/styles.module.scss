@@ -1,0 +1,12 @@
+.containerMenu{
+	@apply relative flex mt-20 md:flex-row flex-col;
+}
+.actionOpen{
+	@apply flex m-3 cursor-pointer lg:absolute hover:text-button_blue_BG;
+}
+.actionClose{
+	@apply absolute z-20 m-2 right-0 cursor-pointer lg:opacity-0 hover:fill-button_blue_BG;
+}
+.menu{
+	@apply relative flex flex-col m-6 lg:m-0;
+}

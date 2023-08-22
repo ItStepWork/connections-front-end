@@ -1,18 +1,17 @@
 "use client"
-import Gallery from "@/components/gallery/main/page";
 
+import styles from './styles.module.scss';
+import Gallery from "@/components/gallery/main/page";
 import { Feed } from "@/components/main/feed/feed";
 import { FollowsBlock } from "@/components/main/follows/followsBlock";
-import { LeftBlockFooter } from "@/components/main/leftBlockFooter/leftBlockFooter";
-import { LeftUserBlock } from "@/components/main/leftUserBlock/leftUserBlock";
 import { News } from "@/components/main/news/news";
 import { AddStories } from "@/components/main/stories/addStories";
 import { Stories } from '@/components/main/stories/stories';
 import { GroupsCard } from "@/components/userProfile/groupsCard/groupsCard";
 import { useSession } from "next-auth/react";
 import { useState } from 'react';
-import styles from './styles.module.scss';
 import Celebration from "@/components/main/celebrations/page";
+import Menu from "@/components/main/menu/page";
 
 export default function Home(props: any) {
 
@@ -40,11 +39,8 @@ export default function Home(props: any) {
   return (
     <main>
       <div className={styles.container}>
+        <Menu setComponent={setComponent}/>
         <div className={styles.containerContent}>
-          <div>
-            <LeftUserBlock setComponent={setComponent} />
-            <LeftBlockFooter />
-          </div>
           {ChangeComponent()}
         </div>
       </div>
