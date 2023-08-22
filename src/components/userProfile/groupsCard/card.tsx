@@ -20,12 +20,14 @@ export const Card = (props: any) => {
   }
   let JoinGroup = async () => {
     let result = await GroupService.joinGroup(props.group.id);
-    alert(result.data);
+    alert(result);
+    GetUsers();
     props.getGroups();
   }
   let LeaveGroup = async () => {
     let result = await GroupService.leaveGroup(props.group.id);
     alert(result);
+    GetUsers();
     props.getGroups();
   }
   let IfInGroup = () => {
@@ -45,7 +47,7 @@ export const Card = (props: any) => {
             ? <RiGitRepositoryPrivateLine className="absolute" title="Private"></RiGitRepositoryPrivateLine>
             : <></>}
         </div>
-        <Link className='pt-5' href={"/group/" + props.group.id}>
+        <Link className='pt-1' href={"/group/" + props.group.id}>
           <div className={styles.avatar}>
             <img className='rounded-full w-[84px] h-[84px]'
               src={props.group.pictureUrl}
@@ -53,8 +55,8 @@ export const Card = (props: any) => {
             />
           </div>
           <div className={styles.fio}>
-            <h4>{props.group.name}</h4>
-            <p>{props.group.description}</p>
+            <h4 title={props.group.name}>{props.group.name}</h4>
+            <p title={props.group.description}>{props.group.description}</p>
             <div className={styles.membersContainer}>
               <div className={styles.members}>
                 {users.map((user: any, index) => {

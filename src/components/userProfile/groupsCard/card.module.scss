@@ -1,5 +1,5 @@
 .container {
-	@apply flex flex-col items-center p-1  bg-white text-gray-900 border border-light_border rounded-xl h-72 w-48
+	@apply flex flex-col items-center p-1  bg-white text-gray-900 border border-light_border rounded-xl h-64 md:w-40 w-36
   dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border;
 	.audienceDiv {
 		@apply w-full flex justify-end;
@@ -11,7 +11,7 @@
 	.fio {
 		@apply flex flex-col mt-0 text-sm items-center;
 		h4 {
-			@apply text-gray-900 dark:text-white text-sm text-center font-bold hover:text-green-900;
+			@apply text-gray-900 dark:text-white text-sm text-center font-bold hover:text-green-900 md:max-w-[15ch] max-w-[12ch] overflow-hidden whitespace-nowrap;
 		}
 	}
 	.buttons {
@@ -26,7 +26,7 @@
 			@apply bg-button_red_opacity transition-all duration-300 rounded-md m-1 mb-0 hover:bg-button_red_BG;
 		}
 		.btnPict {
-			@apply w-[130px] h-[30px] transition-all duration-300;
+			@apply md:w-[130px] w-[110px] h-[30px] transition-all duration-300;
 		}
 		.bluePict {
 			@apply fill-blue-800 hover:fill-white;
@@ -40,16 +40,16 @@
 	}
 
 	p {
-		@apply max-w-[15ch] whitespace-nowrap overflow-hidden;
+		@apply md:max-w-[15ch] max-w-[12ch] whitespace-nowrap overflow-hidden;
 	}
 
 	.members {
 		@apply flex m-2 justify-center;
 		.memberIco {
-			@apply w-8 h-8 rounded-full border border-white absolute;
+			@apply w-6 h-6 md:w-8 md:h-8 rounded-full border border-white absolute;
 		}
 		.membersDiv {
-			@apply w-8 h-8 rounded-full border border-white absolute bg-blue-500 text-center text-white;
+			@apply w-6 h-6 md:w-8 md:h-8 rounded-full border border-white absolute bg-blue-500 text-center text-white;
 		}
 	}
 	.membersNames {

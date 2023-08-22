@@ -4,7 +4,7 @@ import { BsCameraReels } from 'react-icons/bs'
 import { BsFillCameraVideoFill } from 'react-icons/bs'
 import { AiOutlineClose } from 'react-icons/ai'
 
-export const PostVideo = (props:any) => {
+export const PostVideo = (props: any) => {
   const closeDialog = () => { document.querySelector("dialog")?.close(); }
   return (
     <>
@@ -18,7 +18,7 @@ export const PostVideo = (props:any) => {
         <div className={styles.dialogDivBody}>
           <div className="m-1 w-full">
             <div className={styles.topDiv}>
-            {props.user?.avatarUrl
+              {props.user?.avatarUrl
                 ? <img className={styles.userIco} src={props.user.avatarUrl}></img>
                 : <img className={styles.userIco} src={faker.image.avatar()}></img>
               }
@@ -27,8 +27,8 @@ export const PostVideo = (props:any) => {
           </div>
           <a>Загрузить вложение</a>
           <label className={styles.inputPhoto}>
-            <BsCameraReels className="fill-gray-600 mt-5" size={50}></BsCameraReels>
-            <a>Перетащите сюда или нажмите, чтобы загрузить видео.</a>
+            <BsCameraReels className="fill-gray-300 dark:fill-gray-700 mt-5" size={50}></BsCameraReels>
+            <a className="opacity-50">Перетащите сюда или нажмите, чтобы загрузить видео.</a>
             <input type="file" className="hidden"></input>
           </label>
         </div>

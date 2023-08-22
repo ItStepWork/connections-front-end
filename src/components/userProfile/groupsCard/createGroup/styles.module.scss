@@ -1,7 +1,7 @@
 .dialogDiv {
-	@apply border dark:bg-dark_background dark:border-dark_border border-light_border;
+	@apply w-80 md:w-96 lg:w-96;
 	.dialogDivHeader {
-		@apply text-base p-2 flex justify-between dark:bg-dark_background;
+		@apply text-base p-2 flex justify-between;
 		.h2 {
 			@apply pl-4 text-gray-900 font-semibold dark:text-white text-2xl;
 		}
@@ -10,7 +10,7 @@
 		}
 	}
 	.dialogDivBody {
-		@apply text-base p-6 border-x-0 border-y border-y-light_border dark:border-y-dark_border dark:bg-dark_background;
+		@apply text-base p-6 border-x-0 border-y border-y-light_border dark:border-y-dark_border;
 		.label {
 			@apply text-base mb-2 mr-2 text-gray-900 dark:text-gray-400;
 		}
@@ -19,7 +19,7 @@
 		}
 	}
 	.dialogDivFooter {
-		@apply w-80 text-base p-2 flex justify-end dark:bg-dark_background;
+		@apply w-full text-base py-2 px-5 flex justify-end;
 		.greenButton {
 			@apply dark:text-green-400 text-white bg-button_green_BG dark:bg-button_green_BG opacity-80 dark:bg-opacity-25 transition-all duration-300 rounded-md py-3 px-5 m-1 hover:bg-button_green_BG hover:bg-opacity-75 hover:text-white;
 		}

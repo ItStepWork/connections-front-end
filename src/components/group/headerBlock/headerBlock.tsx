@@ -1,5 +1,5 @@
 "use client"
-import { AddPost } from '@/components/main/addPost/addPost';
+import { PostPanel } from '@/components/main/postPanel/postPanel';
 import { GroupService } from '@/services/group.service';
 import { faker } from '@faker-js/faker';
 import { useSession } from 'next-auth/react';
@@ -23,12 +23,14 @@ export function HeaderBlock(props: any) {
   }
   let JoinGroup = async () => {
     let result = await GroupService.joinGroup(props.group.id);
-    alert(result.data);
+    alert(result);
+    GetUsers();
     props.getGroup();
   }
   let LeaveGroup = async () => {
     let result = await GroupService.leaveGroup(props.group.id);
     alert(result);
+    GetUsers();
     props.getGroup();
   }
   let IfInGroup = () => {
@@ -61,7 +63,7 @@ export function HeaderBlock(props: any) {
                 </div>
                 <p> {props.group.audience} группа - {Object.entries(users).length} участников</p>
                 <div className={styles.description}>
-                  <p className="  word-break: break-all"> {props.group.description}</p>
+                  <p className="word-break: break-all"> {props.group.description}</p>
                 </div>
 
               </div>
@@ -117,7 +119,7 @@ export function HeaderBlock(props: any) {
           {/* <button className={styles.link} onClick={() => { props.setComponent("groups") }}>Сообщества</button> */}
         </div>
       </div>
-      <AddPost></AddPost>
+      <PostPanel></PostPanel>
     </>
   )
 }

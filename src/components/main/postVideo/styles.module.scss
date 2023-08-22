@@ -4,28 +4,27 @@
 		@apply w-10 h-10 m-2 rounded-full border-blue-500 border-2;
 	}
 	.grInput {
-		@apply w-full flex bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg mt-2
-       focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 
-       dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+		@apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg mt-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-dark_background dark:border-dark_border
+		  outline-none dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
 	}
 }
 .dialogDiv {
-	@apply border border-gray-700 w-80  lg:w-96 dark:bg-dark_background;
+	@apply w-80 lg:w-96;
 }
 .dialogDivHeader {
-	@apply text-base p-2 flex justify-between dark:bg-dark_background w-full;
+	@apply text-base p-2 flex justify-between  w-full;
 }
 .dialogDivBody {
-	@apply flex flex-wrap text-base p-6 border border-gray-700 dark:bg-dark_background w-full;
+	@apply flex flex-wrap text-base p-6 border dark:border-dark_border border-light_border border-x-0 w-full;
 	a {
 		@apply text-gray-600 m-2 cursor-pointer;
 	}
 }
 .inputPhoto {
-	@apply w-full border-dashed border-2 rounded-lg h-40 flex flex-col items-center;
+	@apply w-full border-dashed border-2 dark:border-gray-700 rounded-lg h-40 flex flex-col items-center;
 }
 .dialogDivFooter {
-	@apply text-base p-2 flex justify-end dark:bg-dark_background w-full;
+	@apply text-base p-2 flex justify-end w-full;
 }
 
 .dialogButtonDiv {

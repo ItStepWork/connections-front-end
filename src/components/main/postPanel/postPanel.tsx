@@ -8,7 +8,7 @@ import { PostPhoto } from '../postPhoto/postPhoto';
 import { PostVideo } from '../postVideo/postVideo';
 import styles from "./styles.module.scss";
 
-export const AddPost = () => {
+export const PostPanel = () => {
   // const closeDialog = () => { document.querySelector("dialog")?.close(); }
   const openDialog = () => { document.querySelector("dialog")?.showModal(); }
   // const { data: session, update } = useSession<any>();
@@ -60,7 +60,10 @@ export const AddPost = () => {
         </div>
       </div>
       <div className={styles.bottomDiv}></div>
-      <dialog>{showComponent()}</dialog>
+      <dialog className={styles.dialog}>{showComponent()}</dialog>
+
+
+
     </>
   )
 }
