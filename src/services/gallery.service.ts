@@ -4,8 +4,8 @@ import { signOut } from "next-auth/react";
 
 export class GalleryService {
 
-    static checkLogin(response: any) {
-        if (response.status === 401) {
+    static checkLogin(session: any, response: any) {
+        if (session !== null && response.status === 401) {
             signOut();
         }
     }
@@ -17,10 +17,11 @@ export class GalleryService {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,
             },
-        }).then(response => {
-            this.checkLogin(response);
-            return response.data;
-        });
+        }).then(response => response.data)
+            .catch((error) => {
+                this.checkLogin(session, error.response);
+                return [];
+            });
     }
 
     static async getPhoto(userId: string, photoId: string) {
@@ -30,10 +31,11 @@ export class GalleryService {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,
             },
-        }).then(response => {
-            this.checkLogin(response);
-            return response.data;
-        });
+        }).then(response => response.data)
+            .catch((error) => {
+                this.checkLogin(session, error.response);
+                return null;
+            });
     }
 
     static async getAlbumPhotos(userId: string, albumId: string) {
@@ -43,10 +45,11 @@ export class GalleryService {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,
             },
-        }).then(response => {
-            this.checkLogin(response);
-            return response.data;
-        });
+        }).then(response => response.data)
+            .catch((error) => {
+                this.checkLogin(session, error.response);
+                return [];
+            });
     }
 
     static async addPhoto(formData: FormData) {
@@ -57,10 +60,11 @@ export class GalleryService {
                 "Authorization": "Bearer " + session?.user.accessToken,
                 'Content-Type': 'multipart/form-data',
             },
-        }).then(response => {
-            this.checkLogin(response);
-            return response.data;
-        });
+        }).then(response => response.data)
+            .catch((error) => {
+                this.checkLogin(session, error.response);
+                return null;
+            });
     }
 
     static async setAvatar(url: string) {
@@ -71,10 +75,11 @@ export class GalleryService {
                 'Content-Type': 'application/json',
                 "Authorization": "Bearer " + session?.user.accessToken,
             },
-        }).then(response => {
-            this.checkLogin(response);
-            return response.data;
-        });
+        }).then(response => response.data)
+            .catch((error) => {
+                this.checkLogin(session, error.response);
+                return null;
+            });
     }
 
     static async setBackground(url: string) {
@@ -85,10 +90,11 @@ export class GalleryService {
                 'Content-Type': 'application/json',
                 "Authorization": "Bearer " + session?.user.accessToken,
             },
-        }).then(response => {
-            this.checkLogin(response);
-            return response.data;
-        });
+        }).then(response => response.data)
+            .catch((error) => {
+                this.checkLogin(session, error.response);
+                return null;
+            });
     }
 
     static async setAlbum(photoId: string, albumId: string) {
@@ -99,10 +105,11 @@ export class GalleryService {
                 'Content-Type': 'application/json',
                 "Authorization": "Bearer " + session?.user.accessToken,
             },
-        }).then(response => {
-            this.checkLogin(response);
-            return response.data;
-        });
+        }).then(response => response.data)
+            .catch((error) => {
+                this.checkLogin(session, error.response);
+                return null;
+            });
     }
 
     static async removePhoto(id: string) {
@@ -112,10 +119,11 @@ export class GalleryService {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,
             },
-        }).then(response => {
-            this.checkLogin(response);
-            return response.data;
-        });
+        }).then(response => response.data)
+            .catch((error) => {
+                this.checkLogin(session, error.response);
+                return null;
+            });
     }
 
     static async removeAlbum(id: string) {
@@ -125,10 +133,11 @@ export class GalleryService {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,
             },
-        }).then(response => {
-            this.checkLogin(response);
-            return response.data;
-        });
+        }).then(response => response.data)
+            .catch((error) => {
+                this.checkLogin(session, error.response);
+                return null;
+            });
     }
 
     static async removeAlbumAndPhotos(id: string) {
@@ -138,10 +147,11 @@ export class GalleryService {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,
             },
-        }).then(response => {
-            this.checkLogin(response);
-            return response.data;
-        });
+        }).then(response => response.data)
+            .catch((error) => {
+                this.checkLogin(session, error.response);
+                return null;
+            });
     }
 
     static async setLikePhoto(userId: string, photoId: string) {
@@ -152,10 +162,11 @@ export class GalleryService {
                 'Content-Type': 'application/json',
                 "Authorization": "Bearer " + session?.user.accessToken,
             },
-        }).then(response => {
-            this.checkLogin(response);
-            return response.data;
-        });
+        }).then(response => response.data)
+            .catch((error) => {
+                this.checkLogin(session, error.response);
+                return null;
+            });
     }
 
     static async sendCommentPhoto(userId: string, photoId: string, text: string) {
@@ -166,10 +177,11 @@ export class GalleryService {
                 'Content-Type': 'application/json',
                 "Authorization": "Bearer " + session?.user.accessToken,
             },
-        }).then(response => {
-            this.checkLogin(response);
-            return response.data;
-        });
+        }).then(response => response.data)
+            .catch((error) => {
+                this.checkLogin(session, error.response);
+                return null;
+            });
     }
 
     static async getAlbums() {
@@ -179,10 +191,11 @@ export class GalleryService {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,
             },
-        }).then(response => {
-            this.checkLogin(response);
-            return response.data;
-        });
+        }).then(response => response.data)
+            .catch((error) => {
+                this.checkLogin(session, error.response);
+                return [];
+            });
     }
 
     static async addAlbum(name: string, files: any[]) {
@@ -198,9 +211,10 @@ export class GalleryService {
                 'Content-Type': 'multipart/form-data',
                 "Authorization": "Bearer " + session?.user.accessToken,
             },
-        }).then(response => {
-            this.checkLogin(response);
-            return response.data;
-        });
+        }).then(response => response.data)
+            .catch((error) => {
+                this.checkLogin(session, error.response);
+                return null;
+            });
     }
 } 

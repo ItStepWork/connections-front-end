@@ -4,11 +4,11 @@ import { signOut } from "next-auth/react";
 
 export class MessagingService {
 
-  static checkLogin(response: any) {
-    if (response.status === 401) {
-      signOut();
+  static checkLogin(session: any, response: any) {
+    if (session !== null && response.status === 401) {
+        signOut();
     }
-  }
+}
 
   static async getDialogs() {
     const session = await getSession();
@@ -17,10 +17,11 @@ export class MessagingService {
         "Accept": "application/json",
         "Authorization": "Bearer " + session?.user.accessToken,
       },
-    }).then(response => {
-      this.checkLogin(response);
-      return response.data;
-    });
+    }).then(response => response.data)
+      .catch((error) => {
+        this.checkLogin(session, error.response);
+        return [];
+      });
   }
 
   static async getMessages(id: string) {
@@ -30,10 +31,11 @@ export class MessagingService {
         "Accept": "application/json",
         "Authorization": "Bearer " + session?.user.accessToken,
       },
-    }).then(response => {
-      this.checkLogin(response);
-      return response.data;
-    });
+    }).then(response => response.data)
+      .catch((error) => {
+        this.checkLogin(session, error.response);
+        return [];
+      });
   }
 
   static async removeDialog(id: string) {
@@ -43,10 +45,11 @@ export class MessagingService {
         "Accept": "application/json",
         "Authorization": "Bearer " + session?.user.accessToken,
       },
-    }).then(response => {
-      this.checkLogin(response);
-      return response.data;
-    });
+    }).then(response => response.data)
+      .catch((error) => {
+        this.checkLogin(session, error.response);
+        return null;
+      });
   }
 
   static async sendMessage(formData: FormData) {
@@ -57,9 +60,10 @@ export class MessagingService {
         "Authorization": "Bearer " + session?.user.accessToken,
         'Content-Type': 'multipart/form-data',
       },
-    }).then(response => {
-      this.checkLogin(response);
-      return response.data;
-    });
+    }).then(response => response.data)
+      .catch((error) => {
+        this.checkLogin(session, error.response);
+        return null;
+      });
   }
 } 
