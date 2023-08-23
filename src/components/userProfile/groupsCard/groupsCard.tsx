@@ -14,9 +14,6 @@ export function GroupsCardMain(props: any) {
   useEffect(() => {
     getGroups();
   }, []);
-  let LoadMore = () => {
-    setCount(count + 4);
-  }
   const getGroups = async () => {
     let result = await GroupService.getGroups();
     setGroups(result);
@@ -40,9 +37,7 @@ export function GroupsCardMain(props: any) {
                 return (<Card key={index} group={group} getGroups={getGroups} ></Card>)
             })}
           </div>
-          <div className={styles.loadMoreDiv}>
-            <button className={styles.buttonLoadMore} onClick={() => LoadMore()}>Загрузить ещё</button>
-          </div>
+          <button className={styles.buttonLoadMore} onClick={() => setCount(count + 4)}>Загрузить ещё</button>
 
         </div>
       </div>
