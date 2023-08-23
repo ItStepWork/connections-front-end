@@ -1,9 +1,9 @@
-import { UserService } from "@/services/user.service";
 import { faker } from "@faker-js/faker";
 import Image from 'next/image';
 import { FC, useEffect, useState } from "react";
 import { BsFillPersonCheckFill, BsPlusLg } from "react-icons/bs";
 import styles from "./follows.module.scss";
+import { FriendService } from "@/services/friend.service";
 interface IFollowerProps {
   checked: boolean;
   firstName: string;
@@ -22,8 +22,8 @@ export const Follower:FC<IFollowerProps> = ({checked, firstName, lastName, work,
   if(lastName === null) lastName = 'ошибка загрузки';
   
   const addFriend = async () => {
-    await UserService.addFriend(id);
-    const friends = await UserService.getFriends();
+    await FriendService.addFriend(id);
+    const friends = await FriendService.getFriends();
     setFriends(friends);
   } 
 
