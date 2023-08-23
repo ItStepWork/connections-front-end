@@ -1,6 +1,6 @@
 .container {
 	@apply flex flex-col p-6 w-full bg-white text-gray-900 border border-light_border rounded-xl
-  dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border;
+  dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border mt-6;
 }
 .topDiv {
 	@apply flex flex-row gap-2;

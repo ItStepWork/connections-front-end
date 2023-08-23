@@ -68,6 +68,21 @@ export class GroupService {
             });
     }
 
+    static async removeUserFromGroup(groupId: string,userId: string) {
+        const session = await getSession();
+        return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "Group/RemoveUserFromGroup",{ id: groupId,userId:userId }, {
+            headers: {
+                "Accept": "application/json",
+                "Authorization": "Bearer " + session?.user.accessToken,
+                'Content-Type': 'application/json',
+            },
+        }).then(response => response.data)
+            .catch((error) => {
+                this.checkLogin(session, error.response);
+                return null;
+            });
+    }
+
     static async getGroup(id: string) {
         const session = await getSession();
         return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + "Group/GetGroup?id=" + id, {
