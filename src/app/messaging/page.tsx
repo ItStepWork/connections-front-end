@@ -10,12 +10,15 @@ import { MessagingService } from '@/services/messaging.service';
 import { UserService } from '@/services/user.service';
 import React from 'react';
 import styles from './styles.module.scss';
+import { Window } from '@/components/messaging/window/page';
+import { HiMiniPencilSquare } from 'react-icons/hi2';
 
 type MyState = {
   messages: [],
   dialogs: [],
   users: IUser[],
   user: IUser | null,
+  isOpen: boolean
 };
 
 export default class Messaging extends React.Component<MyState>{
@@ -25,6 +28,7 @@ export default class Messaging extends React.Component<MyState>{
     dialogs: [],
     users: [],
     user: null,
+    isOpen: false,
   };
 
   constructor(props: any) {
@@ -34,6 +38,7 @@ export default class Messaging extends React.Component<MyState>{
     this.loadDialogs = this.loadDialogs.bind(this);
     this.loadUsers = this.loadUsers.bind(this);
     this.removeDialog = this.removeDialog.bind(this);
+    this.setIsOpen = this.setIsOpen.bind(this);
   }
 
   componentDidMount(): void {
@@ -60,19 +65,30 @@ export default class Messaging extends React.Component<MyState>{
     this.setState({ messages: [], user: null });
   }
 
+  setIsOpen(isOpen: boolean){
+    this.setState({ isOpen: isOpen});
+  }
+
   render() {
     return (
       <>
         <div className={styles.container}>
 
           <div className='absolute flex mt-16 lg:invisible'>
-            <DropDownDialogues dialogs={this.state.dialogs} click={this.click} user={this.state.user}/><h2 className='my-1 mx-2'>Чаты</h2>
+            <DropDownDialogues dialogs={this.state.dialogs} click={this.click} user={this.state.user} /><h2 className='my-1 mx-2'>Чаты</h2>
           </div>
           <div className={styles.centerContainer}>
-
-
             <div className={styles.leftContainer}>
-              <NewMessage length={this.state.dialogs.length} users={this.state.users} loadDialogs={this.loadDialogs} />
+              <div className='m-3 flex justify-between items-center'>
+                <h2>Активные чаты <span className={styles.chats}>{this.state.dialogs.length}</span></h2>
+                <button {...this.state.isOpen?{className: styles.buttonOpen}:{className: styles.buttonClose}} onClick={()=> this.setIsOpen(true)}>
+                  <HiMiniPencilSquare />
+                </button>
+                <Window name="Новое сообщение" isOpen={this.state.isOpen} setIsOpen={this.setIsOpen} buttonContent={<HiMiniPencilSquare />} buttonStyle='bg-button_blue_BG p-3 rounded-full fill-white hover:bg-button_blue_opacity translate duration-300' pressedStyle='bg-button_blue_opacity'>
+                  <NewMessage users={this.state.users} loadDialogs={this.loadDialogs} />
+                </Window>
+              </div>
+              <hr className={styles.horizontalHr} />
               <div className='invisible h-0 lg:visible lg:h-auto overflow-y-auto'>
                 <Dialogues dialogs={this.state.dialogs} click={this.click} user={this.state.user} />
               </div>
