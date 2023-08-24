@@ -65,8 +65,8 @@ export default class Messaging extends React.Component<MyState>{
     this.setState({ messages: [], user: null });
   }
 
-  setIsOpen(isOpen: boolean){
-    this.setState({ isOpen: isOpen});
+  setIsOpen(isOpen: boolean) {
+    this.setState({ isOpen: isOpen });
   }
 
   render() {
@@ -81,10 +81,10 @@ export default class Messaging extends React.Component<MyState>{
             <div className={styles.leftContainer}>
               <div className='m-3 flex justify-between items-center'>
                 <h2>Активные чаты <span className={styles.chats}>{this.state.dialogs.length}</span></h2>
-                <button {...this.state.isOpen?{className: styles.buttonOpen}:{className: styles.buttonClose}} onClick={()=> this.setIsOpen(true)}>
+                <button {...this.state.isOpen ? { className: styles.buttonOpen } : { className: styles.buttonClose }} onClick={() => this.setIsOpen(true)}>
                   <HiMiniPencilSquare />
                 </button>
-                <Window name="Новое сообщение" isOpen={this.state.isOpen} setIsOpen={this.setIsOpen} buttonContent={<HiMiniPencilSquare />} buttonStyle='bg-button_blue_BG p-3 rounded-full fill-white hover:bg-button_blue_opacity translate duration-300' pressedStyle='bg-button_blue_opacity'>
+                <Window name="Новое сообщение" isOpen={this.state.isOpen} setIsOpen={this.setIsOpen}>
                   <NewMessage users={this.state.users} loadDialogs={this.loadDialogs} />
                 </Window>
               </div>

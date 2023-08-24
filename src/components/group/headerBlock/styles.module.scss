@@ -15,6 +15,15 @@
 						@apply lg:mb-6 md:mb-4 rounded-full overflow-hidden border-[3px] border-white top-[10px]
             relative md:bottom-[-40px] lg:bottom-[-40px] w-24 h-24 md:ml-6  lg:ml-6;
 					}
+					.editAvatar {
+						@apply absolute ml-16 mt-20 md:ml-24 md:mt-[-37px] lg:ml-24 lg:mt-[-45px];
+						.avatarLabel {
+							@apply flex rounded-full cursor-pointer transition-all duration-500 ease-in-out bg-button_blue_BG bg-opacity-60 hover:bg-opacity-100;
+						}
+						.avatarIcon {
+							@apply flex p-1;
+						}
+					}
 				}
 			}
 			.buttonBlock {
@@ -36,6 +45,12 @@
 					span {
 						@apply mr-2;
 					}
+				}
+			}
+			.editButton {
+				@apply text-button_red_BG flex justify-center items-center bg-button_red_opacity transition-all duration-300 hover:bg-button_red_BG hover:text-white focus:ring-4 focus:outline-none focus:ring-button_red_BG font-medium rounded-md text-sm p-3 text-center m-3 mt-3 lg:absolute lg:right-0 lg:top-10 md:absolute md:right-0 md:top-10;
+				span {
+					@apply mr-2;
 				}
 			}
 		}
@@ -86,9 +101,9 @@
     dark:border-dark_border;
 		.counterLink {
 			@apply flex items-center h-full border-b-4 border-b-blue-500;
-			.counter {
-				@apply ml-1 text-lg bg-button_green_opacity px-2  rounded-md text-button_green_BG;
-			}
+		}
+		.counter {
+			@apply ml-1 text-lg bg-button_green_opacity px-2  rounded-md text-button_green_BG;
 		}
 		.link {
 			@apply my-4  hover:text-blue-500 transition-all duration-300 font-bold;
@@ -104,4 +119,7 @@
 	.image {
 		@apply w-full h-auto;
 	}
+}
+.dialog {
+	@apply bg-white dark:bg-dark_background border rounded-lg dark:border-dark_border border-light_border;
 }

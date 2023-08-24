@@ -38,7 +38,34 @@ export class GroupService {
                 return null;
             });
     }
-
+    static async updateAvatar(formData: FormData) {
+        const session = await getSession();
+        return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "Group/UpdateAvatar", formData, {
+            headers: {
+                "Accept": "application/json",
+                "Authorization": "Bearer " + session?.user.accessToken,
+                'Content-Type': 'multipart/form-data',
+            },
+        }).then(response => response.data)
+            .catch((error) => {
+                this.checkLogin(session, error.response);
+                return null;
+            });
+    }
+    static async updateGroup(formData: FormData) {
+        const session = await getSession();
+        return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "Group/UpdateGroup", formData, {
+            headers: {
+                "Accept": "application/json",
+                "Authorization": "Bearer " + session?.user.accessToken,
+                'Content-Type': 'multipart/form-data',
+            },
+        }).then(response => response.data)
+            .catch((error) => {
+                this.checkLogin(session, error.response);
+                return null;
+            });
+    }
     static async joinGroup(id: string) {
         const session = await getSession();
         return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "Group/JoinGroup", { id: id }, {
