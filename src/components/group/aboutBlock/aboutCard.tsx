@@ -7,35 +7,20 @@ import { AboutMePreloader } from "@/loaders/aboutMePreloader";
 import { useEffect, useState } from "react";
 
 
-export const AboutCard = (props:any) => {
+export const AboutCard = (props: any) => {
 
-  const [aboutMe, born, email, familyStatus] = 
-  useStore((state) => [state.aboutMe, state.born, state.email, state.familyStatus])
+  const [aboutMe, born, email, familyStatus] =
+    useStore((state) => [state.aboutMe, state.born, state.email, state.familyStatus])
 
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const delay = 1000;
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, delay);
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (loading) {
-
-    return <AboutMePreloader />;
-  }
 
   return (
     <>
       <div className={styles.container}>
         <div className={styles.header}>
           <h2>О группе</h2>
-          {/* <span className={styles.description}>{props.group.description}</span> */}
           <div className={styles.description}>
-                  <p className="  word-break: break-all"> {props.group.description}</p>
-                </div>
+            <p className="  word-break: break-all"> {props.group.description}</p>
+          </div>
         </div>
         <div className={styles.iconText}>
           <div className={styles.icon}>

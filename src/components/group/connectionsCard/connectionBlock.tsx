@@ -3,15 +3,15 @@ import styles from './connectionBlock.module.scss';
 import { GroupService } from "@/services/group.service";
 
 export const ConnectionBlock = (props: any) => {
-  let IfAdmin = () => {
+  let ifAdmin = () => {
     if (props.group.adminId === props.session?.user?.id) return true;
     else return false;
   };
-  let RemoveUserFromGroup = async () => {
+  let removeUserFromGroup = async () => {
     let result = await GroupService.removeUserFromGroup(props.group.id, props.user.id);
     alert(result);
-    props.GetUsers();
-    props.GetGroup();
+    props.getUsers();
+    props.getGroup();
   }
   return (
     <>
@@ -29,8 +29,8 @@ export const ConnectionBlock = (props: any) => {
           </div>
         </div>
         <div className={styles.buttonsContainer}>
-          {IfAdmin()
-            ? <button className={styles.button_red_BG} onClick={() => RemoveUserFromGroup()}>Удалить</button>
+          {ifAdmin()
+            ? <button className={styles.button_red_BG} onClick={() => removeUserFromGroup()}>Удалить</button>
             : <></>
           }
           <button className={styles.button_blue_BG}>Написать</button>

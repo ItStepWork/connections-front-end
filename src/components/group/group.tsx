@@ -13,32 +13,32 @@ export default function Group(props: any) {
     const [users, setUsers] = useState<any[]>([])
     const [group, setGroup] = useState<any>(null);
     const [session, setSession] = useState<any>()
-    let GetSession = async () => {
+    let getSession1 = async () => {
         const result = await getSession();
         setSession(result);
     }
     useEffect(() => {
-        GetData();
-        GetSession();
+        getData();
+        getSession1();
     }, []);
-    let GetData = async () => {
+    let getData = async () => {
         let result = await GroupService.getGroup(props.id);
         await setGroup(result);
         let result1 = await GroupService.getUsersGroup(result?.id);
         setUsers(result1);
     }
-    const GetGroup = async () => {
+    const getGroup = async () => {
         let result = await GroupService.getGroup(props.id);
         setGroup(result);
     }
-    let GetUsers = async () => {
+    let getUsers = async () => {
         let result = await GroupService.getUsersGroup(group?.id);
         setUsers(result);
     }
-    const ChangeComponent = () => {
-        if (component === "connections") return (<ConnectionsCard session={session} users={users} group={group} GetGroup={GetGroup} GetUsers={GetUsers} />)
+    const changeComponent = () => {
+        if (component === "connections") return (<ConnectionsCard session={session} users={users} group={group} getGroup={getGroup} getUsers={getUsers} />)
         if (component === "about") return (<AboutCard group={group} />)
-        else return (<>Empty</>)
+        else return (<AboutCard group={group} />)
     }
     return (
         <>
@@ -46,9 +46,9 @@ export default function Group(props: any) {
                 <div className={styles.container}>
                     {group
                         ? <div className='gap-5'>
-                            < HeaderBlock session={session} group={group} users={users} GetGroup={GetGroup} GetUsers={GetUsers} setComponent={setComponent} />
+                            < HeaderBlock session={session} group={group} users={users} getGroup={getGroup} getUsers={getUsers} setComponent={setComponent} />
                             <PostPanel></PostPanel>
-                            {ChangeComponent()}
+                            {changeComponent()}
                         </div>
                         : <>Loading...</>
                     }
