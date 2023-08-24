@@ -16,3 +16,12 @@
 .verticalHr {
 	@apply w-px lg:h-full border-zinc-200 bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-700;
 }
+.chats {
+	@apply bg-button_green_opacity text-button_green_BG px-2 py-1 rounded-lg;
+}
+.buttonClose{
+	@apply bg-button_blue_BG p-3 rounded-full fill-white hover:bg-button_blue_opacity duration-300;
+}
+.buttonOpen{
+	@apply bg-button_blue_opacity p-3 rounded-full fill-white hover:bg-button_blue_opacity duration-300;
+}

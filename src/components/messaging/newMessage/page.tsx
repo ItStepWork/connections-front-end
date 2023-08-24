@@ -4,13 +4,9 @@ import { useState } from "react";
 import { BsFillSendFill } from 'react-icons/bs';
 import { FaUserCircle } from 'react-icons/fa';
 import { FaCircleUser } from 'react-icons/fa6';
-import { HiMiniPencilSquare } from 'react-icons/hi2';
-import { IoMdClose } from 'react-icons/io';
 import styles from './styles.module.scss';
 
 export function NewMessage(props: any) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isOpenNewMessage, setIsOpenNewMessage] = useState(false);
   const [search, setSearch] = useState("");
   const [message, setMessage] = useState("");
   const [filterUsers, setFilterUsers] = useState([]);
@@ -47,26 +43,7 @@ export function NewMessage(props: any) {
   }
 
   return (
-    <div>
-      <div className='m-3 flex justify-between items-center'>
-        <h2>Активные чаты <span className={styles.chats}>{props.length}</span></h2>
-        <button onClick={() => { setIsOpen(!isOpen); setIsOpenNewMessage(true); }} onFocus={() => { if (isOpen) setIsOpen(true) }} onBlur={() => setIsOpen(false)} >
-
-          <HiMiniPencilSquare size={40} {...isOpen ? { className: "bg-button_blue_BG p-3 rounded-full fill-white" } : { className: "bg-button_blue_opacity p-3 rounded-full fill-button_blue_BG" }} />
-        </button>
-      </div>
-      <hr className={styles.horizontalHr} />
-
-      <div {...isOpenNewMessage ? { className: styles.newMessage + " visible z-50" } : { className: styles.newMessage + " invisible z-50" }}>
-        <div className={styles.newMessageContainer}>
-          <div className={styles.newMessageHeader}>
-            <h2>Новое сообщение</h2>
-            <button onClick={() => setIsOpenNewMessage(false)}>
-              <IoMdClose size={26} className={styles.buttonClose} />
-            </button>
-          </div>
-          <hr className={styles.horizontalHr} />
-          <div className={styles.newMessageContent}>
+    <div className={styles.newMessageContent}>
             <div className="flex">
               <span className={styles.iconSearch}>
                 <FaCircleUser size={20} />
@@ -94,8 +71,5 @@ export function NewMessage(props: any) {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
   )
 }
