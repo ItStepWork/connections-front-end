@@ -33,7 +33,7 @@ export const ConnectionBlock = (props: any) => {
             ? <button className={styles.button_red_BG} onClick={() => removeUserFromGroup()}>Удалить</button>
             : <></>
           }
-          <button className={styles.button_blue_BG}>Написать</button>
+          <button className={styles.button_blue_BG} onClick={() => { props.setUser(props.user); props.setIsOpen(true); }}>Написать</button>
         </div>
       </div>
     </>
