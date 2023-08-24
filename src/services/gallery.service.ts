@@ -10,9 +10,9 @@ export class GalleryService {
         }
     }
 
-    static async getPhotos() {
+    static async getPhotos(userId: string) {
         const session = await getSession();
-        return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + "Gallery/GetPhotos", {
+        return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + "Gallery/GetPhotos?userId=" + userId, {
             headers: {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,
@@ -184,9 +184,9 @@ export class GalleryService {
             });
     }
 
-    static async getAlbums() {
+    static async getAlbums(userId: string) {
         const session = await getSession();
-        return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + "Gallery/GetAlbums", {
+        return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + "Gallery/GetAlbums?userId=" + userId, {
             headers: {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,

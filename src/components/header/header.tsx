@@ -40,7 +40,7 @@ export const Header: FC = () => {
                         <Link className={ styles.navText} onClick={fetch} href='/main'>Главная</Link>    
                       </li>
                       <li className={styles.listItem}>
-                        <Link className={styles.navText} onClick={fetch} href='/profile'>Мой профиль</Link>
+                        <Link className={styles.navText} onClick={fetch} href={`/profile/${session.user.id}`}>Мой профиль</Link>
                       </li>
                       <li className={styles.listItem}>
                         <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href='/messaging'>{open ? 'Сообщения' : <MdOutlineMessage size={20} />}</Link>

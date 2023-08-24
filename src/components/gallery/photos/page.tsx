@@ -9,7 +9,7 @@ export default function Photos(props: any) {
 
   const [isSelected, setIsSelected] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
-  
+
 
   const change = (e: any) => {
     if (e.target.files[0].name.endsWith('.jpg') || e.target.files[0].name.endsWith('.jpeg') || e.target.files[0].name.endsWith('.png')) {
@@ -25,31 +25,33 @@ export default function Photos(props: any) {
   }
 
 
-  const select =(index: number)=>{
+  const select = (index: number) => {
     setSelectedIndex(index);
     setIsSelected(true);
   }
 
   return (
     <div className={styles.container}>
-      <div>
-      <label className={styles.addPhoto}>
-        <MdOutlineAddAPhoto size={50} className="fill-button_blue_BG" />
-        <p className='text-center'>Добавить фото</p>
-        <input type='file' className='hidden' onChange={change}></input>
-      </label>
-      </div>
+      {props.userId === props.myId ? (
+        <div>
+          <label className={styles.addPhoto}>
+            <MdOutlineAddAPhoto size={50} className="fill-button_blue_BG" />
+            <p className='text-center'>Добавить фото</p>
+            <input type='file' className='hidden' onChange={change}></input>
+          </label>
+        </div>
+      ) : (<></>)}
       {props.photos.map((photo: any, index: any) => {
         return (
           <div key={index} className='relative'>
             <div className='absolute right-0 bottom-0'>
-              <PhotoAction get={props.get} photo={photo} albums={props.albums}/>
+              <PhotoAction get={props.get} photo={photo} albums={props.albums} />
             </div>
-            <img className={styles.image} src={photo.url} onClick={()=>{select(index)}}/>
+            <img className={styles.image} src={photo.url} onClick={() => { select(index) }} />
           </div>
         );
       })}
-      <SelectedPhoto isSelected={isSelected} setIsSelected={setIsSelected} photos={props.photos} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} user={props.user} get={props.get}/>
+      <SelectedPhoto isSelected={isSelected} setIsSelected={setIsSelected} photos={props.photos} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} myId={props.myId} userId={props.userId} get={props.get} />
     </div>
   );
 }

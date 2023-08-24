@@ -21,7 +21,7 @@ export default function SelectedPhoto(props: any) {
                     <img className='object-contain h-auto md:h-full w-auto max-h-full' src={props.photos[props.selectedIndex].url} />
                   </div>
                   <div className='relative h-44 overflow-y-auto'>
-                    <InfoPhoto photo={props.photos[props.selectedIndex]} myId={props.user.id} userId={props.user.id} get={props.get} />
+                    <InfoPhoto photo={props.photos[props.selectedIndex]} myId={props.myId} userId={props.userId} get={props.get} />
                   </div>
                 </div>
               </div>

@@ -21,7 +21,7 @@ export default function Album(props: any) {
   }, []);
 
   const get = async () => {
-    let array = await GalleryService.getAlbumPhotos(props.user.id, props.album.id);
+    let array = await GalleryService.getAlbumPhotos(props.userId, props.album.id);
     setPhotos(array);
   }
 

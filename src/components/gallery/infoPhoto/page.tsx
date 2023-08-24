@@ -32,7 +32,7 @@ export function InfoPhoto(props: any) {
 
   return (
     <div className={styles.container}>
-      <Avatar myId={props.myId} accessToken={props.accessToken}/>
+      <Avatar userId={props.userId} accessToken={props.accessToken}/>
       <div className='flex justify-between m-3'>
         {props.photo.likes.includes(props.myId) ? (
           <button onClick={like} className='flex items-center text-button_blue_BG'>

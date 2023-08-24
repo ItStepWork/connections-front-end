@@ -129,10 +129,9 @@ export function UserCard(props: any) {
             <button className={styles.linkUnderline} onClick={() => { props.setComponent("connections") }}>Связи</button>
             <div className={styles.counter}>{friendsCount}</div>
           </div>
-          <Link className={styles.link} href='/'>Медиа</Link>
-          <Link className={styles.link} href='/'>Видео</Link>
           <Link className={styles.link} href='/'>Активность</Link>
           <button className={styles.link} onClick={() => { props.setComponent("groups") }}>Сообщества</button>
+          <button className={styles.link} onClick={() => { props.setComponent("gallery") }}>Галерея</button>
         </div>
       </div>
     </>

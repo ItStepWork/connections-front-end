@@ -20,10 +20,10 @@ export default function Gallery(props: any) {
   }
 
   const get = async () => {
-    let result1 = await GalleryService.getAlbums();
+    let result1 = await GalleryService.getAlbums(props.userId);
     setAlbums(result1);
     
-    let result2 = await GalleryService.getPhotos();
+    let result2 = await GalleryService.getPhotos(props.userId);
     setPhotos(result2);
   }
   
@@ -33,10 +33,10 @@ export default function Gallery(props: any) {
 
   const render = () => {
     if(component === "photos"){
-      return (<Photos user={user} get={get} photos={photos} albums={albums}/>);
+      return (<Photos myId={props.myId} userId={props.userId} get={get} photos={photos} albums={albums}/>);
     }
     else if(component === "albums"){
-      return (<Albums user={user} albums={albums}  get={get}/>);
+      return (<Albums myId={props.myId} userId={props.userId} albums={albums}  get={get}/>);
     }
     else {
       return(<></>);
@@ -47,7 +47,7 @@ export default function Gallery(props: any) {
     <div className={styles.container}>
       <div className="flex justify-between items-center">
         <h2>Галерея</h2>
-        <CreateAlbum get={get}/>
+        {props.userId === props.myId?(<CreateAlbum get={get}/>):(<></>)}
       </div>
       <div className={styles.nav}>
         <div {...component === "photos" ? { className: `${styles.counterLink}` } : { className: "" }} >

@@ -8,7 +8,7 @@ export function Avatar(props: any) {
   const [user, setUser] = useState<any>(null);
 
   const getUser = async () => {
-    let result = await UserService.getUser(props.myId);
+    let result = await UserService.getUser(props.userId);
     setUser(result);
   }
 
