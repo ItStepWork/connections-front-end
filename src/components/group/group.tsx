@@ -11,6 +11,8 @@ import { getSession } from 'next-auth/react';
 export default function Group(props: any) {
     const [component, setComponent] = useState("");
     const [users, setUsers] = useState<any[]>([])
+    const [members, setMembers] = useState<any[]>([])
+    const [usersRequests, setUsersRequests] = useState<any[]>([])
     const [group, setGroup] = useState<any>(null);
     const [session, setSession] = useState<any>()
     let getSession1 = async () => {
@@ -21,22 +23,48 @@ export default function Group(props: any) {
         getData();
         getSession1();
     }, []);
-    let getData = async () => {
+    const getData = async () => {
         let result = await GroupService.getGroup(props.id);
         await setGroup(result);
-        let result1 = await GroupService.getUsersGroup(result?.id);
-        setUsers(result1);
+        let result1 = await GroupService.getMembersGroup(result?.id);
+        await setMembers(result1);
+        let result2 = await GroupService.getRequestsToGroup(result?.id);
+        await setUsersRequests(result2);
+        // let result1 = await GroupService.getUsersGroup(result?.id);
+        // await setUsers(result1);
+
+        // let resMembers = await Object.entries(group.users).filter(([k, v]) => v == true).map(([k, v]) => k);
+        // let resRequests = await Object.entries(group.users).filter(([k, v]) => v == false).map(([k, v]) => k);
+        // await setMembers(users.filter(i => resMembers.includes(i.id)));
+        // await setUsersRequests(users.filter(i => resRequests.includes(i.id)));
     }
     const getGroup = async () => {
         let result = await GroupService.getGroup(props.id);
         setGroup(result);
     }
-    let getUsers = async () => {
-        let result = await GroupService.getUsersGroup(group?.id);
-        setUsers(result);
+    const getMembers = async () => {
+        let result = await GroupService.getMembersGroup(group?.id);
+        setMembers(result);
     }
+    const getUsersRequests = async () => {
+        let result = await GroupService.getRequestsToGroup(group?.id);
+        setUsersRequests(result);
+    }
+    const getUsers = async () => {
+        // let result = await GroupService.getUsersGroup(group?.id);
+        // setUsers(result);
+        getMembers();
+        getUsersRequests();
+    }
+    // const getUsersArrays = () => {
+    //     let resMembers = Object.entries(group.users).filter(([k, v]) => v == true).map(([k, v]) => k);
+    //     let resRequests = Object.entries(group.users).filter(([k, v]) => v == false).map(([k, v]) => k);
+    //     setMembers(users.filter(i => resMembers.includes(i.id)));
+    //     setUsersRequests(users.filter(i => resRequests.includes(i.id)));
+    // }
     const changeComponent = () => {
-        if (component === "connections") return (<ConnectionsCard session={session} users={users} group={group} getGroup={getGroup} getUsers={getUsers} />)
+        if (component === "members") return (<ConnectionsCard isRequests={false} session={session} users={members} group={group} getGroup={getGroup} getUsers={getUsers} />)
+        if (component === "requests") return (<ConnectionsCard isRequests={true} session={session} users={usersRequests} group={group} getGroup={getGroup} getUsers={getUsers} />)
         if (component === "about") return (<AboutCard group={group} />)
         else return (<AboutCard group={group} />)
     }
@@ -46,7 +74,7 @@ export default function Group(props: any) {
                 <div className={styles.container}>
                     {group
                         ? <div className='gap-5'>
-                            < HeaderBlock session={session} group={group} users={users} getGroup={getGroup} getUsers={getUsers} setComponent={setComponent} />
+                            < HeaderBlock session={session} group={group} usersRequests={usersRequests} members={members} getGroup={getGroup} getUsers={getUsers} setComponent={setComponent} />
                             <PostPanel></PostPanel>
                             {changeComponent()}
                         </div>

@@ -21,6 +21,7 @@ export const ConnectionsCard = (props: any) => {
     await MessagingService.sendMessage(formData);
     setMessage("");
   }
+  console.log(props.users)
   return (
     <>
       <div className={styles.container}>
@@ -28,7 +29,7 @@ export const ConnectionsCard = (props: any) => {
         {props.users.map((user: any, index: any) => {
           if (index <= count) {
             if (!(ifAdmin() && user.id === props.session?.user?.id))
-              return (<ConnectionBlock setUser={setUser} setIsOpen={setIsOpen} key={index} user={user} group={props.group} session={props.session} getGroup={props.getGroup} getUsers={props.getUsers} />)
+              return (<ConnectionBlock isRequests={props.isRequests} setUser={setUser} setIsOpen={setIsOpen} key={index} user={user} group={props.group} session={props.session} getGroup={props.getGroup} getUsers={props.getUsers} />)
           }
         })}
         <button className={styles.buttonLoadMore} onClick={() => setCount(count + 1)}>Загрузить еще</button>

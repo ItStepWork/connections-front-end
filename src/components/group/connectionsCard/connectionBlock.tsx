@@ -13,6 +13,12 @@ export const ConnectionBlock = (props: any) => {
     props.getUsers();
     props.getGroup();
   }
+  let acceptUserToGroup = async () => {
+    let result = await GroupService.acceptUserToGroup(props.group.id, props.user.id);
+    alert(result);
+    props.getUsers();
+    props.getGroup();
+  }
   return (
     <>
       <div className={styles.container}>
@@ -23,18 +29,25 @@ export const ConnectionBlock = (props: any) => {
           <div className={styles.textContainer}>
             <div className={styles.headerText}>
               <span>{props.user.firstName} {props.user.lastName}</span>
-              <span>{faker.company.name()}</span>
+              <span>{faker.music.songName()}</span>
             </div>
-            <div className={styles.description}>{faker.music.songName()}</div>
+            <div className={styles.description}>{props.user.aboutMe}</div>
           </div>
         </div>
-        <div className={styles.buttonsContainer}>
-          {ifAdmin()
-            ? <button className={styles.button_red_BG} onClick={() => removeUserFromGroup()}>Удалить</button>
-            : <></>
-          }
-          <button className={styles.button_blue_BG} onClick={() => { props.setUser(props.user); props.setIsOpen(true); }}>Написать</button>
-        </div>
+        {props.isRequests
+          ? <div className={styles.buttonsContainer}>
+            <button className={styles.button_red_BG} onClick={() => removeUserFromGroup()}>Удалить</button>
+            <button className={styles.button_blue_BG} onClick={() => acceptUserToGroup()}>Принять</button>
+          </div>
+          : <div className={styles.buttonsContainer}>
+            {ifAdmin()
+              ? <button className={styles.button_red_BG} onClick={() => removeUserFromGroup()}>Удалить</button>
+              : <></>
+            }
+            <button className={styles.button_blue_BG} onClick={() => { props.setUser(props.user); props.setIsOpen(true); }}>Написать</button>
+          </div>
+        }
+
       </div>
     </>
   )

@@ -104,6 +104,21 @@ export class GroupService {
             });
     }
 
+    static async acceptUserToGroup(groupId: string,userId: string) {
+        const session = await getSession();
+        return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "Group/AcceptUserToGroup",{ id: groupId,userId:userId }, {
+            headers: {
+                "Accept": "application/json",
+                "Authorization": "Bearer " + session?.user.accessToken,
+                'Content-Type': 'application/json',
+            },
+        }).then(response => response.data)
+            .catch((error) => {
+                CheckService.signOut(session, error);
+                return null;
+            });
+    }
+
     static async getGroup(id: string) {
         const session = await getSession();
         return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + "Group/GetGroup?id=" + id, {
@@ -121,6 +136,32 @@ export class GroupService {
     static async getUsersGroup(id: string) {
         const session = await getSession();
         return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + "Group/GetUsersGroup?id=" + id, {
+            headers: {
+                "Accept": "application/json",
+                "Authorization": "Bearer " + session?.user.accessToken,
+            },
+        }).then(response => response.data)
+            .catch((error) => {
+                CheckService.signOut(session, error);
+                return [];
+            });
+    }
+    static async getMembersGroup(id: string) {
+        const session = await getSession();
+        return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + "Group/GetMembersGroup?id=" + id, {
+            headers: {
+                "Accept": "application/json",
+                "Authorization": "Bearer " + session?.user.accessToken,
+            },
+        }).then(response => response.data)
+            .catch((error) => {
+                CheckService.signOut(session, error);
+                return [];
+            });
+    }
+    static async getRequestsToGroup(id: string) {
+        const session = await getSession();
+        return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + "Group/GetRequestsToGroup?id=" + id, {
             headers: {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,
