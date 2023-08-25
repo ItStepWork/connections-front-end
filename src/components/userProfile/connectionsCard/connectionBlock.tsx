@@ -2,6 +2,7 @@ import styles from './connectionBlock.module.scss';
 import { FaUserCircle } from 'react-icons/fa';
 import Link from 'next/link';
 import { FriendService } from '@/services/friend.service';
+import { FriendStatus } from '@/enums/all.enum';
 
 export const ConnectionBlock = (props: any) => {
 
@@ -36,10 +37,10 @@ export const ConnectionBlock = (props: any) => {
           </div>
         </Link>
         <div className={styles.buttonsContainer}>
-          {props.status === "confirmed" ? (<button className={styles.button_red_BG} onClick={removeFriend}>Удалить</button>) : (<></>)}
-          {props.status === "unconfirmed" ? (<button className={styles.button_green_BG} onClick={confirmFriend}>Подтвердить</button>) : (<></>)}
-          {props.status === "waiting" ? (<button className={styles.button_green_BG} disabled>Ожидание</button>) : (<></>)}
-          {props.status === "other" ? (<button className={styles.button_green_BG} onClick={addFriend}>Дружить</button>) : (<></>)}
+          {props.status === FriendStatus.Confirmed ? (<button className={styles.button_red_BG} onClick={removeFriend}>Удалить</button>) : (<></>)}
+          {props.status === FriendStatus.Unconfirmed ? (<button className={styles.button_green_BG} onClick={confirmFriend}>Подтвердить</button>) : (<></>)}
+          {props.status === FriendStatus.Waiting ? (<button className={styles.button_green_BG} disabled>Ожидание</button>) : (<></>)}
+          {props.status === FriendStatus.Other ? (<button className={styles.button_green_BG} onClick={addFriend}>Дружить</button>) : (<></>)}
           <button className={styles.button_blue_BG}>Написать</button>
         </div>
       </div>

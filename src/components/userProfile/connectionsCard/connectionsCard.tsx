@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { ConnectionBlock } from './connectionBlock';
 import styles from './connectionsCard.module.scss';
 import { FriendService } from '@/services/friend.service';
+import { FriendStatus } from '@/enums/all.enum';
 
 export const ConnectionsCard = (props: any) => {
 
@@ -42,16 +43,16 @@ export const ConnectionsCard = (props: any) => {
       <div className={styles.container}>
         <h2>Связи</h2>
         {unconfirmedUsers.map((user: any, index: number) => {
-          if (index < count) return <ConnectionBlock key={user.id} user={user} status="unconfirmed" getUsers={getUsers} />
+          if (index < count) return <ConnectionBlock key={user.id} user={user} status={FriendStatus.Unconfirmed} getUsers={getUsers} />
         })}
         {waitingUsers.map((user: any, index: number) => {
-          if ((index + unconfirmedUsers.length) < count) return <ConnectionBlock key={user.id} user={user} status="waiting" getUsers={getUsers} />
+          if ((index + unconfirmedUsers.length) < count) return <ConnectionBlock key={user.id} user={user} status={FriendStatus.Waiting} getUsers={getUsers} />
         })}
         {confirmedUsers.map((user: any, index: number) => {
-          if ((index + unconfirmedUsers.length + waitingUsers.length) < count) return <ConnectionBlock key={user.id} user={user} status="confirmed" getUsers={getUsers} />
+          if ((index + unconfirmedUsers.length + waitingUsers.length) < count) return <ConnectionBlock key={user.id} user={user} status={FriendStatus.Confirmed} getUsers={getUsers} />
         })}
         {otherUsers.map((user: any, index: number) => {
-          if ((index + unconfirmedUsers.length + waitingUsers.length + confirmedUsers.length) < count) return <ConnectionBlock key={user.id} user={user} status="other" getUsers={getUsers} />
+          if ((index + unconfirmedUsers.length + waitingUsers.length + confirmedUsers.length) < count) return <ConnectionBlock key={user.id} user={user} status={FriendStatus.Other} getUsers={getUsers} />
         })}
         <button className={styles.buttonLoadMore} onClick={loadMore}>Загрузть еще</button>
       </div >

@@ -8,13 +8,14 @@ import { useEffect, useState } from 'react';
 import { BsBriefcase, BsCalendar2Plus, BsFillPatchCheckFill, BsGeoAlt, BsPencilFill, BsThreeDots } from 'react-icons/bs';
 import { HiMiniPencilSquare } from 'react-icons/hi2';
 import styles from './userCard.module.scss';
+import { ComponentName } from '@/enums/all.enum';
 
 export function UserCard(props: any) {
 
   const [avatar, bg, firstName, lastName, joined, work, location, friendsCount, fetchUser] = useStore((state) =>
     [state.avatar, state.BgImage, state.firstName, state.lastName, state.joined, state.work, state.location, state.friendsCount, state.fetchUser])
   const [loading, setLoading] = useState(true);
-  
+
   const saveAvatar = async (e: any) => {
     if (e.target.files[0].name.endsWith('.jpg') || e.target.files[0].name.endsWith('.jpeg') || e.target.files[0].name.endsWith('.png')) {
 
@@ -35,7 +36,7 @@ export function UserCard(props: any) {
     }
   }
 
-  
+
 
   useEffect(() => {
     const delay = 1000;
@@ -45,7 +46,7 @@ export function UserCard(props: any) {
     return () => clearTimeout(timer);
   }, []);
 
-  if (loading) { 
+  if (loading) {
     return <UserCardPreloader />;
   }
 
@@ -123,15 +124,18 @@ export function UserCard(props: any) {
           </div>
         </div>
         <div className={styles.cardNav}>
-          <Link className={styles.link} href='/'>Посты</Link>
-          <Link className={styles.link} href='/aboutMe'>Обо мне</Link>
-          <div className={styles.counterLink}>
-            <button className={styles.linkUnderline} onClick={() => { props.setComponent("connections") }}>Связи</button>
-            <div className={styles.counter}>{friendsCount}</div>
+          <div {...props.component === ComponentName.AboutMe ? { className: `${styles.counterLink}` } : { className: "" }} >
+            <button {...props.component === ComponentName.AboutMe ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent(ComponentName.AboutMe) }}>Обо мне</button>
           </div>
-          <Link className={styles.link} href='/'>Активность</Link>
-          <button className={styles.link} onClick={() => { props.setComponent("groups") }}>Сообщества</button>
-          <button className={styles.link} onClick={() => { props.setComponent("gallery") }}>Галерея</button>
+          <div {...props.component === ComponentName.Connections ? { className: `${styles.counterLink}` } : { className: "" }} >
+            <button {...props.component === ComponentName.Connections ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent(ComponentName.Connections) }}>Связи</button>
+          </div>
+          <div {...props.component === ComponentName.Groups ? { className: `${styles.counterLink}` } : { className: "" }} >
+            <button {...props.component === ComponentName.Groups ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent(ComponentName.Groups) }}>Сообщества</button>
+          </div>
+          <div {...props.component === ComponentName.Gallery ? { className: `${styles.counterLink}` } : { className: "" }} >
+            <button {...props.component === ComponentName.Gallery ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent(ComponentName.Gallery) }}>Галерея</button>
+          </div>
         </div>
       </div>
     </>

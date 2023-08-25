@@ -21,7 +21,7 @@ export default function Signin() {
     });
 
     if (res && !res.error) {
-      router.push("/profile");
+      router.push("/main");
     } else {
       console.log(res);
     }
