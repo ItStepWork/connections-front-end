@@ -1,14 +1,8 @@
 import axios from 'axios';
 import { getSession } from 'next-auth/react';
-import { signOut } from "next-auth/react";
+import { CheckService } from './check.service';
 
 export class GroupService {
-
-    static checkLogin(session: any, response: any) {
-        if (session !== null && response.status === 401) {
-            signOut();
-        }
-    }
 
     static async getGroups() {
         const session = await getSession();
@@ -19,7 +13,7 @@ export class GroupService {
             },
         }).then(response => response.data)
             .catch((error) => {
-                this.checkLogin(session, error.response);
+                CheckService.signOut(session, error);
                 return [];
             });
     }
@@ -34,7 +28,7 @@ export class GroupService {
             },
         }).then(response => response.data)
             .catch((error) => {
-                this.checkLogin(session, error.response);
+                CheckService.signOut(session, error);
                 return null;
             });
     }
@@ -48,7 +42,7 @@ export class GroupService {
             },
         }).then(response => response.data)
             .catch((error) => {
-                this.checkLogin(session, error.response);
+                CheckService.signOut(session, error);
                 return null;
             });
     }
@@ -62,7 +56,7 @@ export class GroupService {
             },
         }).then(response => response.data)
             .catch((error) => {
-                this.checkLogin(session, error.response);
+                CheckService.signOut(session, error);
                 return null;
             });
     }
@@ -76,7 +70,7 @@ export class GroupService {
             },
         }).then(response => response.data)
             .catch((error) => {
-                this.checkLogin(session, error.response);
+                CheckService.signOut(session, error);
                 return null;
             });
     }
@@ -90,7 +84,7 @@ export class GroupService {
             },
         }).then(response => response.data)
             .catch((error) => {
-                this.checkLogin(session, error.response);
+                CheckService.signOut(session, error);
                 return null;
             });
     }
@@ -105,7 +99,7 @@ export class GroupService {
             },
         }).then(response => response.data)
             .catch((error) => {
-                this.checkLogin(session, error.response);
+                CheckService.signOut(session, error);
                 return null;
             });
     }
@@ -119,7 +113,7 @@ export class GroupService {
             },
         }).then(response => response.data)
             .catch((error) => {
-                this.checkLogin(session, error.response);
+                CheckService.signOut(session, error);
                 return null;
             });
     }
@@ -133,7 +127,7 @@ export class GroupService {
             },
         }).then(response => response.data)
             .catch((error) => {
-                this.checkLogin(session, error.response);
+                CheckService.signOut(session, error);
                 return [];
             });
     }

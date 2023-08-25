@@ -1,14 +1,8 @@
 import axios from 'axios';
 import { getSession } from 'next-auth/react';
-import { signOut } from "next-auth/react";
+import { CheckService } from './check.service';
 
 export class GalleryService {
-
-    static checkLogin(session: any, response: any) {
-        if (session !== null && response.status === 401) {
-            signOut();
-        }
-    }
 
     static async getPhotos(userId: string) {
         const session = await getSession();
@@ -19,7 +13,7 @@ export class GalleryService {
             },
         }).then(response => response.data)
             .catch((error) => {
-                this.checkLogin(session, error.response);
+                CheckService.signOut(session, error);
                 return [];
             });
     }
@@ -33,7 +27,7 @@ export class GalleryService {
             },
         }).then(response => response.data)
             .catch((error) => {
-                this.checkLogin(session, error.response);
+                CheckService.signOut(session, error);
                 return null;
             });
     }
@@ -47,7 +41,7 @@ export class GalleryService {
             },
         }).then(response => response.data)
             .catch((error) => {
-                this.checkLogin(session, error.response);
+                CheckService.signOut(session, error);
                 return [];
             });
     }
@@ -62,7 +56,7 @@ export class GalleryService {
             },
         }).then(response => response.data)
             .catch((error) => {
-                this.checkLogin(session, error.response);
+                CheckService.signOut(session, error);
                 return null;
             });
     }
@@ -77,7 +71,7 @@ export class GalleryService {
             },
         }).then(response => response.data)
             .catch((error) => {
-                this.checkLogin(session, error.response);
+                CheckService.signOut(session, error);
                 return null;
             });
     }
@@ -92,7 +86,7 @@ export class GalleryService {
             },
         }).then(response => response.data)
             .catch((error) => {
-                this.checkLogin(session, error.response);
+                CheckService.signOut(session, error);
                 return null;
             });
     }
@@ -107,7 +101,7 @@ export class GalleryService {
             },
         }).then(response => response.data)
             .catch((error) => {
-                this.checkLogin(session, error.response);
+                CheckService.signOut(session, error);
                 return null;
             });
     }
@@ -121,7 +115,7 @@ export class GalleryService {
             },
         }).then(response => response.data)
             .catch((error) => {
-                this.checkLogin(session, error.response);
+                CheckService.signOut(session, error);
                 return null;
             });
     }
@@ -135,7 +129,7 @@ export class GalleryService {
             },
         }).then(response => response.data)
             .catch((error) => {
-                this.checkLogin(session, error.response);
+                CheckService.signOut(session, error);
                 return null;
             });
     }
@@ -149,7 +143,7 @@ export class GalleryService {
             },
         }).then(response => response.data)
             .catch((error) => {
-                this.checkLogin(session, error.response);
+                CheckService.signOut(session, error);
                 return null;
             });
     }
@@ -164,7 +158,7 @@ export class GalleryService {
             },
         }).then(response => response.data)
             .catch((error) => {
-                this.checkLogin(session, error.response);
+                CheckService.signOut(session, error);
                 return null;
             });
     }
@@ -179,7 +173,7 @@ export class GalleryService {
             },
         }).then(response => response.data)
             .catch((error) => {
-                this.checkLogin(session, error.response);
+                CheckService.signOut(session, error);
                 return null;
             });
     }
@@ -193,7 +187,7 @@ export class GalleryService {
             },
         }).then(response => response.data)
             .catch((error) => {
-                this.checkLogin(session, error.response);
+                CheckService.signOut(session, error);
                 return [];
             });
     }
@@ -213,7 +207,7 @@ export class GalleryService {
             },
         }).then(response => response.data)
             .catch((error) => {
-                this.checkLogin(session, error.response);
+                CheckService.signOut(session, error);
                 return null;
             });
     }

@@ -1,14 +1,9 @@
 import { IUser } from '@/interfaces/user.interface';
 import axios from 'axios';
-import { getSession, signOut } from 'next-auth/react';
+import { getSession } from 'next-auth/react';
+import { CheckService } from './check.service';
 
 export class UserService {
-
-  static checkLogin(session: any, response: any) {
-    if (session !== null && response.status === 401) {
-        signOut();
-    }
-}
 
   static async setUserBgImage(formData: FormData) {
     const session = await getSession();
@@ -20,7 +15,7 @@ export class UserService {
       },
     }).then(response => response.data)
       .catch((error) => {
-        this.checkLogin(session, error.response);
+        CheckService.signOut(session, error);
         return null;
       });
   }
@@ -35,7 +30,7 @@ export class UserService {
       },
     }).then(response => response.data)
       .catch((error) => {
-        this.checkLogin(session, error.response);
+        CheckService.signOut(session, error);
         return null;
       });
   }
@@ -49,7 +44,7 @@ export class UserService {
       },
     }).then(response => response.data)
       .catch((error) => {
-        this.checkLogin(session, error.response);
+        CheckService.signOut(session, error);
         return null;
       });
   }
@@ -63,7 +58,7 @@ export class UserService {
       },
     }).then(response => response.data)
       .catch((error) => {
-        this.checkLogin(session, error.response);
+        CheckService.signOut(session, error);
         return null;
       });
   }
@@ -77,7 +72,7 @@ export class UserService {
       },
     }).then(response => response.data)
       .catch((error) => {
-        this.checkLogin(session, error.response);
+        CheckService.signOut(session, error);
         return [];
       });
   }

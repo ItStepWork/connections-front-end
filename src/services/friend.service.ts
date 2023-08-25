@@ -1,13 +1,8 @@
 import axios from 'axios';
-import { getSession, signOut } from 'next-auth/react';
+import { getSession } from 'next-auth/react';
+import { CheckService } from './check.service';
 
 export class FriendService {
-
-    static checkLogin(session: any, response: any) {
-        if (session !== null && response.status === 401) {
-            signOut();
-        }
-    }
 
     static async addFriend(id: string) {
         const session = await getSession();
@@ -19,7 +14,7 @@ export class FriendService {
             },
         }).then(response => response.data)
             .catch((error) => {
-                this.checkLogin(session, error.response);
+                CheckService.signOut(session, error);
                 return null;
             });
     }
@@ -33,7 +28,7 @@ export class FriendService {
             },
         }).then(response => response.data)
             .catch((error) => {
-                this.checkLogin(session, error.response);
+                CheckService.signOut(session, error);
                 return [];
             });
     }

@@ -49,19 +49,19 @@ export const useStore = create<User>()(
         try {
           const response = await UserService.getUser(session?.user.id as string)
           
-          set({ avatar: response.avatarUrl!});
-          set((state) => ({ BgImage: (state.BgImage = response.backgroundUrl!)}));
-          set((state) => ({ id: (state.id = response.id!)}));
-          set((state) => ({ firstName: (state.firstName = response.firstName!)}));
-          set((state) => ({ lastName: (state.lastName = response.lastName!)}));
-          set((state) => ({ phone: (state.phone = response.phone!)}));
-          set((state) => ({ familyStatus: (state.familyStatus = response.familyStatus!)}));
-          set((state) => ({ born: (state.born = response.born!)}));
-          set((state) => ({ aboutMe: (state.aboutMe = response.aboutMe!)}));
-          set((state) => ({ email: (state.email = response.email!)}));
-          set((state) => ({ work: (state.work = response.work!)}));
-          set((state) => ({ location: (state.location = response.location!)}));
-          set((state) => ({ joined: (state.joined = response.joined!)}));
+          set({ avatar: response?.avatarUrl!});
+          set((state) => ({ BgImage: (state.BgImage = response?.backgroundUrl!)}));
+          set((state) => ({ id: (state.id = response?.id!)}));
+          set((state) => ({ firstName: (state.firstName = response?.firstName!)}));
+          set((state) => ({ lastName: (state.lastName = response?.lastName!)}));
+          set((state) => ({ phone: (state.phone = response?.phone!)}));
+          set((state) => ({ familyStatus: (state.familyStatus = response?.familyStatus!)}));
+          set((state) => ({ born: (state.born = response?.born!)}));
+          set((state) => ({ aboutMe: (state.aboutMe = response?.aboutMe!)}));
+          set((state) => ({ email: (state.email = response?.email!)}));
+          set((state) => ({ work: (state.work = response?.work!)}));
+          set((state) => ({ location: (state.location = response?.location!)}));
+          set((state) => ({ joined: (state.joined = response?.joined!)}));
           set((state) => ({ friendsCount: state.friendsCount = 42}));
         }catch (error){
           console.log(error)
