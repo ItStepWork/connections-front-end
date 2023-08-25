@@ -1,34 +1,45 @@
-import { faker } from "@faker-js/faker";
-import Image from 'next/image';
-import { FC } from "react";
 import styles from './connectionBlock.module.scss';
+import { FaUserCircle } from 'react-icons/fa';
+import Link from 'next/link';
+import { FriendService } from '@/services/friend.service';
 
-export const ConnectionBlock: FC = () => {
+export const ConnectionBlock = (props: any) => {
+
+  const addFriend = async () =>{
+    await FriendService.addFriend(props.user.id);
+    props.getUsers();
+  }
+
+  const confirmFriend = async () =>{
+    await FriendService.confirmFriend(props.user.id);
+    props.getUsers();
+  }
+
+  const removeFriend = async () =>{
+    await FriendService.removeFriend(props.user.id);
+    props.getUsers();
+  }
+
   return (
     <>
       <div className={styles.container}>
-        <div className={styles.userContainer}>
-          <div className={styles.avatar}>
-            <Image
-              src={faker.image.avatar()}
-              width={48}
-              height={48}
-              quality={80}
-              style={{ objectFit: "contain" }}
-              alt="avatar"
-              loading="lazy"
-            />
-          </div>
+        <Link className={styles.userContainer} href={`/profile/${props.user.id}`} target='_blank'>
+          {props.user.avatarUrl ? (
+            <img src={props.user.avatarUrl} className={styles.avatar} alt="avatar"></img>
+          ) : (<FaUserCircle className={styles.avatar} />)}
           <div className={styles.textContainer}>
             <div className={styles.headerText}>
-              <span>{faker.person.fullName()}</span>
-              <span>{faker.company.name()}</span>
+              <span>{props.user.firstName} {props.user.lastName}</span>
+              <span>{props.user.FamilyStatus}</span>
             </div>
-            <div className={styles.description}>{faker.music.songName()}</div>
+            <div className={styles.description}>{props.user.aboutMe}</div>
           </div>
-        </div>
+        </Link>
         <div className={styles.buttonsContainer}>
-          <button className={styles.button_red_BG}>Удалить</button>
+          {props.status === "confirmed" ? (<button className={styles.button_red_BG} onClick={removeFriend}>Удалить</button>) : (<></>)}
+          {props.status === "unconfirmed" ? (<button className={styles.button_green_BG} onClick={confirmFriend}>Подтвердить</button>) : (<></>)}
+          {props.status === "waiting" ? (<button className={styles.button_green_BG} disabled>Ожидание</button>) : (<></>)}
+          {props.status === "other" ? (<button className={styles.button_green_BG} onClick={addFriend}>Дружить</button>) : (<></>)}
           <button className={styles.button_blue_BG}>Написать</button>
         </div>
       </div>

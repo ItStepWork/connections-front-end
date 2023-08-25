@@ -12,6 +12,7 @@ import { useSession } from "next-auth/react";
 import { useState } from 'react';
 import Celebration from "@/components/main/celebrations/page";
 import Menu from "@/components/main/menu/page";
+import { ConnectionsCard } from '@/components/userProfile/connectionsCard/connectionsCard';
 
 export default function Home(props: any) {
 
@@ -20,6 +21,7 @@ export default function Home(props: any) {
   const ChangeComponent = () => {
     if (component === "groups") return (<GroupsCard />)
     else if (component === "celebration") return (<Celebration />)
+    else if(component === "connections") return(<ConnectionsCard myId={session?.user.id} userId={session?.user.id} />)
     else if (component === "gallery") return (<Gallery myId={session?.user.id} userId={session?.user.id} />)
     else return (
       <>

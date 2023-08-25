@@ -25,9 +25,9 @@ export default function Profile(props:any) {
 
   const ChangeComponent =() =>{
     if(component === "groups") return(<GroupsCard />)
-    else if(component === "connections") return(<ConnectionsCard />)
+    else if(component === "connections") return(<ConnectionsCard myId={session?.user.id} userId={props.params.id[0]} />)
     else if (component === "gallery") return (<Gallery myId={session?.user.id} userId={props.params.id[0]} />)
-    else return(<ConnectionsCard/>)
+    else return(<ConnectionsCard myId={session?.user.id} userId={props.params.id[0]} />)
   }
   return (
     <>

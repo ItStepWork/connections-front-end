@@ -85,7 +85,7 @@ export const LeftUserBlock = (props:any) => {
             <div className={styles.icon}>
               <FcBusinessman size={20} />
             </div>
-            <Link href={'/profile'}>Связи</Link>
+            <button onClick={()=>{props.setComponent("connections")}}>Связи</button>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
