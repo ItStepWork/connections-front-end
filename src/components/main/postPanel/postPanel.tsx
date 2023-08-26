@@ -10,7 +10,11 @@ import styles from "./styles.module.scss";
 
 export const PostPanel = () => {
   // const closeDialog = () => { document.querySelector("dialog")?.close(); }
-  const openDialog = () => { document.querySelector("dialog")?.showModal(); }
+  const openDialog = () => {
+    //  document.querySelector("dialog")?.showModal(); 
+    var dialog: any = document.getElementById("postDialog")
+    dialog?.showModal()
+  }
   // const { data: session, update } = useSession<any>();
   const [component, setComponent] = useState("");
   const [user, setUser] = useState<any>(null);
@@ -60,7 +64,7 @@ export const PostPanel = () => {
         </div>
       </div>
       <div className={styles.bottomDiv}></div>
-      <dialog className={styles.dialog}>{showComponent()}</dialog>
+      <dialog className={styles.dialog} id='postDialog'>{showComponent()}</dialog>
 
 
 

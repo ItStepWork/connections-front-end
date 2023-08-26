@@ -9,13 +9,13 @@
 	}
 }
 .dialogDiv {
-	@apply w-80 lg:w-96;
+	@apply w-80 lg:w-96 p-3;
 }
 .dialogDivHeader {
 	@apply text-base p-2 flex justify-between  w-full;
 }
 .dialogDivBody {
-	@apply flex flex-wrap text-base p-6 border dark:border-dark_border border-light_border border-x-0 w-full;
+	@apply flex flex-wrap text-base p-3 border dark:border-dark_border border-light_border border-x-0 w-full;
 	a {
 		@apply text-gray-600 m-2 cursor-pointer;
 	}
@@ -24,21 +24,17 @@
 	@apply w-full border-dashed border-2 dark:border-gray-700 rounded-lg h-40 flex flex-col items-center;
 }
 .dialogDivFooter {
-	@apply text-base p-2 flex justify-end w-full;
-}
-
-.dialogButtonDiv {
-	@apply flex flex-wrap justify-center  w-full;
+	@apply text-base pt-3 flex justify-end w-full gap-3;
 }
 
 .redButton {
-	@apply flex flex-row gap-2 text-button_red_BG bg-button_red_opacity transition-all duration-300 rounded-md py-3 px-5 m-1 hover:bg-button_red_BG hover:text-white;
+	@apply flex flex-row  text-button_red_BG bg-button_red_opacity transition-all duration-300 rounded-md py-2.5 px-5 hover:bg-button_red_BG hover:text-white;
 }
 .closeButton {
 	@apply p-2 inline-flex items-center justify-center text-gray-500 hover:text-gray-400 dark:bg-dark_background;
 }
 .greenButton {
-	@apply text-green-400 bg-button_green_BG bg-opacity-25 transition-all duration-300 rounded-md py-3 px-5 m-1 hover:bg-button_green_BG hover:bg-opacity-75 hover:text-white;
+	@apply items-center flex justify-center text-button_green_BG bg-button_green_opacity transition-all duration-300 ease-in hover:bg-button_green_BG hover:text-white focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-md text-sm px-5 py-2.5 text-center dark:bg-button_green_opacity dark:hover:bg-green-700 dark:focus:ring-green-800;
 }
 .labels {
 	@apply text-gray-900 dark:text-white text-2xl;

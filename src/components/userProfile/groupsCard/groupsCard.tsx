@@ -23,7 +23,10 @@ export function GroupsCard(props: any) {
     let result = await getSession();
     setSession(result);
   }
-  const openDialog = () => { document.querySelector("dialog")?.showModal(); }
+  const openDialog = () => {
+    var dialog: any = document.getElementById("createGroupDialog")
+    dialog?.showModal();
+  }
   return (
     <>
       <div className={styles.container}>
@@ -47,7 +50,7 @@ export function GroupsCard(props: any) {
           <button className={styles.buttonLoadMore} onClick={() => setCount(count + 4)}>Загрузить ещё</button>
         </div>
       </div>
-      <dialog className={styles.dialog} >
+      <dialog className={styles.dialog} id='createGroupDialog'>
         {<CreateGroup getGroups={getGroups}></CreateGroup>}
       </dialog>
     </>

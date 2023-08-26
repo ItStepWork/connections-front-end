@@ -50,7 +50,10 @@ export function HeaderBlock(props: any) {
     if (find === undefined) return false;
     else return true;
   };
-  const openDialog = () => { document.querySelector("dialog")?.showModal(); }
+  const openDialog = () => {
+    var dialog: any = document.getElementById("editGroupDialog")
+    dialog?.showModal();
+  }
   return (
     <>
       <div className={styles.container}>
@@ -148,7 +151,7 @@ export function HeaderBlock(props: any) {
           </div>
         </div>
       </div>
-      <dialog className={styles.dialog} >
+      <dialog className={styles.dialog} id='editGroupDialog'>
         {<EditGroup group={props.group} getGroup={props.getGroup}></EditGroup>}
       </dialog>
     </>

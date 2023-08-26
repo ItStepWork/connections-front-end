@@ -3,7 +3,6 @@ import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiOutlineClose } from 'react-icons/ai';
-import { FaRegUser } from 'react-icons/fa';
 import styles from './styles.module.scss';
 import { BsUpload } from 'react-icons/bs';
 
@@ -19,7 +18,10 @@ export function CreateGroup(props: any) {
             value: '1',
         },
     ];
-    const closeDialog = () => { document.querySelector("dialog")?.close(); }
+    const closeDialog = () => {
+        var dialog: any = document.getElementById("createGroupDialog")
+        dialog?.close();
+    }
     const { data: session, update } = useSession();
     const {
         register,
@@ -39,7 +41,6 @@ export function CreateGroup(props: any) {
             closeDialog();
         }
         else alert("Wrong picture format");
-
     }
     return (
         <>
@@ -56,7 +57,7 @@ export function CreateGroup(props: any) {
                         <br></br>
                         <input type="text" className={styles.grInput} placeholder="Имя группы здесь..." {...register('name')} required></input>
                     </div>
-                    <div className="mb-3">
+                    <div className="mb-3 ">
                         <label className={styles.label}>Изображение группы</label>
                         <div className={styles.dialogDivHeader}>
                             <div className={styles.input_div}>
@@ -70,26 +71,24 @@ export function CreateGroup(props: any) {
                             </div> */}
                         </div>
                     </div>
-                    <div >
-                        <label className={styles.label}>Тип группы</label>
-                        <div className={styles.checkDiv}>
-                            <select
-                                className={styles.select}
-                                id="audience"
-                                {...register('audience')}
-                                key={session?.user?.id}
-                            >
-                                {options.map((option, index) => (
-                                    <option key={index} value={option.value} typeof="number">{option.label}</option>
-                                ))}
-                            </select>
-                        </div>
+                    <label className={styles.label}>Тип группы</label>
+                    <div className={styles.checkDiv}>
+                        <select
+                            className={styles.select}
+                            id="audience"
+                            {...register('audience')}
+                            key={session?.user?.id}
+                        >
+                            {options.map((option, index) => (
+                                <option key={index} value={option.value} typeof="number">{option.label}</option>
+                            ))}
+                        </select>
                     </div>
                     {/* <div className="mb-3">
                   <label className="form-label">Invite friend </label>
                   <input type="text" className={styles.grInput} placeholder="Add friend name here"></input>
                 </div> */}
-                    <div className="mb-3">
+                    <div className="mb-3 mt-3">
                         <label className={styles.label}>Описание группы </label>
                         <textarea className={styles.grInput} rows={2} placeholder="Ваше описание здесь..." {...register('description')} required></textarea>
                     </div>

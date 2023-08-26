@@ -4,7 +4,11 @@ import { BsImages } from 'react-icons/bs'
 import { AiOutlineClose } from 'react-icons/ai'
 
 export const PostPhoto = (props: any) => {
-  const closeDialog = () => { document.querySelector("dialog")?.close(); }
+  const closeDialog = () => {
+    // document.querySelector("dialog")?.close(); 
+    var dialog: any = document.getElementById("postDialog")
+    dialog?.close();
+  }
   return (
     <>
       <form className={styles.dialogDiv} >
@@ -28,7 +32,7 @@ export const PostPhoto = (props: any) => {
           <label className={styles.inputPhoto}>
             <BsImages className="fill-gray-300 dark:fill-gray-700 mt-5" size={50}></BsImages>
             <a className="opacity-50">Перетащите сюда или нажмите, чтобы загрузить фото.</a>
-            <input type="file" className="hidden"></input>
+            <input type="file" accept=".jpg, .jpeg, .png" className="hidden"></input>
           </label>
         </div>
         <div className={styles.dialogDivFooter}>

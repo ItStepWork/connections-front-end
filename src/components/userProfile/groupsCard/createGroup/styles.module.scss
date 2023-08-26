@@ -1,16 +1,16 @@
 .dialogDiv {
-	@apply w-80 md:w-96 lg:w-96;
+	@apply w-80 md:w-96 lg:w-96 p-3;
 	.dialogDivHeader {
-		@apply text-base p-2 flex justify-between;
+		@apply text-base flex justify-between;
 		.h2 {
-			@apply pl-4 text-gray-900 font-semibold dark:text-white text-2xl;
+			@apply p-2 text-gray-900 font-semibold dark:text-white text-2xl;
 		}
 		.closeButton {
 			@apply p-2 inline-flex items-center transition-all duration-300 ease-in justify-center text-gray-500 hover:text-gray-400 dark:bg-dark_background;
 		}
 	}
 	.dialogDivBody {
-		@apply text-base p-6 border-x-0 border-y border-y-light_border dark:border-y-dark_border;
+		@apply text-base p-3 border-x-0 border-y border-y-light_border dark:border-y-dark_border;
 		.label {
 			@apply text-base mb-2 mr-2 text-gray-900 dark:text-gray-400;
 		}
@@ -19,13 +19,13 @@
 		}
 	}
 	.dialogDivFooter {
-		@apply w-full text-base py-2 px-5 flex justify-end;
+		@apply w-full text-base pt-3 flex justify-end;
 		.greenButton {
 			@apply items-center flex justify-center text-button_green_BG bg-button_green_opacity transition-all duration-300 ease-in hover:bg-button_green_BG hover:text-white focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-md text-sm px-5 py-2.5 text-center dark:bg-button_green_opacity dark:hover:bg-green-700 dark:focus:ring-green-800;
 		}
 	}
 	.checkDiv {
-		@apply flex my-4;
+		@apply flex my-2;
 		.select {
 			@apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
     focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 
@@ -39,11 +39,6 @@
 		}
 	}
 }
-
-.dialogButtonDiv {
-	@apply flex flex-wrap justify-center  w-full;
-}
-
 .redButton {
 	@apply text-white bg-button_red_BG transition-all duration-300 rounded-md py-3 px-5 m-1 hover:bg-[#a11f2f];
 }

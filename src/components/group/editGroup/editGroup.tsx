@@ -18,7 +18,10 @@ export function EditGroup(props: any) {
             value: '1',
         },
     ];
-    const closeDialog = () => { document.querySelector("dialog")?.close(); }
+    const closeDialog = () => {
+        var dialog: any = document.getElementById("editGroupDialog")
+        dialog?.close();
+    }
     const { data: session, update } = useSession();
     const {
         register,

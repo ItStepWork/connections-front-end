@@ -5,12 +5,16 @@ import { BsFillCameraVideoFill } from 'react-icons/bs'
 import { AiOutlineClose } from 'react-icons/ai'
 
 export const PostVideo = (props: any) => {
-  const closeDialog = () => { document.querySelector("dialog")?.close(); }
+  const closeDialog = () => {
+    // document.querySelector("dialog")?.close();
+    var dialog: any = document.getElementById("postDialog")
+    dialog?.close();
+  }
   return (
     <>
       <form className={styles.dialogDiv} >
         <div className={styles.dialogDivHeader}>
-          <h2 className={styles.labels}>Опубликовать видео</h2>
+          <h2 className={styles.labels}>Публикация видео</h2>
           <button type="button" className={styles.closeButton} onClick={closeDialog}>
             <AiOutlineClose size={16}></AiOutlineClose>
           </button>
@@ -29,7 +33,7 @@ export const PostVideo = (props: any) => {
           <label className={styles.inputPhoto}>
             <BsCameraReels className="fill-gray-300 dark:fill-gray-700 mt-5" size={50}></BsCameraReels>
             <a className="opacity-50">Перетащите сюда или нажмите, чтобы загрузить видео.</a>
-            <input type="file" className="hidden"></input>
+            <input type="file" accept="video/mp4,video/x-m4v,video/*/" className="hidden"></input>
           </label>
         </div>
         <div className={styles.dialogDivFooter}>

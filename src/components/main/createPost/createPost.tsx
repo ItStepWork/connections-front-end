@@ -11,7 +11,11 @@ import { MdLocationPin } from 'react-icons/md'
 import { MdLocalOffer } from 'react-icons/md'
 
 export const CreatePost = (props: any) => {
-  const closeDialog = () => { document.querySelector("dialog")?.close(); }
+  const closeDialog = () => {
+    //  document.querySelector("dialog")?.close();
+    var dialog: any = document.getElementById("postDialog")
+    dialog?.close();
+  }
   const { data: session, update } = useSession();
   const options = [
     {
@@ -43,7 +47,7 @@ export const CreatePost = (props: any) => {
                 ? <img className={styles.userIco} src={props.user.avatarUrl}></img>
                 : <img className={styles.userIco} src={faker.image.avatar()}></img>
               }
-              <textarea className={styles.grInput} rows={4} placeholder="Поделитесь своими мыслями..." required></textarea>
+              <textarea className={styles.grInput} rows={2} placeholder="Поделитесь своими мыслями..." required></textarea>
             </div>
           </div>
           <div className={styles.bottomDiv}>
@@ -85,7 +89,7 @@ export const CreatePost = (props: any) => {
             <BsFillCameraVideoFill className="m-1"></BsFillCameraVideoFill>
             <a>Видео</a>
           </div>
-          <button className={styles.greenButton}>Публикация</button>
+          <button className={styles.greenButton}>Опубликовать</button>
         </div>
       </form>
     </>
