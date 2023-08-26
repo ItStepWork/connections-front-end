@@ -4,6 +4,7 @@ import { Window } from '@/components/messaging/window/page';
 import styles from './connectionsCard.module.scss';
 import { BsFillSendFill } from 'react-icons/bs';
 import { MessagingService } from '@/services/messaging.service';
+import FooterBlock from '@/components/messaging/footerBlock/page';
 
 export const ConnectionsCard = (props: any) => {
   const [count, setCount] = useState(3)
@@ -17,7 +18,6 @@ export const ConnectionsCard = (props: any) => {
     await MessagingService.sendMessage(formData);
     setMessage("");
   }
-  console.log(props.users)
   return (
     <>
       <div className={styles.container}>
@@ -29,14 +29,9 @@ export const ConnectionsCard = (props: any) => {
         <button className={styles.buttonLoadMore} onClick={() => setCount(count + 4)}>Загрузить еще</button>
       </div >
       {user
-        && <Window name={user.firstName} isOpen={isOpen} setIsOpen={setIsOpen}>
-          <div className='flex justify-between pt-10 p-3'>
-            <textarea className={styles.textarea} rows={7} onChange={(e) => { setMessage(e.target.value) }} value={message}></textarea>
-            <div className={styles.buttonContainer}>
-              <button className={styles.button} onClick={() => sendMessage(message)}>
-                <BsFillSendFill className='fill-white' />
-              </button>
-            </div>
+        && <Window name={user.firstName + " " + user.lastName} isOpen={isOpen} setIsOpen={setIsOpen}>
+          <div className='flex h-5/6 justify-center items-end'>
+            <FooterBlock friendId={user.id} />
           </div>
         </Window>
       }

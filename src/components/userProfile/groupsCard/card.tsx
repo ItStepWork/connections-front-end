@@ -16,7 +16,7 @@ export const Card = (props: any) => {
     getUsers();
   }, []);
   let getUsers = async () => {
-    let result = await GroupService.getUsersGroup(props.group.id);
+    let result = await GroupService.getMembersGroup(props.group.id);
     setUsers(result);
   }
   let joinGroup = async () => {
@@ -71,10 +71,10 @@ export const Card = (props: any) => {
                     else return (<div key={index} className="w-4"><img className={styles.memberIco} src={faker.image.avatar()}></img></div>)
                   }
                 })}
-                <div className="w-4"><div className={styles.membersDiv}>+{Object.entries(props.group.users).length} </div></div>
+                <div className="w-4"><div className={styles.membersDiv}>+{users.length} </div></div>
               </div>
             </div>
-            <p className='mt-8'>{Object.entries(props.group.users).length} участников</p>
+            <p className='mt-8'>{users.length} участников</p>
           </div>
         </Link>
         <div className={styles.buttons}>

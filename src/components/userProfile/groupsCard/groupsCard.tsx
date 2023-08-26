@@ -5,18 +5,25 @@ import styles from './groupsCard.module.scss';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { CreateGroup } from './createGroup/createGroup';
 import { GroupService } from '@/services/group.service';
+import { getSession } from 'next-auth/react';
 
 export function GroupsCard(props: any) {
-  const openDialog = () => { document.querySelector("dialog")?.showModal(); }
+  const [session, setSession] = useState<any>()
   const [groups, setGroups] = useState([]);
   const [count, setCount] = useState(3);
   useEffect(() => {
     getGroups();
+    getUserSession();
   }, []);
   const getGroups = async () => {
     let result = await GroupService.getGroups(props.userId);
     setGroups(result);
   }
+  const getUserSession = async () => {
+    let result = await getSession();
+    setSession(result);
+  }
+  const openDialog = () => { document.querySelector("dialog")?.showModal(); }
   return (
     <>
       <div className={styles.container}>
@@ -25,15 +32,16 @@ export function GroupsCard(props: any) {
             <h2>Сообщества</h2>
             <div className={styles.counter}>{groups.length}</div>
           </div>
-          <button className={styles.button} onClick={openDialog} >
-            <AiOutlinePlus className="dark:fill-blue" size={35}></AiOutlinePlus>
-          </button>
+          {session?.user?.id === props.userId &&
+            <button className={styles.button} onClick={openDialog} >
+              <AiOutlinePlus className="dark:fill-blue" size={35}></AiOutlinePlus>
+            </button>}
         </div>
         <div className={styles.cardsContainer}>
           <div className={styles.cards}>
-            {groups.map((group, index) => {
+            {groups.map((group: any, index) => {
               if (index <= count)
-                return (<Card key={index} group={group} getGroups={getGroups} ></Card>)
+                return (<Card key={group.id} group={group} getGroups={getGroups} ></Card>)
             })}
           </div>
           <button className={styles.buttonLoadMore} onClick={() => setCount(count + 4)}>Загрузить ещё</button>
