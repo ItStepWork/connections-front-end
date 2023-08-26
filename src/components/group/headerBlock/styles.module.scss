@@ -41,7 +41,13 @@
 					}
 				}
 				.greenButton {
-					@apply w-32 p-3 text-green-400 items-center flex justify-center bg-button_green_BG bg-opacity-25 transition-all duration-300 hover:bg-button_green_BG hover:bg-opacity-75 hover:text-white focus:ring-4 focus:outline-none focus:ring-button_green_BG font-medium rounded-md text-sm px-2 py-2.5 md:px-1.5 lg:px-1.5 text-center;
+					@apply items-center flex justify-center text-button_green_BG bg-button_green_opacity transition-all duration-300 ease-in hover:bg-button_green_BG hover:text-white focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-md text-sm px-5 py-2.5 text-center dark:bg-button_green_opacity dark:hover:bg-green-700 dark:focus:ring-green-800;
+					span {
+						@apply mr-2;
+					}
+				}
+				.yellowButton {
+					@apply w-32 p-3 text-yellow-500 items-center flex justify-center bg-yellow-900 bg-opacity-25 transition-all duration-300 hover:bg-yellow-400 hover:bg-opacity-75 hover:text-white focus:ring-4 focus:outline-none focus:ring-button_green_BG font-medium rounded-md text-sm px-2 py-2.5 md:px-1.5 lg:px-1.5 text-center;
 					span {
 						@apply mr-2;
 					}

@@ -25,6 +25,9 @@
 		.redButton {
 			@apply bg-button_red_opacity transition-all duration-300 rounded-md m-1 mb-0 hover:bg-button_red_BG;
 		}
+		.yellowButton {
+			@apply bg-yellow-900 transition-all duration-300 rounded-md m-1 mb-0 hover:bg-yellow-400;
+		}
 		.btnPict {
 			@apply md:w-[130px] w-[110px] h-[30px] transition-all duration-300;
 		}
@@ -36,6 +39,9 @@
 		}
 		.greenPict {
 			@apply fill-green-800 hover:fill-white;
+		}
+		.yellowPict {
+			@apply fill-yellow-500 hover:fill-white;
 		}
 	}
 

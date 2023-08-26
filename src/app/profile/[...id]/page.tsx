@@ -12,7 +12,7 @@ import { getSession } from 'next-auth/react';
 import { ProfileInfo } from '@/components/userProfile/profileInfo/profileInfo';
 import { ComponentName } from '@/enums/all.enum';
 
-export default function Profile(props:any) {
+export default function Profile(props: any) {
   const [component, setComponent] = useState<ComponentName>(ComponentName.Connections);
   const [session, setSession] = useState<any>(null);
 
@@ -20,17 +20,17 @@ export default function Profile(props:any) {
     const result = await getSession();
     setSession(result);
   }
-  
+
   useEffect(() => {
     load();
   }, []);
 
-  const changeComponent =() =>{
+  const changeComponent = () => {
     if (component === ComponentName.AboutMe) return (<ProfileInfo />)
-    else if(component === ComponentName.Groups) return(<GroupsCard />)
-    else if(component === ComponentName.Connections) return(<ConnectionsCard myId={session?.user.id} userId={props.params.id[0]} />)
+    else if (component === ComponentName.Groups) return (<GroupsCard userId={props.params.id[0]} />)
+    else if (component === ComponentName.Connections) return (<ConnectionsCard myId={session?.user.id} userId={props.params.id[0]} />)
     else if (component === ComponentName.Gallery) return (<Gallery myId={session?.user.id} userId={props.params.id[0]} />)
-    else return(<></>)
+    else return (<></>)
   }
   return (
     <>
@@ -41,11 +41,11 @@ export default function Profile(props:any) {
             {changeComponent()}
           </div>
           <div className={styles.rightContainer}>
-            
-              <AboutCard />   
-              <PhotosCard />
-              <FriendsCard />
-            
+
+            <AboutCard />
+            <PhotosCard />
+            <FriendsCard />
+
           </div>
         </div>
       </main>

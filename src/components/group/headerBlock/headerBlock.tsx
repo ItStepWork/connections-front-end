@@ -1,7 +1,6 @@
 "use client"
 import { GroupService } from '@/services/group.service';
 import { faker } from '@faker-js/faker';
-import Link from 'next/link';
 import { AiOutlinePlus, AiOutlineUsergroupAdd } from 'react-icons/ai';
 import { BiSolidUserCheck } from 'react-icons/bi';
 import { BsFillPatchCheckFill, BsPencilFill } from 'react-icons/bs';
@@ -10,6 +9,7 @@ import styles from './styles.module.scss';
 import { useState } from 'react';
 import { HiMiniPencilSquare } from 'react-icons/hi2';
 import { EditGroup } from '../editGroup/editGroup';
+import { TiCancel } from 'react-icons/ti';
 
 export function HeaderBlock(props: any) {
   const [component, setComponent] = useState("about");
@@ -45,6 +45,11 @@ export function HeaderBlock(props: any) {
     if (props.group.adminId === props.session?.user.id) return true;
     else return false;
   };
+  let isMemberTrue = () => {
+    let find = Object.entries(props.group.users).find(([key, value]) => key === props.session?.user.id && value === true);
+    if (find === undefined) return false;
+    else return true;
+  };
   const openDialog = () => { document.querySelector("dialog")?.showModal(); }
   return (
     <>
@@ -70,7 +75,6 @@ export function HeaderBlock(props: any) {
                   </div>
                   : <></>
                 }
-
               </div>
               <div className={styles.nameBlock}>
                 <div className={styles.name}>
@@ -87,12 +91,13 @@ export function HeaderBlock(props: any) {
               {ifInGroup()
                 ? ifAdmin()
                   ? <div title='Ты админ' className={styles.greenButton}><MdOutlineAdminPanelSettings className={styles.btnPict + " " + styles.greenPict} />Админ</div>
-                  : <button title='Покинуть группу' className={styles.redButton} onClick={leaveGroup}><BiSolidUserCheck className={styles.btnPict + " " + styles.redPict} />Покинуть</button>
+                  : isMemberTrue()
+                    ? <button title='Покинуть группу' className={styles.redButton} onClick={leaveGroup}><BiSolidUserCheck className={styles.btnPict + " " + styles.redPict} />Покинуть</button>
+                    : <button title='Отменить Запрос' className={styles.yellowButton} onClick={leaveGroup}><TiCancel size={20} className={styles.btnPict + " " + styles.yellowPict} />Отменить</button>
                 : <button title="Вступить в группу" className={styles.blueButton} onClick={joinGroup} ><AiOutlineUsergroupAdd className={styles.btnPict + " " + styles.bluePict} />Вступить</button>}
               <button title="Пригласить в группу" className={styles.greenButton}><AiOutlinePlus />Пригласить</button>
             </div>
             {ifAdmin() ? <button className={styles.editButton} onClick={() => openDialog()}><span><BsPencilFill className={styles.btnPict + " " + styles.redPict} /></span>Редактировать группу</button> : <></>}
-
           </div>
           <div className={styles.membersContainer}>
             <div className={styles.members}>
@@ -132,7 +137,6 @@ export function HeaderBlock(props: any) {
               <div className={styles.counter}>{Object.entries(props.usersRequests).length}</div>
             </div>
           }
-
           <div {...component === "media" ? { className: `${styles.counterLink}` } : { className: "" }} >
             <button {...component === "media" ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { setComponent("media") }}>Медиа</button>
           </div>

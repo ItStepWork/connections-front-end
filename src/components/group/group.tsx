@@ -10,7 +10,6 @@ import { getSession } from 'next-auth/react';
 
 export default function Group(props: any) {
     const [component, setComponent] = useState("");
-    const [users, setUsers] = useState<any[]>([])
     const [members, setMembers] = useState<any[]>([])
     const [usersRequests, setUsersRequests] = useState<any[]>([])
     const [group, setGroup] = useState<any>(null);
@@ -30,13 +29,6 @@ export default function Group(props: any) {
         await setMembers(result1);
         let result2 = await GroupService.getRequestsToGroup(result?.id);
         await setUsersRequests(result2);
-        // let result1 = await GroupService.getUsersGroup(result?.id);
-        // await setUsers(result1);
-
-        // let resMembers = await Object.entries(group.users).filter(([k, v]) => v == true).map(([k, v]) => k);
-        // let resRequests = await Object.entries(group.users).filter(([k, v]) => v == false).map(([k, v]) => k);
-        // await setMembers(users.filter(i => resMembers.includes(i.id)));
-        // await setUsersRequests(users.filter(i => resRequests.includes(i.id)));
     }
     const getGroup = async () => {
         let result = await GroupService.getGroup(props.id);
@@ -51,8 +43,6 @@ export default function Group(props: any) {
         setUsersRequests(result);
     }
     const getUsers = async () => {
-        // let result = await GroupService.getUsersGroup(group?.id);
-        // setUsers(result);
         getMembers();
         getUsersRequests();
     }
