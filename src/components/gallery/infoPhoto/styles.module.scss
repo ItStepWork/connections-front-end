@@ -1,5 +1,5 @@
 .container {
-	@apply w-1/4 min-w-max w-full overflow-y-auto text-sm;
+	@apply text-sm flex flex-col my-3 max-h-80 lg:max-h-full max-w-xs overflow-y-auto;
 	.verticalContainer {
 		@apply flex m-3 justify-between;
 	}

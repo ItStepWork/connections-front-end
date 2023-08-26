@@ -14,15 +14,11 @@ export default function SelectedPhoto(props: any) {
           <div className='flex h-4/5 w-full justify-between items-center'>
             <button className='w-1/12' onClick={() => { if ((props.selectedIndex - 1) >= 0) props.setSelectedIndex(props.selectedIndex - 1) }}><FaChevronLeft size={40} /></button>
             {props.photos[props.selectedIndex] ? (
-              <div className='relative w-10/12 h-full flex justify-center items-center'>
+              <div className=' w-10/12 h-full block overflow-hidden'>
 
-                <div className='relative flex flex-col flex-wrap h-fit md:h-full w-auto  bg-white dark:bg-dark_background'>
-                  <div className='h-3/4'>
-                    <img className='object-contain h-auto md:h-full w-auto max-h-full' src={props.photos[props.selectedIndex].url} />
-                  </div>
-                  <div className='relative h-44 overflow-y-auto'>
-                    <InfoPhoto photo={props.photos[props.selectedIndex]} myId={props.myId} userId={props.userId} get={props.get} />
-                  </div>
+                <div className='flex p-3 h-full w-full flex-col flex-wrap justify-center items-center bg-white dark:bg-dark_background'>
+                  <img className='object-contain h-44 md:h-64 lg:h-96 w-auto' src={props.photos[props.selectedIndex].url} />
+                  <InfoPhoto photo={props.photos[props.selectedIndex]} myId={props.myId} userId={props.userId} get={props.get} />
                 </div>
               </div>
             ) : (<></>)}

@@ -24,7 +24,7 @@ export function Comment(props: any) {
           {user?.avatarUrl ? (<img className={styles.userImage} src={user.avatarUrl} />) : (<FaUserCircle className={styles.userImage} />)}
           <div className={styles.userInfo}>
             <span className={styles.userName}>{user.lastName} {user.firstName}</span>
-            <span className='text-xs'>{props.comment.text}</span>
+            <div className='text-xs break-all w-44'>{props.comment.text}</div>
           </div>
         </div>
       ) : (<></>)}
