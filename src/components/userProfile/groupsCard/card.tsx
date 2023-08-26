@@ -7,35 +7,41 @@ import { AiOutlineUsergroupAdd, AiOutlineUsergroupDelete } from 'react-icons/ai'
 import { MdOutlineAdminPanelSettings } from 'react-icons/md';
 import { RiGitRepositoryPrivateLine } from 'react-icons/ri';
 import styles from './card.module.scss';
+import { TiCancel, TiCancelOutline } from 'react-icons/ti';
 
 export const Card = (props: any) => {
   const { data: session, update } = useSession();
   const [users, setUsers] = useState<any[]>([])
   useEffect(() => {
-    GetUsers();
+    getUsers();
   }, []);
-  let GetUsers = async () => {
+  let getUsers = async () => {
     let result = await GroupService.getUsersGroup(props.group.id);
     setUsers(result);
   }
-  let JoinGroup = async () => {
+  let joinGroup = async () => {
     let result = await GroupService.joinGroup(props.group.id);
     alert(result);
-    GetUsers();
+    getUsers();
     props.getGroups();
   }
-  let LeaveGroup = async () => {
+  let leaveGroup = async () => {
     let result = await GroupService.leaveGroup(props.group.id);
     alert(result);
-    GetUsers();
+    getUsers();
     props.getGroups();
   }
-  let IfInGroup = () => {
+  let ifInGroup = () => {
     let find = Object.entries(props.group.users).find(([key, value]) => key === session?.user.id);
     if (find === undefined) return false;
     else return true;
   };
-  let IfAdmin = () => {
+  let isMemberTrue = () => {
+    let find = Object.entries(props.group.users).find(([key, value]) => key === session?.user.id && value === true);
+    if (find === undefined) return false;
+    else return true;
+  };
+  let ifAdmin = () => {
     if (props.group.adminId === session?.user.id) return true;
     else return false;
   };
@@ -72,11 +78,13 @@ export const Card = (props: any) => {
           </div>
         </Link>
         <div className={styles.buttons}>
-          {IfInGroup()
-            ? IfAdmin()
-              ? <div title='You Admin' className={styles.greenButton}><MdOutlineAdminPanelSettings className={styles.btnPict + " " + styles.greenPict}></MdOutlineAdminPanelSettings></div>
-              : <button title='Leave Group' className={styles.redButton} onClick={LeaveGroup}><AiOutlineUsergroupDelete className={styles.btnPict + " " + styles.redPict}></AiOutlineUsergroupDelete></button>
-            : <button title="Join Group" className={styles.blueButton} onClick={JoinGroup} ><AiOutlineUsergroupAdd className={styles.btnPict + " " + styles.bluePict} /></button>}
+          {ifInGroup()
+            ? ifAdmin()
+              ? <div title='Ты Администратор' className={styles.greenButton}><MdOutlineAdminPanelSettings className={styles.btnPict + " " + styles.greenPict}></MdOutlineAdminPanelSettings></div>
+              : isMemberTrue()
+                ? <button title='Покинуть группу' className={styles.redButton} onClick={leaveGroup}><AiOutlineUsergroupDelete className={styles.btnPict + " " + styles.redPict}></AiOutlineUsergroupDelete></button>
+                : <button title='Отменить запрос' className={styles.yellowButton} onClick={leaveGroup}><TiCancel className={styles.btnPict + " " + styles.yellowPict}></TiCancel></button>
+            : <button title="Присоединится у группе" className={styles.blueButton} onClick={joinGroup} ><AiOutlineUsergroupAdd className={styles.btnPict + " " + styles.bluePict} /></button>}
         </div>
       </div>
     </>

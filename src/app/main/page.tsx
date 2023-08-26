@@ -19,9 +19,9 @@ export default function Home(props: any) {
   const { data: session } = useSession();
   const [component, setComponent] = useState("");
   const ChangeComponent = () => {
-    if (component === "groups") return (<GroupsCard />)
+    if (component === "groups") return (<GroupsCard userId={session?.user.id} />)
     else if (component === "celebration") return (<Celebration />)
-    else if(component === "connections") return(<ConnectionsCard myId={session?.user.id} userId={session?.user.id} />)
+    else if (component === "connections") return (<ConnectionsCard myId={session?.user.id} userId={session?.user.id} />)
     else if (component === "gallery") return (<Gallery myId={session?.user.id} userId={session?.user.id} />)
     else return (
       <>
@@ -41,7 +41,7 @@ export default function Home(props: any) {
   return (
     <main>
       <div className={styles.container}>
-        <Menu setComponent={setComponent}/>
+        <Menu setComponent={setComponent} />
         <div className={styles.containerContent}>
           {ChangeComponent()}
         </div>

@@ -1,5 +1,5 @@
 .container {
-	@apply flex flex-col pt-6
+	@apply flex flex-col p-3  rounded-lg hover:bg-glass_gray
 	md:justify-between md:flex-row md:pt-0 lg:pt-0 lg:flex-row lg:justify-between md:items-start lg:items-center;
 	.userContainer {
 		@apply flex  flex-col

@@ -1,6 +1,7 @@
 import { faker } from "@faker-js/faker";
 import styles from './connectionBlock.module.scss';
 import { GroupService } from "@/services/group.service";
+import Link from "next/link";
 
 export const ConnectionBlock = (props: any) => {
   let ifAdmin = () => {
@@ -22,7 +23,7 @@ export const ConnectionBlock = (props: any) => {
   return (
     <>
       <div className={styles.container}>
-        <div className={styles.userContainer}>
+        <Link href={"/profile/" + props.user.id} className={styles.userContainer}>
           <div className={styles.avatar}>
             <img src={props.user.avatarUrl} alt="avatar" loading="lazy" />
           </div>
@@ -33,13 +34,14 @@ export const ConnectionBlock = (props: any) => {
             </div>
             <div className={styles.description}>{props.user.aboutMe}</div>
           </div>
-        </div>
+        </Link>
         {props.isRequests
           ? <div className={styles.buttonsContainer}>
             <button className={styles.button_red_BG} onClick={() => removeUserFromGroup()}>Удалить</button>
             <button className={styles.button_blue_BG} onClick={() => acceptUserToGroup()}>Принять</button>
           </div>
-          : <div className={styles.buttonsContainer}>
+          : (props.user.id !== props.session?.user?.id)
+          && <div className={styles.buttonsContainer}>
             {ifAdmin()
               ? <button className={styles.button_red_BG} onClick={() => removeUserFromGroup()}>Удалить</button>
               : <></>
@@ -47,7 +49,6 @@ export const ConnectionBlock = (props: any) => {
             <button className={styles.button_blue_BG} onClick={() => { props.setUser(props.user); props.setIsOpen(true); }}>Написать</button>
           </div>
         }
-
       </div>
     </>
   )

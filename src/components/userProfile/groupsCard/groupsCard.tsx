@@ -1,5 +1,4 @@
 'use client'
-import { useSession } from "next-auth/react";
 import { useEffect, useState } from 'react';
 import { Card } from './card';
 import styles from './groupsCard.module.scss';
@@ -7,7 +6,7 @@ import { AiOutlinePlus } from 'react-icons/ai';
 import { CreateGroup } from './createGroup/createGroup';
 import { GroupService } from '@/services/group.service';
 
-export function GroupsCardMain(props: any) {
+export function GroupsCard(props: any) {
   const openDialog = () => { document.querySelector("dialog")?.showModal(); }
   const [groups, setGroups] = useState([]);
   const [count, setCount] = useState(3);
@@ -15,7 +14,7 @@ export function GroupsCardMain(props: any) {
     getGroups();
   }, []);
   const getGroups = async () => {
-    let result = await GroupService.getGroups();
+    let result = await GroupService.getGroups(props.userId);
     setGroups(result);
   }
   return (
@@ -38,7 +37,6 @@ export function GroupsCardMain(props: any) {
             })}
           </div>
           <button className={styles.buttonLoadMore} onClick={() => setCount(count + 4)}>Загрузить ещё</button>
-
         </div>
       </div>
       <dialog className={styles.dialog} >
@@ -46,15 +44,4 @@ export function GroupsCardMain(props: any) {
       </dialog>
     </>
   )
-}
-export function GroupsCard() {
-  const { data: session } = useSession();
-  let user: any = session?.user;
-  if (session === undefined) {
-    return (<></>);
-  }
-  else
-    return (
-      <GroupsCardMain user={user} />
-    )
 }

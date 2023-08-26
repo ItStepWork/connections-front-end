@@ -4,9 +4,9 @@ import { CheckService } from './check.service';
 
 export class GroupService {
 
-    static async getGroups() {
+    static async getGroups(userId:string) {
         const session = await getSession();
-        return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + "Group/GetGroups", {
+        return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + "Group/GetGroups?userId="+userId, {
             headers: {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,
