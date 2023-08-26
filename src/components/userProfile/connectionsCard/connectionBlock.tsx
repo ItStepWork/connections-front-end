@@ -6,17 +6,17 @@ import { FriendStatus } from '@/enums/all.enum';
 
 export const ConnectionBlock = (props: any) => {
 
-  const addFriend = async () =>{
+  const addFriend = async () => {
     await FriendService.addFriend(props.user.id);
     props.getUsers();
   }
 
-  const confirmFriend = async () =>{
+  const confirmFriend = async () => {
     await FriendService.confirmFriend(props.user.id);
     props.getUsers();
   }
 
-  const removeFriend = async () =>{
+  const removeFriend = async () => {
     await FriendService.removeFriend(props.user.id);
     props.getUsers();
   }
@@ -36,13 +36,16 @@ export const ConnectionBlock = (props: any) => {
             <div className={styles.description}>{props.user.aboutMe}</div>
           </div>
         </Link>
-        <div className={styles.buttonsContainer}>
-          {props.status === FriendStatus.Confirmed ? (<button className={styles.button_red_BG} onClick={removeFriend}>Удалить</button>) : (<></>)}
-          {props.status === FriendStatus.Unconfirmed ? (<button className={styles.button_green_BG} onClick={confirmFriend}>Подтвердить</button>) : (<></>)}
-          {props.status === FriendStatus.Waiting ? (<button className={styles.button_green_BG} disabled>Ожидание</button>) : (<></>)}
-          {props.status === FriendStatus.Other ? (<button className={styles.button_green_BG} onClick={addFriend}>Дружить</button>) : (<></>)}
-          <button className={styles.button_blue_BG} onClick={()=>{props.setSelectedUser(props.user);props.setIsOpen(true);}}>Написать</button>
-        </div>
+        {(props.myId !== props.user.id) &&
+          <div className={styles.buttonsContainer}>
+            {props.status === FriendStatus.Confirmed ? (<button className={styles.button_red_BG} onClick={removeFriend}>Удалить</button>) : (<></>)}
+            {props.status === FriendStatus.Unconfirmed ? (<button className={styles.button_green_BG} onClick={confirmFriend}>Подтвердить</button>) : (<></>)}
+            {props.status === FriendStatus.Waiting ? (<button className={styles.button_green_BG} disabled>Ожидание</button>) : (<></>)}
+            {props.status === FriendStatus.Other ? (<button className={styles.button_green_BG} onClick={addFriend}>Дружить</button>) : (<></>)}
+            <button className={styles.button_blue_BG} onClick={() => { props.setSelectedUser(props.user); props.setIsOpen(true); }}>Написать</button>
+          </div>
+        }
+
       </div>
     </>
   )
