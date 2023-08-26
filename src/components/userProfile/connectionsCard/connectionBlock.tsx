@@ -41,7 +41,7 @@ export const ConnectionBlock = (props: any) => {
           {props.status === FriendStatus.Unconfirmed ? (<button className={styles.button_green_BG} onClick={confirmFriend}>Подтвердить</button>) : (<></>)}
           {props.status === FriendStatus.Waiting ? (<button className={styles.button_green_BG} disabled>Ожидание</button>) : (<></>)}
           {props.status === FriendStatus.Other ? (<button className={styles.button_green_BG} onClick={addFriend}>Дружить</button>) : (<></>)}
-          <button className={styles.button_blue_BG}>Написать</button>
+          <button className={styles.button_blue_BG} onClick={()=>{props.setSelectedUser(props.user);props.setIsOpen(true);}}>Написать</button>
         </div>
       </div>
     </>

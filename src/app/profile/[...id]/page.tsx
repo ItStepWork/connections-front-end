@@ -13,7 +13,7 @@ import { ProfileInfo } from '@/components/userProfile/profileInfo/profileInfo';
 import { ComponentName } from '@/enums/all.enum';
 
 export default function Profile(props:any) {
-  const [component, setComponent] = useState<ComponentName>(ComponentName.AboutMe);
+  const [component, setComponent] = useState<ComponentName>(ComponentName.Connections);
   const [session, setSession] = useState<any>(null);
 
   const load = async () => {
@@ -37,7 +37,7 @@ export default function Profile(props:any) {
       <main>
         <div className={styles.container}>
           <div className={styles.leftContainer}>
-            <UserCard setComponent={setComponent} component={component}/>
+            <UserCard setComponent={setComponent} component={component} myId={session?.user.id} userId={props.params.id[0]} />
             {changeComponent()}
           </div>
           <div className={styles.rightContainer}>

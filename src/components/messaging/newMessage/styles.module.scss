@@ -11,7 +11,7 @@
 	@apply flex p-3 justify-between items-center;
 }
 .newMessageContent {
-	@apply h-3/4 flex flex-col m-3 justify-between;
+	@apply h-5/6 flex flex-col justify-between;
 }
 .buttonClose {
 	@apply p-1 rounded-lg fill-gray-500 hover:bg-dark_button_BG;
