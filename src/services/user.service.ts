@@ -76,4 +76,19 @@ export class UserService {
         return [];
       });
   }
+
+  static async setUserPassword(formData: FormData) {
+    const session = await getSession();
+    return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "User/UpdateUserPassword", formData, {
+      headers: {
+        "Accept": "application/json",
+        "Authorization": "Bearer " + session?.user.accessToken,
+        'Content-Type': 'application/json',
+      },
+    }).then(response => response.data)
+      .catch((error) => {
+        CheckService.signOut(session, error);
+        return null;
+      });
+  }
 } 

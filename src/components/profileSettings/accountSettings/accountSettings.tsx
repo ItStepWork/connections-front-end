@@ -30,6 +30,7 @@ export const AccountSettings: FC = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  
   const onSubmit = async (data: any) => {
 
     const newSession = {

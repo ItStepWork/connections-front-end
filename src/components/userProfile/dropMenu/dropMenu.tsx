@@ -29,9 +29,7 @@ export const DropMenuProfile: FC<IDrop> = ({navbarOpen}) => {
             <button className={styles.navText} onClick={() => logOut()}>Выход</button> 
           :
           <button className={styles.dropButton} type="button" 
-          onClick={() => { if (!isOpen) setIsOpen(true) }} 
-          onFocus={() => { if (!isOpen) setIsOpen(true) }} 
-          onBlur={() => setIsOpen(false)} >
+          onClick={() => { if (!isOpen) setIsOpen(true) }}>
             <NavigationAvatar />
           </button>       
         }
@@ -66,7 +64,7 @@ export const DropMenuProfile: FC<IDrop> = ({navbarOpen}) => {
               </Link>
               <div className={styles.signOutContainer}>
                 <BiPowerOff size={20} />
-                <button onClick={() => logOut()}>Выход</button>
+                <button onClick={logOut}>Выход</button>
               </div>
               <div className={styles.modeContainer}>
                 <p>Тема:</p>
