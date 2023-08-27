@@ -1,0 +1,9 @@
+.container {
+	@apply flex items-center w-full max-w-xs p-4 mb-4 text-gray-900 bg-light_background rounded-lg shadow dark:text-gray-400 dark:bg-dark_button_BG border border-button_red_BG;
+	.iconContainer {
+		@apply inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-red-500 bg-red-100 rounded-lg dark:bg-red-800 dark:text-red-200;
+	}
+	.text {
+		@apply ml-3 text-sm font-normal;
+	}
+}

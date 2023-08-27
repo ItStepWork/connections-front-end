@@ -1,10 +1,16 @@
 "use client"
+import ToastError from "@/components/toasts/error-toasts/error";
+import ToastSuccess from "@/components/toasts/success-toasts/success";
 import { UserService } from "@/services/user.service";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import styles from "./changePassword.module.scss";
 
 export const ChangePassword: FC = () => {
+
+  const [passwordValid, setPasswordValid] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
+  const [toast, setToast] = useState(false);
 
   const {
     register,
@@ -13,15 +19,29 @@ export const ChangePassword: FC = () => {
   } = useForm();
 
   const onSubmit = async (data: any) => {  
-        if(data.newPassword !== null){
-          let result = await UserService.setUserPassword(data);
-          alert(result);
-          console.log(await data)
+    data.preventDefault;
+        if(data.newPassword === data.confirmPassword){
+          setPasswordValid(true);
+          const mutatedData: any = { oldPassword: data.oldPassword , newPassword: data.newPassword}
+          let result = await UserService.setUserPassword(mutatedData);
+          if(result === null){
+            setToast(false);
+          }
+          else if (result !== null) {
+            setToast(true);
+          }
         }
         else {
-          alert("error")
+          setPasswordValid(false);
+          setToast(false);
         }
-}
+    }
+
+    useEffect(() => {
+      setTimeout(()=>{
+        setIsVisible(false)
+       }, 5000)
+    },[isVisible])
 
   return (
     <>
@@ -35,22 +55,27 @@ export const ChangePassword: FC = () => {
           <div className={styles.namesBlock}>
             <div className={styles.inputContainer}>
               <label htmlFor="CurrentPassword" className={styles.inputLabel}>Текущий пароль</label>
-              <input type="password" id="CurrentPassword" autoComplete="new-password" {...register('oldPassword')} className={styles.label} placeholder="введите старый пароль" required />
+              <input type="password" id="CurrentPassword" autoComplete="new-password" {...register('oldPassword')} className={styles.input} placeholder="введите старый пароль" required />
             </div>
             <div className={styles.inputContainer}>
               <label htmlFor="password" className={styles.inputLabel}>Новый пароль</label>
-              <input type="password" id="password" autoComplete="new-password" {...register('newPassword')} className={styles.label} placeholder="введите новый пароль" required />
+              <input type="password" id="password" autoComplete="new-password" {...register('newPassword')} className={passwordValid ? styles.input : styles.inputError} placeholder="введите новый пароль" required />
             </div>
             <div className={styles.inputContainer}>
               <label htmlFor="ConfirmPassword" className={styles.inputLabel}>Подтвердите пароль</label>
-              <input type="password" id="ConfirmPassword" autoComplete="new-password"  className={styles.label} placeholder="подтвердите новый пароль" required />
+              <input type="password" id="ConfirmPassword" autoComplete="new-password" {...register('confirmPassword')} className={passwordValid ? styles.input : styles.inputError} placeholder="подтвердите новый пароль" required />
             </div>
           </div>
           <div className={styles.formButton}>
-            <button type="submit" className={styles.button}>Обновить пароль</button>
+            <button type="submit" onClick={() => setIsVisible(true)} className={styles.button}>Обновить пароль</button>
           </div>
         </form>
       </section>
+        <button onClick={() => setIsVisible(false)} className={!isVisible ? 'fixed bottom-5 left-[50%] cursor-pointer -translate-x-1/2 lg:opacity-0 md:opacity-0 opacity-0' : 'fixed bottom-5 -translate-x-1/2 left-[50%] cursor-pointer md:opacity-100 lg:opacity-100 opacity-100'}>
+          {
+            toast ? <ToastSuccess description="Пароль успешно изменен"/> : <ToastError description="Пароль не изменен"/>
+          }
+        </button>
     </>
   )
 }

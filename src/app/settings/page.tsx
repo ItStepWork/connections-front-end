@@ -4,7 +4,7 @@ import { LeftSettingsMenu } from "@/components/profileSettings/leftSettingsMenu/
 import styles from './styles.module.scss';
 
 
-export default function LoginPage() {
+export default function SettingsPage() {
   return (
     <>
       <main>
