@@ -1,5 +1,5 @@
 .container {
-	@apply relative flex flex-col w-full gap-6;
+	@apply relative flex flex-col overflow-y-auto h-full mb-20 w-full gap-6;
 	.contentContainer {
 		@apply flex flex-col p-6 w-full bg-white text-gray-900 border border-light_border rounded-xl
     dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border;

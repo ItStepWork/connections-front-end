@@ -1,7 +1,7 @@
 .container {
 	@apply flex mx-3 lg:m-0 lg:h-screen;
 	.centerContainer {
-		@apply flex flex-col lg:flex-row mt-28 lg:mt-20 mb-10 lg:justify-center w-full  border rounded-lg border-zinc-200 dark:border-zinc-700 bg-white dark:bg-dark_background;
+		@apply flex flex-col lg:flex-row mt-28 lg:mt-20 mb-20 lg:justify-center w-full  border rounded-lg border-zinc-200 dark:border-zinc-700 bg-white dark:bg-dark_background;
 	}
 	.leftContainer {
 		@apply flex flex-col w-full lg:w-1/4;
@@ -19,9 +19,9 @@
 .chats {
 	@apply bg-button_green_opacity text-button_green_BG px-2 py-1 rounded-lg;
 }
-.buttonClose{
+.buttonClose {
 	@apply bg-button_blue_BG p-3 rounded-full fill-white hover:bg-button_blue_opacity duration-300;
 }
-.buttonOpen{
+.buttonOpen {
 	@apply bg-button_blue_opacity p-3 rounded-full fill-white hover:bg-button_blue_opacity duration-300;
 }

@@ -7,6 +7,10 @@
 		@apply absolute flex flex-col top-[46px] left-[-200px] items-center w-[240px] bg-white text-gray-900 border border-light_border rounded-lg
   dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border;
 	}
+	.dropMenuHidden {
+		@apply absolute hidden flex-col top-[46px] left-[-200px] items-center w-[240px] bg-white text-gray-900 border border-light_border rounded-lg
+  dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border;
+	}
 	.buttonViewProfile {
 		@apply text-[#0f6fec] w-[85%] py-2.5 mt-3  bg-button_blue_opacity transition-all duration-300 hover:bg-blue-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm  text-center dark:bg-button_blue_opacity dark:hover:bg-blue-700 dark:focus:ring-blue-800;
 	}

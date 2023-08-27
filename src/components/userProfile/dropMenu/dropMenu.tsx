@@ -28,13 +28,17 @@ export const DropMenuProfile: FC<IDrop> = ({navbarOpen}) => {
         { navbarOpen ? 
             <button className={styles.navText} onClick={() => logOut()}>Выход</button> 
           :
-          <button className={styles.dropButton} type="button" 
-          onClick={() => { if (!isOpen) setIsOpen(true) }}>
+          <button className={styles.dropButton} 
+          onClick={() => { !isOpen ? setIsOpen(true) : setIsOpen(false)}}
+          onFocus={() => setIsOpen(false)}
+
+           type="button" 
+         >         
             <NavigationAvatar />
           </button>       
         }
           {isOpen &&
-            <div className={styles.dropMenu}>
+            <div className={isOpen ? styles.dropMenu : styles.dropMenuHidden}>
               <div className={styles.avatarContainer}>       
                 <div className={styles.avatar}>
                   {

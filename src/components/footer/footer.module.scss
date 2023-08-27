@@ -1,0 +1,15 @@
+.container {
+	@apply absolute bottom-0 left-0 h-16 bg-glass_white dark:bg-glass_gray backdrop-blur-[3px] w-full;
+	.links {
+		@apply flex justify-between items-center h-full px-6;
+		.list {
+			@apply flex items-center gap-6;
+		}
+		.list li a {
+			@apply text-gray-900 dark:text-dark_text_gray hover:text-button_blue_BG transition-all duration-300 ease-in cursor-pointer font-semibold;
+		}
+		.brandLink {
+			@apply no-underline text-button_blue_BG visited:text-button_blue_BG;
+		}
+	}
+}

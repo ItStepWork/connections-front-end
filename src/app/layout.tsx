@@ -1,3 +1,4 @@
+import Footer from '@/components/footer/footer';
 import { Header } from '@/components/header/header';
 import MyProgressBar from '@/components/progressBar/progresbar';
 import { Providers } from "@/providers/Providers";
@@ -33,11 +34,14 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <Providers>
-          <MyProgressBar/>
-          <Header />    
-          <div className="container">
-            <main>{children}</main>                   
-          </div>
+            <MyProgressBar/>
+            <div className="flex flex-col justify-between relative">
+              <Header />    
+              <div className="container">
+                <main>{children}</main>                   
+              </div>
+              <Footer/>
+            </div>
         </Providers>
       </body>
     </html>

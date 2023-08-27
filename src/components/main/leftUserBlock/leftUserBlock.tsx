@@ -122,7 +122,7 @@ export const LeftUserBlock = (props:any) => {
             <div className={styles.icon}>
               <FcSettings size={20} />
             </div>
-            <Link href={'/settingsPage'}>Настройки</Link>
+            <Link href={'/settings'}>Настройки</Link>
           </div>
         </div>
         <div className={styles.viewProfile}>

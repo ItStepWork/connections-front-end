@@ -1,5 +1,5 @@
 .container {
-	@apply flex flex-col md:flex-row lg:flex-row;
+	@apply flex flex-col md:flex-row lg:flex-row h-full;
 	.leftContainer {
 		@apply flex flex-col md:gap-6 lg:gap-6 w-full;
 	}
