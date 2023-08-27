@@ -30,6 +30,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 ## Used techologies
 
 1. TailwindCSS
+2. Typescript
 
 ## Used Packages
 1. next-pwa plugin
@@ -41,3 +42,4 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 7. react-hook-form
 8. next-auth
 9. Zustand
+10. Axios
