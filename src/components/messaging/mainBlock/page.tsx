@@ -23,10 +23,10 @@ export default function MainBlock(props: any) {
       <div className={styles.container}>
         {props.messages.map((message: any, index: number)=>{
           if(message.senderId === user?.id) {
-            return(<RigthMessage key={index} message={message}/>)
+            return(<RigthMessage key={index} message={message} user={props.user} loadMessages={props.loadMessages} loadDialogs={props.loadDialogs} />)
           }
           else {
-            return(<LeftMessage key={index} message={message} user={props.user}/>)
+            return(<LeftMessage key={index} message={message} user={props.user} loadMessages={props.loadMessages} loadDialogs={props.loadDialogs} />)
           }
         })}
         {/* <TopMessage />

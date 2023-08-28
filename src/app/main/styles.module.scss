@@ -1,5 +1,5 @@
 .container {
-	@apply w-full h-screen flex mt-20 mb-20 flex-col lg:flex-row;
+	@apply w-full h-full flex mt-20 flex-col lg:flex-row;
 	.storiesBlock {
 		@apply flex overflow-hidden;
 	}

@@ -1,7 +1,7 @@
 .container {
 	@apply relative mx-2 mt-1;
 	.dropMenu {
-		@apply absolute p-3 flex flex-col top-[50px] left-[-80px] items-center bg-white text-gray-900 border border-light_border rounded-lg
+		@apply absolute z-50 p-3 flex flex-col top-[50px] left-[-80px] items-center bg-white text-gray-900 border border-light_border rounded-lg
   		dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border;
 	}
 }

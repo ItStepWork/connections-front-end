@@ -54,7 +54,7 @@ export function InfoPhoto(props: any) {
 
         <div className={styles.buttonContainer}>
           <div className='mx-1'>
-            <DropDownEmoji addEmoji={addEmoji} isLower={true} />
+            <DropDownEmoji addEmoji={addEmoji} isLower={false} />
           </div>
           <div className='mx-1'>
             <button className={styles.button} onClick={sendComment}>

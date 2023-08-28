@@ -98,7 +98,7 @@ export default class Messaging extends React.Component<MyState>{
               {this.state.user ? (
                 <>
                   <HeaderBlock user={this.state.user} removeDialog={this.removeDialog} />
-                  <MainBlock messages={this.state.messages} user={this.state.user} />
+                  <MainBlock messages={this.state.messages} user={this.state.user} loadMessages={this.loadMessages} loadDialogs={this.loadDialogs}/>
                   <hr className={styles.horizontalHr} />
                   <FooterBlock friendId={this.state.user.id} loadMessages={this.loadMessages} loadDialogs={this.loadDialogs} />
                 </>

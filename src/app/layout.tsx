@@ -35,7 +35,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers>
             <MyProgressBar/>
-            <div className="flex flex-col justify-between relative">
+            <div className="flex flex-col justify-between relative min-h-screen">
               <Header />    
               <div className="container">
                 <main>{children}</main>                   
