@@ -1,9 +1,0 @@
-.container {
-	@apply flex items-center w-full max-w-xs p-4 mb-4 text-gray-900 bg-light_background  rounded-lg shadow dark:text-gray-400 dark:bg-dark_button_BG border border-button_green_BG;
-	.iconContainer {
-		@apply inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-button_green_BG bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200;
-	}
-	.text {
-		@apply ml-3 text-sm font-normal;
-	}
-}

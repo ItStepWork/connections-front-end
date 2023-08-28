@@ -1,6 +1,9 @@
 "use client"
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import styles from './styles.module.scss';
+import { useRouter } from 'next/navigation';
+
 
 export default function Signup() {
   const {
@@ -8,11 +11,18 @@ export default function Signup() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+  const router = useRouter();
+  // Toast Уведомления
+  const notifyWarning = () => toast.error("Пароли не совпадают!",{});
+  const notifyError = () => toast.error("Не все поля заполнены!",{});
+  const notifyErrorServer = () => toast.error("Ошибка Сервера!",{});
+  const notifyErrorUser = () => toast.error("Пользователь под таким адресом уже зарегистрирован!",{});
+  const notifySuccess = () => toast.success("Регистрация Успешна!",{});
+  
   const onSubmit = async (data: any) => {
     if (data.password === data.confirmPassword){
-      let response = await fetch("http://localhost:5288/Auth/SignUp", {
-        method: "POST",
+        let response = await fetch("http://localhost:5288/Auth/SignUp", {
+          method: "POST",
         headers: {
           'Content-Type': 'application/json',
         },
@@ -24,9 +34,10 @@ export default function Signup() {
         }),
       });
       let result = await response.text();
-      alert(result);
+      (response.status === 500) ? notifyErrorServer() : (response.status === 400) ? notifyError() : (response.status === 409) ? notifyErrorUser() : notifySuccess();
+      router.push("/signIn");
     }
-    else alert("Password mismatch");
+    else notifyWarning();
   }
 
   return (

@@ -10,7 +10,7 @@
 		@apply hover:text-red-500;
 	}
 	.profile {
-		@apply w-full flex justify-center items-center h-full cursor-pointer border-t p-4 border-light_border dark:border-dark_border;
+		@apply w-full flex justify-center hover:text-blue-500 duration-300 transition-all ease-in items-center h-full cursor-pointer border-t p-4 border-light_border dark:border-dark_border;
 	}
 	.icon {
 		@apply mr-2;

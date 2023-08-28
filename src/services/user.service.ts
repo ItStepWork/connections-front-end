@@ -35,6 +35,21 @@ export class UserService {
       });
   }
 
+  static async setUserProfile(formData: FormData) {
+    const session = await getSession();
+    return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "User/UpdateUser", formData, {
+      headers: {
+        "Accept": "application/json",
+        "Authorization": "Bearer " + session?.user.accessToken,
+        'Content-Type': 'application/json',
+      },
+    }).then(response => response.data)
+      .catch((error) => {
+        CheckService.signOut(session, error);
+        return null;
+      });
+  }
+
   static async getUser(id: string) {
     const session = await getSession();
     return await axios.get<IUser>(process.env.NEXT_PUBLIC_STRAPI_API + "User/GetUser?id=" + id, {

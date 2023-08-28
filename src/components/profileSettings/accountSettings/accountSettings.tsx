@@ -1,9 +1,11 @@
 "use client"
+import { UserService } from "@/services/user.service";
+import { useStore } from "@/stores/userDataStore";
 import { useSession } from "next-auth/react";
 import { FC } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import styles from "./accountSettings.module.scss";
-import { useStore } from "@/stores/userDataStore";
 
 
 export const AccountSettings: FC = () => {
@@ -11,63 +13,37 @@ export const AccountSettings: FC = () => {
   const options = [
     {
       label: "Не указано",
-      value: '0',
+      value: 0,
     },
     {
       label: "Мужской",
-      value: '1',
+      value: 1,
     },
     {
       label: "Женский",
-      value: '2',
+      value: 2,
     },
   ];
   const { data: session, update } = useSession();
-  const { fetchUser } = useStore((state) => state);
+  const notifySuccess = () => toast.success("Данные обновлены!",{});
+  const notifyError = () => toast.error("Данные не обновлены!",{});
+  const [fetchUser, firstName, lastName, phone, email, gender, familyStatus, work, location, aboutMe] = useStore((state) => 
+  [state.fetchUser, state.firstName, state.lastName, state.phone, state.email, state.gender, state.familyStatus, state.work, state.location, state.aboutMe]);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  
+
   const onSubmit = async (data: any) => {
-
-    const newSession = {
-      ...session,
-      user: {
-        ...session?.user,
-        firstName: data.firstName,
-        lastName: data.lastName,
-        aboutMe: data.aboutMe,
-        phone: data.phone,
-        location: data.location,
-        work: data.work,
-        joined: data.joined,
-        familyStatus: data.familyStatus,
-        born: data.born,
-        gender: data.gender
-      },
-
-    };
-
-    console.log(session?.expires)
-    let response = await fetch("http://localhost:5288/User/UpdateUser", {
-      method: "POST",
-      headers: {
-        "Accept": "application/json",
-        'Content-Type': 'application/json',
-        "Authorization": "Bearer " + session?.user?.accessToken
-      },
-      body: JSON.stringify(data),
-    });
-
-    let result = await response.text();
-    if (response.ok)
-      await update(newSession);
-    alert(result);
+    //if (data.file[0].name.endsWith('.jpg') || data.file[0].name.endsWith('.jpeg') || data.file[0].name.endsWith('.png')) {
+   // }
+    let result = await UserService.setUserProfile(data);
+    console.log(result);
+    (result === null) ? notifyError() : notifySuccess();
+    
   }
-
   return (
     <>
       <section className={styles.container} key={session?.user.id}>
@@ -84,7 +60,7 @@ export const AccountSettings: FC = () => {
                 id="firstName"
                 className={styles.label}
                 autoComplete="new-fName"
-                placeholder={(session?.user?.firstName!) === undefined ? 'не указано' : session?.user?.firstName!}
+                placeholder={firstName === '' ? 'не указано' : firstName}
                 {...register('firstName')} required />
             </div>
 
@@ -96,7 +72,7 @@ export const AccountSettings: FC = () => {
                 autoComplete="new-lName"
                 className={styles.label}
                 key={session?.user?.id}
-                placeholder={(session?.user?.lastName!) === undefined ? 'не указано' : session?.user?.lastName!}
+                placeholder={lastName === '' ? 'не указано' : lastName}
                 {...register('lastName')} required />
             </div>
             <div className={styles.inputContainer}>
@@ -114,7 +90,7 @@ export const AccountSettings: FC = () => {
                 autoComplete="new-phone"
                 key={session?.user?.id}
                 className={styles.label}
-                placeholder={(session?.user?.phone!) === undefined ? 'не указано' : session?.user?.phone!}
+                placeholder={phone === '' ? 'не указано' : phone}
                 {...register('phone')} />
             </div>
             <div className={styles.inputContainer}>
@@ -125,25 +101,33 @@ export const AccountSettings: FC = () => {
                 key={session?.user?.id}
                 className={styles.label}
                 autoComplete="new-email"
-                placeholder={(session?.user?.email!) === undefined ? 'не указано' : session?.user?.email!}
-                required {...register('email')} />
+                placeholder={email === '' ? 'не указано' : email}
+                required {...register('email')}  />
             </div>
           </div>
 
           <div className={styles.namesBlock}>
             <div className={styles.inputContainer}>
               <label htmlFor="gender" className={styles.inputLabel}>Пол</label>
-              <select
+                <select
                 className={styles.label}
                 id="gender"
+   
                 {...register('gender')}
                 key={session?.user?.id}
-              >
-                {options.map((option, index) => (
-                  <option key={index} value={option.value} typeof="number">{option.label}</option>
+                >
+                  <option value=''>{gender}</option>
+                  <option value='NotSelected'>Не указано</option>
+                  <option value='Male'>Мужской</option>
+                  <option value='Female'>Женский</option>
+                  {/*
+                  
+              {options.map((option, index) => (
+                <option key={index} value={option.value} typeof="number">{option.label}</option>
                 ))}
-              </select>
-
+              */}
+                </select>
+                
 
             </div>
             <div className={styles.inputContainer}>
@@ -152,7 +136,7 @@ export const AccountSettings: FC = () => {
                 type="text"
                 id="familyStatus"
                 className={styles.label}
-                placeholder={(session?.user?.familyStatus!) === undefined ? 'не указано' : session?.user?.familyStatus!}
+                placeholder={familyStatus === '' ? 'не указано' : familyStatus}
                 {...register('familyStatus')} />
             </div>
             <div className={styles.inputContainer}>
@@ -161,7 +145,7 @@ export const AccountSettings: FC = () => {
                 type="text"
                 id="work"
                 className={styles.label}
-                placeholder={(session?.user?.work!) === undefined ? 'не указано' : session?.user?.work!}
+                placeholder={work === '' ? 'не указано' : work}
                 {...register('work')} />
             </div>
             <div className={styles.inputContainer}>
@@ -170,10 +154,11 @@ export const AccountSettings: FC = () => {
                 type="text"
                 id="location"
                 className={styles.label}
-                placeholder={(session?.user?.location!) === undefined ? 'не указано' : session?.user?.location!}
+                placeholder={location === '' ? 'не указано' : location}
                 {...register('location')} />
             </div>
           </div>
+          { /*
 
           <div className={styles.namesBlock}>
             <div className={styles.inputContainer}>
@@ -193,6 +178,7 @@ export const AccountSettings: FC = () => {
                 accept="image/*" />
             </div>
           </div>
+              */ }
 
           <div className={styles.namesBlock}>
             <div className={styles.textAreaContainer}>
@@ -200,12 +186,12 @@ export const AccountSettings: FC = () => {
               <textarea rows={4}
                 id="message"
                 className={styles.textArea}
-                placeholder={(session?.user?.aboutMe!) === undefined ? 'Оставьте свой коментарий...' : session?.user?.aboutMe!}
+                placeholder={aboutMe === '' ? 'Оставьте свой комментарий...' : aboutMe}
                 {...register('aboutMe')}></textarea>
             </div>
           </div>
           <div className={styles.formButton}>
-            <button type="submit" onClick={fetchUser} className={styles.button}>Сохранить изменения</button>
+            <button type="submit" onClick={() => fetchUser()} className={styles.button}>Сохранить изменения</button>
 
           </div>
         </form>

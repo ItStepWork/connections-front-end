@@ -1,3 +1,4 @@
+import { FriendService } from '@/services/friend.service';
 import { UserService } from '@/services/user.service';
 import { getSession } from 'next-auth/react';
 import { create } from 'zustand';
@@ -18,6 +19,7 @@ interface User {
   location: string;
   joined: string;
   friendsCount: number;
+  gender: number;
   fetchUser: any;
 }
 
@@ -43,26 +45,29 @@ export const useStore = create<User>()(
       location: '',
       joined: '',
       friendsCount: 0,
+      gender: 0,
        
       fetchUser: async () => {
         const session = await getSession()
         try {
-          const response = await UserService.getUser(session?.user.id as string)
+          const responseUser = await UserService.getUser(session?.user.id as string)
+          const responseFriends = await FriendService.getFriends();
           
-          set({ avatar: response?.avatarUrl!});
-          set((state) => ({ BgImage: (state.BgImage = response?.backgroundUrl!)}));
-          set((state) => ({ id: (state.id = response?.id!)}));
-          set((state) => ({ firstName: (state.firstName = response?.firstName!)}));
-          set((state) => ({ lastName: (state.lastName = response?.lastName!)}));
-          set((state) => ({ phone: (state.phone = response?.phone!)}));
-          set((state) => ({ familyStatus: (state.familyStatus = response?.familyStatus!)}));
-          set((state) => ({ born: (state.born = response?.born!)}));
-          set((state) => ({ aboutMe: (state.aboutMe = response?.aboutMe!)}));
-          set((state) => ({ email: (state.email = response?.email!)}));
-          set((state) => ({ work: (state.work = response?.work!)}));
-          set((state) => ({ location: (state.location = response?.location!)}));
-          set((state) => ({ joined: (state.joined = response?.joined!)}));
-          set((state) => ({ friendsCount: state.friendsCount = 42}));
+          set({ avatar: responseUser?.avatarUrl!});
+          set((state) => ({ BgImage: (state.BgImage = responseUser?.backgroundUrl!)}));
+          set((state) => ({ id: (state.id = responseUser?.id!)}));
+          set((state) => ({ firstName: (state.firstName = responseUser?.firstName!)}));
+          set((state) => ({ lastName: (state.lastName = responseUser?.lastName!)}));
+          set((state) => ({ phone: (state.phone = responseUser?.phone!)}));
+          set((state) => ({ familyStatus: (state.familyStatus = responseUser?.familyStatus!)}));
+          set((state) => ({ born: (state.born = responseUser?.born!)}));
+          set((state) => ({ aboutMe: (state.aboutMe = responseUser?.aboutMe!)}));
+          set((state) => ({ email: (state.email = responseUser?.email!)}));
+          set((state) => ({ work: (state.work = responseUser?.work!)}));
+          set((state) => ({ location: (state.location = responseUser?.location!)}));
+          set((state) => ({ joined: (state.joined = responseUser?.joined!)}));
+          set((state) => ({ gender: (state.gender = responseUser?.gender!)}));
+          set((state) => ({ friendsCount: (state.friendsCount = responseFriends?.friendsCount!)}));
         }catch (error){
           console.log(error)
         }

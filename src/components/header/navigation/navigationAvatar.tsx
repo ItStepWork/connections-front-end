@@ -1,4 +1,5 @@
 import { useStore } from '@/stores/userDataStore';
+import { faker } from '@faker-js/faker';
 import Image from 'next/image';
 import { FC } from 'react';
 import styles from './navigation.module.scss';
