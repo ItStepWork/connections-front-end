@@ -10,6 +10,7 @@ export const ChangePassword: FC = () => {
 
   const [passwordValid, setPasswordValid] = useState(true);
 
+  // Toast Уведомления
   const notifyWarning = () => toast.warning("Пароли не одинаковые!",{});
   const notifyError = () => toast.error("Пароль не изменен!",{});
   const notifySuccess = () => toast.success("Пароль изменен!",{});
@@ -20,18 +21,14 @@ export const ChangePassword: FC = () => {
     formState: { errors },
   } = useForm();
 
+  // Обработка формы изменения пароля
   const onSubmit = async (data: any) => {  
     data.preventDefault;
         if(data.newPassword === data.confirmPassword){
           setPasswordValid(true);
           const mutatedData: any = { oldPassword: data.oldPassword , newPassword: data.newPassword}
           let result = await UserService.setUserPassword(mutatedData);
-          if(result === null){
-            notifyError();
-          }
-          else if (result !== null) {
-            notifySuccess();
-          }
+          (result === null) ? notifyError() : notifySuccess();
         }
         else {
           setPasswordValid(false);
