@@ -3,9 +3,8 @@ import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiOutlineClose } from 'react-icons/ai';
-import { FaRegUser } from 'react-icons/fa';
-import styles from './styles.module.scss';
 import { BsUpload } from 'react-icons/bs';
+import styles from './styles.module.scss';
 
 export function CreateGroup(props: any) {
     const [avatar, setAvatar] = useState<any>(null);

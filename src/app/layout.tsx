@@ -4,6 +4,8 @@ import MyProgressBar from '@/components/progressBar/progresbar';
 import { Providers } from "@/providers/Providers";
 import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './globals.css';
 
 const inter = Montserrat({ subsets: ['latin'] })
@@ -42,6 +44,18 @@ export default function RootLayout({
               </div>
               <Footer/>
             </div>
+            <ToastContainer 
+              position="bottom-center"
+              autoClose={3000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="colored"
+            />
         </Providers>
       </body>
     </html>

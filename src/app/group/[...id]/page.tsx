@@ -9,8 +9,6 @@ import Group from "@/components/group/group"
 //   </>)
 // }
 // export default getServerSideProps
-export default function Page({ params }: { params: { id: string } }) {
- 
- 
+export default function Page({ params }: { params: { id: string } }) { 
   return  <Group id={params.id} />
 }

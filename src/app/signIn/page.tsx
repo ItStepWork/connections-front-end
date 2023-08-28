@@ -4,11 +4,16 @@ import { useStore } from "@/stores/userDataStore";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import type { FormEventHandler } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import styles from './styles.module.scss';
+
 
 export default function Signin() {
   const router = useRouter();
   const { fetchUser } = useStore((state) => state)
+  const notify = () => toast.success("Успешный вход!",{});
+
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
 
@@ -47,13 +52,25 @@ export default function Signin() {
                 <input type="password" name="password" className={styles.input} placeholder="•••••••••" required />
               </div>
               <div className={styles.centerContainer}>
-                <button className={styles.button} onClick={fetchUser} type='submit'>Войти</button>
+                <button className={styles.button} onClick={() => [fetchUser, notify()]} type='submit'>Войти</button>
               </div>
             </form>
             <p>©2023 <a className={styles.link} target="_blank" href={process.env.NEXTAUTH_URL}>Connections.</a> Все права защищены</p>
           </div>
         </div>
       </div>
+      <ToastContainer 
+        position="bottom-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </div>
   );
 }

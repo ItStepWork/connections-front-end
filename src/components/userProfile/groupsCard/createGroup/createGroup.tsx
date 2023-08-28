@@ -3,8 +3,10 @@ import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiOutlineClose } from 'react-icons/ai';
-import styles from './styles.module.scss';
 import { BsUpload } from 'react-icons/bs';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import styles from './styles.module.scss';
 
 export function CreateGroup(props: any) {
     const [avatar, setAvatar] = useState<any>(null);
@@ -22,6 +24,9 @@ export function CreateGroup(props: any) {
         var dialog: any = document.getElementById("createGroupDialog")
         dialog?.close();
     }
+    const notifyError = () => toast.error("Не верный формат файла!",{});
+    const notifyErrorServer = () => toast.error("Ошибка сервера!",{});
+    const notifySuccess = () => toast.success("Группа создана!",{});
     const { data: session, update } = useSession();
     const {
         register,
@@ -36,11 +41,12 @@ export function CreateGroup(props: any) {
             formData.append("audience", data.audience);
             formData.append("description", data.description);
             let result = await GroupService.addGroup(formData);
-            alert(result);
+            if (result === null) notifyErrorServer();
+            else notifySuccess();
             props.getGroups();
             closeDialog();
         }
-        else alert("Wrong picture format");
+        else notifyError();
     }
     return (
         <>
@@ -97,6 +103,7 @@ export function CreateGroup(props: any) {
                     <button type="submit" className={styles.greenButton}>Создать</button>
                 </div>
             </form>
+            
         </>
     )
 }

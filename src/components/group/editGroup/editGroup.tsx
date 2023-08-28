@@ -1,11 +1,10 @@
 import { GroupService } from '@/services/group.service';
 import { useSession } from "next-auth/react";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiOutlineClose } from 'react-icons/ai';
-import { FaRegUser } from 'react-icons/fa';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import styles from './styles.module.scss';
-import { BsUpload } from 'react-icons/bs';
 
 export function EditGroup(props: any) {
     const options = [
@@ -22,6 +21,11 @@ export function EditGroup(props: any) {
         var dialog: any = document.getElementById("editGroupDialog")
         dialog?.close();
     }
+    // Toasts Alerts
+    const notifyErrorServer = () => toast.warning("Ошибка сервера!",{});
+    const notifyInfo = () => toast.info("Параметры не внесены!",{});
+    const notifySuccess = () => toast.success("Параметры сохранены!",{}); 
+
     const { data: session, update } = useSession();
     const {
         register,
@@ -34,8 +38,8 @@ export function EditGroup(props: any) {
         formData.append("name", data.name);
         formData.append("audience", data.audience);
         formData.append("description", data.description);
-        let result = await GroupService.updateGroup(formData);
-        alert(result);
+        let result = await GroupService.updateGroup(formData); 
+        (result === null) ? notifyErrorServer() : notifySuccess();
         props.getGroup();
         closeDialog();
     }
@@ -44,7 +48,7 @@ export function EditGroup(props: any) {
             <form className={styles.dialogDiv} onSubmit={handleSubmit(onSubmit)}>
                 <div className={styles.dialogDivHeader}>
                     <h2 className={styles.h2}>Изменить группу</h2>
-                    <button type="button" className={styles.closeButton} onClick={closeDialog}>
+                    <button type="button" className={styles.closeButton} onClick={() => {closeDialog(), notifyInfo()}}>
                         <AiOutlineClose size={16}></AiOutlineClose>
                     </button>
                 </div>

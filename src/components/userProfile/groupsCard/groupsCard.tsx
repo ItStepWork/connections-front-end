@@ -6,6 +6,7 @@ import { AiOutlinePlus } from 'react-icons/ai';
 import { CreateGroup } from './createGroup/createGroup';
 import { GroupService } from '@/services/group.service';
 import { getSession } from 'next-auth/react';
+import { ToastContainer } from 'react-toastify';
 
 export function GroupsCard(props: any) {
   const [session, setSession] = useState<any>()
@@ -53,6 +54,7 @@ export function GroupsCard(props: any) {
       <dialog className={styles.dialog} id='createGroupDialog'>
         {<CreateGroup getGroups={getGroups}></CreateGroup>}
       </dialog>
+      
     </>
   )
 }

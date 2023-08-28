@@ -1,16 +1,18 @@
 "use client"
-import ToastError from "@/components/toasts/error-toasts/error";
-import ToastSuccess from "@/components/toasts/success-toasts/success";
 import { UserService } from "@/services/user.service";
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import styles from "./changePassword.module.scss";
 
 export const ChangePassword: FC = () => {
 
   const [passwordValid, setPasswordValid] = useState(true);
-  const [isVisible, setIsVisible] = useState(false);
-  const [toast, setToast] = useState(false);
+
+  const notifyWarning = () => toast.warning("Пароли не одинаковые!",{});
+  const notifyError = () => toast.error("Пароль не изменен!",{});
+  const notifySuccess = () => toast.success("Пароль изменен!",{});
 
   const {
     register,
@@ -25,24 +27,17 @@ export const ChangePassword: FC = () => {
           const mutatedData: any = { oldPassword: data.oldPassword , newPassword: data.newPassword}
           let result = await UserService.setUserPassword(mutatedData);
           if(result === null){
-            setToast(false);
+            notifyError();
           }
           else if (result !== null) {
-            setToast(true);
+            notifySuccess();
           }
         }
         else {
           setPasswordValid(false);
-          setToast(false);
+          notifyWarning();
         }
     }
-
-    useEffect(() => {
-      setTimeout(()=>{
-        setIsVisible(false)
-       }, 5000)
-    },[isVisible])
-
   return (
     <>
       <section className={styles.container} >
@@ -67,15 +62,10 @@ export const ChangePassword: FC = () => {
             </div>
           </div>
           <div className={styles.formButton}>
-            <button type="submit" onClick={() => setIsVisible(true)} className={styles.button}>Обновить пароль</button>
+            <button type="submit" className={styles.button}>Обновить пароль</button>
           </div>
         </form>
       </section>
-        <button onClick={() => setIsVisible(false)} className={!isVisible ? 'fixed bottom-5 left-[50%] cursor-pointer -translate-x-1/2 lg:opacity-0 md:opacity-0 opacity-0' : 'fixed bottom-5 -translate-x-1/2 left-[50%] cursor-pointer md:opacity-100 lg:opacity-100 opacity-100'}>
-          {
-            toast ? <ToastSuccess description="Пароль успешно изменен"/> : <ToastError description="Пароль не изменен"/>
-          }
-        </button>
     </>
   )
 }

@@ -1,12 +1,13 @@
 "use client"
 import { GroupService } from '@/services/group.service';
+import { getSession } from 'next-auth/react';
 import { useEffect, useState } from "react";
+import 'react-toastify/dist/ReactToastify.css';
+import { PostPanel } from '../main/postPanel/postPanel';
 import { AboutCard } from './aboutBlock/aboutCard';
+import { ConnectionsCard } from './connectionsCard/connectionsCard';
 import { HeaderBlock } from './headerBlock/headerBlock';
 import styles from './styles.module.scss';
-import { PostPanel } from '../main/postPanel/postPanel';
-import { ConnectionsCard } from './connectionsCard/connectionsCard';
-import { getSession } from 'next-auth/react';
 
 export default function Group(props: any) {
     const [component, setComponent] = useState("");
