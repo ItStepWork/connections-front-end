@@ -1,15 +1,21 @@
 .container {
-	@apply absolute bottom-0 left-0 h-16 bg-glass_white dark:bg-glass_gray backdrop-blur-[3px] w-full;
-	.links {
-		@apply flex justify-between items-center h-full px-6;
-		.list {
-			@apply flex items-center gap-6;
+	@apply absolute -bottom-20 left-0 md:h-20 lg:h-16 bg-light_border dark:bg-glass_gray backdrop-blur-[3px] w-full;
+	.contentContainer {
+		@apply flex flex-col md:flex-row lg:flex-row items-center m-auto max-w-[1200px] justify-between gap-6 h-full;
+		.links {
+			@apply flex items-center h-full px-6;
+			.list {
+				@apply flex flex-wrap items-center md:justify-normal lg:justify-normal justify-center gap-x-6 md:gap-4 lg:gap-6;
+			}
+			.list li a {
+				@apply text-gray-900 dark:text-dark_text_gray hover:text-button_blue_BG transition-all duration-300 ease-in cursor-pointer font-semibold;
+			}
 		}
-		.list li a {
-			@apply text-gray-900 dark:text-dark_text_gray hover:text-button_blue_BG transition-all duration-300 ease-in cursor-pointer font-semibold;
-		}
-		.brandLink {
-			@apply no-underline text-button_blue_BG visited:text-button_blue_BG;
+		.copyright {
+			@apply flex items-center;
+			.brandLink {
+				@apply no-underline text-button_blue_BG visited:text-button_blue_BG;
+			}
 		}
 	}
 }
