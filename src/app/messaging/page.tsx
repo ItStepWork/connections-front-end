@@ -12,13 +12,16 @@ import React from 'react';
 import styles from './styles.module.scss';
 import { Window } from '@/components/messaging/window/page';
 import { HiMiniPencilSquare } from 'react-icons/hi2';
+import Firebase from '@/services/firebase.service';
+import { ref, onChildChanged } from 'firebase/database'
+import { getSession } from 'next-auth/react';
 
 type MyState = {
   messages: [],
   dialogs: [],
   users: IUser[],
   user: IUser | null,
-  isOpen: boolean
+  isOpen: boolean,
 };
 
 export default class Messaging extends React.Component<MyState>{
@@ -35,13 +38,15 @@ export default class Messaging extends React.Component<MyState>{
     super(props);
     this.loadMessages = this.loadMessages.bind(this);
     this.click = this.click.bind(this);
+    this.subscribe = this.subscribe.bind(this);
     this.loadDialogs = this.loadDialogs.bind(this);
     this.loadUsers = this.loadUsers.bind(this);
     this.removeDialog = this.removeDialog.bind(this);
     this.setIsOpen = this.setIsOpen.bind(this);
   }
 
-  componentDidMount(): void {
+  async componentDidMount() {
+    this.subscribe();
     this.loadDialogs();
     this.loadUsers();
   }
@@ -53,7 +58,6 @@ export default class Messaging extends React.Component<MyState>{
 
   click(user: IUser) {
     if (user !== this.state.user) {
-
       this.setState({ user: user });
       this.loadMessages(user.id);
     }
@@ -98,7 +102,7 @@ export default class Messaging extends React.Component<MyState>{
               {this.state.user ? (
                 <>
                   <HeaderBlock user={this.state.user} removeDialog={this.removeDialog} />
-                  <MainBlock messages={this.state.messages} user={this.state.user} loadMessages={this.loadMessages} loadDialogs={this.loadDialogs}/>
+                  <MainBlock messages={this.state.messages} user={this.state.user} loadMessages={this.loadMessages} loadDialogs={this.loadDialogs} />
                   <hr className={styles.horizontalHr} />
                   <FooterBlock friendId={this.state.user.id} loadMessages={this.loadMessages} loadDialogs={this.loadDialogs} />
                 </>
@@ -118,8 +122,24 @@ export default class Messaging extends React.Component<MyState>{
   }
 
   async loadUsers() {
-
     let result = await UserService.getUsers();
     this.setState({ users: result });
+  }
+
+  async subscribe() {
+    let session = await getSession();
+    if (session != null) {
+      onChildChanged(ref(Firebase(), `Messages/${session.user.id}`), (data) => {
+        let array = Object.entries(data.val());
+        let message = array[array.length - 1][1] as any;
+        if (message.Id !== undefined && message.Status === 0) {
+          console.log(message);
+        }
+        this.loadDialogs();
+        if (this.state.user !== null) {
+          this.loadMessages(this.state.user.id);
+        }
+      });
+    }
   }
 }
