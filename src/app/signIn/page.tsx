@@ -55,7 +55,7 @@ export default function Signin() {
                 <input type="password" name="password" className={styles.input} placeholder="•••••••••" required />
               </div>
               <div className={styles.centerContainer}>
-                <button className={styles.button} onClick={fetchUser} type='submit'>Войти</button>
+                <button className={styles.button} onClick={() => fetchUser()} type='submit'>Войти</button>
               </div>
             </form>
             <p>©2023 <a className={styles.link} target="_blank" href={process.env.NEXTAUTH_URL}>Connections.</a> Все права защищены</p>

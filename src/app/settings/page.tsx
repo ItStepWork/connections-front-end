@@ -1,4 +1,6 @@
 import { AccountSettings } from "@/components/profileSettings/accountSettings/accountSettings";
+import ChangeAvatar from "@/components/profileSettings/changeAvatar/cnangeAvatar";
+import ChangeBgImg from "@/components/profileSettings/changeBackroundImg/changeBGImg";
 import { ChangePassword } from "@/components/profileSettings/changePassword/changePassword";
 import { LeftSettingsMenu } from "@/components/profileSettings/leftSettingsMenu/leftSettingsMenu";
 import styles from './styles.module.scss';
@@ -19,6 +21,8 @@ export default function SettingsPage() {
               </div>
             </div>
             <div className={styles.changePass}>
+              <ChangeAvatar/>
+              <ChangeBgImg/>
               <ChangePassword />
             </div>
           </div>

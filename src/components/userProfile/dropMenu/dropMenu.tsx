@@ -1,6 +1,7 @@
 'use client';
 import { NavigationAvatar } from "@/components/header/navigation/navigationAvatar";
 import { useStore } from "@/stores/userDataStore";
+import { faker } from "@faker-js/faker";
 import { signOut } from "next-auth/react";
 import Image from 'next/image';
 import Link from 'next/link';
