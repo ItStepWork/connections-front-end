@@ -54,7 +54,7 @@ export default function Album(props: any) {
           );
         })}
       </div>
-      <SelectedPhoto isSelected={isSelected} setIsSelected={setIsSelected} photos={photos} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} user={props.user} get={get} />
+      <SelectedPhoto isSelected={isSelected} setIsSelected={setIsSelected} photos={photos} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex}  myId={props.myId} userId={props.userId} get={get} />
       {isSelectedRemove ? (
         <div className='fixed z-50 flex flex-col justify-center items-center left-0 top-0 h-screen w-full p-5 bg-black bg-opacity-70 '>
           <div className='relative flex flex-col w-72 h-60 border rounded-lg bg-light_background dark:bg-dark_background border-light_border dark:border-dark_border'>
