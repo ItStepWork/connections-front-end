@@ -8,6 +8,8 @@ import { AboutCard } from './aboutBlock/aboutCard';
 import { ConnectionsCard } from './connectionsCard/connectionsCard';
 import { HeaderBlock } from './headerBlock/headerBlock';
 import styles from './styles.module.scss';
+import { onChildChanged, ref } from 'firebase/database';
+import Firebase from '@/services/firebase.service';
 
 export default function Group(props: any) {
     const [component, setComponent] = useState("");
@@ -15,13 +17,14 @@ export default function Group(props: any) {
     const [usersRequests, setUsersRequests] = useState<any[]>([])
     const [group, setGroup] = useState<any>(null);
     const [session, setSession] = useState<any>()
-    let getSession1 = async () => {
+    let getUserSession = async () => {
         const result = await getSession();
         setSession(result);
     }
     useEffect(() => {
         getData();
-        getSession1();
+        getUserSession();
+        subscribe()
     }, []);
     const getData = async () => {
         let result = await GroupService.getGroup(props.id);
@@ -40,12 +43,21 @@ export default function Group(props: any) {
         setMembers(result);
     }
     const getUsersRequests = async () => {
-        let result = await GroupService.getRequestsToGroup(group?.id);
+        let result = await GroupService.getRequestsToGroup(props.id);
         setUsersRequests(result);
     }
     const getUsers = async () => {
         getMembers();
         getUsersRequests();
+    }
+    const subscribe = async () => {
+        let session = await getSession();
+        if (session != null) {
+            onChildChanged(ref(Firebase(), `Groups/${group?.id}`), (data) => {
+                getUsers();
+                getGroup();
+            });
+        }
     }
     // const getUsersArrays = () => {
     //     let resMembers = Object.entries(group.users).filter(([k, v]) => v == true).map(([k, v]) => k);
