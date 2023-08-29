@@ -1,6 +1,5 @@
 import { GroupService } from '@/services/group.service';
 import { faker } from '@faker-js/faker';
-import { useSession } from "next-auth/react";
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { AiOutlineUsergroupAdd, AiOutlineUsergroupDelete } from 'react-icons/ai';
@@ -11,7 +10,6 @@ import { TiCancel, TiCancelOutline } from 'react-icons/ti';
 import { toast } from 'react-toastify';
 
 export const Card = (props: any) => {
-  const { data: session, update } = useSession();
   const [users, setUsers] = useState<any[]>([])
   useEffect(() => {
     getUsers();
@@ -36,17 +34,17 @@ export const Card = (props: any) => {
     props.getGroups();
   }
   let ifInGroup = () => {
-    let find = Object.entries(props.group.users).find(([key, value]) => key === session?.user.id);
+    let find = Object.entries(props.group.users).find(([key, value]) => key === props.session?.user.id);
     if (find === undefined) return false;
     else return true;
   };
   let isMemberTrue = () => {
-    let find = Object.entries(props.group.users).find(([key, value]) => key === session?.user.id && value === true);
+    let find = Object.entries(props.group.users).find(([key, value]) => key === props.session?.user.id && value === true);
     if (find === undefined) return false;
     else return true;
   };
   let ifAdmin = () => {
-    if (props.group.adminId === session?.user.id) return true;
+    if (props.group.adminId === props.session?.user.id) return true;
     else return false;
   };
   return (

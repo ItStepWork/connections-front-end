@@ -2,21 +2,25 @@ import { faker } from "@faker-js/faker";
 import styles from './connectionBlock.module.scss';
 import { GroupService } from "@/services/group.service";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 export const ConnectionBlock = (props: any) => {
+  const notifyError = (text: string) => toast.warning(text, {});
+  const notifyInfo = (text: string) => toast.info(text, {});
+  const notifySuccess = (text: string) => toast.success(text, {});
   let ifAdmin = () => {
     if (props.group.adminId === props.session?.user?.id) return true;
     else return false;
   };
   let removeUserFromGroup = async () => {
     let result = await GroupService.removeUserFromGroup(props.group.id, props.user.id);
-    alert(result);
+    notifySuccess("Участник удален");
     props.getUsers();
     props.getGroup();
   }
   let acceptUserToGroup = async () => {
     let result = await GroupService.acceptUserToGroup(props.group.id, props.user.id);
-    alert(result);
+    notifySuccess("Участник принят");
     props.getUsers();
     props.getGroup();
   }

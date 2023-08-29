@@ -35,7 +35,7 @@ export function HeaderBlock(props: any) {
       formData.append('file', e.target.files[0]);
       formData.append('id', props.group.id);
       let result = await GroupService.updateAvatar(formData)
-      alert(result);
+      notifySuccess("Аватар обновлен");;
       props.getGroup();
     }
     else notifyError("Wrong file type");

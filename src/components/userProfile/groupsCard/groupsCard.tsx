@@ -8,6 +8,8 @@ import { GroupService } from '@/services/group.service';
 import { getSession } from 'next-auth/react';
 import { ToastContainer } from 'react-toastify';
 import { FiSearch } from 'react-icons/fi';
+import { onChildChanged, ref } from 'firebase/database';
+import Firebase from '@/services/firebase.service';
 
 export function GroupsCard(props: any) {
   const [session, setSession] = useState<any>()
@@ -18,6 +20,7 @@ export function GroupsCard(props: any) {
   useEffect(() => {
     getGroups();
     getUserSession();
+    subscribe();
   }, []);
   const getGroups = async () => {
     let result = await GroupService.getGroups(props.userId);
@@ -38,10 +41,17 @@ export function GroupsCard(props: any) {
       setGroups(allGroups);
     }
     else {
-
       let search = event.target.value.toLowerCase();
       let searchGroups = allGroups.filter((g: any) => g.name?.toLowerCase().includes(search));
       setGroups(searchGroups);
+    }
+  }
+  const subscribe = async () => {
+    let session = await getSession();
+    if (session != null) {
+      onChildChanged(ref(Firebase(), `Groups`), (data) => {
+        getGroups();
+      });
     }
   }
   return (
@@ -68,7 +78,7 @@ export function GroupsCard(props: any) {
           <div className={styles.cards}>
             {groups.map((group: any, index) => {
               if (index <= count)
-                return (<Card key={group.id} group={group} getGroups={getGroups} ></Card>)
+                return (<Card key={group.id + Object.entries(group.users).length} group={group} getGroups={getGroups} session={session}></Card>)
             })}
           </div>
           <button className={styles.buttonLoadMore} onClick={() => setCount(count + 4)}>Загрузить ещё</button>
