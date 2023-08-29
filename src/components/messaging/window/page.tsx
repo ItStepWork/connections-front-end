@@ -1,5 +1,6 @@
 import { IoMdClose } from 'react-icons/io';
 import styles from './styles.module.scss';
+import { SendNotification } from '@/services/notification.service';
 
 export function Window(props: any) {
 
@@ -8,7 +9,7 @@ export function Window(props: any) {
       <div className={styles.content}>
         <div className={styles.header}>
           <h2>{props.name}</h2>
-          <button onClick={() => props.setIsOpen(false)}>
+          <button onClick={() => {props.setIsOpen(false); SendNotification('Task added !!!');}}>
             <IoMdClose size={26} className={styles.buttonClose} />
           </button>
         </div>
