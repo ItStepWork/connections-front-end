@@ -15,6 +15,7 @@ import { HiMiniPencilSquare } from 'react-icons/hi2';
 import Firebase from '@/services/firebase.service';
 import { ref, onChildChanged } from 'firebase/database'
 import { getSession } from 'next-auth/react';
+import { SendNotification } from '@/services/notification.service';
 
 type MyState = {
   messages: [],
@@ -132,7 +133,8 @@ export default class Messaging extends React.Component<MyState>{
       onChildChanged(ref(Firebase(), `Messages/${session.user.id}`), (data) => {
         let array = Object.entries(data.val());
         let message = array[array.length - 1][1] as any;
-        if (message.Id !== undefined && message.Status === 0) {
+        if (message.Id !== undefined && message.Status === 0 && message.SenderId != session?.user.id) {
+          SendNotification("Новое сообщение", message.Text);
           console.log(message);
         }
         this.loadDialogs();
