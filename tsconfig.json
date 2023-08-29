@@ -23,6 +23,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/providers/reduxProvider.js", "src/providers/UserStateProvider.tsx", "src/providers/UserStateProvider.tsx", "src/loaders/imageLoader.js", "src/app/groupPage/page.tsx", "src/app/groupPage/page.tsx", "src/app/groupPage/[id]/page.js", "src/services/email.service.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/providers/reduxProvider.js", "src/providers/UserStateProvider.tsx", "src/providers/UserStateProvider.tsx", "src/loaders/imageLoader.js", "src/app/groupPage/page.tsx", "src/app/groupPage/page.tsx", "src/app/groupPage/[id]/page.js", "src/services/email.service.ts", "src/services/notification.service.js"],
   "exclude": ["node_modules"]
 }
