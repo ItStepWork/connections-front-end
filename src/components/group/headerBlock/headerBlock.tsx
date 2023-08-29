@@ -14,7 +14,7 @@ import { toast } from 'react-toastify';
 
 export function HeaderBlock(props: any) {
   const [component, setComponent] = useState("about");
-  const notifyErrorServer = () => toast.warning("Ошибка сервера!", {});
+  const notifyError = (text: string) => toast.warning(text, {});
   const notifyInfo = (text: string) => toast.info(text, {});
   const notifySuccess = (text: string) => toast.success(text, {});
   const joinGroup = async () => {
@@ -38,7 +38,7 @@ export function HeaderBlock(props: any) {
       alert(result);
       props.getGroup();
     }
-    else alert("Wrong file type");
+    else notifyError("Wrong file type");
   }
   let ifInGroup = () => {
     let find = Object.entries(props.group.users).find(([key, value]) => key === props.session?.user.id);

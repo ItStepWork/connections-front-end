@@ -13,6 +13,7 @@ import { GroupsCard } from "@/components/userProfile/groupsCard/groupsCard";
 import { useSession } from "next-auth/react";
 import { useState } from 'react';
 import styles from './styles.module.scss';
+import { PostPanel } from "@/components/main/postPanel/postPanel";
 
 export default function Home(props: any) {
 
@@ -30,6 +31,7 @@ export default function Home(props: any) {
             <AddStories />
             <Stories />
           </div>
+          <PostPanel />
           <Feed />
         </div>
         <div>
