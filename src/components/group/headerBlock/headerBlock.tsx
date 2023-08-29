@@ -10,18 +10,22 @@ import { useState } from 'react';
 import { HiMiniPencilSquare } from 'react-icons/hi2';
 import { EditGroup } from '../editGroup/editGroup';
 import { TiCancel } from 'react-icons/ti';
+import { toast } from 'react-toastify';
 
 export function HeaderBlock(props: any) {
   const [component, setComponent] = useState("about");
+  const notifyError = (text: string) => toast.warning(text, {});
+  const notifyInfo = (text: string) => toast.info(text, {});
+  const notifySuccess = (text: string) => toast.success(text, {});
   const joinGroup = async () => {
     let result = await GroupService.joinGroup(props.group.id);
-    alert(result);
+    notifySuccess("Заявку подано");
     props.getUsers();
     props.getGroup();
   }
   const leaveGroup = async () => {
     let result = await GroupService.leaveGroup(props.group.id);
-    alert(result);
+    notifySuccess("Вы вышли из группы");
     props.getUsers();
     props.getGroup();
   }
@@ -34,7 +38,7 @@ export function HeaderBlock(props: any) {
       alert(result);
       props.getGroup();
     }
-    else alert("Wrong file type");
+    else notifyError("Wrong file type");
   }
   let ifInGroup = () => {
     let find = Object.entries(props.group.users).find(([key, value]) => key === props.session?.user.id);

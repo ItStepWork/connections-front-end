@@ -8,6 +8,7 @@ import { MdOutlineAdminPanelSettings } from 'react-icons/md';
 import { RiGitRepositoryPrivateLine } from 'react-icons/ri';
 import styles from './card.module.scss';
 import { TiCancel, TiCancelOutline } from 'react-icons/ti';
+import { toast } from 'react-toastify';
 
 export const Card = (props: any) => {
   const { data: session, update } = useSession();
@@ -15,19 +16,22 @@ export const Card = (props: any) => {
   useEffect(() => {
     getUsers();
   }, []);
+  const notifyErrorServer = () => toast.warning("Ошибка сервера!", {});
+  const notifyInfo = (text: string) => toast.info(text, {});
+  const notifySuccess = (text: string) => toast.success(text, {});
   let getUsers = async () => {
     let result = await GroupService.getMembersGroup(props.group.id);
     setUsers(result);
   }
   let joinGroup = async () => {
     let result = await GroupService.joinGroup(props.group.id);
-    alert(result);
+    notifySuccess("Заявку подано");
     getUsers();
     props.getGroups();
   }
   let leaveGroup = async () => {
     let result = await GroupService.leaveGroup(props.group.id);
-    alert(result);
+    notifySuccess("Вы вышли из группы");
     getUsers();
     props.getGroups();
   }
