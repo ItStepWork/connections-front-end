@@ -10,18 +10,22 @@ import { useState } from 'react';
 import { HiMiniPencilSquare } from 'react-icons/hi2';
 import { EditGroup } from '../editGroup/editGroup';
 import { TiCancel } from 'react-icons/ti';
+import { toast } from 'react-toastify';
 
 export function HeaderBlock(props: any) {
   const [component, setComponent] = useState("about");
+  const notifyErrorServer = () => toast.warning("Ошибка сервера!", {});
+  const notifyInfo = (text: string) => toast.info(text, {});
+  const notifySuccess = (text: string) => toast.success(text, {});
   const joinGroup = async () => {
     let result = await GroupService.joinGroup(props.group.id);
-    alert(result);
+    notifySuccess("Заявку подано");
     props.getUsers();
     props.getGroup();
   }
   const leaveGroup = async () => {
     let result = await GroupService.leaveGroup(props.group.id);
-    alert(result);
+    notifySuccess("Вы вышли из группы");
     props.getUsers();
     props.getGroup();
   }
