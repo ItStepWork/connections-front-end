@@ -1,6 +1,12 @@
-const withPWA = require('next-pwa');
+/** @type {import('next').NextConfig} */
+const withPWA = require('next-pwa')({
+	dest: 'public',
+	register: true,
+	skipWaiting: true,
+	// disable: process.env.NODE_ENV === 'development',
+})
 
-const config = {
+module.exports = withPWA({
 	images: {
 		domains: [
 			'loremflickr.com',
@@ -11,12 +17,11 @@ const config = {
 		],
 		formats: ['image/avif', 'image/webp'],
 	},
-}
 
-module.exports = withPWA({
-	dest: 'public',
-	register: true,
-	skipWaiting: true,
-	// disable: process.env.NODE_ENV === 'development',
-})(config);
-
+//   experimental: {
+//     serverActions: true,
+//   },
+//   typescript: {
+// 	ignoreBuildErrors: true,
+//  },
+})
