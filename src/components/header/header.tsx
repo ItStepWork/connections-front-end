@@ -17,11 +17,16 @@ const arenq = localFont({
 })
 const lombok = localFont({ src: '../../fonts/Lombok Regular.ttf'})
 const oneDay = localFont({ src: '../../fonts/ONEDAY.ttf'})
+const channelWorkerBroadcast = new BroadcastChannel('channelWorker');
 
 export const Header: FC = () => {
   const [fetch] = useStore((state) => [state.fetchUser])
   const { data: session } = useSession();
   const [open, setOpen] = useState(false);
+
+  if(session?.user.id !== undefined){
+    channelWorkerBroadcast.postMessage({userId: session.user.id});
+  }
 
   return (
     <>

@@ -131,14 +131,6 @@ export default class Messaging extends React.Component<MyState>{
     let session = await getSession();
     if (session != null) {
       onChildChanged(ref(Firebase(), `Messages/${session.user.id}`), (data) => {
-        let array = Object.entries(data.val());
-        let message = array[array.length - 1][1] as any;
-        console.log(message);
-          SendNotification("Новое сообщение", message.Text);
-        if (message.Id !== undefined && message.Status === 0 && message.SenderId != session?.user.id) {
-          console.log(message);
-          SendNotification("Новое сообщение", message.Text);
-        }
         this.loadDialogs();
         if (this.state.user !== null) {
           this.loadMessages(this.state.user.id);
