@@ -1,7 +1,6 @@
 const withPWA = require('next-pwa');
 
 const config = {
-	// your next config...
 	images: {
 		domains: [
 			'loremflickr.com',
