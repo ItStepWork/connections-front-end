@@ -8,5 +8,10 @@ export const SendNotification = (name, text) => {
             primaryKey: 0,
         },
     }
-    self.registration.showNotification(name, options);
+    Notification.requestPermission(status=>{
+        console.log("status:", status);
+    })
+    navigator.serviceWorker.getRegistration().then(reg=>{
+        reg.showNotification(name, options);
+    });
 }
