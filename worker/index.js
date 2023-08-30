@@ -1,6 +1,6 @@
 'use strict'
 
-import Firebase from '@/services/firebase.service';
+import Firebase from '/src/services/firebase.service';
 import { ref, onChildChanged } from 'firebase/database'
 
 onChildChanged(ref(Firebase(), `Messages`), (data) => {
