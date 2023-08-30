@@ -8,27 +8,12 @@ export const SendNotification = async (name, text) => {
             primaryKey: 0,
         },
     }
-    registration.showNotification(name, {
-      body: text,
-      icon: '/public/icon-192x192.png'
-    })
-    // navigator.serviceWorker.getRegistration().then(async function (reg) {
-    //     if (reg) {
-    //       await reg.showNotification(name, {
-    //         body: text,
-    //         icon: '/public/icon-192x192.png',
-    //       });
-    //     }
-    //     else {
-    //         console.log("reg null");
-    //     }
-    //   });
     // Notification.requestPermission(status=>{
     //     console.log("status:", status);
     // })
-    // navigator.serviceWorker.ready.then((registration) => {
-    //     registration.showNotification(name, options);
-    // });
+    navigator.serviceWorker.ready.then((registration) => {
+        registration.showNotification(name, options);
+    });
     // const reg = await navigator.serviceWorker.getRegistration();
     //  reg.showNotification(name, options);
     // navigator.serviceWorker.getRegistration().then(reg=>{
