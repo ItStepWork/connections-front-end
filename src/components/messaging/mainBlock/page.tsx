@@ -9,7 +9,7 @@ export default function MainBlock(props: any) {
 
   const [user, setUser] = useState<any>(null);
 
-  const getUser = async()=>{
+  const getUser = async () => {
     const session = await getSession();
     setUser(session?.user)
   }
@@ -17,22 +17,23 @@ export default function MainBlock(props: any) {
   useEffect(() => {
     getUser();
   }, []);
-  
+
   return (
-    <>
+    <div className='m-2 h-0 flex-grow overflow-y-auto'>
       <div className={styles.container}>
-        {props.messages.map((message: any, index: number)=>{
-          if(message.senderId === user?.id) {
-            return(<RigthMessage key={index} message={message} user={props.user} loadMessages={props.loadMessages} loadDialogs={props.loadDialogs} />)
+        {props.messages.map((message: any, index: number) => {
+          if (message.senderId === user?.id) {
+            return (<RigthMessage key={index} message={message} user={props.user} loadMessages={props.loadMessages} loadDialogs={props.loadDialogs} />)
           }
           else {
-            return(<LeftMessage key={index} message={message} user={props.user} loadMessages={props.loadMessages} loadDialogs={props.loadDialogs} />)
+            return (<LeftMessage key={index} message={message} user={props.user} loadMessages={props.loadMessages} loadDialogs={props.loadDialogs} />)
           }
         })}
         {/* <TopMessage />
         <LeftMessage />
         <RigthMessage /> */}
       </div>
-    </>
+    </div>
+
   )
 }
