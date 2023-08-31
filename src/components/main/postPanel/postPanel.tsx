@@ -65,9 +65,6 @@ export const PostPanel = () => {
       </div>
       <div className={styles.bottomDiv}></div>
       <dialog className={styles.dialog} id='postDialog'>{showComponent()}</dialog>
-
-
-
     </>
   )
 }

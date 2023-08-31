@@ -76,7 +76,7 @@ export const Card = (props: any) => {
                 <div className="w-4"><div className={styles.membersDiv}>+{users.length} </div></div>
               </div>
             </div>
-            <p className='mt-8'>{users.length} участников</p>
+            {/* <p className='mt-8'>{users.length} участников</p> */}
           </div>
         </Link>
         <div className={styles.buttons}>

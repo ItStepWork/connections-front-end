@@ -1,5 +1,5 @@
 .container {
-	@apply flex flex-col items-center p-1  bg-white text-gray-900 border border-light_border rounded-xl h-64 md:w-40 w-32
+	@apply flex flex-col items-center p-1  bg-white text-gray-900 border border-light_border rounded-xl h-56 md:h-60 lg:h-60 md:w-40 w-32
   dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border;
 	.audienceDiv {
 		@apply w-full flex justify-end;
@@ -15,7 +15,7 @@
 		}
 	}
 	.buttons {
-		@apply flex justify-center items-center;
+		@apply flex justify-center items-center mt-auto mb-2;
 		.blueButton {
 			@apply bg-button_blue_opacity transition-all duration-300 rounded-md  m-1 mb-0 hover:bg-[#0b53b1];
 		}
