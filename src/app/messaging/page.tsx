@@ -15,7 +15,6 @@ import { HiMiniPencilSquare } from 'react-icons/hi2';
 import Firebase from '@/services/firebase.service';
 import { ref, onChildChanged } from 'firebase/database'
 import { getSession } from 'next-auth/react';
-import { SendNotification } from '@/services/notification.service';
 
 type MyState = {
   messages: [],
@@ -23,6 +22,7 @@ type MyState = {
   users: IUser[],
   user: IUser | null,
   isOpen: boolean,
+  isOpenDialogs: boolean,
 };
 
 export default class Messaging extends React.Component<MyState>{
@@ -33,6 +33,7 @@ export default class Messaging extends React.Component<MyState>{
     users: [],
     user: null,
     isOpen: false,
+    isOpenDialogs: false,
   };
 
   constructor(props: any) {
@@ -44,6 +45,7 @@ export default class Messaging extends React.Component<MyState>{
     this.loadUsers = this.loadUsers.bind(this);
     this.removeDialog = this.removeDialog.bind(this);
     this.setIsOpen = this.setIsOpen.bind(this);
+    this.setIsOpenDialogs = this.setIsOpenDialogs.bind(this);
   }
 
   async componentDidMount() {
@@ -61,6 +63,7 @@ export default class Messaging extends React.Component<MyState>{
     if (user !== this.state.user) {
       this.setState({ user: user });
       this.loadMessages(user.id);
+      if(this.state.isOpenDialogs)this.setState({ isOpenDialogs: false });
     }
   }
 
@@ -74,13 +77,16 @@ export default class Messaging extends React.Component<MyState>{
     this.setState({ isOpen: isOpen });
   }
 
+  setIsOpenDialogs(isOpenDialogs: boolean){
+    this.setState({ isOpenDialogs: isOpenDialogs });
+  }
+
   render() {
     return (
-      <>
-        <div className={styles.container}>
+      <div className={styles.container}>
 
           <div className='absolute flex mt-16 lg:invisible'>
-            <DropDownDialogues dialogs={this.state.dialogs} click={this.click} user={this.state.user} /><h2 className='my-1 mx-2'>Чаты</h2>
+            <DropDownDialogues dialogs={this.state.dialogs} click={this.click} user={this.state.user} isOpen={this.state.isOpenDialogs} setIsOpen={this.setIsOpenDialogs} /><h2 className='my-1 mx-2'>Чаты</h2>
           </div>
           <div className={styles.centerContainer}>
             <div className={styles.leftContainer}>
@@ -99,21 +105,16 @@ export default class Messaging extends React.Component<MyState>{
               </div>
             </div>
             <hr className={styles.verticalHr} />
-            <div className={styles.rightContainer}>
-              {this.state.user ? (
-                <>
+            {this.state.user ? (
+                <div className={styles.rightContainer}>
                   <HeaderBlock user={this.state.user} removeDialog={this.removeDialog} />
                   <MainBlock messages={this.state.messages} user={this.state.user} loadMessages={this.loadMessages} loadDialogs={this.loadDialogs} />
                   <hr className={styles.horizontalHr} />
                   <FooterBlock friendId={this.state.user.id} loadMessages={this.loadMessages} loadDialogs={this.loadDialogs} />
-                </>
-              ) : (<></>)}
-
-            </div>
+                </div>
+              ) : (<div className={styles.rightContainer}></div>)}
           </div>
         </div>
-
-      </>
     );
   }
 

@@ -1,4 +1,3 @@
-import { ConnectionsPreloader } from '@/loaders/connectionsPreloader';
 import { useEffect, useState } from 'react';
 import { ConnectionBlock } from './connectionBlock';
 import styles from './connectionsCard.module.scss';
@@ -10,7 +9,6 @@ import { FiSearch } from 'react-icons/fi';
 
 export const ConnectionsCard = (props: any) => {
 
-  const [loading, setLoading] = useState(true);
   const [confirmedUsers, setConfirmedUsers] = useState<any[]>([]);
   const [unconfirmedUsers, setUnconfirmedUsers] = useState<any[]>([]);
   const [waitingUsers, setWaitingUsers] = useState<any[]>([]);
@@ -62,15 +60,10 @@ export const ConnectionsCard = (props: any) => {
     let result4 = await FriendService.getOtherUsers(props.userId);
     setOtherUsers(result4);
     setOtherUsersFilter(result4);
-    setLoading(false);
   }
 
   const loadMore = () => {
     setCount(count + 5);
-  }
-
-  if (loading) {
-    return <ConnectionsPreloader />;
   }
 
   return (

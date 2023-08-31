@@ -1,5 +1,5 @@
 .container {
-	@apply flex mx-3 lg:m-0 lg:h-screen;
+	@apply relative flex mx-3 lg:m-0 min-h-screen;
 	.centerContainer {
 		@apply flex flex-col lg:flex-row mt-28 lg:mt-20 mb-20 lg:justify-center w-full  border rounded-lg border-zinc-200 dark:border-zinc-700 bg-white dark:bg-dark_background;
 	}
@@ -7,7 +7,7 @@
 		@apply flex flex-col w-full lg:w-1/4;
 	}
 	.rightContainer {
-		@apply flex flex-col justify-between ml-1 w-full lg:w-3/4;
+		@apply min-h-[300px] flex flex-col flex-grow justify-between ml-1 w-full lg:w-3/4;
 	}
 }
 .horizontalHr {

@@ -31,7 +31,7 @@ export function InfoPhoto(props: any) {
   }
 
   return (
-    <div className={styles.container}>
+    <>
       <Avatar userId={props.userId} accessToken={props.accessToken}/>
       <div className='flex justify-between m-3'>
         {props.photo.likes.includes(props.myId) ? (
@@ -66,6 +66,6 @@ export function InfoPhoto(props: any) {
       {Object.entries(props.photo.comments).map(([key, value])=>{
         return(<Comment key={key} comment={value}/>);
       })}
-    </div>
+    </>
   )
 }
