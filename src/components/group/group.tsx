@@ -3,13 +3,14 @@ import { GroupService } from '@/services/group.service';
 import { getSession } from 'next-auth/react';
 import { useEffect, useState } from "react";
 import 'react-toastify/dist/ReactToastify.css';
-import { PostPanel } from '../main/postPanel/postPanel';
 import { AboutCard } from './aboutBlock/aboutCard';
 import { ConnectionsCard } from './connectionsCard/connectionsCard';
 import { HeaderBlock } from './headerBlock/headerBlock';
 import styles from './styles.module.scss';
 import { onChildChanged, ref } from 'firebase/database';
 import Firebase from '@/services/firebase.service';
+import { PostsCard } from './postsCard/postsCard';
+import Photos from './photos/page';
 
 export default function Group(props: any) {
     const [component, setComponent] = useState("");
@@ -17,6 +18,7 @@ export default function Group(props: any) {
     const [usersRequests, setUsersRequests] = useState<any[]>([])
     const [group, setGroup] = useState<any>(null);
     const [session, setSession] = useState<any>()
+    const [photos, setPhotos] = useState<any[]>([]);
     let getUserSession = async () => {
         const result = await getSession();
         setSession(result);
@@ -24,7 +26,8 @@ export default function Group(props: any) {
     useEffect(() => {
         getData();
         getUserSession();
-        subscribe()
+        getPhotos();
+        subscribe();
     }, []);
     const getData = async () => {
         let result = await GroupService.getGroup(props.id);
@@ -59,6 +62,15 @@ export default function Group(props: any) {
             });
         }
     }
+
+    const getPhotos = async () => {
+        // let result1 = await GalleryService.getAlbums(props.userId);
+        // setAlbums(result1);
+
+        let result2 = await GroupService.getPhotos(props.id);
+        setPhotos(result2);
+        // console.log(result2)
+    }
     // const getUsersArrays = () => {
     //     let resMembers = Object.entries(group.users).filter(([k, v]) => v == true).map(([k, v]) => k);
     //     let resRequests = Object.entries(group.users).filter(([k, v]) => v == false).map(([k, v]) => k);
@@ -67,8 +79,10 @@ export default function Group(props: any) {
     // }
     const changeComponent = () => {
         if (component === "members") return (<ConnectionsCard isRequests={false} session={session} users={members} group={group} getGroup={getGroup} getUsers={getUsers} />)
-        if (component === "requests") return (<ConnectionsCard isRequests={true} session={session} users={usersRequests} group={group} getGroup={getGroup} getUsers={getUsers} />)
-        if (component === "about") return (<AboutCard group={group} />)
+        else if (component === "requests") return (<ConnectionsCard isRequests={true} session={session} users={usersRequests} group={group} getGroup={getGroup} getUsers={getUsers} />)
+        else if (component === "about") return (<AboutCard group={group} />)
+        else if (component === "posts") return (<PostsCard />)
+        else if (component === "photo") return (<Photos group={group} session={session} getPhotos={getPhotos} photos={photos} />)
         else return (<AboutCard group={group} />)
     }
     return (
@@ -78,7 +92,7 @@ export default function Group(props: any) {
                     {group
                         ? <div className='gap-5'>
                             < HeaderBlock session={session} group={group} usersRequests={usersRequests} members={members} getGroup={getGroup} getUsers={getUsers} setComponent={setComponent} />
-                            <PostPanel></PostPanel>
+                            {/* <PostPanel></PostPanel> */}
                             {changeComponent()}
                         </div>
                         : <>Loading...</>

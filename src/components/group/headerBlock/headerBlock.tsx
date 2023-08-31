@@ -128,11 +128,14 @@ export function HeaderBlock(props: any) {
           </div>
         </div>
         <div className={styles.cardNav}>
-          <div {...component === "posts" ? { className: `${styles.counterLink}` } : { className: "" }} >
-            <button {...component === "posts" ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { setComponent("posts") }}>Посты</button>
-          </div>
           <div {...component === "about" ? { className: `${styles.counterLink}` } : { className: "" }} >
             <button {...component === "about" ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { setComponent("about"); props.setComponent("about") }}>О группе</button>
+          </div>
+          <div {...component === "posts" ? { className: `${styles.counterLink}` } : { className: "" }} >
+            <button {...component === "posts" ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { setComponent("posts"); props.setComponent("posts") }}>Посты</button>
+          </div>
+          <div {...component === "photo" ? { className: `${styles.counterLink}` } : { className: "" }} >
+            <button {...component === "photo" ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { setComponent("photo"); props.setComponent("photo"); }}>Фото</button>
           </div>
           <div {...component === "members" ? { className: `${styles.counterLink}` } : { className: "flex items-center" }} >
             <button {...component === "members" ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { setComponent("members"); props.setComponent("members"); }}>Участники</button>
@@ -144,15 +147,6 @@ export function HeaderBlock(props: any) {
               <div className={styles.counter}>{Object.entries(props.usersRequests).length}</div>
             </div>
           }
-          <div {...component === "media" ? { className: `${styles.counterLink}` } : { className: "" }} >
-            <button {...component === "media" ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { setComponent("media") }}>Медиа</button>
-          </div>
-          <div {...component === "video" ? { className: `${styles.counterLink}` } : { className: "" }} >
-            <button {...component === "video" ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { setComponent("video") }}>Видео</button>
-          </div>
-          <div {...component === "activity" ? { className: `${styles.counterLink}` } : { className: "" }} >
-            <button {...component === "activity" ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { setComponent("activity") }}>Активность</button>
-          </div>
         </div>
       </div>
       <dialog className={styles.dialog} id='editGroupDialog'>

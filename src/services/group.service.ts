@@ -186,6 +186,47 @@ export class GroupService {
                 return [];
             });
     }
+    static async addPhoto(formData: FormData) {
+        const session = await getSession();
+        return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "Group/AddPhoto", formData, {
+            headers: {
+                "Accept": "application/json",
+                "Authorization": "Bearer " + session?.user.accessToken,
+                'Content-Type': 'multipart/form-data',
+            },
+        }).then(response => response.data)
+            .catch((error) => {
+                CheckService.signOut(session, error);
+                return null;
+            });
+    }
+    static async getPhotos(groupId: string) {
+        const session = await getSession();
+        return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + "Group/GetPhotos?groupId=" + groupId, {
+            headers: {
+                "Accept": "application/json",
+                "Authorization": "Bearer " + session?.user.accessToken,
+            },
+        }).then(response => response.data)
+            .catch((error) => {
+                CheckService.signOut(session, error);
+                return [];
+            });
+    }
+    static async removePhoto( groupId: string,photoId:string) {
+        const session = await getSession();
+        return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "Group/RemovePhoto",{ id:groupId,photoId: photoId }, {
+            headers: {
+                "Accept": "application/json",
+                "Authorization": "Bearer " + session?.user.accessToken,
+                'Content-Type': 'application/json',
+            },
+        }).then(response => response.data)
+            .catch((error) => {
+                CheckService.signOut(session, error);
+                return null;
+            });
+    }
 
 
 

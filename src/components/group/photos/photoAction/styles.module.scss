@@ -1,0 +1,16 @@
+.container {
+	@apply relative mx-2 mt-1;
+	.dropMenu {
+		@apply absolute z-50 gap-1 p-2 flex flex-col items-start top-[50px] left-[-160px] bg-white text-gray-900 border border-light_border rounded-lg
+  		dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border;
+	}
+	.action {
+		@apply flex items-center text-dark_text_gray hover:text-button_blue_BG;
+	}
+	.actionDelete {
+		@apply flex items-center text-dark_text_gray hover:text-button_red_BG;
+	}
+}
+.hr {
+	@apply h-px w-full border-zinc-200 bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-700;
+}
