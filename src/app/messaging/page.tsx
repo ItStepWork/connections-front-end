@@ -15,7 +15,6 @@ import { HiMiniPencilSquare } from 'react-icons/hi2';
 import Firebase from '@/services/firebase.service';
 import { ref, onChildChanged } from 'firebase/database'
 import { getSession } from 'next-auth/react';
-import { SendNotification } from '@/services/notification.service';
 
 type MyState = {
   messages: [],
