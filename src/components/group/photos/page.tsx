@@ -25,7 +25,6 @@ export default function Photos(props: any) {
     formData.append("file", file);
     formData.append("id", props.group.id);
     let result = await GroupService.addPhoto(formData);
-    alert(result);
     props.getPhotos();
   }
 
