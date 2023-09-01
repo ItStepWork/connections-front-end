@@ -30,7 +30,7 @@ export const ConnectionsCard = (props: any) => {
     }
     else {
       let search = event.target.value.toLowerCase();
-      let searchUsers = props.users.filter((g: any) => g.firstName?.toLowerCase().includes(search) || g.lastName?.toLowerCase().includes(search));
+      let searchUsers = props.users.filter((u: any) => u.firstName?.toLowerCase().includes(search) || u.lastName?.toLowerCase().includes(search));
       setUsers(searchUsers);
     }
   }
@@ -43,9 +43,9 @@ export const ConnectionsCard = (props: any) => {
           </span>
           <input type="text" className={styles.inputSearch} placeholder="Введите имя или фамилию" onChange={(e) => { changeSearch(e) }} value={search} />
         </div>
-        {users.map((user: any, index: any) => {
+        {users?.map((user: any, index: any) => {
           if (index <= count) {
-            return (<ConnectionBlock isRequests={props.isRequests} setUser={setUser} setIsOpen={setIsOpen} key={index} user={user} group={props.group} session={props.session} getGroup={props.getGroup} getUsers={props.getUsers} />)
+            return (<ConnectionBlock isRequests={props.isRequests} setUser={setUser} setIsOpen={setIsOpen} key={user.id} user={user} group={props.group} session={props.session} getGroup={props.getGroup} getUsers={props.getUsers} />)
           }
         })}
         <button className={styles.buttonLoadMore} onClick={() => setCount(count + 4)}>Загрузить еще</button>

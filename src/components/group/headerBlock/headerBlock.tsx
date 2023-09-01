@@ -13,7 +13,7 @@ import { TiCancel } from 'react-icons/ti';
 import { toast } from 'react-toastify';
 
 export function HeaderBlock(props: any) {
-  const [component, setComponent] = useState("about");
+  // const [component, setComponent] = useState("about");
   const notifyError = (text: string) => toast.warning(text, {});
   const notifyInfo = (text: string) => toast.info(text, {});
   const notifySuccess = (text: string) => toast.success(text, {});
@@ -128,22 +128,22 @@ export function HeaderBlock(props: any) {
           </div>
         </div>
         <div className={styles.cardNav}>
-          <div {...component === "about" ? { className: `${styles.counterLink}` } : { className: "" }} >
-            <button {...component === "about" ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { setComponent("about"); props.setComponent("about") }}>О группе</button>
+          <div {...props.component === "about" ? { className: `${styles.counterLink}` } : { className: "" }} >
+            <button {...props.component === "about" ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent("about") }}>О группе</button>
           </div>
-          <div {...component === "posts" ? { className: `${styles.counterLink}` } : { className: "" }} >
-            <button {...component === "posts" ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { setComponent("posts"); props.setComponent("posts") }}>Посты</button>
+          <div {...props.component === "posts" ? { className: `${styles.counterLink}` } : { className: "" }} >
+            <button {...props.component === "posts" ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent("posts") }}>Посты</button>
           </div>
-          <div {...component === "photo" ? { className: `${styles.counterLink}` } : { className: "" }} >
-            <button {...component === "photo" ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { setComponent("photo"); props.setComponent("photo"); }}>Фото</button>
+          <div {...props.component === "photo" ? { className: `${styles.counterLink}` } : { className: "" }} >
+            <button {...props.component === "photo" ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent("photo"); }}>Фото</button>
           </div>
-          <div {...component === "members" ? { className: `${styles.counterLink}` } : { className: "flex items-center" }} >
-            <button {...component === "members" ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { setComponent("members"); props.setComponent("members"); }}>Участники</button>
+          <div {...props.component === "members" ? { className: `${styles.counterLink}` } : { className: "flex items-center" }} >
+            <button {...props.component === "members" ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent("members"); }}>Участники</button>
             <div className={styles.counter}>{Object.entries(props.members).length}</div>
           </div>
           {ifAdmin() &&
-            <div {...component === "requests" ? { className: `${styles.counterLink}` } : { className: "flex items-center" }} >
-              <button {...component === "requests" ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { setComponent("requests"); props.setComponent("requests"); }}>Запросы</button>
+            <div {...props.component === "requests" ? { className: `${styles.counterLink}` } : { className: "flex items-center" }} >
+              <button {...props.component === "requests" ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent("requests"); }}>Запросы</button>
               <div className={styles.counter}>{Object.entries(props.usersRequests).length}</div>
             </div>
           }

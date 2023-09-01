@@ -42,7 +42,7 @@ export default function Group(props: any) {
         setGroup(result);
     }
     const getMembers = async () => {
-        let result = await GroupService.getMembersGroup(group?.id);
+        let result = await GroupService.getMembersGroup(props.id);
         setMembers(result);
     }
     const getUsersRequests = async () => {
@@ -56,9 +56,10 @@ export default function Group(props: any) {
     const subscribe = async () => {
         let session = await getSession();
         if (session != null) {
-            onChildChanged(ref(Firebase(), `Groups/${group?.id}`), (data) => {
+            onChildChanged(ref(Firebase(), `Groups/${props.id}`), (data) => {
                 getUsers();
                 getGroup();
+                console.log(data)
             });
         }
     }
@@ -78,8 +79,8 @@ export default function Group(props: any) {
     //     setUsersRequests(users.filter(i => resRequests.includes(i.id)));
     // }
     const changeComponent = () => {
-        if (component === "members") return (<ConnectionsCard isRequests={false} session={session} users={members} group={group} getGroup={getGroup} getUsers={getUsers} />)
-        else if (component === "requests") return (<ConnectionsCard isRequests={true} session={session} users={usersRequests} group={group} getGroup={getGroup} getUsers={getUsers} />)
+        if (component === "members") return (<ConnectionsCard key={"members" + members.length} isRequests={false} session={session} users={members} group={group} getGroup={getGroup} getUsers={getUsers} />)
+        else if (component === "requests") return (<ConnectionsCard key={"requests" + usersRequests.length} isRequests={true} session={session} users={usersRequests} group={group} getGroup={getGroup} getUsers={getUsers} />)
         else if (component === "about") return (<AboutCard group={group} members={Object.entries(members).length} />)
         else if (component === "posts") return (<PostsCard />)
         else if (component === "photo") return (<Photos group={group} session={session} getPhotos={getPhotos} photos={photos} />)
@@ -91,7 +92,7 @@ export default function Group(props: any) {
                 <div className={styles.container}>
                     {group
                         ? <div className='gap-5'>
-                            < HeaderBlock session={session} group={group} usersRequests={usersRequests} members={members} getGroup={getGroup} getUsers={getUsers} setComponent={setComponent} />
+                            < HeaderBlock session={session} group={group} usersRequests={usersRequests} members={members} getGroup={getGroup} getUsers={getUsers} component={component} setComponent={setComponent} />
                             {/* <PostPanel></PostPanel> */}
                             {changeComponent()}
                         </div>
