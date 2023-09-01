@@ -8,7 +8,7 @@ import { GroupService } from '@/services/group.service';
 import { getSession } from 'next-auth/react';
 import { ToastContainer } from 'react-toastify';
 import { FiSearch } from 'react-icons/fi';
-import { onChildChanged, ref } from 'firebase/database';
+import { onChildChanged, ref } from '@firebase/database';
 import Firebase from '@/services/firebase.service';
 
 export function GroupsCard(props: any) {

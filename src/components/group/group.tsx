@@ -7,7 +7,7 @@ import { AboutCard } from './aboutBlock/aboutCard';
 import { ConnectionsCard } from './connectionsCard/connectionsCard';
 import { HeaderBlock } from './headerBlock/headerBlock';
 import styles from './styles.module.scss';
-import { onChildChanged, ref } from 'firebase/database';
+import { onChildChanged, ref } from '@firebase/database';
 import Firebase from '@/services/firebase.service';
 import { PostsCard } from './postsCard/postsCard';
 import Photos from './photos/page';
