@@ -26,7 +26,7 @@ export const AboutCard = (props: any) => {
           <div className={styles.icon}>
             <BsCalendarDate size={18} />
           </div>
-          <p>Люди: <span>{Object.entries(props.group.users).length}</span> участников</p>
+          <p>Люди: <span>{props.members}</span> участников</p>
         </div>
         <div className={styles.iconText}>
           <div className={styles.icon}>

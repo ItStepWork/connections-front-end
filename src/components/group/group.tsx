@@ -13,7 +13,7 @@ import { PostsCard } from './postsCard/postsCard';
 import Photos from './photos/page';
 
 export default function Group(props: any) {
-    const [component, setComponent] = useState("");
+    const [component, setComponent] = useState("about");
     const [members, setMembers] = useState<any[]>([])
     const [usersRequests, setUsersRequests] = useState<any[]>([])
     const [group, setGroup] = useState<any>(null);
@@ -80,10 +80,10 @@ export default function Group(props: any) {
     const changeComponent = () => {
         if (component === "members") return (<ConnectionsCard isRequests={false} session={session} users={members} group={group} getGroup={getGroup} getUsers={getUsers} />)
         else if (component === "requests") return (<ConnectionsCard isRequests={true} session={session} users={usersRequests} group={group} getGroup={getGroup} getUsers={getUsers} />)
-        else if (component === "about") return (<AboutCard group={group} />)
+        else if (component === "about") return (<AboutCard group={group} members={Object.entries(members).length} />)
         else if (component === "posts") return (<PostsCard />)
         else if (component === "photo") return (<Photos group={group} session={session} getPhotos={getPhotos} photos={photos} />)
-        else return (<AboutCard group={group} />)
+        else return (<> "Блядська рука кремля"</>)
     }
     return (
         <>
