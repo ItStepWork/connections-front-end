@@ -1,11 +1,10 @@
-const withPWA = require('next-pwa')({
-	dest: 'public',
-	register: true,
-	skipWaiting: true,
-	disable: process.env.NODE_ENV === 'development',
-})
+const withPWA = require("@ducanh2912/next-pwa").default({
+	dest: "public",
+	customWorkerSrc: "worker",
+});
 
 module.exports = withPWA({
+	// Your Next.js config
 	reactStrictMode: true,
 	images: {
 		domains: [
@@ -17,11 +16,4 @@ module.exports = withPWA({
 		],
 		formats: ['image/avif', 'image/webp'],
 	},
-
-//   experimental: {
-//     serverActions: true,
-//   },
-//   typescript: {
-// 	ignoreBuildErrors: true,
-//  },
-})
+});
