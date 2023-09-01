@@ -13,7 +13,7 @@ import styles from './styles.module.scss';
 import { Window } from '@/components/messaging/window/page';
 import { HiMiniPencilSquare } from 'react-icons/hi2';
 import Firebase from '@/services/firebase.service';
-import { ref, onChildChanged } from 'firebase/database'
+import { ref, onChildChanged } from '@firebase/database';
 import { getSession } from 'next-auth/react';
 
 type MyState = {
@@ -131,7 +131,7 @@ export default class Messaging extends React.Component<MyState>{
   async subscribe() {
     let session = await getSession();
     if (session != null) {
-      onChildChanged(ref(Firebase(), `Messages/${session.user.id}`), (data) => {
+      onChildChanged(ref(Firebase(), `Messages/${session.user.id}`), (data: any) => {
         this.loadDialogs();
         if (this.state.user !== null) {
           this.loadMessages(this.state.user.id);

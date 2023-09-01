@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase } from 'firebase/database'
 
+
 function Firebase() {
     const config = {
         apiKey: "AIzaSyDtiC2yncOKPGNFyfNzgEeRQNc7EFHGaGI",

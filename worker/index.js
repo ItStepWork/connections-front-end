@@ -1,14 +1,29 @@
 'use strict'
 
-import Firebase from '../src/services/firebase.service';
-import { ref, onChildChanged } from 'firebase/database';
+import { ref, onChildChanged } from '@firebase/database';
+import { initializeApp } from "@firebase/app";
+import { getDatabase } from '@firebase/database'
 
-let i = 0;
 let isSubscribeToMessages = false;
 let userId = "";
 
+function Firebase() {
+    const config = {
+        apiKey: "AIzaSyDtiC2yncOKPGNFyfNzgEeRQNc7EFHGaGI",
+        authDomain: "database-50f39.firebaseapp.com",
+        databaseURL: "https://database-50f39-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "database-50f39",
+        storageBucket: "database-50f39.appspot.com",
+        messagingSenderId: "188116003866",
+        appId: "1:188116003866:web:28c332eb745a7c4bddb5a3",
+        measurementId: "G-8V6014J2T7"
+    };
+    const app = initializeApp(config);
+    return getDatabase(app);
+}
+
 function subscribe() {
-  console.log(`Worker ${i++} ${userId}`);
+  console.log(`Worker ${userId}`);
   if(isSubscribeToMessages === false && userId !== ""){
     isSubscribeToMessages = true;
     subscribeToMessages(userId);
