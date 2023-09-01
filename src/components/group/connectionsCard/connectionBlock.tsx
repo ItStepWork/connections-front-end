@@ -3,6 +3,7 @@ import styles from './connectionBlock.module.scss';
 import { GroupService } from "@/services/group.service";
 import Link from "next/link";
 import { toast } from "react-toastify";
+import { MdOutlineAdminPanelSettings } from "react-icons/md";
 
 export const ConnectionBlock = (props: any) => {
   const notifyError = (text: string) => toast.warning(text, {});
@@ -49,6 +50,9 @@ export const ConnectionBlock = (props: any) => {
             {ifAdmin()
               ? <button className={styles.button_red_BG} onClick={() => removeUserFromGroup()}>Удалить</button>
               : <></>
+            }
+            {props.user.id === props.group.adminId &&
+              <button className={styles.greenButton}><MdOutlineAdminPanelSettings className={styles.btnPict + " " + styles.greenPict} />Админ</button>
             }
             <button className={styles.button_blue_BG} onClick={() => { props.setUser(props.user); props.setIsOpen(true); }}>Написать</button>
           </div>

@@ -55,7 +55,7 @@ export default function Photos(props: any) {
           </div>
         );
       })}
-      <SelectedPhoto isSelected={isSelected} setIsSelected={setIsSelected} photos={props.photos} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} myId={props.session?.user.id} userId={props.group.id} getPhotos={props.getPhotos} />
+      <SelectedPhoto isSelected={isSelected} setIsSelected={setIsSelected} photos={props.photos} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} myId={props.session?.user.id} userId={props.group.id} get={props.getPhotos} />
     </div>
   );
 }
