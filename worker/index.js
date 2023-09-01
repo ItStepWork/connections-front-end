@@ -1,4 +1,4 @@
-'use strict'
+
 
 import { ref, onChildChanged } from '@firebase/database';
 import { initializeApp } from "@firebase/app";
