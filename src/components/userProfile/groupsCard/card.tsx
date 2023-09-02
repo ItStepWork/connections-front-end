@@ -68,7 +68,7 @@ export const Card = (props: any) => {
             <div className={styles.membersContainer}>
               <div className={styles.members}>
                 {users.map((user: any, index) => {
-                  if (index < 6) {
+                  if (index < 5) {
                     if (user.avatarUrl !== undefined && user.avatarUrl !== null && user.avatarUrl !== "") return (<div key={index} className="w-4"><img className={styles.memberIco} src={user.avatarUrl}></img></div>)
                     else return (<div key={index} className="w-4"><img className={styles.memberIco} src={faker.image.avatar()}></img></div>)
                   }

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ConnectionBlock } from './connectionBlock';
 import { Window } from '@/components/messaging/window/page';
 import styles from './connectionsCard.module.scss';
@@ -6,15 +6,23 @@ import { BsFillSendFill } from 'react-icons/bs';
 import { MessagingService } from '@/services/messaging.service';
 import FooterBlock from '@/components/messaging/footerBlock/page';
 import { FiSearch } from 'react-icons/fi';
+import { FriendService } from '@/services/friend.service';
 
 export const ConnectionsCard = (props: any) => {
   const [count, setCount] = useState(3)
   const [isOpen, setIsOpen] = useState(false)
   const [message, setMessage] = useState("");
   const [user, setUser] = useState<any>(null)
+  const [confirmedUsers, setConfirmedUsers] = useState<any[]>([]);
+  const [unconfirmedUsers, setUnconfirmedUsers] = useState<any[]>([]);
+  const [waitingUsers, setWaitingUsers] = useState<any[]>([]);
+  const [otherUsers, setOtherUsers] = useState<any[]>([]);
 
   const [users, setUsers] = useState(props.users);
   const [search, setSearch] = useState("");
+  useEffect(() => {
+    getUsers();
+  }, [])
 
   const sendMessage = async (mess: string) => {
     const formData = new FormData();
@@ -34,6 +42,24 @@ export const ConnectionsCard = (props: any) => {
       setUsers(searchUsers);
     }
   }
+  const getUsers = async () => {
+    let result1 = await FriendService.getConfirmedFriends(props.session.user.id);
+    setConfirmedUsers(result1);
+    // setConfirmedUsersFilter(result1);
+    let result2 = await FriendService.getUnconfirmedFriends(props.session.user.id);
+    setUnconfirmedUsers(result2);
+    // setUnconfirmedUsersFilter(result2);
+    let result3 = await FriendService.getWaitingFriends(props.session.user.id);
+    setWaitingUsers(result3);
+    // setWaitingUsersFilter(result3);
+    let result4 = await FriendService.getOtherUsers(props.userId);
+    setOtherUsers(result4);
+    // setOtherUsersFilter(result4);
+  }
+
+
+
+
   return (
     <>
       <div className={styles.container}>
@@ -45,7 +71,8 @@ export const ConnectionsCard = (props: any) => {
         </div>
         {users?.map((user: any, index: any) => {
           if (index <= count) {
-            return (<ConnectionBlock isRequests={props.isRequests} setUser={setUser} setIsOpen={setIsOpen} key={user.id} user={user} group={props.group} session={props.session} getGroup={props.getGroup} getUsers={props.getUsers} />)
+            return (<ConnectionBlock isRequests={props.isRequests} setUser={setUser} setIsOpen={setIsOpen} key={user.id + otherUsers.length} user={user} group={props.group} session={props.session}
+              getGroup={props.getGroup} getUsers={props.getUsers} getAllUsers={getUsers} confirmedUsers={confirmedUsers} unconfirmedUsers={unconfirmedUsers} waitingUsers={waitingUsers} />)
           }
         })}
         <button className={styles.buttonLoadMore} onClick={() => setCount(count + 4)}>Загрузить еще</button>

@@ -47,7 +47,7 @@
 					}
 				}
 				.yellowButton {
-					@apply w-32 p-3 text-yellow-500 items-center flex justify-center bg-yellow-900 bg-opacity-25 transition-all duration-300 hover:bg-yellow-400 hover:bg-opacity-75 hover:text-white focus:ring-4 focus:outline-none focus:ring-button_green_BG font-medium rounded-md text-sm px-2 py-2.5 md:px-1.5 lg:px-1.5 text-center;
+					@apply w-32 p-3 text-yellow-500 items-center flex justify-center bg-yellow-900 bg-opacity-25 transition-all duration-300 hover:bg-yellow-400 hover:bg-opacity-75 hover:text-white focus:ring-4 focus:outline-none focus:bg-yellow-600 font-medium rounded-md text-sm px-2 py-2.5 md:px-1.5 lg:px-1.5 text-center;
 					span {
 						@apply mr-2;
 					}

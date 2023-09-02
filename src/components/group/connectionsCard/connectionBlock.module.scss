@@ -37,5 +37,11 @@
 				@apply mr-2;
 			}
 		}
+		.yellowButton {
+			@apply text-yellow-500 items-center flex justify-center bg-yellow-900 bg-opacity-25 transition-all duration-300 hover:bg-yellow-400 hover:bg-opacity-75 hover:text-white focus:ring-4 focus:outline-none focus:ring-yellow-600 font-medium rounded-md text-sm px-5 py-2.5  text-center;
+			span {
+				@apply mr-2;
+			}
+		}
 	}
 }
