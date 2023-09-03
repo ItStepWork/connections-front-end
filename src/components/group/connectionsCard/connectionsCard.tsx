@@ -16,7 +16,7 @@ export const ConnectionsCard = (props: any) => {
   const [waitingUsers, setWaitingUsers] = useState<any[]>([]);
   const [otherUsers, setOtherUsers] = useState<any[]>([]);
 
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState(props.users);
   const [search, setSearch] = useState("");
   useEffect(() => {
     getUsers();
@@ -39,9 +39,9 @@ export const ConnectionsCard = (props: any) => {
     setUnconfirmedUsers(result2);
     let result3 = await FriendService.getWaitingFriends(props.session.user.id);
     setWaitingUsers(result3);
-    let result4 = await FriendService.getOtherUsers(props.userId);
+    let result4 = await FriendService.getOtherUsers(props.session.user.id);
     setOtherUsers(result4);
-    setUsers(props.users)
+    // setUsers(props.users)
   }
   const isConfirmed = (id: any) => {
     let result = confirmedUsers.filter((u: any) => u.id?.includes(id));
@@ -55,6 +55,11 @@ export const ConnectionsCard = (props: any) => {
   }
   const isWaitingUsers = (id: any) => {
     let result = waitingUsers.filter((u: any) => u.id?.includes(id));
+    if (result.length > 0) return true;
+    else return false;
+  }
+  const isOtherUsers = (id: any) => {
+    let result = otherUsers.filter((u: any) => u.id?.includes(id));
     if (result.length > 0) return true;
     else return false;
   }
@@ -77,6 +82,7 @@ export const ConnectionsCard = (props: any) => {
               getGroup={props.getGroup} getUsers={props.getUsers} getAllUsers={getUsers} confirmedUsers={confirmedUsers} unconfirmedUsers={unconfirmedUsers} waitingUsers={waitingUsers} />)
             else return (<ConnectionBlock status={FriendStatus.Other} isRequests={props.isRequests} setUser={setUser} setIsOpen={setIsOpen} key={user.id + otherUsers.length} user={user} group={props.group} session={props.session}
               getGroup={props.getGroup} getUsers={props.getUsers} getAllUsers={getUsers} confirmedUsers={confirmedUsers} unconfirmedUsers={unconfirmedUsers} waitingUsers={waitingUsers} />)
+
           }
         })}
         <button className={styles.buttonLoadMore} onClick={() => setCount(count + 4)}>Загрузить еще</button>
