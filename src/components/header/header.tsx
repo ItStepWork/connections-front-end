@@ -26,14 +26,14 @@ export const Header: FC = () => {
 
   const load = async () => {
     let session = await getSession();
-    if (session?.user.id !== undefined) {
-      let id = session.user.id;
-      setInterval(()=>tick(id), 1000);
+    if (session?.user.accessToken !== undefined) {
+      let token = session.user.accessToken;
+      setInterval(()=>tick(token), 1000);
     }
   };
 
-  const tick = (id: string) => {
-    channelWorkerBroadcast.postMessage({ userId: id });
+  const tick = (token: string) => {
+    channelWorkerBroadcast.postMessage({ token: token });
   };
 
   useEffect(() => {
