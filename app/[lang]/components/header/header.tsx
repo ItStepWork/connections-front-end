@@ -54,7 +54,7 @@ export const Header = ({ lang }: { lang: Locale }) => {
                 </div>
                 <ul className={`md:flex md:items-center md:pb-0 pb-12 dark:shadow-customTransparent dark:backdrop-blur-[3px] md:backdrop-blur-0 absolute rounded-lg md:static md:z-auto z-[-10] left-4 w-11/12 md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in bg-glass-white md:dark:bg-transparent dark:bg-dark_button_BG ${open ? 'top-14 opacity-100' : 'top-[-500px] md:opacity-100 opacity-0'}`}>
                   <li className={styles.listItem}>
-                    <Link className={styles.navText} onClick={fetch} href={`${lang}/main`}>Главная</Link>
+                    <Link className={styles.navText} onClick={fetch} href={`/main`}>Главная</Link>
                   </li>
                   <li className={styles.listItem}>
                     <Link className={styles.navText} onClick={fetch} href={`/profile/${session.user.id}`}>Мой профиль</Link>

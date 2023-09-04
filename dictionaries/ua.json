@@ -1,5 +1,124 @@
 {
-  "title": {
-    "cart": "eueu"
+  "button": {
+    "uploadMore": "Завантажити більше",
+    "uploadAvatarImage": "Завантажити більше",
+    "uploadBgImage": "Завантажити більше",
+    "updatePass": "Змінити пароль",
+    "saveData": "зберегти змінення",
+    "toProfile": "Профіль",
+    "setAvatarImage": "Встановити аватар",
+    "setBgImage": "Встановити фон",
+    "settings" : "Налаштування",
+    "allFriends" : "Всі друзі",
+    "editProfile" : "Редагувати профіль",
+    "showAll" : "Показати всі"
+  },
+  "copyright" : "Всі права захищені",
+  "posts" : {
+    "photo" : "Фото",
+    "video" : "Відео",
+    "events" : "Подія",
+    "activity" : "Діяльність",
+    "placeholder" : "Поділися своїми думками",
+    "cancel" : "Відміна",
+    "publish" : "Публікувати",
+    "writeVideo" : "Записати",
+    "postPhoto" : {
+      "title" : "Публікація фото",
+      "Upload" : "Завантажети вкладення",
+      "description" : "Перетяніть сюди або натисніть, для завантаження фото"
+    },
+    "postVideo" : {
+      "title" : "Публікація відео",
+      "description" : "Перетяніть сюди або натисніть, для завантаження відео"
+    },
+    "postActivity" : {
+      "title" : "Створити пост",
+      "forAll" : "Для всіх",
+      "forMe" : "Тільки я",
+      "forFriends" : "Тільки друзі"
+    }
+  },
+  "search" : {
+    "searchFullName" : "Введіть им'я або прізвище",
+    "searchPost" : "Введіть назву",
+    "searchNameOrEmail" : "Введить им'я, прізвище, або ємейл",
+    "searchGroup" : "Введить назву групи"
+  },
+  "header" : {
+    "main" : "Головна",
+    "profile" : "Прифіль",
+    "admin" : "Адміністратор",
+    "exit" : "Вихід",
+    "theme" : "Тема"
+  },
+  "footer" : {
+    "about" : "Про нас",
+    "help" : "Допомога",
+    "privacy" : "Конфедеційність та умови",
+    "protect" : "Партнерство",
+    "partnership" : "Захист"
+    
+  },
+  "group" : {
+    "title" : "Спільноти",
+    "adminBtn" : "Адміністратор",
+    "editGroupBtn" : "Редагувати групу",
+    "inviteBtn" : "Запросити",
+    "leaveBtn" : "Покинути",
+    "changeBtn" : "Змінити",
+    "deleteGroup" : "Видалити",
+    "aboutGroup" : {
+      "about" : "Про групу",
+      "people" : "Люди",
+      "participants" : "учасників",
+      "status" : "Статус",
+      "mail" : "Пошта"
+    },
+    "posts" : "Пости",
+    "photo" : "Фото",
+    "members" : "учасники",
+    "requests" : "Запити"
+  },
+  "connections" : {
+    "title" : "Контакти",
+    "confirmBtn" : "Підтвердити",
+    "deleteBtn" : "Видалити",
+    "writeBtn" : "Написати",
+    "requestBtn" : "Дружити"
+  },
+  "profile" : {
+    "friendsCount" : "Контактів",
+    "aboutMe" : "Про мене",
+    "contacts" : "Контакти",
+    "groups" : "Спільноти",
+    "gallery" : "Галерея"
+  },
+  "signIn" : {
+    "title" : "Вхід",
+    "description" : "Ще нема аккаунту?",
+    "toSignUp" : "перейти до регістраціЇ",
+    "passLabel" : "Пароль",
+    "logInBtn" : "Увійти"
+  },
+  "signUp" : {
+    "title" : "Регістрація",
+    "description" : "У вас вже е аккаунт?",
+    "toSignIn" : "Увійти",
+    "nameLabel" : "Ім'Я",
+    "lastNameLabel" : "Прізвище",
+    "mailLabel" : "єл. Пошта",
+    "passLabel" : "Пароль",
+    "confirmPassLabel" : "Підтвердження паролю",
+    "registrationBtn" : "Регістрация"
+  },
+  "aboutMe" : {
+    "title" : "Інформація профілю:",
+    "Overview" : "Огляд:",
+    "birthday" : "День народження:",
+    "work" : "Прасюю:",
+    "connected" : "Приеднався:",
+    "status" : "Статус:",
+    "live" : "Живу в:"
   }
 }
