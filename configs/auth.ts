@@ -14,7 +14,7 @@ export const authConfig: AuthOptions = {
 
         if (credentials === undefined || credentials.email === undefined || credentials.password === undefined) return null;
 
-        const url = `${process.env.NEXT_PUBLIC_STRAPI_API}Auth/SignIn?email=${credentials.email}&password=${credentials.password}`;
+        const url = `${process.env.NEXT_PUBLIC_API}Auth/SignIn?email=${credentials.email}&password=${credentials.password}`;
 
         try {
           const response = await fetch(url);

@@ -7,7 +7,7 @@ export class UserService {
 
   static async setUserBgImage(formData: FormData) {
     const session = await getSession();
-    return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "User/SaveBackground", formData, {
+    return await axios.post(process.env.NEXT_PUBLIC_API + "User/SaveBackground", formData, {
       headers: {
         "Accept": "application/json",
         "Authorization": "Bearer " + session?.user.accessToken,
@@ -22,7 +22,7 @@ export class UserService {
 
   static async setUserAvatarImage(formData: FormData) {
     const session = await getSession();
-    return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "User/SaveAvatar", formData, {
+    return await axios.post(process.env.NEXT_PUBLIC_API + "User/SaveAvatar", formData, {
       headers: {
         "Accept": "application/json",
         "Authorization": "Bearer " + session?.user.accessToken,
@@ -37,7 +37,7 @@ export class UserService {
 
   static async setUserProfile(formData: FormData) {
     const session = await getSession();
-    return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "User/UpdateUser", formData, {
+    return await axios.post(process.env.NEXT_PUBLIC_API + "User/UpdateUser", formData, {
       headers: {
         "Accept": "application/json",
         "Authorization": "Bearer " + session?.user.accessToken,
@@ -52,7 +52,7 @@ export class UserService {
 
   static async getUser(id: string) {
     const session = await getSession();
-    return await axios.get<IUser>(process.env.NEXT_PUBLIC_STRAPI_API + "User/GetUser?id=" + id, {
+    return await axios.get<IUser>(process.env.NEXT_PUBLIC_API + "User/GetUser?id=" + id, {
       headers: {
         "Accept": "application/json",
         "Authorization": "Bearer " + session?.user.accessToken,
@@ -66,7 +66,7 @@ export class UserService {
 
   static async getCurrentUser() {
     const session = await getSession();
-    return await axios.get<IUser>(process.env.NEXT_PUBLIC_STRAPI_API + "User/GetUser?id=" + session?.user.id, {
+    return await axios.get<IUser>(process.env.NEXT_PUBLIC_API + "User/GetUser?id=" + session?.user.id, {
       headers: {
         "Accept": "application/json",
         "Authorization": "Bearer " + session?.user.accessToken,
@@ -80,7 +80,7 @@ export class UserService {
 
   static async getUsers() {
     const session = await getSession();
-    return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + "User/GetUsers", {
+    return await axios.get(process.env.NEXT_PUBLIC_API + "User/GetUsers", {
       headers: {
         "Accept": "application/json",
         "Authorization": "Bearer " + session?.user.accessToken,
@@ -94,7 +94,7 @@ export class UserService {
 
   static async setUserPassword(formData: FormData) {
     const session = await getSession();
-    return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "User/UpdateUserPassword", formData, {
+    return await axios.post(process.env.NEXT_PUBLIC_API + "User/UpdateUserPassword", formData, {
       headers: {
         "Accept": "application/json",
         "Authorization": "Bearer " + session?.user.accessToken,

@@ -6,7 +6,7 @@ export class GroupService {
 
     static async getGroups(userId:string) {
         const session = await getSession();
-        return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + "Group/GetGroups?userId="+userId, {
+        return await axios.get(process.env.NEXT_PUBLIC_API + "Group/GetGroups?userId="+userId, {
             headers: {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,
@@ -20,7 +20,7 @@ export class GroupService {
 
     static async addGroup(formData: FormData) {
         const session = await getSession();
-        return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "Group/AddGroup", formData, {
+        return await axios.post(process.env.NEXT_PUBLIC_API + "Group/AddGroup", formData, {
             headers: {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,
@@ -35,7 +35,7 @@ export class GroupService {
 
     static async deleteGroup(id: string) {
         const session = await getSession();
-        return await axios.delete(process.env.NEXT_PUBLIC_STRAPI_API + "Group/DeleteGroup?id=" + id, {
+        return await axios.delete(process.env.NEXT_PUBLIC_API + "Group/DeleteGroup?id=" + id, {
             headers: {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,
@@ -48,7 +48,7 @@ export class GroupService {
     }
     static async updateAvatar(formData: FormData) {
         const session = await getSession();
-        return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "Group/UpdateAvatar", formData, {
+        return await axios.post(process.env.NEXT_PUBLIC_API + "Group/UpdateAvatar", formData, {
             headers: {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,
@@ -62,7 +62,7 @@ export class GroupService {
     }
     static async updateGroup(formData: FormData) {
         const session = await getSession();
-        return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "Group/UpdateGroup", formData, {
+        return await axios.post(process.env.NEXT_PUBLIC_API + "Group/UpdateGroup", formData, {
             headers: {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,
@@ -76,7 +76,7 @@ export class GroupService {
     }
     static async joinGroup(id: string) {
         const session = await getSession();
-        return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "Group/JoinGroup", { id: id }, {
+        return await axios.post(process.env.NEXT_PUBLIC_API + "Group/JoinGroup", { id: id }, {
             headers: {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,
@@ -91,7 +91,7 @@ export class GroupService {
 
     static async leaveGroup(id: string) {
         const session = await getSession();
-        return await axios.delete(process.env.NEXT_PUBLIC_STRAPI_API + "Group/LeaveGroup?id=" + id, {
+        return await axios.delete(process.env.NEXT_PUBLIC_API + "Group/LeaveGroup?id=" + id, {
             headers: {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,
@@ -105,7 +105,7 @@ export class GroupService {
 
     static async removeUserFromGroup(groupId: string,userId: string) {
         const session = await getSession();
-        return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "Group/RemoveUserFromGroup",{ id: groupId,userId:userId }, {
+        return await axios.post(process.env.NEXT_PUBLIC_API + "Group/RemoveUserFromGroup",{ id: groupId,userId:userId }, {
             headers: {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,
@@ -120,7 +120,7 @@ export class GroupService {
 
     static async acceptUserToGroup(groupId: string,userId: string) {
         const session = await getSession();
-        return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "Group/AcceptUserToGroup",{ id: groupId,userId:userId }, {
+        return await axios.post(process.env.NEXT_PUBLIC_API + "Group/AcceptUserToGroup",{ id: groupId,userId:userId }, {
             headers: {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,
@@ -135,7 +135,7 @@ export class GroupService {
 
     static async getGroup(id: string) {
         const session = await getSession();
-        return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + "Group/GetGroup?id=" + id, {
+        return await axios.get(process.env.NEXT_PUBLIC_API + "Group/GetGroup?id=" + id, {
             headers: {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,
@@ -149,7 +149,7 @@ export class GroupService {
 
     static async getUsersGroup(id: string) {
         const session = await getSession();
-        return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + "Group/GetUsersGroup?id=" + id, {
+        return await axios.get(process.env.NEXT_PUBLIC_API + "Group/GetUsersGroup?id=" + id, {
             headers: {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,
@@ -162,7 +162,7 @@ export class GroupService {
     }
     static async getMembersGroup(id: string) {
         const session = await getSession();
-        return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + "Group/GetMembersGroup?id=" + id, {
+        return await axios.get(process.env.NEXT_PUBLIC_API + "Group/GetMembersGroup?id=" + id, {
             headers: {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,
@@ -175,7 +175,7 @@ export class GroupService {
     }
     static async getRequestsToGroup(id: string) {
         const session = await getSession();
-        return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + "Group/GetRequestsToGroup?id=" + id, {
+        return await axios.get(process.env.NEXT_PUBLIC_API + "Group/GetRequestsToGroup?id=" + id, {
             headers: {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,
@@ -188,7 +188,7 @@ export class GroupService {
     }
     static async addPhoto(formData: FormData) {
         const session = await getSession();
-        return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "Group/AddPhoto", formData, {
+        return await axios.post(process.env.NEXT_PUBLIC_API + "Group/AddPhoto", formData, {
             headers: {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,
@@ -202,7 +202,7 @@ export class GroupService {
     }
     static async getPhotos(groupId: string) {
         const session = await getSession();
-        return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + "Group/GetPhotos?groupId=" + groupId, {
+        return await axios.get(process.env.NEXT_PUBLIC_API + "Group/GetPhotos?groupId=" + groupId, {
             headers: {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,
@@ -215,7 +215,7 @@ export class GroupService {
     }
     static async removePhoto( groupId: string,photoId:string) {
         const session = await getSession();
-        return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "Group/RemovePhoto",{ id:groupId,photoId: photoId }, {
+        return await axios.post(process.env.NEXT_PUBLIC_API + "Group/RemovePhoto",{ id:groupId,photoId: photoId }, {
             headers: {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,

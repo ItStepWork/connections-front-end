@@ -6,7 +6,7 @@ export class MessagingService {
 
   static async getDialogs() {
     const session = await getSession();
-    return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + "Messaging/GetDialogs", {
+    return await axios.get(process.env.NEXT_PUBLIC_API + "Messaging/GetDialogs", {
       headers: {
         "Accept": "application/json",
         "Authorization": "Bearer " + session?.user.accessToken,
@@ -20,7 +20,7 @@ export class MessagingService {
 
   static async getMessages(id: string) {
     const session = await getSession();
-    return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + "Messaging/GetMessages?id=" + id, {
+    return await axios.get(process.env.NEXT_PUBLIC_API + "Messaging/GetMessages?id=" + id, {
       headers: {
         "Accept": "application/json",
         "Authorization": "Bearer " + session?.user.accessToken,
@@ -34,7 +34,7 @@ export class MessagingService {
 
   static async removeDialog(id: string) {
     const session = await getSession();
-    return await axios.delete(process.env.NEXT_PUBLIC_STRAPI_API + "Messaging/RemoveDialog?id=" + id, {
+    return await axios.delete(process.env.NEXT_PUBLIC_API + "Messaging/RemoveDialog?id=" + id, {
       headers: {
         "Accept": "application/json",
         "Authorization": "Bearer " + session?.user.accessToken,
@@ -48,7 +48,7 @@ export class MessagingService {
 
   static async sendMessage(formData: FormData) {
     const session = await getSession();
-    return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "Messaging/SendMessage", formData, {
+    return await axios.post(process.env.NEXT_PUBLIC_API + "Messaging/SendMessage", formData, {
       headers: {
         "Accept": "application/json",
         "Authorization": "Bearer " + session?.user.accessToken,
@@ -63,7 +63,7 @@ export class MessagingService {
 
   static async removeMessageFull(id: string) {
     const session = await getSession();
-    return await axios.delete(process.env.NEXT_PUBLIC_STRAPI_API + "Messaging/RemoveMessageFull?id=" + id, {
+    return await axios.delete(process.env.NEXT_PUBLIC_API + "Messaging/RemoveMessageFull?id=" + id, {
       headers: {
         "Accept": "application/json",
         "Authorization": "Bearer " + session?.user.accessToken,
@@ -77,7 +77,7 @@ export class MessagingService {
 
   static async removeMessage(id: string) {
     const session = await getSession();
-    return await axios.delete(process.env.NEXT_PUBLIC_STRAPI_API + "Messaging/RemoveMessage?id=" + id, {
+    return await axios.delete(process.env.NEXT_PUBLIC_API + "Messaging/RemoveMessage?id=" + id, {
       headers: {
         "Accept": "application/json",
         "Authorization": "Bearer " + session?.user.accessToken,

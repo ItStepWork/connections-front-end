@@ -130,7 +130,7 @@ export default class Messaging extends React.Component<MyState>{
   async subscribe() {
     let session = await getSession();
     if (session != null) {
-      let socket = new WebSocket(`${process.env.SUBSCRIPTION_API}Subscription/SubscribeToMessagesUpdates`, ["client", session.user.accessToken]);
+      let socket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToMessagesUpdates`, ["client", session.user.accessToken]);
       socket.addEventListener('message', (event) => {
         this.loadDialogs();
         if (this.state.user !== null) {
