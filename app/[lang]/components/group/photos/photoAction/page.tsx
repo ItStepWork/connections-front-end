@@ -6,7 +6,7 @@ import { GalleryService } from '../../../../../../services/gallery.service';
 import { GroupService } from '../../../../../../services/group.service';
 import styles from './styles.module.scss';
 
-export function PhotoAction(props: any) {
+export default function PhotoAction(props: any) {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState<any>({ id: "", name: "Без альбома" });
 

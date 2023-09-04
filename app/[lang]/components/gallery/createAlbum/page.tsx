@@ -8,7 +8,7 @@ import { MdDriveFileRenameOutline } from 'react-icons/md';
 import { GalleryService } from '../../../../../services/gallery.service';
 import styles from './styles.module.scss';
 
-export function CreateAlbum(props: any) {
+export default function CreateAlbum(props: any) {
   const [isOpen, setIsOpen] = useState(false);
   const [files, setFiles] = useState<any[]>([]);
   const [text, setText] = useState("");

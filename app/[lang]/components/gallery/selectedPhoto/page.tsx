@@ -1,6 +1,6 @@
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { MdClose } from 'react-icons/md';
-import { InfoPhoto } from '../infoPhoto/page';
+import InfoPhoto from '../infoPhoto/page';
 
 export default function SelectedPhoto(props: any) {
 

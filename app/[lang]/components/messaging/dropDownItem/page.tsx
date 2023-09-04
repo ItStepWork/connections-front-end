@@ -3,7 +3,7 @@ import { useState } from "react";
 import { HiDotsVertical } from 'react-icons/hi';
 import styles from './styles.module.scss';
 
-export function DropDownItem(props: any) {
+export default function DropDownItem(props: any) {
   const [isOpen, setIsOpen] = useState(false);
 
   const click = () =>{

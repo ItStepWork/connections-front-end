@@ -4,7 +4,7 @@ import { BsFillSendFill } from 'react-icons/bs';
 import { FaRegWindowClose } from 'react-icons/fa';
 import { ImAttachment } from 'react-icons/im';
 import { MessagingService } from '../../../../../services/messaging.service';
-import { DropDownEmoji } from '../dropDownEmoji/page';
+import DropDownEmoji from '../dropDownEmoji/page';
 import styles from './styles.module.scss';
 
 export default function FooterBlock(props: any) {

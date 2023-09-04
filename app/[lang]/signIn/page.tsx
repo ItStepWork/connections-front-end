@@ -11,8 +11,7 @@ import { useStore } from "../../../stores/userDataStore";
 import styles from './styles.module.scss';
 
 
-export default function Signin({ lang }: { lang: Locale }) {
-  const loc = getDictionary(lang)
+export default function SignIn(props: any) {
 
   const router = useRouter();
   const { fetchUser } = useStore((state) => state)

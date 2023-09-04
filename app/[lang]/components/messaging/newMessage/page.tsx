@@ -5,7 +5,7 @@ import { FaCircleUser } from 'react-icons/fa6';
 import FooterBlock from '../footerBlock/page';
 import styles from './styles.module.scss';
 
-export function NewMessage(props: any) {
+export default function NewMessage(props: any) {
   const [search, setSearch] = useState("");
   const [filterUsers, setFilterUsers] = useState([]);
   const [findUser, setFindUser] = useState<any>(null);

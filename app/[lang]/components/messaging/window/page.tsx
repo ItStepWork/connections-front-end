@@ -1,7 +1,7 @@
 import { IoMdClose } from 'react-icons/io';
 import styles from './styles.module.scss';
 
-export function Window(props: any) {
+export default function Window(props: any) {
 
   return (
     <div {...props.isOpen ? { className: styles.container + " visible z-50" } : { className: styles.container + " invisible z-50" }}>

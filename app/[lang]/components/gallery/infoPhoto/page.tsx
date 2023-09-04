@@ -3,12 +3,12 @@ import { useState } from "react";
 import { AiFillLike } from 'react-icons/ai';
 import { BsFillSendFill } from 'react-icons/bs';
 import { GalleryService } from '../../../../../services/gallery.service';
-import { DropDownEmoji } from '../../messaging/dropDownEmoji/page';
-import { Avatar } from '../avatar/page';
-import { Comment } from '../comment/page';
+import DropDownEmoji from '../../messaging/dropDownEmoji/page';
+import Avatar from '../avatar/page';
+import Comment from '../comment/page';
 import styles from './styles.module.scss';
 
-export function InfoPhoto(props: any) {
+export default function InfoPhoto(props: any) {
 
   const [text, setText] = useState("");
 

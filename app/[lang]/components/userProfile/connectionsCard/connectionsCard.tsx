@@ -3,7 +3,7 @@ import { FiSearch } from 'react-icons/fi';
 import { FriendStatus } from '../../../../../enums/all.enum';
 import { FriendService } from '../../../../../services/friend.service';
 import FooterBlock from '../../messaging/footerBlock/page';
-import { Window } from '../../messaging/window/page';
+import Window from '../../messaging/window/page';
 import { ConnectionBlock } from './connectionBlock';
 import styles from './connectionsCard.module.scss';
 

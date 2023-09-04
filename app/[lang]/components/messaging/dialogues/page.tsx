@@ -1,7 +1,7 @@
 import styles from './styles.module.scss'
 import UserDialog from '../userDialog/page';
 
-export function Dialogues(props: any) {
+export default function Dialogues(props: any) {
 
   return (
     <ul className={styles.users}>

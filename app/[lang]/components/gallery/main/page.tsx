@@ -3,7 +3,7 @@ import { getSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import { GalleryService } from '../../../../../services/gallery.service';
 import Albums from "../albums/page";
-import { CreateAlbum } from '../createAlbum/page';
+import CreateAlbum from '../createAlbum/page';
 import Photos from "../photos/page";
 import styles from './styles.module.scss';
 

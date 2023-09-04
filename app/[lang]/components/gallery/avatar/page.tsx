@@ -3,15 +3,13 @@ import { useEffect, useState } from "react";
 import { FaUserCircle } from 'react-icons/fa';
 import { UserService } from "../../../../../services/user.service";
 import styles from './styles.module.scss';
-import { IUser } from "../../../../../interfaces/user.interface";
 
-
-export function Avatar(props: any) {
+export default function Avatar(props: any) {
 
   const [user, setUser] = useState<any>(null);
 
   const getUser = async () => {
-    let result : any = await UserService.getUser(props.userId);
+    let result = await UserService.getUser(props.userId);
     setUser(result);
   }
 

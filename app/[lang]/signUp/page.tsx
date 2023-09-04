@@ -6,7 +6,7 @@ import { Locale } from '../../../i18n.config';
 import styles from './styles.module.scss';
 
 
-export default function Signup({ lang }: { lang: Locale }) {
+export default function SignUp(props: any) {
   const {
     register,
     handleSubmit,

@@ -1,6 +1,6 @@
 import { FaUserCircle } from 'react-icons/fa';
 import { GoDotFill } from 'react-icons/go';
-import { DropDownItem } from '../dropDownItem/page';
+import DropDownItem from '../dropDownItem/page';
 import styles from './styles.module.scss';
 
 export default function HeaderBlock(props: any) {

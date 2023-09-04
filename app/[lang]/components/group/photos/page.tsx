@@ -5,7 +5,7 @@ import { MdOutlineAddAPhoto } from "react-icons/md";
 // import SelectedPhoto from '../selectedPhoto/page';
 import { GroupService } from '../../../../../services/group.service';
 import SelectedPhoto from '../../gallery/selectedPhoto/page';
-import { PhotoAction } from './photoAction/page';
+import PhotoAction from './photoAction/page';
 import styles from './styles.module.scss';
 
 export default function Photos(props: any) {

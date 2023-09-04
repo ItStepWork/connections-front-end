@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { MdOutlineAddAPhoto } from "react-icons/md";
 import { GalleryService } from '../../../../../services/gallery.service';
-import { PhotoAction } from '../photoAction/page';
+import PhotoAction from '../photoAction/page';
 import SelectedPhoto from '../selectedPhoto/page';
 import styles from './styles.module.scss';
 

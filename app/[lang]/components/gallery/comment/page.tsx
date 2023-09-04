@@ -4,7 +4,7 @@ import { FaUserCircle } from 'react-icons/fa';
 import { UserService } from '../../../../../services/user.service';
 import styles from './styles.module.scss';
 
-export function Comment(props: any) {
+export default function Comment(props: any) {
 
   const [user, setUser] = useState<any>(null);
 
