@@ -1,9 +1,8 @@
 "use client"
-import { onChildChanged, ref } from '@firebase/database';
+
 import { getSession } from 'next-auth/react';
 import { useEffect, useState } from "react";
 import 'react-toastify/dist/ReactToastify.css';
-import Firebase from '../../../../services/firebase.service';
 import { GroupService } from '../../../../services/group.service';
 import { AboutCard } from './aboutBlock/aboutCard';
 import { ConnectionsCard } from './connectionsCard/connectionsCard';
@@ -56,11 +55,14 @@ export default function Group(props: any) {
     const subscribe = async () => {
         let session = await getSession();
         if (session != null) {
-            onChildChanged(ref(Firebase(), `Groups/${props.id}`), (data) => {
+            let socket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToGroupUpdates?id=${props.id}`, ["client", session.user.accessToken]);
+            socket.addEventListener('message', (event) => {
                 getUsers();
                 getGroup();
-                console.log(data)
             });
+            setInterval(() => {
+                socket.send("ping");
+            }, 30000);
         }
     }
 

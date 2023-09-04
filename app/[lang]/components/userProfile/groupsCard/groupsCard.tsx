@@ -1,11 +1,10 @@
 'use client'
-import { onChildChanged, ref } from '@firebase/database';
+
 import { getSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { FiSearch } from 'react-icons/fi';
 import { CreateGroup } from '../../../../../app/[lang]/components/userProfile/groupsCard/createGroup/createGroup';
-import Firebase from '../../../../../services/firebase.service';
 import { GroupService } from '../../../../../services/group.service';
 import { Card } from './card';
 import styles from './groupsCard.module.scss';
@@ -48,9 +47,13 @@ export function GroupsCard(props: any) {
   const subscribe = async () => {
     let session = await getSession();
     if (session != null) {
-      onChildChanged(ref(Firebase(), `Groups`), (data) => {
+      let socket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToGroupsUpdates`, ["client", session.user.accessToken]);
+      socket.addEventListener('message', (event) => {
         getGroups();
       });
+      setInterval(() => {
+        socket.send("ping");
+      }, 30000);
     }
   }
   return (
