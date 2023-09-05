@@ -10,11 +10,13 @@ import { HeaderBlock } from './headerBlock/headerBlock';
 import Photos from './photos/page';
 import { PostsCard } from './postsCard/postsCard';
 import styles from './styles.module.scss';
+import { randomInt } from 'crypto';
 
 export default function Group(props: any) {
+    const [id, setId] = useState(0)
     const [component, setComponent] = useState("about");
-    const [members, setMembers] = useState<any[]>([])
     const [usersRequests, setUsersRequests] = useState<any[]>([])
+    const [membersFriends, setMembersFriends] = useState<any[]>([])
     const [group, setGroup] = useState<any>(null);
     const [session, setSession] = useState<any>()
     const [photos, setPhotos] = useState<any[]>([]);
@@ -31,59 +33,56 @@ export default function Group(props: any) {
     const getData = async () => {
         let result = await GroupService.getGroup(props.id);
         await setGroup(result);
-        let result1 = await GroupService.getMembersGroup(result?.id);
-        await setMembers(result1);
         let result2 = await GroupService.getRequestsToGroup(result?.id);
         await setUsersRequests(result2);
+        let result3 = await GroupService.getFriendsInGroup(props.id);
+        setMembersFriends(result3);
     }
     const getGroup = async () => {
         let result = await GroupService.getGroup(props.id);
         setGroup(result);
     }
-    const getMembers = async () => {
-        let result = await GroupService.getMembersGroup(props.id);
-        setMembers(result);
-    }
     const getUsersRequests = async () => {
         let result = await GroupService.getRequestsToGroup(props.id);
         setUsersRequests(result);
     }
+    const getFriendsInGroup = async () => {
+        let result = await GroupService.getFriendsInGroup(props.id);
+        setMembersFriends(result);
+    }
     const getUsers = async () => {
-        getMembers();
-        getUsersRequests();
+        await getUsersRequests();
+        await getFriendsInGroup();
+        setId(Math.random())
     }
     const subscribe = async () => {
         let session = await getSession();
         if (session != null) {
-            let socket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToGroupUpdates?id=${props.id}`, ["client", session.user.accessToken]);
-            socket.addEventListener('message', (event) => {
+            let groupSocket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToGroupUpdates?id=${props.id}`, ["client", session.user.accessToken]);
+            groupSocket.addEventListener('message', (event) => {
+                getUsers();
+                getGroup();
+            });
+            let friendSocket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToFriendsUpdates`, ["client", session.user.accessToken]);
+            friendSocket.addEventListener('message', (event) => {
                 getUsers();
                 getGroup();
             });
             setInterval(() => {
-                socket.send("ping");
+                friendSocket.send("ping");
+                groupSocket.send("ping");
             }, 30000);
         }
     }
 
     const getPhotos = async () => {
-        // let result1 = await GalleryService.getAlbums(props.userId);
-        // setAlbums(result1);
-
         let result2 = await GroupService.getPhotos(props.id);
         setPhotos(result2);
-        // console.log(result2)
     }
-    // const getUsersArrays = () => {
-    //     let resMembers = Object.entries(group.users).filter(([k, v]) => v == true).map(([k, v]) => k);
-    //     let resRequests = Object.entries(group.users).filter(([k, v]) => v == false).map(([k, v]) => k);
-    //     setMembers(users.filter(i => resMembers.includes(i.id)));
-    //     setUsersRequests(users.filter(i => resRequests.includes(i.id)));
-    // }
     const changeComponent = () => {
-        if (component === "members") return (<ConnectionsCard key={"members" + members.length} isRequests={false} session={session} users={members} group={group} getGroup={getGroup} getUsers={getUsers} />)
-        else if (component === "requests") return (<ConnectionsCard key={"requests" + usersRequests.length} isRequests={true} session={session} users={usersRequests} group={group} getGroup={getGroup} getUsers={getUsers} />)
-        else if (component === "about") return (<AboutCard group={group} members={Object.entries(members).length} />)
+        if (component === "members") return (<ConnectionsCard key={"members" + membersFriends.length + id} isRequests={false} session={session} users={membersFriends} group={group} getGroup={getGroup} getUsers={getUsers} />)
+        else if (component === "requests") return (<ConnectionsCard key={"requests" + usersRequests.length + id} isRequests={true} session={session} users={usersRequests} group={group} getGroup={getGroup} getUsers={getUsers} />)
+        else if (component === "about") return (<AboutCard group={group} members={Object.entries(membersFriends).length} />)
         else if (component === "posts") return (<PostsCard />)
         else if (component === "photo") return (<Photos group={group} session={session} getPhotos={getPhotos} photos={photos} />)
         else return (<> "Блядська рука кремля"</>)
@@ -94,8 +93,7 @@ export default function Group(props: any) {
                 <div className={styles.container}>
                     {group
                         ? <div className='gap-5'>
-                            < HeaderBlock session={session} group={group} usersRequests={usersRequests} members={members} getGroup={getGroup} getUsers={getUsers} component={component} setComponent={setComponent} />
-                            {/* <PostPanel></PostPanel> */}
+                            < HeaderBlock session={session} group={group} usersRequests={usersRequests} members={membersFriends} getGroup={getGroup} getUsers={getUsers} component={component} setComponent={setComponent} />
                             {changeComponent()}
                         </div>
                         : <>Loading...</>

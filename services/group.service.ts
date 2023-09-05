@@ -186,6 +186,19 @@ export class GroupService {
                 return [];
             });
     }
+    static async getFriendsInGroup(id: string) {
+        const session = await getSession();
+        return await axios.get(process.env.NEXT_PUBLIC_API + "Group/GetFriendsInGroup?id=" + id, {
+            headers: {
+                "Accept": "application/json",
+                "Authorization": "Bearer " + session?.user.accessToken,
+            },
+        }).then(response => response.data)
+            .catch((error) => {
+                CheckService.signOut(session, error);
+                return [];
+            });
+    }
     static async addPhoto(formData: FormData) {
         const session = await getSession();
         return await axios.post(process.env.NEXT_PUBLIC_API + "Group/AddPhoto", formData, {

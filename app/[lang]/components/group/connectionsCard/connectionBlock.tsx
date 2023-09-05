@@ -22,28 +22,28 @@ export const ConnectionBlock = (props: any) => {
   const removeUserFromGroup = async () => {
     let result = await GroupService.removeUserFromGroup(props.group.id, props.user.id);
     notifySuccess("Участник удален");
-    props.getUsers();
-    props.getGroup();
+    // props.getUsers();
+    // props.getGroup();
   }
   const acceptUserToGroup = async () => {
     let result = await GroupService.acceptUserToGroup(props.group.id, props.user.id);
     notifySuccess("Участник принят");
-    props.getUsers();
-    props.getGroup();
+    // props.getUsers();
+    // props.getGroup();
   }
   const addFriend = async () => {
     await FriendService.addFriend(props.user.id);
-    props.getAllUsers();
+    // props.getUsers();
   }
 
   const confirmFriend = async () => {
     await FriendService.confirmFriend(props.user.id);
-    props.getAllUsers();
+    // props.getUsers();
   }
 
   const removeFriend = async () => {
     await FriendService.removeFriend(props.user.id);
-    props.getAllUsers();
+    // props.getUsers();
   }
   return (
     <>
@@ -62,7 +62,7 @@ export const ConnectionBlock = (props: any) => {
         </Link>
         {props.isRequests
           ? <div className={styles.buttonsContainer}>
-            <button title="Відилити заявку" className={styles.button_red_BG} onClick={() => removeUserFromGroup()}><AiOutlineUsergroupDelete size={26} /></button>
+            <button title="Відхилити заявку" className={styles.button_red_BG} onClick={() => removeUserFromGroup()}><AiOutlineUsergroupDelete size={26} /></button>
             <button title="Підтвердити заявку" className={styles.button_blue_BG} onClick={() => acceptUserToGroup()}><AiOutlineUsergroupAdd size={26} /></button>
           </div>
           : (props.user.id !== props.session?.user?.id)
@@ -75,10 +75,10 @@ export const ConnectionBlock = (props: any) => {
               <button title="Адміністратор" className={styles.greenButton}><MdOutlineAdminPanelSettings size={26} className={styles.btnPict + " " + styles.greenPict} /></button>
             }
             <button title="Відправити повідомлення" className={styles.button_blue_BG} onClick={() => { props.setUser(props.user); props.setIsOpen(true); }}><BsSendPlus size={26} /></button>
-            {props.status === FriendStatus.Confirmed ? <button title="Видалити з друзів" className={styles.button_red_BG} onClick={() => removeFriend()}><AiOutlineUserDelete size={26} /></button>
-              : props.status === FriendStatus.Unconfirmed ? <button title="Підтвердити запит" className={styles.yellowButton} onClick={() => confirmFriend()}><MdSentimentSatisfiedAlt size={26} /></button>
-                : props.status === FriendStatus.Waiting ? <button title="Запит відправлено" className={styles.yellowButton}><BiTimeFive size={26} /></button>
-                  : props.status === FriendStatus.Other ? <button title="Додати до друзів" className={styles.button_blue_BG} onClick={() => addFriend()}><GoPersonAdd size={26} /></button>
+            {props.user.friendStatus === FriendStatus.Confirmed ? <button title="Видалити з друзів" className={styles.button_red_BG} onClick={() => removeFriend()}><AiOutlineUserDelete size={26} /></button>
+              : props.user.friendStatus === FriendStatus.Unconfirmed ? <button title="Підтвердити запит" className={styles.yellowButton} onClick={() => confirmFriend()}><MdSentimentSatisfiedAlt size={26} /></button>
+                : props.user.friendStatus === FriendStatus.Waiting ? <button title="Запит відправлено" className={styles.yellowButton}><BiTimeFive size={26} /></button>
+                  : props.user.friendStatus === FriendStatus.Other ? <button title="Додати до друзів" className={styles.button_blue_BG} onClick={() => addFriend()}><GoPersonAdd size={26} /></button>
                     : <></>
             }
           </div>

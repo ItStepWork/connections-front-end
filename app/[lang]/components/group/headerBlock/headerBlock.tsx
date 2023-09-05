@@ -9,10 +9,12 @@ import { TiCancel } from 'react-icons/ti';
 import { toast } from 'react-toastify';
 import { GroupService } from '../../../../../services/group.service';
 import { EditGroup } from '../editGroup/editGroup';
+import Window from '../../messaging/window/page';
 import styles from './styles.module.scss';
+import { useState } from 'react';
 
 export function HeaderBlock(props: any) {
-  // const [component, setComponent] = useState("about");
+  const [isOpen, setIsOpen] = useState(false)
   const notifyError = (text: string) => toast.warning(text, {});
   const notifyInfo = (text: string) => toast.info(text, {});
   const notifySuccess = (text: string) => toast.success(text, {});
@@ -101,7 +103,7 @@ export function HeaderBlock(props: any) {
                     ? <button title='Покинуть группу' className={styles.redButton} onClick={leaveGroup}><BiSolidUserCheck className={styles.btnPict + " " + styles.redPict} />Покинуть</button>
                     : <button title='Отменить Запрос' className={styles.yellowButton} onClick={leaveGroup}><TiCancel size={20} className={styles.btnPict + " " + styles.yellowPict} />Отменить</button>
                 : <button title="Вступить в группу" className={styles.blueButton} onClick={joinGroup} ><AiOutlineUsergroupAdd className={styles.btnPict + " " + styles.bluePict} />Вступить</button>}
-              <button title="Пригласить в группу" className={styles.greenButton}><AiOutlinePlus />Пригласить</button>
+              <button title="Пригласить в группу" className={styles.greenButton} onClick={() => setIsOpen(!isOpen)}><AiOutlinePlus />Пригласить</button>
             </div>
             {ifAdmin() ? <button className={styles.editButton} onClick={() => openDialog()}><span><BsPencilFill className={styles.btnPict + " " + styles.redPict} /></span>Редактировать группу</button> : <></>}
           </div>
@@ -151,6 +153,14 @@ export function HeaderBlock(props: any) {
       <dialog className={styles.dialog} id='editGroupDialog'>
         {<EditGroup group={props.group} getGroup={props.getGroup}></EditGroup>}
       </dialog>
+      {props.group &&
+        <Window name={props.group.name} isOpen={isOpen} setIsOpen={setIsOpen}>
+          <div className='flex h-5/6 justify-center items-end'>
+            {/* <FooterBlock friendId={user.id} /> */}
+          </div>
+        </Window>
+
+      }
     </>
   )
 }
