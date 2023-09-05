@@ -1,38 +1,31 @@
 import { faker } from "@faker-js/faker";
 import Image from 'next/image';
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import { BsFillPersonCheckFill, BsPlusLg } from "react-icons/bs";
 import { FriendService } from "../../../../../services/friend.service";
 import styles from "./follows.module.scss";
+import { FriendStatus } from "../../../../../enums/all.enum";
+
 interface IFollowerProps {
-  checked: boolean;
+  friendStatus: FriendStatus;
   firstName: string;
   lastName: string;
   work: string;
   avatar: string;
   id: string
+  getUsers: Function
 }
 
-export const Follower:FC<IFollowerProps> = ({checked, firstName, lastName, work, avatar, id}) => {
+export const Follower:FC<IFollowerProps> = ({friendStatus, firstName, lastName, work, avatar, id, getUsers}) => {
 
-  const [friends, setFriends] = useState<any[]>([]);
-  const [isCheck, setIsCheck] = useState(false);
 
   if(firstName === null) firstName = 'ошибка загрузки';
   if(lastName === null) lastName = 'ошибка загрузки';
   
   const addFriend = async () => {
     await FriendService.addFriend(id);
-    const friends = await FriendService.getFriends();
-    setFriends(friends);
+    getUsers();
   } 
-
-  useEffect(() => {
-    friends.map((user) => (
-      user.userId === id ? setIsCheck(true) : setIsCheck(false),
-      console.log(user.userId)
-    )) 
-  }, [])
   
   return (
     <>
@@ -53,7 +46,7 @@ export const Follower:FC<IFollowerProps> = ({checked, firstName, lastName, work,
           <span>{work === '' || work === undefined || work === null ? 'Не указано' : work}</span>
         </div>
         <div className="">
-          <button onClick={() => addFriend()} className={!isCheck ? styles.button : styles.buttonChecked}>{!isCheck ? <BsPlusLg size={16}/> : <BsFillPersonCheckFill size={16}/>}</button>
+          <button onClick={() => addFriend()} className={friendStatus === FriendStatus.Other ? styles.button : styles.buttonChecked}>{friendStatus === FriendStatus.Other ? <BsPlusLg size={16}/> : <BsFillPersonCheckFill size={16}/>}</button>
         </div>
       </div>
     </>

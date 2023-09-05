@@ -51,7 +51,7 @@ export const useStore = create<User>()(
         const session = await getSession()
         try {
           const responseUser = await UserService.getUser(session?.user.id as string)
-          const responseFriends = await FriendService.getFriends();
+          const responseFriends = await FriendService.getFriends(session?.user.id as string);
           
           set({ avatar: responseUser?.avatarUrl!});
           set((state) => ({ BgImage: (state.BgImage = responseUser?.backgroundUrl!)}));

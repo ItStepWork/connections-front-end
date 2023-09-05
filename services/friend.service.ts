@@ -49,9 +49,9 @@ export class FriendService {
             });
     }
 
-    static async getFriends() {
+    static async getFriends(id: string) {
         const session = await getSession();
-        return await axios.get(process.env.NEXT_PUBLIC_API + "Friend/GetFriends", {
+        return await axios.get(process.env.NEXT_PUBLIC_API + "Friend/GetFriends?id=" + id, {
             headers: {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + session?.user.accessToken,

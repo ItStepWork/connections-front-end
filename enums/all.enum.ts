@@ -1,8 +1,8 @@
 export enum FriendStatus {
-    Confirmed,
-    Unconfirmed,
-    Waiting,
-    Other,
+    Confirmed = "Confirmed",
+    Unconfirmed = "Unconfirmed",
+    Waiting = "Waiting",
+    Other = "Other",
 }
 
 export enum ComponentName {
