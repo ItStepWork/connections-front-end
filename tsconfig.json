@@ -23,6 +23,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "providers/reduxProvider.js", "providers/UserStateProvider.tsx", "providers/UserStateProvider.tsx", "app/[lang]/components/loaders/imageLoader.js", "src/app/groupPage/page.tsx", "src/app/groupPage/page.tsx", "src/app/groupPage/[id]/page.js", "services/email.service.ts", "services/notification.service.js", "worker/index.js", "services/firebase.service.js", "services/firebase.service.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "providers/reduxProvider.js", "providers/UserStateProvider.tsx", "providers/UserStateProvider.tsx", "app/[lang]/components/loaders/imageLoader.js", "src/app/groupPage/page.tsx", "src/app/groupPage/page.tsx", "src/app/groupPage/[id]/page.js", "services/email.service.ts", "services/notification.service.ts", "worker/index.js", "services/firebase.service.js", "services/firebase.service.js"],
   "exclude": ["node_modules"]
 }
