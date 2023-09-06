@@ -18,7 +18,8 @@ export const ConnectionsCard = (props: any) => {
     }
     else {
       let search = event.target.value.toLowerCase();
-      let searchUsers = props.users.filter((u: any) => u.firstName?.toLowerCase().includes(search) || u.lastName?.toLowerCase().includes(search));
+      let searchUsers = props.users.filter((u: any) => u.firstName?.toLowerCase().includes(search) || u.lastName?.toLowerCase().includes(search)
+        || search.toLowerCase() === u.firstName.toLowerCase() + " " + u.lastName.toLowerCase() || search.toLowerCase() === u.lastName.toLowerCase() + " " + u.firstName.toLowerCase());
       setUsers(searchUsers);
     }
   }
