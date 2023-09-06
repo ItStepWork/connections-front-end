@@ -7,6 +7,7 @@ import { useEffect, useState } from "react"
 import { FcAdvertising, FcBusinessman, FcCalendar, FcCollaboration, FcHome, FcNews, FcSettings, FcStackOfPhotos } from "react-icons/fc"
 import { useStore } from "../../../../../stores/userDataStore"
 import styles from "./leftUserBlock.module.scss"
+import { ComponentName } from "../../../../../enums/all.enum"
 
 export const LeftUserBlock = (props:any) => {
   const [avatar, bg] = useStore((state) => [state.avatar, state.BgImage])
@@ -79,13 +80,13 @@ export const LeftUserBlock = (props:any) => {
             <div className={styles.icon}>
               <FcHome size={20} />
             </div>
-            <Link href={'/profile'}>Лента</Link>
+            <button onClick={()=>{props.setComponent(ComponentName.Posts)}}>Лента</button>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
               <FcBusinessman size={20} />
             </div>
-            <button onClick={()=>{props.setComponent("connections")}}>Связи</button>
+            <button onClick={()=>{props.setComponent(ComponentName.Connections)}}>Связи</button>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
@@ -97,26 +98,26 @@ export const LeftUserBlock = (props:any) => {
             <div className={styles.icon}>
               <FcCalendar size={20} />
             </div>
-            <button onClick={()=>{props.setComponent("celebration")}}>События</button>
+            <button onClick={()=>{props.setComponent(ComponentName.Celebration)}}>События</button>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
               <FcCollaboration size={20} />
             </div>
             {/* <Link href={'/profilePage'}>Группы</Link> */}
-            <button onClick={()=>{props.setComponent("groups")}}>Группы</button>
+            <button onClick={()=>{props.setComponent(ComponentName.Groups)}}>Группы</button>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
               <FcStackOfPhotos size={20} />
             </div>
-            <button onClick={()=>{props.setComponent("gallery")}}>Галерея</button>
+            <button onClick={()=>{props.setComponent(ComponentName.Gallery)}}>Галерея</button>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
               <FcAdvertising size={20} />
             </div>
-            <Link href={'/notifications'}>Уведомления</Link>
+            <button onClick={()=>{props.setComponent(ComponentName.Notifications)}}>Уведомления</button>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>

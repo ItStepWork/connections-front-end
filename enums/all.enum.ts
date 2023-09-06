@@ -10,4 +10,15 @@ export enum ComponentName {
     Groups,
     Connections,
     Gallery,
+    Notifications,
+    Celebration,
+    Posts,
+}
+
+export enum NotificationType {
+    AddFriend = "AddFriend",
+    RemoveFriend = "RemoveFriend",
+    ConfirmFriend = "ConfirmFriend",
+    BirthDay = "BirthDay",
+    InviteToGroup = "InviteToGroup",
 }
