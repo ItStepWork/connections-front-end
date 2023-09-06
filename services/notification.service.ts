@@ -18,4 +18,19 @@ export class NotificationService {
       });
   }
 
+  static async inviteToGroup(userId: string, groupId: string) {
+    const session = await getSession();
+    return await axios.post(process.env.NEXT_PUBLIC_API + "Notification/InviteToGroup", { userId: userId, groupId: groupId }, {
+      headers: {
+        "Accept": "application/json",
+        "Authorization": "Bearer " + session?.user.accessToken,
+        'Content-Type': 'application/json',
+      },
+    }).then(response => response.data)
+      .catch((error) => {
+        CheckService.signOut(session, error);
+        return null;
+      });
+  }
+
 } 

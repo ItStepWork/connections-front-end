@@ -14,3 +14,11 @@ export enum ComponentName {
     Celebration,
     Posts,
 }
+
+export enum NotificationType {
+    AddFriend = "AddFriend",
+    RemoveFriend = "RemoveFriend",
+    ConfirmFriend = "ConfirmFriend",
+    BirthDay = "BirthDay",
+    InviteToGroup = "InviteToGroup",
+}
