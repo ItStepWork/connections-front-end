@@ -10,4 +10,7 @@ export enum ComponentName {
     Groups,
     Connections,
     Gallery,
+    Notifications,
+    Celebration,
+    Posts,
 }
