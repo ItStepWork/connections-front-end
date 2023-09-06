@@ -33,7 +33,7 @@ export default function Notifications(props: any) {
               {notification.notification.type === NotificationType.RemoveFriend ? (<>Удалил вас с друзей</>):(<></>)}
               {notification.notification.type === NotificationType.ConfirmFriend ? (<>Подтвердил что вы его друг</>):(<></>)}
               {notification.notification.type === NotificationType.BirthDay ? (<>У него сегодня день рождение</>):(<></>)}
-              {notification.notification.type === NotificationType.InviteToGroup ? (<>Пользователь приглашает Вас в <Link href={notification.notification.url}>группу</Link></>):(<></>)}
+              {notification.notification.type === NotificationType.InviteToGroup ? (<>Пользователь приглашает Вас в группу <Link href={notification.notification.url}>{notification.notification.groupName}</Link></>):(<></>)}
             </div>
           </div>
         )
