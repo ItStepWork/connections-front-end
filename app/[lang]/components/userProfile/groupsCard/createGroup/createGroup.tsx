@@ -24,9 +24,9 @@ export function CreateGroup(props: any) {
         var dialog: any = document.getElementById("createGroupDialog")
         dialog?.close();
     }
-    const notifyError = () => toast.error("Не верный формат файла!",{});
-    const notifyErrorServer = () => toast.error("Ошибка сервера!",{});
-    const notifySuccess = () => toast.success("Группа создана!",{});
+    const notifyError = () => toast.error("Не верный формат файла!", {});
+    const notifyErrorServer = () => toast.error("Ошибка сервера!", {});
+    const notifySuccess = () => toast.success("Группа создана!", {});
     const { data: session, update } = useSession();
     const {
         register,
@@ -43,7 +43,7 @@ export function CreateGroup(props: any) {
             let result = await GroupService.addGroup(formData);
             if (result === null) notifyErrorServer();
             else notifySuccess();
-            props.getGroups();
+            // props.getGroups();
             closeDialog();
         }
         else notifyError();
@@ -103,7 +103,7 @@ export function CreateGroup(props: any) {
                     <button type="submit" className={styles.greenButton}>Создать</button>
                 </div>
             </form>
-            
+
         </>
     )
 }
