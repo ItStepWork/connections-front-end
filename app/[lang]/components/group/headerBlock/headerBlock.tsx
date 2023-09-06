@@ -12,6 +12,7 @@ import { EditGroup } from '../editGroup/editGroup';
 import Window from '../../messaging/window/page';
 import styles from './styles.module.scss';
 import { useState } from 'react';
+import { FriendsBlock } from '../friends/friendsBlock';
 
 export function HeaderBlock(props: any) {
   const [isOpen, setIsOpen] = useState(false)
@@ -157,6 +158,7 @@ export function HeaderBlock(props: any) {
         <Window name={props.group.name} isOpen={isOpen} setIsOpen={setIsOpen}>
           <div className='flex h-5/6 justify-center items-end'>
             {/* <FooterBlock friendId={user.id} /> */}
+            <FriendsBlock group={props.group}></FriendsBlock>
           </div>
         </Window>
 
