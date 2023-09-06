@@ -13,6 +13,8 @@ export const Card = (props: any) => {
   const [users, setUsers] = useState<any[]>([])
   useEffect(() => {
     getUsers();
+    subscribe();
+
   }, []);
   const notifyErrorServer = () => toast.warning("Ошибка сервера!", {});
   const notifyInfo = (text: string) => toast.info(text, {});
@@ -24,14 +26,14 @@ export const Card = (props: any) => {
   let joinGroup = async () => {
     let result = await GroupService.joinGroup(props.group.id);
     notifySuccess("Заявку подано");
-    getUsers();
-    props.getGroups();
+    // getUsers();
+    // props.getGroups();
   }
   let leaveGroup = async () => {
     let result = await GroupService.leaveGroup(props.group.id);
     notifySuccess("Вы вышли из группы");
-    getUsers();
-    props.getGroups();
+    // getUsers();
+    // props.getGroups();
   }
   let ifInGroup = () => {
     let find = Object.entries(props.group.users).find(([key, value]) => key === props.session?.user.id);
@@ -49,9 +51,10 @@ export const Card = (props: any) => {
   };
   const subscribe = async () => {
     if (props.session != null) {
-      let socket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToGroupsUpdates`, ["client", props.session.user.accessToken]);
+      let socket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToGroupUpdates?id=${props.group.id}`, ["client", props.session.user.accessToken]);
       socket.addEventListener('message', (event) => {
         getUsers();
+        props.getGroups();
       });
       setInterval(() => {
         socket.send("ping");

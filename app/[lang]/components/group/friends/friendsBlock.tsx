@@ -44,7 +44,7 @@ export const FriendsBlock = (props: any) => {
     <>
       <div className={styles.container}>
         {/* <h2>На кого подписаться</h2> */}
-        <div className="flex w-full">
+        <div className="flex w-full pb-3">
           <span className={styles.iconSearch}>
             <FiSearch size={20} />
           </span>
@@ -55,7 +55,7 @@ export const FriendsBlock = (props: any) => {
           {
             users.map((user: any, index) => {
               if (index < elements) {
-                return (<Friend key={user.id} friendStatus={user.friendStatus} firstName={user.firstName} lastName={user.lastName} work={user.work} avatar={user.avatarUrl} id={user.id} getUsers={getUsers} />)
+                return (<Friend key={user.id} friendStatus={user.friendStatus} firstName={user.firstName} lastName={user.lastName} work={user.work} avatar={user.avatarUrl} id={user.id} groupId={props.group.id} getUsers={getUsers} />)
               }
             })
           }
