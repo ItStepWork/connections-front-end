@@ -5,6 +5,9 @@
 		@apply text-gray-900 dark:text-white text-xl;
 	}
 	.userImage{
-		@apply w-10 h-10 rounded-full border border-gray-500;
+		@apply w-14 h-14 rounded-full border border-gray-500;
+	}
+	.horizontalHr {
+		@apply my-3 border-zinc-200 bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-700;
 	}
 }

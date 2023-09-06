@@ -23,18 +23,23 @@ export default function Notifications(props: any) {
     <div className={styles.container}>
       {notifications.map((notification: any) => {
         return (
-          <div key={notification.notification.id} className='flex m-3'>
-            {notification.user.avatarUrl?(<img className={styles.userImage} src={notification.user.avatarUrl}/>):(<FaUserCircle className={styles.userImage} />)}
-            <div className='m-1'>
-              {notification.user.firstName + " " + notification.user.lastName}
+          <div key={notification.notification.id} className=''>
+            <div className='flex'>
+              {notification.user.avatarUrl ? (<img className={styles.userImage} src={notification.user.avatarUrl} />) : (<FaUserCircle className={styles.userImage} />)}
+              <div className='flex flex-col md:flex-row mx-3'>
+                <h2 className='text-sm'>
+                  {notification.user.firstName + " " + notification.user.lastName}&nbsp;
+                </h2>
+                <div className='text-lg'>
+                  {notification.notification.type === NotificationType.AddFriend ? (<>хоче додати вас до друзів</>) : (<></>)}
+                  {notification.notification.type === NotificationType.RemoveFriend ? (<>видалив вас із друзів</>) : (<></>)}
+                  {notification.notification.type === NotificationType.ConfirmFriend ? (<>підтвердив, що ви його друг</>) : (<></>)}
+                  {notification.notification.type === NotificationType.BirthDay ? (<>у нього сьогодні день народження</>) : (<></>)}
+                  {notification.notification.type === NotificationType.InviteToGroup ? (<>запрошує Вас до групи <Link className='underline text-blue-600 visited:text-purple-600' href={notification.notification.url}>{notification.notification.groupName}</Link></>) : (<></>)}
+                </div>
+              </div>
             </div>
-            <div className='m-1'>
-              {notification.notification.type === NotificationType.AddFriend ? (<>хочет добавить вас в друзья</>):(<></>)}
-              {notification.notification.type === NotificationType.RemoveFriend ? (<>удалил вас с друзей</>):(<></>)}
-              {notification.notification.type === NotificationType.ConfirmFriend ? (<>подтвердил что вы его друг</>):(<></>)}
-              {notification.notification.type === NotificationType.BirthDay ? (<>У него сегодня день рождение</>):(<></>)}
-              {notification.notification.type === NotificationType.InviteToGroup ? (<>приглашает Вас в группу <Link href={notification.notification.url}>{notification.notification.groupName}</Link></>):(<></>)}
-            </div>
+            <hr className={styles.horizontalHr} />
           </div>
         )
       })}
