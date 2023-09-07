@@ -1,11 +1,10 @@
 'use client'
-import { RxUpload } from 'react-icons/rx';
-import { toast } from 'react-toastify';
-import styles from './changeBGImg.module.scss';
+import { RxUpload } from "react-icons/rx";
+import { toast } from "react-toastify";
+import styles from './change-avatar.module.scss';
 
-const ChangeBgImg = () => {
+const ChangeAvatar = ({local} : {local : any}) => {
   const notifyInfo = () => toast.info("В разработке!",{});
-  
   return (
     <>
       <div className={styles.container}>
@@ -26,7 +25,7 @@ const ChangeBgImg = () => {
           </div> 
           <p>Lorem ipsum ptate cupiditate odio accusantium assumenda porro debitis aspernatur!</p>
           <div className={styles.buttonContainer}>
-            <button className={styles.button} onClick={notifyInfo} type='submit'>Установить фон</button>
+            <button className={styles.button} onClick={notifyInfo} type='submit'>Установить автар</button>
           </div>
         </form>
       </div>
@@ -34,4 +33,4 @@ const ChangeBgImg = () => {
   )
 };
 
-export default ChangeBgImg;
+export default ChangeAvatar;

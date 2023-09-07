@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { UserService } from "../../../../../services/user.service";
 import { useStore } from "../../../../../stores/userDataStore";
-import styles from "./accountSettings.module.scss";
+import styles from "./account-settings.module.scss";
 
 export const AccountSettings = ({local} : {local : any}) => {
 

@@ -1,10 +1,10 @@
 import { Locale } from "../../../i18n.config";
 import { getDictionary } from "../../../locale-dictionary";
-import { AccountSettings } from "../components/profileSettings/accountSettings/accountSettings";
-import ChangeAvatar from "../components/profileSettings/changeAvatar/changeAvatar";
-import ChangeBgImg from "../components/profileSettings/changeBackgroundImg/changeBGImg";
-import { ChangePassword } from "../components/profileSettings/changePassword/changePassword";
-import { LeftSettingsMenu } from "../components/profileSettings/leftSettingsMenu/leftSettingsMenu";
+import { AccountSettings } from "../components/profile-settings/account-settings/account-settings";
+import ChangeAvatar from "../components/profile-settings/change-avatar/change-avatar";
+import ChangeBgImg from "../components/profile-settings/change-background/change-bgImg";
+import { ChangePassword } from "../components/profile-settings/change-password/change-password";
+import { LeftSettingsMenu } from "../components/profile-settings/sidebar-settings/sidebar-settings";
 import styles from './styles.module.scss';
 
 export default async function SettingsPage({ params: { lang }}: { params: { lang: Locale }}, props : any) {
@@ -18,16 +18,16 @@ export default async function SettingsPage({ params: { lang }}: { params: { lang
           <div className={styles.contentContainer}>
             <div className={styles.wrapper}>
               <div className={styles.leftMenu}>
-                <LeftSettingsMenu />
+                <LeftSettingsMenu local={locDictionary} />
               </div>
               <div className={styles.accSettings}>
                 <AccountSettings local={locDictionary} />
               </div>
             </div>
             <div className={styles.changePass}>
-              <ChangeAvatar/>
-              <ChangeBgImg/>
-              <ChangePassword />
+              <ChangeAvatar local={locDictionary}/>
+              <ChangeBgImg local={locDictionary}/>
+              <ChangePassword local={locDictionary} />
             </div>
           </div>
         </div>

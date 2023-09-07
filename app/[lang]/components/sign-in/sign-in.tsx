@@ -46,7 +46,7 @@ export const SignIn = ({local} : {local : any}, props : any) => {
             </div>
             <form className={styles.formSignUp} onSubmit={handleSubmit}>
               <div className={styles.inputGroup}>
-                <label htmlFor="email" className={styles.inputLabel}>Email</label>
+                <label htmlFor="email" className={styles.inputLabel}>Email:</label>
                 <input type="email" name="email" className={styles.input} placeholder="email@gmail.com" required />
               </div>
               <div className={styles.inputGroup}>

@@ -102,7 +102,7 @@
     "title" : "Sign In",
     "description" : "No account yet? ",
     "toSignUp" : "go to registration",
-    "passLabel" : "Password",
+    "passLabel" : "Password:",
     "logInBtn" : "Login",
     "toasts" : {
       "success" : "Login successfully",
@@ -111,14 +111,26 @@
   },
   "signUp" : {
     "title" : "Sign Up",
-    "description" : "do you have account?",
+    "description" : "do you have account? ",
     "toSignIn" : "log in",
-    "nameLabel" : "Name",
-    "lastNameLabel" : "Last name",
-    "mailLabel" : "Email",
-    "passLabel" : "Password",
-    "confirmPassLabel" : "Confirm password",
-    "registrationBtn" : "Registration"
+    "name" : "Name:",
+    "lastName" : "Last name:",
+    "mail" : "Email:",
+    "pass" : "Password:",
+    "confirmPass" : "Confirm password:",
+    "registrationBtn" : "Registration",
+    "toasts" : {
+      "emptyFields" : "Not all fields are filled!",
+      "serverError" : "Server Error !!!",
+      "emailError" : "This email already used!",
+      "ok" : "Registration Successful!",
+      "mismatchPasswords" : "Password mismatch!"
+    },
+    "placeholders" : {
+      "name" : "Enter name...",
+      "lastName" : "Enter last name...",
+      "mail" : "Enter email..."
+    } 
   },
   "aboutMe" : {
     "title" : "Profile information:",
@@ -150,5 +162,30 @@
       "ok" : "Successfully updated!",
       "fail" : "Not updated!"
     }
+  },
+  "changePassword" : {
+    "title" : "Changing password",
+    "subtitle" : "To change the password, you must: enter the old password, enter the new password and confirm it, the new password and password confirmation must match.",
+    "password" : "Current password:",
+    "newPass" : "New password:",
+    "confirmPass" : "Confirm password:",
+    "placeholders" : {
+      "pass" : "Current password...",
+      "newPass" : "New password...",
+      "confirmPass" : "Confirm password..."
+    },
+    "toasts" : {
+      "mismatch" : "Mismatch passwords!",
+      "error" : "Password not changed!",
+      "ok" : "Password changed successfully!"
+    }
+  },
+  "settingsSide" : {
+    "account" : "Accaunt",
+    "notification" : "Notification",
+    "privacy" : "Pryvacy & Atempts",
+    "messaging" : "Messaging",
+    "closeAcc" : "Close Accaunt",
+    "watch" : "Watch profile"
   }
 }
