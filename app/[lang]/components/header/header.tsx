@@ -7,18 +7,17 @@ import { AiOutlineSetting } from 'react-icons/ai'
 import { BiMenu } from 'react-icons/bi'
 import { FiLogIn } from 'react-icons/fi'
 import { MdOutlineClose, MdOutlineMessage } from 'react-icons/md'
-import { Locale } from '../../../../i18n.config'
-import { getDictionary } from '../../../../lib/dictionary'
 import { useStore } from '../../../../stores/userDataStore'
 import { DropMenuProfile } from '../userProfile/dropMenu/dropMenu'
 import styles from './header.module.scss'
+import LocaleSwitcher from './locale-switcher'
 
 const oneDay = localFont({ src: '../../../../fonts/ONEDAY.ttf' })
 
 const channelWorkerBroadcast = new BroadcastChannel('channelWorker');
 
-export const Header = ({ lang }: { lang: Locale }) => {
-  const loc = getDictionary(lang)
+
+export const Header = ({local} : {local : any}, props : any) => {
 
   const [fetch] = useStore((state) => [state.fetchUser])
   const { data: session } = useSession();
@@ -54,10 +53,10 @@ export const Header = ({ lang }: { lang: Locale }) => {
                 </div>
                 <ul className={`md:flex md:items-center md:pb-0 pb-12 dark:shadow-customTransparent dark:backdrop-blur-[3px] md:backdrop-blur-0 absolute rounded-lg md:static md:z-auto z-[-10] left-4 w-11/12 md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in bg-glass-white md:dark:bg-transparent dark:bg-dark_button_BG ${open ? 'top-14 opacity-100' : 'top-[-500px] md:opacity-100 opacity-0'}`}>
                   <li className={styles.listItem}>
-                    <Link className={styles.navText} onClick={fetch} href={`/main`}>Главная</Link>
+                    <Link className={styles.navText} onClick={fetch} href={`/main`}>{local.header.main}</Link>
                   </li>
                   <li className={styles.listItem}>
-                    <Link className={styles.navText} onClick={fetch} href={`/profile/${session.user.id}`}>Мой профиль</Link>
+                    <Link className={styles.navText} onClick={fetch} href={`/profile/${session.user.id}`}>{local.header.profile}</Link>
                   </li>
                   <li className={styles.listItem}>
                     <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href='/messaging'>{open ? 'Сообщения' : <MdOutlineMessage size={20} />}</Link>
@@ -68,11 +67,18 @@ export const Header = ({ lang }: { lang: Locale }) => {
                   <li className={styles.listItem}>
                     <DropMenuProfile navbarOpen={open} />
                   </li>
+                  <li className={styles.listItem}>
+                    <LocaleSwitcher/>
+                  </li>
                 </ul>
 
               </>)
               :
-              (<Link className={styles.navButton} href='/signIn'><FiLogIn size={20} /></Link>)}
+              (<div className="flex items-center">
+                <Link className={styles.navButton} href='/signIn'><FiLogIn size={20} /></Link>
+                <LocaleSwitcher/>
+                </div>
+                )}
           </div>
         </div>
       </header>

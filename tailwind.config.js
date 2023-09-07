@@ -11,8 +11,9 @@ module.exports = {
 		extend: {
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-				'gradient-conic':
-					'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+				'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+				'ukraine-flag' : "url(/public/flags/UA.png)",
+				'english-flag' : "url(/public/flags/GB.png)",
 			},
 			boxShadow: {
         'customTransparent': '0 8px 32px 0 rgba(31, 38, 31, 0.37)',

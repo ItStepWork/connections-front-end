@@ -38,5 +38,6 @@
     "@types/negotiator": "^0.6.1",
     "negotiator": "^0.6.3",
     "next-themes": "^0.2.1"
+    
   }
 }

@@ -6,8 +6,8 @@ import Footer from '../../app/[lang]/components/footer/footer';
 import MyProgressBar from '../../app/[lang]/components/progressBar/progresbar';
 import { Locale, i18n } from '../../i18n.config';
 import { Providers } from "../../providers/Providers";
-import { Header } from './components/header/header';
 import './globals.css';
+import HeaderPage from './header/page';
 
 const inter = Montserrat({ subsets: ['latin'] })
 
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 }
 
 export async function generateStaticParams() {
-  return i18n.locales.map(locale => ({ lang: locale }))
+  return i18n.locales.map((locale) => ({ lang: locale }))
 }
 
 export default function RootLayout({
@@ -30,26 +30,22 @@ export default function RootLayout({
   params: { lang: Locale}
 }) {
 
- 
   return (
 
     <html lang={params.lang}>
       <head>
-        <link
-          rel="manifest"
-          href="../../public/manifest.json"
-        />
-            
+        <link rel="manifest" href="../../public/manifest.json"
+        />          
       </head>
       <body className={inter.className}>
         <Providers>
             <MyProgressBar/>
             <div className="flex flex-col justify-between relative min-h-screen">
-              <Header lang={params.lang}/>    
+              <HeaderPage lang={params.lang}/>    
               <div className="container">
                 <main>{children}</main>                   
               </div>
-              <Footer/>
+              <Footer lang={params.lang}/>
             </div>
             <ToastContainer 
               position="bottom-center"

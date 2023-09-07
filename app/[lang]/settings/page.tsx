@@ -1,12 +1,16 @@
-import { LeftSettingsMenu } from "../components/profileSettings/leftSettingsMenu/leftSettingsMenu";
+import { Locale } from "../../../i18n.config";
+import { getDictionary } from "../../../locale-dictionary";
 import { AccountSettings } from "../components/profileSettings/accountSettings/accountSettings";
-import ChangeAvatar from "../components/profileSettings/changeAvatar/cnangeAvatar";
-import ChangeBgImg from "../components/profileSettings/changeBackroundImg/changeBGImg";
+import ChangeAvatar from "../components/profileSettings/changeAvatar/changeAvatar";
+import ChangeBgImg from "../components/profileSettings/changeBackgroundImg/changeBGImg";
 import { ChangePassword } from "../components/profileSettings/changePassword/changePassword";
+import { LeftSettingsMenu } from "../components/profileSettings/leftSettingsMenu/leftSettingsMenu";
 import styles from './styles.module.scss';
 
+export default async function SettingsPage({ params: { lang }}: { params: { lang: Locale }}, props : any) {
 
-export default function SettingsPage() {
+  const locDictionary = await getDictionary(lang)
+
   return (
     <>
       <main>
@@ -17,7 +21,7 @@ export default function SettingsPage() {
                 <LeftSettingsMenu />
               </div>
               <div className={styles.accSettings}>
-                <AccountSettings />
+                <AccountSettings local={locDictionary} />
               </div>
             </div>
             <div className={styles.changePass}>
