@@ -22,3 +22,9 @@ export enum NotificationType {
     BirthDay = "BirthDay",
     InviteToGroup = "InviteToGroup",
 }
+
+export enum Gender {
+    NotSelected = "NotSelected",
+    Male = "Male",
+    Female = "Female",
+}

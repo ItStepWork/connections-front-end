@@ -2,8 +2,9 @@ import { FaUserCircle } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import { NotificationService } from '../../../../../services/notification.service';
 import styles from './styles.module.scss';
-import { NotificationType } from '../../../../../enums/all.enum';
+import { Gender, NotificationType } from '../../../../../enums/all.enum';
 import Link from 'next/link';
+import { getSession } from 'next-auth/react';
 
 export default function Notifications(props: any) {
 
@@ -12,31 +13,45 @@ export default function Notifications(props: any) {
   const get = async () => {
     let result = await NotificationService.getNotifications();
     setNotifications(result);
-    console.log(result);
   }
 
   useEffect(() => {
     get();
+    subscribe();
   }, []);
+
+  const subscribe = async () => {
+    let session = await getSession();
+    if (session != null) {
+      let socket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToNotificationUpdates`, ["client", session.user.accessToken]);
+      socket.addEventListener('message', (event) => {
+        get();
+      });
+      setInterval(() => {
+        socket.send("ping");
+      }, 30000);
+    }
+  }
 
   return (
     <div className={styles.container}>
-      {notifications.map((notification: any) => {
+      {notifications.map((n: any) => {
         return (
-          <div key={notification.notification.id} className=''>
+          <div key={n.notification.id} className=''>
             <div className='flex'>
-              {notification.user.avatarUrl ? (<img className={styles.userImage} src={notification.user.avatarUrl} />) : (<FaUserCircle className={styles.userImage} />)}
-              <div className='flex flex-col md:flex-row mx-3'>
+              {n.user.avatarUrl ? (<img className={styles.userImage} src={n.user.avatarUrl} />) : (<FaUserCircle className={styles.userImage} />)}
+              <div className={styles.content}>
                 <h2 className='text-sm'>
-                  {notification.user.firstName + " " + notification.user.lastName}&nbsp;
+                  {n.user.firstName + " " + n.user.lastName}&nbsp;
                 </h2>
                 <div className='text-lg'>
-                  {notification.notification.type === NotificationType.AddFriend ? (<>хоче додати вас до друзів</>) : (<></>)}
-                  {notification.notification.type === NotificationType.RemoveFriend ? (<>видалив вас із друзів</>) : (<></>)}
-                  {notification.notification.type === NotificationType.ConfirmFriend ? (<>підтвердив, що ви його друг</>) : (<></>)}
-                  {notification.notification.type === NotificationType.BirthDay ? (<>у нього сьогодні день народження</>) : (<></>)}
-                  {notification.notification.type === NotificationType.InviteToGroup ? (<>запрошує Вас до групи <Link className='underline text-blue-600 visited:text-purple-600' href={notification.notification.url}>{notification.notification.groupName}</Link></>) : (<></>)}
+                  {n.notification.type === NotificationType.AddFriend ? (<>хоче додати вас до друзів</>) : (<></>)}
+                  {n.notification.type === NotificationType.RemoveFriend ? (<>вида{n.user.gender === Gender.Female ? "лила" : "лив"} вас із друзів</>) : (<></>)}
+                  {n.notification.type === NotificationType.ConfirmFriend ? (<>підтвердив, що ви його друг</>) : (<></>)}
+                  {n.notification.type === NotificationType.BirthDay ? (<>святкує сьогодні день народження</>) : (<></>)}
+                  {n.notification.type === NotificationType.InviteToGroup ? (<>запрошує Вас до групи <Link className='underline text-blue-600 visited:text-purple-600' href={n.notification.url}>{n.notification.groupName}</Link></>) : (<></>)}
                 </div>
+                <div className={styles.dateTime}>{new Date(n.notification.dateTime).toLocaleString()}</div>
               </div>
             </div>
             <hr className={styles.horizontalHr} />

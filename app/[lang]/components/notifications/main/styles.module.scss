@@ -10,4 +10,10 @@
 	.horizontalHr {
 		@apply my-3 border-zinc-200 bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-700;
 	}
+	.dateTime{
+		@apply flex-grow text-right mt-auto text-sm;
+	}
+	.content{
+		@apply flex flex-col md:flex-row mx-3 flex-grow;
+	}
 }
