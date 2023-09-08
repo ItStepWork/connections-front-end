@@ -4,33 +4,31 @@ import { NotificationService } from '../../../../../services/notification.servic
 import styles from './styles.module.scss';
 import { Gender, NotificationType } from '../../../../../enums/all.enum';
 import Link from 'next/link';
-import { getSession } from 'next-auth/react';
+import React from 'react';
 
 export default function Notifications(props: any) {
 
   const [notifications, setNotifications] = useState<any[]>([]);
 
-  const get = async () => {
-    let result = await NotificationService.getNotifications();
-    setNotifications(result);
-  }
-
   useEffect(() => {
-    get();
-    subscribe();
+    getNotifications();
+    let socket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToNotificationUpdates`, ["client", props.accessToken]);
+    socket.addEventListener('message', (event) => {
+      getNotifications();
+    });
+    let intervalId = setInterval(() => {
+      if (socket.OPEN) socket.send("ping");
+      else clearInterval(intervalId);
+    }, 30000);
+    return () => {
+      if (socket.OPEN) socket.close();
+      clearInterval(intervalId);
+    };
   }, []);
 
-  const subscribe = async () => {
-    let session = await getSession();
-    if (session != null) {
-      let socket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToNotificationUpdates`, ["client", session.user.accessToken]);
-      socket.addEventListener('message', (event) => {
-        get();
-      });
-      setInterval(() => {
-        socket.send("ping");
-      }, 30000);
-    }
+  const getNotifications = async () => {
+    let result = await NotificationService.getNotifications();
+    setNotifications(result);
   }
 
   return (

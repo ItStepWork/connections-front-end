@@ -9,14 +9,10 @@ export default function RigthMessage(props: any) {
 
   const removeMessageFull = async () => {
     await MessagingService.removeMessageFull(props.message.id);
-    props.loadMessages(props.user.id);
-    props.loadDialogs();
   }
 
   const removeMessage = async () => {
     await MessagingService.removeMessage(props.message.id);
-    props.loadMessages(props.user.id);
-    props.loadDialogs();
   }
 
   const copyMessage = () => {

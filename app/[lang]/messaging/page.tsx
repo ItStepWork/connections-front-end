@@ -22,6 +22,8 @@ type MyState = {
   user: IUser | null,
   isOpen: boolean,
   isOpenDialogs: boolean,
+  socket: WebSocket | null,
+  intervalId: string | number | NodeJS.Timeout | undefined,
 };
 
 export default class Messaging extends React.Component<MyState>{
@@ -33,6 +35,8 @@ export default class Messaging extends React.Component<MyState>{
     user: null,
     isOpen: false,
     isOpenDialogs: false,
+    socket: null,
+    intervalId: undefined,
   };
 
   constructor(props: any) {
@@ -48,9 +52,23 @@ export default class Messaging extends React.Component<MyState>{
   }
 
   async componentDidMount() {
-    this.subscribe();
-    this.loadDialogs();
-    this.loadUsers();
+    console.log("-----------------------------------------------------------------------------------------------");
+    await this.subscribe();
+    await this.loadDialogs();
+    await this.loadUsers();
+  }
+
+  componentWillUnmount(): void {
+    this.state.socket?.close();
+    clearInterval(this.state.intervalId);
+  }
+
+  componentWillUpdate(nextProps: Readonly<{}>, nextState: Readonly<MyState>, nextContext: any): void {
+    if(this.state.socket !== nextState.socket) {
+      let socket = this.state.socket;
+      setTimeout(()=>{socket?.close();}, 1000)
+    }
+    if(this.state.intervalId !== nextState.intervalId) clearInterval(this.state.intervalId);
   }
 
   async loadMessages(id: string) {
@@ -95,7 +113,7 @@ export default class Messaging extends React.Component<MyState>{
                 <HiMiniPencilSquare />
               </button>
               <Window name="Новое сообщение" isOpen={this.state.isOpen} setIsOpen={this.setIsOpen}>
-                <NewMessage users={this.state.users} loadDialogs={this.loadDialogs} />
+                <NewMessage users={this.state.users} />
               </Window>
             </div>
             <hr className={styles.horizontalHr} />
@@ -107,9 +125,9 @@ export default class Messaging extends React.Component<MyState>{
           {this.state.user ? (
             <div className={styles.rightContainer}>
               <HeaderBlock user={this.state.user} removeDialog={this.removeDialog} />
-              <MainBlock messages={this.state.messages} user={this.state.user} loadMessages={this.loadMessages} loadDialogs={this.loadDialogs} />
+              <MainBlock messages={this.state.messages} user={this.state.user}/>
               <hr className={styles.horizontalHr} />
-              <FooterBlock friendId={this.state.user.id} loadMessages={this.loadMessages} loadDialogs={this.loadDialogs} />
+              <FooterBlock friendId={this.state.user.id}/>
             </div>
           ) : (<div className={styles.rightContainer}></div>)}
         </div>
@@ -137,9 +155,11 @@ export default class Messaging extends React.Component<MyState>{
           this.loadMessages(this.state.user.id);
         }
       });
-      setInterval(() => {
-        socket.send("ping");
+      let intervalId = setInterval(() => {
+        if(socket.OPEN)socket.send("ping");
+        else clearInterval(intervalId);
       }, 30000);
+      this.setState({socket: socket, intervalId: intervalId});
     }
   }
 }

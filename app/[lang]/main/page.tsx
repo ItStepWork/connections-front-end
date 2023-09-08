@@ -22,7 +22,7 @@ export default function Home(props: any) {
     else if (component === ComponentName.Celebration) return (<Celebration />)
     else if (component === ComponentName.Connections) return (<ConnectionsCard myId={session?.user.id} userId={session?.user.id} />)
     else if (component === ComponentName.Gallery) return (<Gallery myId={session?.user.id} userId={session?.user.id} />)
-    else if (component === ComponentName.Notifications) return (<Notifications />)
+    else if (component === ComponentName.Notifications) return (<Notifications accessToken={session?.user.accessToken} />)
     else if (component === ComponentName.Posts) return (<Posts />)
     else return (<></>)
   }

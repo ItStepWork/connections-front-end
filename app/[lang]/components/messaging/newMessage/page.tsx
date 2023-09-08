@@ -48,7 +48,7 @@ export default function NewMessage(props: any) {
           </li>
         )}
       </ul>
-      {findUser?(<FooterBlock friendId={findUser.id} loadDialogs={props.loadDialogs} />):(<></>)}
+      {findUser?(<FooterBlock friendId={findUser.id}/>):(<></>)}
     </div>
   )
 }
