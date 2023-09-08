@@ -14,6 +14,7 @@ import { randomInt } from 'crypto';
 
 export default function Group(props: any) {
     const [id, setId] = useState(0)
+    const [groupSocket, setGroupSocket] = useState<WebSocket>()
     const [component, setComponent] = useState("about");
     const [usersRequests, setUsersRequests] = useState<any[]>([])
     const [membersFriends, setMembersFriends] = useState<any[]>([])
@@ -58,8 +59,9 @@ export default function Group(props: any) {
     const subscribe = async () => {
         let session = await getSession();
         if (session != null) {
-            let groupSocket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToGroupUpdates?id=${props.id}`, ["client", session.user.accessToken]);
-            groupSocket.addEventListener('message', (event) => {
+            let grpSocket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToGroupUpdates?id=${props.id}`, ["client", session.user.accessToken]);
+            setGroupSocket(grpSocket);
+            grpSocket.addEventListener('message', (event) => {
                 getUsers();
                 getGroup();
             });
@@ -70,7 +72,7 @@ export default function Group(props: any) {
             });
             setInterval(() => {
                 friendSocket.send("ping");
-                groupSocket.send("ping");
+                grpSocket.send("ping");
             }, 30000);
         }
     }
@@ -93,7 +95,7 @@ export default function Group(props: any) {
                 <div className={styles.container}>
                     {group
                         ? <div className='gap-5'>
-                            < HeaderBlock session={session} group={group} usersRequests={usersRequests} members={membersFriends} getGroup={getGroup} getUsers={getUsers} component={component} setComponent={setComponent} />
+                            < HeaderBlock groupSocket={groupSocket} session={session} group={group} usersRequests={usersRequests} members={membersFriends} getGroup={getGroup} getUsers={getUsers} component={component} setComponent={setComponent} />
                             {changeComponent()}
                         </div>
                         : <>Loading...</>

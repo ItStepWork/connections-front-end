@@ -152,7 +152,7 @@ export function HeaderBlock(props: any) {
         </div>
       </div>
       <dialog className={styles.dialog} id='editGroupDialog'>
-        {<EditGroup group={props.group} getGroup={props.getGroup}></EditGroup>}
+        {<EditGroup groupSocket={props.groupSocket} group={props.group} getGroup={props.getGroup}></EditGroup>}
       </dialog>
       {props.group &&
         <Window name={props.group.name} isOpen={isOpen} setIsOpen={setIsOpen}>
