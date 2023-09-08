@@ -28,6 +28,7 @@ export function EditGroup(props: any) {
     // const { data: session, update } = useSession();
     const router = useRouter();
     const deleteGroup = async () => {
+        props.groupSocket.close();
         let result = await GroupService.deleteGroup(props.group.id);
         if (result === null) notifyErrorServer()
         else {
