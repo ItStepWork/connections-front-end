@@ -38,7 +38,7 @@ export default function Profile(props: any) {
         <div className={styles.container}>
           <div className={styles.leftContainer}>
             <UserCard setComponent={setComponent} component={component} myId={session?.user.id} userId={props.params.id[0]} />
-            {changeComponent()}
+            {session?changeComponent():<></>}
           </div>
           <div className={styles.rightContainer}>
 

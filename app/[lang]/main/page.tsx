@@ -17,13 +17,13 @@ export default function Home(props: any) {
   const [session, setSession] = useState<any>(null);
   const [component, setComponent] = useState<ComponentName>(ComponentName.Posts);
 
-  const get = async () => {
+  const load = async () => {
     let value = await getSession();
     setSession(value);
   }
 
   useEffect(() => {
-    get();
+    load();
   }, [])
 
   const ChangeComponent = () => {
