@@ -1,3 +1,4 @@
+'use client'
 import { useEffect, useState } from "react"
 import { Follower } from "./follower"
 import styles from "./follows.module.scss"

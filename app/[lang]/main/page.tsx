@@ -8,7 +8,7 @@ import { ConnectionsCard } from '../components/userProfile/connectionsCard/conne
 import styles from './styles.module.scss';
 import { GroupsCard } from "../components/userProfile/groupsCard/groupsCard";
 import Celebration from "../components/main/celebrations/page";
-import Notifications from "../components/notifications/main/page";
+import Notifications from "../components/notifications/page";
 import { ComponentName } from "../../../enums/all.enum";
 import Posts from "../components/posts/page";
 

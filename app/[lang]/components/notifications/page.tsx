@@ -1,8 +1,9 @@
+'use client'
 import { FaUserCircle } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
-import { NotificationService } from '../../../../../services/notification.service';
+import { NotificationService } from '../../../../services/notification.service';
 import styles from './styles.module.scss';
-import { Gender, NotificationType } from '../../../../../enums/all.enum';
+import { Gender, NotificationType } from '../../../../enums/all.enum';
 import Link from 'next/link';
 import React from 'react';
 
