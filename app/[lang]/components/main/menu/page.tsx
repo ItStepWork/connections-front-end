@@ -19,8 +19,8 @@ export default function Menu(props: any) {
       <div className={`z-10 absolute lg:static transition-all duration-500 ease-in ${isOpen ? 'left-[0px]' : 'left-[-400px]'}`}>
         <div className={styles.menu}>
           <AiFillCloseSquare className={styles.actionClose} size={24} onClick={() => { setIsOpen(false) }} />
-          <LeftUserBlock setComponent={props.setComponent} />
-          <LeftBlockFooter />
+          <LeftUserBlock setComponent={props.setComponent} setIsOpen={setIsOpen} />
+          {/* <LeftBlockFooter /> */}
         </div>
       </div>
     </div>

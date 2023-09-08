@@ -52,7 +52,6 @@ export default class Messaging extends React.Component<MyState>{
   }
 
   async componentDidMount() {
-    console.log("-----------------------------------------------------------------------------------------------");
     await this.subscribe();
     await this.loadDialogs();
     await this.loadUsers();

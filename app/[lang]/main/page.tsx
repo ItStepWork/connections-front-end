@@ -1,7 +1,7 @@
 "use client"
 
-import { useSession } from "next-auth/react";
-import { useState } from 'react';
+import { getSession } from "next-auth/react";
+import { useEffect, useState } from 'react';
 import Gallery from "../components/gallery/main/page";
 import Menu from "../components/main/menu/page";
 import { ConnectionsCard } from '../components/userProfile/connectionsCard/connectionsCard';
@@ -14,13 +14,22 @@ import Posts from "../components/posts/page";
 
 export default function Home(props: any) {
 
-  const { data: session } = useSession();
+  const [session, setSession] = useState<any>(null);
   const [component, setComponent] = useState<ComponentName>(ComponentName.Posts);
+
+  const get = async () => {
+    let value = await getSession();
+    setSession(value);
+  }
+
+  useEffect(() => {
+    get();
+  }, [])
 
   const ChangeComponent = () => {
     if (component === ComponentName.Groups) return (<GroupsCard userId={session?.user.id} />)
     else if (component === ComponentName.Celebration) return (<Celebration />)
-    else if (component === ComponentName.Connections) return (<ConnectionsCard myId={session?.user.id} userId={session?.user.id} />)
+    else if (component === ComponentName.Connections) return (<ConnectionsCard session={session} myId={session?.user.id} userId={session?.user.id} />)
     else if (component === ComponentName.Gallery) return (<Gallery myId={session?.user.id} userId={session?.user.id} />)
     else if (component === ComponentName.Notifications) return (<Notifications accessToken={session?.user.accessToken} />)
     else if (component === ComponentName.Posts) return (<Posts />)
@@ -32,7 +41,7 @@ export default function Home(props: any) {
       <div className={styles.container}>
         <Menu setComponent={setComponent} />
         <div className={styles.containerContent}>
-          {ChangeComponent()}
+          {session ? ChangeComponent() : <></>}
         </div>
       </div>
     </main>

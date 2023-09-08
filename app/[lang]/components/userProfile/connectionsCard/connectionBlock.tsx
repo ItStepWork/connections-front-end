@@ -8,17 +8,14 @@ export const ConnectionBlock = (props: any) => {
 
   const addFriend = async () => {
     await FriendService.addFriend(props.user.id);
-    props.getUsers();
   }
 
   const confirmFriend = async () => {
     await FriendService.confirmFriend(props.user.id);
-    props.getUsers();
   }
 
   const removeFriend = async () => {
     await FriendService.removeFriend(props.user.id);
-    props.getUsers();
   }
 
   return (

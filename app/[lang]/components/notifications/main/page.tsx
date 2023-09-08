@@ -21,7 +21,7 @@ export default function Notifications(props: any) {
       else clearInterval(intervalId);
     }, 30000);
     return () => {
-      if (socket.OPEN) socket.close();
+      setInterval(() => { if (socket.OPEN) socket.close(); }, 1000)
       clearInterval(intervalId);
     };
   }, []);

@@ -80,13 +80,13 @@ export const LeftUserBlock = (props:any) => {
             <div className={styles.icon}>
               <FcHome size={20} />
             </div>
-            <button onClick={()=>{props.setComponent(ComponentName.Posts)}}>Лента</button>
+            <button onClick={()=>{props.setComponent(ComponentName.Posts); props.setIsOpen(false);}}>Лента</button>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
               <FcBusinessman size={20} />
             </div>
-            <button onClick={()=>{props.setComponent(ComponentName.Connections)}}>Связи</button>
+            <button onClick={()=>{props.setComponent(ComponentName.Connections); props.setIsOpen(false);}}>Связи</button>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
@@ -98,26 +98,26 @@ export const LeftUserBlock = (props:any) => {
             <div className={styles.icon}>
               <FcCalendar size={20} />
             </div>
-            <button onClick={()=>{props.setComponent(ComponentName.Celebration)}}>События</button>
+            <button onClick={()=>{props.setComponent(ComponentName.Celebration); props.setIsOpen(false);}}>События</button>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
               <FcCollaboration size={20} />
             </div>
             {/* <Link href={'/profilePage'}>Группы</Link> */}
-            <button onClick={()=>{props.setComponent(ComponentName.Groups)}}>Группы</button>
+            <button onClick={()=>{props.setComponent(ComponentName.Groups); props.setIsOpen(false);}}>Группы</button>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
               <FcStackOfPhotos size={20} />
             </div>
-            <button onClick={()=>{props.setComponent(ComponentName.Gallery)}}>Галерея</button>
+            <button onClick={()=>{props.setComponent(ComponentName.Gallery); props.setIsOpen(false);}}>Галерея</button>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
               <FcAdvertising size={20} />
             </div>
-            <button onClick={()=>{props.setComponent(ComponentName.Notifications)}}>Уведомления</button>
+            <button onClick={()=>{props.setComponent(ComponentName.Notifications); props.setIsOpen(false);}}>Уведомления</button>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>

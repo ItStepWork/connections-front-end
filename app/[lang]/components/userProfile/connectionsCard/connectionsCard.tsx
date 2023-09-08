@@ -17,6 +17,18 @@ export const ConnectionsCard = (props: any) => {
 
   useEffect(() => {
     getUsers();
+    let socket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToFriendsUpdates`, ["client", props.session.user.accessToken]);
+    socket.addEventListener('message', (event) => {
+      getUsers();
+    });
+    let intervalId = setInterval(() => {
+      if (socket.OPEN) socket.send("ping");
+      else clearInterval(intervalId);
+    }, 30000);
+    return () => {
+      setInterval(() => { if (socket.OPEN) socket.close(); }, 1000)
+      clearInterval(intervalId);
+    };
   }, []);
 
   const changeSearch = (event: any) => {
@@ -52,7 +64,7 @@ export const ConnectionsCard = (props: any) => {
           <input type="text" className={styles.inputSearch} placeholder="Введите имя, фамилию или емейл" onChange={(e) => { changeSearch(e) }} value={search} />
         </div>
         {friendsFilter.map((user: any, index: number) => {
-          if (index < count) return <ConnectionBlock key={user.id} myId={props.myId} user={user} getUsers={getUsers} setSelectedUser={setSelectedUser} setIsOpen={setIsOpen} />
+          if (index < count) return <ConnectionBlock key={user.id} myId={props.myId} user={user} setSelectedUser={setSelectedUser} setIsOpen={setIsOpen} />
         })}
         <button className={styles.buttonLoadMore} onClick={loadMore}>Загрузить еще</button>
       </div >
