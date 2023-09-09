@@ -21,6 +21,8 @@ export enum NotificationType {
     ConfirmFriend = "ConfirmFriend",
     BirthDay = "BirthDay",
     InviteToGroup = "InviteToGroup",
+    LikePhoto = "LikePhoto",
+    CommentPhoto= "CommentPhoto",
 }
 
 export enum Gender {

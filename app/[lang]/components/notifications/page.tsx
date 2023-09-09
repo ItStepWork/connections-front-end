@@ -32,6 +32,10 @@ export default function Notifications(props: any) {
     setNotifications(result);
   }
 
+  const getGender=(user: any)=>{
+    return user.gender === Gender.Female ? "ла" : "в";
+  }
+
   return (
     <div className={styles.container}>
       {notifications.map((n: any) => {
@@ -45,9 +49,11 @@ export default function Notifications(props: any) {
                 </h2>
                 <div className='text-lg'>
                   {n.notification.type === NotificationType.AddFriend ? (<>хоче додати вас до друзів</>) : (<></>)}
-                  {n.notification.type === NotificationType.RemoveFriend ? (<>вида{n.user.gender === Gender.Female ? "лила" : "лив"} вас із друзів</>) : (<></>)}
+                  {n.notification.type === NotificationType.RemoveFriend ? (<>видали{getGender(n.user)} вас із друзів</>) : (<></>)}
                   {n.notification.type === NotificationType.ConfirmFriend ? (<>підтвердив, що ви його друг</>) : (<></>)}
                   {n.notification.type === NotificationType.BirthDay ? (<>святкує сьогодні день народження</>) : (<></>)}
+                  {n.notification.type === NotificationType.LikePhoto ? (<>вподоба{getGender(n.user)} Ваше фото</>) : (<></>)}
+                  {n.notification.type === NotificationType.CommentPhoto ? (<>написа{getGender(n.user)} коментар до вашого фото</>) : (<></>)}
                   {n.notification.type === NotificationType.InviteToGroup ? (<>запрошує Вас до групи <Link className='underline text-blue-600 visited:text-purple-600' href={n.notification.url}>{n.notification.groupName}</Link></>) : (<></>)}
                 </div>
                 <div className={styles.dateTime}>{new Date(n.notification.dateTime).toLocaleString()}</div>
