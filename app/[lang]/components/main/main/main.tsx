@@ -4,13 +4,13 @@ import { getSession } from "next-auth/react";
 import { useEffect, useState } from 'react';
 import { ComponentName } from "../../../../../enums/all.enum";
 import Gallery from "../../gallery/main/page";
-import { ConnectionsCard } from "../../group/connectionsCard/connectionsCard";
 import Notifications from "../../notifications/page";
 import Posts from "../../posts/page";
 import { GroupsCard } from "../../userProfile/groupsCard/groupsCard";
 import Celebration from "../celebrations/page";
 import Menu from "../menu/page";
 import styles from './main.module.scss';
+import { ConnectionsCard } from "../../userProfile/connectionsCard/connectionsCard";
 
 
 export default function Main({local} : {local : any}, props : any) {
