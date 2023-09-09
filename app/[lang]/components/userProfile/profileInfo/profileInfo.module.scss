@@ -1,0 +1,30 @@
+.container {
+	@apply flex flex-col p-6 mt-6 md:mt-0 lg:mt-0 w-full bg-white text-gray-900 border border-light_border rounded-xl
+  dark:text-dark_text_gray object-contain overflow-hidden dark:bg-dark_background dark:border-dark_border;
+	.aboutMe {
+		@apply flex flex-col px-6 pt-4 w-full bg-white text-gray-900 border border-light_border rounded-xl
+  dark:text-dark_text_gray object-contain overflow-hidden dark:bg-dark_background dark:border-dark_border;
+		p {
+			@apply py-2 flex  items-center pr-4;
+		}
+	}
+	.dataContainer {
+		@apply flex pt-6 gap-6 flex-col lg:flex-row;
+	}
+	.cont {
+		@apply flex items-center w-full p-4 bg-white text-gray-900 border border-light_border rounded-xl
+  dark:text-dark_text_gray object-contain overflow-hidden dark:bg-dark_background dark:border-dark_border;
+		p {
+			@apply ml-2;
+			span {
+				@apply font-bold;
+			}
+		}
+	}
+	h3 {
+		@apply text-gray-900 dark:text-white text-lg font-bold;
+	}
+	h2 {
+		@apply text-gray-900 dark:text-white text-xl pb-4;
+	}
+}

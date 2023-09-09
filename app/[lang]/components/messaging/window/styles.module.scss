@@ -1,0 +1,15 @@
+.container {
+	@apply fixed dark:text-white bottom-0 right-0 m-6;
+}
+.content {
+	@apply w-80 md:w-96 h-80 md:h-96 lg:h-96 border rounded-lg border-zinc-200 dark:border-zinc-700 bg-white dark:bg-black;
+}
+.header {
+	@apply flex p-3 justify-between items-center;
+}
+.buttonClose {
+	@apply p-1 rounded-lg fill-gray-500 hover:bg-dark_button_BG;
+}
+.horizontalHr {
+	@apply border-zinc-200 bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-700;
+}

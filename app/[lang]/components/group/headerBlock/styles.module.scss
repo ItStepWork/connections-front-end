@@ -1,0 +1,131 @@
+.container {
+	@apply flex flex-col w-full bg-white text-gray-900 border border-light_border rounded-xl mb-10
+  dark:text-dark_text_gray object-contain overflow-hidden dark:bg-dark_background dark:border-dark_border p-6;
+
+	.cardBody {
+		@apply relative flex flex-col;
+		.topInfo {
+			@apply relative flex items-center flex-col
+      md:justify-between lg:justify-between md:flex-row lg:flex-row;
+			.avatarName {
+				@apply flex flex-col md:flex-row lg:flex-row relative;
+				.avatarContainer {
+					@apply flex md:block lg:block md:justify-normal lg:justify-normal justify-center relative;
+					.avatar {
+						@apply lg:mb-6 md:mb-4 rounded-full overflow-hidden border-[3px] border-white top-[10px]
+            relative md:bottom-[-40px] lg:bottom-[-40px] w-24 h-24 md:ml-6  lg:ml-6;
+					}
+					.editAvatar {
+						@apply absolute ml-16 mt-20 md:ml-24 md:mt-[-37px] lg:ml-24 lg:mt-[-45px];
+						.avatarLabel {
+							@apply flex rounded-full cursor-pointer transition-all duration-500 ease-in-out bg-button_blue_BG bg-opacity-60 hover:bg-opacity-100;
+						}
+						.avatarIcon {
+							@apply flex p-1;
+						}
+					}
+				}
+			}
+			.buttonBlock {
+				@apply flex flex-row  flex-wrap items-center gap-2 mr-3 md:ml-10 md:absolute md:right-0 md:top-0 lg:absolute lg:right-0 lg:top-0;
+				.blueButton {
+					@apply w-32 text-button_blue_BG flex justify-center items-center bg-button_blue_opacity transition-all duration-300 hover:bg-[#0b53b1] hover:text-white focus:ring-4 focus:outline-none focus:ring-button_blue_BG font-medium rounded-md text-sm px-2 py-2.5 md:px-1.5 lg:px-1.5 text-center;
+					span {
+						@apply mr-2;
+					}
+				}
+				.redButton {
+					@apply w-32 text-button_red_BG flex justify-center items-center bg-button_red_opacity transition-all duration-300 hover:bg-button_red_BG hover:text-white focus:ring-4 focus:outline-none focus:ring-button_red_BG font-medium rounded-md text-sm px-2 py-2.5 md:px-1.5 lg:px-1.5 text-center;
+					span {
+						@apply mr-2;
+					}
+				}
+				.greenButton {
+					@apply items-center flex justify-center text-button_green_BG bg-button_green_opacity transition-all duration-300 ease-in hover:bg-button_green_BG hover:text-white focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-md text-sm px-5 py-2.5 text-center dark:bg-button_green_opacity dark:hover:bg-green-700 dark:focus:ring-green-800;
+					span {
+						@apply mr-2;
+					}
+				}
+				.yellowButton {
+					@apply w-32 p-3 text-yellow-500 items-center flex justify-center bg-yellow-900 bg-opacity-25 transition-all duration-300 hover:bg-yellow-400 hover:bg-opacity-75 hover:text-white focus:ring-4 focus:outline-none focus:bg-yellow-600 font-medium rounded-md text-sm px-2 py-2.5 md:px-1.5 lg:px-1.5 text-center;
+					span {
+						@apply mr-2;
+					}
+				}
+			}
+			.editButton {
+				@apply text-button_red_BG flex justify-center items-center bg-button_red_opacity transition-all duration-300 hover:bg-button_red_BG hover:text-white focus:ring-4 focus:outline-none focus:ring-button_red_BG font-medium rounded-md text-sm p-3 text-center m-3 mt-3 lg:absolute lg:right-0 lg:top-10 md:absolute md:right-0 md:top-10;
+				span {
+					@apply mr-2;
+				}
+			}
+		}
+		.nameBlock {
+			@apply flex flex-col items-center justify-start mt-6 
+      md:ml-16 lg:ml-6 md:mb-0 lg:mb-0 mb-4 md:pl-6 
+	  lg:pl-6 md:mt-0 lg:mt-0 md:items-start lg:items-start;
+			.name {
+				@apply flex items-center;
+				span {
+					@apply text-button_green_BG ml-1;
+				}
+			}
+		}
+		.membersContainer {
+			@apply flex  gap-6 flex-wrap lg:justify-start md:justify-start justify-center;
+			.members {
+				@apply flex m-2;
+				.memberIco {
+					@apply w-8 h-8 rounded-full absolute border-white border-2;
+				}
+				.membersDiv {
+					@apply w-8 h-8 rounded-full absolute bg-blue-500 text-center text-white;
+				}
+			}
+			.membersNames {
+				@apply flex  m-4 sm:ml-8;
+			}
+		}
+		.description {
+			@apply w-56 lg:w-56 flex flex-wrap md:w-32 justify-center md:justify-start lg:justify-start;
+		}
+
+		.bottomInfo {
+			@apply flex justify-center p-6 flex-wrap
+      md:flex-nowrap md:justify-start lg:justify-start lg:flex-nowrap md:mt-6 lg:mt-6;
+			p {
+				@apply flex md:flex-col lg:flex-row items-center pr-4;
+			}
+			p span {
+				@apply mr-2;
+			}
+		}
+	}
+	.cardNav {
+		@apply flex px-6 w-full items-center justify-center gap-6 border-t flex-wrap 
+    md:flex-nowrap md:justify-start lg:justify-start lg:flex-nowrap 
+    dark:border-dark_border;
+		.counterLink {
+			@apply flex items-center h-full border-b-4 border-b-blue-500;
+		}
+		.counter {
+			@apply ml-1 text-lg bg-button_green_opacity px-2  rounded-md text-button_green_BG;
+		}
+		.link {
+			@apply my-4  hover:text-blue-500 transition-all duration-300 font-bold;
+		}
+		.linkUnderline {
+			@apply text-button_blue_BG my-4 hover:text-blue-500 transition-all duration-300 font-bold;
+		}
+	}
+
+	h2 {
+		@apply text-gray-900 dark:text-white text-xl;
+	}
+	.image {
+		@apply w-full h-auto;
+	}
+}
+.dialog {
+	@apply bg-white dark:bg-dark_background border rounded-lg dark:border-dark_border border-light_border;
+}

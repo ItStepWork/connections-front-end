@@ -1,0 +1,18 @@
+.container {
+	@apply flex flex-col border rounded-lg border-light_border dark:border-dark_border bg-white dark:bg-dark_background;
+	.linksContainer {
+		@apply flex flex-col justify-center items-center p-6  w-full;
+	}
+	.link {
+		@apply flex w-full text-sm dark:text-dark_text_gray text-gray-900 items-center m-3 font-bold hover:text-blue-500 transition-all duration-300;
+	}
+	.link:last-child {
+		@apply hover:text-red-500;
+	}
+	.profile {
+		@apply w-full flex justify-center hover:text-blue-500 duration-300 transition-all ease-in items-center h-full cursor-pointer border-t p-4 border-light_border dark:border-dark_border;
+	}
+	.icon {
+		@apply mr-2;
+	}
+}

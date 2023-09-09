@@ -1,0 +1,126 @@
+.container {
+  @apply flex flex-col mt-20 w-full bg-white text-gray-900 border border-light_border rounded-xl
+  dark:text-dark_text_gray object-contain overflow-hidden dark:bg-dark_background dark:border-dark_border;
+  .bannerImage {
+    @apply h-[200px] w-full relative overflow-hidden m-auto;
+  }
+  .cardBody {
+    @apply relative flex flex-col;
+    .topInfo {
+      @apply relative flex items-center flex-col
+      md:justify-between lg:justify-between md:flex-row lg:flex-row;
+      .avatarName {
+        @apply flex flex-col md:flex-row lg:flex-row relative;
+        .avatarContainer {
+          @apply flex md:block lg:block md:justify-normal lg:justify-normal justify-center relative;
+          .avatar {
+            @apply mb-6 rounded-full overflow-hidden border-[3px] border-white top-[-30px] h-20 w-20
+            absolute md:bottom-[-40px] lg:bottom-[-40px] md:w-32 md:h-32 md:ml-6 lg:w-32 lg:h-32 lg:ml-6;
+          }
+        }
+      }
+      .buttonBlock {
+        @apply flex items-center gap-2;
+        .buttonLink {
+          @apply text-button_red_BG flex items-center bg-button_red_opacity transition-all duration-300 ease-in hover:bg-button_red_BG hover:text-white focus:ring-4 focus:outline-none focus:ring-button_red_BG font-medium rounded-md text-sm px-2 py-2.5 md:px-1.5 lg:px-1.5 text-center dark:bg-button_red_opacity dark:hover:bg-button_red_BG dark:focus:ring-button_red_BG;
+          span {
+            @apply mr-2;
+          }
+        }
+        .button {
+          @apply px-3 py-3 md:mr-6 lg:mr-6 text-gray-900 bg-light_button_BG rounded-lg transition-all duration-300 hover:bg-light_border dark:hover:bg-dark_text_gray dark:text-white dark:bg-dark_button_BG;
+        }
+      }
+    }
+    .nameBlock {
+      @apply flex flex-col items-center justify-start mt-16 
+      md:pt-4 lg:pt-4 md:ml-36 lg:ml-36 md:mb-0 lg:mb-0 mb-4 md:pl-6 lg:pl-6 md:mt-0 lg:mt-0 md:items-start lg:items-start;
+      .name {
+        @apply flex items-center;
+        span {
+          @apply text-button_green_BG ml-1;
+        }
+      }
+    }
+    .bottomInfo {
+      @apply flex justify-center p-6 flex-wrap
+      md:flex-nowrap md:justify-start lg:justify-start lg:flex-nowrap md:mt-6 lg:mt-6;
+      p {
+        @apply flex md:flex-col lg:flex-row items-center pr-4;
+      }
+      p span {
+        @apply mr-2;
+      }
+    }
+  }
+  .cardNav {
+    @apply flex px-6 w-full items-center justify-center gap-6 border-t flex-wrap 
+    md:flex-nowrap md:justify-start lg:justify-start lg:flex-nowrap 
+    dark:border-dark_border;
+    .counterLink {
+      @apply flex items-center h-full border-b-4 border-b-blue-500;
+    }
+    .link {
+      @apply my-4  hover:text-blue-500 transition-all duration-300 font-bold;
+    }
+    .linkUnderline {
+      @apply text-button_blue_BG my-4 hover:text-blue-500 transition-all duration-300 font-bold;
+    }
+  }
+
+  h2 {
+    @apply text-gray-900 dark:text-white text-xl;
+  }
+  .image {
+    @apply w-full h-auto;
+  }
+  .editAvatar {
+    @apply absolute ml-12 mt-7 md:ml-28 md:mt-16 lg:ml-28 lg:mt-14;
+    .avatarLabel {
+      @apply flex rounded-full cursor-pointer transition-all duration-500 ease-in-out bg-button_blue_BG bg-opacity-60 hover:bg-opacity-100;
+    }
+    .avatarIcon {
+      @apply flex p-1 md:p-2 lg:p-3;
+    }
+  }
+  .editBgImage {
+    @apply absolute ml-5 mt-5;
+    .backgroundImageLabel {
+      @apply flex rounded-full cursor-pointer transition-all duration-500 ease-in-out bg-button_blue_BG bg-opacity-60 hover:bg-opacity-100;
+    }
+    .backgroundIcon {
+      @apply flex p-1 md:p-2 lg:p-3;
+    }
+  }
+}
+
+.preloaderContainer {
+  @apply w-full border md:h-96 lg:h-96 border-gray-200 rounded shadow animate-pulse md:p-6 dark:border-gray-700;
+  .preloaderImg {
+    @apply flex items-center justify-center h-52 mb-4 bg-gray-300 rounded dark:bg-gray-700;
+  }
+  .preloaderSVG {
+    @apply w-10 h-10 text-gray-200 dark:text-gray-600;
+  }
+  .str1 {
+    @apply h-2.5 mt-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4;
+  }
+  .str2 {
+    @apply h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5;
+  }
+  .str3 {
+    @apply h-2 bg-gray-200 rounded-full dark:bg-gray-700;
+  }
+  .str4 {
+    @apply h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-2;
+  }
+  .str5 {
+    @apply w-48 h-2 bg-gray-200 rounded-full dark:bg-gray-700;
+  }
+  .preloaderImg2 {
+    @apply flex justify-between items-center mt-4 space-x-3;
+  }
+  .strContainer {
+    @apply flex items-center justify-between;
+  }
+}

@@ -1,0 +1,35 @@
+.container {
+	@apply flex flex-col p-6 w-full bg-white text-gray-900 border border-light_border rounded-xl
+  dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border;
+	.button {
+		@apply text-[#0f6fec] bg-button_blue_opacity transition-all duration-300 ease-in hover:bg-blue-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center dark:bg-button_blue_opacity dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+	}
+	.header {
+		@apply flex justify-between items-center mb-6;
+	}
+	.photoContainer {
+		@apply flex w-full justify-center gap-2;
+		.photo {
+			@apply overflow-hidden rounded-lg;
+		}
+	}
+	.photoContainer2 {
+		@apply flex w-full justify-center mt-2 gap-2;
+		.photo {
+			@apply overflow-hidden rounded-lg;
+		}
+	}
+	h2 {
+		@apply text-gray-900 dark:text-white text-2xl;
+	}
+}
+
+.preloaderContainer {
+	@apply space-y-8 max-w-sm animate-pulse md:space-y-0 md:space-x-8 md:flex md:items-center;
+	.preloaderDiv {
+		@apply flex items-center justify-center w-full h-48 bg-gray-300 rounded dark:bg-gray-700;
+		.preloaderSVG {
+			@apply w-10 h-10 text-gray-200 dark:text-gray-600;
+		}
+	}
+}

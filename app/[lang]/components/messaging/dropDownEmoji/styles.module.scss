@@ -1,0 +1,11 @@
+.container {
+	@apply relative;
+	.dropMenuUpper {
+		@apply absolute z-40 p-2 flex flex-wrap justify-center max-h-32 overflow-y-auto bottom-[30px] left-[-200px] items-center bg-white text-gray-900 border border-light_border rounded-lg
+  		dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border;
+	}
+	.dropMenuLower {
+		@apply absolute z-40 p-2 flex flex-wrap justify-center max-h-32 overflow-y-auto top-[30px] left-[-200px] items-center bg-white text-gray-900 border border-light_border rounded-lg
+  		dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border;
+	}
+}

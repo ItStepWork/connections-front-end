@@ -1,0 +1,19 @@
+.container {
+	@apply flex flex-col w-full p-6 mb-20 bg-white text-gray-900 border border-light_border rounded-xl
+  dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border;
+	h2 {
+		@apply text-gray-900 dark:text-white text-xl;
+	}
+	.userImage{
+		@apply w-14 h-14 rounded-full border border-gray-500;
+	}
+	.horizontalHr {
+		@apply my-3 border-zinc-200 bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-700;
+	}
+	.dateTime{
+		@apply flex-grow text-right mt-auto text-sm;
+	}
+	.content{
+		@apply flex flex-col md:flex-row mx-3 flex-grow;
+	}
+}

@@ -1,0 +1,9 @@
+.container {
+	@apply relative mt-16;
+	.mainLabel {
+		@apply w-full bg-glass_white dark:bg-glass_gray backdrop-blur-[3px];
+		canvas {
+			@apply relative text-white overflow-hidden h-max w-max;
+		}
+	}
+}

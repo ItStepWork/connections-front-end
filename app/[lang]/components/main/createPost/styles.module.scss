@@ -1,0 +1,71 @@
+// .container {
+// 	@apply flex flex-col mt-4 p-6 w-full bg-white text-gray-900 border border-light_border rounded-xl
+//   dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border;
+// }
+.topDiv {
+	@apply flex flex-row w-full gap-2;
+	.userIco {
+		@apply w-10 h-10 m-2 rounded-full border-blue-500 border-2;
+	}
+	.grInput {
+		@apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg mt-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-dark_background dark:border-dark_border
+		  outline-none dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+	}
+}
+
+.bottomDiv {
+	@apply flex flex-wrap flex-row gap-4 m-2 w-full;
+	.btnDiv {
+		@apply gap-1 p-1 h-6 rounded-lg bg-gray-200 text-gray-900 
+    dark:bg-gray-600 dark:placeholder-gray-400 dark:text-gray-100
+    hover:text-blue-500;
+	}
+	.btnDivEnd {
+		@apply flex w-full justify-end mr-2;
+	}
+	a {
+		@apply text-xs cursor-pointer;
+	}
+}
+
+.dialogDiv {
+	@apply w-80 lg:w-96 p-3;
+}
+.dialogDivHeader {
+	@apply text-base p-2 flex justify-between w-full;
+}
+.dialogDivBody {
+	@apply flex flex-wrap text-base p-3 border dark:border-dark_border border-light_border border-x-0 w-full;
+}
+.checkDiv {
+	@apply flex mt-3 w-full;
+}
+.dialogDivFooter {
+	@apply text-base pt-3 gap-3 flex justify-end w-full;
+}
+.redButton {
+	@apply flex flex-row  text-button_red_BG bg-button_red_opacity transition-all duration-300 rounded-md py-2.5 px-5 hover:bg-button_red_BG hover:text-white;
+}
+.grayButton {
+	@apply text-white bg-gray-900 transition-all duration-300 rounded-md py-3 px-5 m-1 hover:bg-gray-400;
+}
+.closeButton {
+	@apply p-2 inline-flex items-center justify-center text-gray-500 hover:text-gray-400 dark:bg-dark_background;
+}
+.greenButton {
+	@apply items-center flex justify-center text-button_green_BG bg-button_green_opacity transition-all duration-300 ease-in hover:bg-button_green_BG hover:text-white focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-md text-sm px-5 py-2.5 text-center dark:bg-button_green_opacity dark:hover:bg-green-700 dark:focus:ring-green-800;
+}
+// .radioButton {
+//   @apply accent-slate-400 m-1;
+// }
+.select {
+	@apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 
+   dark:bg-main_background dark:border-dark_border dark:placeholder-gray-400 dark:text-dark_text_gray dark:focus:ring-blue-500 dark:focus:border-blue-500;
+}
+.labels {
+	@apply text-gray-900 dark:text-white text-2xl;
+}
+.roundedDiv {
+	@apply p-2 rounded-full flex items-center;
+}

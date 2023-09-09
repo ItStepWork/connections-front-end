@@ -1,4 +1,4 @@
-const canvas = document.getElementById('canvas1');
+const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -16,8 +16,6 @@ const mouse = {
 window.addEventListener('mousemove', function(event){
   mouse.x = event.x;
   mouse.y = event.y;
-  
-  //console.log(mouse.x, mouse.y)
 });
 
 ctx.fillStyle = 'white';
@@ -70,13 +68,6 @@ class Particle {
 
 function init() {
   particleArray = [];
-  /*
-  for (let i = 0; i < 1000; i++){
-    let x = Math.random() * canvas.width;
-    let y = Math.random() * canvas.height;
-    particleArray.push(new Particle(x, y))
-  }
-  */
   for (let y = 0, y2 = textCoordinates.height; y < y2; y++){
     for(let x = 0, x2 = textCoordinates.width; x < x2; x++){
       if (textCoordinates.data[(y * 4 * textCoordinates.width) + (x * 4) + 3] > 128){
@@ -96,28 +87,6 @@ function animate() {
     particleArray[i].draw();
     particleArray[i].update();
   }
-  //connect();
   requestAnimationFrame(animate);
 }
 animate();
-/*
-function connect() {
-  let opacity = 1;
-  for (let i = 0; i < particleArray.length; i++){
-    for ( let j = i; j < particleArray.length; j++){
-      let dx = particleArray[i].x - particleArray[j].x;
-      let dy = particleArray[i].y - particleArray[j].y;
-      let distance = Math.sqrt(dx * dx + dy * dy);
-      opacity = 0.1
-      ctx.strokeStyle = 'rgba(255,255,255,' + opacity + ')';
-      if( distance < 10 ){
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.moveTo(particleArray[i].x, particleArray[i].y);
-        ctx.lineTo(particleArray[j].x, particleArray[j].y);
-        ctx.stroke();
-      }
-    }
-  }
-}
-*/

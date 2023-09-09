@@ -1,0 +1,38 @@
+.container {
+	@apply flex flex-col pt-6 gap-6
+	md:justify-between md:flex-row md:pt-0 lg:pt-0 lg:flex-row lg:justify-between md:items-start lg:items-center;
+	.userContainer {
+		@apply flex w-full flex-col rounded-lg hover:bg-glass_gray
+		md:flex-row lg:flex-row p-3;
+		.avatar {
+			@apply w-12 h-12 rounded-full;
+		}
+		.textContainer {
+			@apply md:px-6 lg:px-6 mt-4 md:mt-0 lg:mt-0 flex flex-col;
+			.headerText {
+				@apply flex flex-col md:flex-row lg:flex-row md:items-center lg:items-center md:gap-1 lg:gap-1;
+			}
+			.description {
+				@apply text-sm text-light_text dark:text-dark_text_gray;
+			}
+			span {
+				@apply text-gray-900 text-lg dark:text-white font-bold;
+			}
+			span:last-child {
+				@apply text-sm font-light dark:text-dark_text_gray text-light_text;
+			}
+		}
+	}
+	.buttonsContainer {
+		@apply flex h-full items-center gap-4 ;
+		.button_red_BG {
+			@apply text-button_red_BG flex items-center bg-button_red_opacity transition-all duration-300 ease-in hover:bg-button_red_BG hover:text-white focus:ring-4 focus:outline-none focus:ring-button_red_BG font-medium rounded-md text-sm px-4 py-2.5 text-center dark:bg-button_red_opacity dark:hover:bg-button_red_BG dark:focus:ring-button_red_BG;
+		}
+		.button_blue_BG {
+			@apply text-[#0f6fec] bg-button_blue_opacity transition-all duration-300 ease-in hover:bg-blue-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center dark:bg-button_blue_opacity dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+		}
+		.button_green_BG {
+			@apply text-button_green_BG bg-button_green_opacity transition-all duration-300 ease-in hover:bg-button_green_BG hover:text-white focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-md text-sm px-5 py-2.5 text-center dark:bg-button_green_opacity dark:hover:bg-green-700 dark:focus:ring-green-800;
+		}
+	}
+}

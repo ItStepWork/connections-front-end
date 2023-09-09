@@ -1,0 +1,21 @@
+.container {
+	@apply flex flex-col w-full p-6 mb-20 bg-white text-gray-900 border border-light_border rounded-xl
+  dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border;
+	h2 {
+		@apply text-gray-900 dark:text-white text-xl;
+	}
+}
+.nav {
+	@apply flex w-full items-center justify-center gap-6 border-b flex-wrap 
+  md:flex-nowrap md:justify-start lg:justify-start lg:flex-nowrap 
+  dark:border-dark_border;
+	.counterLink {
+		@apply flex items-center h-full border-b-4 border-b-blue-500;
+	}
+	.link {
+		@apply my-4  hover:text-blue-500 transition-all duration-300 font-bold;
+	}
+	.linkUnderline {
+		@apply text-button_blue_BG my-4 hover:text-blue-500 transition-all duration-300 font-bold;
+	}
+}

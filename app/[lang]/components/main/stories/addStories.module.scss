@@ -1,0 +1,15 @@
+.container {
+	@apply flex flex-col border-dashed  justify-center p-6 min-w-[100px] md:min-w-[140px] lg:min-w-[140px] bg-white text-gray-900 border-2 border-light_border rounded-xl
+  dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border;
+	.postStoryBlock {
+		@apply flex-col flex justify-center items-center cursor-pointer;
+		.plusButton {
+			@apply mb-2 p-2 rounded-full bg-light_border hover:bg-light_button_BG_hover dark:bg-[#464950] dark:text-white text-gray-900 dark:hover:bg-[#5f5f68] cursor-pointer transition-all duration-300;
+		}
+		p {
+			@apply dark:text-dark_text_gray text-gray-900;
+		}
+	}
+	.storyBlock {
+	}
+}

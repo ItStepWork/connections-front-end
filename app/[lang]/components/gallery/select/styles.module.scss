@@ -1,0 +1,9 @@
+.action {
+	@apply flex items-center text-dark_text_gray hover:text-button_blue_BG;
+}
+.actionRed {
+	@apply flex items-center text-button_red_BG hover:text-button_blue_BG;
+}
+.name {
+	@apply flex items-center text-dark_text_gray hover:text-button_blue_BG whitespace-nowrap max-w-[8rem] overflow-hidden;
+}

@@ -1,0 +1,211 @@
+{
+  "button": {
+    "uploadMore": "Load more",
+    "uploadAvatarImage": "Upload avatar",
+    "uploadBgImage": "Upload background",
+    "updatePass": "Update password",
+    "saveData": "Save changes",
+    "toProfile": "Profile",
+    "setAvatarImage": "Set avatar",
+    "setBgImage": "Set background",
+    "settings" : "Settings",
+    "allFriends" : "All friends",
+    "editProfile" : "Edit profile",
+    "showAll" : "Show all"
+  },
+  "copyright" : "All right reserved",
+  "posts" : {
+    "photo" : "Photo",
+    "video" : "Video",
+    "events" : "Event",
+    "activity" : "Activity",
+    "placeholder" : "Share your thoughts",
+    "cancel" : "Cancel",
+    "publish" : "Publish",
+    "writeVideo" : "Record",
+    "postPhoto" : {
+      "title" : "Publish photo",
+      "Upload" : "Upload Photo",
+      "description" : "Drag or click here to upload a photo"
+    },
+    "postVideo" : {
+      "title" : "Publish video",
+      "description" : "Drag or click here to download the video"
+    },
+    "postActivity" : {
+      "title" : "Create post",
+      "forAll" : "For all",
+      "forMe" : "Only me",
+      "forFriends" : "Only friends"
+    }
+  },
+  "search" : {
+    "searchFullName" : "Enter name or last name...",
+    "searchPost" : "Enter Name...",
+    "searchNameOrEmail" : "Enter name, Last name or email...",
+    "searchGroup" : "Enter group name..."
+  },
+  "header" : {
+    "main" : "Main",
+    "profile" : "Profile",
+    "admin" : "Administrator-Panel",
+    "dropMenu" : {
+      "profile" : "Profile",
+      "settings" : "Settings",
+      "exit" : "Exit",
+      "theme" : "theme:" 
+    }
+  },
+  "footer" : {
+    "about" : "About Us",
+    "help" : "Help",
+    "privacy" : "Privacy & terms",
+    "protect" : "Protect",
+    "partnership" : "Partnership"
+    
+  },
+  "groups" : {
+    "title" : "Groups",
+    "adminBtn" : "Administrator",
+    "editGroupBtn" : "Edit group",
+    "inviteBtn" : "Invite",
+    "leaveBtn" : "Leave",
+    "cancelBtn" : "Cancel",
+    "joinBtn" : "Join",
+    "aboutGroup" : {
+      "about" : "About group",
+      "people" : "People",
+      "participants" : "Participants",
+      "status" : "Status",
+      "mail" : "Mail"
+    },
+    "posts" : "Posts",
+    "photo" : "Photo",
+    "members" : "Members",
+    "requests" : "Requests",
+    "privacy" : "group",
+    "subtitle" : "members"
+  },
+    "editGroup" : {
+      "title" : "Edit group",
+      "name" : "Group name",
+      "description" : "Description",
+      "changeBtn" : "Change",
+      "deleteBtn" : "Delete",
+      "privacy" : {
+        "title" : "Group type",
+        "private" : "Private",
+        "public" : "Public"
+      },
+      "toasts" : {
+        "ok" : "Successfully updated!",
+        "error" : "Server Error!",
+        "warning" : "Not updated!",
+        "delete" : "Group deleted!"
+      }
+  },
+  "connections" : {
+    "title" : "Connections",
+    "confirmBtn" : "Confirm",
+    "deleteBtn" : "Delete",
+    "writeBtn" : "Write",
+    "requestBtn" : "Be friends"
+  },
+  "profile" : {
+    "friendsCount" : "Contacts",
+    "aboutMe" : "About me",
+    "contacts" : "Connections",
+    "groups" : "Groups",
+    "gallery" : "Gallery"
+  },
+  "signIn" : {
+    "title" : "Sign In",
+    "description" : "No account yet? ",
+    "toSignUp" : "go to registration",
+    "passLabel" : "Password:",
+    "logInBtn" : "Login",
+    "toasts" : {
+      "success" : "Login successfully",
+      "error" : "error"
+    }
+  },
+  "signUp" : {
+    "title" : "Sign Up",
+    "description" : "do you have account? ",
+    "toSignIn" : "log in",
+    "name" : "Name:",
+    "lastName" : "Last name:",
+    "mail" : "Email:",
+    "pass" : "Password:",
+    "confirmPass" : "Confirm password:",
+    "registrationBtn" : "Registration",
+    "toasts" : {
+      "emptyFields" : "Not all fields are filled!",
+      "serverError" : "Server Error !!!",
+      "emailError" : "This email already used!",
+      "ok" : "Registration Successful!",
+      "mismatchPasswords" : "Password mismatch!"
+    },
+    "placeholders" : {
+      "name" : "Enter name...",
+      "lastName" : "Enter last name...",
+      "mail" : "Enter email..."
+    } 
+  },
+  "aboutMe" : {
+    "title" : "Profile information:",
+    "Overview" : "Overview:",
+    "birthday" : "Birthday:",
+    "work" : "Work in:",
+    "connected" : "Join:",
+    "status" : "Status:",
+    "live" : "Live:"
+  },
+  "settings" :{
+    "title" : "Account settings",
+    "subtitle" : "These are your account settings, here you can change your profile details.",
+    "name" : "Name:",
+    "lastName" : "Last Name:",
+    "born" : "Born:",
+    "email" : "Email:",
+    "phone" : "Phone:",
+    "gender" : "Gender:",
+    "familyStatus" : "Family status:",
+    "work" : "Work:",
+    "location" : "Live:",
+    "aboutMe" : "You message:",
+    "placeholders" : {
+      "notIndicated" : "Not indicated",
+      "comment" : "Leave your comment..."
+    },
+    "toasts" : {
+      "ok" : "Successfully updated!",
+      "fail" : "Not updated!"
+    }
+  },
+  "changePassword" : {
+    "title" : "Changing password",
+    "subtitle" : "To change the password, you must: enter the old password, enter the new password and confirm it, the new password and password confirmation must match.",
+    "password" : "Current password:",
+    "newPass" : "New password:",
+    "confirmPass" : "Confirm password:",
+    "placeholders" : {
+      "pass" : "Current password...",
+      "newPass" : "New password...",
+      "confirmPass" : "Confirm password..."
+    },
+    "toasts" : {
+      "mismatch" : "Mismatch passwords!",
+      "error" : "Password not changed!",
+      "ok" : "Password changed successfully!"
+    }
+  },
+  "settingsSide" : {
+    "account" : "Accaunt",
+    "notification" : "Notification",
+    "privacy" : "Pryvacy & Atempts",
+    "messaging" : "Messaging",
+    "closeAcc" : "Close Accaunt",
+    "watch" : "Watch profile"
+  }
+}

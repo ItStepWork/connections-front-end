@@ -1,0 +1,31 @@
+.container {
+	@apply flex flex-col p-6 w-full bg-white text-gray-900 border border-light_border rounded-xl
+  dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border mt-6;
+}
+.topDiv {
+	@apply flex flex-row gap-2;
+	.userIco {
+		@apply w-10 h-10 m-2 rounded-full border-blue-500 border-2;
+	}
+	.grInput {
+		@apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg mt-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-dark_background dark:border-dark_border outline-none dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+	}
+}
+
+.bottomDiv {
+	@apply flex flex-wrap gap-4 my-4 w-full;
+	.btnDiv {
+		@apply flex gap-1 p-1 rounded-lg bg-light_background text-gray-900 
+    dark:bg-dark_background border border-dark_border dark:placeholder-dark_text_gray dark:text-dark_text_gray
+    hover:text-blue-500;
+	}
+	.btnDivEnd {
+		@apply mr-2 flex w-full justify-end;
+	}
+	a {
+		@apply text-xs cursor-pointer transition-all duration-300 ease-in;
+	}
+}
+.dialog {
+	@apply bg-white dark:bg-dark_background border rounded-lg dark:border-dark_border border-light_border;
+}
