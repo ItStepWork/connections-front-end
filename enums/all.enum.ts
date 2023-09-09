@@ -19,6 +19,8 @@ export enum NotificationType {
     AddFriend = "AddFriend",
     RemoveFriend = "RemoveFriend",
     ConfirmFriend = "ConfirmFriend",
+    CancelFriend = "CancelFriend",
+    RefusedFriend = "RefusedFriend",
     BirthDay = "BirthDay",
     InviteToGroup = "InviteToGroup",
     LikePhoto = "LikePhoto",

@@ -50,11 +50,13 @@ export default function Notifications(props: any) {
                 <div className='text-lg'>
                   {n.notification.type === NotificationType.AddFriend ? (<>хоче додати вас до друзів</>) : (<></>)}
                   {n.notification.type === NotificationType.RemoveFriend ? (<>видали{getGender(n.user)} вас із друзів</>) : (<></>)}
+                  {n.notification.type === NotificationType.RefusedFriend ? (<>не підтверди{getGender(n.user)} що ви друзі</>) : (<></>)}
+                  {n.notification.type === NotificationType.CancelFriend ? (<>відміни{getGender(n.user)} запит на дружбу</>) : (<></>)}
                   {n.notification.type === NotificationType.ConfirmFriend ? (<>підтвердив, що ви його друг</>) : (<></>)}
                   {n.notification.type === NotificationType.BirthDay ? (<>святкує сьогодні день народження</>) : (<></>)}
                   {n.notification.type === NotificationType.LikePhoto ? (<>вподоба{getGender(n.user)} Ваше фото</>) : (<></>)}
                   {n.notification.type === NotificationType.CommentPhoto ? (<>написа{getGender(n.user)} коментар до вашого фото</>) : (<></>)}
-                  {n.notification.type === NotificationType.InviteToGroup ? (<>запрошує Вас до групи <Link className='underline text-blue-600 visited:text-purple-600' href={n.notification.url}>{n.notification.groupName}</Link></>) : (<></>)}
+                  {n.notification.type === NotificationType.InviteToGroup && n.notification.url ? (<>запрошує Вас до групи <Link className='underline text-blue-600 visited:text-purple-600' href={n.notification.url}>{n.notification.groupName}</Link></>) : (<></>)}
                 </div>
                 <div className={styles.dateTime}>{new Date(n.notification.dateTime).toLocaleString()}</div>
               </div>
