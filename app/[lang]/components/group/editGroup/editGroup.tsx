@@ -7,13 +7,14 @@ import { GroupService } from '../../../../../services/group.service';
 import styles from './styles.module.scss';
 
 export function EditGroup(props: any) {
+    console.log(props)
     const options = [
         {
-            label: "Открытая",
+            label: props.local.editGroup.privacy.public,
             value: '0',
         },
         {
-            label: "Закрытая",
+            label: props.local.editGroup.privacy.private,
             value: '1',
         },
     ];
@@ -22,8 +23,8 @@ export function EditGroup(props: any) {
         dialog?.close();
     }
     // Toasts Alerts
-    const notifyErrorServer = () => toast.warning("Ошибка сервера!", {});
-    const notifyInfo = () => toast.info("Параметры не внесены!", {});
+    const notifyErrorServer = () => toast.warning(props.local.editGroup.toasts.error, {});
+    const notifyInfo = () => toast.info(props.local.editGroup.toasts.warning, {});
     const notifySuccess = (text: string) => toast.success(text, {});
     // const { data: session, update } = useSession();
     const router = useRouter();
@@ -32,7 +33,7 @@ export function EditGroup(props: any) {
         let result = await GroupService.deleteGroup(props.group.id);
         if (result === null) notifyErrorServer()
         else {
-            notifySuccess("Группа удалена")
+            notifySuccess(props.local.editGroup.toasts.delete)
             router.push("/main")
         }
     }
@@ -48,7 +49,7 @@ export function EditGroup(props: any) {
         formData.append("audience", data.audience);
         formData.append("description", data.description);
         let result = await GroupService.updateGroup(formData);
-        (result === null) ? notifyErrorServer() : notifySuccess("Параметры сохранены!");
+        (result === null) ? notifyErrorServer() : notifySuccess(props.local.editGroup.toasts.ok);
         props.getGroup();
         closeDialog();
     }
@@ -56,20 +57,20 @@ export function EditGroup(props: any) {
         <>
             <form className={styles.dialogDiv} onSubmit={handleSubmit(onSubmit)}>
                 <div className={styles.dialogDivHeader}>
-                    <h2 className={styles.h2}>Изменить группу</h2>
+                    <h2 className={styles.h2}>{props.local.editGroup.title}</h2>
                     <button type="button" className={styles.closeButton} onClick={() => { closeDialog(), notifyInfo() }}>
                         <AiOutlineClose size={16}></AiOutlineClose>
                     </button>
                 </div>
                 <div className={styles.dialogDivBody}>
                     <div className="mb-3">
-                        <label className={styles.label}>Название группы</label>
+                        <label className={styles.label}>{props.local.editGroup.name}</label>
                         <br></br>
                         <input type="text" className={styles.grInput} defaultValue={props.group.name} placeholder="Имя группы здесь..." {...register('name')} required></input>
                     </div>
 
                     <div >
-                        <label className={styles.label}>Тип группы</label>
+                        <label className={styles.label}>{props.local.editGroup.privacy.title}</label>
                         <div className={styles.checkDiv}>
                             <select {...props.group.audience == "Private" ? { defaultValue: "1" } : { defaultValue: "0" }}
                                 className={styles.select}
@@ -84,13 +85,13 @@ export function EditGroup(props: any) {
                         </div>
                     </div>
                     <div className="mb-3">
-                        <label className={styles.label}>Описание группы </label>
+                        <label className={styles.label}>{props.local.editGroup.description}</label>
                         <textarea className={styles.grInput} rows={2} defaultValue={props.group.description} placeholder="Ваше описание здесь..." {...register('description')} required></textarea>
                     </div>
                 </div>
                 <div className={styles.dialogDivFooter}>
-                    <button type="submit" className={styles.greenButton}>Изменить</button>
-                    <button type="button" className={styles.redButton} onClick={deleteGroup}>Удалить группу</button>
+                    <button type="submit" className={styles.greenButton}>{props.local.editGroup.changeBtn}</button>
+                    <button type="button" className={styles.redButton} onClick={deleteGroup}>{props.local.editGroup.deleteBtn}</button>
                 </div>
             </form>
         </>

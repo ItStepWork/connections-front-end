@@ -64,14 +64,14 @@
     "partnership" : "Захист"
     
   },
-  "group" : {
+  "groups" : {
     "title" : "Спільноти",
     "adminBtn" : "Адміністратор",
     "editGroupBtn" : "Редагувати групу",
     "inviteBtn" : "Запросити",
     "leaveBtn" : "Покинути",
-    "changeBtn" : "Змінити",
-    "deleteGroup" : "Видалити",
+    "cancelBtn" : "Відміна",
+    "joinBtn" : "Приеднатись",
     "aboutGroup" : {
       "about" : "Про групу",
       "people" : "Люди",
@@ -81,8 +81,28 @@
     },
     "posts" : "Пости",
     "photo" : "Фото",
-    "members" : "учасники",
-    "requests" : "Запити"
+    "members" : "Учасники",
+    "requests" : "Запити",
+    "privacy" : "група",
+    "subtitle" : "учасників"   
+  },
+  "editGroup" : {
+    "title" : "Редагувати групу",
+    "name" : "Назва групи",
+    "description" : "Опис групи",
+    "changeBtn" : "Змінити",
+    "deleteBtn" : "Видалити",
+    "privacy" : {
+      "title" : "Тип групи",
+      "private" : "Приватна",
+      "public" : "публічна"
+    },
+    "toasts" : {
+      "ok" : "Параметри внесені!",
+      "error" : "Помилка сервера!",
+      "warning" : "Параметри не внесені!",
+      "delete" : "Група видалена!"
+    }
   },
   "connections" : {
     "title" : "Контакти",

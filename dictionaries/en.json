@@ -64,14 +64,14 @@
     "partnership" : "Partnership"
     
   },
-  "group" : {
+  "groups" : {
     "title" : "Groups",
     "adminBtn" : "Administrator",
     "editGroupBtn" : "Edit group",
     "inviteBtn" : "Invite",
     "leaveBtn" : "Leave",
-    "changeBtn" : "Change",
-    "deleteGroup" : "Delete",
+    "cancelBtn" : "Cancel",
+    "joinBtn" : "Join",
     "aboutGroup" : {
       "about" : "About group",
       "people" : "People",
@@ -82,7 +82,27 @@
     "posts" : "Posts",
     "photo" : "Photo",
     "members" : "Members",
-    "requests" : "Requests"
+    "requests" : "Requests",
+    "privacy" : "group",
+    "subtitle" : "members"
+  },
+    "editGroup" : {
+      "title" : "Edit group",
+      "name" : "Group name",
+      "description" : "Description",
+      "changeBtn" : "Change",
+      "deleteBtn" : "Delete",
+      "privacy" : {
+        "title" : "Group type",
+        "private" : "Private",
+        "public" : "Public"
+      },
+      "toasts" : {
+        "ok" : "Successfully updated!",
+        "error" : "Server Error!",
+        "warning" : "Not updated!",
+        "delete" : "Group deleted!"
+      }
   },
   "connections" : {
     "title" : "Connections",
