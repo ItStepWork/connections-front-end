@@ -105,7 +105,7 @@ export function HeaderBlock(props: any) {
                     ? <button title='Покинуть группу' className={styles.redButton} onClick={leaveGroup}><BiSolidUserCheck className={styles.btnPict + " " + styles.redPict} />{props.local.groups.leaveBtn}</button>
                     : <button title='Отменить Запрос' className={styles.yellowButton} onClick={leaveGroup}><TiCancel size={20} className={styles.btnPict + " " + styles.yellowPict} />{props.local.groups.cancelBtn}</button>
                 : <button title="Вступить в группу" className={styles.blueButton} onClick={joinGroup} ><AiOutlineUsergroupAdd className={styles.btnPict + " " + styles.bluePict} />{props.local.groups.joinBtn}</button>}
-              <button title="Пригласить в группу" className={styles.greenButton} onClick={() => setIsOpen(!isOpen)}><AiOutlinePlus />{props.local.groups.inviteBtn}</button>
+              {ifInGroup() && <button title="Пригласить в группу" className={styles.greenButton} onClick={() => setIsOpen(!isOpen)}><AiOutlinePlus />{props.local.groups.inviteBtn}</button>}
             </div>
             {ifAdmin() ? <button className={styles.editButton} onClick={() => openDialog()}><span><BsPencilFill className={styles.btnPict + " " + styles.redPict} /></span>{props.local.groups.editGroupBtn}</button> : <></>}
           </div>

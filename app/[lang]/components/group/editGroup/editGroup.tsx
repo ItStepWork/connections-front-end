@@ -47,6 +47,7 @@ export function EditGroup(props: any) {
         formData.append("id", props.group.id);
         formData.append("name", data.name);
         formData.append("audience", data.audience);
+        formData.append("email", data.email);
         formData.append("description", data.description);
         let result = await GroupService.updateGroup(formData);
         (result === null) ? notifyErrorServer() : notifySuccess(props.local.editGroup.toasts.ok);
@@ -83,6 +84,11 @@ export function EditGroup(props: any) {
                                 ))}
                             </select>
                         </div>
+                    </div>
+                    <div className="mb-3">
+                        <label className={styles.label}>Email</label>
+                        <br></br>
+                        <input type="email" className={styles.grInput} defaultValue={props.group.email} placeholder="Email..." {...register('email')} required></input>
                     </div>
                     <div className="mb-3">
                         <label className={styles.label}>{props.local.editGroup.description}</label>
