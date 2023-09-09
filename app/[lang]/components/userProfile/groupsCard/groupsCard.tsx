@@ -10,7 +10,7 @@ import { Card } from './card';
 import styles from './groupsCard.module.scss';
 
 export function GroupsCard(props: any) {
-  const [session, setSession] = useState<any>()
+  // const [session, setSession] = useState<any>()
   const [groups, setGroups] = useState([]);
   const [allGroups, setAllGroups] = useState([]);
   const [count, setCount] = useState(3);
@@ -18,18 +18,30 @@ export function GroupsCard(props: any) {
 
   useEffect(() => {
     getGroups();
-    getUserSession();
-    subscribe();
+    let socket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToGroupsUpdates`, ["client", props.session.user.accessToken]);
+    socket.addEventListener('message', (event) => {
+      getGroups();
+    });
+    let intervalId = setInterval(() => {
+      if (socket.OPEN) socket.send("ping");
+      else clearInterval(intervalId);
+    }, 30000);
+    return () => {
+      setInterval(() => { if (socket.OPEN) socket.close(); }, 1000)
+      clearInterval(intervalId);
+    };
+    // getUserSession();
+    // subscribe();
   }, []);
   const getGroups = async () => {
     let result = await GroupService.getGroups(props.userId);
     setGroups(result);
     setAllGroups(result);
   }
-  const getUserSession = async () => {
-    let result = await getSession();
-    setSession(result);
-  }
+  // const getUserSession = async () => {
+  //   let result = await getSession();
+  //   setSession(result);
+  // }
   const openDialog = () => {
     var dialog: any = document.getElementById("createGroupDialog")
     dialog?.showModal();
@@ -45,18 +57,18 @@ export function GroupsCard(props: any) {
       setGroups(searchGroups);
     }
   }
-  const subscribe = async () => {
-    let session = await getSession();
-    if (session != null) {
-      let socket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToGroupsUpdates`, ["client", session.user.accessToken]);
-      socket.addEventListener('message', (event) => {
-        getGroups();
-      });
-      setInterval(() => {
-        socket.send("ping");
-      }, 30000);
-    }
-  }
+  // const subscribe = async () => {
+  //   let session = await getSession();
+  //   if (session != null) {
+  //     let socket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToGroupsUpdates`, ["client", session.user.accessToken]);
+  //     socket.addEventListener('message', (event) => {
+  //       getGroups();
+  //     });
+  //     setInterval(() => {
+  //       socket.send("ping");
+  //     }, 30000);
+  //   }
+  // }
   return (
     <>
       <div className={styles.container}>
@@ -66,7 +78,7 @@ export function GroupsCard(props: any) {
             <h2>Группы</h2>
             <div className={styles.counter}>{groups.length}</div>
           </div>
-          {session?.user?.id === props.userId &&
+          {props.session?.user?.id === props.userId &&
             <button className={styles.button} onClick={openDialog} >
               <AiOutlinePlus className="dark:fill-blue" size={35}></AiOutlinePlus>
             </button>}
@@ -81,7 +93,7 @@ export function GroupsCard(props: any) {
           <div className={styles.cards}>
             {groups.map((group: any, index) => {
               if (index <= count)
-                return (<Card key={group.id + Object.entries(group.users).length} group={group} getGroups={getGroups} session={session}></Card>)
+                return (<Card key={group.id + Object.entries(group.users).length} group={group} getGroups={getGroups} session={props.session}></Card>)
             })}
           </div>
           <button className={styles.buttonLoadMore} onClick={() => setCount(count + 4)}>Загрузить ещё</button>
