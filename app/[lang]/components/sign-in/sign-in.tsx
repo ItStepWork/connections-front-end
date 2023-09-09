@@ -11,8 +11,8 @@ export const SignIn = ({local} : {local : any}, props : any) => {
 
   const router = useRouter();
   const { fetchUser } = useStore((state) => state)
-  const notifyLogin = () => toast.success("Успешный вход!",{});
-  const notifyError = () => toast.error("Вход не выполнен!",{});
+  const notifyLogin = () => toast.success(local.signIn.toasts.success,{});
+  const notifyError = () => toast.error(local.signIn.toasts.error,{});
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();

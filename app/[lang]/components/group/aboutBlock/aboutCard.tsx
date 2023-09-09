@@ -35,7 +35,7 @@ export const AboutCard = (props: any) => {
           <div className={styles.icon}>
             <BsEnvelope size={18} />
           </div>
-          <p>Почта: <span>{email}</span></p>
+          <p>Почта: <span>{props.group.email}</span></p>
         </div>
       </div>
     </>

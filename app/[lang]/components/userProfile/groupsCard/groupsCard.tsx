@@ -15,6 +15,7 @@ export function GroupsCard(props: any) {
   const [allGroups, setAllGroups] = useState([]);
   const [count, setCount] = useState(3);
   const [search, setSearch] = useState("");
+
   useEffect(() => {
     getGroups();
     getUserSession();
@@ -62,7 +63,7 @@ export function GroupsCard(props: any) {
 
         <div className={styles.header}>
           <div className={styles.groups}>
-            <h2>Сообщества</h2>
+            <h2>Группы</h2>
             <div className={styles.counter}>{groups.length}</div>
           </div>
           {session?.user?.id === props.userId &&

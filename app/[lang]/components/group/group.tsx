@@ -10,7 +10,6 @@ import { HeaderBlock } from './headerBlock/headerBlock';
 import Photos from './photos/page';
 import { PostsCard } from './postsCard/postsCard';
 import styles from './styles.module.scss';
-import { randomInt } from 'crypto';
 
 export default function Group(props: any) {
     const [id, setId] = useState(0)
@@ -95,7 +94,7 @@ export default function Group(props: any) {
                 <div className={styles.container}>
                     {group
                         ? <div className='gap-5'>
-                            < HeaderBlock groupSocket={groupSocket} session={session} group={group} usersRequests={usersRequests} members={membersFriends} getGroup={getGroup} getUsers={getUsers} component={component} setComponent={setComponent} />
+                            < HeaderBlock groupSocket={groupSocket} session={session} group={group} usersRequests={usersRequests} members={membersFriends} getGroup={getGroup} getUsers={getUsers} component={component} setComponent={setComponent} local={props.local} />
                             {changeComponent()}
                         </div>
                         : <>Loading...</>

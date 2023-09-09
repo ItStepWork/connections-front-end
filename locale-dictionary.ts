@@ -1,6 +1,11 @@
-import { Locale, i18n } from './i18n.config';
+import { Dict, Locale, i18n } from './i18n.config';
 
-const dictionaries = {
+interface D {
+  ua: () => Promise<Dict>,
+  en: () => Promise<Dict>,
+}
+
+const dictionaries:D = {
   ua: () => import('./dictionaries/ua.json').then(module => module.default),
   en: () => import('./dictionaries/en.json').then(module => module.default),
 }
