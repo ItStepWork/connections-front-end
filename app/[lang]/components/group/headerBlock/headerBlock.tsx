@@ -44,7 +44,7 @@ export function HeaderBlock(props: any) {
     else notifyError("Wrong file type");
   }
   let ifInGroup = () => {
-    let find = Object.entries(props.group.users).find(([key, value]) => key === props.session?.user.id);
+    let find = Object.entries(props.group.users).find(([key, value]) => key === props.session?.user.id && value == true);
     if (find === undefined) return false;
     else return true;
   };
@@ -159,7 +159,7 @@ export function HeaderBlock(props: any) {
         <Window name={props.group.name} isOpen={isOpen} setIsOpen={setIsOpen}>
           <div className='flex h-5/6 justify-center items-end'>
             {/* <FooterBlock friendId={user.id} /> */}
-            <FriendsBlock group={props.group}></FriendsBlock>
+            <FriendsBlock group={props.group} friendsForInvitation={props.friendsForInvitation} getFriendsForInvitation={props.getFriendsForInvitation}></FriendsBlock>
           </div>
         </Window>
 

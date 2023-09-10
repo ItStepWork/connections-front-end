@@ -10,25 +10,57 @@ import { HeaderBlock } from './headerBlock/headerBlock';
 import Photos from './photos/page';
 import { PostsCard } from './postsCard/postsCard';
 import styles from './styles.module.scss';
+import { getDictionary } from '../../../../locale-dictionary';
 
-export default function Group(props: any) {
+export function GroupPage(props: any) {
     const [id, setId] = useState(0)
     const [groupSocket, setGroupSocket] = useState<WebSocket>()
     const [component, setComponent] = useState("about");
     const [usersRequests, setUsersRequests] = useState<any[]>([])
     const [membersFriends, setMembersFriends] = useState<any[]>([])
     const [group, setGroup] = useState<any>(null);
-    const [session, setSession] = useState<any>()
+    const [friendsForInvitation, setFriendsForInvitation] = useState<any>()
     const [photos, setPhotos] = useState<any[]>([]);
-    let getUserSession = async () => {
-        const result = await getSession();
-        setSession(result);
-    }
+    // let getUserSession = async () => {
+    //     const result = await getSession();
+    //     setSession(result);
+    // }
     useEffect(() => {
         getData();
-        getUserSession();
+        // getUserSession();
         getPhotos();
-        subscribe();
+        // subscribe();
+        let grpSocket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToGroupUpdates?id=${props.id}`, ["client", props.session.user.accessToken]);
+        let friendSocket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToFriendsUpdates`, ["client", props.session.user.accessToken]);
+        grpSocket.addEventListener('message', async (event) => {
+            await getUsers()
+            await getGroup();
+            // getUserSession();
+            await getPhotos();
+
+        });
+        friendSocket.addEventListener('message', async (event) => {
+            await getUsers();
+            await getGroup()
+            // getUserSession();
+            // getPhotos();
+        });
+        let grpIntervalId = setInterval(() => {
+            if (grpSocket.OPEN) grpSocket.send("ping");
+            else clearInterval(grpIntervalId);
+        }, 30000);
+        let frndIntervalId = setInterval(() => {
+            if (friendSocket.OPEN) friendSocket.send("ping");
+            else clearInterval(frndIntervalId);
+        }, 30000);
+        return () => {
+            setInterval(() => {
+                if (grpSocket.OPEN) grpSocket.close();
+                if (friendSocket.OPEN) friendSocket.close();
+            }, 1000)
+            clearInterval(grpIntervalId);
+            clearInterval(frndIntervalId);
+        };
     }, []);
     const getData = async () => {
         let result = await GroupService.getGroup(props.id);
@@ -37,6 +69,8 @@ export default function Group(props: any) {
         await setUsersRequests(result2);
         let result3 = await GroupService.getFriendsInGroup(props.id);
         setMembersFriends(result3);
+        let result4 = await GroupService.getFriendsForInvitation(props.id);
+        setFriendsForInvitation(result4);
     }
     const getGroup = async () => {
         let result = await GroupService.getGroup(props.id);
@@ -50,30 +84,15 @@ export default function Group(props: any) {
         let result = await GroupService.getFriendsInGroup(props.id);
         setMembersFriends(result);
     }
+    const getFriendsForInvitation = async () => {
+        let result = await GroupService.getFriendsForInvitation(props.id);
+        setFriendsForInvitation(result);
+    }
     const getUsers = async () => {
         await getUsersRequests();
         await getFriendsInGroup();
+        await getFriendsForInvitation();
         setId(Math.random())
-    }
-    const subscribe = async () => {
-        let session = await getSession();
-        if (session != null) {
-            let grpSocket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToGroupUpdates?id=${props.id}`, ["client", session.user.accessToken]);
-            setGroupSocket(grpSocket);
-            grpSocket.addEventListener('message', (event) => {
-                getUsers();
-                getGroup();
-            });
-            let friendSocket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToFriendsUpdates`, ["client", session.user.accessToken]);
-            friendSocket.addEventListener('message', (event) => {
-                getUsers();
-                getGroup();
-            });
-            setInterval(() => {
-                friendSocket.send("ping");
-                grpSocket.send("ping");
-            }, 30000);
-        }
     }
 
     const getPhotos = async () => {
@@ -81,11 +100,11 @@ export default function Group(props: any) {
         setPhotos(result2);
     }
     const changeComponent = () => {
-        if (component === "members") return (<ConnectionsCard key={"members" + membersFriends.length + id} isRequests={false} session={session} users={membersFriends} group={group} getGroup={getGroup} getUsers={getUsers} local={props.local}/>)
-        else if (component === "requests") return (<ConnectionsCard key={"requests" + usersRequests.length + id} isRequests={true} session={session} users={usersRequests} group={group} getGroup={getGroup} getUsers={getUsers} local={props.local}/>)
-        else if (component === "about") return (<AboutCard group={group} members={Object.entries(membersFriends).length} local={props.local}/>)
+        if (component === "members") return (<ConnectionsCard key={"members" + membersFriends.length + id} isRequests={false} session={props.session} users={membersFriends} group={group} getGroup={getGroup} getUsers={getUsers} local={props.local} />)
+        else if (component === "requests") return (<ConnectionsCard key={"requests" + usersRequests.length + id} isRequests={true} session={props.session} users={usersRequests} group={group} getGroup={getGroup} getUsers={getUsers} local={props.local} />)
+        else if (component === "about") return (<AboutCard group={group} members={Object.entries(membersFriends).length} local={props.local} />)
         else if (component === "posts") return (<PostsCard local={props.local} />)
-        else if (component === "photo") return (<Photos group={group} session={session} getPhotos={getPhotos} photos={photos} local={props.local}/>)
+        else if (component === "photo") return (<Photos group={group} session={props.session} getPhotos={getPhotos} photos={photos} local={props.local} />)
         else return (<> "Блядська рука кремля"</>)
     }
     return (
@@ -94,13 +113,29 @@ export default function Group(props: any) {
                 <div className={styles.container}>
                     {group
                         ? <div className='gap-5'>
-                            < HeaderBlock groupSocket={groupSocket} session={session} group={group} usersRequests={usersRequests} members={membersFriends} getGroup={getGroup} getUsers={getUsers} component={component} setComponent={setComponent} local={props.local} />
+                            < HeaderBlock groupSocket={groupSocket} session={props.session} group={group} usersRequests={usersRequests} members={membersFriends}
+                                getGroup={getGroup} getUsers={getUsers} component={component} setComponent={setComponent} local={props.local} friendsForInvitation={friendsForInvitation} getFriendsForInvitation={getFriendsForInvitation} />
                             {changeComponent()}
                         </div>
                         : <>Loading...</>
                     }
                 </div>
             </main>
+        </>
+    )
+}
+export default function Group(props: any) {
+    const [session, setSession] = useState<any>()
+    const getUserSession = async () => {
+        const result = await getSession();
+        setSession(result);
+    }
+    useEffect(() => {
+        getUserSession();
+    }, [])
+    return (
+        <>
+            {session && <GroupPage session={session} local={props.local} id={props.id} />}
         </>
     )
 }

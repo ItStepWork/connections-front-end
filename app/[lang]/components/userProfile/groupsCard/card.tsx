@@ -13,7 +13,6 @@ export const Card = (props: any) => {
   const [users, setUsers] = useState<any[]>([])
   useEffect(() => {
     getUsers();
-    // subscribe();
 
   }, []);
   const notifyErrorServer = () => toast.warning("Ошибка сервера!", {});
@@ -49,18 +48,6 @@ export const Card = (props: any) => {
     if (props.group.adminId === props.session?.user.id) return true;
     else return false;
   };
-  // const subscribe = async () => {
-  //   if (props.session != null) {
-  //     let socket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToGroupUpdates?id=${props.group.id}`, ["client", props.session.user.accessToken]);
-  //     socket.addEventListener('message', (event) => {
-  //       getUsers();
-  //       props.getGroups();
-  //     });
-  //     setInterval(() => {
-  //       socket.send("ping");
-  //     }, 30000);
-  //   }
-  // }
   return (
     <>
       <div className={styles.container}>

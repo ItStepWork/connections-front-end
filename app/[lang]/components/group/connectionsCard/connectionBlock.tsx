@@ -77,7 +77,7 @@ export const ConnectionBlock = (props: any) => {
             <button title="Відправити повідомлення" className={styles.button_blue_BG} onClick={() => { props.setUser(props.user); props.setIsOpen(true); }}><BsSendPlus size={26} /></button>
             {props.user.friendStatus === FriendStatus.Confirmed ? <button title="Видалити з друзів" className={styles.button_red_BG} onClick={() => removeFriend()}><AiOutlineUserDelete size={26} /></button>
               : props.user.friendStatus === FriendStatus.Unconfirmed ? <button title="Підтвердити запит" className={styles.yellowButton} onClick={() => confirmFriend()}><MdSentimentSatisfiedAlt size={26} /></button>
-                : props.user.friendStatus === FriendStatus.Waiting ? <button title="Запит відправлено" className={styles.yellowButton}><BiTimeFive size={26} /></button>
+                : props.user.friendStatus === FriendStatus.Waiting ? <button title="Запит відправлено" className={styles.yellowButton} onClick={() => removeFriend()}><BiTimeFive size={26} /></button>
                   : props.user.friendStatus === FriendStatus.Other ? <button title="Додати до друзів" className={styles.button_blue_BG} onClick={() => addFriend()}><GoPersonAdd size={26} /></button>
                     : <></>
             }

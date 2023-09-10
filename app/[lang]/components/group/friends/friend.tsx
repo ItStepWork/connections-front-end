@@ -16,11 +16,10 @@ interface IFriendProps {
   avatar: string;
   id: string
   groupId: string
-  getUsers: Function
 }
 
-export const Friend: FC<IFriendProps> = ({ friendStatus, firstName, lastName, work, avatar, id, groupId, getUsers }) => {
-  useEffect(() => { subscribe() }, [])
+export const Friend: FC<IFriendProps> = ({ friendStatus, firstName, lastName, work, avatar, id, groupId }) => {
+  // useEffect(() => { subscribe() }, [])
 
   if (firstName === null) firstName = 'ошибка загрузки';
   if (lastName === null) lastName = 'ошибка загрузки';
@@ -28,23 +27,7 @@ export const Friend: FC<IFriendProps> = ({ friendStatus, firstName, lastName, wo
   const invateFriend = async () => {
     await NotificationService.inviteToGroup(id, groupId)
   }
-  const subscribe = async () => {
-    let session = await getSession();
-    if (session != null) {
-      let groupSocket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToGroupUpdates?id=${groupId}`, ["client", session.user.accessToken]);
-      groupSocket.addEventListener('message', (event) => {
-        getUsers();
-      });
-      let friendSocket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToFriendsUpdates`, ["client", session.user.accessToken]);
-      friendSocket.addEventListener('message', (event) => {
-        getUsers();
-      });
-      setInterval(() => {
-        friendSocket.send("ping");
-        groupSocket.send("ping");
-      }, 30000);
-    }
-  }
+
   return (
     <>
       <div className={styles.followerContainer}>

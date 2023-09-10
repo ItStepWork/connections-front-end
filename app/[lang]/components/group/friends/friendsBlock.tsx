@@ -7,38 +7,19 @@ import { FiSearch } from "react-icons/fi"
 
 export const FriendsBlock = (props: any) => {
 
-  const [users, setUsers] = useState<any[]>([]);
-  const [allUsers, setAllUsers] = useState<any[]>([]);
   const [elements, setElements] = useState(5);
   const [search, setSearch] = useState("");
 
-  useEffect(() => {
-    getUsers();
-  }, []);
-
-  const getUsers = async () => {
-    let session = await getSession();
-    if (session != null) {
-      let result = await GroupService.getFriendsForInvitation(props.group.id);
-      setUsers(result);
-      setAllUsers(result);
-    }
-  }
 
   const loadMore = () => {
     setElements(elements + 5);
   }
   const changeSearch = (event: any) => {
     setSearch(event.target.value);
-    if (event.target.value === "") {
-      setUsers(allUsers);
-    }
-    else {
-      let search = event.target.value.toLowerCase();
-      let searchUsers = allUsers.filter((u: any) => u.firstName?.toLowerCase().includes(search) || u.lastName?.toLowerCase().includes(search)
-        || search.toLowerCase() === u.firstName.toLowerCase() + " " + u.lastName.toLowerCase() || search.toLowerCase() === u.lastName.toLowerCase() + " " + u.firstName.toLowerCase());
-      setUsers(searchUsers);
-    }
+  }
+  const filter = (array: any[]) => {
+    return array.filter((u: any) => u.firstName?.toLowerCase().includes(search) || u.lastName?.toLowerCase().includes(search)
+      || search.toLowerCase() === u.firstName.toLowerCase() + " " + u.lastName.toLowerCase() || search.toLowerCase() === u.lastName.toLowerCase() + " " + u.firstName.toLowerCase());
   }
   return (
     <>
@@ -53,9 +34,9 @@ export const FriendsBlock = (props: any) => {
         <div className={styles.followersBlock}>
 
           {
-            users.map((user: any, index) => {
+            props.friendsForInvitation && filter(props.friendsForInvitation).map((user: any, index: number) => {
               if (index < elements) {
-                return (<Friend key={user.id} friendStatus={user.friendStatus} firstName={user.firstName} lastName={user.lastName} work={user.work} avatar={user.avatarUrl} id={user.id} groupId={props.group.id} getUsers={getUsers} />)
+                return (<Friend key={user.id} friendStatus={user.friendStatus} firstName={user.firstName} lastName={user.lastName} work={user.work} avatar={user.avatarUrl} id={user.id} groupId={props.group.id} />)
               }
             })
           }
