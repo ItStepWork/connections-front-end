@@ -9,6 +9,7 @@ import styles from './styles.module.scss';
 export default function Posts(props: any) {
 
   return (
+    props.local &&
     <>
       <div>
           <div className={styles.storiesBlock}>
