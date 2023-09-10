@@ -66,7 +66,7 @@ export const ConnectionsCard = (props: any) => {
         {friendsFilter.map((user: any, index: number) => {
           if (index < count) return <ConnectionBlock key={user.id} myId={props.myId} user={user} setSelectedUser={setSelectedUser} setIsOpen={setIsOpen} />
         })}
-        <button className={styles.buttonLoadMore} onClick={loadMore}>Загрузить еще</button>
+        {friendsFilter.length > count && <button className={styles.buttonLoadMore} onClick={loadMore}>Загрузить еще</button>}
       </div >
       {selectedUser &&
         <Window name={selectedUser.firstName + " " + selectedUser.lastName} isOpen={isOpen} setIsOpen={setIsOpen}>
