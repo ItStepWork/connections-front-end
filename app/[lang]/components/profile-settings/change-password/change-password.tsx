@@ -59,7 +59,7 @@ export const ChangePassword = ({local} : {local : any}) => {
             </div>
           </div>
           <div className={styles.formButton}>
-            <button type="submit" className={styles.button}>Обновить пароль</button>
+            <button type="submit" className={styles.button}>{local.button.updatePass}</button>
           </div>
         </form>
       </section>

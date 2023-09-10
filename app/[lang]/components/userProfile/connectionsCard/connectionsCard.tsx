@@ -56,17 +56,17 @@ export const ConnectionsCard = (props: any) => {
   return (
     <>
       <div className={styles.container}>
-        <h2>Связи</h2>
-        <div className="flex my-3">
+        <h2>{props.local.profile.connect.title}</h2>
+        <div className={styles.inputContainer}>
           <span className={styles.iconSearch}>
             <FiSearch size={20} />
           </span>
-          <input type="text" className={styles.inputSearch} placeholder="Введите имя, фамилию или емейл" onChange={(e) => { changeSearch(e) }} value={search} />
+          <input type="text" className={styles.inputSearch} placeholder={props.local.search.searchNameOrEmail} onChange={(e) => { changeSearch(e) }} value={search} />
         </div>
         {friendsFilter.map((user: any, index: number) => {
-          if (index < count) return <ConnectionBlock key={user.id} myId={props.myId} user={user} setSelectedUser={setSelectedUser} setIsOpen={setIsOpen} />
+          if (index < count) return <ConnectionBlock key={user.id} myId={props.myId} user={user} setSelectedUser={setSelectedUser} setIsOpen={setIsOpen} local={props.local}/>
         })}
-        {friendsFilter.length > count && <button className={styles.buttonLoadMore} onClick={loadMore}>Загрузить еще</button>}
+        {friendsFilter.length > count && <button className={styles.buttonLoadMore} onClick={loadMore}>{props.local.button.uploadMore}</button>}
       </div >
       {selectedUser &&
         <Window name={selectedUser.firstName + " " + selectedUser.lastName} isOpen={isOpen} setIsOpen={setIsOpen}>

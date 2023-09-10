@@ -35,13 +35,13 @@ export default function CreateAlbum(props: any) {
   return (
     <div>
       <button className={styles.button} onClick={() => { if (!isOpen) setIsOpen(true); }}>
-        <AiOutlinePlus />&nbsp; Создать альбом
+        <AiOutlinePlus />&nbsp; {props.local.gallery.createAlbum}
       </button>
 
       <div {...isOpen ? { className: styles.createAlbum + " visible z-50" } : { className: styles.createAlbum + " invisible z-50" }}>
         <div className={styles.createAlbumContainer}>
           <div className={styles.createAlbumHeader}>
-            <h2>Новый альбом</h2>
+            <h2>{props.local.gallery.newAlbum}</h2>
             <button onClick={() => setIsOpen(false)}>
               <IoMdClose size={26} className={styles.buttonClose} />
             </button>
@@ -52,7 +52,7 @@ export default function CreateAlbum(props: any) {
               <span className={styles.icon}>
                 <MdDriveFileRenameOutline size={20} className="fill-white" />
               </span>
-              <input type="text" className={styles.input} placeholder="Введите название" onChange={(e) => { setText(e.target.value); }} value={text} />
+              <input type="text" className={styles.input} placeholder={props.local.gallery.placeholder} onChange={(e) => { setText(e.target.value); }} value={text} />
 
               <span className={styles.iconGallery}>
                 <label className='cursor-pointer'>

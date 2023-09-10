@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { BsBriefcase, BsCalendar2Plus, BsFillPatchCheckFill, BsGeoAlt, BsPencilFill, BsThreeDots } from 'react-icons/bs';
+import { BsBriefcase, BsCalendar2Plus, BsFillPatchCheckFill, BsGeoAlt, BsPencilFill } from 'react-icons/bs';
 import { HiMiniPencilSquare } from 'react-icons/hi2';
 import { ComponentName } from '../../../../../enums/all.enum';
 import { UserService } from '../../../../../services/user.service';
@@ -111,33 +111,32 @@ export function UserCard(props: any) {
                     <h2>{user.firstName + ' ' + user.lastName}</h2>
                     <span><BsFillPatchCheckFill size={18} /></span>
                   </div>
-                  <p>? связей</p>
+                  <p>? {props.local.profile.friendsCount}</p>
                 </div>
               </div>
               <div className={styles.buttonBlock}>
-                <Link href='/settings' className={styles.buttonLink}><span><BsPencilFill size={15} /></span>Редактировать профиль</Link>
-                <button className={styles.button} onClick={() => { }}><BsThreeDots /></button>
+                <Link href='/settings' className={styles.buttonLink}><span><BsPencilFill size={15} /></span>{props.local.button.editProfile}</Link>
               </div>
 
             </div>
             <div className={styles.bottomInfo}>
               <p><span><BsBriefcase /></span>{user.work}</p>
               <p><span><BsGeoAlt /></span>{user.location}</p>
-              <p><span><BsCalendar2Plus /></span>Присоединился: {user.joined}</p>
+              <p><span><BsCalendar2Plus /></span>{props.local.profile.join} {user.joined}</p>
             </div>
           </div>
           <div className={styles.cardNav}>
             <div {...props.component === ComponentName.AboutMe ? { className: `${styles.counterLink}` } : { className: "" }} >
-              <button {...props.component === ComponentName.AboutMe ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent(ComponentName.AboutMe) }}>Обо мне</button>
+              <button {...props.component === ComponentName.AboutMe ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent(ComponentName.AboutMe) }}>{props.local.profile.about}</button>
             </div>
             <div {...props.component === ComponentName.Connections ? { className: `${styles.counterLink}` } : { className: "" }} >
-              <button {...props.component === ComponentName.Connections ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent(ComponentName.Connections) }}>Связи</button>
+              <button {...props.component === ComponentName.Connections ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent(ComponentName.Connections) }}>{props.local.profile.contacts}</button>
             </div>
             <div {...props.component === ComponentName.Groups ? { className: `${styles.counterLink}` } : { className: "" }} >
-              <button {...props.component === ComponentName.Groups ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent(ComponentName.Groups) }}>Сообщества</button>
+              <button {...props.component === ComponentName.Groups ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent(ComponentName.Groups) }}>{props.local.profile.groups}</button>
             </div>
             <div {...props.component === ComponentName.Gallery ? { className: `${styles.counterLink}` } : { className: "" }} >
-              <button {...props.component === ComponentName.Gallery ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent(ComponentName.Gallery) }}>Галерея</button>
+              <button {...props.component === ComponentName.Gallery ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent(ComponentName.Gallery) }}>{props.local.profile.gallery}</button>
             </div>
           </div>
         </div>

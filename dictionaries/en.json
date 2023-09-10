@@ -14,7 +14,8 @@
     "showAll" : "Show all",
     "publish" : "Publish",
     "cancel" : "Cancel",
-    "record" : "Record"
+    "record" : "Record",
+    "create" : "Create"
   },
   "copyright" : "All right reserved",
   "development" : "!!! In development !!!",
@@ -121,6 +122,22 @@
         "delete" : "Group deleted!"
       }
   },
+  "createGroup" : {
+    "title" : "Create group",
+    "name" : "Group name",
+    "image" : "Group image",
+    "type" : "Group type",
+    "description" : "Description",
+    "placeholderName" : "Group name here...",
+    "placeholderDesc" : "Your description here...",
+    "open" : "Public",
+    "closed" : "Private",
+    "toasts" : {
+      "format" : "Wrong image file! <jpg, jpeg, png> only !!!",
+      "ok" : "Group created !",
+      "error" : "Server Error !"
+    }
+  },
   "connections" : {
     "title" : "Connections",
     "confirmBtn" : "Confirm",
@@ -130,10 +147,28 @@
   },
   "profile" : {
     "friendsCount" : "Contacts",
-    "aboutMe" : "About me",
+    "about" : "About me",
     "contacts" : "Connections",
     "groups" : "Groups",
-    "gallery" : "Gallery"
+    "gallery" : "Gallery",
+    "join" : "Join",
+    "aboutMe" : {
+      "title" : "Profile information",
+      "overview" : "Overview",
+      "born" : "Born: ",
+      "status" : "Status: ",
+      "work" : "Work: ",
+      "live" : "Live: ",
+      "join" : "Join: "
+    },
+    "connect" : {
+      "title" : "Connections",
+      "delete" : "Delete",
+      "confirm" : "Confirm",
+      "cancel" : "Cancel",
+      "write" : "Write",
+      "beFriends" : "Be friends"
+    }
   },
   "signIn" : {
     "title" : "Sign In",
@@ -244,5 +279,19 @@
   "stories" : {
     "add" : "Add",
     "story" : "story"
+  },
+  "gallery" : {
+    "title" : "Gallery",
+    "photo" : "Photo",
+    "addPhoto" : "Add photo",
+    "album" : "Albums",
+    "action" : {
+      "toAvatar" : "Set to avatar",
+      "toBackground" : "Set to background",
+      "delete": "Delete"
+    },
+    "createAlbum" : "Create Album",
+    "newAlbum" : "New album",
+    "placeholder" : "Enter name..."
   }
 }

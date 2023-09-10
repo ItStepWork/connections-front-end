@@ -159,7 +159,7 @@ export function HeaderBlock(props: any) {
         <Window name={props.group.name} isOpen={isOpen} setIsOpen={setIsOpen}>
           <div className='flex h-5/6 justify-center items-end'>
             {/* <FooterBlock friendId={user.id} /> */}
-            <FriendsBlock group={props.group} friendsForInvitation={props.friendsForInvitation} getFriendsForInvitation={props.getFriendsForInvitation}></FriendsBlock>
+            <FriendsBlock group={props.group} friendsForInvitation={props.friendsForInvitation} getFriendsForInvitation={props.getFriendsForInvitation} local={props.local}></FriendsBlock>
           </div>
         </Window>
 

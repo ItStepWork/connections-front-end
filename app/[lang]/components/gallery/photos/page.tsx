@@ -37,7 +37,7 @@ export default function Photos(props: any) {
         <div>
           <label className={styles.addPhoto}>
             <MdOutlineAddAPhoto size={50} className="fill-button_blue_BG" />
-            <p className='text-center'>Добавить фото</p>
+            <p className='text-center'>{props.local.gallery.addPhoto}</p>
             <input type='file' className='hidden' onChange={change}></input>
           </label>
         </div>
@@ -46,7 +46,7 @@ export default function Photos(props: any) {
         return (
           <div key={index} className='relative'>
             <div className='absolute right-0 bottom-0'>
-              <PhotoAction get={props.get} photo={photo} albums={props.albums} />
+              <PhotoAction get={props.get} photo={photo} albums={props.albums} local={props.local}/>
             </div>
             <img className={styles.image} src={photo.url} onClick={() => { select(index) }} />
           </div>

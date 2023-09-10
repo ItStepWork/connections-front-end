@@ -2,8 +2,8 @@
 import { useState } from "react";
 import { BsPencilFill, BsXLg } from 'react-icons/bs';
 import { PiUserCircleBold, PiUserFocusBold } from 'react-icons/pi';
-import Select from '../select/page';
 import { GalleryService } from '../../../../../services/gallery.service';
+import Select from '../select/page';
 import styles from './styles.module.scss';
 
 export default function PhotoAction(props: any) {
@@ -38,10 +38,10 @@ export default function PhotoAction(props: any) {
             <div className={styles.dropMenu}>
               <Select albums={props.albums} selected={selected} setSelected={setSelected} photo={props.photo} setAlbum={setAlbum}/>
               {/* <a className={styles.action}  href={props.photo.url} download><BsDownload />&nbsp;Скачать</a> */}
-              <div className={styles.action} onClick={setAvatar}><PiUserCircleBold />&nbsp;Сделать аватаром</div>
-              <div className={styles.action} onClick={setBackground}><PiUserFocusBold />&nbsp;Сделать обложкой</div>
+              <div className={styles.action} onClick={setAvatar}><PiUserCircleBold />&nbsp;{props.local.gallery.action.toAvatar}</div>
+              <div className={styles.action} onClick={setBackground}><PiUserFocusBold />&nbsp;{props.local.gallery.action.toBackground}</div>
               <hr className={styles.hr} />
-              <div className={styles.actionDelete} onClick={removePhoto}><BsXLg />&nbsp;Удалить</div>
+              <div className={styles.actionDelete} onClick={removePhoto}><BsXLg />&nbsp;{props.local.gallery.action.delete}</div>
             </div>
           }
         </button>

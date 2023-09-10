@@ -12,11 +12,11 @@ export function CreateGroup(props: any) {
     const [avatar, setAvatar] = useState<any>(null);
     const options = [
         {
-            label: "Открытая",
+            label: props.local.createGroup.open,
             value: '0',
         },
         {
-            label: "Закрытая",
+            label: props.local.createGroup.closed,
             value: '1',
         },
     ];
@@ -24,9 +24,9 @@ export function CreateGroup(props: any) {
         var dialog: any = document.getElementById("createGroupDialog")
         dialog?.close();
     }
-    const notifyError = () => toast.error("Не верный формат файла!", {});
-    const notifyErrorServer = () => toast.error("Ошибка сервера!", {});
-    const notifySuccess = () => toast.success("Группа создана!", {});
+    const notifyError = () => toast.error(props.local.createGroup.toasts.format, {});
+    const notifyErrorServer = () => toast.error(props.local.createGroup.toasts.error, {});
+    const notifySuccess = () => toast.success(props.local.createGroup.toasts.ok, {});
     const { data: session, update } = useSession();
     const {
         register,
@@ -52,19 +52,19 @@ export function CreateGroup(props: any) {
         <>
             <form className={styles.dialogDiv} onSubmit={handleSubmit(onSubmit)}>
                 <div className={styles.dialogDivHeader}>
-                    <h2 className={styles.h2}>Создать группу</h2>
+                    <h2 className={styles.h2}>{props.local.createGroup.title}</h2>
                     <button type="button" className={styles.closeButton} onClick={closeDialog}>
                         <AiOutlineClose size={16}></AiOutlineClose>
                     </button>
                 </div>
                 <div className={styles.dialogDivBody}>
                     <div className="mb-3">
-                        <label className={styles.label}>Название группы</label>
+                        <label className={styles.label}>{props.local.createGroup.name}</label>
                         <br></br>
-                        <input type="text" className={styles.grInput} placeholder="Имя группы здесь..." {...register('name')} required></input>
+                        <input type="text" className={styles.grInput} placeholder={props.local.createGroup.placeholderName} {...register('name')} required></input>
                     </div>
                     <div className="mb-3 ">
-                        <label className={styles.label}>Изображение группы</label>
+                        <label className={styles.label}>{props.local.createGroup.image}</label>
                         <div className={styles.dialogDivHeader}>
                             <div className={styles.input_div}>
                                 <input className={styles.input} type="file" accept=".jpg, .jpeg, .png" {...register('file')} required onChange={(e: any) => { setAvatar(e.target.files[0]) }}></input>
@@ -77,7 +77,7 @@ export function CreateGroup(props: any) {
                             </div> */}
                         </div>
                     </div>
-                    <label className={styles.label}>Тип группы</label>
+                    <label className={styles.label}>{props.local.createGroup.type}</label>
                     <div className={styles.checkDiv}>
                         <select
                             className={styles.select}
@@ -95,12 +95,12 @@ export function CreateGroup(props: any) {
                   <input type="text" className={styles.grInput} placeholder="Add friend name here"></input>
                 </div> */}
                     <div className="mb-3 mt-3">
-                        <label className={styles.label}>Описание группы </label>
-                        <textarea className={styles.grInput} rows={2} placeholder="Ваше описание здесь..." {...register('description')} required></textarea>
+                        <label className={styles.label}>{props.local.createGroup.description}</label>
+                        <textarea className={styles.grInput} rows={2} placeholder={props.local.createGroup.placeholderDesc} {...register('description')} required></textarea>
                     </div>
                 </div>
                 <div className={styles.dialogDivFooter}>
-                    <button type="submit" className={styles.greenButton}>Создать</button>
+                    <button type="submit" className={styles.greenButton}>{props.local.button.create}</button>
                 </div>
             </form>
 

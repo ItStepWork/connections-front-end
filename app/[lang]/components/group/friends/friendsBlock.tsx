@@ -1,9 +1,9 @@
+import { getSession } from "next-auth/react"
 import { useEffect, useState } from "react"
+import { FiSearch } from "react-icons/fi"
+import { GroupService } from "../../../../../services/group.service"
 import { Friend } from "./friend"
 import styles from "./friends.module.scss"
-import { getSession } from "next-auth/react"
-import { GroupService } from "../../../../../services/group.service"
-import { FiSearch } from "react-icons/fi"
 
 export const FriendsBlock = (props: any) => {
 
@@ -25,11 +25,11 @@ export const FriendsBlock = (props: any) => {
     <>
       <div className={styles.container}>
         {/* <h2>На кого подписаться</h2> */}
-        <div className="flex w-full pb-3">
+        <div className={styles.inputContainer}>
           <span className={styles.iconSearch}>
             <FiSearch size={20} />
           </span>
-          <input type="text" className={styles.inputSearch} placeholder="Введите имя или фамилию" onChange={(e) => { changeSearch(e) }} value={search} />
+          <input type="text" className={styles.inputSearch} placeholder={props.local.search.searchFullName} onChange={(e) => { changeSearch(e) }} value={search} />
         </div>
         <div className={styles.followersBlock}>
 
@@ -42,7 +42,7 @@ export const FriendsBlock = (props: any) => {
           }
         </div>
         <div className="flex flex-grow items-end">
-          <button className={styles.buttonLoadMore} onClick={() => loadMore()}>Загрузить еще</button>
+          <button className={styles.buttonLoadMore} onClick={() => loadMore()}>{props.local.button.uploadMore}</button>
         </div>
 
       </div>

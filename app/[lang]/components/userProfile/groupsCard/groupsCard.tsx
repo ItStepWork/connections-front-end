@@ -1,6 +1,5 @@
 'use client'
 
-import { getSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { FiSearch } from 'react-icons/fi';
@@ -75,7 +74,7 @@ export function GroupsCard(props: any) {
 
         <div className={styles.header}>
           <div className={styles.groups}>
-            <h2>Группы</h2>
+            <h2>{props.local.profile.groups}</h2>
             <div className={styles.counter}>{groups.length}</div>
           </div>
           {props.session?.user?.id === props.userId &&
@@ -83,11 +82,11 @@ export function GroupsCard(props: any) {
               <AiOutlinePlus className="dark:fill-blue" size={35}></AiOutlinePlus>
             </button>}
         </div>
-        <div className="flex mb-6">
+        <div className={styles.inputContainer}>
           <span className={styles.iconSearch}>
             <FiSearch size={20} />
           </span>
-          <input type="text" className={styles.inputSearch} placeholder="Введите название группы" onChange={(e) => { changeSearch(e) }} value={search} />
+          <input type="text" className={styles.inputSearch} placeholder={props.local.search.searchGroup} onChange={(e) => { changeSearch(e) }} value={search} />
         </div>
         <div className={styles.cardsContainer}>
           <div className={styles.cards}>
@@ -96,11 +95,11 @@ export function GroupsCard(props: any) {
                 return (<Card key={group.id + Object.entries(group.users).length} group={group} getGroups={getGroups} session={props.session}></Card>)
             })}
           </div>
-          <button className={styles.buttonLoadMore} onClick={() => setCount(count + 4)}>Загрузить ещё</button>
+          <button className={styles.buttonLoadMore} onClick={() => setCount(count + 4)}>{props.local.button.uploadMore}</button>
         </div>
       </div>
       <dialog className={styles.dialog} id='createGroupDialog'>
-        {<CreateGroup getGroups={getGroups}></CreateGroup>}
+        {<CreateGroup getGroups={getGroups} local={props.local}></CreateGroup>}
       </dialog>
 
     </>

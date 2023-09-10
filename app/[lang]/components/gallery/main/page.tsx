@@ -33,7 +33,7 @@ export default function Gallery(props: any) {
 
   const render = () => {
     if(component === "photos"){
-      return (<Photos myId={props.myId} userId={props.userId} get={get} photos={photos} albums={albums}/>);
+      return (<Photos myId={props.myId} userId={props.userId} get={get} photos={photos} albums={albums} local={props.local}/>);
     }
     else if(component === "albums"){
       return (<Albums myId={props.myId} userId={props.userId} albums={albums}  get={get}/>);
@@ -46,15 +46,15 @@ export default function Gallery(props: any) {
   return (
     <div className={styles.container}>
       <div className="flex justify-between items-center">
-        <h2>Галерея</h2>
-        {props.userId === props.myId?(<CreateAlbum get={get}/>):(<></>)}
+        <h2>{props.local.gallery.title}</h2>
+        {props.userId === props.myId?(<CreateAlbum get={get} local={props.local}/>):(<></>)}
       </div>
       <div className={styles.nav}>
         <div {...component === "photos" ? { className: `${styles.counterLink}` } : { className: "" }} >
-          <button {...component === "photos" ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { setComponent("photos") }}>Фотографии</button>
+          <button {...component === "photos" ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { setComponent("photos") }}>{props.local.gallery.photo}</button>
         </div>
         <div {...component === "albums" ? { className: `${styles.counterLink}` } : { className: "" }} >
-          <button {...component === "albums" ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { setComponent("albums") }}>Альбомы</button>
+          <button {...component === "albums" ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { setComponent("albums") }}>{props.local.gallery.album}</button>
         </div>
       </div>
       {render()}

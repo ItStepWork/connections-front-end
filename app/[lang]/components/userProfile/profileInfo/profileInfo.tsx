@@ -5,41 +5,41 @@ import { useStore } from '../../../../../stores/userDataStore';
 import styles from './profileInfo.module.scss';
 
 
-export const ProfileInfo = () => {
+export const ProfileInfo = (props: any) => {
 
   const [aboutMe, born, work, familyStatus, location, joined, email] = useStore ((state) => [state.aboutMe, state.born, state.work, state.familyStatus, state.location, state.joined, state.email])
   return (
     <>
       <div className={styles.container}>
-        <h2>Информация Профиля</h2>
+        <h2>{props.local.profile.aboutMe.title}</h2>
         <div className={styles.aboutMe}>
-          <h3>Oбзор</h3>
+          <h3>{props.local.profile.aboutMe.overview}</h3>
           <p>{aboutMe}</p>
         </div>
         <div className={styles.dataContainer}>
           <div className={styles.cont}>
             <BsCalendarDate size={18} />
-            <p>День рождения<span>{born}</span></p>
+            <p>{props.local.profile.aboutMe.born}<span>{born}</span></p>
           </div>
           <div className={styles.cont}>
             <BsHeart size={18} />
-            <p>Статус: <span>{familyStatus}</span></p>
+            <p>{props.local.profile.aboutMe.status}<span>{familyStatus}</span></p>
           </div>
         </div>
         <div className={styles.dataContainer}>
           <div className={styles.cont}>
             <BsBriefcase size={18} />
-            <p>Работаю: <span>{work}</span></p>
+            <p>{props.local.profile.aboutMe.work}<span>{work}</span></p>
           </div>
           <div className={styles.cont}>
             <BsGeoAlt size={18} />
-            <p>Живу в: <span>{location}</span></p>
+            <p>{props.local.profile.aboutMe.live}<span>{location}</span></p>
           </div>
         </div>
         <div className={styles.dataContainer}>
           <div className={styles.cont}>
             <BsCalendar2Plus size={16} />
-            <p>Присоединился: <span>{joined} </span></p>
+            <p>{props.local.profile.aboutMe.join}<span>{joined} </span></p>
           </div>
           <div className={styles.cont}>
             <AiOutlineMail size={18} />

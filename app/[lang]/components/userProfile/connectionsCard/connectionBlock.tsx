@@ -35,12 +35,12 @@ export const ConnectionBlock = (props: any) => {
         </Link>
         {(props.myId !== props.user.id) &&
           <div className={styles.buttonsContainer}>
-            {props.user.friendStatus === FriendStatus.Confirmed ? (<button className={styles.button_red_BG} onClick={removeFriend}>Удалить</button>) : (<></>)}
-            {props.user.friendStatus === FriendStatus.Unconfirmed ? (<button className={styles.button_green_BG} onClick={confirmFriend}>Подтвердить</button>) : (<></>)}
-            {props.user.friendStatus === FriendStatus.Unconfirmed ? (<button className={styles.button_red_BG} onClick={removeFriend}>Отменить</button>) : (<></>)}
-            {props.user.friendStatus === FriendStatus.Waiting ? (<button className={styles.button_red_BG} onClick={removeFriend}>Отменить</button>) : (<></>)}
-            {props.user.friendStatus === FriendStatus.Other ? (<button className={styles.button_green_BG} onClick={addFriend}>Дружить</button>) : (<></>)}
-            <button className={styles.button_blue_BG} onClick={() => { props.setSelectedUser(props.user); props.setIsOpen(true); }}>Написать</button>
+            {props.user.friendStatus === FriendStatus.Confirmed ? (<button className={styles.button_red_BG} onClick={removeFriend}>{props.local.profile.connect.delete}</button>) : (<></>)}
+            {props.user.friendStatus === FriendStatus.Unconfirmed ? (<button className={styles.button_green_BG} onClick={confirmFriend}>{props.local.profile.connect.confirm}</button>) : (<></>)}
+            {props.user.friendStatus === FriendStatus.Unconfirmed ? (<button className={styles.button_red_BG} onClick={removeFriend}>{props.local.profile.connect.cancel}</button>) : (<></>)}
+            {props.user.friendStatus === FriendStatus.Waiting ? (<button className={styles.button_red_BG} onClick={removeFriend}>{props.local.profile.connect.cancel}</button>) : (<></>)}
+            {props.user.friendStatus === FriendStatus.Other ? (<button className={styles.button_green_BG} onClick={addFriend}>{props.local.profile.connect.beFriends}</button>) : (<></>)}
+            <button className={styles.button_blue_BG} onClick={() => { props.setSelectedUser(props.user); props.setIsOpen(true); }}>{props.local.profile.connect.write}</button>
           </div>
         }
 
