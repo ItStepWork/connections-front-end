@@ -8,9 +8,12 @@
 		@apply text-[#0f6fec] w-full mt-6 bg-button_blue_opacity transition-all duration-300 hover:bg-blue-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center dark:bg-button_blue_opacity dark:hover:bg-blue-700 dark:focus:ring-blue-800;
 	}
 }
-.inputSearch {
-	@apply rounded-none outline-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-dark_background dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
-}
-.iconSearch {
-	@apply inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600;
+.inputContainer {
+	@apply flex mb-6;
+	.inputSearch {
+		@apply rounded-none outline-none rounded-r-lg transition-all duration-700 bg-light_background border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-light_border p-2.5  dark:bg-dark_background dark:border-dark_border dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+	}
+	.iconSearch {
+		@apply inline-flex items-center px-3 text-sm text-gray-900 bg-light_background border border-r-0 border-light_border rounded-l-md dark:bg-dark_background dark:text-dark_text_gray dark:border-dark_border;
+	}
 }

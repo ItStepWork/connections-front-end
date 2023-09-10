@@ -40,7 +40,7 @@ export default function Photos(props: any) {
         <div>
           <label className={styles.addPhoto}>
             <MdOutlineAddAPhoto size={50} className="fill-button_blue_BG" />
-            <p className='text-center'>Добавить фото</p>
+            <p className='text-center'>{props.local.groups.addPhoto}</p>
             <input type='file' className='hidden' onChange={change}></input>
           </label>
         </div>

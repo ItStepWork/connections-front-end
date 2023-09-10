@@ -3,21 +3,19 @@ import { FiSearch } from 'react-icons/fi';
 import { PostPanel } from '../../main/postPanel/postPanel';
 import styles from './postsCard.module.scss';
 
-export const PostsCard = () => {
+export const PostsCard = (props : any) => {
   return (
     <>
-      <PostPanel />
+      <PostPanel local={props.local} />
       <div className={styles.container}>
-        <div className="flex mb-6">
+        <div className={styles.inputContainer}>
           <span className={styles.iconSearch}>
             <FiSearch size={20} />
           </span>
           <input type="text" className={styles.inputSearch} placeholder="Введите название" />
         </div>
-        Здесь будут посты наверняка
+        {props.local.development}
       </div >
-
-
     </>
   )
 }

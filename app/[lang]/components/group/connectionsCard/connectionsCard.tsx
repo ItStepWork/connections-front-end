@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import FooterBlock from '../../messaging/footerBlock/page';
 import Window from '../../messaging/window/page';
@@ -27,17 +27,17 @@ export const ConnectionsCard = (props: any) => {
   return (
     <>
       <div className={styles.container}>
-        <div className="flex mb-6">
+        <div className={styles.inputContainer}>
           <span className={styles.iconSearch}>
             <FiSearch size={20} />
           </span>
-          <input type="text" className={styles.inputSearch} placeholder="Введите имя или фамилию" onChange={(e) => { changeSearch(e) }} value={search} />
+          <input type="text" className={styles.inputSearch} placeholder={props.local.search.searchFullName} onChange={(e) => { changeSearch(e) }} value={search} />
         </div>
         {users?.map((user: any, index: any) => {
           return (<ConnectionBlock isRequests={props.isRequests} setUser={setUser} setIsOpen={setIsOpen} key={user.id + user.friendStatus} user={user} group={props.group} session={props.session}
             getGroup={props.getGroup} getUsers={props.getUsers} />)
         })}
-        <button className={styles.buttonLoadMore} onClick={() => setCount(count + 4)}>Загрузить еще</button>
+        <button className={styles.buttonLoadMore} onClick={() => setCount(count + 4)}>{props.local.button.uploadMore}</button>
       </div >
       {user
         && <Window name={user.firstName + " " + user.lastName} isOpen={isOpen} setIsOpen={setIsOpen}>

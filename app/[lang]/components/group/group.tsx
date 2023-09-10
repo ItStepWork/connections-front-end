@@ -81,11 +81,11 @@ export default function Group(props: any) {
         setPhotos(result2);
     }
     const changeComponent = () => {
-        if (component === "members") return (<ConnectionsCard key={"members" + membersFriends.length + id} isRequests={false} session={session} users={membersFriends} group={group} getGroup={getGroup} getUsers={getUsers} />)
-        else if (component === "requests") return (<ConnectionsCard key={"requests" + usersRequests.length + id} isRequests={true} session={session} users={usersRequests} group={group} getGroup={getGroup} getUsers={getUsers} />)
-        else if (component === "about") return (<AboutCard group={group} members={Object.entries(membersFriends).length} />)
-        else if (component === "posts") return (<PostsCard />)
-        else if (component === "photo") return (<Photos group={group} session={session} getPhotos={getPhotos} photos={photos} />)
+        if (component === "members") return (<ConnectionsCard key={"members" + membersFriends.length + id} isRequests={false} session={session} users={membersFriends} group={group} getGroup={getGroup} getUsers={getUsers} local={props.local}/>)
+        else if (component === "requests") return (<ConnectionsCard key={"requests" + usersRequests.length + id} isRequests={true} session={session} users={usersRequests} group={group} getGroup={getGroup} getUsers={getUsers} local={props.local}/>)
+        else if (component === "about") return (<AboutCard group={group} members={Object.entries(membersFriends).length} local={props.local}/>)
+        else if (component === "posts") return (<PostsCard local={props.local} />)
+        else if (component === "photo") return (<Photos group={group} session={session} getPhotos={getPhotos} photos={photos} local={props.local}/>)
         else return (<> "Блядська рука кремля"</>)
     }
     return (

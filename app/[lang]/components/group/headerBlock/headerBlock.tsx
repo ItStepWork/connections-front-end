@@ -100,12 +100,12 @@ export function HeaderBlock(props: any) {
             <div className={styles.buttonBlock}>
               {ifInGroup()
                 ? ifAdmin()
-                  ? <div title='Ты админ' className={styles.greenButton}><MdOutlineAdminPanelSettings className={styles.btnPict + " " + styles.greenPict} />{props.local.groups.adminBtn}</div>
+                  ? <div title={props.local.groups.tooltip.admin} className={styles.greenButton}><MdOutlineAdminPanelSettings className={styles.btnPict + " " + styles.greenPict} />{props.local.groups.adminBtn}</div>
                   : isMemberTrue()
-                    ? <button title='Покинуть группу' className={styles.redButton} onClick={leaveGroup}><BiSolidUserCheck className={styles.btnPict + " " + styles.redPict} />{props.local.groups.leaveBtn}</button>
-                    : <button title='Отменить Запрос' className={styles.yellowButton} onClick={leaveGroup}><TiCancel size={20} className={styles.btnPict + " " + styles.yellowPict} />{props.local.groups.cancelBtn}</button>
-                : <button title="Вступить в группу" className={styles.blueButton} onClick={joinGroup} ><AiOutlineUsergroupAdd className={styles.btnPict + " " + styles.bluePict} />{props.local.groups.joinBtn}</button>}
-              {ifInGroup() && <button title="Пригласить в группу" className={styles.greenButton} onClick={() => setIsOpen(!isOpen)}><AiOutlinePlus />{props.local.groups.inviteBtn}</button>}
+                    ? <button title={props.local.groups.tooltip.leave} className={styles.redButton} onClick={leaveGroup}><BiSolidUserCheck className={styles.btnPict + " " + styles.redPict} />{props.local.groups.leaveBtn}</button>
+                    : <button title={props.local.groups.tooltip.cancel} className={styles.yellowButton} onClick={leaveGroup}><TiCancel size={20} className={styles.btnPict + " " + styles.yellowPict} />{props.local.groups.cancelBtn}</button>
+                : <button title={props.local.groups.tooltip.join} className={styles.blueButton} onClick={joinGroup} ><AiOutlineUsergroupAdd className={styles.btnPict + " " + styles.bluePict} />{props.local.groups.joinBtn}</button>}
+              {ifInGroup() && <button title={props.local.groups.tooltip.invite} className={styles.greenButton} onClick={() => setIsOpen(!isOpen)}><AiOutlinePlus />{props.local.groups.inviteBtn}</button>}
             </div>
             {ifAdmin() ? <button className={styles.editButton} onClick={() => openDialog()}><span><BsPencilFill className={styles.btnPict + " " + styles.redPict} /></span>{props.local.groups.editGroupBtn}</button> : <></>}
           </div>

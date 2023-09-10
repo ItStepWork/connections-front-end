@@ -11,21 +11,22 @@
     "settings" : "Settings",
     "allFriends" : "All friends",
     "editProfile" : "Edit profile",
-    "showAll" : "Show all"
+    "showAll" : "Show all",
+    "publish" : "Publish",
+    "cancel" : "Cancel",
+    "record" : "Record"
   },
   "copyright" : "All right reserved",
+  "development" : "!!! In development !!!",
   "posts" : {
     "photo" : "Photo",
     "video" : "Video",
-    "events" : "Event",
+    "event" : "Event",
     "activity" : "Activity",
-    "placeholder" : "Share your thoughts",
-    "cancel" : "Cancel",
-    "publish" : "Publish",
-    "writeVideo" : "Record",
+    "placeholder" : "Share your thoughts...",   
     "postPhoto" : {
       "title" : "Publish photo",
-      "Upload" : "Upload Photo",
+      "upload" : "Upload Photo",
       "description" : "Drag or click here to upload a photo"
     },
     "postVideo" : {
@@ -37,6 +38,14 @@
       "forAll" : "For all",
       "forMe" : "Only me",
       "forFriends" : "Only friends"
+    },
+    "tooltip" : {
+      "photo" : "Photo",
+      "video" : "Video",
+      "event" : "Event",
+      "activity" : "Activity",
+      "location" : "Location",
+      "tag" : "Tag people"
     }
   },
   "search" : {
@@ -66,25 +75,33 @@
   },
   "groups" : {
     "title" : "Groups",
+    "subtitle" : "members",
     "adminBtn" : "Administrator",
     "editGroupBtn" : "Edit group",
     "inviteBtn" : "Invite",
     "leaveBtn" : "Leave",
     "cancelBtn" : "Cancel",
     "joinBtn" : "Join",
+    "addPhoto" : "Add photo",
     "aboutGroup" : {
       "about" : "About group",
-      "people" : "People",
-      "participants" : "Participants",
-      "status" : "Status",
-      "mail" : "Mail"
+      "people" : "People: ",
+      "members" : "Participants",
+      "status" : "Status: ",
+      "mail" : "Mail: "
     },
     "posts" : "Posts",
     "photo" : "Photo",
     "members" : "Members",
     "requests" : "Requests",
     "privacy" : "group",
-    "subtitle" : "members"
+    "tooltip" : {
+      "admin" : "You administrator",
+      "leave" : "Leave group",
+      "cancel" : "Cancel request",
+      "join" : "Join to group",
+      "invite" : "Invite in group"
+    } 
   },
     "editGroup" : {
       "title" : "Edit group",
@@ -201,11 +218,11 @@
     }
   },
   "settingsSide" : {
-    "account" : "Accaunt",
+    "account" : "Account",
     "notification" : "Notification",
-    "privacy" : "Pryvacy & Atempts",
+    "privacy" : "Privacy & Attempts",
     "messaging" : "Messaging",
-    "closeAcc" : "Close Accaunt",
+    "closeAcc" : "Close Account",
     "watch" : "Watch profile"
   }
 }

@@ -17,13 +17,13 @@
 	.btnDiv {
 		@apply flex gap-1 p-1 rounded-lg bg-light_background text-gray-900 
     dark:bg-dark_background border border-dark_border dark:placeholder-dark_text_gray dark:text-dark_text_gray
-    hover:text-blue-500;
+    hover:text-blue-500 px-2;
 	}
 	.btnDivEnd {
 		@apply mr-2 flex w-full justify-end;
 	}
 	a {
-		@apply text-xs cursor-pointer transition-all duration-300 ease-in;
+		@apply text-xs cursor-pointer transition-all ml-1 duration-300 ease-in;
 	}
 }
 .dialog {
