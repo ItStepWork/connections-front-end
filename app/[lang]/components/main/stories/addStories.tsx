@@ -1,7 +1,7 @@
 import { BsPlusLg } from "react-icons/bs"
 import styles from "./addStories.module.scss"
 
-export const AddStories = () => {
+export const AddStories = (props : any) => {
 
   return (
     <>
@@ -10,8 +10,8 @@ export const AddStories = () => {
             <div className={styles.plusButton}>
               <BsPlusLg size={20}/>
             </div>
-            <p>Добавить </p>
-            <p>историю </p>
+            <p>{props.local.stories.add}</p>
+            <p>{props.local.stories.story}</p>
           </div>
       </div>
     </>

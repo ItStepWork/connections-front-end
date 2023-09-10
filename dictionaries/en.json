@@ -224,5 +224,25 @@
     "messaging" : "Messaging",
     "closeAcc" : "Close Account",
     "watch" : "Watch profile"
+  },
+  "main" : {
+    "header" : {
+      "posts" : "Posts",
+      "contacts" : "Connections"
+    },
+    "feed" : "Feed",
+    "contacts" : "Contacts",
+    "news" : "Last news",
+    "events" : "Events",
+    "groups" : "Groups",
+    "gallery" : "Gallery",
+    "notifications" : "Notifications",
+    "settings" : "Settings",
+    "profile" : "Watch profile",   
+    "menu" : "Menu"
+  },
+  "stories" : {
+    "add" : "Add",
+    "story" : "story"
   }
 }

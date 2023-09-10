@@ -1,7 +1,8 @@
 import { faker } from "@faker-js/faker";
 import Image from 'next/image';
 import styles from "./stories.module.scss";
-export const Stories = () => {
+
+export const Stories = (props : any) => {
 
   return (
     <>

@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker';
 import styles from './celebration.module.scss';
 import CardItem from './cardItem/cardItem';
 
-const Celebration = () => {
+const Celebration = (props : any) => {
  return (
   <>
     <div className={styles.container}>

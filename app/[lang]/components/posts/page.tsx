@@ -12,10 +12,10 @@ export default function Posts(props: any) {
     <>
       <div>
           <div className={styles.storiesBlock}>
-            <AddStories />
-            <Stories />
+            <AddStories local={props.local}/>
+            <Stories local={props.local}/>
           </div>
-          <PostPanel />
+          <PostPanel local={props.local}/>
           <Feed />
         </div>
         <div>

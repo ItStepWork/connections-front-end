@@ -16,7 +16,7 @@
 		}
 	}
 	.aboutMeBlock {
-		@apply relative w-full pt-14 flex flex-col items-center;
+		@apply relative w-full px-6 flex flex-col items-center pt-14;
 		h3 {
 			@apply dark:text-light_background text-gray-900 font-bold;
 		}
@@ -30,7 +30,7 @@
 			@apply dark:text-dark_text_gray text-gray-900 text-sm;
 		}
 		.avatar {
-			@apply border rounded-md overflow-hidden top-[-10%] text-center left-[40%] absolute;
+			@apply border rounded-md overflow-hidden text-center absolute top-[-20px] left-[20px];
 		}
 		.followsBlock {
 			@apply flex items-center justify-center px-5 h-full w-full;

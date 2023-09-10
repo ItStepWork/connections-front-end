@@ -5,9 +5,9 @@ import Image from 'next/image'
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { FcAdvertising, FcBusinessman, FcCalendar, FcCollaboration, FcHome, FcNews, FcSettings, FcStackOfPhotos } from "react-icons/fc"
+import { ComponentName } from "../../../../../enums/all.enum"
 import { useStore } from "../../../../../stores/userDataStore"
 import styles from "./leftUserBlock.module.scss"
-import { ComponentName } from "../../../../../enums/all.enum"
 
 export const LeftUserBlock = (props:any) => {
   const [avatar, bg] = useStore((state) => [state.avatar, state.BgImage])
@@ -60,18 +60,13 @@ export const LeftUserBlock = (props:any) => {
           <div className={styles.aboutMe}>{session?.user?.aboutMe}</div>
           <div className={styles.followsBlock}>
             <div className={styles.followers}>
-              <h3 >{faker.number.int(111)}</h3>
-              <div >Посты</div>
+              <h3>{faker.number.int(111)}</h3>
+              <div>{props.local.main.header.posts}</div>
             </div>
             <div className={styles.vr}></div>
             <div className={styles.followers}>
               <h3>{faker.number.int(111)}</h3>
-              <div>Подписчики</div>
-            </div>
-            <div className={styles.vr}></div>
-            <div className={styles.followers}>
-              <h3>{faker.number.int(111)}</h3>
-              <div>Подписки</div>
+              <div>{props.local.main.header.contacts}</div>
             </div>
           </div>
         </div>
@@ -80,54 +75,54 @@ export const LeftUserBlock = (props:any) => {
             <div className={styles.icon}>
               <FcHome size={20} />
             </div>
-            <button onClick={()=>{props.setComponent(ComponentName.Posts); props.setIsOpen(false);}}>Лента</button>
+            <button onClick={()=>{props.setComponent(ComponentName.Posts); props.setIsOpen(false);}}>{props.local.main.feed}</button>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
               <FcBusinessman size={20} />
             </div>
-            <button onClick={()=>{props.setComponent(ComponentName.Connections); props.setIsOpen(false);}}>Связи</button>
+            <button onClick={()=>{props.setComponent(ComponentName.Connections); props.setIsOpen(false);}}>{props.local.main.contacts}</button>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
               <FcNews size={20} />
             </div>
-            <Link href={'/news'}>Последние новости</Link>
+            <Link href={'/news'}>{props.local.main.news}</Link>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
               <FcCalendar size={20} />
             </div>
-            <button onClick={()=>{props.setComponent(ComponentName.Celebration); props.setIsOpen(false);}}>События</button>
+            <button onClick={()=>{props.setComponent(ComponentName.Celebration); props.setIsOpen(false);}}>{props.local.main.events}</button>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
               <FcCollaboration size={20} />
             </div>
             {/* <Link href={'/profilePage'}>Группы</Link> */}
-            <button onClick={()=>{props.setComponent(ComponentName.Groups); props.setIsOpen(false);}}>Группы</button>
+            <button onClick={()=>{props.setComponent(ComponentName.Groups); props.setIsOpen(false);}}>{props.local.main.groups}</button>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
               <FcStackOfPhotos size={20} />
             </div>
-            <button onClick={()=>{props.setComponent(ComponentName.Gallery); props.setIsOpen(false);}}>Галерея</button>
+            <button onClick={()=>{props.setComponent(ComponentName.Gallery); props.setIsOpen(false);}}>{props.local.main.gallery}</button>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
               <FcAdvertising size={20} />
             </div>
-            <button onClick={()=>{props.setComponent(ComponentName.Notifications); props.setIsOpen(false);}}>Уведомления</button>
+            <button onClick={()=>{props.setComponent(ComponentName.Notifications); props.setIsOpen(false);}}>{props.local.main.notifications}</button>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
               <FcSettings size={20} />
             </div>
-            <Link href={'/settings'}>Настройки</Link>
+            <Link href={'/settings'}>{props.local.main.settings}</Link>
           </div>
         </div>
         <div className={styles.viewProfile}>
-          <Link className={styles.button} href='/profile'>Смотреть профиль</Link>
+          <Link className={styles.button} href='/profile'>{props.local.main.profile}</Link>
         </div>
       </div>
     </>
