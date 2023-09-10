@@ -2,10 +2,10 @@ import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Footer from '../../app/[lang]/components/footer/footer';
-import MyProgressBar from '../../app/[lang]/components/progressBar/progresbar';
 import { Locale, i18n } from '../../i18n.config';
 import { Providers } from "../../providers/Providers";
+import Footer from './components/footer/footer';
+import MyProgressBar from './components/progressBar/progresbar';
 import './globals.css';
 import HeaderPage from './header/page';
 
@@ -15,7 +15,7 @@ const inter = Montserrat({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Connections',
   description: 'Connections Social Network',
-  //manifest: '/manifest.json',
+  manifest: "../public/manifest.json",
 }
 
 export async function generateStaticParams() {
@@ -33,10 +33,7 @@ export default function RootLayout({
   return (
 
     <html lang={params.lang}>
-      <head>
-        <link rel="manifest" href="../../public/manifest.json"
-        />          
-      </head>
+      
       <body className={inter.className}>
         <Providers>
             <MyProgressBar/>

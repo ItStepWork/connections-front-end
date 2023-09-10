@@ -1,3 +1,4 @@
+"use client"
 import { IoMdClose } from 'react-icons/io';
 import styles from './styles.module.scss';
 

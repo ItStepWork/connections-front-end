@@ -1,3 +1,4 @@
+"use client"
 import { FaUserCircle } from 'react-icons/fa';
 import { GoDotFill } from 'react-icons/go';
 import DropDownItem from '../dropDownItem/page';
@@ -9,7 +10,6 @@ export default function HeaderBlock(props: any) {
   let date = new Date() as any;
   let minutes = Number(((date - last) / 60000).toFixed(0));
 
-  
   let lastDigit = minutes % 10;
   let lastText = "минута";
   if(lastDigit === 0 || lastDigit > 4) lastText = "минут";

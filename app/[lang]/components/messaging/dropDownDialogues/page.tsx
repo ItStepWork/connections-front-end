@@ -1,6 +1,7 @@
+"use client"
 import { ImMenu } from 'react-icons/im';
 import { IoMdClose } from 'react-icons/io';
-import  Dialogues  from '../dialogues/page';
+import Dialogues from '../dialogues/page';
 import styles from './styles.module.scss';
 
 export default function DropDownDialogues(props: any) {
