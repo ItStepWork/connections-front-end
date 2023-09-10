@@ -15,7 +15,7 @@ const inter = Montserrat({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Connections',
   description: 'Connections Social Network',
-  manifest: "../public/manifest.json",
+  //manifest: "../public/manifest.json",
 }
 
 export async function generateStaticParams() {
@@ -33,7 +33,13 @@ export default function RootLayout({
   return (
 
     <html lang={params.lang}>
-      
+      <head>
+        <link
+          rel="manifest"
+          href="../../public/manifest.json"
+        />
+            
+      </head>
       <body className={inter.className}>
         <Providers>
             <MyProgressBar/>
