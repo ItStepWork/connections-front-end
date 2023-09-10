@@ -10,6 +10,7 @@ import React from 'react';
 export default function Notifications(props: any) {
 
   const [notifications, setNotifications] = useState<any[]>([]);
+  const [count, setCount] = useState<number>(5);
 
   useEffect(() => {
     getNotifications();
@@ -31,6 +32,10 @@ export default function Notifications(props: any) {
     let result = await NotificationService.getNotifications();
     setNotifications(result);
   }
+  
+  const loadMore = () => {
+    setCount(count + 5);
+  }
 
   const getGender=(user: any)=>{
     return user.gender === Gender.Female ? "ла" : "в";
@@ -38,7 +43,8 @@ export default function Notifications(props: any) {
 
   return (
     <div className={styles.container}>
-      {notifications.map((n: any) => {
+      {notifications.map((n: any, index: number) => {
+        if(index < count)
         return (
           <div key={n.notification.id} className=''>
             <div className='flex'>
@@ -65,6 +71,8 @@ export default function Notifications(props: any) {
           </div>
         )
       })}
+      
+      {notifications.length > count && <button className={styles.buttonLoadMore} onClick={loadMore}>Загрузить еще</button>}
     </div>
   )
 }

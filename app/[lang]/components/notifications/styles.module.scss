@@ -16,4 +16,7 @@
 	.content{
 		@apply flex flex-col md:flex-row mx-3 flex-grow;
 	}
+	.buttonLoadMore {
+		@apply text-[#0f6fec] w-full mt-6 bg-button_blue_opacity transition-all duration-300 hover:bg-blue-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center dark:bg-button_blue_opacity dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+	}
 }
