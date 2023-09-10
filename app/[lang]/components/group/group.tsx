@@ -4,13 +4,13 @@ import { getSession } from 'next-auth/react';
 import { useEffect, useState } from "react";
 import 'react-toastify/dist/ReactToastify.css';
 import { GroupService } from '../../../../services/group.service';
+import PageLoader from '../loaders/page-loader';
 import { AboutCard } from './aboutBlock/aboutCard';
 import { ConnectionsCard } from './connectionsCard/connectionsCard';
 import { HeaderBlock } from './headerBlock/headerBlock';
 import Photos from './photos/page';
 import { PostsCard } from './postsCard/postsCard';
 import styles from './styles.module.scss';
-import { getDictionary } from '../../../../locale-dictionary';
 
 export function GroupPage(props: any) {
     const [id, setId] = useState(0)
@@ -117,7 +117,7 @@ export function GroupPage(props: any) {
                                 getGroup={getGroup} getUsers={getUsers} component={component} setComponent={setComponent} local={props.local} friendsForInvitation={friendsForInvitation} getFriendsForInvitation={getFriendsForInvitation} />
                             {changeComponent()}
                         </div>
-                        : <>Loading...</>
+                        : <PageLoader/>
                     }
                 </div>
             </main>

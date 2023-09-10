@@ -14,11 +14,11 @@ const Footer = async ({ lang }: { lang: Locale }, props : any) => {
         <div className={styles.contentContainer}>
           <div className={styles.links}>
             <ul className={styles.list}>
-              <li><Link  href="/">{locDictionary.footer.about}</Link></li>
-              <li><Link  href="/">{locDictionary.footer.help}</Link></li>
-              <li><Link  href="/">{locDictionary.footer.privacy}</Link></li>
-              <li><Link  href="/">{locDictionary.footer.partnership}</Link></li>
-              <li><Link  href="/">{locDictionary.footer.protect}</Link></li>
+              <li><Link href="/">{locDictionary.footer.about}</Link></li>
+              <li><Link href="/">{locDictionary.footer.help}</Link></li>
+              <li><Link href="/">{locDictionary.footer.privacy}</Link></li>
+              <li><Link href="/">{locDictionary.footer.partnership}</Link></li>
+              <li><Link href="/">{locDictionary.footer.protect}</Link></li>
             </ul>
           </div>
           <div className={styles.copyright}>

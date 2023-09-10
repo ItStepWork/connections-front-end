@@ -42,7 +42,7 @@ module.exports = {
 			},
 			fontFamily: {
 				logo : '--logo-font',
-			}
+			},	
 		},
 	},
 	plugins: [],
