@@ -34,9 +34,11 @@ export default function RootLayout({
 
     <html lang={params.lang}>
       <head>
+        <meta charSet="utf-8" />
         <link
+          crossOrigin="use-credentials"
           rel="manifest"
-          href="../../public/manifest.json"
+          href={"/manifest.json"}
         />
             
       </head>
