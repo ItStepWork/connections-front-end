@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import Navigation from "../navigation/page";
 import { AdminComponentName } from "../../../../../enums/all.enum";
+import Users from "../users/page";
 
 export default function Admin({ local }: { local: any }, props: any) {
 
@@ -20,7 +21,7 @@ export default function Admin({ local }: { local: any }, props: any) {
   }, [])
 
   const ChangeComponent = () => {
-    if (component === AdminComponentName.Users) return (<></>)
+    if (component === AdminComponentName.Users) return (<Users/>)
     else return (<></>)
   }
 
