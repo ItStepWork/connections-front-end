@@ -1,3 +1,4 @@
+'use client'
 import styles from './styles.module.scss';
 import { useState } from 'react';
 import { BiSolidChevronDown, BiSolidChevronUp } from 'react-icons/bi';

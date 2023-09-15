@@ -1,3 +1,4 @@
+'use client'
 import DropDownMenu from '../dropDownMenu/page';
 import styles from './styles.module.scss';
 import { useState } from 'react';
