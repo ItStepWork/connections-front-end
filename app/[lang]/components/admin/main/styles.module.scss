@@ -1,0 +1,6 @@
+.container {
+	@apply w-full h-full flex mt-20 flex-col lg:flex-row;
+}
+.containerContent {
+	@apply relative w-full flex gap-6 px-3;
+}

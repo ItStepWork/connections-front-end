@@ -29,22 +29,20 @@ export default function Main({ local }: { local: any }, props: any) {
 
   const ChangeComponent = () => {
     if (component === ComponentName.Groups) return (<GroupsCard session={session} userId={session?.user.id} local={local} />)
-    else if (component === ComponentName.Celebration) return (<Celebration local={local}/>)
-    else if (component === ComponentName.Connections) return (<ConnectionsCard session={session} myId={session?.user.id} userId={session?.user.id} local={local}/>)
-    else if (component === ComponentName.Gallery) return (<Gallery myId={session?.user.id} userId={session?.user.id} local={local}/>)
-    else if (component === ComponentName.Notifications) return (<Notifications accessToken={session?.user.accessToken} local={local}/>)
-    else if (component === ComponentName.Posts) return (<Posts local={local}/>)
+    else if (component === ComponentName.Celebration) return (<Celebration local={local} />)
+    else if (component === ComponentName.Connections) return (<ConnectionsCard session={session} myId={session?.user.id} userId={session?.user.id} local={local} />)
+    else if (component === ComponentName.Gallery) return (<Gallery myId={session?.user.id} userId={session?.user.id} local={local} />)
+    else if (component === ComponentName.Notifications) return (<Notifications accessToken={session?.user.accessToken} local={local} />)
+    else if (component === ComponentName.Posts) return (<Posts local={local} />)
     else return (<></>)
   }
 
   return (
-    <main>
-      <div className={styles.container}>
-        <Menu setComponent={setComponent} local={local}/>
-        <div className={styles.containerContent}>
-          {session ? ChangeComponent() : <></>}
-        </div>
+    <div className={styles.container}>
+      <Menu setComponent={setComponent} local={local} />
+      <div className={styles.containerContent}>
+        {session ? ChangeComponent() : <></>}
       </div>
-    </main>
+    </div>
   )
 }

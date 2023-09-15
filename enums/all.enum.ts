@@ -15,6 +15,10 @@ export enum ComponentName {
     Posts,
 }
 
+export enum AdminComponentName {
+    Users,
+}
+
 export enum NotificationType {
     AddFriend = "AddFriend",
     RemoveFriend = "RemoveFriend",
