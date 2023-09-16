@@ -21,7 +21,7 @@ export default function SignUp({local} : {local : any}, props : any) {
   
   const onSubmit = async (data: any) => {
     if (data.password === data.confirmPassword){
-        let response = await fetch("http://localhost:5288/Auth/SignUp", {
+        let response = await fetch(process.env.NEXT_PUBLIC_API + "Auth/SignUp", {
           method: "POST",
         headers: {
           'Content-Type': 'application/json',
