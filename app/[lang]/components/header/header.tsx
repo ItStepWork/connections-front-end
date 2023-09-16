@@ -44,7 +44,7 @@ export const Header = ({local} : {local : any}, props : any) => {
       <header className={styles.header} onLoad={fetch}>
         <div >
           <div className={styles.contentContainer}>
-            <Link href="http://localhost:3000/" className={styles.logoLink}>
+            <Link href={process.env.NEXTAUTH_URL as string} className={styles.logoLink}>
               <span className={styles.logo}><p className={oneDay.className}>Connections</p></span>
             </Link>
             {session ?
