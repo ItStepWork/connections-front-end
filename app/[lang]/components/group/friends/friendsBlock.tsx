@@ -12,13 +12,13 @@ export const FriendsBlock = (props: any) => {
 
 
   const loadMore = () => {
-    setElements(elements + 5);
+    setElements(elements + 3);
   }
   const changeSearch = (event: any) => {
     setSearch(event.target.value);
   }
   const filter = (array: any[]) => {
-    return array.filter((u: any) => u.firstName?.toLowerCase().includes(search) || u.lastName?.toLowerCase().includes(search)
+    return array.filter((u: any) => u.firstName?.toLowerCase().includes(search.toLowerCase()) || u.lastName?.toLowerCase().includes(search.toLowerCase())
       || search.toLowerCase() === u.firstName.toLowerCase() + " " + u.lastName.toLowerCase() || search.toLowerCase() === u.lastName.toLowerCase() + " " + u.firstName.toLowerCase());
   }
   return (
@@ -42,7 +42,7 @@ export const FriendsBlock = (props: any) => {
           }
         </div>
         <div className="flex flex-grow items-end">
-          <button className={styles.buttonLoadMore} onClick={() => loadMore()}>{props.local.button.uploadMore}</button>
+          {elements < props.friendsForInvitation?.length && <button className={styles.buttonLoadMore} onClick={() => loadMore()}>{props.local.button.uploadMore}</button>}
         </div>
 
       </div>
