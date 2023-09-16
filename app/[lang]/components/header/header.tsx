@@ -39,18 +39,12 @@ export const Header = ({local} : {local : any}, props : any) => {
     load();
   }, []);
 
-  const getLink=()=>{
-    let link = process.env.NEXTAUTH_URL;
-    if(link === undefined) return "";
-    else return link;
-  }
-
   return (
     <>
       <header className={styles.header} onLoad={fetch}>
         <div >
           <div className={styles.contentContainer}>
-            <Link href={getLink()} className={styles.logoLink}>
+            <Link href="/" className={styles.logoLink}>
               <span className={styles.logo}><p className={oneDay.className}>Connections</p></span>
             </Link>
             {session ?
