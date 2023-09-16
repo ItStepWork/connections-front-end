@@ -20,12 +20,24 @@
 				}
 			}
 			.buttonBlock {
-				@apply flex items-center gap-2 mx-6;
-				.buttonLink {
-					@apply text-button_red_BG flex items-center bg-button_red_opacity transition-all duration-300 ease-in hover:bg-button_red_BG hover:text-white focus:ring-4 focus:outline-none focus:ring-button_red_BG font-medium rounded-md text-sm px-2 py-2.5 md:px-4 lg:px-4 text-center dark:bg-button_red_opacity dark:hover:bg-button_red_BG dark:focus:ring-button_red_BG;
+				@apply flex px-6 items-center gap-2 w-full flex-wrap justify-center md:justify-end lg:justify-end;
+				/* .buttonLink {
+					@apply text-button_red_BG flex items-center bg-button_red_opacity transition-all duration-300 ease-in hover:bg-button_red_BG hover:text-white focus:ring-4 focus:outline-none focus:ring-button_red_BG font-medium rounded-md text-sm px-5 py-2.5 text-center dark:bg-button_red_opacity dark:hover:bg-button_red_BG dark:focus:ring-button_red_BG;
 					span {
 						@apply mr-2;
 					}
+				} */
+				.button_blue_BG {
+					@apply text-[#0f6fec] bg-button_blue_opacity flex whitespace-nowrap gap-2 items-center transition-all duration-300 ease-in hover:bg-blue-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center dark:bg-button_blue_opacity dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+				}
+				.button_red_BG {
+					@apply text-button_red_BG flex whitespace-nowrap gap-2 items-center bg-button_red_opacity transition-all duration-300 ease-in hover:bg-button_red_BG hover:text-white focus:ring-4 focus:outline-none focus:ring-button_red_BG font-medium rounded-md text-sm px-5 py-2.5 text-center dark:bg-button_red_opacity dark:hover:bg-button_red_BG dark:focus:ring-button_red_BG;
+				}
+				.button_yellow_BG {
+					@apply text-yellow-500 items-center flex whitespace-nowrap gap-2 bg-yellow-900 bg-opacity-25 transition-all duration-300 ease-in hover:bg-yellow-400 hover:bg-opacity-75 hover:text-white focus:ring-4 focus:outline-none focus:ring-yellow-600 font-medium rounded-md text-sm px-5 py-2.5 text-center;
+				}
+				.button_green_BG {
+					@apply text-button_green_BG bg-button_green_opacity flex whitespace-nowrap gap-2 items-center transition-all duration-300 ease-in hover:bg-button_green_BG hover:text-white focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-md text-sm px-5 py-2.5 text-center dark:bg-button_green_opacity dark:hover:bg-green-700 dark:focus:ring-green-800;
 				}
 				.button {
 					@apply px-3 py-3 md:mr-6 lg:mr-6 text-gray-900 bg-light_button_BG rounded-lg transition-all duration-300 hover:bg-light_border dark:hover:bg-dark_text_gray dark:text-white dark:bg-dark_button_BG;

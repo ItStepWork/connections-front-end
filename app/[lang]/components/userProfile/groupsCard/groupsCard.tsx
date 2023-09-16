@@ -11,7 +11,7 @@ import styles from './groupsCard.module.scss';
 export function GroupsCard(props: any) {
   // const [session, setSession] = useState<any>()
   const [groups, setGroups] = useState([]);
-  const [allGroups, setAllGroups] = useState([]);
+  // const [allGroups, setAllGroups] = useState([]);
   const [count, setCount] = useState(3);
   const [search, setSearch] = useState("");
 
@@ -35,7 +35,7 @@ export function GroupsCard(props: any) {
   const getGroups = async () => {
     let result = await GroupService.getGroups(props.userId);
     setGroups(result);
-    setAllGroups(result);
+    // setAllGroups(result);
   }
   // const getUserSession = async () => {
   //   let result = await getSession();
@@ -46,16 +46,23 @@ export function GroupsCard(props: any) {
     dialog?.showModal();
   }
   const changeSearch = (event: any) => {
+    setCount(3);
     setSearch(event.target.value);
-    if (event.target.value === "") {
-      setGroups(allGroups);
-    }
-    else {
-      let search = event.target.value.toLowerCase();
-      let searchGroups = allGroups.filter((g: any) => g.name?.toLowerCase().includes(search));
-      setGroups(searchGroups);
-    }
   }
+  const filter = (array: any[]) => {
+    return array.filter((g: any) => g.name?.toLowerCase().includes(search.toLowerCase()));
+  }
+  // const changeSearch = (event: any) => {
+  //   setSearch(event.target.value);
+  //   if (event.target.value === "") {
+  //     setGroups(allGroups);
+  //   }
+  //   else {
+  //     let search = event.target.value.toLowerCase();
+  //     let searchGroups = allGroups.filter((g: any) => g.name?.toLowerCase().includes(search));
+  //     setGroups(searchGroups);
+  //   }
+  // }
   // const subscribe = async () => {
   //   let session = await getSession();
   //   if (session != null) {
@@ -90,12 +97,12 @@ export function GroupsCard(props: any) {
         </div>
         <div className={styles.cardsContainer}>
           <div className={styles.cards}>
-            {groups.map((group: any, index) => {
+            {filter(groups).map((group: any, index) => {
               if (index <= count)
                 return (<Card key={group.id + Object.entries(group.users).length} group={group} getGroups={getGroups} session={props.session}></Card>)
             })}
           </div>
-          <button className={styles.buttonLoadMore} onClick={() => setCount(count + 4)}>{props.local.button.uploadMore}</button>
+          {count < groups.length - 1 && <button className={styles.buttonLoadMore} onClick={() => setCount(count + 4)}>{props.local.button.uploadMore}</button>}
         </div>
       </div>
       <dialog className={styles.dialog} id='createGroupDialog'>

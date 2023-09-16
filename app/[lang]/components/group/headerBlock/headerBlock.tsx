@@ -44,7 +44,7 @@ export function HeaderBlock(props: any) {
     else notifyError("Wrong file type");
   }
   let ifInGroup = () => {
-    let find = Object.entries(props.group.users).find(([key, value]) => key === props.session?.user.id && value == true);
+    let find = Object.entries(props.group.users).find(([key, value]) => key === props.session?.user.id);
     if (find === undefined) return false;
     else return true;
   };
@@ -105,7 +105,7 @@ export function HeaderBlock(props: any) {
                     ? <button title={props.local.groups.tooltip.leave} className={styles.redButton} onClick={leaveGroup}><BiSolidUserCheck className={styles.btnPict + " " + styles.redPict} />{props.local.groups.leaveBtn}</button>
                     : <button title={props.local.groups.tooltip.cancel} className={styles.yellowButton} onClick={leaveGroup}><TiCancel size={20} className={styles.btnPict + " " + styles.yellowPict} />{props.local.groups.cancelBtn}</button>
                 : <button title={props.local.groups.tooltip.join} className={styles.blueButton} onClick={joinGroup} ><AiOutlineUsergroupAdd className={styles.btnPict + " " + styles.bluePict} />{props.local.groups.joinBtn}</button>}
-              {ifInGroup() && <button title={props.local.groups.tooltip.invite} className={styles.greenButton} onClick={() => setIsOpen(!isOpen)}><AiOutlinePlus />{props.local.groups.inviteBtn}</button>}
+              {ifInGroup() && isMemberTrue() && <button title={props.local.groups.tooltip.invite} className={styles.greenButton} onClick={() => setIsOpen(!isOpen)}><AiOutlinePlus />{props.local.groups.inviteBtn}</button>}
             </div>
             {ifAdmin() ? <button className={styles.editButton} onClick={() => openDialog()}><span><BsPencilFill className={styles.btnPict + " " + styles.redPict} /></span>{props.local.groups.editGroupBtn}</button> : <></>}
           </div>
