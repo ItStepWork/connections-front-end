@@ -17,6 +17,8 @@ export enum ComponentName {
 
 export enum AdminComponentName {
     Users,
+    ChartGenders,
+    ChartZodiacs,
 }
 
 export enum NotificationType {

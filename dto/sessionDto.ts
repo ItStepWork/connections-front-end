@@ -9,6 +9,7 @@ export interface IUser {
   phone: string
   familyStatus: string
   accessToken: string
+  birthDay: string
   born: string
   aboutMe: string
   email: string
