@@ -15,10 +15,10 @@
 			.description {
 				@apply text-sm text-light_text dark:text-dark_text_gray;
 			}
-			span {
+			.name {
 				@apply text-gray-900 text-lg dark:text-white font-bold;
 			}
-			span:last-child {
+			span {
 				@apply text-sm font-light dark:text-dark_text_gray text-light_text;
 			}
 		}

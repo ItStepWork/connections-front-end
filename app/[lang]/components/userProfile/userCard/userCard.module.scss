@@ -21,12 +21,6 @@
 			}
 			.buttonBlock {
 				@apply flex px-6 items-center gap-2 w-96 flex-wrap justify-center md:justify-end lg:justify-end;
-				/* .buttonLink {
-					@apply text-button_red_BG flex items-center bg-button_red_opacity transition-all duration-300 ease-in hover:bg-button_red_BG hover:text-white focus:ring-4 focus:outline-none focus:ring-button_red_BG font-medium rounded-md text-sm px-5 py-2.5 text-center dark:bg-button_red_opacity dark:hover:bg-button_red_BG dark:focus:ring-button_red_BG;
-					span {
-						@apply mr-2;
-					}
-				} */
 				.button_blue_BG {
 					@apply text-[#0f6fec] bg-button_blue_opacity flex whitespace-nowrap gap-2 items-center transition-all duration-300 ease-in hover:bg-blue-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center dark:bg-button_blue_opacity dark:hover:bg-blue-700 dark:focus:ring-blue-800;
 				}

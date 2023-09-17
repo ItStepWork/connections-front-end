@@ -1,7 +1,4 @@
 "use client"
-import { FaUserCircle } from 'react-icons/fa';
-import { GoDotFill } from 'react-icons/go';
-// import DropDownItem from '../dropDownItem/page';
 import styles from './styles.module.scss';
 
 export default function OnlineUser(props: any) {
@@ -37,10 +34,9 @@ export default function OnlineUser(props: any) {
   return (
     <>
       <div>
-        {minutes < 5 ?
-          (<div className={styles.container}><div className={styles.statusDiv + " bg-green-500"} /><span >Online</span></div>)
-          :
-          (<div className={styles.container}><div className={styles.statusDiv + " bg-red-500"} /><span >{text}</span></div>)
+        {minutes < 5
+          ? (<div className={styles.container}><div className={styles.statusDiv + " bg-green-500"} /><span >Online</span></div>)
+          : (<div className={styles.container}><div className={styles.statusDiv + " bg-red-500"} /><span >{text}</span></div>)
         }
       </div>
     </>

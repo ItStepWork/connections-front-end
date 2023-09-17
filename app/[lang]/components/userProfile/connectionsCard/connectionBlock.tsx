@@ -3,6 +3,7 @@ import { FaUserCircle } from 'react-icons/fa';
 import { FriendStatus } from '../../../../../enums/all.enum';
 import { FriendService } from '../../../../../services/friend.service';
 import styles from './connectionBlock.module.scss';
+import OnlineUser from '../../onlineUser/page';
 
 export const ConnectionBlock = (props: any) => {
 
@@ -30,7 +31,9 @@ export const ConnectionBlock = (props: any) => {
               <span>{props.user.firstName} {props.user.lastName}</span>
               <span>{props.user.FamilyStatus}</span>
             </div>
+            <OnlineUser user={props.user}></OnlineUser>
             <div className={styles.description}>{props.user.aboutMe}</div>
+
           </div>
         </Link>
         {(props.myId !== props.user.id) &&
