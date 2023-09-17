@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { ImagePreloader } from '../../loaders/imagePreloader';
 import styles from './photosCard.module.scss';
 
-export default function PhotosCard() {
+export default function PhotosCard(props: any) {
 
   const [loading, setLoading] = useState(true);
 
@@ -28,8 +28,8 @@ export default function PhotosCard() {
     <>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2>Фото</h2>
-          <Link href='/' className={styles.button}>Смотреть все</Link>
+          <h2>{props.local.gallery.photo}</h2>
+          <Link href='/' className={styles.button}>{props.local.button.showAll}</Link>
         </div>
         <div className={styles.photoContainer}>
           <div className={styles.photo}>

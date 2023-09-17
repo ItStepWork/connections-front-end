@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { BsChatLeftText, BsPersonAdd } from 'react-icons/bs';
 import styles from './card.module.scss';
 
-export const Card = () => {
+export const Card = (props: any) => {
 
 
 
@@ -23,7 +23,7 @@ export const Card = () => {
         </div>
         <div className={styles.fio}>
           <h4>{faker.person.fullName()}</h4>
-          <p>{faker.number.int(22)} общих друзей</p>
+          <p>{faker.number.int(22)} {props.local.friends.subtitle}</p>
         </div>
         <div className={styles.buttons}>
           <Link href='/' className={styles.blueButton}><BsChatLeftText size={16} /></Link>
