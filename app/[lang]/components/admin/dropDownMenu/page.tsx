@@ -1,4 +1,5 @@
 'use client'
+
 import styles from './styles.module.scss';
 import { useState } from 'react';
 import { BiSolidChevronDown, BiSolidChevronUp } from 'react-icons/bi';
@@ -21,6 +22,7 @@ export default function DropDownMenu(props: any) {
         <ul className="py-2 space-y-2">
           <LiMenu name="Genders" component={AdminComponentName.ChartGenders} setComponent={props.setComponent}/>
           <LiMenu name="Zodiacs" component={AdminComponentName.ChartZodiacs} setComponent={props.setComponent}/>
+          <LiMenu name="Pages activity" component={AdminComponentName.ChartPages} setComponent={props.setComponent}/>
         </ul>}
     </li>
   )

@@ -19,6 +19,7 @@ export enum AdminComponentName {
     Users,
     ChartGenders,
     ChartZodiacs,
+    ChartPages,
 }
 
 export enum NotificationType {
@@ -37,4 +38,13 @@ export enum Gender {
     NotSelected = "NotSelected",
     Male = "Male",
     Female = "Female",
+}
+
+export enum Page {
+    Contacts = "Contacts",
+    Messaging = "Messaging",
+    Gallery = "Gallery",
+    Notifications = "Notifications",
+    Groups = "Groups",
+    Authorization = "Authorization",
 }
