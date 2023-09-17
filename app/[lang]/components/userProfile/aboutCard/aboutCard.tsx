@@ -6,7 +6,7 @@ import { AboutMePreloader } from "../../loaders/aboutMePreloader";
 import styles from './aboutCard.module.scss';
 
 
-export const AboutCard = () => {
+export const AboutCard = (props: any) => {
 
   const [aboutMe, born, email, familyStatus] = 
   useStore((state) => [state.aboutMe, state.born, state.email, state.familyStatus])
@@ -30,26 +30,26 @@ export const AboutCard = () => {
     <>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2>Немного про себя</h2>
+          <h2>{props.local.aboutMe.subtitle}</h2>
           <span>{aboutMe}</span>
         </div>
         <div className={styles.iconText}>
           <div className={styles.icon}>
             <BsCalendarDate size={18} />
           </div>
-          <p>День рождения: <span>{born}</span></p>
+          <p>{props.local.aboutMe.birthday}<span>{born}</span></p>
         </div>
         <div className={styles.iconText}>
           <div className={styles.icon}>
             <BsHeart size={18} />
           </div>
-          <p>Семейное положение: <span>{familyStatus}</span></p>
-        </div>
+          <p>{props.local.aboutMe.familyStatus}<span>{familyStatus}</span></p>
+        </div>  
         <div className={styles.iconText}>
           <div className={styles.icon}>
             <BsEnvelope size={18} />
           </div>
-          <p>Почта: <span>{email}</span></p>
+          <p>Email: <span>{email}</span></p>
         </div>
       </div>
     </>

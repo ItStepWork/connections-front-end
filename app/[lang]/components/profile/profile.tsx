@@ -41,9 +41,9 @@ export default function Profile(props: any) {
           </div>
           <div className={styles.rightContainer}>
 
-            <AboutCard />
-            <PhotosCard />
-            <FriendsCard />
+            <AboutCard local={props.local}/>
+            <PhotosCard local={props.local}/>
+            <FriendsCard local={props.local}/>
 
           </div>
         </div>
