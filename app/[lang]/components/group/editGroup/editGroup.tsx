@@ -7,7 +7,6 @@ import { GroupService } from '../../../../../services/group.service';
 import styles from './styles.module.scss';
 
 export function EditGroup(props: any) {
-    console.log(props)
     const options = [
         {
             label: props.local.editGroup.privacy.public,
@@ -26,7 +25,6 @@ export function EditGroup(props: any) {
     const notifyErrorServer = () => toast.warning(props.local.editGroup.toasts.error, {});
     const notifyInfo = () => toast.info(props.local.editGroup.toasts.warning, {});
     const notifySuccess = (text: string) => toast.success(text, {});
-    // const { data: session, update } = useSession();
     const router = useRouter();
     const deleteGroup = async () => {
         props.groupSocket.close();

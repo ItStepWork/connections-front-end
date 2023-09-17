@@ -25,9 +25,32 @@ export function UserCard(props: any) {
   const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
-    // getUser();
-    // getFriendsCount();
     getData();
+    let userSocket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToUserUpdates?id=${props.userId}`, ["client", props.session.user.accessToken]);
+    let friendSocket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToFriendsUpdates`, ["client", props.session.user.accessToken]);
+    userSocket.addEventListener('message', async (event) => {
+      await getUser();
+
+    });
+    friendSocket.addEventListener('message', async (event) => {
+      await getData();
+    });
+    let userIntervalId = setInterval(() => {
+      if (userSocket.OPEN) userSocket.send("ping");
+      else clearInterval(userIntervalId);
+    }, 30000);
+    let frndIntervalId = setInterval(() => {
+      if (friendSocket.OPEN) friendSocket.send("ping");
+      else clearInterval(frndIntervalId);
+    }, 30000);
+    return () => {
+      setInterval(() => {
+        if (userSocket.OPEN) userSocket.close();
+        if (friendSocket.OPEN) friendSocket.close();
+      }, 1000)
+      clearInterval(userIntervalId);
+      clearInterval(frndIntervalId);
+    };
   }, []);
 
   const getUser = async () => {
@@ -97,7 +120,7 @@ export function UserCard(props: any) {
                 className={styles.image}
               />
             }
-            {props.userId === props.myId &&
+            {props.userId === props.session.user.id &&
               <div className={styles.editBgImage}>
                 <label htmlFor="background-file" className={styles.backgroundImageLabel}>
                   <div className={styles.backgroundIcon}>
@@ -126,7 +149,7 @@ export function UserCard(props: any) {
                       />
                     }
                   </div>
-                  {props.userId === props.myId &&
+                  {props.userId === props.session.user.id &&
                     <div className={styles.editAvatar}>
                       <label htmlFor="avatar-file" className={styles.avatarLabel}>
                         <div className={styles.avatarIcon}>
@@ -147,7 +170,7 @@ export function UserCard(props: any) {
                   <p>{friendsCount} {props.local.profile.friendsCount}</p>
                 </div>
               </div>
-              {props.userId !== props.myId
+              {props.userId !== props.session.user.id
                 ? <div className={styles.buttonBlock}>
                   {user.friendStatus === FriendStatus.Confirmed ? (<button className={styles.button_red_BG} onClick={removeFriend}><AiOutlineUserDelete size={20} />{props.local.profile.connect.delete}</button>) : (<></>)}
                   {user.friendStatus === FriendStatus.Unconfirmed ? (<button className={styles.button_green_BG} onClick={confirmFriend}><MdSentimentSatisfiedAlt size={20} />{props.local.profile.connect.confirm}</button>) : (<></>)}

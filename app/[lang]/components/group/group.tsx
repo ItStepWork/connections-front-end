@@ -1,10 +1,8 @@
 "use client"
-
 import { getSession } from 'next-auth/react';
 import { useEffect, useState } from "react";
 import 'react-toastify/dist/ReactToastify.css';
 import { GroupService } from '../../../../services/group.service';
-import PageLoader from '../loaders/page-loader';
 import { AboutCard } from './aboutBlock/aboutCard';
 import { ConnectionsCard } from './connectionsCard/connectionsCard';
 import { HeaderBlock } from './headerBlock/headerBlock';
@@ -21,15 +19,9 @@ export function GroupPage(props: any) {
     const [group, setGroup] = useState<any>(null);
     const [friendsForInvitation, setFriendsForInvitation] = useState<any>()
     const [photos, setPhotos] = useState<any[]>([]);
-    // let getUserSession = async () => {
-    //     const result = await getSession();
-    //     setSession(result);
-    // }
     useEffect(() => {
         getData();
-        // getUserSession();
         getPhotos();
-        // subscribe();
         let grpSocket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToGroupUpdates?id=${props.id}`, ["client", props.session.user.accessToken]);
         let friendSocket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToFriendsUpdates`, ["client", props.session.user.accessToken]);
         grpSocket.addEventListener('message', async (event) => {
@@ -41,9 +33,7 @@ export function GroupPage(props: any) {
         });
         friendSocket.addEventListener('message', async (event) => {
             await getUsers();
-            await getGroup()
-            // getUserSession();
-            // getPhotos();
+            await getGroup();
         });
         let grpIntervalId = setInterval(() => {
             if (grpSocket.OPEN) grpSocket.send("ping");
@@ -112,12 +102,11 @@ export function GroupPage(props: any) {
             <main className={styles.main}>
                 <div className={styles.container}>
                     {group
-                        ? <div className='gap-5'>
+                        && <div className='gap-5'>
                             < HeaderBlock groupSocket={groupSocket} session={props.session} group={group} usersRequests={usersRequests} members={membersFriends}
                                 getGroup={getGroup} getUsers={getUsers} component={component} setComponent={setComponent} local={props.local} friendsForInvitation={friendsForInvitation} getFriendsForInvitation={getFriendsForInvitation} />
                             {changeComponent()}
                         </div>
-                        : <PageLoader/>
                     }
                 </div>
             </main>

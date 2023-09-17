@@ -36,7 +36,7 @@ export default function Profile(props: any) {
       <main>
         <div className={styles.container}>
           <div className={styles.leftContainer}>
-            <UserCard setComponent={setComponent} component={component} myId={session?.user.id} userId={props.id[0]} local={props.local} />
+            {session ? <UserCard setComponent={setComponent} component={component} session={session} userId={props.id[0]} local={props.local} /> : <></>}
             {session ? changeComponent() : <></>}
           </div>
           {/* <div className={styles.rightContainer}>

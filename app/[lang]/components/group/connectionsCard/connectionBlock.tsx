@@ -1,4 +1,3 @@
-import { faker } from "@faker-js/faker";
 import Link from "next/link";
 import { AiOutlineUserDelete, AiOutlineUsergroupAdd, AiOutlineUsergroupDelete } from "react-icons/ai";
 import { BiTimeFive } from "react-icons/bi";
@@ -10,6 +9,7 @@ import { FriendStatus } from "../../../../../enums/all.enum";
 import { FriendService } from "../../../../../services/friend.service";
 import { GroupService } from "../../../../../services/group.service";
 import styles from './connectionBlock.module.scss';
+import OnlineUser from "../../onlineUser/page";
 
 export const ConnectionBlock = (props: any) => {
   const notifyError = (text: string) => toast.warning(text, {});
@@ -22,28 +22,21 @@ export const ConnectionBlock = (props: any) => {
   const removeUserFromGroup = async () => {
     let result = await GroupService.removeUserFromGroup(props.group.id, props.user.id);
     notifySuccess("Участник удален");
-    // props.getUsers();
-    // props.getGroup();
   }
   const acceptUserToGroup = async () => {
     let result = await GroupService.acceptUserToGroup(props.group.id, props.user.id);
     notifySuccess("Участник принят");
-    // props.getUsers();
-    // props.getGroup();
   }
   const addFriend = async () => {
     await FriendService.addFriend(props.user.id);
-    // props.getUsers();
   }
 
   const confirmFriend = async () => {
     await FriendService.confirmFriend(props.user.id);
-    // props.getUsers();
   }
 
   const removeFriend = async () => {
     await FriendService.removeFriend(props.user.id);
-    // props.getUsers();
   }
   return (
     <>
@@ -54,10 +47,11 @@ export const ConnectionBlock = (props: any) => {
           </div>
           <div className={styles.textContainer}>
             <div className={styles.headerText}>
-              <span>{props.user.firstName} {props.user.lastName}</span>
-              <span>{faker.music.songName()}</span>
+              <p className={styles.name}>{props.user.firstName} {props.user.lastName}</p>
             </div>
+            <OnlineUser user={props.user}></OnlineUser>
             <div className={styles.description}>{props.user.aboutMe}</div>
+
           </div>
         </Link>
         {props.isRequests
