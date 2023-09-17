@@ -21,7 +21,7 @@ export const ConnectionBlock = (props: any) => {
   return (
     <>
       <div className={styles.container}>
-        <Link className={styles.userContainer} href={`/profile/${props.user.id}`} target='_blank'>
+        <Link className={styles.userContainer} href={`/profile/${props.user.id}`}>
           {props.user.avatarUrl ? (
             <img src={props.user.avatarUrl} className={styles.avatar} alt="avatar"></img>
           ) : (<FaUserCircle className={styles.avatar} />)}

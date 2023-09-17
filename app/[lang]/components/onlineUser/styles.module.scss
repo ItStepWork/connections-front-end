@@ -1,0 +1,6 @@
+.container {
+	@apply flex items-center gap-1;
+}
+.statusDiv {
+	@apply rounded-full w-3 h-3;
+}

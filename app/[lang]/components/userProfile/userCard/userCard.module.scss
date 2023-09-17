@@ -20,7 +20,7 @@
 				}
 			}
 			.buttonBlock {
-				@apply flex px-6 items-center gap-2 w-full flex-wrap justify-center md:justify-end lg:justify-end;
+				@apply flex px-6 items-center gap-2 w-96 flex-wrap justify-center md:justify-end lg:justify-end;
 				/* .buttonLink {
 					@apply text-button_red_BG flex items-center bg-button_red_opacity transition-all duration-300 ease-in hover:bg-button_red_BG hover:text-white focus:ring-4 focus:outline-none focus:ring-button_red_BG font-medium rounded-md text-sm px-5 py-2.5 text-center dark:bg-button_red_opacity dark:hover:bg-button_red_BG dark:focus:ring-button_red_BG;
 					span {

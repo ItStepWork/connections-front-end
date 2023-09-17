@@ -25,10 +25,10 @@ export default function Profile(props: any) {
   }, []);
 
   const changeComponent = () => {
-    if (component === ComponentName.AboutMe) return (<ProfileInfo local={props.local}/>)
-    else if (component === ComponentName.Groups) return (<GroupsCard session={session} userId={props.id[0]} local={props.local}/>)
-    else if (component === ComponentName.Connections) return (<ConnectionsCard session={session} myId={session?.user.id} userId={props.id[0]} local={props.local}/>)
-    else if (component === ComponentName.Gallery) return (<Gallery myId={session?.user.id} userId={props.id[0]} local={props.local}/>)
+    if (component === ComponentName.AboutMe) return (<ProfileInfo local={props.local} />)
+    else if (component === ComponentName.Groups) return (<GroupsCard session={session} userId={props.id[0]} local={props.local} />)
+    else if (component === ComponentName.Connections) return (<ConnectionsCard session={session} myId={session?.user.id} userId={props.id[0]} local={props.local} />)
+    else if (component === ComponentName.Gallery) return (<Gallery myId={session?.user.id} userId={props.id[0]} local={props.local} />)
     else return (<></>)
   }
   return (
@@ -39,13 +39,13 @@ export default function Profile(props: any) {
             <UserCard setComponent={setComponent} component={component} myId={session?.user.id} userId={props.id[0]} local={props.local} />
             {session ? changeComponent() : <></>}
           </div>
-          <div className={styles.rightContainer}>
+          {/* <div className={styles.rightContainer}>
 
             <AboutCard />
             <PhotosCard />
             <FriendsCard />
 
-          </div>
+          </div> */}
         </div>
       </main>
     </>

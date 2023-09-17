@@ -12,23 +12,36 @@ import { AiOutlineUserDelete, AiOutlineUsergroupAdd } from 'react-icons/ai';
 import Window from '../../messaging/window/page';
 import FooterBlock from '../../messaging/footerBlock/page';
 import { FriendService } from '../../../../../services/friend.service';
-import { GoPersonAdd } from 'react-icons/go';
+import { GoDotFill, GoPersonAdd } from 'react-icons/go';
 import { BiTimeFive } from 'react-icons/bi';
 import { MdSentimentSatisfiedAlt, MdSentimentVeryDissatisfied } from 'react-icons/md';
+import OnlineUser from '../../onlineUser/page';
 
 export function UserCard(props: any) {
 
   const [loading, setLoading] = useState(true);
+  const [friendsCount, setSetFriendsCount] = useState(0);
   const [user, setUser] = useState<any>(null);
   const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
-    getUser();
+    // getUser();
+    // getFriendsCount();
+    getData();
   }, []);
 
   const getUser = async () => {
     let result = await FriendService.getFriend(props.userId);
     setUser(result);
+    // setLoading(false);
+  }
+  const getFriendsCount = async () => {
+    let result = await FriendService.getFriendsCount(props.userId);
+    setSetFriendsCount(result);
+  }
+  const getData = async () => {
+    await getUser();
+    await getFriendsCount();
     setLoading(false);
   }
   const addFriend = async () => {
@@ -130,20 +143,17 @@ export function UserCard(props: any) {
                     <h2>{user.firstName + ' ' + user.lastName}</h2>
                     <span><BsFillPatchCheckFill size={18} /></span>
                   </div>
-                  <p>? {props.local.profile.friendsCount}</p>
+                  <OnlineUser user={user}></OnlineUser>
+                  <p>{friendsCount} {props.local.profile.friendsCount}</p>
                 </div>
               </div>
-              {/* <div className=' flex flex-col items-center m-3 gap-3'> */}
               {props.userId !== props.myId
                 ? <div className={styles.buttonBlock}>
-                  {/* <button className={styles.button_red_BG}>{props.local.profile.connect.delete}</button> */}
                   {user.friendStatus === FriendStatus.Confirmed ? (<button className={styles.button_red_BG} onClick={removeFriend}><AiOutlineUserDelete size={20} />{props.local.profile.connect.delete}</button>) : (<></>)}
                   {user.friendStatus === FriendStatus.Unconfirmed ? (<button className={styles.button_green_BG} onClick={confirmFriend}><MdSentimentSatisfiedAlt size={20} />{props.local.profile.connect.confirm}</button>) : (<></>)}
                   {user.friendStatus === FriendStatus.Unconfirmed ? (<button className={styles.button_red_BG} onClick={removeFriend}><MdSentimentVeryDissatisfied size={20} />{props.local.profile.connect.cancel}</button>) : (<></>)}
                   {user.friendStatus === FriendStatus.Waiting ? (<button className={styles.button_yellow_BG} onClick={removeFriend}><BiTimeFive size={20} />{props.local.profile.connect.cancel}</button>) : (<></>)}
                   {user.friendStatus === FriendStatus.Other ? (<button className={styles.button_green_BG} onClick={addFriend}><GoPersonAdd size={20} />{props.local.profile.connect.beFriends}</button>) : (<></>)}
-                  {/* <button className={styles.button_blue_BG} onClick={() => { props.setSelectedUser(props.user); props.setIsOpen(true); }}>{props.local.profile.connect.write}</button> */}
-                  {/* <button title="Be Friend" className={styles.button_blue_BG}><AiOutlineUsergroupAdd className={styles.btnPict + " " + styles.bluePict} />"Be Friend"</button> */}
                   <button title="Send Message" className={styles.button_blue_BG} onClick={() => { setIsOpen(true); }}><BsSend size={20} />{props.local.profile.connect.write}</button>
                 </div>
                 : <div className={styles.buttonBlock}>
@@ -154,7 +164,6 @@ export function UserCard(props: any) {
 
 
             </div>
-            {/* </div> */}
             <div className={styles.bottomInfo}>
               <p><span><BsBriefcase /></span>{user.work}</p>
               <p><span><BsGeoAlt /></span>{user.location}</p>
