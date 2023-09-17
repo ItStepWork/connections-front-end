@@ -70,11 +70,6 @@ export function CreateGroup(props: any) {
                                 <input className={styles.input} type="file" accept=".jpg, .jpeg, .png" {...register('file')} required onChange={(e: any) => { setAvatar(e.target.files[0]) }}></input>
                                 {(avatar === null || avatar === undefined) ? (<BsUpload size={36} className="dark:fill-white" ></BsUpload>) : (<img src={URL.createObjectURL(avatar)} ></img>)}
                             </div>
-                            {/* <div className="avatar-remove">
-                                <button type="button" id="avatar-reset-img" className={styles.grayButton} onClick={() => {
-                                    setAvatar(null);
-                                }}>Delete</button>
-                            </div> */}
                         </div>
                     </div>
                     <label className={styles.label}>{props.local.createGroup.type}</label>
@@ -90,10 +85,6 @@ export function CreateGroup(props: any) {
                             ))}
                         </select>
                     </div>
-                    {/* <div className="mb-3">
-                  <label className="form-label">Invite friend </label>
-                  <input type="text" className={styles.grInput} placeholder="Add friend name here"></input>
-                </div> */}
                     <div className="mb-3 mt-3">
                         <label className={styles.label}>{props.local.createGroup.description}</label>
                         <textarea className={styles.grInput} rows={2} placeholder={props.local.createGroup.placeholderDesc} {...register('description')} required></textarea>

@@ -9,7 +9,7 @@ import { Card } from './card';
 import styles from './groupsCard.module.scss';
 
 export function GroupsCard(props: any) {
-  // const [session, setSession] = useState<any>()
+  
   const [groups, setGroups] = useState([]);
   // const [allGroups, setAllGroups] = useState([]);
   const [count, setCount] = useState(3);
@@ -29,18 +29,12 @@ export function GroupsCard(props: any) {
       setInterval(() => { if (socket.OPEN) socket.close(); }, 1000)
       clearInterval(intervalId);
     };
-    // getUserSession();
-    // subscribe();
   }, []);
   const getGroups = async () => {
     let result = await GroupService.getGroups(props.userId);
     setGroups(result);
     // setAllGroups(result);
   }
-  // const getUserSession = async () => {
-  //   let result = await getSession();
-  //   setSession(result);
-  // }
   const openDialog = () => {
     var dialog: any = document.getElementById("createGroupDialog")
     dialog?.showModal();
@@ -99,7 +93,7 @@ export function GroupsCard(props: any) {
           <div className={styles.cards}>
             {filter(groups).map((group: any, index) => {
               if (index <= count)
-                return (<Card key={group.id + Object.entries(group.users).length} group={group} getGroups={getGroups} session={props.session}></Card>)
+                return (<Card key={group.id + Object.entries(group.users).length} group={group} getGroups={getGroups} session={props.session} local={props.local}></Card>)
             })}
           </div>
           {count < groups.length - 1 && <button className={styles.buttonLoadMore} onClick={() => setCount(count + 4)}>{props.local.button.uploadMore}</button>}

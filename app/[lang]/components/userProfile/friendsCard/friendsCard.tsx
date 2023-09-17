@@ -6,7 +6,7 @@ import { FriendsPreloader } from '../../loaders/friendsPreloader';
 import { Card } from './card';
 import styles from './friendsCard.module.scss';
 
-export const FriendsCard = () => {
+export const FriendsCard = (props: any) => {
 
   const friendCount = useStore((state) => state.friendsCount);
 
@@ -33,19 +33,19 @@ export const FriendsCard = () => {
       <div className={styles.container}>
         <div className={styles.header}>
           <div className={styles.friends}>
-            <h2>Друзья</h2>
+            <h2>{props.local.friends.title}</h2>
             <div className={styles.counter}>{friendCount}</div>
           </div>
-          <Link href='/' className={styles.button}>Все друзья</Link>
+          <Link href='/' className={styles.button}>{props.local.button.allFriends}</Link>
         </div>
         <div className={styles.cardsContainer}>
           <div className={styles.cards}>
-            <Card />
-            <Card />
+            <Card local={props.local}/>
+            <Card local={props.local}/>
           </div>
           <div className={styles.cards}>
-            <Card />
-            <Card />
+            <Card local={props.local}/>
+            <Card local={props.local}/>
           </div>
         </div>
       </div>

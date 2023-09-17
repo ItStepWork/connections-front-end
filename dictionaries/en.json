@@ -19,6 +19,10 @@
   },
   "copyright" : "All right reserved",
   "development" : "!!! In development !!!",
+  "friends" : {
+    "title" : "Friends",
+    "subtitle" : "mutual friends"
+  },
   "posts" : {
     "photo" : "Photo",
     "video" : "Video",
@@ -102,7 +106,11 @@
       "cancel" : "Cancel request",
       "join" : "Join to group",
       "invite" : "Invite in group"
-    } 
+    },
+    "toasts" : {
+      "join" : "Заявку подано",
+      "leave" : "Ви вийшли із групи"
+    }
   },
     "editGroup" : {
       "title" : "Edit group",
@@ -206,12 +214,14 @@
   },
   "aboutMe" : {
     "title" : "Profile information:",
-    "Overview" : "Overview:",
-    "birthday" : "Birthday:",
-    "work" : "Work in:",
-    "connected" : "Join:",
-    "status" : "Status:",
-    "live" : "Live:"
+    "subtitle" : "About me",
+    "Overview" : "Overview: ",
+    "birthday" : "Birthday: ",
+    "work" : "Work in: ",
+    "connected" : "Join: ",
+    "status" : "Status: ",
+    "familyStatus" : "Family status: ",
+    "live" : "Live: "
   },
   "settings" :{
     "title" : "Account settings",
@@ -293,5 +303,8 @@
     "createAlbum" : "Create Album",
     "newAlbum" : "New album",
     "placeholder" : "Enter name..."
+  },
+  "chat" : {
+    "activeChat" : "Active chats"
   }
 }

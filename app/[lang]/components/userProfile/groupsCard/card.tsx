@@ -15,24 +15,20 @@ export const Card = (props: any) => {
     getUsers();
 
   }, []);
-  const notifyErrorServer = () => toast.warning("Ошибка сервера!", {});
+  const notifyErrorServer = () => toast.warning(props.local.editGroup.toasts.error, {});
   const notifyInfo = (text: string) => toast.info(text, {});
-  const notifySuccess = (text: string) => toast.success(text, {});
+  const notifySuccess = (text: string) => toast.info(text, {});
   let getUsers = async () => {
     let result = await GroupService.getMembersGroup(props.group.id);
     setUsers(result);
   }
   let joinGroup = async () => {
     let result = await GroupService.joinGroup(props.group.id);
-    notifySuccess("Заявку подано");
-    // getUsers();
-    // props.getGroups();
+    notifySuccess(props.local.groups.toasts.join);
   }
   let leaveGroup = async () => {
     let result = await GroupService.leaveGroup(props.group.id);
-    notifySuccess("Вы вышли из группы");
-    // getUsers();
-    // props.getGroups();
+    notifySuccess(props.local.groups.toasts.leave);
   }
   let ifInGroup = () => {
     let find = Object.entries(props.group.users).find(([key, value]) => key === props.session?.user.id);
@@ -53,7 +49,7 @@ export const Card = (props: any) => {
       <div className={styles.container}>
         <div className={styles.audienceDiv}>
           {(props.group.audience === "Private")
-            ? <RiGitRepositoryPrivateLine className="absolute" title="Private"></RiGitRepositoryPrivateLine>
+            ? <RiGitRepositoryPrivateLine className="absolute" title={props.local.editGroup.privacy.private}></RiGitRepositoryPrivateLine>
             : <></>}
         </div>
         <Link className='pt-1' href={"/group/" + props.group.id}>
@@ -77,17 +73,16 @@ export const Card = (props: any) => {
                 <div className="w-4"><div className={styles.membersDiv}>+{users.length} </div></div>
               </div>
             </div>
-            {/* <p className='mt-8'>{users.length} участников</p> */}
           </div>
         </Link>
         <div className={styles.buttons}>
           {ifInGroup()
             ? ifAdmin()
-              ? <div title='Ты Администратор' className={styles.greenButton}><MdOutlineAdminPanelSettings className={styles.btnPict + " " + styles.greenPict}></MdOutlineAdminPanelSettings></div>
+              ? <div title={props.local.groups.tooltip.admin} className={styles.greenButton}><MdOutlineAdminPanelSettings className={styles.btnPict + " " + styles.greenPict}></MdOutlineAdminPanelSettings></div>
               : isMemberTrue()
-                ? <button title='Покинуть группу' className={styles.redButton} onClick={leaveGroup}><AiOutlineUsergroupDelete className={styles.btnPict + " " + styles.redPict}></AiOutlineUsergroupDelete></button>
-                : <button title='Отменить запрос' className={styles.yellowButton} onClick={leaveGroup}><TiCancel className={styles.btnPict + " " + styles.yellowPict}></TiCancel></button>
-            : <button title="Присоединится у группе" className={styles.blueButton} onClick={joinGroup} ><AiOutlineUsergroupAdd className={styles.btnPict + " " + styles.bluePict} /></button>}
+                ? <button title={props.local.groups.tooltip.leave} className={styles.redButton} onClick={leaveGroup}><AiOutlineUsergroupDelete className={styles.btnPict + " " + styles.redPict}></AiOutlineUsergroupDelete></button>
+                : <button title={props.local.groups.tooltip.cancel} className={styles.yellowButton} onClick={leaveGroup}><TiCancel className={styles.btnPict + " " + styles.yellowPict}></TiCancel></button>
+            : <button title={props.local.groups.tooltip.join} className={styles.blueButton} onClick={joinGroup} ><AiOutlineUsergroupAdd className={styles.btnPict + " " + styles.bluePict} /></button>}
         </div>
       </div>
     </>
