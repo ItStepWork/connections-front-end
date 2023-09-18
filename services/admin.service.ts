@@ -32,9 +32,23 @@ export class AdminService {
       });
   }
 
-  static async getChartActivity() {
+  static async getDailyPagesActivityChart() {
     const session = await getSession();
-    return await axios.get(process.env.NEXT_PUBLIC_API + "Admin/GetChartActivity", {
+    return await axios.get(process.env.NEXT_PUBLIC_API + "Admin/GetDailyPagesActivityChart", {
+      headers: {
+        "Accept": "application/json",
+        "Authorization": "Bearer " + session?.user.accessToken,
+      },
+    }).then(response => response.data)
+      .catch((error) => {
+        CheckService.signOut(session, error);
+        return [];
+      });
+  }
+  
+  static async getDailyActivityChart() {
+    const session = await getSession();
+    return await axios.get(process.env.NEXT_PUBLIC_API + "Admin/GetDailyActivityChart", {
       headers: {
         "Accept": "application/json",
         "Authorization": "Bearer " + session?.user.accessToken,

@@ -22,7 +22,8 @@ export default function DropDownMenu(props: any) {
         <ul className="py-2 space-y-2">
           <LiMenu name="Genders" component={AdminComponentName.ChartGenders} setComponent={props.setComponent}/>
           <LiMenu name="Zodiacs" component={AdminComponentName.ChartZodiacs} setComponent={props.setComponent}/>
-          <LiMenu name="Pages activity" component={AdminComponentName.ChartPages} setComponent={props.setComponent}/>
+          <LiMenu name="Pages activity" component={AdminComponentName.DailyPagesActivityChart} setComponent={props.setComponent}/>
+          <LiMenu name="Daily activity" component={AdminComponentName.DailyActivityChart} setComponent={props.setComponent}/>
         </ul>}
     </li>
   )
