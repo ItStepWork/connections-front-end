@@ -1,0 +1,6 @@
+.container {
+	@apply flex gap-x-1 items-center ml-2;
+	img {
+		@apply w-6 h-4;
+	}
+}

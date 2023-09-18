@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-
+import styles from "./locale-switcher.module.scss"
 
 export default function LocaleSwitcher() {
   const pathName = usePathname()
@@ -14,10 +14,13 @@ export default function LocaleSwitcher() {
   }
 
   return (
-    <div className='flex gap-x-1'>
-      <Link href={redirectedPathName('ua')} locale={'ua'} className='text-gray-900 dark:text-dark_text_gray hover:text-button_blue_BG transition-all duration-300 ease-in'>Ua</Link>   
-      <p className='text-gray-900 dark:text-dark_text_gray'>/</p>    
-      <Link href={redirectedPathName('en')} locale={'en'} className='text-gray-900 dark:text-dark_text_gray hover:text-button_blue_BG transition-all duration-300 ease-in'>En</Link>
+    <div className={styles.container}>
+      <Link href={redirectedPathName('ua')} locale={'ua'}>
+        <img src="/UA.png" alt="ua" />
+      </Link>     
+      <Link href={redirectedPathName('en')} locale={'en'} >
+        <img src="/GB.png" alt="en" />
+      </Link>
     </div>
   )
 }

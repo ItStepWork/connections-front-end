@@ -1,4 +1,4 @@
-import { Locale, i18n } from './i18n.config';
+import { Locale } from './i18n.config';
 
 const dictionaries = {
   ua: () => import('./dictionaries/ua.json').then(module => module.default),
@@ -6,12 +6,12 @@ const dictionaries = {
 }
 
 //export const getDictionary = async (locale : Locale) => {dictionaries[locale]()}
-/*
+
 export const getDictionary = async (locale: Locale) => {
   return locale == "ua" ? dictionaries.ua() : dictionaries.en(); 
 }
-*/
-export const getDictionary = async (locale : Locale) => dictionaries[i18n.locales.includes(locale) ? locale : i18n.defaultLocale]()
+
+//export const getDictionary = async (locale : Locale) => dictionaries[i18n.locales.includes(locale) ? locale : i18n.defaultLocale]()
 
 //export const getDictionary = async (locale: Locale) =>
 // dictionaries[locale]?.() ?? dictionaries.en()
