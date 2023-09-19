@@ -1,0 +1,21 @@
+.container {
+	@apply flex flex-col justify-center items-center w-full h-screen border-2 border-dark_text_gray bg-light_background dark:bg-dark_background;
+	h1 {
+		@apply animate-pulse text-button_red_BG m-0 dark:text-button_red_BG text-6xl leading-none;
+	}
+	p {
+		@apply animate-pulse text-button_red_BG font-bold dark:text-button_red_BG ml-1 text-2xl leading-none;
+	}
+	h2 {
+		@apply flex items-center gap-4 text-gray-900 dark:text-dark_text_gray;
+	}
+	.button {
+		@apply text-white bg-blue-700 hover:bg-blue-800 
+         focus:ring-4 outline-none border-0 focus:outline-none focus:ring-blue-300 
+         font-medium rounded-lg text-sm px-6 py-2 text-center
+          dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 duration-300 transition-all ease-in;
+	}
+	.link {
+		@apply visited:text-white no-underline;
+	}
+}
