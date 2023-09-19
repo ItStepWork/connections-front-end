@@ -6,7 +6,7 @@ export class NotificationService {
 
   static async getNotifications() {
     const session = await getSession();
-    return await axios.get(process.env.NEXT_PUBLIC_API + "Notifications/GetNotifications", {
+    return await axios.get(process.env.NEXT_PUBLIC_API + "Notification/GetNotifications", {
       headers: {
         "Accept": "application/json",
         "Authorization": "Bearer " + session?.user.accessToken,
@@ -20,7 +20,7 @@ export class NotificationService {
 
   static async inviteToGroup(userId: string, groupId: string) {
     const session = await getSession();
-    return await axios.post(process.env.NEXT_PUBLIC_API + "Notifications/InviteToGroup", { userId: userId, groupId: groupId }, {
+    return await axios.post(process.env.NEXT_PUBLIC_API + "Notification/InviteToGroup", { userId: userId, groupId: groupId }, {
       headers: {
         "Accept": "application/json",
         "Authorization": "Bearer " + session?.user.accessToken,
