@@ -13,6 +13,7 @@ export class NotificationService {
       },
     }).then(response => response.data)
       .catch((error) => {
+        console.log(error);
         CheckService.signOut(session, error);
         return [];
       });
