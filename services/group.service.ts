@@ -1,264 +1,77 @@
-import axios from 'axios';
-import { getSession } from 'next-auth/react';
-import { CheckService } from './check.service';
+import { ApiService } from './api.service';
 
 export class GroupService {
 
-    static async getGroups(userId:string) {
-        const session = await getSession();
-        return await axios.get(process.env.NEXT_PUBLIC_API + "Group/GetGroups?userId="+userId, {
-            headers: {
-                "Accept": "application/json",
-                "Authorization": "Bearer " + session?.user.accessToken,
-            },
-        }).then(response => response.data)
-            .catch((error) => {
-                CheckService.signOut(session, error);
-                return [];
-            });
+    static async getGroups(userId: string) {
+        return await ApiService.get("Group/GetGroups?userId=" + userId, []);
     }
 
     static async addGroup(formData: FormData) {
-        const session = await getSession();
-        return await axios.post(process.env.NEXT_PUBLIC_API + "Group/AddGroup", formData, {
-            headers: {
-                "Accept": "application/json",
-                "Authorization": "Bearer " + session?.user.accessToken,
-                'Content-Type': 'multipart/form-data',
-            },
-        }).then(response => response.data)
-            .catch((error) => {
-                CheckService.signOut(session, error);
-                return null;
-            });
+        return await ApiService.post("Group/AddGroup", null, formData);
     }
 
     static async deleteGroup(id: string) {
-        const session = await getSession();
-        return await axios.delete(process.env.NEXT_PUBLIC_API + "Group/DeleteGroup?id=" + id, {
-            headers: {
-                "Accept": "application/json",
-                "Authorization": "Bearer " + session?.user.accessToken,
-            },
-        }).then(response => response.data)
-            .catch((error) => {
-                CheckService.signOut(session, error);
-                return null;
-            });
+        return await ApiService.delete("Group/DeleteGroup?id=" + id);
     }
+
     static async updateAvatar(formData: FormData) {
-        const session = await getSession();
-        return await axios.post(process.env.NEXT_PUBLIC_API + "Group/UpdateAvatar", formData, {
-            headers: {
-                "Accept": "application/json",
-                "Authorization": "Bearer " + session?.user.accessToken,
-                'Content-Type': 'multipart/form-data',
-            },
-        }).then(response => response.data)
-            .catch((error) => {
-                CheckService.signOut(session, error);
-                return null;
-            });
+        return await ApiService.post("Group/UpdateAvatar", null, formData);
     }
+
     static async updateGroup(formData: FormData) {
-        const session = await getSession();
-        return await axios.post(process.env.NEXT_PUBLIC_API + "Group/UpdateGroup", formData, {
-            headers: {
-                "Accept": "application/json",
-                "Authorization": "Bearer " + session?.user.accessToken,
-                'Content-Type': 'multipart/form-data',
-            },
-        }).then(response => response.data)
-            .catch((error) => {
-                CheckService.signOut(session, error);
-                return null;
-            });
+        return await ApiService.post("Group/UpdateGroup", null, formData);
     }
+
     static async joinGroup(id: string) {
-        const session = await getSession();
-        return await axios.post(process.env.NEXT_PUBLIC_API + "Group/JoinGroup", { id: id }, {
-            headers: {
-                "Accept": "application/json",
-                "Authorization": "Bearer " + session?.user.accessToken,
-                'Content-Type': 'application/json',
-            },
-        }).then(response => response.data)
-            .catch((error) => {
-                CheckService.signOut(session, error);
-                return null;
-            });
+        return await ApiService.post("Group/JoinGroup", { id: id }, null);
     }
 
     static async leaveGroup(id: string) {
-        const session = await getSession();
-        return await axios.delete(process.env.NEXT_PUBLIC_API + "Group/LeaveGroup?id=" + id, {
-            headers: {
-                "Accept": "application/json",
-                "Authorization": "Bearer " + session?.user.accessToken,
-            },
-        }).then(response => response.data)
-            .catch((error) => {
-                CheckService.signOut(session, error);
-                return null;
-            });
+        return await ApiService.delete("Group/LeaveGroup?id=" + id);
     }
 
-    static async removeUserFromGroup(groupId: string,userId: string) {
-        const session = await getSession();
-        return await axios.post(process.env.NEXT_PUBLIC_API + "Group/RemoveUserFromGroup",{ id: groupId,userId:userId }, {
-            headers: {
-                "Accept": "application/json",
-                "Authorization": "Bearer " + session?.user.accessToken,
-                'Content-Type': 'application/json',
-            },
-        }).then(response => response.data)
-            .catch((error) => {
-                CheckService.signOut(session, error);
-                return null;
-            });
+    static async removeUserFromGroup(groupId: string, userId: string) {
+        return await ApiService.post("Group/RemoveUserFromGroup", { id: groupId, userId: userId }, null);
     }
 
-    static async acceptUserToGroup(groupId: string,userId: string) {
-        const session = await getSession();
-        return await axios.post(process.env.NEXT_PUBLIC_API + "Group/AcceptUserToGroup",{ id: groupId,userId:userId }, {
-            headers: {
-                "Accept": "application/json",
-                "Authorization": "Bearer " + session?.user.accessToken,
-                'Content-Type': 'application/json',
-            },
-        }).then(response => response.data)
-            .catch((error) => {
-                CheckService.signOut(session, error);
-                return null;
-            });
+    static async acceptUserToGroup(groupId: string, userId: string) {
+        return await ApiService.post("Group/AcceptUserToGroup", { id: groupId, userId: userId }, null);
     }
 
     static async getGroup(id: string) {
-        const session = await getSession();
-        return await axios.get(process.env.NEXT_PUBLIC_API + "Group/GetGroup?id=" + id, {
-            headers: {
-                "Accept": "application/json",
-                "Authorization": "Bearer " + session?.user.accessToken,
-            },
-        }).then(response => response.data)
-            .catch((error) => {
-                CheckService.signOut(session, error);
-                return null;
-            });
+        return await ApiService.get("Group/GetGroup?id=" + id, null);
     }
 
     static async getUsersGroup(id: string) {
-        const session = await getSession();
-        return await axios.get(process.env.NEXT_PUBLIC_API + "Group/GetUsersGroup?id=" + id, {
-            headers: {
-                "Accept": "application/json",
-                "Authorization": "Bearer " + session?.user.accessToken,
-            },
-        }).then(response => response.data)
-            .catch((error) => {
-                CheckService.signOut(session, error);
-                return [];
-            });
+        return await ApiService.get("Group/GetUsersGroup?id=" + id, []);
     }
+
     static async getMembersGroup(id: string) {
-        const session = await getSession();
-        return await axios.get(process.env.NEXT_PUBLIC_API + "Group/GetMembersGroup?id=" + id, {
-            headers: {
-                "Accept": "application/json",
-                "Authorization": "Bearer " + session?.user.accessToken,
-            },
-        }).then(response => response.data)
-            .catch((error) => {
-                CheckService.signOut(session, error);
-                return [];
-            });
+        return await ApiService.get("Group/GetMembersGroup?id=" + id, []);
     }
+
     static async getRequestsToGroup(id: string) {
-        const session = await getSession();
-        return await axios.get(process.env.NEXT_PUBLIC_API + "Group/GetRequestsToGroup?id=" + id, {
-            headers: {
-                "Accept": "application/json",
-                "Authorization": "Bearer " + session?.user.accessToken,
-            },
-        }).then(response => response.data)
-            .catch((error) => {
-                CheckService.signOut(session, error);
-                return [];
-            });
+        return await ApiService.get("Group/GetRequestsToGroup?id=" + id, []);
     }
+
     static async getFriendsInGroup(id: string) {
-        const session = await getSession();
-        return await axios.get(process.env.NEXT_PUBLIC_API + "Group/GetFriendsInGroup?id=" + id, {
-            headers: {
-                "Accept": "application/json",
-                "Authorization": "Bearer " + session?.user.accessToken,
-            },
-        }).then(response => response.data)
-            .catch((error) => {
-                CheckService.signOut(session, error);
-                return [];
-            });
+        return await ApiService.get("Group/GetFriendsInGroup?id=" + id, []);
     }
+
     static async getFriendsForInvitation(id: string) {
-        const session = await getSession();
-        return await axios.get(process.env.NEXT_PUBLIC_API + "Group/GetFriendsForInvitation?id=" + id, {
-            headers: {
-                "Accept": "application/json",
-                "Authorization": "Bearer " + session?.user.accessToken,
-            },
-        }).then(response => response.data)
-            .catch((error) => {
-                CheckService.signOut(session, error);
-                return [];
-            });
+        return await ApiService.get("Group/GetFriendsForInvitation?id=" + id, []);
     }
+
     static async addPhoto(formData: FormData) {
-        const session = await getSession();
-        return await axios.post(process.env.NEXT_PUBLIC_API + "Group/AddPhoto", formData, {
-            headers: {
-                "Accept": "application/json",
-                "Authorization": "Bearer " + session?.user.accessToken,
-                'Content-Type': 'multipart/form-data',
-            },
-        }).then(response => response.data)
-            .catch((error) => {
-                CheckService.signOut(session, error);
-                return null;
-            });
+        return await ApiService.post("Group/AddPhoto", null, formData);
     }
+
     static async getPhotos(groupId: string) {
-        const session = await getSession();
-        return await axios.get(process.env.NEXT_PUBLIC_API + "Group/GetPhotos?groupId=" + groupId, {
-            headers: {
-                "Accept": "application/json",
-                "Authorization": "Bearer " + session?.user.accessToken,
-            },
-        }).then(response => response.data)
-            .catch((error) => {
-                CheckService.signOut(session, error);
-                return [];
-            });
-    }
-    static async removePhoto( groupId: string,photoId:string) {
-        const session = await getSession();
-        return await axios.post(process.env.NEXT_PUBLIC_API + "Group/RemovePhoto",{ id:groupId,photoId: photoId }, {
-            headers: {
-                "Accept": "application/json",
-                "Authorization": "Bearer " + session?.user.accessToken,
-                'Content-Type': 'application/json',
-            },
-        }).then(response => response.data)
-            .catch((error) => {
-                CheckService.signOut(session, error);
-                return null;
-            });
+        return await ApiService.get("Group/GetPhotos?groupId=" + groupId, []);
     }
 
-
-
-
-
-
-
+    static async removePhoto(groupId: string, photoId: string) {
+        return await ApiService.post("Group/RemovePhoto", { id: groupId, photoId: photoId }, null);
+    }
 
 }
