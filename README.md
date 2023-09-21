@@ -33,7 +33,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 2. Typescript
 
 ## Used Packages
-1. next-pwa plugin
+1. @ducanh2912/next-pwa
 2. Sass
 3. next-themes
 4. next-nprogress-bar
@@ -43,3 +43,6 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 8. next-auth
 9. Zustand
 10. Axios
+11. victory
+12. react-simple-maps
+13. react-toastify

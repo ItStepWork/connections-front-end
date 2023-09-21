@@ -1,6 +1,5 @@
 'use client'
 
-import React from "react";
 import { ComposableMap, Geographies, Geography, Marker, ZoomableGroup } from "react-simple-maps";
 import { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
@@ -29,43 +28,44 @@ export default function Map(props: any) {
   };
 
   const load = async () => {
-    let array: Array<any> = [];
+    let array: any[] = [];
     filter(props.users).forEach(async user => {
       let result = await getGeoInfo(user.ipAddress);
-      result.user = user;
-      array.push(result);
+      if (result !== null) {
+        result.user = user;
+        array.push(result);
+        setUsers(array);
+      }
     });
-    setUsers(array);
   }
 
   useEffect(() => {
     load();
-  }, [])
+  }, []);
 
   return (
     <div className={styles.container}>
-        <ComposableMap>
-          <ZoomableGroup key="0" center={[0, 0]} zoom={1}>
-            <Geographies geography="/features.json">
-              {({ geographies }) =>
-                geographies.map((geo) => (
-                  <Geography
-                    key={geo.rsmKey}
-                    geography={geo}
-                    fill="#DDD"
-                    stroke="#FFF"
-                  />
-                ))
-              }
-            </Geographies>
-            {users.map((user: any) => (
-              <Marker key={user.user.id} coordinates={[user.longitude, user.latitude]}>
-              <circle className="hover:stroke-black hover:cursor-pointer" stroke="#F53" r={2} fill="#F53" onMouseEnter={() => { setUser(user) }} onMouseLeave={() => { setUser(null) }} />
+      <ComposableMap>
+        <ZoomableGroup center={[0, 0]} zoom={1}>
+          <Geographies geography="/features.json">
+            {({ geographies }) =>
+              geographies.map((geo) => (
+                <Geography
+                  key={geo.rsmKey}
+                  geography={geo}
+                  fill="#DDD"
+                  stroke="#FFF"
+                />
+              ))
+            }
+          </Geographies>
+          {users.map((user: any) => (
+            <Marker key={user.user.id} coordinates={[user.longitude, user.latitude]}>
+              <circle className={styles.circle} r={1} onMouseEnter={() => { setUser(user) }} onMouseLeave={() => { setUser(null) }} />
             </Marker>
-            ))}
-          </ZoomableGroup>
-        </ComposableMap>
-
+          ))}
+        </ZoomableGroup>
+      </ComposableMap>
       {user &&
         <div className="z-50 fixed right-0 bottom-0">
           <div className="flex flex-col m-6">
