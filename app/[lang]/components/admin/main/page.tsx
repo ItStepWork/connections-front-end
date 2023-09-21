@@ -10,6 +10,7 @@ import { AdminService } from "../../../../../services/admin.service";
 import ChartZodiacs from "../chartZodiacs/page";
 import DailyPagesActivityChart from "../dailyPagesActivityChart/page";
 import DailyActivityChart from "../dailyActivityChart/page";
+import Map from "../map/page";
 
 export default function Admin({ local }: { local: any }, props: any) {
 
@@ -38,6 +39,7 @@ export default function Admin({ local }: { local: any }, props: any) {
     else if (component === AdminComponentName.ChartZodiacs) return (<ChartZodiacs users={users}/>)
     else if (component === AdminComponentName.DailyPagesActivityChart) return (<DailyPagesActivityChart />)
     else if (component === AdminComponentName.DailyActivityChart) return (<DailyActivityChart />)
+    else if (component === AdminComponentName.Map) return (<Map users={users}/>)
     else return (<></>)
   }
 

@@ -24,6 +24,7 @@ export default function DropDownMenu(props: any) {
           <LiMenu name="Zodiacs" component={AdminComponentName.ChartZodiacs} setComponent={props.setComponent}/>
           <LiMenu name="Pages activity" component={AdminComponentName.DailyPagesActivityChart} setComponent={props.setComponent}/>
           <LiMenu name="Daily activity" component={AdminComponentName.DailyActivityChart} setComponent={props.setComponent}/>
+          <LiMenu name="Map" component={AdminComponentName.Map} setComponent={props.setComponent}/>
         </ul>}
     </li>
   )

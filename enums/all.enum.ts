@@ -21,6 +21,7 @@ export enum AdminComponentName {
     ChartZodiacs,
     DailyPagesActivityChart,
     DailyActivityChart,
+    Map,
 }
 
 export enum NotificationType {
