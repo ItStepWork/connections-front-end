@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { ImMenu } from 'react-icons/im';
 import { IoMdClose } from 'react-icons/io';
 import { FaUsers } from 'react-icons/fa';
+import { BiWorld } from 'react-icons/bi';
 import { AdminComponentName } from '../../../../../enums/all.enum';
 import LiMenu from '../liMenu/page';
 
@@ -23,6 +24,7 @@ export default function Navigation(props: any) {
           <div className="mt-2 p-4 overflow-y-auto">
             <ul className="space-y-2 font-medium">
               <LiMenu name="Users" icon={FaUsers} component={AdminComponentName.Users} setComponent={props.setComponent}/>
+              <LiMenu name="Map" icon={BiWorld} component={AdminComponentName.Map} setComponent={props.setComponent}/>
               <DropDownMenu  setComponent={props.setComponent}/>
             </ul>
           </div>

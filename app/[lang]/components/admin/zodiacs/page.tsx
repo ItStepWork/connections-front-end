@@ -1,9 +1,9 @@
 'use client'
 
 import styles from './styles.module.scss';
-import { VictoryBar, VictoryLabel } from 'victory';
+import { VictoryBar, VictoryLabel, VictoryChart, VictoryLegend } from 'victory';
 
-export default function ChartZodiacs(props: any) {
+export default function Zodiacs(props: any) {
 
   const filter = (array: any) => {
     let data = [
@@ -25,7 +25,7 @@ export default function ChartZodiacs(props: any) {
     let result3 = Array.from(result2, ([key, value]) => ({
       [key]: value,
     }));
-    result3.map((user: any)=> { let arr = Object.entries(user);  let users = arr[0][1] as [] ; let index = Number.parseInt(arr[0][0]);  data[index - 1].y = users.length ; });
+    result3.map((user: any) => { let arr = Object.entries(user); let users = arr[0][1] as []; let index = Number.parseInt(arr[0][0]); data[index - 1].y = users.length; });
     return data;
   }
 
@@ -73,64 +73,70 @@ export default function ChartZodiacs(props: any) {
       return 12;
     }
   }
-  
+
   return (
     <div className={styles.container}>
-      <VictoryBar
-        width={300} height={200}
-        data={filter(props.users)}
-        style={{ data: { strokeWidth: 1 } }}
-        labelComponent={
-          <VictoryLabel
-            style={{ fill: "gray", fontSize: 10 }}
-            events={{onClick: (evt) => console.log(evt)}}
-          />
-        }
-        events={[
-          {
-            target: "data",
-            eventHandlers: {
-              // onClick: () => {
-              //   return [{
-              //     target: "labels",
-              //     mutation: (props) => {
-              //       console.log(props);
-              //       return props.text === props.datum.y.toString() ? null : { text: props.datum.y.toString() }
-              //     }
-              //   }];
-              // },
-              onMouseOver: () => {
-                return [{
-                  mutation: (props) => {
-                    return {
-                      style: Object.assign({}, props.style, { stroke: "gray" })
-                    };
-                  }
+      <h2 className='text-center text-2xl mt-3'>
+        Zodiacs
+      </h2>
+      <VictoryChart
+        domainPadding={{ x: 30, y: 20 }}>
+        <VictoryBar
+          width={300} height={200}
+          data={filter(props.users)}
+          style={{ data: { strokeWidth: 1 } }}
+          labelComponent={
+            <VictoryLabel
+              style={{ fill: "gray", fontSize: 10 }}
+              events={{ onClick: (evt) => console.log(evt) }}
+            />
+          }
+          events={[
+            {
+              target: "data",
+              eventHandlers: {
+                // onClick: () => {
+                //   return [{
+                //     target: "labels",
+                //     mutation: (props) => {
+                //       console.log(props);
+                //       return props.text === props.datum.y.toString() ? null : { text: props.datum.y.toString() }
+                //     }
+                //   }];
+                // },
+                onMouseOver: () => {
+                  return [{
+                    mutation: (props) => {
+                      return {
+                        style: Object.assign({}, props.style, { stroke: "gray" })
+                      };
+                    }
+                  },
+                  {
+                    target: "labels",
+                    mutation: (props) => {
+                      return { text: props.datum.y.toString() }
+                    }
+                  }];
                 },
-                {
-                  target: "labels",
-                  mutation: (props) => {
-                    return { text: props.datum.y.toString() }
-                  }
-                }];
-              },
-              onMouseOut: () => {
-                return [{
-                  mutation: () => {
-                    return null;
-                  }
-                },
-                {
-                  target: "labels",
-                  mutation: () => {
-                    return null;
-                  }
-                }];
+                onMouseOut: () => {
+                  return [{
+                    mutation: () => {
+                      return null;
+                    }
+                  },
+                  {
+                    target: "labels",
+                    mutation: () => {
+                      return null;
+                    }
+                  }];
+                }
               }
             }
-          }
-        ]}
-      />
+          ]}
+        />
+      </VictoryChart>
     </div>
   )
 }

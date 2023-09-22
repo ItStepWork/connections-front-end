@@ -5,7 +5,7 @@ import { VictoryLabel, VictoryChart, VictoryLine, VictoryZoomContainer, VictoryL
 import { useEffect, useState } from 'react';
 import { AdminService } from '../../../../../services/admin.service';
 
-export default function DailyPagesActivityChart(props: any) {
+export default function PagesActivity(props: any) {
 
   const [contacts, setContacts] = useState<any[]>([]);
   const [messaging, setMessaging] = useState<any[]>([]);
@@ -14,7 +14,7 @@ export default function DailyPagesActivityChart(props: any) {
   const [groups, setGroups] = useState<any[]>([]);
 
   const load = async () => {
-    let result = await AdminService.getDailyPagesActivityChart();
+    let result = await AdminService.getPagesActivity();
     let result1 = result.contacts.map((point: any) => { return { x: new Date(point.x), y: point.y } });
     setContacts(result1);
     let result2 = result.messaging.map((point: any) => { return { x: new Date(point.x), y: point.y } });
@@ -33,6 +33,9 @@ export default function DailyPagesActivityChart(props: any) {
 
   return (
     <div className={styles.container}>
+      <h2 className='text-center text-2xl mt-3'>
+        Pages activity
+      </h2>
       <VictoryChart
         containerComponent={
           <VictoryZoomContainer zoomDimension="x" />

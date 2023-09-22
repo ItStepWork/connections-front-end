@@ -10,12 +10,12 @@ export class AdminService {
     return await ApiService.get("Admin/GetAllActivity", []);
   }
 
-  static async getDailyPagesActivityChart() {
-    return await ApiService.get("Admin/GetDailyPagesActivityChart", []);
+  static async getPagesActivity() {
+    return await ApiService.get("Admin/GetPagesActivity", []);
   }
   
-  static async getDailyActivityChart() {
-    return await ApiService.get("Admin/GetDailyActivityChart", []);
+  static async getUsersActivity() {
+    return await ApiService.get("Admin/GetUsersActivity", []);
   }
 
 } 

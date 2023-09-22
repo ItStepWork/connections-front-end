@@ -4,10 +4,12 @@ import { ComposableMap, Geographies, Geography, Marker, ZoomableGroup } from "re
 import { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import axios from "axios";
+import Window from "../../messaging/window/page";
 
 export default function Map(props: any) {
 
   const [users, setUsers] = useState<any[]>([]);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [user, setUser] = useState<any>(null);
 
   const filter = (array: any[]) => {
@@ -61,20 +63,20 @@ export default function Map(props: any) {
           </Geographies>
           {users.map((user: any) => (
             <Marker key={user.user.id} coordinates={[user.longitude, user.latitude]}>
-              <circle className={styles.circle} r={1} onMouseEnter={() => { setUser(user) }} onMouseLeave={() => { setUser(null) }} />
+              <circle className={styles.circle} r={1} onClick={() => { setUser(user); setIsOpen(true); }} />
             </Marker>
           ))}
         </ZoomableGroup>
       </ComposableMap>
       {user &&
-        <div className="z-50 fixed right-0 bottom-0">
+        <Window name="Selected user" isOpen={isOpen} setIsOpen={setIsOpen}>
           <div className="flex flex-col m-6">
             <span>{user.user.firstName}</span>
             <span>{user.user.lastName}</span>
             <span>{user.city}</span>
             <span>{user.region}</span>
           </div>
-        </div>
+        </Window>
       }
     </div>
   )

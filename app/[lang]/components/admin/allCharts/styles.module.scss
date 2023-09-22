@@ -1,0 +1,6 @@
+.container {
+  @apply w-full flex flex-wrap justify-center bg-white text-gray-900 border border-light_border rounded-xl dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border;
+}
+.content{
+  @apply w-2/4 min-w-[300px] p-3;
+}

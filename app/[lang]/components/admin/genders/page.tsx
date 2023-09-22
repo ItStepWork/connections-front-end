@@ -3,10 +3,13 @@
 import styles from './styles.module.scss';
 import { VictoryPie, VictoryLabel } from 'victory';
 import { Gender } from '../../../../../enums/all.enum';
-export default function ChartGenders(props: any) {
+export default function Genders(props: any) {
 
   return (
     <div className={styles.container}>
+      <h2 className='text-center text-2xl mt-3'>
+        Genders
+      </h2>
       <VictoryPie
         width={300} height={200}
         data={[
@@ -16,7 +19,7 @@ export default function ChartGenders(props: any) {
         ]}
         labelComponent={
           <VictoryLabel
-            style={{ fill: "gray", fontSize: 10 }}
+            style={{ fill: "gray", fontSize: 8 }}
           />
         }
         events={[

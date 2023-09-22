@@ -5,12 +5,13 @@ import styles from './styles.module.scss';
 import Navigation from "../navigation/page";
 import { AdminComponentName } from "../../../../../enums/all.enum";
 import Users from "../users/page";
-import ChartGenders from "../chartGenders/page";
+import Genders from "../genders/page";
 import { AdminService } from "../../../../../services/admin.service";
-import ChartZodiacs from "../chartZodiacs/page";
-import DailyPagesActivityChart from "../dailyPagesActivityChart/page";
-import DailyActivityChart from "../dailyActivityChart/page";
+import Zodiacs from "../zodiacs/page";
+import PagesActivity from "../pagesActivity/page";
+import UsersActivity from "../usersActivity/page";
 import Map from "../map/page";
+import AllCharts from "../allCharts/page";
 
 export default function Admin({ local }: { local: any }, props: any) {
 
@@ -35,11 +36,12 @@ export default function Admin({ local }: { local: any }, props: any) {
 
   const ChangeComponent = () => {
     if (component === AdminComponentName.Users) return (<Users users={users}/>)
-    else if (component === AdminComponentName.ChartGenders) return (<ChartGenders users={users}/>)
-    else if (component === AdminComponentName.ChartZodiacs) return (<ChartZodiacs users={users}/>)
-    else if (component === AdminComponentName.DailyPagesActivityChart) return (<DailyPagesActivityChart />)
-    else if (component === AdminComponentName.DailyActivityChart) return (<DailyActivityChart />)
+    else if (component === AdminComponentName.Genders) return (<Genders users={users}/>)
+    else if (component === AdminComponentName.Zodiacs) return (<Zodiacs users={users}/>)
+    else if (component === AdminComponentName.PagesActivity) return (<PagesActivity />)
+    else if (component === AdminComponentName.UsersActivity) return (<UsersActivity />)
     else if (component === AdminComponentName.Map) return (<Map users={users}/>)
+    else if (component === AdminComponentName.AllCharts) return (<AllCharts users={users}/>)
     else return (<></>)
   }
 

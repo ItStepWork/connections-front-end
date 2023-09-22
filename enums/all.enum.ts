@@ -17,11 +17,12 @@ export enum ComponentName {
 
 export enum AdminComponentName {
     Users,
-    ChartGenders,
-    ChartZodiacs,
-    DailyPagesActivityChart,
-    DailyActivityChart,
+    Genders,
+    Zodiacs,
+    PagesActivity,
+    UsersActivity,
     Map,
+    AllCharts,
 }
 
 export enum NotificationType {

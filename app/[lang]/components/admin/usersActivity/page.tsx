@@ -5,13 +5,13 @@ import { VictoryLabel, VictoryChart, VictoryBar, VictoryZoomContainer, VictoryLe
 import { useEffect, useState } from 'react';
 import { AdminService } from '../../../../../services/admin.service';
 
-export default function DailyActivityChart(props: any) {
+export default function UsersActivity(props: any) {
 
   const [activity, setActivity] = useState<any[]>([]);
 
   const load = async () => {
-    let result = await AdminService.getDailyActivityChart();
-    let result1 = result.map((point: any) => { return { x: new Date(point.x), y: point.y, label: point.y } });
+    let result = await AdminService.getUsersActivity();
+    let result1 = result.map((point: any) => { return { x: new Date(point.x), y: point.y, label: "" } });
     setActivity(result1);
   }
 
@@ -21,6 +21,9 @@ export default function DailyActivityChart(props: any) {
 
   return (
     <div className={styles.container}>
+      <h2 className='text-center text-2xl mt-3'>
+        Users activity
+      </h2>
       <VictoryChart
         domainPadding={{ x: 30, y: 20 }}
         containerComponent={
@@ -75,6 +78,9 @@ export default function DailyActivityChart(props: any) {
         <VictoryAxis
           style={{ tickLabels: { fill: "gray" } }}
           tickFormat={t => { let date = new Date(t); return `${date.getHours()}:00` }}
+        />
+        <VictoryAxis dependentAxis
+          style={{ tickLabels: { fill: "gray" } }}
         />
       </VictoryChart>
     </div>
