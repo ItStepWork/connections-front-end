@@ -4,26 +4,41 @@ import styles from './styles.module.scss';
 import { VictoryLabel, VictoryChart, VictoryBar, VictoryZoomContainer, VictoryLegend, VictoryAxis } from 'victory';
 import { useEffect, useState } from 'react';
 import { AdminService } from '../../../../../services/admin.service';
+import { Chart } from '../../../../../enums/all.enum';
 
 export default function UsersActivity(props: any) {
 
+  const [chart, setChart] = useState<Chart>(Chart.Daily);
   const [activity, setActivity] = useState<any[]>([]);
 
-  const load = async () => {
-    let result = await AdminService.getUsersActivity();
+  const load = async (loadChart: Chart) => {
+    setChart(loadChart);
+    let result = await AdminService.getUsersActivity(loadChart);
     let result1 = result.map((point: any) => { return { x: new Date(point.x), y: point.y, label: "" } });
     setActivity(result1);
   }
 
   useEffect(() => {
-    load();
+    load(Chart.Daily);
   }, [])
 
   return (
     <div className={styles.container}>
-      <h2 className='text-center text-2xl mt-3'>
+      <h2 className='relative text-sm md:text-lg lg:text-2xl mx-3 mt-3'>
         Users activity
       </h2>
+      <div className="absolute top-0 right-0">
+        <div className='flex p-3 text-sm lg:text-lg'>
+          <div className="flex mr-4 ">
+            <input id="daily-radio-users" type="radio" className='cursor-pointer' value={Chart.Daily} checked={chart === Chart.Daily} onClick={()=>{ load(Chart.Daily); }} name="radio-users" />
+            <label htmlFor="daily-radio-users" className='cursor-pointer'>Daily</label>
+          </div>
+          <div className="flex cursor-pointer">
+            <input id="hourly-radio-users" type="radio" className='cursor-pointer' value={Chart.Hourly} checked={chart === Chart.Hourly} onClick={()=>{ load(Chart.Hourly); }} name="radio-users" />
+            <label htmlFor="hourly-radio-users" className='cursor-pointer'>Hourly</label>
+          </div>
+        </div>
+      </div>
       <VictoryChart
         domainPadding={{ x: 30, y: 20 }}
         containerComponent={
@@ -77,7 +92,11 @@ export default function UsersActivity(props: any) {
         />
         <VictoryAxis
           style={{ tickLabels: { fill: "gray" } }}
-          tickFormat={t => { let date = new Date(t); return `${date.getHours()}:00` }}
+          tickFormat={t => { 
+            let date = new Date(t); 
+            if(chart === Chart.Hourly) return `${date.getHours()}:00`;
+            else return `${date.getMonth()}/${date.getDate()}`;
+          }}
         />
         <VictoryAxis dependentAxis
           style={{ tickLabels: { fill: "gray" } }}

@@ -51,3 +51,8 @@ export enum Page {
     Groups = "Groups",
     Authorization = "Authorization",
 }
+
+export enum Chart {
+    Daily = "Daily",
+    Hourly = "Hourly",
+}

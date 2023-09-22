@@ -1,7 +1,7 @@
 'use client'
 
 import styles from './styles.module.scss';
-import { VictoryBar, VictoryLabel, VictoryChart, VictoryLegend } from 'victory';
+import { VictoryBar, VictoryLabel } from 'victory';
 
 export default function Zodiacs(props: any) {
 
@@ -76,11 +76,9 @@ export default function Zodiacs(props: any) {
 
   return (
     <div className={styles.container}>
-      <h2 className='text-center text-2xl mt-3'>
+      <h2 className='relative text-center text-sm md:text-lg lg:text-2xl mx-3 mt-3'>
         Zodiacs
       </h2>
-      <VictoryChart
-        domainPadding={{ x: 30, y: 20 }}>
         <VictoryBar
           width={300} height={200}
           data={filter(props.users)}
@@ -136,7 +134,6 @@ export default function Zodiacs(props: any) {
             }
           ]}
         />
-      </VictoryChart>
     </div>
   )
 }

@@ -71,8 +71,7 @@ export default function Map(props: any) {
       {user &&
         <Window name="Selected user" isOpen={isOpen} setIsOpen={setIsOpen}>
           <div className="flex flex-col m-6">
-            <span>{user.user.firstName}</span>
-            <span>{user.user.lastName}</span>
+            <span>{user.user.firstName} {user.user.lastName}</span>
             <span>{user.city}</span>
             <span>{user.region}</span>
           </div>

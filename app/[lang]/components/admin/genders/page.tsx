@@ -7,7 +7,7 @@ export default function Genders(props: any) {
 
   return (
     <div className={styles.container}>
-      <h2 className='text-center text-2xl mt-3'>
+      <h2 className='relative text-center text-sm md:text-lg lg:text-2xl mx-3 mt-3'>
         Genders
       </h2>
       <VictoryPie

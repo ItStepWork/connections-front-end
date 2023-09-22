@@ -8,7 +8,7 @@
 	@apply flex p-3 justify-between items-center;
 }
 .buttonClose {
-	@apply p-1 rounded-lg fill-gray-500 hover:bg-dark_button_BG;
+	@apply rounded-lg cursor-pointer fill-gray-500 hover:fill-button_blue_BG;
 }
 .horizontalHr {
 	@apply border-zinc-200 bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-700;

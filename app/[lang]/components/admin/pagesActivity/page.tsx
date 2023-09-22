@@ -4,17 +4,20 @@ import styles from './styles.module.scss';
 import { VictoryLabel, VictoryChart, VictoryLine, VictoryZoomContainer, VictoryLegend, VictoryAxis } from 'victory';
 import { useEffect, useState } from 'react';
 import { AdminService } from '../../../../../services/admin.service';
+import { Chart } from '../../../../../enums/all.enum';
 
 export default function PagesActivity(props: any) {
 
+  const [chart, setChart] = useState<Chart>(Chart.Daily);
   const [contacts, setContacts] = useState<any[]>([]);
   const [messaging, setMessaging] = useState<any[]>([]);
   const [gallery, setGallery] = useState<any[]>([]);
   const [notifications, setNotifications] = useState<any[]>([]);
   const [groups, setGroups] = useState<any[]>([]);
 
-  const load = async () => {
-    let result = await AdminService.getPagesActivity();
+  const load = async (loadChart: Chart) => {
+    setChart(loadChart);
+    let result = await AdminService.getPagesActivity(loadChart);
     let result1 = result.contacts.map((point: any) => { return { x: new Date(point.x), y: point.y } });
     setContacts(result1);
     let result2 = result.messaging.map((point: any) => { return { x: new Date(point.x), y: point.y } });
@@ -28,14 +31,26 @@ export default function PagesActivity(props: any) {
   }
 
   useEffect(() => {
-    load();
+    load(Chart.Daily);
   }, [])
 
   return (
     <div className={styles.container}>
-      <h2 className='text-center text-2xl mt-3'>
+      <h2 className='relative text-sm md:text-lg lg:text-2xl mx-3 mt-3'>
         Pages activity
       </h2>
+      <div className="absolute top-0 right-0">
+        <div className='flex p-3 text-sm lg:text-lg'>
+          <div className="flex mr-4 ">
+            <input id="daily-radio-pages" type="radio" className='cursor-pointer' value={Chart.Daily} checked={chart === Chart.Daily} onClick={()=>{ load(Chart.Daily); }} name="radio-pages" />
+            <label htmlFor="daily-radio-pages" className='cursor-pointer'>Daily</label>
+          </div>
+          <div className="flex cursor-pointer">
+            <input id="hourly-radio-pages" type="radio" className='cursor-pointer' value={Chart.Hourly} checked={chart === Chart.Hourly} onClick={()=>{ load(Chart.Hourly); }} name="radio-pages" />
+            <label htmlFor="hourly-radio-pages" className='cursor-pointer'>Hourly</label>
+          </div>
+        </div>
+      </div>
       <VictoryChart
         containerComponent={
           <VictoryZoomContainer zoomDimension="x" />
@@ -50,7 +65,7 @@ export default function PagesActivity(props: any) {
             { name: "Notifications", symbol: { fill: "lime" } },
             { name: "Groups", symbol: { fill: "dodgerBlue" } },
           ]}
-          labelComponent={<VictoryLabel style={{fontSize: 12, fill: "gray" }} />}
+          labelComponent={<VictoryLabel style={{ fontSize: 12, fill: "gray" }} />}
         />
         <VictoryLine
           style={{ data: { stroke: "red" } }}
@@ -74,7 +89,11 @@ export default function PagesActivity(props: any) {
         />
         <VictoryAxis
           style={{ tickLabels: { fill: "gray" } }}
-          tickFormat={t => {let date = new Date(t); return `${date.getHours()}:00`}}
+          tickFormat={t => { 
+            let date = new Date(t); 
+            if(chart === Chart.Hourly) return `${date.getHours()}:00`;
+            else return `${date.getMonth()}/${date.getDate()}`;
+          }}
         />
       </VictoryChart>
     </div>
