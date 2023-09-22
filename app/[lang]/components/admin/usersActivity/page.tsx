@@ -29,12 +29,12 @@ export default function UsersActivity(props: any) {
       </h2>
       <div className="absolute top-0 right-0">
         <div className='flex p-3 text-sm lg:text-lg'>
-          <div className="flex mr-4 ">
-            <input id="daily-radio-users" type="radio" className='cursor-pointer' value={Chart.Daily} checked={chart === Chart.Daily} onClick={()=>{ load(Chart.Daily); }} name="radio-users" />
+          <div className="flex mr-4" onClick={()=>{ load(Chart.Daily); }}>
+            <input id="daily-radio-users" type="radio" className='cursor-pointer' value={Chart.Daily} checked={chart === Chart.Daily} onChange={()=>{}} name="radio-users" />
             <label htmlFor="daily-radio-users" className='cursor-pointer'>Daily</label>
           </div>
-          <div className="flex cursor-pointer">
-            <input id="hourly-radio-users" type="radio" className='cursor-pointer' value={Chart.Hourly} checked={chart === Chart.Hourly} onClick={()=>{ load(Chart.Hourly); }} name="radio-users" />
+          <div className="flex cursor-pointer" onClick={()=>{ load(Chart.Hourly); }}>
+            <input id="hourly-radio-users" type="radio" className='cursor-pointer' value={Chart.Hourly} checked={chart === Chart.Hourly} onChange={()=>{}} name="radio-users" />
             <label htmlFor="hourly-radio-users" className='cursor-pointer'>Hourly</label>
           </div>
         </div>
