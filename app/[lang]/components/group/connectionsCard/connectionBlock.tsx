@@ -8,8 +8,8 @@ import { toast } from "react-toastify";
 import { FriendStatus } from "../../../../../enums/all.enum";
 import { FriendService } from "../../../../../services/friend.service";
 import { GroupService } from "../../../../../services/group.service";
-import styles from './connectionBlock.module.scss';
 import OnlineUser from "../../onlineUser/page";
+import styles from './connectionBlock.module.scss';
 
 export const ConnectionBlock = (props: any) => {
   const notifyError = (text: string) => toast.warning(text, {});
@@ -49,30 +49,30 @@ export const ConnectionBlock = (props: any) => {
             <div className={styles.headerText}>
               <p className={styles.name}>{props.user.firstName} {props.user.lastName}</p>
             </div>
-            <OnlineUser user={props.user}></OnlineUser>
+            <OnlineUser user={props.user} local={props.local}></OnlineUser>
             <div className={styles.description}>{props.user.aboutMe}</div>
 
           </div>
         </Link>
         {props.isRequests
           ? <div className={styles.buttonsContainer}>
-            <button title="Відхилити заявку" className={styles.button_red_BG} onClick={() => removeUserFromGroup()}><AiOutlineUsergroupDelete size={26} /></button>
-            <button title="Підтвердити заявку" className={styles.button_blue_BG} onClick={() => acceptUserToGroup()}><AiOutlineUsergroupAdd size={26} /></button>
+            <button title={props.local.button.rejectReq} className={styles.button_red_BG} onClick={() => removeUserFromGroup()}><AiOutlineUsergroupDelete size={26} /></button>
+            <button title={props.local.button.confirmReq} className={styles.button_blue_BG} onClick={() => acceptUserToGroup()}><AiOutlineUsergroupAdd size={26} /></button>
           </div>
           : (props.user.id !== props.session?.user?.id)
           && <div className={styles.buttonsContainer}>
             {ifAdmin()
-              ? <button title="Видалити з групи" className={styles.button_red_BG} onClick={() => removeUserFromGroup()}><AiOutlineUsergroupDelete size={26} /></button>
+              ? <button title={props.local.button.removeWithGroup} className={styles.button_red_BG} onClick={() => removeUserFromGroup()}><AiOutlineUsergroupDelete size={26} /></button>
               : <></>
             }
             {props.user.id === props.group.adminId &&
-              <button title="Адміністратор" className={styles.greenButton}><MdOutlineAdminPanelSettings size={26} className={styles.btnPict + " " + styles.greenPict} /></button>
+              <button title={props.local.groups.adminBtn} className={styles.greenButton}><MdOutlineAdminPanelSettings size={26} className={styles.btnPict + " " + styles.greenPict} /></button>
             }
-            <button title="Відправити повідомлення" className={styles.button_blue_BG} onClick={() => { props.setUser(props.user); props.setIsOpen(true); }}><BsSendPlus size={26} /></button>
-            {props.user.friendStatus === FriendStatus.Confirmed ? <button title="Видалити з друзів" className={styles.button_red_BG} onClick={() => removeFriend()}><AiOutlineUserDelete size={26} /></button>
-              : props.user.friendStatus === FriendStatus.Unconfirmed ? <button title="Підтвердити запит" className={styles.yellowButton} onClick={() => confirmFriend()}><MdSentimentSatisfiedAlt size={26} /></button>
-                : props.user.friendStatus === FriendStatus.Waiting ? <button title="Запит відправлено" className={styles.yellowButton} onClick={() => removeFriend()}><BiTimeFive size={26} /></button>
-                  : props.user.friendStatus === FriendStatus.Other ? <button title="Додати до друзів" className={styles.button_blue_BG} onClick={() => addFriend()}><GoPersonAdd size={26} /></button>
+            <button title={props.local.button.sendMessage} className={styles.button_blue_BG} onClick={() => { props.setUser(props.user); props.setIsOpen(true); }}><BsSendPlus size={26} /></button>
+            {props.user.friendStatus === FriendStatus.Confirmed ? <button title={props.local.connections.deleteBtn} className={styles.button_red_BG} onClick={() => removeFriend()}><AiOutlineUserDelete size={26} /></button>
+              : props.user.friendStatus === FriendStatus.Unconfirmed ? <button title={props.local.connections.confirmBtn} className={styles.yellowButton} onClick={() => confirmFriend()}><MdSentimentSatisfiedAlt size={26} /></button>
+                : props.user.friendStatus === FriendStatus.Waiting ? <button title={props.local.connections.addRequest} className={styles.yellowButton} onClick={() => removeFriend()}><BiTimeFive size={26} /></button>
+                  : props.user.friendStatus === FriendStatus.Other ? <button title={props.local.connections.requestBtn} className={styles.button_blue_BG} onClick={() => addFriend()}><GoPersonAdd size={26} /></button>
                     : <></>
             }
           </div>

@@ -31,7 +31,7 @@ export const ConnectionsCard = (props: any) => {
         {props.users && filter(props.users).map((user: any, index: any) => {
           if (index <= count)
             return (<ConnectionBlock isRequests={props.isRequests} setUser={setUser} setIsOpen={setIsOpen} key={user.id + user.friendStatus} user={user} group={props.group} session={props.session}
-              getGroup={props.getGroup} getUsers={props.getUsers} />)
+              getGroup={props.getGroup} getUsers={props.getUsers} local={props.local}/>)
         })}
         {count < props.users.length - 1 && <button className={styles.buttonLoadMore} onClick={() => setCount(count + 4)}>{props.local.button.uploadMore}</button>}
       </div >

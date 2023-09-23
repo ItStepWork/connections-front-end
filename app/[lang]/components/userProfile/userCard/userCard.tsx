@@ -3,19 +3,19 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { BsBriefcase, BsCalendar2Plus, BsFillPatchCheckFill, BsGeoAlt, BsPencilFill, BsSend } from 'react-icons/bs';
-import { HiMiniPencilSquare } from 'react-icons/hi2';
-import { ComponentName, FriendStatus } from '../../../../../enums/all.enum';
-import { UserService } from '../../../../../services/user.service';
-import styles from './userCard.module.scss';
-import { AiOutlineUserDelete, AiOutlineUsergroupAdd } from 'react-icons/ai';
-import Window from '../../messaging/window/page';
-import FooterBlock from '../../messaging/footerBlock/page';
-import { FriendService } from '../../../../../services/friend.service';
-import { GoDotFill, GoPersonAdd } from 'react-icons/go';
+import { AiOutlineUserDelete } from 'react-icons/ai';
 import { BiTimeFive } from 'react-icons/bi';
+import { BsBriefcase, BsCalendar2Plus, BsFillPatchCheckFill, BsGeoAlt, BsPencilFill, BsSend } from 'react-icons/bs';
+import { GoPersonAdd } from 'react-icons/go';
+import { HiMiniPencilSquare } from 'react-icons/hi2';
 import { MdSentimentSatisfiedAlt, MdSentimentVeryDissatisfied } from 'react-icons/md';
+import { ComponentName, FriendStatus } from '../../../../../enums/all.enum';
+import { FriendService } from '../../../../../services/friend.service';
+import { UserService } from '../../../../../services/user.service';
+import FooterBlock from '../../messaging/footerBlock/page';
+import Window from '../../messaging/window/page';
 import OnlineUser from '../../onlineUser/page';
+import styles from './userCard.module.scss';
 
 export function UserCard(props: any) {
 
@@ -166,7 +166,7 @@ export function UserCard(props: any) {
                     <h2>{user.firstName + ' ' + user.lastName}</h2>
                     <span><BsFillPatchCheckFill size={18} /></span>
                   </div>
-                  <OnlineUser user={user}></OnlineUser>
+                  <OnlineUser user={user} local={props.local}></OnlineUser>
                   <p>{friendsCount} {props.local.profile.friendsCount}</p>
                 </div>
               </div>

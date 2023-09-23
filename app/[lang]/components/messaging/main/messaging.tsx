@@ -1,6 +1,5 @@
 'use client'
 
-import React from 'react';
 import { useEffect, useState } from 'react';
 import { HiMiniPencilSquare } from 'react-icons/hi2';
 import { IUser } from '../../../../../dto/sessionDto';
@@ -83,7 +82,7 @@ export default function Messaging({ local, session }: { local: any, session: any
       <div className={styles.centerContainer}>
         <div className={styles.leftContainer}>
           <div className='m-3 flex justify-between items-center'>
-            <h2>Активные чаты <span className={styles.chats}>{dialogs.length}</span></h2>
+            <h2>{local.chat.activeChat}<span className={styles.chats}>{dialogs.length}</span></h2>
             <button {...isOpen ? { className: styles.buttonOpen } : { className: styles.buttonClose }} onClick={() => setIsOpen(true)}>
               <HiMiniPencilSquare />
             </button>

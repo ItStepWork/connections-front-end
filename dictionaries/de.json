@@ -1,0 +1,351 @@
+{
+  "button": {
+    "uploadMore": "Mehr laden",
+    "uploadAvatarImage": "Avatar hochladen",
+    "uploadBgImage": "Hintergrund hochladen",
+    "updatePass": "Kennwort aktualisieren",
+    "saveData": "Änderungen speichern",
+    "toProfile": "Profil",
+    "setAvatarImage": "Avatar festlegen",
+    "setBgImage": "Hintergrund einstellen",
+    "settings" : "Einstellungen",
+    "allFriends" : "Alle Freunde",
+    "editProfile" : "Profil bearbeiten",
+    "showAll" : "Zeige alles",
+    "publish" : "Veröffentlichen",
+    "cancel" : "Stornieren",
+    "record" : "Aufzeichnen",
+    "create" : "Erstellen",
+    "set" : "Einstellen und speichern",
+    "rejectReq" : "Anfrage ablehnen",
+    "confirmReq" : "Anfrage bestätigen",
+    "removeWithGroup" : "Aus der Gruppe entfernen",
+    "sendMessage" : "Nachricht senden"
+  },
+  "copyright" : "Alle Rechte vorbehalten",
+  "development" : "!!! In Entwicklung !!!",
+  "friends" : {
+    "title" : "Freunde",
+    "subtitle" : "gemeinsame Freunde"
+  },
+  "posts" : {
+    "photo" : "Foto",
+    "video" : "Video",
+    "event" : "Ereignis",
+    "activity" : "Aktivität",
+    "placeholder" : "Teile deine Gedanken...",   
+    "postPhoto" : {
+      "title" : "Foto veröffentlichen",
+      "upload" : "Foto hochladen",
+      "description" : "Ziehen oder klicken Sie hier, um ein Foto hochzuladen"
+    },
+    "postVideo" : {
+      "title" : "Video veröffentlichen",
+      "description" : "Ziehen oder klicken Sie hier, um das Video herunterzuladen"
+    },
+    "postActivity" : {
+      "title" : "Beitrag erstellen",
+      "forAll" : "Für alle",
+      "forMe" : "Nur ich",
+      "forFriends" : "Nur Freunde"
+    },
+    "tooltip" : {
+      "photo" : "Foto",
+      "video" : "Video",
+      "event" : "Ereignis",
+      "activity" : "Aktivität",
+      "location" : "Standort",
+      "tag" : "Personen Markieren"
+    }
+  },
+  "search" : {
+    "searchFullName" : "Geben Sie Ihren Vor- oder Nachnamen ein...",
+    "searchPost" : "Name eingeben...",
+    "searchNameOrEmail" : "Geben Sie Ihren Namen, Nachnamen oder Ihre E-Mail-Adresse ein...",
+    "searchGroup" : "Gruppennamen eingeben..."
+  },
+  "header" : {
+    "main" : "Hauptsächlich",
+    "profile" : "Profil",
+    "admin" : "Administrator-Panel",
+    "dropMenu" : {
+      "profile" : "Profil",
+      "settings" : "Einstellungen",
+      "exit" : "Ausfahrt",
+      "theme" : "Thema:" ,
+      "messages" : "Nachrichten"
+    }
+  },
+  "footer" : {
+    "about" : "Über uns",
+    "help" : "Helfen",
+    "privacy" : "Datenschutz und Bedingungen",
+    "protect" : "Schützen",
+    "partnership" : "Partnerschaft"
+    
+  },
+  "groups" : {
+    "title" : "Gruppen",
+    "subtitle" : "Mitglieder",
+    "adminBtn" : "Administrator",
+    "editGroupBtn" : "Gruppe bearbeiten",
+    "inviteBtn" : "Einladen",
+    "leaveBtn" : "Verlassen",
+    "cancelBtn" : "Stornieren",
+    "joinBtn" : "Verbinden",
+    "addPhoto" : "Foto hinzufügen",
+    "aboutGroup" : {
+      "about" : "Über die Gruppe",
+      "people" : "Menschen: ",
+      "members" : "Teilnehmer",
+      "status" : "Status: ",
+      "mail" : "E-Mail: "
+    },
+    "posts" : "Beiträge",
+    "photo" : "Foto",
+    "members" : "Mitglieder",
+    "requests" : "Anfragen",
+    "privacy" : "gruppe",
+    "tooltip" : {
+      "admin" : "Ihr Administrator",
+      "leave" : "Gruppe verlassen",
+      "cancel" : "Anfrage abbrechen",
+      "join" : "Treten Sie der Gruppe bei",
+      "invite" : "In der Gruppe einladen"
+    },
+    "toasts" : {
+      "join" : "Der Antrag wurde eingereicht",
+      "leave" : "Sie haben die Gruppe verlassen"
+    }
+  },
+    "editGroup" : {
+      "title" : "Gruppe bearbeiten",
+      "name" : "Gruppenname",
+      "description" : "Beschreibung",
+      "changeBtn" : "Ändern",
+      "deleteBtn" : "Löschen",
+      "privacy" : {
+        "title" : "Gruppentyp",
+        "private" : "Privat",
+        "public" : "Öffentlich"
+      },
+      "toasts" : {
+        "ok" : "Erfolgreich aktualisiert!",
+        "error" : "Serverfehler!",
+        "warning" : "Nicht aktualisiert!",
+        "delete" : "Gruppe gelöscht!"
+      }
+  },
+  "createGroup" : {
+    "title" : "Gruppe erstellen",
+    "name" : "Gruppenname",
+    "image" : "Gruppenbild",
+    "type" : "Gruppentyp",
+    "description" : "Beschreibung",
+    "placeholderName" : "Gruppenname hier...",
+    "placeholderDesc" : "Deine Beschreibung hier...",
+    "open" : "Öffentlich",
+    "closed" : "Privat",
+    "toasts" : {
+      "format" : "Falsche Bilddatei! Nur <jpg, jpeg, png> !!!",
+      "ok" : "Gruppe erstellt !",
+      "error" : "Serverfehler !"
+    }
+  },
+  "connections" : {
+    "title" : "Verbindungen",
+    "confirmBtn" : "Bestätigen",
+    "deleteBtn" : "Löschen",
+    "writeBtn" : "Schreiben",
+    "requestBtn" : "Freunde sein",
+    "addRequest": "Anfrage gesendet"
+  },
+  "profile" : {
+    "friendsCount" : "Kontakte",
+    "about" : "Über mich",
+    "contacts" : "Verbindungen",
+    "groups" : "Gruppen",
+    "gallery" : "Galerie",
+    "join" : "Verbinden",
+    "aboutMe" : {
+      "title" : "Profil Information",
+      "overview" : "Überblick",
+      "born" : "Überblick: ",
+      "status" : "Status: ",
+      "work" : "Arbeiten: ",
+      "live" : "Live: ",
+      "join" : "Verbinden: "
+    },
+    "connect" : {
+      "title" : "Verbindungen",
+      "delete" : "Löschen",
+      "confirm" : "Bestätigen",
+      "cancel" : "Stornieren",
+      "write" : "Schreiben",
+      "beFriends" : "Freunde sein"
+    }
+  },
+  "signIn" : {
+    "title" : "Anmelden",
+    "description" : "Noch keinen Account? ",
+    "toSignUp" : "Gehen Sie zur Registrierung",
+    "passLabel" : "Passwort:",
+    "logInBtn" : "Anmeldung",
+    "toasts" : {
+      "success" : "Anmeldung erfolgreich",
+      "error" : "Fehler"
+    }
+  },
+  "signUp" : {
+    "title" : "Melden Sie sich an",
+    "description" : "Hast du ein Konto? ",
+    "toSignIn" : "Anmeldung",
+    "name" : "Name:",
+    "lastName" : "Nachname:",
+    "mail" : "Email:",
+    "pass" : "Passwort:",
+    "confirmPass" : "Bestätige das Passwort:",
+    "registrationBtn" : "Anmeldung",
+    "toasts" : {
+      "emptyFields" : "Nicht alle Felder sind ausgefüllt!",
+      "serverError" : "Serverfehler !!!",
+      "emailError" : "Diese E-Mail wurde bereits verwendet!",
+      "ok" : "Registrierung erfolgreich!",
+      "mismatchPasswords" : "Die Passwörter stimmen nicht überein!"
+    },
+    "placeholders" : {
+      "name" : "Name eingeben...",
+      "lastName" : "Nachnamen eingeben...",
+      "mail" : "Email eingeben..."
+    } 
+  },
+  "aboutMe" : {
+    "title" : "Profil Information:",
+    "subtitle" : "Über mich",
+    "Overview" : "Überblick: ",
+    "birthday" : "Geburtstag: ",
+    "work" : "In Arbeiten: ",
+    "connected" : "Verbinden: ",
+    "status" : "Status: ",
+    "familyStatus" : "Familienstand: ",
+    "live" : "Live: "
+  },
+  "settings" :{
+    "title" : "Account Einstellungen",
+    "subtitle" : "Dies sind Ihre Kontoeinstellungen. Hier können Sie Ihre Profildetails ändern.",
+    "name" : "Name:",
+    "lastName" : "Nachname:",
+    "born" : "Geboren:",
+    "email" : "Email:",
+    "phone" : "Telefon:",
+    "gender" : "Geschlecht:",
+    "familyStatus" : "Familienstand:",
+    "work" : "Arbeiten:",
+    "location" : "Live:",
+    "aboutMe" : "Du schreibst eine Nachricht:",
+    "placeholders" : {
+      "notIndicated" : "Nicht angezeigt",
+      "comment" : "Hinterlasse ein Kommentar..."
+    },
+    "toasts" : {
+      "ok" : "Erfolgreich aktualisiert!",
+      "fail" : "Not updated!"
+    }
+  },
+  "changePassword" : {
+    "title" : "Passwort ändern",
+    "subtitle" : "Um das Passwort zu ändern, müssen Sie: das alte Passwort eingeben, das neue Passwort eingeben und bestätigen, das neue Passwort und die Passwortbestätigung müssen übereinstimmen.",
+    "password" : "Aktuelles Passwort:",
+    "newPass" : "Neues Kennwort:",
+    "confirmPass" : "Bestätige das Passwort:",
+    "placeholders" : {
+      "pass" : "Aktuelles Passwort...",
+      "newPass" : "Neues Kennwort...",
+      "confirmPass" : "Bestätige das Passwort..."
+    },
+    "toasts" : {
+      "mismatch" : "Passwörter stimmen nicht überein!",
+      "error" : "Passwort nicht geändert!",
+      "ok" : "Das Passwort wurde erfolgreich geändert!"
+    }
+  },
+  "settingsSide" : {
+    "account" : "Konto",
+    "notification" : "Benachrichtigung",
+    "privacy" : "Datenschutz & Versuche",
+    "messaging" : "Nachrichten",
+    "closeAcc" : "Konto schließen",
+    "watch" : "Profil ansehen"
+  },
+  "settingsImages" : {
+    "title" : "Profilbilder aktualisieren",
+    "subtitle" : "Diese Drop-Zone dient zum Hochladen von Profil-, Autor- und Hintergrundbildern",
+    "text1" : "Klicken Sie zum Hochladen",
+    "text2" : "oder",
+    "text3" : "Bild hierher ziehen",
+    "text4" : "SVG, PNG, JPG oder JPEG",
+    "uploadAvatar" : "Avatar festlegen",
+    "uploadBg" : "Hintergrund einstellen",
+    "toasts" : {
+      "ok" : "",
+      "error" : "",
+      "info" : ""
+    }
+  },
+  "main" : {
+    "header" : {
+      "posts" : "Beiträge",
+      "contacts" : "Verbindungen"
+    },
+    "feed" : "Füttern",
+    "contacts" : "Kontakte",
+    "news" : "Letzte Neuigkeiten",
+    "events" : "Veranstaltungen",
+    "groups" : "Gruppen",
+    "gallery" : "Galerie",
+    "notifications" : "Benachrichtigungen",
+    "settings" : "Einstellungen",
+    "profile" : "Profil ansehen",   
+    "menu" : "Speisekarte"
+  },
+  "stories" : {
+    "add" : "Hinzufügen",
+    "story" : "Geschichte"
+  },
+  "gallery" : {
+    "title" : "Galerie",
+    "photo" : "Foto",
+    "addPhoto" : "Foto hinzufügen",
+    "album" : "Alben",
+    "action" : {
+      "toAvatar" : "Auf Avatar setzen",
+      "toBackground" : "Auf Hintergrund einstellen",
+      "delete": "Löschen"
+    },
+    "createAlbum" : "Album erstellen",
+    "newAlbum" : "Neues Album",
+    "placeholder" : "Name eingeben..."
+  },
+  "chat" : {
+    "activeChat" : "Aktive Chats"
+  },
+  "setImages" : {
+    "avatar" : "Benutzerbild",
+    "bg" : "Hintergrund",
+    "toasts" : {
+      "ok" : "Bildset erfolgreich !",
+      "formatErr" : "Falsches Dateiformat !",
+      "serverErr" : "Serverfehler !"
+    }
+  },
+  "userActivity" : {
+    "last" : "Letzte Aktivität ",
+    "ago" : "vor",
+    "days" : " tage ",
+    "day" : " tag ",
+    "hour" : " stunde ",
+    "hours" : " std. ",
+    "minute" : " minute ",
+    "minutes" : " protokoll "
+  }
+}

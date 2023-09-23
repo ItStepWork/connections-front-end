@@ -1,9 +1,9 @@
 "use client"
 
 import { FaUserCircle } from 'react-icons/fa';
+import OnlineUser from '../../onlineUser/page';
 import DropDownItem from '../dropDownItem/page';
 import styles from './styles.module.scss';
-import OnlineUser from '../../onlineUser/page';
 
 export default function HeaderBlock(props: any) {
 
@@ -16,7 +16,7 @@ export default function HeaderBlock(props: any) {
             <div className={styles.userInfo}>
               <span className={styles.userName}>{props.user.lastName} {props.user.firstName}</span>
               <div className='text-sm'>
-                <OnlineUser user={props.user}/>
+                <OnlineUser user={props.user} local={props.local}/>
               </div>
             </div>
           </div>

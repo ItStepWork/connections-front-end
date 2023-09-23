@@ -16,7 +16,11 @@
     "cancel" : "Cancel",
     "record" : "Record",
     "create" : "Create",
-    "set" : "Set and save"
+    "set" : "Set and save",
+    "rejectReq" : "Reject request",
+    "confirmReq" : "Confirm request",
+    "removeWithGroup" : "Remove from group",
+    "sendMessage" : "Send message"
   },
   "copyright" : "All right reserved",
   "development" : "!!! In development !!!",
@@ -110,8 +114,8 @@
       "invite" : "Invite in group"
     },
     "toasts" : {
-      "join" : "Заявку подано",
-      "leave" : "Ви вийшли із групи"
+      "join" : "Request sended",
+      "leave" : "You leave in group"
     }
   },
     "editGroup" : {
@@ -153,7 +157,8 @@
     "confirmBtn" : "Confirm",
     "deleteBtn" : "Delete",
     "writeBtn" : "Write",
-    "requestBtn" : "Be friends"
+    "requestBtn" : "Be friends",
+    "addRequest": "Request sended"
   },
   "profile" : {
     "friendsCount" : "Contacts",
@@ -334,13 +339,13 @@
     }
   },
   "userActivity" : {
-    "last" : "Last activity",
-    "back" : "ago",
-    "days" : "days",
-    "day" : "day",
-    "hour" : "hour",
-    "hours" : "hours",
-    "minute" : "minute",
-    "minutes" : "minutes"
+    "last" : "Last activity ",
+    "ago" : "ago",
+    "days" : " days ",
+    "day" : " day ",
+    "hour" : " hour ",
+    "hours" : " hours ",
+    "minute" : " minute ",
+    "minutes" : " minutes "
   }
 }
