@@ -39,11 +39,13 @@ export default function Admin({ local, session }: { local: any, session: any }, 
   }
 
   return (
+    <main>
     <div className={styles.container}>
       <Navigation local={local} component={component}  setComponent={setComponent}/>
       <div className={styles.containerContent}>
         {session ? ChangeComponent() : <></>}
       </div>
     </div>
+    </main>
   )
 }
