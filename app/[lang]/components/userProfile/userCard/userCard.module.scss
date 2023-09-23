@@ -1,8 +1,8 @@
 .container {
-	@apply flex flex-col mt-20 w-full bg-white text-gray-900 border border-light_border rounded-xl
+	@apply relative flex flex-col mt-20 w-full bg-white text-gray-900 border border-light_border rounded-xl
   dark:text-dark_text_gray object-contain overflow-hidden dark:bg-dark_background dark:border-dark_border;
 	.bannerImage {
-		@apply h-[200px] w-full relative overflow-hidden m-auto;
+		@apply h-[100px] md:h-[200px] lg:h-[200px] w-full overflow-hidden m-auto;
 	}
 	.cardBody {
 		@apply relative flex flex-col;
@@ -90,7 +90,7 @@
 		}
 	}
 	.editBgImage {
-		@apply absolute ml-5 mt-5;
+		@apply absolute mr-3 mt-3 md:mr-5 md:mt-5 lg:mr-5 lg:mt-5 right-0;
 		.backgroundImageLabel {
 			@apply flex rounded-full cursor-pointer transition-all duration-500 ease-in-out bg-button_blue_BG bg-opacity-60 hover:bg-opacity-100;
 		}

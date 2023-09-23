@@ -63,8 +63,8 @@ export const ConnectionsCard = (props: any) => {
           </span>
           <input type="text" className={styles.inputSearch} placeholder={props.local.search.searchNameOrEmail} onChange={(e) => { changeSearch(e) }} value={search} />
         </div>
-        {friendsFilter.map((user: any, index: number) => {
-          if (index < count) return <ConnectionBlock key={user.id} myId={props.myId} user={user} setSelectedUser={setSelectedUser} setIsOpen={setIsOpen} local={props.local}/>
+        {friendsFilter && friendsFilter.map((user: any, index: number) => {
+          if (index < count) return <ConnectionBlock key={user.id} myId={props.myId} user={user} setSelectedUser={setSelectedUser} setIsOpen={setIsOpen} local={props.local} />
         })}
         {friendsFilter.length > count && <button className={styles.buttonLoadMore} onClick={loadMore}>{props.local.button.uploadMore}</button>}
       </div >
