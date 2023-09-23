@@ -43,7 +43,7 @@ export const ConnectionBlock = (props: any) => {
       <div className={styles.container}>
         <Link href={"/profile/" + props.user.id} className={styles.userContainer}>
           <div className={styles.avatar}>
-            <img src={props.user.avatarUrl} alt="avatar" loading="lazy" />
+            <img className='h-full w-full' src={props.user.avatarUrl} alt="avatar" loading="lazy" sizes="100vw" style={{ objectFit: "cover" }} />
           </div>
           <div className={styles.textContainer}>
             <div className={styles.headerText}>

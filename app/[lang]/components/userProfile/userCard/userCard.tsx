@@ -30,7 +30,6 @@ export function UserCard(props: any) {
     let friendSocket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToFriendsUpdates`, ["client", props.session.user.accessToken]);
     userSocket.addEventListener('message', async (event) => {
       await getUser();
-
     });
     friendSocket.addEventListener('message', async (event) => {
       await getData();
@@ -39,9 +38,9 @@ export function UserCard(props: any) {
       if (userSocket.OPEN) userSocket.send("ping");
       else clearInterval(userIntervalId);
     }, 30000);
-    let findIntervalId = setInterval(() => {
+    let friendIntervalId = setInterval(() => {
       if (friendSocket.OPEN) friendSocket.send("ping");
-      else clearInterval(findIntervalId);
+      else clearInterval(friendIntervalId);
     }, 30000);
     return () => {
       setInterval(() => {
@@ -49,7 +48,7 @@ export function UserCard(props: any) {
         if (friendSocket.OPEN) friendSocket.close();
       }, 1000)
       clearInterval(userIntervalId);
-      clearInterval(findIntervalId);
+      clearInterval(friendIntervalId);
     };
   }, []);
 
@@ -109,28 +108,25 @@ export function UserCard(props: any) {
           <div className={styles.bannerImage}>
             {
               user.backgroundUrl &&
-              <Image
+              <img className='h-full w-full'
                 src={user.backgroundUrl}
                 sizes="100vw"
-                quality={80}
                 alt="bg"
-                layout='fill'
-                priority
                 style={{ objectFit: "cover" }}
-                className={styles.image}
+
               />
             }
-            {props.userId === props.session.user.id &&
-              <div className={styles.editBgImage}>
-                <label htmlFor="background-file" className={styles.backgroundImageLabel}>
-                  <div className={styles.backgroundIcon}>
-                    <HiMiniPencilSquare className="fill-white" />
-                  </div>
-                  <input id="background-file" type="file" className="hidden" onChange={saveBackground} />
-                </label>
-              </div>
-            }
           </div>
+          {props.userId === props.session.user.id &&
+            <div className={styles.editBgImage}>
+              <label htmlFor="background-file" className={styles.backgroundImageLabel}>
+                <div className={styles.backgroundIcon}>
+                  <HiMiniPencilSquare className="fill-white" />
+                </div>
+                <input id="background-file" type="file" className="hidden" onChange={saveBackground} />
+              </label>
+            </div>
+          }
           <div className={styles.cardBody}>
             <div className={styles.topInfo}>
               <div className={styles.avatarName}>
@@ -138,14 +134,10 @@ export function UserCard(props: any) {
                   <div className={styles.avatar}>
                     {
                       user.avatarUrl &&
-                      <Image
+                      <img className='rounded-full h-full w-full'
                         src={user.avatarUrl}
-                        width='128'
-                        height='128'
-                        quality={80}
-                        style={{ objectFit: "contain" }}
+                        style={{ objectFit: "cover" }}
                         alt="avatar"
-                        priority
                       />
                     }
                   </div>

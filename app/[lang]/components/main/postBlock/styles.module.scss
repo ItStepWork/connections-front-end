@@ -1,0 +1,16 @@
+.container {
+	@apply flex flex-col mb-10 p-6 gap-3 w-full bg-white text-gray-900 border border-light_border rounded-xl
+  dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border;
+	.userInfo {
+		@apply flex flex-row justify-start items-center gap-2;
+		.userIco {
+			@apply w-10 h-10 rounded-full border-blue-500 border-2;
+		}
+		.userName {
+			@apply font-bold;
+		}
+	}
+	.postImage {
+		@apply w-full max-h-96;
+	}
+}
