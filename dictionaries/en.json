@@ -114,8 +114,8 @@
       "invite" : "Invite in group"
     },
     "toasts" : {
-      "join" : "Заявку подано",
-      "leave" : "Ви вийшли із групи"
+      "join" : "Request sended",
+      "leave" : "You leave in group"
     }
   },
     "editGroup" : {

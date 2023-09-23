@@ -21,6 +21,9 @@ export default function LocaleSwitcher() {
       <Link href={redirectedPathName('en')} locale={'en'} >
         <img src="/GB.png" alt="en" />
       </Link>
+      <Link href={redirectedPathName('de')} locale={'de'} >
+        <img src="/DE.png" alt="de" />
+      </Link>
     </div>
   )
 }
