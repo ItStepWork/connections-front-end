@@ -11,6 +11,7 @@ export default function Map(props: any) {
   const [users, setUsers] = useState<any[]>([]);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [user, setUser] = useState<any>(null);
+  const [zoomMap, setZoomMap] = useState<number>(1);
 
   const filter = (array: any[]) => {
     return array.filter((user: any) => user.ipAddress != null);
@@ -48,7 +49,10 @@ export default function Map(props: any) {
   return (
     <div className={styles.container}>
       <ComposableMap>
-        <ZoomableGroup center={[0, 0]} zoom={1}>
+        <ZoomableGroup center={[0, 0]} zoom={1}
+          onMoveEnd={({ coordinates, zoom }) => {
+            setZoomMap(zoom);
+          }}>
           <Geographies geography="/features.json">
             {({ geographies }) =>
               geographies.map((geo) => (
@@ -63,7 +67,7 @@ export default function Map(props: any) {
           </Geographies>
           {users.map((user: any) => (
             <Marker key={user.user.id} coordinates={[user.longitude, user.latitude]}>
-              <circle className={styles.circle} r={1} onClick={() => { setUser(user); setIsOpen(true); }} />
+              <circle className={styles.circle} r={2 / zoomMap} onClick={() => { setUser(user); setIsOpen(true); }} />
             </Marker>
           ))}
         </ZoomableGroup>

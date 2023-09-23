@@ -2,5 +2,5 @@
   @apply w-full flex justify-center bg-white text-gray-900 border border-light_border rounded-xl dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border;
 }
 .circle{
-  @apply fill-orange-500 stroke-orange-500 hover:stroke-black hover:cursor-pointer;
+  @apply fill-orange-500 hover:fill-black hover:cursor-pointer;
 }
