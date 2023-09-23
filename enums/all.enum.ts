@@ -34,7 +34,7 @@ export enum NotificationType {
     BirthDay = "BirthDay",
     InviteToGroup = "InviteToGroup",
     LikePhoto = "LikePhoto",
-    CommentPhoto= "CommentPhoto",
+    CommentPhoto = "CommentPhoto",
 }
 
 export enum Gender {
@@ -56,3 +56,15 @@ export enum Chart {
     Daily = "Daily",
     Hourly = "Hourly",
 }
+
+export enum Status {
+    Active = "Active",
+    Deleted = "Deleted",
+}
+
+export enum Role {
+    User = "User",
+    Moderator = "Moderator",
+    Admin = "Admin",
+}
+

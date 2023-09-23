@@ -52,7 +52,7 @@ export default function Users(props: any) {
                   <td className={styles.td}>{user.birthDay !== "0001-01-01T00:00:00" ? new Date(user.birthDay).toLocaleDateString() : "null"}</td>
                   <td className={styles.td}>
                     <div className='flex gap-5'>
-                      <button className={styles.button_red_BG}>Remove</button>
+                      {/* <button className={styles.button_red_BG}>Remove</button> */}
                       <button className={styles.button_blue_BG} onClick={()=>{setSelectedIndex(index); setIsSelected(true);}}>Info</button>
                     </div>
                   </td>

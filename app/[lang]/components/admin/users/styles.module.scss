@@ -13,10 +13,10 @@
 .table {
   @apply w-full flex flex-row flex-nowrap sm:inline-table;
   .th {
-    @apply h-10 p-3 text-left border border-light_border dark:border-dark_border;
+    @apply h-10 p-2 text-left border border-light_border dark:border-dark_border;
   }
   .td {
-    @apply h-10 font-light border border-light_border dark:border-dark_border p-3;
+    @apply h-10 p-2 font-light border border-light_border dark:border-dark_border;
   }
   .tr {
     @apply text-sm flex flex-col flex-nowrap sm:table-row md:rounded-l-lg rounded-none md:mb-2 mb-0 border border-light_border dark:border-dark_border;
