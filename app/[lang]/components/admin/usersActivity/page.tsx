@@ -69,7 +69,7 @@ export default function UsersActivity(props: any) {
                   {
                     target: "labels",
                     mutation: (props) => {
-                      return { text: `${new Date(props.datum.x).getMonth()}/${new Date(props.datum.x).getDate()} ${new Date(props.datum.x).getHours()}:00` }
+                      return { text: `${new Date(props.datum.x).getMonth() + 1}/${new Date(props.datum.x).getDate()} ${new Date(props.datum.x).getHours()}:00` }
                     }
                   }];
                 },
@@ -95,7 +95,7 @@ export default function UsersActivity(props: any) {
           tickFormat={t => { 
             let date = new Date(t); 
             if(chart === Chart.Hourly) return `${date.getHours()}:00`;
-            else return `${date.getMonth()}/${date.getDate()}`;
+            else return `${date.getMonth() + 1}/${date.getDate()}`;
           }}
         />
         <VictoryAxis dependentAxis

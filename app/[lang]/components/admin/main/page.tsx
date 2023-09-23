@@ -1,5 +1,5 @@
 'use client'
-import { getSession } from "next-auth/react";
+
 import { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import Navigation from "../navigation/page";
@@ -13,16 +13,10 @@ import UsersActivity from "../usersActivity/page";
 import Map from "../map/page";
 import AllCharts from "../allCharts/page";
 
-export default function Admin({ local }: { local: any }, props: any) {
+export default function Admin({ local, session }: { local: any, session: any }, props: any) {
 
   const [users, setUsers] = useState<any[]>([]);
-  const [session, setSession] = useState<any>(null);
   const [component, setComponent] = useState<AdminComponentName>(AdminComponentName.Users);
-
-  const load = async () => {
-    let value = await getSession();
-    setSession(value);
-  }
 
   const getUsers =async()=>{
     let result = await AdminService.getUsers();
@@ -30,7 +24,6 @@ export default function Admin({ local }: { local: any }, props: any) {
   }
 
   useEffect(() => {
-    load();
     getUsers();
   }, [])
 

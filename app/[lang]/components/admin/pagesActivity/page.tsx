@@ -92,7 +92,7 @@ export default function PagesActivity(props: any) {
           tickFormat={t => { 
             let date = new Date(t); 
             if(chart === Chart.Hourly) return `${date.getHours()}:00`;
-            else return `${date.getMonth()}/${date.getDate()}`;
+            else return `${date.getMonth() + 1}/${date.getDate()}`;
           }}
         />
       </VictoryChart>
