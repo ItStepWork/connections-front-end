@@ -1,9 +1,8 @@
 import { Locale } from "../../../i18n.config";
 import { getDictionary } from "../../../locale-dictionary";
 import { AccountSettings } from "../components/profile-settings/account-settings/account-settings";
-import ChangeAvatar from "../components/profile-settings/change-avatar/change-avatar";
-import ChangeBgImg from "../components/profile-settings/change-background/change-bgImg";
 import { ChangePassword } from "../components/profile-settings/change-password/change-password";
+import ChangeImages from "../components/profile-settings/change-profile-images/main";
 import { LeftSettingsMenu } from "../components/profile-settings/sidebar-settings/sidebar-settings";
 import styles from './styles.module.scss';
 
@@ -25,8 +24,7 @@ export default async function SettingsPage({ params: { lang }}: { params: { lang
               </div>
             </div>
             <div className={styles.changePass}>
-              <ChangeAvatar local={locDictionary}/>
-              <ChangeBgImg local={locDictionary}/>
+              <ChangeImages local={locDictionary} />
               <ChangePassword local={locDictionary} />
             </div>
           </div>

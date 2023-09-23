@@ -39,9 +39,9 @@ export function UserCard(props: any) {
       if (userSocket.OPEN) userSocket.send("ping");
       else clearInterval(userIntervalId);
     }, 30000);
-    let frndIntervalId = setInterval(() => {
+    let findIntervalId = setInterval(() => {
       if (friendSocket.OPEN) friendSocket.send("ping");
-      else clearInterval(frndIntervalId);
+      else clearInterval(findIntervalId);
     }, 30000);
     return () => {
       setInterval(() => {
@@ -49,7 +49,7 @@ export function UserCard(props: any) {
         if (friendSocket.OPEN) friendSocket.close();
       }, 1000)
       clearInterval(userIntervalId);
-      clearInterval(frndIntervalId);
+      clearInterval(findIntervalId);
     };
   }, []);
 

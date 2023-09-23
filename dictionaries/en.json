@@ -15,7 +15,8 @@
     "publish" : "Publish",
     "cancel" : "Cancel",
     "record" : "Record",
-    "create" : "Create"
+    "create" : "Create",
+    "set" : "Set and save"
   },
   "copyright" : "All right reserved",
   "development" : "!!! In development !!!",
@@ -67,7 +68,8 @@
       "profile" : "Profile",
       "settings" : "Settings",
       "exit" : "Exit",
-      "theme" : "theme:" 
+      "theme" : "theme:" ,
+      "messages" : "Messaging"
     }
   },
   "footer" : {
@@ -270,6 +272,21 @@
     "closeAcc" : "Close Account",
     "watch" : "Watch profile"
   },
+  "settingsImages" : {
+    "title" : "Update profile images",
+    "subtitle" : "This drop zone is designed to upload profile, author and background images",
+    "text1" : "Click to upload",
+    "text2" : "or",
+    "text3" : "drag image here",
+    "text4" : "SVG, PNG, JPG or JPEG",
+    "uploadAvatar" : "Set avatar",
+    "uploadBg" : "Set background",
+    "toasts" : {
+      "ok" : "",
+      "error" : "",
+      "info" : ""
+    }
+  },
   "main" : {
     "header" : {
       "posts" : "Posts",
@@ -306,5 +323,24 @@
   },
   "chat" : {
     "activeChat" : "Active chats"
+  },
+  "setImages" : {
+    "avatar" : "Avatar",
+    "bg" : "Background",
+    "toasts" : {
+      "ok" : "Image set success !",
+      "formatErr" : "Wrong file format !",
+      "serverErr" : "Server Error !"
+    }
+  },
+  "userActivity" : {
+    "last" : "Last activity",
+    "back" : "ago",
+    "days" : "days",
+    "day" : "day",
+    "hour" : "hour",
+    "hours" : "hours",
+    "minute" : "minute",
+    "minutes" : "minutes"
   }
 }

@@ -19,9 +19,10 @@ async function logOut() {
 
 interface IDrop {
   navbarOpen: boolean;
+  local : any;
 }
 
-export const DropMenuProfile: FC<IDrop> = ({navbarOpen}) => {
+export const DropMenuProfile: FC<IDrop> = ({navbarOpen, local}) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const notifyLogout = () => toast.info("Вы успешно вышли из аккаунта!",{});
@@ -44,7 +45,7 @@ export const DropMenuProfile: FC<IDrop> = ({navbarOpen}) => {
     <>
       <div className={styles.container} ref={dropdownRef}>
         { navbarOpen ? 
-            <button className={styles.navText} onClick={() => {logOut(), notifyLogout()}}>Выход</button> 
+            <button className={styles.navText} onClick={() => {logOut(), notifyLogout()}}>{local.header.dropMenu.exit}</button> 
           :
           <button className={styles.dropButton} 
           onClick={toggleMenu}
@@ -75,16 +76,16 @@ export const DropMenuProfile: FC<IDrop> = ({navbarOpen}) => {
                   <p>{work}</p>
                 </div>
               </div>
-              <Link href='/main' className={styles.buttonViewProfile}>Профиль</Link>
+              <Link href='/main' className={styles.buttonViewProfile}>{local.header.dropMenu.profile}</Link>
               <Link href='/settings'>
                 <div className={styles.settingsContainer}>
                   <AiOutlineSetting size={20} />
-                  <p>Настройки</p>
+                  <p>{local.header.dropMenu.settings}</p>
                 </div>
               </Link>
               <div className={styles.signOutContainer}>
                 <BiPowerOff size={20} />
-                <button onClick={() => {logOut(), notifyLogout()}}>Выход</button>
+                <button onClick={() => {logOut(), notifyLogout()}}>{local.header.dropMenu.exit}</button>
               </div>
               <div className={styles.modeContainer}>
                 <p>Тема:</p>

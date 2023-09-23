@@ -1,0 +1,13 @@
+.container {
+	@apply flex flex-col w-full p-6 bg-white dark:bg-dark_background rounded-xl 
+  border-light_border border dark:border-dark_border;
+	.dropzone {
+		@apply flex flex-col gap-6 mt-6 md:flex-row lg:flex-row;
+	}
+	h2 {
+		@apply text-gray-900 dark:text-white text-2xl;
+	}
+	p {
+		@apply mt-6;
+	}
+}

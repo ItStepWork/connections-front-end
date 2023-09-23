@@ -42,7 +42,7 @@ export const Header = ({local} : {local : any}, props : any) => {
   return (
     <>
       <header className={styles.header} onLoad={fetch}>
-        <div >
+        <div>
           <div className={styles.contentContainer}>
             <Link href="/" className={styles.logoLink}>
               <span className={styles.logo}><p className={oneDay.className}>Connections</p></span>
@@ -51,7 +51,7 @@ export const Header = ({local} : {local : any}, props : any) => {
               (<>
                 <div className={styles.burgerButton} onClick={() => setOpen(!open)}>{open ? <MdOutlineClose size={24} /> : <BiMenu size={24} />}
                 </div>
-                <ul className={`md:flex md:items-center md:pb-0 pb-12 dark:shadow-customTransparent dark:backdrop-blur-[3px] md:backdrop-blur-0 absolute rounded-lg md:static md:z-auto z-[-10] left-4 w-11/12 md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in bg-glass-white md:dark:bg-transparent dark:bg-dark_button_BG ${open ? 'top-14 opacity-100' : 'top-[-500px] md:opacity-100 opacity-0'}`}>
+                <ul className={`md:flex md:items-center pt-6 md:pb-0 pb-12 dark:shadow-customTransparent dark:backdrop-blur-[3px] md:backdrop-blur-0 absolute rounded-lg md:static md:z-auto z-[-10] left-4 w-11/12 md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in bg-light_background md:bg-glass_white lg:bg-glass_white md:border-none lg:border-none border dark:border-dark_border border-light_border md:dark:bg-transparent dark:bg-dark_button_BG ${open ? 'top-14 opacity-100' : 'top-[-500px] md:opacity-100 opacity-0'}`}>
                   <li className={styles.listItem}>
                     <Link className={styles.navText} onClick={fetch} href={`/main`}>{local.header.main}</Link>
                   </li>
@@ -59,13 +59,13 @@ export const Header = ({local} : {local : any}, props : any) => {
                     <Link className={styles.navText} onClick={fetch} href={`/profile/${session.user.id}`}>{local.header.profile}</Link>
                   </li>
                   <li className={styles.listItem}>
-                    <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href='/messaging'>{open ? 'Сообщения' : <MdOutlineMessage size={20} />}</Link>
+                    <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href='/messaging'>{open ? local.header.dropMenu.messages : <MdOutlineMessage size={20} />}</Link>
                   </li>
                   <li className={styles.listItem}>
-                    <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href='/settings'>{open ? 'Параметры профиля' : <AiOutlineSetting size={20} />}</Link>
+                    <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href='/settings'>{open ? local.header.dropMenu.settings : <AiOutlineSetting size={20} />}</Link>
                   </li>
                   <li className={styles.listItem}>
-                    <DropMenuProfile navbarOpen={open} />
+                    <DropMenuProfile navbarOpen={open} local={local}/>
                   </li>
                   <li className={styles.listItem}>
                     <LocaleSwitcher/>
