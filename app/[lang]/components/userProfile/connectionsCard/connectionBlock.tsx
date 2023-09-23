@@ -2,11 +2,10 @@ import Link from 'next/link';
 import { FaUserCircle } from 'react-icons/fa';
 import { FriendStatus } from '../../../../../enums/all.enum';
 import { FriendService } from '../../../../../services/friend.service';
-import styles from './connectionBlock.module.scss';
 import OnlineUser from '../../onlineUser/page';
+import styles from './connectionBlock.module.scss';
 
 export const ConnectionBlock = (props: any) => {
-
   const addFriend = async () => {
     await FriendService.addFriend(props.user.id);
   }
@@ -31,7 +30,7 @@ export const ConnectionBlock = (props: any) => {
               <span>{props.user.firstName} {props.user.lastName}</span>
               <span>{props.user.FamilyStatus}</span>
             </div>
-            <OnlineUser user={props.user}></OnlineUser>
+            <OnlineUser user={props.user} local={props.local}></OnlineUser>
             <div className={styles.description}>{props.user.aboutMe}</div>
 
           </div>
