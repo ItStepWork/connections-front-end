@@ -44,6 +44,9 @@ module.exports = {
 			fontFamily: {
 				logo : '--logo-font',
 			},	
+			flex: {
+        'custom': '0 0 auto',  
+      }
 		},
 	},
 	plugins: [],

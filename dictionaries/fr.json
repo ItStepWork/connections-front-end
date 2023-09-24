@@ -353,5 +353,41 @@
     "hours" : " heures ",
     "minute" : " minute ",
     "minutes" : " minutes "
+  },
+  "landing" : {
+    "title" : "un monde de connexions et d'opportunités infinies ! Notre réseau social unique a été créé pour rassembler des personnes du monde entier. Ici, vous pouvez vous faire des amis, partager vos intérêts, discuter de sujets qui vous intéressent et trouver l'inspiration au sein d'une communauté de personnes partageant les mêmes idées. Profitez d'un environnement sûr et convivial où chacun peut être lui-même et réaliser son potentiel. Rejoignez Connections et développez votre réseau en un seul clic !",
+    "subtitle" : "Plus qu'une simple messagerie",
+    "subtitle2" : "Messages et groupes",
+    "subtitle3" : "Fichiers et médias",
+    "gadget" : {
+      "title" : "Ordinateur",
+      "title2" : "Téléphone",
+      "text" : "Utilisez-le dans le navigateur ou installez-le sur votre PC en tant qu'application.",
+      "text2" : "Surf pratique sans installation à partir des magasins d'applications."
+    },
+    "messaging" : {
+      "title" : "Se faire des amis",
+      "title2" : "Échanger des messages",
+      "title3" : "Envoyer des photos et des emoji",
+      "text" : "Ajoutez-le comme ami pour ne pas perdre le contact avec vos proches.",
+      "text2" : "Entrez la correspondance avec différentes personnes et recevez des notifications de nouveaux messages.",
+      "text3" : "Envoyez des photos et des emojis pour mieux transmettre votre humeur."
+    },
+    "posts" : {
+      "title" : "Publier des articles",
+      "title2" : "Rejoindre des groupes",
+      "title3" : "Amis ayant des intérêts similaires",
+      "text" : "Partagez des actualités, des réalisations et invitez à des événements à l'aide de publications.",
+      "text2" : "Les groupes vous aideront à rassembler des personnes, proches et fans.",
+      "text3" : "Limitez l’accès ou rassemblez simplement un groupe d’intérêts."
+    },
+    "gallery" : {
+      "title" : "Gérez votre galerie",
+      "title2" : "Créer des albums",
+      "title3" : "Noter les photos",
+      "text" : "Collectionnez et partagez les moments les plus colorés et les plus touchants de la vie.",
+      "text2" : "Gérez les albums pour la meilleure expérience de stockage de photos.",
+      "text3" : "Vous pouvez non seulement regarder la photo, mais aussi l'évaluer et la commenter."
+    }
   }
 }

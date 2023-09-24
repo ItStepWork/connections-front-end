@@ -22,9 +22,6 @@ const LocalSwitcherMinimal = () => {
         <Link href={redirectedPathName('de')} locale={'de'} >
           <img src="/DE.png" alt="de" />
         </Link>
-        <Link href={redirectedPathName('ru')} locale={'ru'} >
-          <img src="/RU.png" alt="ru" />
-        </Link>
         <Link href={redirectedPathName('fr')} locale={'fr'} >
           <img src="/FR.png" alt="fr" />
         </Link>

@@ -48,9 +48,6 @@ export default function LocaleSwitcher(props: any) {
             </Link>
           </div>
           <div className={styles.column}>
-            <Link href={redirectedPathName('ru')} locale={'ru'} >
-              <img src="/RU.png" alt="ru" />
-            </Link>
             <Link href={redirectedPathName('fr')} locale={'fr'} >
               <img src="/FR.png" alt="fr" />
             </Link>

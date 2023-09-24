@@ -353,5 +353,41 @@
     "hours" : " godziny ",
     "minute" : " minuta ",
     "minutes" : " minuty "
+  },
+  "landing" : {
+    "title" : "świat nieskończonych połączeń i możliwości! Nasza wyjątkowa sieć społecznościowa została stworzona, aby zjednoczyć ludzi z całego świata. Tutaj możesz zawierać przyjaźnie, dzielić się swoimi zainteresowaniami, omawiać ważne dla Ciebie tematy i znajdować inspirację w społeczności ludzi o podobnych poglądach. Ciesz się bezpiecznym i przyjaznym środowiskiem, w którym każdy może być sobą i realizować swój potencjał. Dołącz do Connections i rozwijaj swoją sieć jednym kliknięciem!",
+    "subtitle" : "Więcej niż przesyłanie wiadomości",
+    "subtitle2" : "Posty i grupy",
+    "subtitle3" : "Pliki i multimedia",
+    "gadget" : {
+      "title" : "Komputer",
+      "title2" : "Telefon",
+      "text" : "Użyj w przeglądarce lub zainstaluj na swoim komputerze jako aplikację.",
+      "text2" : "Wygodne surfowanie bez instalacji ze sklepów z aplikacjami."
+    },
+    "messaging" : {
+      "title" : "Zaprzyjaźnić się",
+      "title2" : "Wymieniaj wiadomości",
+      "title3" : "Wysyłaj zdjęcia i emoji",
+      "text" : "Dodaj jako znajomego, aby nie stracić kontaktu z bliskimi.",
+      "text2" : "Wprowadź korespondencję z różnymi osobami i otrzymuj powiadomienia o nowych wiadomościach.",
+      "text3" : "Wysyłaj zdjęcia i emotikony, aby lepiej oddać swój nastrój."
+    },
+    "posts" : {
+      "title" : "Publikuj posty",
+      "title2" : "Dołącz do grup",
+      "title3" : "Przyjaciele o podobnych zainteresowaniach",
+      "text" : "Udostępniaj wiadomości, osiągnięcia i zapraszaj na wydarzenia za pomocą postów.",
+      "text2" : "Grupy pomogą Ci zgromadzić ludzi, zarówno bliskich, jak i fanów.",
+      "text3" : "Ogranicz dostęp lub po prostu zbierz grupę zainteresowań."
+    },
+    "gallery" : {
+      "title" : "Zarządzaj swoją galerią",
+      "title2" : "Twórz albumy",
+      "title3" : "Oceń zdjęcia",
+      "text" : "Zbieraj i udostępniaj najbardziej kolorowe i wzruszające momenty w życiu.",
+      "text2" : "Zarządzaj albumami, aby zapewnić najlepsze warunki przechowywania zdjęć.",
+      "text3" : "Możesz nie tylko obejrzeć zdjęcie, ale także je ocenić i skomentować."
+    }
   }
 }

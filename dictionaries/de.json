@@ -353,5 +353,41 @@
     "hours" : " std. ",
     "minute" : " minute ",
     "minutes" : " protokoll "
+  },
+  "landing" : {
+    "title" : "eine Welt voller endloser Verbindungen und Möglichkeiten! Unser einzigartiges soziales Netzwerk wurde geschaffen, um Menschen aus der ganzen Welt zu vereinen. Hier können Sie Freunde finden, Ihre Interessen teilen, Themen diskutieren, die Ihnen wichtig sind, und Inspiration in einer Gemeinschaft von Gleichgesinnten finden. Genießen Sie eine sichere und freundliche Umgebung, in der jeder er selbst sein und sein Potenzial entfalten kann. Treten Sie Connections bei und erweitern Sie Ihr Netzwerk mit nur einem Klick!",
+    "subtitle" : "Mehr als nur Nachrichten",
+    "subtitle2" : "Beiträge und Gruppen",
+    "subtitle3" : "Dateien und Medien",
+    "gadget" : {
+      "title" : "Computer",
+      "title2" : "Telefon",
+      "text" : "Im Browser verwenden oder als Anwendung auf Ihrem PC installieren.",
+      "text2" : "Bequemes Surfen ohne Installation aus App-Stores."
+    },
+    "messaging" : {
+      "title" : "Freundschaft schließen",
+      "title2" : "Nachrichten austauschen",
+      "title3" : "Senden Sie Fotos und Emojis",
+      "text" : "Fügen Sie es als Freund hinzu, um den Kontakt zu Ihren Lieben nicht zu verlieren.",
+      "text2" : "Geben Sie Korrespondenz mit verschiedenen Personen ein und erhalten Sie Benachrichtigungen über neue Nachrichten.",
+      "text3" : "Senden Sie Fotos und Emojis, um Ihre Stimmung besser zu vermitteln."
+    },
+    "posts" : {
+      "title" : "Beiträge veröffentlichen",
+      "title2" : "Treten Sie Gruppen bei",
+      "title3" : "Freunde mit ähnlichen Interessen",
+      "text" : "Teilen Sie Neuigkeiten und Erfolge und laden Sie über Beiträge zu Veranstaltungen ein.",
+      "text2" : "Gruppen helfen Ihnen dabei, Menschen zusammenzubringen, sowohl Ihre Lieben als auch Ihre Fans.",
+      "text3" : "Beschränken Sie den Zugriff oder stellen Sie einfach eine Gruppe von Interessen zusammen."
+    },
+    "gallery" : {
+      "title" : "Verwalten Sie Ihre Galerie",
+      "title2" : "Erstellen Sie Alben",
+      "title3" : "Bewerten Sie Fotos",
+      "text" : "Sammeln und teilen Sie die farbenfrohsten und berührendsten Momente im Leben.",
+      "text2" : "Verwalten Sie Alben für das beste Fotospeichererlebnis.",
+      "text3" : "Sie können das Foto nicht nur ansehen, sondern auch bewerten und kommentieren."
+    }
   }
 }

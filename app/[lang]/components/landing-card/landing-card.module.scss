@@ -1,0 +1,12 @@
+.container {
+	@apply flex flex-col justify-center items-center w-60;
+	img {
+		@apply border-none w-24 h-24;
+	}
+	h3 {
+		@apply text-2xl pt-2;
+	}
+	p {
+		@apply text-dark_text_gray flex flex-wrap;
+	}
+}

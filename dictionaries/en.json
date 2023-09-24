@@ -353,5 +353,41 @@
     "hours" : " hours ",
     "minute" : " minute ",
     "minutes" : " minutes "
+  },
+  "landing" : {
+    "title" : "a world of endless connections and opportunities! Our unique social network was created to unite people from all over the world. Here you can make friends, share your interests, discuss topics that matter to you, and find inspiration in a community of like-minded people. Enjoy a safe and friendly environment where everyone can be themselves and reach their potential. Join Connections and expand your network with just a click!",
+    "subtitle" : "More than messaging",
+    "subtitle2" : "Posts & Groups",
+    "subtitle3" : "Files & Media",
+    "gadget" : {
+      "title" : "Computer",
+      "title2" : "Phone",
+      "text" : "Use in the browser or install on your PC as an application.",
+      "text2" : "Convenient surfing without installation from application stores."
+    },
+    "messaging" : {
+      "title" : "Make friends",
+      "title2" : "Exchange messages",
+      "title3" : "Send photos and emoji",
+      "text" : "Add as a friend so as not to lose touch with your loved ones.",
+      "text2" : "Enter correspondence with different people and receive notifications of new messages.",
+      "text3" : "Send photos and emojis to better convey your mood."
+    },
+    "posts" : {
+      "title" : "Publish posts",
+      "title2" : "Join groups",
+      "title3" : "Friends with similar interests",
+      "text" : "Share news, achievements, and invite to events using posts.",
+      "text2" : "Groups will help you gather people, both loved ones and fans.",
+      "text3" : "Limit access, or just gather a group of interests."
+    },
+    "gallery" : {
+      "title" : "Manage your gallery",
+      "title2" : "Create albums",
+      "title3" : "Rate photos",
+      "text" : "Collect and share the most colorful and touching moments in life.",
+      "text2" : "Manage albums for the best photo storage experience.",
+      "text3" : "You can not only look at the photo, but also evaluate and comment on it."
+    }
   }
 }

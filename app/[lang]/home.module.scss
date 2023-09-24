@@ -1,9 +1,43 @@
-.container {
-	@apply relative mt-16;
-	.mainLabel {
-		@apply w-full bg-glass_white dark:bg-glass_gray backdrop-blur-[3px];
-		canvas {
-			@apply relative text-white overflow-hidden h-max w-max;
+.main {
+	@apply flex flex-col justify-between w-full h-full pb-[3350px] lg:pb-[1600px] md:pb-[1800px] bg-glass_gray z-50;
+	.container {
+		@apply relative  h-screen flex flex-col items-center mt-20 text-center;
+		.textContainer {
+			@apply flex items-center justify-center w-3/4;
+			p {
+				@apply text-3xl;
+			}
+			span {
+				@apply dark:text-white text-2xl text-gray-900;
+			}
 		}
+		.imageContainer {
+			@apply flex flex-col md:flex-row lg:flex-row gap-6 items-center pt-20;
+			img {
+				@apply rounded-3xl border-8 border-gray-400;
+			}
+			.img {
+				@apply hidden md:block lg:block;
+			}
+			.notebookContainer {
+				@apply flex flex-col;
+				.cards {
+					@apply flex flex-col md:flex-row lg:flex-row justify-evenly pb-6;
+				}
+			}
+		}
+		.messagingContainer {
+			@apply flex flex-col w-full;
+			h2 {
+				@apply text-3xl pt-6 lg:pt-20 md:pt-20 lg:pb-10 pb-6 md:pb-10;
+			}
+		}
+	}
+	.background {
+		@apply w-screen min-h-full object-fill bg-repeat z-0 bg-glass_gray absolute top-0 left-0 blur-3xl;
+	}
+	.cardContainer {
+		@apply flex justify-around md:items-baseline lg:items-baseline items-center 
+		flex-col md:flex-row lg:flex-row pb-6 pt-10 lg:h-64 md:h-64;
 	}
 }
