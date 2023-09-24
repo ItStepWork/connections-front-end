@@ -28,7 +28,7 @@ export default function Admin({ local, session }: { local: any, session: any }, 
   }, [])
 
   const ChangeComponent = () => {
-    if (component === AdminComponentName.Users) return (<Users users={users}/>)
+    if (component === AdminComponentName.Users) return (<Users users={users} getUsers={getUsers}/>)
     else if (component === AdminComponentName.Genders) return (<Genders users={users}/>)
     else if (component === AdminComponentName.Zodiacs) return (<Zodiacs users={users}/>)
     else if (component === AdminComponentName.PagesActivity) return (<PagesActivity />)
