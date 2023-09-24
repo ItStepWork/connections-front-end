@@ -68,3 +68,7 @@ export enum Role {
     Admin = "Admin",
 }
 
+export enum EventType {
+    BirthDay = "BirthDay",
+    Meeting = "Meeting",
+}
