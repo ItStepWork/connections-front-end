@@ -1,0 +1,351 @@
+{
+  "button": {
+    "uploadMore": "Załaduj więcej",
+    "uploadAvatarImage": "Prześlij awatar",
+    "uploadBgImage": "Prześlij tło",
+    "updatePass": "Zmień hasło",
+    "saveData": "Zapisz zmiany",
+    "toProfile": "Profil",
+    "setAvatarImage": "Ustaw awatar",
+    "setBgImage": "Ustaw tło",
+    "settings" : "Ustawienia",
+    "allFriends" : "Wszyscy przyjaciele",
+    "editProfile" : "Edytuj profil",
+    "showAll" : "Pokaż wszystko",
+    "publish" : "Publikować",
+    "cancel" : "Anulować",
+    "record" : "Zanotować",
+    "create" : "Tworzyć",
+    "set" : "Zainstaluj i zapisz",
+    "rejectReq" : "Odrzuć aplikację",
+    "confirmReq" : "Potwierdź aplikację",
+    "removeWithGroup" : "Usuń z grupy",
+    "sendMessage" : "wysłać wiadomość"
+  },
+  "copyright" : "Wszelkie prawa zastrzeżone",
+  "development" : "!!! W rozwoju !!!",
+  "friends" : {
+    "title" : "Przyjaciele",
+    "subtitle" : "wspólni przyjaciele"
+  },
+  "posts" : {
+    "photo" : "Zdjęcie",
+    "video" : "Wideo",
+    "event" : "Wydarzenie",
+    "activity" : "Działalność",
+    "placeholder" : "Podziel się swoimi przemyśleniami...",
+    "postPhoto" : {
+      "title" : "Publikacja zdjęcia",
+      "upload" : "Prześlij załącznik",
+      "description" : "Przeciągnij lub kliknij tutaj, aby przesłać zdjęcie"
+    },
+    "postVideo" : {
+      "title" : "Publikacja wideo",
+      "description" : "Przeciągnij lub kliknij tutaj, aby pobrać wideo"
+    },
+    "postActivity" : {
+      "title" : "Utwórz post",
+      "forAll" : "Dla wszystkich",
+      "forMe" : "Tylko ja",
+      "forFriends" : "Tylko przyjaciele"
+    },
+    "tooltip" : {
+      "photo" : "Zdjęcie",
+      "video" : "Wideo",
+      "event" : "Wydarzenie",
+      "activity" : "Działalność",
+      "location" : "Lokalizacja",
+      "tag" : "Oznaczać ludzi"
+    }
+  },
+  "search" : {
+    "searchFullName" : "Wpisz swoje imię lub nazwisko",
+    "searchPost" : "Wpisz tytuł",
+    "searchNameOrEmail" : "Wpisz swoje imię, nazwisko lub adres e-mail",
+    "searchGroup" : "Wprowadź nazwę grupy"
+  },
+  "header" : {
+    "main" : "dom",
+    "profile" : "Profil",
+    "admin" : "Administrator",
+    "dropMenu" : {
+      "profile" : "Profil",
+      "settings" : "Ustawienia",
+      "exit" : "Wyjście",
+      "theme" : "Temat:",
+      "messages" : "Wiadomości"
+    }
+  },
+  "footer" : {
+    "about" : "O nas",
+    "help" : "Pomoc",
+    "privacy" : "Prywatność i Warunki",
+    "protect" : "Współpraca",
+    "partnership" : "Ochrona"
+    
+  },
+  "groups" : {
+    "title" : "Społeczności",
+    "subtitle" : "Uczestnicy",
+    "adminBtn" : "Administrator",
+    "editGroupBtn" : "Edytuj grupę",
+    "inviteBtn" : "Zapraszać",
+    "leaveBtn" : "Wychodzić",
+    "cancelBtn" : "Anulować",
+    "joinBtn" : "Dołączyć",
+    "addPhoto" : "Dodaj zdjęcie",
+    "aboutGroup" : {
+      "about" : "O grupie",
+      "people" : "Ludzie: ",
+      "members" : "uczestnicy",
+      "status" : "Status: ",
+      "mail" : "Poczta: "
+    },
+    "posts" : "Posty",
+    "photo" : "Zdjęcie",
+    "members" : "Uczestnicy",
+    "requests" : "Upraszanie",
+    "privacy" : "grupa",
+    "tooltip" : {
+      "admin" : "Jesteś administratorem",
+      "leave" : "Opuścić grupę",
+      "cancel" : "Anulować żądanie",
+      "join" : "Dołącz do grupy",
+      "invite" : "Zaproś do grupy"
+    },
+    "toasts" : {
+      "join" : "Wniosek złożony !",
+      "leave" : "Opuściłeś grupę !"
+    }
+  },
+  "editGroup" : {
+    "title" : "Edytuj grupę",
+    "name" : "Nazwa grupy",
+    "description" : "opis grupy",
+    "changeBtn" : "Zmiana",
+    "deleteBtn" : "Usuwać",
+    "privacy" : {
+      "title" : "Typ grupy",
+      "private" : "Prywatny",
+      "public" : "Publiczny"
+    },
+    "toasts" : {
+      "ok" : "Wprowadzono parametry!",
+      "error" : "błąd serwera!",
+      "warning" : "Nie wprowadzono parametrów!",
+      "delete" : "Grupy usunięte!"
+    }
+  },
+  "createGroup" : {
+    "title" : "Aby utworzyć grupę",
+    "name" : "Nazwa grupy",
+    "image" : "Obraz grupowy",
+    "type" : "Grupy Tipi",
+    "description" : "opis grupy",
+    "placeholderName" : "Nazwa grupy tutaj...",
+    "placeholderDesc" : "Opis grupy tutaj...",
+    "open" : "otwarty",
+    "closed" : "Zamknięte",
+    "toasts" : {
+      "format" : "Nieprawidłowy format pliku! Tylko <jpg, jpeg, png> !!!",
+      "ok" : "Grupy utworzone !",
+      "error" : "błąd serwera !"
+    }
+  },
+  "connections" : {
+    "title" : "Łączność",
+    "confirmBtn" : "Potwierdzać",
+    "deleteBtn" : "Usuwać",
+    "writeBtn" : "Pisać",
+    "requestBtn" : "Być przyjaciółmi",
+    "addRequest": "Wniosek wysłany"
+  },
+  "profile" : {
+    "friendsCount" : "Łączność",
+    "about" : "O mnie",
+    "contacts" : "Łączność",
+    "groups" : "Społeczności",
+    "gallery" : "Galeria",
+    "join" : "Dołączył: ",
+    "aboutMe" : {
+      "title" : "Informacje o Profilu",
+      "overview" : "Recenzja",
+      "born" : "Data urodzenia: ",
+      "status" : "Status: ",
+      "work" : "Stanowisko: ",
+      "live" : "mieszkam w: ",
+      "join" : "Dołączył: "
+    },
+    "connect" : {
+      "title" : "Znajomości",
+      "delete" : "Usuwać",
+      "confirm" : "Potwierdzać",
+      "cancel" : "Anulować",
+      "write" : "Pisać",
+      "beFriends" : "Być przyjaciółmi"
+    }
+  },
+  "signIn" : {
+    "title" : "Wejście",
+    "description" : "Jeszcze nie ma konta? ",
+    "toSignUp" : "Przejdź do rejestracji",
+    "passLabel" : "Hasło:",
+    "logInBtn" : "Wejść",
+    "toasts" : {
+      "success" : "Udane logowanie !",
+      "error" : "Błąd! Logowanie nie powiodło się"
+    }
+  },
+  "signUp" : {
+    "title" : "Rejestracja",
+    "description" : "Posiadasz już konto?",
+    "toSignIn" : "Wejść",
+    "name" : "Nazwa:",
+    "lastName" : "cNazwa:",
+    "mail" : "E-mail:",
+    "pass" : "Hasło:",
+    "confirmPassLabel" : "Potwierdzenie hasła:",
+    "registrationBtn" : "Rejestracja",
+    "toasts" : {
+      "emptyFields" : "Nie wszystkie pola są wypełnione!",
+      "serverError" : "błąd serwera !!!",
+      "EmailError" : "Ten email adres jest już używany!",
+      "ok" : "Pomyślna rejestracja!",
+      "mismatchPasswords" : "Hasło różni się!"
+    },
+    "placeholders" : {
+      "name" : "Wpisz swoje imię...",
+      "lastName" : "Wpisz nazwisko...",
+      "mail" : "Wprowadź e-mail adres..."
+    } 
+  },
+  "aboutMe" : {
+    "title" : "Informacje o Profilu: ",
+    "subtitle" : "Trochę o sobie",
+    "Overview" : "Recenzja: ",
+    "birthday" : "Urodziny: ",
+    "work" : "Pracujący: ",
+    "connected" : "Dołączył: ",
+    "status" : "Status: ",
+    "familyStatus" : "Status rodziny: ",
+    "live" : "żyję: "
+  },
+  "settings" :{
+    "title" : "ustawienia konta",
+    "subtitle" : "To są ustawienia Twojego konta, tutaj możesz zmienić informacje o swoim profilu.",
+    "name" : "Nazwa:",
+    "lastName" : "Nazwisko:",
+    "born" : "Data urodzenia:",
+    "email" : "E-mail:",
+    "phone" : "Telefon:",
+    "gender" : "Podłoga",
+    "familyStatus" : "Status rodziny:",
+    "work" : "Stanowisko: ",
+    "location" : "Miejsce zamieszkania:",
+    "aboutMe" : "Twój tekst:",
+    "placeholders" : {
+      "notIndicated" : "Nie wskazano",
+      "comment" : "Zostaw swój komentarz..."
+    },
+    "toasts" : {
+      "ok" : "Dane zostały pomyślnie zaktualizowane!",
+      "fail" : "Dane nie zostały zaktualizowane!"
+    }
+  },
+  "changePassword" : {
+    "title" : "Zmień hasło",
+    "subtitle" : "Aby zmienić hasło należy: wpisać stare hasło, wprowadzić nowe hasło i je potwierdzić, nowe hasło i hasło potwierdzające muszą być zgodne.",
+    "password" : "Aktualne hasło:",
+    "newPass" : "Nowe hasło:",
+    "confirmPass" : "Potwierdzenie hasła:",
+    "placeholders" : {
+      "pass" : "Twoje hasło...",
+      "newPass" : "Nowe hasło...",
+      "confirmPass" : "Potwierdź hasło..."
+    },
+    "toasts" : {
+      "mismatch" : "Hasło różni się!",
+      "error" : "Hasło nie zostało zmienione!",
+      "ok" : "Hasło zostało pomyślnie zmienione!"
+    }
+  },
+  "settingsSide" : {
+    "account" : "Konto",
+    "notification" : "Alerty",
+    "privacy" : "Prywatność i ochrona",
+    "messaging" : "Wymiana wiadomości",
+    "closeAcc" : "Zamknij konto",
+    "watch" : "Zobacz profil"
+  },
+  "settingsImages" : {
+    "title" : "Aktualizowanie zdjęć profilowych",
+    "subtitle" : "Ta strefa zrzutu jest przeznaczona do przesyłania zdjęć profilowych, awatarów i tła",
+    "text1" : "Kliknij, aby pobrać",
+    "text2" : "lub",
+    "text3" : "przeciągnij i upuść plik",
+    "text4" : "SVG, PNG, JPG lub JPEG",
+    "uploadAvatar" : "Ustaw awatar",
+    "uploadBg" : "Ustaw tło",
+    "toasts" : {
+      "ok" : "",
+      "error" : "",
+      "info" : ""
+    }
+  },
+  "main" : {
+    "header" : {
+      "posts" : "Posty",
+      "contacts" : "Łączność"
+    },
+    "feed" : "Wstążka",
+    "contacts" : "Znajomości",
+    "news" : "Ostatnie wiadomości",
+    "events" : "Wydarzenia",
+    "groups" : "Grupy",
+    "gallery" : "Galeria",
+    "notifications" : "Alerty",
+    "settings" : "Ustawienia",
+    "profile" : "Zobacz profil",
+    "menu" : "Menu"
+  },
+  "stories" : {
+    "add" : "Dodać",
+    "story" : "historia"
+  },
+  "gallery" : {
+    "title" : "Galeria",
+    "photo" : "Zdjęcie",
+    "addPhoto" : "Dodaj zdjęcie",
+    "album" : "Albumy",
+    "action" : {
+      "toAvatar" : "Ustaw jako awatar",
+      "toBackground" : "Ustaw jako tło",
+      "delete": "Usuwać"
+    },
+    "createAlbum" : "Utwórz album",
+    "newAlbum" : "Nowy album",
+    "placeholder" : "Wpisz tytuł..."
+  },
+  "chat" : {
+    "activeChat" : "Aktywne czaty"
+  },
+  "setImages" : {
+    "avatar" : "Awatara",
+    "bg" : "Tło profilu",
+    "toasts" : {
+      "ok" : "Obraz zainstalowany !",
+      "formatErr" : "Nieprawidłowy format pliku",
+      "serverErr" : "błąd serwera !"
+    }
+  },
+  "userActivity" : {
+    "last" : "Ostatnia aktywność ",
+    "ago" : "z powrotem",
+    "days" : " dni ",
+    "day" : " dzień ",
+    "hour" : " godzina ",
+    "hours" : " godziny ",
+    "minute" : " minuta ",
+    "minutes" : " minuty "
+  }
+}

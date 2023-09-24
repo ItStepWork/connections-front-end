@@ -1,11 +1,9 @@
 import Link from 'next/link';
-import { toast } from 'react-toastify';
 import { Locale } from '../../../../i18n.config';
 import { getDictionary } from '../../../../locale-dictionary';
 import styles from './footer.module.scss';
 
 const Footer = async ({ lang }: { lang: Locale }, props : any) => {
-  const notifyInfo =  () => toast.info("В разработке!",{});
   const locDictionary = await getDictionary(lang)
   
   return (

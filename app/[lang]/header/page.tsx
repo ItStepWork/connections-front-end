@@ -9,7 +9,7 @@ const HeaderPage = async ({ lang }: { lang: Locale }, props : any) => {
   
   return (
     <>
-      <Header local={locDictionary}/>
+      <Header local={locDictionary} lang={lang}/>
     </>
   )
 };

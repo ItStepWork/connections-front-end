@@ -8,4 +8,18 @@
     		focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 
      		dark:bg-main_background dark:border-dark_border dark:placeholder-gray-400 dark:text-dark_text_gray dark:focus:ring-blue-500 dark:focus:border-blue-500;
 	}
+	.dropMenu {
+		@apply absolute flex gap-3 p-4 top-[55px] w-[90px] left-[310px] items-center  bg-white text-gray-900 border border-light_border rounded-lg
+  dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border;
+		.column {
+			@apply flex flex-col gap-3;
+		}
+	}
+	.dropMenuHidden {
+		@apply absolute hidden flex-col top-[46px] left-[-200px] items-center w-[240px] bg-white text-gray-900 border border-light_border rounded-lg
+  dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border;
+	}
+	.dropBtn {
+		@apply text-gray-900 p-1 dark:text-dark_text_gray uppercase border-2 rounded-sm border-light_border dark:border-dark_border;
+	}
 }

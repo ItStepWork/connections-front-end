@@ -11,13 +11,14 @@ import { useStore } from '../../../../stores/userDataStore'
 import { DropMenuProfile } from '../userProfile/dropMenu/dropMenu'
 import styles from './header.module.scss'
 import LocaleSwitcher from './locale-switcher'
+import LocalSwitcherMinimal from './locale-switcher-minimal'
 
 const oneDay = localFont({ src: '../../../../fonts/ONEDAY.ttf' })
 
 const channelWorkerBroadcast = new BroadcastChannel('channelWorker');
 
 
-export const Header = ({local} : {local : any}, props : any) => {
+export const Header = (props:any) => {
 
   const [fetch] = useStore((state) => [state.fetchUser])
   const { data: session } = useSession();
@@ -53,22 +54,23 @@ export const Header = ({local} : {local : any}, props : any) => {
                 </div>
                 <ul className={`md:flex md:items-center pt-6 md:pt-0 lg:pt-0 md:pb-0 pb-12 dark:shadow-customTransparent dark:backdrop-blur-[3px] md:backdrop-blur-0 absolute rounded-lg md:static md:z-auto z-[-10] left-4 w-11/12 md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in bg-light_background md:bg-glass_white lg:bg-glass_white md:border-none lg:border-none border dark:border-dark_border border-light_border md:dark:bg-transparent dark:bg-dark_button_BG ${open ? 'top-14 opacity-100' : 'top-[-500px] md:opacity-100 opacity-0'}`}>
                   <li className={styles.listItem}>
-                    <Link className={styles.navText} onClick={fetch} href={`/main`}>{local.header.main}</Link>
+                    <Link className={styles.navText} onClick={fetch} href={`/main`}>{props.local.header.main}</Link>
                   </li>
                   <li className={styles.listItem}>
-                    <Link className={styles.navText} onClick={fetch} href={`/profile/${session.user.id}`}>{local.header.profile}</Link>
+                    <Link className={styles.navText} onClick={fetch} href={`/profile/${session.user.id}`}>{props.local.header.profile}</Link>
                   </li>
                   <li className={styles.listItem}>
-                    <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href='/messaging'>{open ? local.header.dropMenu.messages : <MdOutlineMessage size={20} />}</Link>
+                    <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href='/messaging'>{open ? props.local.header.dropMenu.messages : <MdOutlineMessage size={20} />}</Link>
                   </li>
                   <li className={styles.listItem}>
-                    <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href='/settings'>{open ? local.header.dropMenu.settings : <AiOutlineSetting size={20} />}</Link>
+                    <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href='/settings'>{open ? props.local.header.dropMenu.settings : <AiOutlineSetting size={20} />}</Link>
                   </li>
                   <li className={styles.listItem}>
-                    <DropMenuProfile navbarOpen={open} local={local}/>
+                    <DropMenuProfile navbarOpen={open} local={props.local}/>
                   </li>
                   <li className={styles.listItem}>
-                    <LocaleSwitcher/>
+                    {open ? <LocalSwitcherMinimal/> : <LocaleSwitcher local={props.lang}/>}
+                    
                   </li>
                 </ul>
 

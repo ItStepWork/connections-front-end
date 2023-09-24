@@ -1,0 +1,351 @@
+{
+  "button": {
+    "uploadMore": "Charger plus",
+    "uploadAvatarImage": "Télécharger un avatar",
+    "uploadBgImage": "Télécharger l'arrière-plan",
+    "updatePass": "Changer le mot de passe",
+    "saveData": "Sauvegarder les modifications",
+    "toProfile": "Profil",
+    "setAvatarImage": "Définir un avatar",
+    "setBgImage": "Définir l'arrière-plan",
+    "settings" : "Paramètres",
+    "allFriends" : "Tous les amis",
+    "editProfile" : "Editer le profil",
+    "showAll" : "Afficher tout",
+    "publish" : "Publier",
+    "cancel" : "Annuler",
+    "record" : "Écrire",
+    "create" : "Créer",
+    "set" : "Installer et enregistrer",
+    "rejectReq" : "Rejeter la demande",
+    "confirmReq" : "Confirmer la candidature",
+    "removeWithGroup" : "Supprimer du groupe",
+    "sendMessage" : "envoyer un message"
+  },
+  "copyright" : "Tous droits réservés",
+  "development" : "!!! En développement !!!",
+  "friends" : {
+    "title" : "Amis",
+    "subtitle" : "amis communs"
+  },
+  "posts" : {
+    "photo" : "Photo",
+    "video" : "Vidéo",
+    "event" : "Événement",
+    "activity" : "Activité",
+    "placeholder" : "Partage tes pensées...",
+    "postPhoto" : {
+      "title" : "Publier une photo",
+      "upload" : "Télécharger la pièce jointe",
+      "description" : "Faites glisser ou cliquez ici pour télécharger une photo"
+    },
+    "postVideo" : {
+      "title" : "Publier une vidéo",
+      "description" : "Faites glisser ou cliquez ici pour télécharger la vidéo"
+    },
+    "postActivity" : {
+      "title" : "Créer un message",
+      "forAll" : "Pour tous",
+      "forMe" : "Juste moi",
+      "forFriends" : "Seulement amis"
+    },
+    "tooltip" : {
+      "photo" : "Photo",
+      "video" : "Vidéo",
+      "event" : "Événement",
+      "activity" : "Activité",
+      "location" : "Emplacement",
+      "tag" : "Taguer des personnes"
+    }
+  },
+  "search" : {
+    "searchFullName" : "Entrez votre prénom ou votre nom",
+    "searchPost" : "Entrez le titre",
+    "searchNameOrEmail" : "Entrez votre prénom, votre nom ou votre email",
+    "searchGroup" : "Entrez le nom du groupe"
+  },
+  "header" : {
+    "main" : "Maison",
+    "profile" : "Profil",
+    "admin" : "Administrateur",
+    "dropMenu" : {
+      "profile" : "Profil",
+      "settings" : "Paramètres",
+      "exit" : "Sortie",
+      "theme" : "Sujet:",
+      "messages" : "Messages"
+    }
+  },
+  "footer" : {
+    "about" : "À propos de nous",
+    "help" : "Aide",
+    "privacy" : "Confidentialité et conditions",
+    "protect" : "Partenariat",
+    "partnership" : "protection"
+    
+  },
+  "groups" : {
+    "title" : "Communautés",
+    "subtitle" : "participants",
+    "adminBtn" : "Administrateur",
+    "editGroupBtn" : "Modifier le groupe",
+    "inviteBtn" : "Inviter",
+    "leaveBtn" : "Sortir",
+    "cancelBtn" : "Annuler",
+    "joinBtn" : "Rejoindre",
+    "addPhoto" : "Ajouter une photo",
+    "aboutGroup" : {
+      "about" : "À propos du groupe",
+      "people" : "Personnes: ",
+      "members" : "participants",
+      "status" : "Statut: ",
+      "mail" : "Mail: "
+    },
+    "posts" : "Des postes",
+    "photo" : "Photo",
+    "members" : "Participants",
+    "requests" : "Demandes",
+    "privacy" : "groupe",
+    "tooltip" : {
+      "admin" : "Vous êtes un administrateur",
+      "leave" : "Quitter le groupe",
+      "cancel" : "Demande d'annulation",
+      "join" : "Rejoins le groupe",
+      "invite" : "Inviter à un groupe"
+    },
+    "toasts" : {
+      "join" : "Application déposée !",
+      "leave" : "Tu as quitté le groupe !"
+    }
+  },
+  "editGroup" : {
+    "title" : "Modifier le groupe",
+    "name" : "Nom de groupe",
+    "description" : "Description du groupe",
+    "changeBtn" : "Changement",
+    "deleteBtn" : "Supprimer",
+    "privacy" : {
+      "title" : "Type de groupe",
+      "private" : "Privé",
+      "public" : "Publique"
+    },
+    "toasts" : {
+      "ok" : "Paramètres saisis!",
+      "error" : "erreur du serveur!",
+      "warning" : "Les paramètres ne sont pas saisis!",
+      "delete" : "Groupes supprimés!"
+    }
+  },
+  "createGroup" : {
+    "title" : "Pour créer un groupe",
+    "name" : "Nom de groupe",
+    "image" : "Image de groupe",
+    "type" : "Type de groupe",
+    "description" : "Description du groupe",
+    "placeholderName" : "Nom du groupe ici...",
+    "placeholderDesc" : "Description du groupe ici...",
+    "open" : "Ouvrir",
+    "closed" : "Fermé",
+    "toasts" : {
+      "format" : "Format de fichier invalide ! Seulement <jpg, jpeg, png> !!!",
+      "ok" : "Groupes créés !",
+      "error" : "erreur du serveur !"
+    }
+  },
+  "connections" : {
+    "title" : "Contacts",
+    "confirmBtn" : "Confirmer",
+    "deleteBtn" : "Supprimer",
+    "writeBtn" : "Écrire",
+    "requestBtn" : "Être amis",
+    "addRequest": "Demande envoyée"
+  },
+  "profile" : {
+    "friendsCount" : "Contacts",
+    "about" : "Sur moi",
+    "contacts" : "Contacts",
+    "groups" : "Communautés",
+    "gallery" : "Galerie",
+    "join" : "Rejoint: ",
+    "aboutMe" : {
+      "title" : "Informations sur le profil",
+      "overview" : "Revoir",
+      "born" : "Date de naissance: ",
+      "status" : "Statut: ",
+      "work" : "Emploi: ",
+      "live" : "Je vis: ",
+      "join" : "Rejoint: "
+    },
+    "connect" : {
+      "title" : "Connexions",
+      "delete" : "Supprimer",
+      "confirm" : "Подтвердить",
+      "cancel" : "Annuler",
+      "write" : "Écrire",
+      "beFriends" : "Être amis"
+    }
+  },
+  "signIn" : {
+    "title" : "Entrée",
+    "description" : "Vous n'avez pas encore de compte? ",
+    "toSignUp" : "Aller à l'inscription",
+    "passLabel" : "Mot de passe:",
+    "logInBtn" : "Entrer",
+    "toasts" : {
+      "success" : "Connexion réussie !",
+      "error" : "Erreur! La connexion a échoué"
+    }
+  },
+  "signUp" : {
+    "title" : "Inscription",
+    "description" : "Vous avez déjà un compte?",
+    "toSignIn" : "Entrer",
+    "name" : "Nom:",
+    "lastName" : "Nom de famille:",
+    "mail" : "E-mail:",
+    "pass" : "Mot de passe:",
+    "confirmPassLabel" : "Confirmation mot de passe:",
+    "registrationBtn" : "Inscription",
+    "toasts" : {
+      "emptyFields" : "Tous les champs ne sont pas remplis!",
+      "serverError" : "Erreur du serveur !!!",
+      "EmailError" : "Cet e-mail l'adresse est déjà utilisée!",
+      "ok" : "Inscription réussie!",
+      "mismatchPasswords" : "Non concordance des mots de passe!"
+    },
+    "placeholders" : {
+      "name" : "Entrez votre nom...",
+      "lastName" : "Entrer le nom de famille...",
+      "mail" : "Entrez l'e-mail adresse..."
+    } 
+  },
+  "aboutMe" : {
+    "title" : "Informations sur le profil: ",
+    "subtitle" : "Un peu de moi",
+    "Overview" : "Revoir: ",
+    "birthday" : "Anniversaire: ",
+    "work" : "Fonctionnement: ",
+    "connected" : "Rejoint: ",
+    "status" : "Statut: ",
+    "familyStatus" : "Situation familiale: ",
+    "live" : "Je vis: "
+  },
+  "settings" :{
+    "title" : "Paramètres du compte",
+    "subtitle" : "Il s'agit des paramètres de votre compte, ici vous pouvez modifier les informations de votre profil.",
+    "name" : "Nom:",
+    "lastName" : "Nom de famille:",
+    "born" : "Date de naissance:",
+    "email" : "E-mail:",
+    "phone" : "Téléphone:",
+    "gender" : "Sol",
+    "familyStatus" : "Situation familiale:",
+    "work" : "Emploi: ",
+    "location" : "Lieu de résidence:",
+    "aboutMe" : "Ton texte:",
+    "placeholders" : {
+      "notIndicated" : "Non indiqué",
+      "comment" : "laisse ton commentaire..."
+    },
+    "toasts" : {
+      "ok" : "Données mises à jour avec succès!",
+      "fail" : "Données non mises à jour!"
+    }
+  },
+  "changePassword" : {
+    "title" : "Changer le mot de passe",
+    "subtitle" : "Pour changer le mot de passe, vous devez : saisir l'ancien mot de passe, saisir le nouveau mot de passe et le confirmer, le nouveau mot de passe et le mot de passe de confirmation doivent correspondre.",
+    "password" : "Mot de passe actuel:",
+    "newPass" : "Nouveau mot de passe:",
+    "confirmPass" : "Confirmation mot de passe:",
+    "placeholders" : {
+      "pass" : "Votre mot de passe...",
+      "newPass" : "Nouveau mot de passe...",
+      "confirmPass" : "Confirmez le mot de passe..."
+    },
+    "toasts" : {
+      "mismatch" : "Non concordance des mots de passe!",
+      "error" : "Le mot de passe n'a pas été modifié!",
+      "ok" : "Le mot de passe a été changé avec succès!"
+    }
+  },
+  "settingsSide" : {
+    "account" : "Compte",
+    "notification" : "Alertes",
+    "privacy" : "Confidentialité et sécurité",
+    "messaging" : "Échange de messages",
+    "closeAcc" : "Fermer le compte",
+    "watch" : "Voir le profil"
+  },
+  "settingsImages" : {
+    "title" : "Mise à jour des photos de profil",
+    "subtitle" : "Cette zone de dépôt est conçue pour télécharger des images de profil, un avatar et un arrière-plan.",
+    "text1" : "Cliquez pour télécharger",
+    "text2" : "ou",
+    "text3" : "glisser-déposer un fichier",
+    "text4" : "SVG, PNG, JPG ou JPEG",
+    "uploadAvatar" : "Définir un avatar",
+    "uploadBg" : "Définir l'arrière-plan",
+    "toasts" : {
+      "ok" : "",
+      "error" : "",
+      "info" : ""
+    }
+  },
+  "main" : {
+    "header" : {
+      "posts" : "Des postes",
+      "contacts" : "Contacts"
+    },
+    "feed" : "Ruban",
+    "contacts" : "Connexions",
+    "news" : "Dernières nouvelles",
+    "events" : "Événements",
+    "groups" : "Groupes",
+    "gallery" : "Galerie",
+    "notifications" : "Alertes",
+    "settings" : "Paramètres",
+    "profile" : "Voir le profil",
+    "menu" : "Menu"
+  },
+  "stories" : {
+    "add" : "Ajouter",
+    "story" : "histoire"
+  },
+  "gallery" : {
+    "title" : "Galerie",
+    "photo" : "Photo",
+    "addPhoto" : "Ajouter une photo",
+    "album" : "Albums",
+    "action" : {
+      "toAvatar" : "Défini comme Avatar",
+      "toBackground" : "Définir comme arrière-plan",
+      "delete": "Supprimer"
+    },
+    "createAlbum" : "Créer un album",
+    "newAlbum" : "Nouvel album",
+    "placeholder" : "Entrez le titre..."
+  },
+  "chat" : {
+    "activeChat" : "Discussions actives"
+  },
+  "setImages" : {
+    "avatar" : "Avatar",
+    "bg" : "Contexte du profil",
+    "toasts" : {
+      "ok" : "Image installée !",
+      "formatErr" : "Format de fichier invalide",
+      "serverErr" : "erreur du serveur !"
+    }
+  },
+  "userActivity" : {
+    "last" : "Dernière Activité ",
+    "ago" : "dos",
+    "days" : " jours ",
+    "day" : " jour ",
+    "hour" : " heure ",
+    "hours" : " heures ",
+    "minute" : " minute ",
+    "minutes" : " minutes "
+  }
+}

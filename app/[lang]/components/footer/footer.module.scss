@@ -1,5 +1,5 @@
 .container {
-	@apply absolute -bottom-20 left-0 md:h-20 lg:h-16 bg-light_border dark:bg-glass_gray backdrop-blur-[3px] w-full;
+	@apply absolute py-6 md:py-0 lg:py-0 -bottom-20 left-0 md:h-20 lg:h-16 bg-light_border dark:bg-glass_gray backdrop-blur-[3px] w-full;
 	.contentContainer {
 		@apply flex flex-col md:flex-row lg:flex-row items-center m-auto max-w-[1200px] justify-between gap-6 h-full;
 		.links {
