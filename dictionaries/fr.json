@@ -73,7 +73,8 @@
       "settings" : "Paramètres",
       "exit" : "Sortie",
       "theme" : "Sujet:",
-      "messages" : "Messages"
+      "messages" : "Messages",
+      "exitAccount" : "Vous vous êtes déconnecté avec succès de votre compte!"
     }
   },
   "footer" : {
@@ -238,7 +239,12 @@
     "born" : "Date de naissance:",
     "email" : "E-mail:",
     "phone" : "Téléphone:",
-    "gender" : "Sol",
+    "gender" : {
+      "title" : "Sol",
+      "male" : "Mâle",
+      "female" : "Femelle",
+      "none" : "Non spécifié"
+    },
     "familyStatus" : "Situation familiale:",
     "work" : "Emploi: ",
     "location" : "Lieu de résidence:",

@@ -43,28 +43,30 @@ export default function RootLayout({
             
       </head>
       <body className={inter.className}>
-        <Providers>
-            <MyProgressBar/>
-            <div className="flex flex-col justify-between relative min-h-screen">
-              <HeaderPage lang={params.lang}/>    
-              <div className="container">
-                <main>{children}</main>                   
+     
+          <Providers>
+              <MyProgressBar/>
+              <div className="flex flex-col justify-between relative min-h-screen">
+                <HeaderPage lang={params.lang}/>    
+                <div className="container">
+                  <main>{children}</main>                   
+                </div>
+                <Footer lang={params.lang}/>
               </div>
-              <Footer lang={params.lang}/>
-            </div>
-            <ToastContainer 
-              position="bottom-center"
-              autoClose={3000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="colored"
-            />
-        </Providers>
+              <ToastContainer 
+                position="bottom-center"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+                />
+          </Providers>
+
       </body>
     </html>
 

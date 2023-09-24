@@ -16,7 +16,7 @@
 			.inputContainer {
 				@apply md:w-1/2 lg:w-1/2 w-full pl-6 pr-6;
 				.inputLabel {
-					@apply block mb-2 font-light text-light_text dark:text-dark_text_gray;
+					@apply block mb-2 font-light text-light_text truncate dark:text-dark_text_gray;
 				}
 				.label {
 					@apply bg-gray-50 outline-none border border-gray-300 text-gray-900 text-sm rounded-lg

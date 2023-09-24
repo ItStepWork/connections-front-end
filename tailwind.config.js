@@ -7,6 +7,7 @@ module.exports = {
 		'./pages/**/*.{ts,tsx}',
 		'./public/**/*.html',
 	],
+	//darkMode : "class",
 	theme: {
 		extend: {
 			backgroundImage: {

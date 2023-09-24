@@ -10,15 +10,15 @@ export const AccountSettings = ({local} : {local : any}) => {
 
   const options = [
     {
-      label: "Не указано",
+      label: local.settings.gender.none,
       value: 0,
     },
     {
-      label: "Мужской",
+      label: local.settings.gender.male,
       value: 1,
     },
     {
-      label: "Женский",
+      label: local.settings.gender.female,
       value: 2,
     },
   ];
@@ -35,12 +35,11 @@ export const AccountSettings = ({local} : {local : any}) => {
   } = useForm();
 
   const onSubmit = async (data: any) => {
-    //if (data.file[0].name.endsWith('.jpg') || data.file[0].name.endsWith('.jpeg') || data.file[0].name.endsWith('.png')) {
-   // }
     let result = await UserService.setUserProfile(data);
     (result === null) ? notifyError() : notifySuccess();
     
   }
+  
   return (
     <>
       <section className={styles.container} key={session?.user.id}>
@@ -105,7 +104,7 @@ export const AccountSettings = ({local} : {local : any}) => {
 
           <div className={styles.namesBlock}>
             <div className={styles.inputContainer}>
-              <label htmlFor="gender" className={styles.inputLabel}>{local.settings.gender}</label>
+              <label htmlFor="gender" className={styles.inputLabel}>{local.settings.gender.title}</label>
                 <select
                 className={styles.label}
                 id="gender"
@@ -114,15 +113,9 @@ export const AccountSettings = ({local} : {local : any}) => {
                 key={session?.user?.id}
                 >
                   <option value=''>{gender}</option>
-                  <option value='NotSelected'>Не указано</option>
-                  <option value='Male'>Мужской</option>
-                  <option value='Female'>Женский</option>
-                  {/*
-                  
-              {options.map((option, index) => (
-                <option key={index} value={option.value} typeof="number">{option.label}</option>
-                ))}
-              */}
+                  <option value='NotSelected'>{local.settings.gender.none}</option>
+                  <option value='Male'>{local.settings.gender.male}</option>
+                  <option value='Female'>{local.settings.gender.female}</option>
                 </select>
                 
 
@@ -155,28 +148,6 @@ export const AccountSettings = ({local} : {local : any}) => {
                 {...register('location')} />
             </div>
           </div>
-          { /*
-
-          <div className={styles.namesBlock}>
-            <div className={styles.inputContainer}>
-              <label htmlFor="avatar" className={styles.inputLabel}>Аватар</label>
-              <input
-                type="file"
-                id="avatar"
-                className={styles.label}
-                accept="image/*" />
-            </div>
-            <div className={styles.inputContainer}>
-              <label htmlFor="profileBG" className={styles.inputLabel}>Фон профиля</label>
-              <input
-                type="file"
-                id="profileBG"
-                className={styles.label}
-                accept="image/*" />
-            </div>
-          </div>
-              */ }
-
           <div className={styles.namesBlock}>
             <div className={styles.textAreaContainer}>
               <label htmlFor="message" className={styles.textLabel}>{local.settings.aboutMe}</label>

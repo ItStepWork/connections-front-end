@@ -73,7 +73,8 @@
       "settings" : "Settings",
       "exit" : "Exit",
       "theme" : "theme:" ,
-      "messages" : "Messaging"
+      "messages" : "Messaging",
+      "exitAccount" : "You have successfully logged out of your account!"
     }
   },
   "footer" : {
@@ -238,7 +239,12 @@
     "born" : "Born:",
     "email" : "Email:",
     "phone" : "Phone:",
-    "gender" : "Gender:",
+    "gender" : {
+      "title" : "Gender",
+      "male" : "Male",
+      "female" : "Female",
+      "none" : "None"
+    },
     "familyStatus" : "Family status:",
     "work" : "Work:",
     "location" : "Live:",

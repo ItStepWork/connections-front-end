@@ -65,7 +65,7 @@
     "searchGroup" : "Wprowadź nazwę grupy"
   },
   "header" : {
-    "main" : "dom",
+    "main" : "Dom",
     "profile" : "Profil",
     "admin" : "Administrator",
     "dropMenu" : {
@@ -73,7 +73,8 @@
       "settings" : "Ustawienia",
       "exit" : "Wyjście",
       "theme" : "Temat:",
-      "messages" : "Wiadomości"
+      "messages" : "Wiadomości",
+      "exitAccount" : "Pomyślnie wylogowałeś się ze swojego konta!"
     }
   },
   "footer" : {
@@ -238,7 +239,12 @@
     "born" : "Data urodzenia:",
     "email" : "E-mail:",
     "phone" : "Telefon:",
-    "gender" : "Podłoga",
+    "gender" : {
+      "title" : "Podłoga",
+      "male" : "Mężczyzna",
+      "female" : "Kobieta",
+      "none" : "Nieokreślony"
+    },
     "familyStatus" : "Status rodziny:",
     "work" : "Stanowisko: ",
     "location" : "Miejsce zamieszkania:",

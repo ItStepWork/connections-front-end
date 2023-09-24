@@ -1,6 +1,7 @@
 'use client';
 
 import { signOut } from "next-auth/react";
+import { useTheme } from "next-themes";
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC, useEffect, useRef, useState } from "react";
@@ -25,8 +26,9 @@ interface IDrop {
 export const DropMenuProfile: FC<IDrop> = ({navbarOpen, local}) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
-  const notifyLogout = () => toast.info("Вы успешно вышли из аккаунта!",{});
+  const notifyLogout = () => toast.info(local.header.dropMenu.exitAccount,{});
   const toggleMenu = () => { setIsOpen(!isOpen);};
+  const {theme, setTheme} = useTheme()
 
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
@@ -89,8 +91,8 @@ export const DropMenuProfile: FC<IDrop> = ({navbarOpen, local}) => {
               </div>
               <div className={styles.modeContainer}>
                 <p>Тема:</p>
-                <button className={styles.modeButton}><MdOutlineLightMode /></button>
-                <button className={styles.modeButton}><MdOutlineDarkMode /></button>
+                <button className={styles.modeButton} onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}><MdOutlineLightMode /></button>
+                <button className={styles.modeButton} onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}><MdOutlineDarkMode /></button>
                 <button className={styles.modeButton}><BsCircleHalf /></button>
               </div>
             </div>

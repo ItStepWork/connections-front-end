@@ -73,7 +73,8 @@
       "settings" : "Einstellungen",
       "exit" : "Ausfahrt",
       "theme" : "Thema:" ,
-      "messages" : "Nachrichten"
+      "messages" : "Nachrichten",
+      "exitAccount" : "Sie haben sich erfolgreich von Ihrem Konto abgemeldet!"
     }
   },
   "footer" : {
@@ -238,7 +239,12 @@
     "born" : "Geboren:",
     "email" : "Email:",
     "phone" : "Telefon:",
-    "gender" : "Geschlecht:",
+    "gender" : {
+      "title" : "Boden",
+      "male" : "Männlich",
+      "female" : "Weiblich",
+      "none" : "Nicht angezeigt"
+    },
     "familyStatus" : "Familienstand:",
     "work" : "Arbeiten:",
     "location" : "Live:",
