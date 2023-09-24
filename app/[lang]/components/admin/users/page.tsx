@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import styles from './styles.module.scss';
 import SelectedUser from '../selectedUser/page';
+import UserStatus from '../userStatus/page';
+import UserRole from '../userRole/page';
 
 export default function Users(props: any) {
 
@@ -33,10 +35,10 @@ export default function Users(props: any) {
             {filter(props.users).map((user, index) => {
               return (
                 <tr key={user.id} className={styles.tr}>
-                  <th className={styles.th}>Name</th>
                   <th className={styles.th}>Email</th>
-                  <th className={styles.th}>Gender</th>
-                  <th className={styles.th}>BirthDay</th>
+                  <th className={styles.th}>Name</th>
+                  <th className={styles.th}>Status</th>
+                  <th className={styles.th}>Role</th>
                   <th className={styles.th}>Action</th>
                 </tr>
               );
@@ -48,12 +50,11 @@ export default function Users(props: any) {
                 <tr key={user.id} className={styles.tr}>
                   <td className={styles.td}>{user.email}</td>
                   <td className={styles.td}>{user.firstName + " " + user.lastName}</td>
-                  <td className={styles.td}>{user.gender}</td>
-                  <td className={styles.td}>{user.birthDay !== "0001-01-01T00:00:00" ? new Date(user.birthDay).toLocaleDateString() : "null"}</td>
+                  <td className={styles.td}><UserStatus user={user} getUsers={props.getUsers}/></td>
+                  <td className={styles.td}><UserRole user={user} getUsers={props.getUsers}/></td>
                   <td className={styles.td}>
                     <div className='flex gap-5'>
-                      {/* <button className={styles.button_red_BG}>Remove</button> */}
-                      <button className={styles.button_blue_BG} onClick={()=>{setSelectedIndex(index); setIsSelected(true);}}>Info</button>
+                      <button className={styles.button_green_BG} onClick={()=>{setSelectedIndex(index); setIsSelected(true);}}>Full info</button>
                     </div>
                   </td>
                 </tr>
@@ -62,7 +63,7 @@ export default function Users(props: any) {
           </tbody>
         </table>
       </div>
-      <SelectedUser isSelected={isSelected} setIsSelected={setIsSelected} users={filter(props.users)} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} />
+      <SelectedUser isSelected={isSelected} setIsSelected={setIsSelected} users={filter(props.users)} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex}  getUsers={props.getUsers}/>
     </div>
   )
 }

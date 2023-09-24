@@ -16,7 +16,7 @@ export default function SelectedUser(props: any) {
             {props.users[props.selectedIndex] ? (
               <div className='h-4/5 block overflow-auto'>
                 <div className='flex justify-center items-center bg-white dark:bg-dark_background'>
-                  <UserInfo user={props.users[props.selectedIndex]}/>
+                  <UserInfo user={props.users[props.selectedIndex]} getUsers={props.getUsers}/>
                 </div>
               </div>
             ) : (<></>)}

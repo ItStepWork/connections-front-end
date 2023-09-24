@@ -1,4 +1,4 @@
-import { Chart } from '../enums/all.enum';
+import { Chart, Role, Status } from '../enums/all.enum';
 import { ApiService } from './api.service';
 
 export class AdminService {
@@ -17,6 +17,14 @@ export class AdminService {
   
   static async getUsersActivity(chart: Chart) {
     return await ApiService.get("Admin/GetUsersActivity?chart=" + chart, []);
+  }
+
+  static async updateUserStatus(userId: string, status: Status) {
+    return await ApiService.post("Admin/UpdateUserStatus", { userId: userId, status: status }, null);
+  }
+
+  static async updateUserRole(userId: string, role: Role) {
+    return await ApiService.post("Admin/UpdateUserRole", { userId: userId, role: role }, null);
   }
 
 } 
