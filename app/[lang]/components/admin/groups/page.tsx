@@ -75,6 +75,7 @@ export default function Groups(props: any) {
                 <tr key={group.id} className={styles.tr}>
                   <th className={styles.th}>Name</th>
                   <th className={styles.th}>Email</th>
+                  <th className={styles.th}>Users</th>
                   <th className={styles.th}>Status</th>
                   <th className={styles.th}>Action</th>
                 </tr>
@@ -85,8 +86,9 @@ export default function Groups(props: any) {
             {filter().map((group, index) => {
               return (
                 <tr key={group.id} className={styles.tr}>
-                  <td className={styles.td + " word-break: break-all"}>{group.email}</td>
                   <td className={styles.td + " word-break: break-all"}>{group.name}</td>
+                  <td className={styles.td + " word-break: break-all"}>{group.email}</td>
+                  <td className={styles.td}>{Object.entries(group.users).filter(u=>u[1]).length}</td>
                   <td className={styles.td}><GroupStatus group={group} getGroups={getGroups} /></td>
                   <td className={styles.td}>
                     <div className='flex gap-3'>

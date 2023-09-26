@@ -17,6 +17,8 @@ export default function GroupInfo(props: any) {
         <thead>
           <tr className={styles.tr}>
             <th className={styles.th}>Id</th>
+            <th className={styles.th}>Users</th>
+            <th className={styles.th}>Audience</th>
             <th className={styles.th}>Status</th>
             <th className={styles.th}>BlockTime</th>
             <th className={styles.th}>Name</th>
@@ -28,6 +30,8 @@ export default function GroupInfo(props: any) {
         <tbody className="flex">
           <tr className={styles.tr}>
             <td className={styles.td} onClick={() => { navigator.clipboard.writeText(props.group.id) }}>{props.group.id}</td>
+            <td className={styles.td}>{Object.entries(props.group.users).filter(u=>u[1]).length}</td>
+            <td className={styles.td}>{props.group.audience}</td>
             <td className={styles.td}>
               <GroupStatus group={props.group} getGroups={props.getGroups} />
             </td>
