@@ -80,9 +80,9 @@
   "footer" : {
     "about" : "Über uns",
     "help" : "Helfen",
-    "privacy" : "Datenschutz und Bedingungen",
+    "privacy" : "Datenschutz",
     "protect" : "Schützen",
-    "partnership" : "Partnerschaft"
+    "terms" : "Bedingungen"
     
   },
   "groups" : {

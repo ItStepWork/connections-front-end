@@ -46,7 +46,7 @@ export default function RootLayout({
      
           <Providers>
               <MyProgressBar/>
-              <div className="flex flex-col justify-between relative min-h-screen">
+              <div className="flex flex-col justify-between relative min-h-screen overflow-auto">
                 <HeaderPage lang={params.lang}/>    
                 <div className="container">
                   <main>{children}</main>                   

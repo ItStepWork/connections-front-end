@@ -1,3 +1,4 @@
+import { getServerSession } from "next-auth";
 import { Locale } from "../../../i18n.config";
 import { getDictionary } from "../../../locale-dictionary";
 import { AccountSettings } from "../components/profile-settings/account-settings/account-settings";
@@ -5,11 +6,12 @@ import { ChangePassword } from "../components/profile-settings/change-password/c
 import ChangeImages from "../components/profile-settings/change-profile-images/main";
 import { LeftSettingsMenu } from "../components/profile-settings/sidebar-settings/sidebar-settings";
 import styles from './styles.module.scss';
+import { authConfig } from "../../../configs/auth";
 
 export default async function SettingsPage({ params: { lang }}: { params: { lang: Locale }}, props : any) {
 
   const locDictionary = await getDictionary(lang)
-
+  const session = await getServerSession(authConfig);
   return (
     <>
       <main>
@@ -17,7 +19,7 @@ export default async function SettingsPage({ params: { lang }}: { params: { lang
           <div className={styles.contentContainer}>
             <div className={styles.wrapper}>
               <div className={styles.leftMenu}>
-                <LeftSettingsMenu local={locDictionary} />
+                <LeftSettingsMenu local={locDictionary} session={session}/>
               </div>
               <div className={styles.accSettings}>
                 <AccountSettings local={locDictionary} />
