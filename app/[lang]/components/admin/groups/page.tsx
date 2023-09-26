@@ -51,7 +51,7 @@ export default function Groups(props: any) {
         Blocking settings:
         <select className={styles.select} value={number} onChange={(e: any) => { setNumber(e.target.value); }}>
           {array.map(number => (
-            <option value={number}>{number}</option>
+            <option key={number} value={number}>{number}</option>
           ))}
         </select>
         <select className={styles.select} value={time} onChange={(e: any) => { setTime(e.target.value); }}>
