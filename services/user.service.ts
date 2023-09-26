@@ -26,8 +26,8 @@ export class UserService {
     return await ApiService.get("User/GetUsers", []);
   }
 
-  static async setUserPassword(formData: FormData) {
-    return await ApiService.post("User/UpdateUserPassword", null, formData);
+  static async setUserPassword(object: object) {
+    return await ApiService.post("User/UpdateUserPassword", object, null);
   }
 
 }
