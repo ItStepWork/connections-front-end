@@ -17,6 +17,7 @@ export enum ComponentName {
 
 export enum AdminComponentName {
     Users,
+    Groups,
     Genders,
     Zodiacs,
     PagesActivity,

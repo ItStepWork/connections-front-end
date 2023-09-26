@@ -7,6 +7,10 @@ export class AdminService {
     return await ApiService.get("Admin/GetUsers", []);
   }
 
+  static async getGroups() {
+    return await ApiService.get("Admin/GetGroups", []);
+  }
+
   static async getAllActivity() {
     return await ApiService.get("Admin/GetAllActivity", []);
   }
@@ -23,12 +27,19 @@ export class AdminService {
     return await ApiService.post("Admin/UpdateUserStatus", { userId: userId, status: status }, null);
   }
 
+  static async updateGroupStatus(groupId: string, status: Status) {
+    return await ApiService.post("Admin/UpdateGroupStatus", { groupId: groupId, status: status }, null);
+  }
+
   static async updateUserRole(userId: string, role: Role) {
     return await ApiService.post("Admin/UpdateUserRole", { userId: userId, role: role }, null);
   }
 
   static async updateUserBlockingTime(userId: string, blockingTime: string) {
     return await ApiService.post("Admin/UpdateUserBlockingTime", { userId: userId, blockingTime: blockingTime }, null);
+  }
+  static async updateGroupBlockingTime(groupId: string, blockingTime: string) {
+    return await ApiService.post("Admin/UpdateGroupBlockingTime", { groupId: groupId, blockingTime: blockingTime }, null);
   }
 
 } 

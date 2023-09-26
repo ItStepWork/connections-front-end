@@ -24,6 +24,7 @@ export default function Navigation(props: any) {
           <div className="mt-2 p-4 overflow-y-auto">
             <ul className="space-y-2 font-medium">
               <LiMenu name="Users" icon={FaUsers} component={AdminComponentName.Users} setComponent={props.setComponent}/>
+              <LiMenu name="Groups" icon={FaUsers} component={AdminComponentName.Groups} setComponent={props.setComponent}/>
               <LiMenu name="Map" icon={BiWorld} component={AdminComponentName.Map} setComponent={props.setComponent}/>
               <DropDownMenu  setComponent={props.setComponent}/>
             </ul>

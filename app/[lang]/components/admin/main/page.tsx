@@ -12,6 +12,7 @@ import PagesActivity from "../pagesActivity/page";
 import UsersActivity from "../usersActivity/page";
 import Map from "../map/page";
 import AllCharts from "../allCharts/page";
+import Groups from '../groups/page';
 
 export default function Admin({ local, session }: { local: any, session: any }, props: any) {
 
@@ -29,6 +30,7 @@ export default function Admin({ local, session }: { local: any, session: any }, 
 
   const ChangeComponent = () => {
     if (component === AdminComponentName.Users) return (<Users users={users} getUsers={getUsers}/>)
+    else if (component === AdminComponentName.Groups) return (<Groups/>)
     else if (component === AdminComponentName.Genders) return (<Genders users={users}/>)
     else if (component === AdminComponentName.Zodiacs) return (<Zodiacs users={users}/>)
     else if (component === AdminComponentName.PagesActivity) return (<PagesActivity />)
