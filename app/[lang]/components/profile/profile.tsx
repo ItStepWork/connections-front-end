@@ -33,21 +33,19 @@ export default function Profile(props: any) {
   }
   return (
     <>
-      <main>
-        <div className={styles.container}>
-          <div className={styles.leftContainer}>
-            {session ? <UserCard setComponent={setComponent} component={component} session={session} userId={props.id[0]} local={props.local} /> : <></>}
-            {session ? changeComponent() : <></>}
-          </div>
-          {/* <div className={styles.rightContainer}>
+      <div className={styles.container}>
+        <div className={styles.leftContainer}>
+          {session ? <UserCard setComponent={setComponent} component={component} session={session} userId={props.id[0]} local={props.local} /> : <></>}
+          {session ? changeComponent() : <></>}
+        </div>
+        {/* <div className={styles.rightContainer}>
 
             <AboutCard local={props.local}/>
             <PhotosCard local={props.local}/>
             <FriendsCard local={props.local}/>
 
           </div> */}
-        </div>
-      </main>
+      </div>
     </>
   )
 }

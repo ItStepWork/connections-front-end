@@ -7,6 +7,6 @@ import { authConfig } from "../../../configs/auth";
 export default async function AdminPage({ params: { lang }}: { params: { lang: Locale }}) {
   const locDictionary = await getDictionary(lang)
   const session = await getServerSession(authConfig);
-  if (locDictionary !== null) return (<main><Admin local={locDictionary} session={session}/></main>)
+  if (locDictionary !== null) return (<Admin local={locDictionary} session={session}/>)
   else return (<></>)
 };
