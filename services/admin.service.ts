@@ -27,4 +27,8 @@ export class AdminService {
     return await ApiService.post("Admin/UpdateUserRole", { userId: userId, role: role }, null);
   }
 
+  static async updateUserBlockingTime(userId: string, blockingTime: string) {
+    return await ApiService.post("Admin/UpdateUserBlockingTime", { userId: userId, blockingTime: blockingTime }, null);
+  }
+
 } 

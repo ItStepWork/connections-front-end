@@ -7,7 +7,7 @@
     @apply h-9 p-2 text-left border border-light_border dark:border-dark_border;
   }
   .td {
-    @apply h-9 p-2 max-w-[150px] truncate cursor-pointer font-light whitespace-nowrap border-light_border dark:border-dark_border border;
+    @apply h-9 p-2 max-w-[160px] truncate cursor-pointer font-light whitespace-nowrap border-light_border dark:border-dark_border border;
   }
   .tr {
     @apply text-xs flex flex-col flex-nowrap rounded-none mb-0 border border-light_border dark:border-dark_border;

@@ -20,6 +20,7 @@ export default function UserInfo(props: any) {
             <th className={styles.th}>Id</th>
             <th className={styles.th}>Role</th>
             <th className={styles.th}>Status</th>
+            <th className={styles.th}>BlockTime</th>
             <th className={styles.th}>FirstName</th>
             <th className={styles.th}>LastName</th>
             <th className={styles.th}>Email</th>
@@ -35,10 +36,16 @@ export default function UserInfo(props: any) {
           <tr className={styles.tr}>
             <td className={styles.td} onClick={() => { navigator.clipboard.writeText(props.user.id) }}>{props.user.id}</td>
             <td className={styles.td}>
-              <UserRole user={props.user} getUsers={props.getUsers}/>
+              <UserRole user={props.user} getUsers={props.getUsers} />
             </td>
             <td className={styles.td}>
-              <UserStatus user={props.user} getUsers={props.getUsers}/>
+              <UserStatus user={props.user} getUsers={props.getUsers} />
+            </td>
+            <td className={styles.td}>
+              {new Date(props.user.blockingTime) > new Date() ? 
+              new Date(props.user.blockingTime).toLocaleString() 
+              : 
+              "null"}
             </td>
             <td className={styles.td} onClick={() => { copied(props.user.firstName); }}>{props.user.firstName}</td>
             <td className={styles.td} onClick={() => { copied(props.user.lastName); }}>{props.user.lastName}</td>

@@ -4,7 +4,7 @@ import { CheckService } from './check.service';
 
 export class ApiService {
 
-    static async get(path: string, error: [] | null | number) {
+    static async get(path: string, data: [] | null | number) {
         const session = await getSession();
         return await axios.get(process.env.NEXT_PUBLIC_API + path, {
             headers: {
@@ -15,7 +15,7 @@ export class ApiService {
             .catch(async (error) => {
                 console.error(error);
                 await CheckService.signOut(session, error);
-                return error;
+                return data;
             });
     }
     
