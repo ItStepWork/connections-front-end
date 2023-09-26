@@ -78,8 +78,8 @@ export default function Users(props: any) {
             {filter(props.users).map((user, index) => {
               return (
                 <tr key={user.id} className={styles.tr}>
-                  <td className={styles.td}>{user.email}</td>
-                  <td className={styles.td}>{user.firstName + " " + user.lastName}</td>
+                  <td className={styles.td + " word-break: break-all"}>{user.email}</td>
+                  <td className={styles.td + " word-break: break-all"}>{user.firstName + " " + user.lastName}</td>
                   <td className={styles.td}><UserStatus user={user} getUsers={props.getUsers} /></td>
                   <td className={styles.td}><UserRole user={user} getUsers={props.getUsers} /></td>
                   <td className={styles.td}>

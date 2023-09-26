@@ -10,8 +10,8 @@ export class UserService {
     return await ApiService.post("User/SaveAvatar", null, formData);
   }
 
-  static async setUserProfile(formData: FormData) {
-    return await ApiService.post("User/UpdateUser", null, formData);
+  static async setUserProfile(object: object) {
+    return await ApiService.post("User/UpdateUser", object, null);
   }
 
   static async getUser(id: string) {
