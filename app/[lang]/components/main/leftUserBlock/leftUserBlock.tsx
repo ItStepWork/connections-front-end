@@ -122,7 +122,11 @@ export const LeftUserBlock = (props:any) => {
           </div>
         </div>
         <div className={styles.viewProfile}>
-          <Link className={styles.button} href='/profile'>{props.local.main.profile}</Link>
+          {session ?
+            (<Link className={styles.button} href={`/profile/${session.user.id}`}>{props.local.main.profile}</Link>)
+            :
+            (<></>)
+          }
         </div>
       </div>
     </>

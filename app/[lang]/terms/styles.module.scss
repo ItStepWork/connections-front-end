@@ -1,0 +1,18 @@
+.container {
+	@apply overflow-auto mt-20 mb-40 lg:my-20 md:my-20 flex flex-col px-6 pb-6 bg-light_border dark:bg-dark_background rounded-xl
+   border border-light_border w-full max-h-screen dark:border-dark_border;
+	p {
+		@apply text-black dark:text-dark_text_gray pt-6;
+	}
+	.firstLine {
+		@apply pt-6 mb-3 text-black dark:text-dark_text_gray first-line:uppercase first-line:tracking-widest 
+    first-letter:text-7xl first-letter:font-bold first-letter:text-gray-900 dark:first-letter:text-gray-100 
+    first-letter:mr-3 first-letter:float-left;
+	}
+	.list {
+		@apply space-y-1 w-full list-disc list-inside text-black dark:text-dark_text_gray;
+	}
+	li {
+		@apply py-3;
+	}
+}
