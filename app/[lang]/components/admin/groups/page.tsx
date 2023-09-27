@@ -5,7 +5,8 @@ import { FiSearch } from 'react-icons/fi';
 import styles from './styles.module.scss';
 import { AdminService } from '../../../../../services/admin.service';
 import GroupStatus from '../groupStatus/page';
-import SelectedGroup from '../selectedGroup/page';
+import SelectedItem from '../selectedItem/page';
+import GroupInfo from '../groupInfo/page';
 
 const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
 
@@ -105,7 +106,9 @@ export default function Groups(props: any) {
           </tbody>
         </table>
       </div>
-      <SelectedGroup isSelected={isSelected} setIsSelected={setIsSelected} groups={filter()} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} getGroups={getGroups} />
+      <SelectedItem array={filter()} isSelected={isSelected} setIsSelected={setIsSelected} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex}>
+        <GroupInfo group={filter()[selectedIndex]} getGroups={getGroups} />
+      </SelectedItem>
     </div>
   )
 }

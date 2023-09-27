@@ -1,8 +1,7 @@
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { MdClose } from 'react-icons/md';
-import UserInfo from '../userInfo/page';
 
-export default function SelectedUser(props: any) {
+export default function SelectedItem(props: any) {
 
   return (
     <>
@@ -12,13 +11,13 @@ export default function SelectedUser(props: any) {
             <button onClick={() => { props.setIsSelected(false) }}><MdClose size={40} /></button>
           </div>
           <button className='flex' onClick={() => { if ((props.selectedIndex - 1) >= 0) props.setSelectedIndex(props.selectedIndex - 1) }}><FaChevronLeft className="h-10 w-10 md:h-14 md:w-14 hover:fill-button_blue_BG" /></button>
-          {props.users[props.selectedIndex] ? (
+          {props.array[props.selectedIndex] ? (
 
             <div className='block max-h-screen overflow-auto bg-white dark:bg-dark_background'>
-              <UserInfo user={props.users[props.selectedIndex]} getUsers={props.getUsers} />
+              {props.children}
             </div>
           ) : (<></>)}
-          <button className='flex' onClick={() => { if (props.users.length > (props.selectedIndex + 1)) props.setSelectedIndex(props.selectedIndex + 1) }}><FaChevronRight className="h-10 w-10 md:h-14 md:w-14 hover:fill-button_blue_BG" /></button>
+          <button className='flex' onClick={() => { if (props.array.length > (props.selectedIndex + 1)) props.setSelectedIndex(props.selectedIndex + 1) }}><FaChevronRight className="h-10 w-10 md:h-14 md:w-14 hover:fill-button_blue_BG" /></button>
 
         </div>
       ) : (<></>)}

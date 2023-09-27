@@ -3,10 +3,11 @@
 import { useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import styles from './styles.module.scss';
-import SelectedUser from '../selectedUser/page';
 import UserStatus from '../userStatus/page';
 import UserRole from '../userRole/page';
 import { AdminService } from '../../../../../services/admin.service';
+import SelectedItem from '../selectedItem/page';
+import UserInfo from '../userInfo/page';
 
 const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
 
@@ -18,10 +19,10 @@ export default function Users(props: any) {
   const [number, setNumber] = useState<number>(1);
   const [time, setTime] = useState<string>("day");
 
-  const filter = (array: any[]) => {
-    if (array.length > 0) {
+  const filter = () => {
+    if (props.users.length > 0) {
       let text = search.toLowerCase();
-      return array.filter((u: any) => u.firstName?.toLowerCase().includes(text) || u.lastName?.toLowerCase().includes(text) || u.email?.toLowerCase().includes(text) || u.phone?.toLowerCase().includes(text) || (u.firstName?.toLowerCase() + " " + u.lastName?.toLowerCase()).includes(text) || (u.lastName?.toLowerCase() + " " + u.firstName?.toLowerCase()).includes(text));
+      return props.users.filter((u: any) => u.firstName?.toLowerCase().includes(text) || u.lastName?.toLowerCase().includes(text) || u.email?.toLowerCase().includes(text) || u.phone?.toLowerCase().includes(text) || (u.firstName?.toLowerCase() + " " + u.lastName?.toLowerCase()).includes(text) || (u.lastName?.toLowerCase() + " " + u.firstName?.toLowerCase()).includes(text));
     }
     else return [];
   }
@@ -61,7 +62,7 @@ export default function Users(props: any) {
       <div className='m-6'>
         <table className={styles.table}>
           <thead>
-            {filter(props.users).map((user, index) => {
+            {filter().map((user: any, index: number) => {
               return (
                 <tr key={user.id} className={styles.tr}>
                   <th className={styles.th}>Email</th>
@@ -74,7 +75,7 @@ export default function Users(props: any) {
             })}
           </thead>
           <tbody className="flex-1">
-            {filter(props.users).map((user, index) => {
+            {filter().map((user: any, index: number) => {
               return (
                 <tr key={user.id} className={styles.tr}>
                   <td className={styles.td + " word-break: break-all"}>{user.email}</td>
@@ -96,7 +97,9 @@ export default function Users(props: any) {
           </tbody>
         </table>
       </div>
-      <SelectedUser isSelected={isSelected} setIsSelected={setIsSelected} users={filter(props.users)} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} getUsers={props.getUsers} />
+      <SelectedItem array={filter()} isSelected={isSelected} setIsSelected={setIsSelected} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex}>
+        <UserInfo user={filter()[selectedIndex]} getUsers={props.getUsers} />
+      </SelectedItem>
     </div>
   )
 }
