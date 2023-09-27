@@ -1,7 +1,5 @@
 "use client"
-import { getSession } from 'next-auth/react';
-import { useEffect, useState } from 'react';
-import { PostService } from '../../../../services/post.service';
+
 import { Feed } from '../main/feed/feed';
 import { FollowsBlock } from '../main/follows/followsBlock';
 import { News } from '../main/news/news';
@@ -11,32 +9,7 @@ import { Stories } from '../main/stories/stories';
 import styles from './styles.module.scss';
 
 export default function Posts(props: any) {
-  const [session, setSession] = useState(null);
-  const [text, setText] = useState('');
-
-  useEffect(() => {
-    const [Session, getSession] = useState(null);
-    setSession(Session);
-  }, []);
-
-  const handleCreatePost = async () => {
-    try {
-      if (!session) {
-        return;
-      }
-
-      const postService = new PostService();
-
-      const response = await postService.createPost();
-
-      console.log('Post created successfully', response);
-
-      setText('');
-
-    } catch (error) {
-      console.error('Error creating post', error);
-    }
-  };
+  
   return (
     <>
       <div>
@@ -51,22 +24,7 @@ export default function Posts(props: any) {
           <FollowsBlock />
           <News />
         </div>
-        <div>
-      <h1>Create Post</h1>
-      {session ? (
-        <div>
-          <textarea
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            placeholder="Enter your post text"
-          />
-          {}
-          <button onClick={handleCreatePost}>Create Post</button>
-        </div>
-      ) : (
-        <p>Please sign in to create a post.</p>
-      )}
-    </div>
+        
     </>
   )
 }
