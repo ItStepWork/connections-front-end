@@ -1,0 +1,15 @@
+.container {
+	@apply flex flex-row m-1 text-start;
+	.verticalContainer{
+		@apply flex flex-col mx-1;
+	}
+	.content{
+		@apply w-fit p-2 bg-slate-200 dark:bg-zinc-700 rounded-lg;
+	}
+	.userImage{
+		@apply w-10 h-10 rounded-full border border-gray-500;
+	}
+	.time{
+		@apply text-xs m-1;
+	}
+}

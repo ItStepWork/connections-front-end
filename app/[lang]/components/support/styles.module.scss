@@ -1,0 +1,27 @@
+.container {
+	@apply relative flex mx-3 lg:m-0 min-h-screen;
+	.centerContainer {
+		@apply flex flex-col mt-28 lg:mt-20 mb-20 w-full  border rounded-lg border-zinc-200 dark:border-zinc-700 bg-white dark:bg-dark_background;
+	}
+	.leftContainer {
+		@apply flex flex-col w-full lg:w-1/4;
+	}
+	.rightContainer {
+		@apply min-h-[300px] flex flex-col flex-grow justify-between ml-1 w-full lg:w-3/4;
+	}
+}
+.horizontalHr {
+	@apply border-zinc-200 bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-700;
+}
+.verticalHr {
+	@apply w-px lg:h-full border-zinc-200 bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-700;
+}
+.chats {
+	@apply bg-button_green_opacity text-button_green_BG px-2 py-1 rounded-lg;
+}
+.buttonClose {
+	@apply bg-button_blue_BG p-3 rounded-full fill-white hover:bg-button_blue_opacity duration-300;
+}
+.buttonOpen {
+	@apply bg-button_blue_opacity p-3 rounded-full fill-white hover:bg-button_blue_opacity duration-300;
+}
