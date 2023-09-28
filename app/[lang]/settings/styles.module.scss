@@ -1,19 +1,19 @@
 .container {
-	@apply pt-20 flex justify-center mb-16;
+	@apply pt-20 flex justify-center;
 	.contentContainer {
 		@apply flex flex-col w-full;
 	}
 	.wrapper {
-		@apply flex flex-col md:flex-row;
+		@apply flex flex-col md:flex-row gap-6 justify-between;
 	}
 	.leftMenu {
-		@apply mr-6 w-full md:w-[25%];
+		@apply w-full md:w-[25%];
 	}
 	.accSettings {
 		@apply mb-6;
 	}
 	.changePass {
-		@apply mb-6 flex gap-6 flex-col lg:flex-row;
+		@apply flex gap-6 flex-col lg:flex-row;
 	}
 	.uploadImgContainer {
 	}
