@@ -24,6 +24,7 @@ export enum AdminComponentName {
     UsersActivity,
     Map,
     AllCharts,
+    Messages,
 }
 
 export enum NotificationType {

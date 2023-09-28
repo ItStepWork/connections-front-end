@@ -5,7 +5,9 @@ import { useState } from 'react';
 import { ImMenu } from 'react-icons/im';
 import { IoMdClose } from 'react-icons/io';
 import { FaUsers } from 'react-icons/fa';
+import { FaUserGroup } from 'react-icons/fa6';
 import { BiWorld } from 'react-icons/bi';
+import { HiOutlineMail } from 'react-icons/hi';
 import { AdminComponentName } from '../../../../../enums/all.enum';
 import LiMenu from '../liMenu/page';
 
@@ -23,8 +25,9 @@ export default function Navigation(props: any) {
           <IoMdClose className={styles.actionClose} size={24} onClick={() => { setIsOpen(false) }} />
           <div className="mt-2 p-4 overflow-y-auto">
             <ul className="space-y-2 font-medium">
-              <LiMenu name="Users" icon={FaUsers} component={AdminComponentName.Users} setComponent={props.setComponent}/>
+              <LiMenu name="Users" icon={FaUserGroup} component={AdminComponentName.Users} setComponent={props.setComponent}/>
               <LiMenu name="Groups" icon={FaUsers} component={AdminComponentName.Groups} setComponent={props.setComponent}/>
+              <LiMenu name="Messages" icon={HiOutlineMail} component={AdminComponentName.Messages} setComponent={props.setComponent}/>
               <LiMenu name="Map" icon={BiWorld} component={AdminComponentName.Map} setComponent={props.setComponent}/>
               <DropDownMenu  setComponent={props.setComponent}/>
             </ul>

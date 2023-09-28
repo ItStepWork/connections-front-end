@@ -13,6 +13,7 @@ import UsersActivity from "../usersActivity/page";
 import Map from "../map/page";
 import AllCharts from "../allCharts/page";
 import Groups from '../groups/page';
+import Messaging from '../messaging/messaging';
 
 export default function Admin({ local, session }: { local: any, session: any }, props: any) {
 
@@ -37,6 +38,7 @@ export default function Admin({ local, session }: { local: any, session: any }, 
     else if (component === AdminComponentName.UsersActivity) return (<UsersActivity />)
     else if (component === AdminComponentName.Map) return (<Map users={users}/>)
     else if (component === AdminComponentName.AllCharts) return (<AllCharts users={users}/>)
+    else if (component === AdminComponentName.Messages) return (<Messaging/>)
     else return (<></>)
   }
 

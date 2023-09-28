@@ -38,8 +38,21 @@ export class AdminService {
   static async updateUserBlockingTime(userId: string, blockingTime: string) {
     return await ApiService.post("Admin/UpdateUserBlockingTime", { userId: userId, blockingTime: blockingTime }, null);
   }
+
   static async updateGroupBlockingTime(groupId: string, blockingTime: string) {
     return await ApiService.post("Admin/UpdateGroupBlockingTime", { groupId: groupId, blockingTime: blockingTime }, null);
+  }
+
+  static async getSupportDialogs() {
+    return await ApiService.get("Admin/GetSupportDialogs", []);
+  }
+
+  static async getSupportMessages(id: string) {
+    return await ApiService.get("Admin/GetSupportMessages?id=" + id, []);
+  }
+
+  static async sendSupportMessage(formData: FormData) {
+    return await ApiService.post("Admin/SendSupportMessage", null, formData);
   }
 
 } 

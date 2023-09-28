@@ -3,7 +3,7 @@
 import { FaCheck, FaCheckDouble } from 'react-icons/fa';
 import styles from './styles.module.scss';
 
-export default function RigthMessage(props: any) {
+export default function RightMessage(props: any) {
 
   return (
     <>
