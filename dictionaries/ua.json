@@ -333,7 +333,9 @@
     "placeholder" : "Введіть назву..."
   },
   "chat" : {
-    "activeChat" : "Активні чати"
+    "activeChat" : "Активні чати",
+    "new" : "Нове повідомлення",
+    "enterName" : "Введіть Ім'я..."
   },
   "setImages" : {
     "avatar" : "Аватар",

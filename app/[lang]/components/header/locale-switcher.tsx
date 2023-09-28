@@ -1,4 +1,5 @@
 'use client'
+import { setCookie } from "cookies-next"
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
@@ -15,6 +16,7 @@ export default function LocaleSwitcher(props: any) {
     segments[1] = locale
     return segments.join('/')
   }
+  
 
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
@@ -36,7 +38,7 @@ export default function LocaleSwitcher(props: any) {
         </button>
         {isOpen &&
         <div className={isOpen ? styles.dropMenu : styles.dropMenuHidden}>
-          <div className={styles.column}>
+          <div className={styles.column}>    
             <Link href={redirectedPathName('ua')} locale={'ua'}>
               <img src="/UA.png" alt="ua" />
             </Link>     

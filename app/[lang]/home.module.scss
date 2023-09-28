@@ -1,7 +1,7 @@
 .main {
-	@apply flex flex-col justify-between w-full h-full pb-[3350px] lg:pb-[1600px] md:pb-[1800px] bg-glass_gray z-50;
+	@apply flex flex-col justify-between w-full h-full bg-glass_gray z-50;
 	.container {
-		@apply relative  h-screen flex flex-col items-center mt-20 text-center;
+		@apply relative h-full mb-6 flex flex-col items-center mt-20 text-center;
 		.textContainer {
 			@apply flex items-center justify-center w-3/4;
 			p {

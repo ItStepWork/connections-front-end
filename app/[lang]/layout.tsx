@@ -15,7 +15,6 @@ const inter = Montserrat({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Connections',
   description: 'Connections Social Network',
-  //manifest: "../public/manifest.json",
 }
 
 export async function generateStaticParams() {

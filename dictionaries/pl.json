@@ -333,7 +333,9 @@
     "placeholder" : "Wpisz tytuł..."
   },
   "chat" : {
-    "activeChat" : "Aktywne czaty"
+    "activeChat" : "Aktywne czaty",
+    "new" : "Nowa wiadomość",
+    "enterName" : "Wprowadź imię..."
   },
   "setImages" : {
     "avatar" : "Awatara",

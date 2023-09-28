@@ -15,7 +15,6 @@ import Window from '../window/page';
 import styles from './styles.module.scss';
 
 export default function Messaging({ local, session }: { local: any, session: any }, props: any) {
-
   const [user, setUser] = useState<any>(null);
   const [users, setUsers] = useState<any[]>([]);
   const [dialogs, setDialogs] = useState<any[]>([]);
@@ -86,8 +85,8 @@ export default function Messaging({ local, session }: { local: any, session: any
             <button {...isOpen ? { className: styles.buttonOpen } : { className: styles.buttonClose }} onClick={() => setIsOpen(true)}>
               <HiMiniPencilSquare />
             </button>
-            <Window name="Новое сообщение" isOpen={isOpen} setIsOpen={setIsOpen}>
-              <NewMessage users={users} />
+            <Window name={local.chat.new} isOpen={isOpen} setIsOpen={setIsOpen}>
+              <NewMessage users={users} local={local}/>
             </Window>
           </div>
           <hr className={styles.horizontalHr} />
@@ -98,7 +97,7 @@ export default function Messaging({ local, session }: { local: any, session: any
         <hr className={styles.verticalHr} />
         {user ? (
           <div className={styles.rightContainer}>
-            <HeaderBlock user={user} removeDialog={removeDialog} />
+            <HeaderBlock user={user} removeDialog={removeDialog} local={local}/>
             <MainBlock messages={messages} user={user} />
             <hr className={styles.horizontalHr} />
             <FooterBlock friendId={user.id} />

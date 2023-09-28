@@ -4,6 +4,7 @@ const Privacy = () => {
   return (
     <>
     <div className={styles.container}>
+      <h1>Our <mark className={styles.mark}>privacy</mark> policy</h1>
       <p className={styles.firstLine}>Our systems automatically process information we collect and store about you and others to evaluate and understand your interests and preferences and to personalize your experience with various Meta Products in accordance with our terms. We need this to:</p>
       <ul className={styles.list}>
         <li>personalize features and content (for example: your posts and photos);</li>

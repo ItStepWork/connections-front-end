@@ -34,7 +34,7 @@ export default function NewMessage(props: any) {
         <span className={styles.iconSearch}>
           <FaCircleUser size={20} />
         </span>
-        <input type="text" className={styles.inputSearch} placeholder="Введите имя" onChange={(e) => { changeSearch(e) }} value={search} />
+        <input type="text" className={styles.inputSearch} placeholder={props.local.chat.enterName} onChange={(e) => { changeSearch(e) }} value={search} />
       </div>
       <ul className={styles.users + " h-max overflow-y-auto mx-3"}>
         {filterUsers.map((user: any, index: any) =>

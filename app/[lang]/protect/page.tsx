@@ -4,6 +4,7 @@ const Protect = () => {
   return (
     <>
       <div className={styles.container}>
+        <h1> <mark className={styles.mark}>Protection</mark> </h1>
         <p className={styles.firstLine}>Ensure security, integrity and safety when using Meta Products. The development of Meta Products places great emphasis on research and ensuring the security, integrity and safety of the services and people who use them, within Meta Products and beyond. We use automated methods to process the data we hold about you and, in some cases, check it manually (by staff) in order to:</p>
         <ul className={styles.list}>
           <li>confirmation of accounts and actions;</li>

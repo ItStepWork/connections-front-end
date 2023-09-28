@@ -333,7 +333,9 @@
     "placeholder" : "Entrez le titre..."
   },
   "chat" : {
-    "activeChat" : "Discussions actives"
+    "activeChat" : "Discussions actives",
+    "new" : "Nouveau message",
+    "enterName" : "Entrez le nom..."
   },
   "setImages" : {
     "avatar" : "Avatar",

@@ -4,8 +4,9 @@ const Terms = () => {
   return (
     <>
       <div className={styles.container}>
+        <h1>Welcome to "CONNECTIONS"! These <mark className={styles.mark}>Terms</mark> of use govern your use of "CONNECTIONS"</h1>
         <p className={styles.firstLine}>
-          Welcome to "CONNECTIONS"! These Terms of Use (or “Terms”) govern your use of "CONNECTIONS", except where we expressly state that separate terms (and not these) apply, and provide information about the "CONNECTIONS" Service (the “Service”), outlined below. When you create an "CONNECTIONS" account or use "CONNECTIONS", you agree to these terms. The Meta Terms of Service do not apply to this Service.
+          except where we expressly state that separate terms (and not these) apply, and provide information about the "CONNECTIONS" Service (the “Service”), outlined below. When you create an "CONNECTIONS" account or use "CONNECTIONS", you agree to these terms. The Meta Terms of Service do not apply to this Service.
         </p>
         <h2>We agree to provide you with the "CONNECTIONS" Service. The Service includes all of the "CONNECTIONS" products, features, applications, services, technologies, and software that we provide to advance "CONNECTIONS"'s mission: To bring you closer to the people and things you love. The Service is made up of the following aspects:</h2>
         <ul className={styles.list}>

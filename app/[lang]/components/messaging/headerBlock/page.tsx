@@ -6,7 +6,6 @@ import DropDownItem from '../dropDownItem/page';
 import styles from './styles.module.scss';
 
 export default function HeaderBlock(props: any) {
-
   return (
     <>
       <div>

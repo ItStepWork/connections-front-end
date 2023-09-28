@@ -1,6 +1,6 @@
 .container {
-	@apply overflow-auto mt-20 mb-40 lg:my-20 md:my-20 flex flex-col px-6 pb-6 bg-light_border dark:bg-dark_background rounded-xl
-   border border-light_border w-full max-h-screen dark:border-dark_border;
+	@apply mt-20 flex flex-col p-6 bg-light_border dark:bg-dark_background rounded-xl
+   border border-light_border w-full h-full dark:border-dark_border;
 	p {
 		@apply text-black dark:text-dark_text_gray pt-6;
 	}
@@ -11,5 +11,11 @@
 	}
 	.list {
 		@apply space-y-1 w-full list-disc list-inside text-gray-900 dark:text-dark_text_gray;
+	}
+	.mark {
+		@apply px-2 text-white bg-blue-600 rounded dark:bg-blue-500;
+	}
+	h1 {
+		@apply self-center mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white;
 	}
 }

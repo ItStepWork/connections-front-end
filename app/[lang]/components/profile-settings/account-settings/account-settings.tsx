@@ -7,7 +7,7 @@ import { useStore } from "../../../../../stores/userDataStore";
 import styles from "./account-settings.module.scss";
 
 export const AccountSettings = ({local} : {local : any}) => {
-
+  
   const options = [
     {
       label: local.settings.gender.none,

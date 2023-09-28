@@ -333,7 +333,9 @@
     "placeholder" : "Enter name..."
   },
   "chat" : {
-    "activeChat" : "Active chats"
+    "activeChat" : "Active chats",
+    "new" : "New message",
+    "enterName" : "Enter name..."
   },
   "setImages" : {
     "avatar" : "Avatar",
