@@ -1,5 +1,4 @@
 'use client'
-import { setCookie } from "cookies-next"
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
