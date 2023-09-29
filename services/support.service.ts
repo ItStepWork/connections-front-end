@@ -10,4 +10,8 @@ export class SupportService {
     return await ApiService.post("Support/SendMessage", null, formData);
   }
 
+  static async sendComplaint(formData: FormData) {
+    return await ApiService.post("Support/SendComplaint", null, formData);
+  }
+
 } 
