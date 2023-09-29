@@ -1,9 +1,9 @@
 .container {
-	@apply py-6 md:py-0 z-50 lg:py-0 mt-6 md:h-20 lg:h-16 bg-light_border dark:bg-glass_gray backdrop-blur-[3px] w-full;
+	@apply py-6 px-3 md:py-0 z-50 lg:py-0 mt-6 md:h-20 lg:h-16 bg-light_border dark:bg-glass_gray backdrop-blur-[3px] w-full;
 	.contentContainer {
 		@apply flex flex-col md:flex-row lg:flex-row items-center m-auto max-w-[1200px] justify-between gap-6 h-full;
 		.links {
-			@apply flex items-center h-full px-6;
+			@apply flex items-center h-full;
 			.list {
 				@apply flex flex-wrap items-center md:justify-normal lg:justify-normal justify-center gap-x-6 md:gap-4 lg:gap-6;
 			}
