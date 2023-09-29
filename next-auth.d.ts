@@ -1,4 +1,5 @@
 import "next-auth";
+import { Role } from "./enums/all.enum";
 
 declare module "next-auth" {
 
@@ -8,7 +9,7 @@ declare module "next-auth" {
       firstName: string | null;
       lastName: string | null;
       phone: string | null;
-      role: number | null;
+      role: Role;
       email: string;
       gender: number | null;
       status: number | null;

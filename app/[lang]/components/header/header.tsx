@@ -12,13 +12,15 @@ import { DropMenuProfile } from '../userProfile/dropMenu/dropMenu'
 import styles from './header.module.scss'
 import LocaleSwitcher from './locale-switcher'
 import LocalSwitcherMinimal from './locale-switcher-minimal'
+import { MdAdminPanelSettings } from 'react-icons/md'
+import { Role } from '../../../../enums/all.enum'
 
 const oneDay = localFont({ src: '../../../../fonts/ONEDAY.ttf' })
 
 const channelWorkerBroadcast = new BroadcastChannel('channelWorker');
 
 
-export const Header = (props:any) => {
+export const Header = (props: any) => {
 
   const [fetch] = useStore((state) => [state.fetchUser])
   const { data: session } = useSession();
@@ -28,7 +30,7 @@ export const Header = (props:any) => {
     let session = await getSession();
     if (session?.user.accessToken !== undefined) {
       let token = session.user.accessToken;
-      setInterval(()=>tick(token), 1000);
+      setInterval(() => tick(token), 1000);
     }
   };
 
@@ -60,17 +62,25 @@ export const Header = (props:any) => {
                     <Link className={styles.navText} onClick={fetch} href={`/profile/${session.user.id}`}>{props.local.header.profile}</Link>
                   </li>
                   <li className={styles.listItem}>
+                    <Link className={styles.navText} onClick={fetch} href={`/support`}>Support</Link>
+                  </li>
+                  {session.user.role !== Role.User &&
+                    <li className={styles.listItem}>
+                      <Link className={styles.navButton} onClick={fetch} href='/admin'><MdAdminPanelSettings size={20} /></Link>
+                    </li>
+                  }
+                  <li className={styles.listItem}>
                     <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href='/messaging'>{open ? props.local.header.dropMenu.messages : <MdOutlineMessage size={20} />}</Link>
                   </li>
                   <li className={styles.listItem}>
                     <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href='/settings'>{open ? props.local.header.dropMenu.settings : <AiOutlineSetting size={20} />}</Link>
                   </li>
                   <li className={styles.listItem}>
-                    <DropMenuProfile navbarOpen={open} local={props.local}/>
+                    <DropMenuProfile navbarOpen={open} local={props.local} />
                   </li>
                   <li className={styles.listItem}>
-                    {open ? <LocalSwitcherMinimal/> : <LocaleSwitcher local={props.lang}/>}
-                    
+                    {open ? <LocalSwitcherMinimal /> : <LocaleSwitcher local={props.lang} />}
+
                   </li>
                 </ul>
 
@@ -78,9 +88,9 @@ export const Header = (props:any) => {
               :
               (<div className="flex items-center">
                 <Link className={styles.navButton} href='/signIn'><FiLogIn size={20} /></Link>
-                <LocaleSwitcher/>
-                </div>
-                )}
+                <LocaleSwitcher />
+              </div>
+              )}
           </div>
         </div>
       </header>
