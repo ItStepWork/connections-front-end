@@ -4,7 +4,7 @@ import { FaCheck, FaCheckDouble } from 'react-icons/fa';
 import { MessagingService } from '../../../../../services/messaging.service';
 import styles from './styles.module.scss';
 
-export default function RigthMessage(props: any) {
+export default function RightMessage(props: any) {
   const [isOpen, setIsOpen] = useState(false);
 
   const removeMessageFull = async () => {
