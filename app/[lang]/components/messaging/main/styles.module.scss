@@ -1,7 +1,7 @@
 .container {
-	@apply relative flex mx-3 lg:m-0 min-h-screen;
+	@apply flex px-3 md:px-0 w-full;
 	.centerContainer {
-		@apply flex flex-col lg:flex-row mt-28 lg:mt-20 lg:justify-center w-full  border rounded-lg border-zinc-200 dark:border-zinc-700 bg-white dark:bg-dark_background;
+		@apply h-full flex flex-col lg:flex-row lg:justify-center w-full  border rounded-lg border-zinc-200 dark:border-zinc-700 bg-white dark:bg-dark_background;
 	}
 	.leftContainer {
 		@apply flex flex-col w-full lg:w-1/4;

@@ -1,15 +1,15 @@
 .centerContainer {
-	@apply flex flex-col lg:flex-row w-full border rounded-lg border-zinc-200 dark:border-zinc-700 bg-white dark:bg-dark_background;
+	@apply flex flex-row w-full h-full border rounded-lg border-zinc-200 dark:border-zinc-700 bg-white dark:bg-dark_background;
 }
 .leftContainer {
-	@apply flex flex-row w-fit;
+	@apply flex flex-row absolute md:relative;
 }
 .rightContainer {
-	@apply flex flex-col max-h-screen justify-between ml-1 w-full h-full;
+	@apply flex flex-col grow justify-between ml-1;
 }
 .horizontalHr {
 	@apply border-zinc-200 bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-700;
 }
 .verticalHr {
-	@apply w-px lg:h-full border-zinc-200 bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-700;
+	@apply w-px md:h-full border-zinc-200 bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-700;
 }

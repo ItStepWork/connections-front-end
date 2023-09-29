@@ -75,35 +75,38 @@ export default function Messaging({ local, session }: { local: any, session: any
 
   return (
     <div className={styles.container}>
-      <div className='absolute flex mt-16 lg:invisible'>
+      <div className='z-50 absolute flex mt-16 lg:invisible'>
         <DropDownDialogues dialogs={dialogs} click={click} user={user} isOpen={isOpenDialogs} setIsOpen={setIsOpenDialogs} /><h2 className='my-1 mx-2'>Чаты</h2>
       </div>
-      <div className={styles.centerContainer}>
-        <div className={styles.leftContainer}>
-          <div className='m-3 flex justify-between items-center'>
-            <h2>{local.chat.activeChat}<span className={styles.chats}>{dialogs.length}</span></h2>
-            <button {...isOpen ? { className: styles.buttonOpen } : { className: styles.buttonClose }} onClick={() => setIsOpen(true)}>
-              <HiMiniPencilSquare />
-            </button>
-            <Window name={local.chat.new} isOpen={isOpen} setIsOpen={setIsOpen}>
-              <NewMessage users={users} local={local}/>
-            </Window>
-          </div>
-          <hr className={styles.horizontalHr} />
-          <div className='invisible h-0 lg:visible lg:h-auto overflow-y-auto'>
-            <Dialogues dialogs={dialogs} click={click} user={user} />
-          </div>
-        </div>
-        <hr className={styles.verticalHr} />
-        {user ? (
-          <div className={styles.rightContainer}>
-            <HeaderBlock user={user} removeDialog={removeDialog} local={local}/>
-            <MainBlock messages={messages} user={user} />
+      <div className='relative md:absolute container w-full py-0 lg:py-20 md:py-28 pt-28 md:mt-0 h-screen min-h-[500px]'>
+        <div className={styles.centerContainer}>
+          <div className={styles.leftContainer}>
+            <div className='m-3 flex justify-between items-center'>
+              <h2>{local.chat.activeChat}<span className={styles.chats}>{dialogs.length}</span></h2>
+              <button {...isOpen ? { className: styles.buttonOpen } : { className: styles.buttonClose }} onClick={() => setIsOpen(true)}>
+                <HiMiniPencilSquare />
+              </button>
+              <Window name={local.chat.new} isOpen={isOpen} setIsOpen={setIsOpen}>
+                <NewMessage users={users} local={local} />
+              </Window>
+            </div>
             <hr className={styles.horizontalHr} />
-            <FooterBlock friendId={user.id} />
+            <div className='invisible h-0 lg:visible lg:h-auto overflow-y-auto'>
+              <Dialogues dialogs={dialogs} click={click} user={user} />
+            </div>
           </div>
-        ) : (<div className={styles.rightContainer}></div>)}
+          <hr className={styles.verticalHr} />
+          {user ? (
+            <div className={styles.rightContainer}>
+              <HeaderBlock user={user} removeDialog={removeDialog} local={local} />
+              <MainBlock messages={messages} user={user} />
+              <hr className={styles.horizontalHr} />
+              <FooterBlock friendId={user.id} />
+            </div>
+          ) : (<div className={styles.rightContainer}></div>)}
+        </div>
       </div>
+
     </div>
   )
 }

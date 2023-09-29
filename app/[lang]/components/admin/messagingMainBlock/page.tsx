@@ -19,7 +19,7 @@ export default function MessagingMainBlock(props: any) {
   }, []);
 
   return (
-    <div className='m-2 overflow-y-auto'>
+    <div className='m-2 overflow-y-auto h-full'>
       <div className={styles.container}>
         {props.messages.map((message: any, index: number) => {
           if (message.senderId === user?.id) {
