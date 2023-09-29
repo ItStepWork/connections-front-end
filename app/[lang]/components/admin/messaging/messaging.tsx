@@ -6,7 +6,7 @@ import MessagingLeftBlock from '../messagingLeftBlock/page';
 import MessagingMainBlock from '../messagingMainBlock/page';
 import MessagingFooterBlock from '../messagingFooterBlock/page';
 import { AdminService } from '../../../../../services/admin.service';
-import { ImMenu } from 'react-icons/im';
+import { TiMessages } from 'react-icons/ti';
 import { IoMdClose } from 'react-icons/io';
 
 export default function Messaging(props: any) {
@@ -42,7 +42,7 @@ export default function Messaging(props: any) {
     <div className='w-full' style={{ height: "calc(100vh - 200px)", minHeight: "500px" }}>
       <div className="flex m-3 cursor-pointer absolute right-0 mt-[-38px] md:invisible hover:text-button_blue_BG" onClick={() => { setIsOpen(!isOpen) }} >
         <h2 className="text-xl mx-1">Dialogs</h2>
-        <ImMenu size={24} />
+        <TiMessages size={24} />
       </div>
       <div className={styles.centerContainer}>
         <div className={`z-10 absolute h-full md:static transition-all duration-500 ease-in ${isOpen ? 'right-[0px]' : 'right-[-400px]'}`}>

@@ -66,7 +66,7 @@ export const Header = (props: any) => {
                   </li>
                   {session.user.role !== Role.User &&
                     <li className={styles.listItem}>
-                      <Link className={styles.navButton} onClick={fetch} href='/admin'><MdAdminPanelSettings size={20} /></Link>
+                      <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href='/admin'>{open ? "Admin panel" : <MdAdminPanelSettings size={20} />}</Link>
                     </li>
                   }
                   <li className={styles.listItem}>
