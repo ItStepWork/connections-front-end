@@ -46,3 +46,4 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 11. victory
 12. react-simple-maps
 13. react-toastify
+14. react-intersection-observer
