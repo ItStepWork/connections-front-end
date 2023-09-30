@@ -40,7 +40,7 @@ export default function InfoPhoto(props: any) {
       <div className="relative w-full flex flex-row flex-nowrap justify-between ">
         <Avatar userId={props.userId} accessToken={props.accessToken} />
         <div className="cursor-pointer" onClick={() => { setIsOpen(!isOpen); }}>
-          <HiDotsVertical size={20} {...isOpen ? { className: "mt-3 fill-white" } : { className: "mt-3 fill-button_blue_BG" }} />
+          <HiDotsVertical size={20} {...isOpen ? { className: "mt-3 fill-light_button_BG_hover" } : { className: "mt-3 fill-button_blue_BG" }} />
         </div>
         {isOpen &&
           <div className="absolute z-50 p-3 flex flex-col top-[40px] right-0 items-center bg-white text-gray-900 border border-light_border rounded-lg

@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
-import MainBlock from '../messaging/mainBlock/page';
 import { SupportService } from '../../../../services/support.service';
 import FooterBlock from './footerBlock/page';
+import MainBlock from './mainBlock/page';
 
 export default function Support({ local, session }: { local: any, session: any }, props: any) {
 

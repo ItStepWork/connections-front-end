@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from 'react';
 import LeftMessage from '../leftMessage/page';
 import RightMessage from '../rightMassage/page';
 import styles from './styles.module.scss';
+import TopMessage from '../topMessage/page';
 
 export default function MainBlock(props: any) {
 
@@ -24,14 +25,23 @@ export default function MainBlock(props: any) {
     scrollToLast();
   }, [props.messages]);
 
+  let oldDate = "";
+
   return (
     <div className='m-2 h-0 flex-grow overflow-y-auto'>
       <div className={styles.container}>
         {props.messages.map((message: any, index: number) => {
-          if (message.senderId === user?.id) {
-            return (<RightMessage key={index} message={message} user={props.user} />)
+          let date = new Date(message.createTime);
+          let newDate = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`
+          if(newDate !== oldDate){
+            oldDate = newDate;
+            if (message.senderId === user?.id) return (<><TopMessage date={date.toLocaleDateString()}/><RightMessage key={index} message={message} user={props.user} /></>);
+            else return (<><TopMessage date={date.toLocaleDateString()}/><LeftMessage key={index} message={message} user={props.user} /></>);
           }
-          else return (<LeftMessage key={index} message={message} user={props.user} />);
+          else{
+            if (message.senderId === user?.id) return (<RightMessage key={index} message={message} user={props.user} />);
+            else return (<LeftMessage key={index} message={message} user={props.user} />);
+          }
         })}
       </div>
       <div ref={ref} />
