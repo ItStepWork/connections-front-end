@@ -5,6 +5,7 @@ import LeftMessage from '../leftMessage/page';
 import RightMessage from '../rightMassage/page';
 import styles from './styles.module.scss';
 import TopMessage from '../topMessage/page';
+import { MessageStatus } from '../../../../../enums/all.enum';
 
 export default function MainBlock(props: any) {
 
@@ -17,7 +18,7 @@ export default function MainBlock(props: any) {
   }
 
   const scrollToLast = () => {
-    ref.current?.scrollIntoView({ behavior: 'smooth' })
+    ref.current?.scrollIntoView(false);
   };
 
   useEffect(() => {
@@ -26,6 +27,15 @@ export default function MainBlock(props: any) {
   }, [props.messages]);
 
   let oldDate = "";
+  let check = false;
+
+  const renderScrollTo =()=>{
+    if(!check){
+      check = true;
+      return <div key="scrollTo" ref={ref} />
+    }
+    else return <></>;
+  }
 
   return (
     <div className='m-2 h-0 flex-grow overflow-y-auto'>
@@ -33,18 +43,18 @@ export default function MainBlock(props: any) {
         {props.messages.map((message: any, index: number) => {
           let date = new Date(message.createTime);
           let newDate = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`
-          if(newDate !== oldDate){
+          if (newDate !== oldDate) {
             oldDate = newDate;
-            if (message.senderId === user?.id) return (<><TopMessage date={date.toLocaleDateString()}/><RightMessage key={index} message={message} user={props.user} /></>);
-            else return (<><TopMessage date={date.toLocaleDateString()}/><LeftMessage key={index} message={message} user={props.user} /></>);
+            if (message.senderId === user?.id) return (<div key={message.senderId + index}><TopMessage date={date.toLocaleDateString()} /><RightMessage message={message} user={props.user} /></div>);
+            else return (<div key={message.senderId + index}><TopMessage date={date.toLocaleDateString()} />{message.status === MessageStatus.Unread && renderScrollTo()}<LeftMessage message={message} user={props.user} /></div>);
           }
-          else{
-            if (message.senderId === user?.id) return (<RightMessage key={index} message={message} user={props.user} />);
-            else return (<LeftMessage key={index} message={message} user={props.user} />);
+          else {
+            if (message.senderId === user?.id) return (<div key={message.senderId + index}><RightMessage message={message} user={props.user} /></div>);
+            else return (<div key={message.senderId + index}>{message.status === MessageStatus.Unread && renderScrollTo()}<LeftMessage message={message} user={props.user} /></div>);
           }
         })}
       </div>
-      <div ref={ref} />
+      {renderScrollTo()}
     </div>
 
   )

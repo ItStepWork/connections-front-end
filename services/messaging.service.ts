@@ -26,4 +26,8 @@ export class MessagingService {
     return await ApiService.delete("Messaging/RemoveMessage?id=" + id);
   }
 
+  static async updateMessageStatus(id: string, userId: string) {
+    return await ApiService.post("Messaging/UpdateMessageStatus", { id: id, userId: userId }, null);
+  }
+
 } 

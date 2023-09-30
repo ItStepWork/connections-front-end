@@ -3,9 +3,17 @@ import { useState } from 'react';
 import { FaUserCircle } from 'react-icons/fa';
 import { MessagingService } from '../../../../../services/messaging.service';
 import styles from './styles.module.scss';
+import { useInView } from 'react-intersection-observer';
+import { MessageStatus } from '../../../../../enums/all.enum';
 
 export default function LeftMessage(props: any) {
+
   const [isOpen, setIsOpen] = useState(false);
+  const [status, setStatus] = useState<MessageStatus>(props.message.status);
+
+  const { ref, inView, entry } = useInView({
+    threshold: 0.5,
+  });
 
   const removeMessage = async () => {
     await MessagingService.removeMessage(props.message.id);
@@ -17,9 +25,15 @@ export default function LeftMessage(props: any) {
     navigator.clipboard.writeText(props.message.text);
   }
 
+  const updateMessageStatus = async () => {
+    await MessagingService.updateMessageStatus(props.message.id, props.message.senderId)
+    setStatus(MessageStatus.Read);
+    return <></>;
+  }
+
   return (
     <>
-      <div className={styles.container}>
+      <div className={styles.container} ref={ref}>
         <button className='relative flex' onClick={() => { if (!isOpen) setIsOpen(true) }} onFocus={() => { if (isOpen) setIsOpen(true) }} onBlur={() => setIsOpen(false)}>
 
           {props.user.avatarUrl ? (<img className={styles.userImage} src={props.user.avatarUrl} />) : (<FaUserCircle className={styles.userImage} />)}
@@ -40,6 +54,9 @@ export default function LeftMessage(props: any) {
             </div>
           }
         </button>
+        {inView && status === MessageStatus.Unread &&
+          updateMessageStatus()
+        }
       </div>
     </>
   )
