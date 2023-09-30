@@ -9,7 +9,7 @@ import DropDownEmoji from '../../messaging/dropDownEmoji/page';
 import { SupportService } from '../../../../../services/support.service';
 import Window from '../../messaging/window/page';
 
-export default function Complaint({ isOpen, setIsOpen, userId, photoId }: { isOpen: boolean, setIsOpen: Function, userId: string | null, photoId: string | null }, props: any) {
+export default function Complaint({ isOpen, setIsOpen, userId, photoId, photoUrl }: { isOpen: boolean, setIsOpen: Function, userId: string | null, photoId: string | null, photoUrl: string | null }, props: any) {
 
   const [text, setText] = useState("");
   const [file, setFile] = useState(null);
@@ -25,6 +25,7 @@ export default function Complaint({ isOpen, setIsOpen, userId, photoId }: { isOp
     formData.append("text", text);
     if (userId !== null) formData.append("userId", userId);
     if (photoId !== null) formData.append("photoId", photoId);
+    if (photoUrl !== null) formData.append("photoUrl", photoUrl);
     if (file !== null) formData.append("file", file);
     await SupportService.sendComplaint(formData);
 

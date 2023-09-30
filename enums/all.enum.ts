@@ -25,6 +25,7 @@ export enum AdminComponentName {
     Map,
     AllCharts,
     Messages,
+    Complaints,
 }
 
 export enum NotificationType {
@@ -73,4 +74,9 @@ export enum Role {
 export enum EventType {
     BirthDay = "BirthDay",
     Meeting = "Meeting",
+}
+
+export enum MessageStatus {
+    Unread = "Unread",
+    Read = "Read",
 }

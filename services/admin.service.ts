@@ -18,7 +18,7 @@ export class AdminService {
   static async getPagesActivity(chart: Chart) {
     return await ApiService.get("Admin/GetPagesActivity?chart=" + chart, []);
   }
-  
+
   static async getUsersActivity(chart: Chart) {
     return await ApiService.get("Admin/GetUsersActivity?chart=" + chart, []);
   }
@@ -53,6 +53,14 @@ export class AdminService {
 
   static async sendSupportMessage(formData: FormData) {
     return await ApiService.post("Admin/SendSupportMessage", null, formData);
+  }
+
+  static async getComplaints() {
+    return await ApiService.get("Admin/GetComplaints", []);
+  }
+
+  static async updateComplaintStatus(id: string) {
+    return await ApiService.post("Admin/UpdateComplaintStatus", { id: id }, null);
   }
 
 } 

@@ -6,7 +6,7 @@ import { ImMenu } from 'react-icons/im';
 import { IoMdClose } from 'react-icons/io';
 import { FaUsers } from 'react-icons/fa';
 import { FaUserGroup } from 'react-icons/fa6';
-import { BiWorld } from 'react-icons/bi';
+import { BiWorld, BiMessageRoundedError } from 'react-icons/bi';
 import { HiOutlineMail } from 'react-icons/hi';
 import { AdminComponentName } from '../../../../../enums/all.enum';
 import LiMenu from '../liMenu/page';
@@ -28,6 +28,7 @@ export default function Navigation(props: any) {
               <LiMenu name="Users" icon={FaUserGroup} component={AdminComponentName.Users} setComponent={props.setComponent}/>
               <LiMenu name="Groups" icon={FaUsers} component={AdminComponentName.Groups} setComponent={props.setComponent}/>
               <LiMenu name="Messages" icon={HiOutlineMail} component={AdminComponentName.Messages} setComponent={props.setComponent}/>
+              <LiMenu name="Complaints" icon={BiMessageRoundedError} component={AdminComponentName.Complaints} setComponent={props.setComponent}/>
               <LiMenu name="Map" icon={BiWorld} component={AdminComponentName.Map} setComponent={props.setComponent}/>
               <DropDownMenu  setComponent={props.setComponent}/>
             </ul>

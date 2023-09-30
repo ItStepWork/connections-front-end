@@ -14,6 +14,7 @@ import Map from "../map/page";
 import AllCharts from "../allCharts/page";
 import Groups from '../groups/page';
 import Messaging from '../messaging/messaging';
+import Complaints from '../complaints/page';
 
 export default function Admin({ local, session }: { local: any, session: any }, props: any) {
 
@@ -39,6 +40,7 @@ export default function Admin({ local, session }: { local: any, session: any }, 
     else if (component === AdminComponentName.Map) return (<Map users={users}/>)
     else if (component === AdminComponentName.AllCharts) return (<AllCharts users={users}/>)
     else if (component === AdminComponentName.Messages) return (<Messaging/>)
+    else if (component === AdminComponentName.Complaints) return (<Complaints/>)
     else return (<></>)
   }
 
