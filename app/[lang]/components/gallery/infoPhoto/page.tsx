@@ -48,7 +48,7 @@ export default function InfoPhoto(props: any) {
             <div className='cursor-pointer text-dark_text_gray hover:text-button_blue_BG' onClick={ ()=>{setIsOpen(false); setIsOpenComplaint(true); }}>Complain</div>
           </div>
         }
-        <Complaint key={props.photo.id} isOpen={isOpenComplaint} setIsOpen={setIsOpenComplaint} userId={props.userId} photoId={props.photo.id} photoUrl={props.photo.url} />
+        <Complaint isOpen={isOpenComplaint} setIsOpen={setIsOpenComplaint} userId={props.userId} photoId={props.photo.id} photoUrl={props.photo.url} />
       </div>
       <div className='flex justify-between m-3'>
         {props.photo.likes.includes(props.myId) ? (

@@ -9,7 +9,7 @@ import DropDownEmoji from '../../messaging/dropDownEmoji/page';
 import { SupportService } from '../../../../../services/support.service';
 import Window from '../../messaging/window/page';
 
-export default function Complaint({ isOpen, setIsOpen, userId, photoId, photoUrl }: { isOpen: boolean, setIsOpen: Function, userId: string | null, photoId: string | null, photoUrl: string | null }, props: any) {
+export default function Complaint(props: any) {
 
   const [text, setText] = useState("");
   const [file, setFile] = useState(null);
@@ -23,15 +23,15 @@ export default function Complaint({ isOpen, setIsOpen, userId, photoId, photoUrl
   const click = async () => {
     const formData = new FormData();
     formData.append("text", text);
-    if (userId !== null) formData.append("userId", userId);
-    if (photoId !== null) formData.append("photoId", photoId);
-    if (photoUrl !== null) formData.append("photoUrl", photoUrl);
+    if (props.userId !== undefined) formData.append("userId", props.userId);
+    if (props.photoId !== undefined) formData.append("photoId", props.photoId);
+    if (props.photoUrl !== undefined) formData.append("photoUrl", props.photoUrl);
     if (file !== null) formData.append("file", file);
     await SupportService.sendComplaint(formData);
 
     setText("");
     setFile(null);
-    setIsOpen(false);
+    if (props.setIsOpen !== undefined) props.setIsOpen(false);
   }
 
   function handleChange(event: any) {
@@ -44,7 +44,7 @@ export default function Complaint({ isOpen, setIsOpen, userId, photoId, photoUrl
 
   return (
     <>
-      <Window name="Send complaint" isOpen={isOpen} setIsOpen={setIsOpen}>
+      <Window name="Send complaint" isOpen={props.isOpen} setIsOpen={props.setIsOpen}>
         <div className={styles.container}>
           <div className='flex h-5/6 justify-center items-end'><div className={styles.verticalContainer}>
             <div className='flex flex-col w-11/12'>
