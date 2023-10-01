@@ -8,6 +8,7 @@ import { CreatePost } from '../createPost/createPost';
 import { PostPhoto } from '../postPhoto/postPhoto';
 import { PostVideo } from '../postVideo/postVideo';
 import styles from "./styles.module.scss";
+import { CreateEvent } from '../createEvent/createEvent';
 
 export const PostPanel = (props: any) => {
 
@@ -35,6 +36,7 @@ export const PostPanel = (props: any) => {
     if (component == "createPost") return <CreatePost user={user} local={props.local}></CreatePost>
     else if (component == "postPhoto") return <PostPhoto user={user} local={props.local}></PostPhoto>
     else if (component == "postVideo") return <PostVideo user={user} local={props.local}></PostVideo>
+    else if (component == "createEvent") return <CreateEvent user={user} local={props.local}></CreateEvent>
   }
   return (
     <>
@@ -55,7 +57,7 @@ export const PostPanel = (props: any) => {
             <BsCameraReelsFill size={16} className="fill-blue-500"></BsCameraReelsFill>
             <a>{props.local.posts.video}</a>
           </div>
-          <div className={styles.btnDiv}>
+          <div className={styles.btnDiv} onClick={() => { getComponent("createEvent") }}>
             <BsCalendar2EventFill size={16} className="fill-red-500"></BsCalendar2EventFill>
             <a>{props.local.posts.event}</a>
           </div>
