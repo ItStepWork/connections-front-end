@@ -5,6 +5,8 @@ import { FiSearch } from 'react-icons/fi';
 import styles from './styles.module.scss';
 import { AdminService } from '../../../../../services/admin.service';
 import { MessageStatus } from '../../../../../enums/all.enum';
+import GroupStatus from '../groupStatus/page';
+import UserStatus from '../userStatus/page';
 
 const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
 
@@ -88,40 +90,49 @@ export default function Complaints(props: any) {
               {complaint.status === MessageStatus.Unread && <button className={styles.button_blue_BG} onClick={() => { updateComplaintStatus(complaint.id) }}>Read</button>}
             </div>
             <div>Sender:</div>
-            <div className='col-span-3 flex gap-6'>
+            <div className='col-span-3 flex gap-6 items-center'>
               <div className='word-break: break-all'>
                 <div>{complaint.sender.firstName} {complaint.sender.lastName}</div>
                 <div>{complaint.sender.email}</div>
               </div>
-              {new Date(complaint.sender.blockingTime) < new Date() ?
-                <button className={styles.button_red_BG} onClick={() => { updateUserBlockingTime(complaint.sender.id, time, number) }}>Block</button>
-                :
-                <button className={styles.button_blue_BG} onClick={() => { updateUserBlockingTime(complaint.sender.id, time, 0) }}>Unlock</button>}
+              <div>
+                {new Date(complaint.sender.blockingTime) < new Date() ?
+                  <button className={styles.button_red_BG} onClick={() => { updateUserBlockingTime(complaint.sender.id, time, number) }}>Block</button>
+                  :
+                  <button className={styles.button_blue_BG} onClick={() => { updateUserBlockingTime(complaint.sender.id, time, 0) }}>Unlock</button>}
+              </div>
+              <div><UserStatus user={complaint.sender} getUsers={load} /></div>
             </div>
             <div>User:</div>
-            <div className='col-span-3 flex gap-6'>
+            <div className='col-span-3 flex gap-6 items-center'>
               <div className='word-break: break-all'>
                 <div>{complaint.user.firstName} {complaint.user.lastName}</div>
                 <div>{complaint.user.email}</div>
               </div>
-              {new Date(complaint.user.blockingTime) < new Date() ?
-                <button className={styles.button_red_BG} onClick={() => { updateUserBlockingTime(complaint.user.id, time, number) }}>Block</button>
-                :
-                <button className={styles.button_blue_BG} onClick={() => { updateUserBlockingTime(complaint.user.id, time, 0) }}>Unlock</button>}
+              <div>
+                {new Date(complaint.user.blockingTime) < new Date() ?
+                  <button className={styles.button_red_BG} onClick={() => { updateUserBlockingTime(complaint.user.id, time, number) }}>Block</button>
+                  :
+                  <button className={styles.button_blue_BG} onClick={() => { updateUserBlockingTime(complaint.user.id, time, 0) }}>Unlock</button>}
+              </div>
+              <div><UserStatus user={complaint.user} getUsers={load} /></div>
             </div>
             {complaint.photoUrl && <div>Photo:</div>}
             {complaint.photoUrl && <img className='col-span-3' src={complaint.photoUrl}></img>}
             {complaint.group && <div>Group:</div>}
             {complaint.group &&
-              <div className='col-span-3 flex gap-6'>
+              <div className='col-span-3 flex gap-6 items-center'>
                 <div className='word-break: break-all'>
                   <div>{complaint.group.name}</div>
                   <div>{complaint.group.email}</div>
                 </div>
-                {new Date(complaint.group.blockingTime) < new Date() ?
-                <button className={styles.button_red_BG} onClick={() => { updateGroupBlockingTime(complaint.group.id, time, number) }}>Block</button>
-                :
-                <button className={styles.button_blue_BG} onClick={() => { updateGroupBlockingTime(complaint.group.id, time, 0) }}>Unlock</button>}
+                <div>
+                  {new Date(complaint.group.blockingTime) < new Date() ?
+                    <button className={styles.button_red_BG} onClick={() => { updateGroupBlockingTime(complaint.group.id, time, number) }}>Block</button>
+                    :
+                    <button className={styles.button_blue_BG} onClick={() => { updateGroupBlockingTime(complaint.group.id, time, 0) }}>Unlock</button>}
+                </div>
+                <div><GroupStatus group={complaint.group} getGroups={load} /></div>
               </div>}
             <div>Text:</div>
             <div className='col-span-3'>{complaint.text}</div>
