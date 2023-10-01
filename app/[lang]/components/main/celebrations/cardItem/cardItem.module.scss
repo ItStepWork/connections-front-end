@@ -1,11 +1,11 @@
 .container {
 	@apply flex flex-col md:flex-row lg:flex-row py-6 border-b border-light_border dark:border-dark_border;
 	.avatarContainer {
-		@apply flex items-center mr-6 w-[70px] md:w-auto lg:w-auto rounded-full overflow-hidden;
+		@apply flex items-center mr-6;
 	}
 
 	.fromContainer {
-		@apply w-full relative;
+		@apply grow relative;
 		.headBlock {
 			@apply flex relative justify-between items-center md:mt-0 lg:mt-0 mt-2;
 			.dropMenu {

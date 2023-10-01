@@ -22,23 +22,15 @@ export default function CardItem(props: any) {
     <>{props.event.user &&
       <div className={styles.container}>
         <div className={styles.avatarContainer}>
-          <Image
-            src={props.event.user.avatarUrl}
-            width={76}
-            height={76}
-            quality={80}
-            style={{ objectFit: "contain" }}
-            alt="avatar"
-            loading="lazy"
-          />
+          <img className=' rounded-full overflow-hidden w-20 h-20' src={props.event.user.avatarUrl} alt="avatar" loading="lazy" />
         </div>
         <div className={styles.fromContainer}>
           <div className={styles.headBlock}>
             <div className={styles.name}>
               <h4>{props.event.user.firstName} {props.event.user.lastName}</h4>
               {props.event.type === EventType.BirthDay && props.BirthDayNow
-                ? <p>Празднует свой день рождения сегодня </p>
-                : <p>Празднует свой день рождения скоро {new Date(props.event.date).toDateString()} </p>
+                ? <p>Святкує свій день народження сьогодні </p>
+                : <></>
               }
 
             </div>
@@ -68,7 +60,18 @@ export default function CardItem(props: any) {
             </div>
             : <></>
           }
-
+          {props.event.type === EventType.BirthDay && !props.BirthDayNow
+            ? <p>Святкує свій день народження {new Date(props.event.date).toLocaleDateString()} </p>
+            : <></>
+          }
+          {props.event.type === EventType.Meeting || props.event.type === EventType.Celebration
+            ? <div>
+              <p>{props.event.type} </p>
+              <p>{props.event.name} </p>
+              <p>{new Date(props.event.date).toLocaleString()} </p>
+            </div>
+            : <></>
+          }
         </div>
       </div>
     }

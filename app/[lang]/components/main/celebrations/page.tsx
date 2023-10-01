@@ -18,9 +18,11 @@ export default function Celebration(props: any) {
   // }
   const [birthDaysNow, setBirthDaysNow] = useState<any[]>([])
   const [birthDaysSoon, setBirthDaysSoon] = useState<any[]>([])
+  const [events, setEvents] = useState<any[]>([])
   useEffect(() => {
     getBirthDaysNow()
     getBirthDaysSoon()
+    getEvents()
   }, [])
   const getBirthDaysNow = async () => {
     let result = await CelebrationService.getBirthdaysNow()
@@ -31,6 +33,11 @@ export default function Celebration(props: any) {
     let result = await CelebrationService.getBirthdaysSoon()
     // console.log(result)
     setBirthDaysSoon(result)
+  }
+  const getEvents = async () => {
+    let result = await CelebrationService.getEvents()
+    console.log(result)
+    setEvents(result)
   }
   const openDialog = () => {
     var dialog: any = document.getElementById("postDialog")
@@ -50,25 +57,25 @@ export default function Celebration(props: any) {
 
         </div>
         <div className={styles.contentContainer}>
-          <h2>Сегодня празднуют</h2>
+          <h2>Сьогодні Святкують</h2>
           {birthDaysNow && birthDaysNow.map((value: any, key: any) => {
             return (<CardItem key={key} user={props.user} event={value} BirthDayNow={true} />)
           })}
-          {/* <CardItem date='' avatar={faker.image.avatar()} fullName={faker.person.fullName()} howCelebrating='Отправить поздравление' />
-          <CardItem date='' avatar={faker.image.avatar()} fullName={faker.person.fullName()} howCelebrating='Отправить поздравление' />
-          <CardItem date='' avatar={faker.image.avatar()} fullName={faker.person.fullName()} howCelebrating='Отправить поздравление' />
-          <CardItem date='' avatar={faker.image.avatar()} fullName={faker.person.fullName()} howCelebrating='Отправить поздравление' /> */}
         </div>
 
         <div className={styles.contentContainer}>
-          <h2>Скоро празднуют</h2>
+          <h2>Скоро Святкують</h2>
           {birthDaysSoon && birthDaysSoon.map((value: any, key: any) => {
             return (<CardItem key={key} user={props.user} event={value} BirthDayNow={false} />)
           })}
-          {/* <CardItem date='12 марта' avatar={faker.image.avatar()} fullName={faker.person.fullName()} howCelebrating='напомнить о событии' />
-          <CardItem date='12 марта' avatar={faker.image.avatar()} fullName={faker.person.fullName()} howCelebrating='напомнить о событии' />
-          <CardItem date='12 марта' avatar={faker.image.avatar()} fullName={faker.person.fullName()} howCelebrating='напомнить о событии' />
-          <CardItem date='12 марта' avatar={faker.image.avatar()} fullName={faker.person.fullName()} howCelebrating='напомнить о событии' /> */}
+        </div>
+        <div className={styles.contentContainer}>
+          <h2>Найближчі Заходи</h2>
+          {events && events.map((value: any, key: any) => {
+            return (<CardItem key={key} user={props.user} event={value} />)
+          })
+
+          }
         </div>
         <dialog className={styles.dialog} id='postDialog'>
           {<CreateEvent user={props.user} local={props.local}></CreateEvent>}

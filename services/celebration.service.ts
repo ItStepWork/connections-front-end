@@ -9,6 +9,10 @@ export class CelebrationService {
 		return await ApiService.get('Celebration/GetBirthdaysSoon', [])
 	}
 
+	static async getEvents() {
+		return await ApiService.get('Celebration/GetEvents', [])
+	}
+
 	static async addEvent(request: object) {
 		return await ApiService.post('Celebration/AddEvent', request, null)
 	}
