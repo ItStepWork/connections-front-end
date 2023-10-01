@@ -9,7 +9,7 @@ import { Card } from './card';
 import styles from './groupsCard.module.scss';
 
 export function GroupsCard(props: any) {
-  
+
   const [groups, setGroups] = useState([]);
   // const [allGroups, setAllGroups] = useState([]);
   const [count, setCount] = useState(3);
@@ -46,29 +46,7 @@ export function GroupsCard(props: any) {
   const filter = (array: any[]) => {
     return array.filter((g: any) => g.name?.toLowerCase().includes(search.toLowerCase()));
   }
-  // const changeSearch = (event: any) => {
-  //   setSearch(event.target.value);
-  //   if (event.target.value === "") {
-  //     setGroups(allGroups);
-  //   }
-  //   else {
-  //     let search = event.target.value.toLowerCase();
-  //     let searchGroups = allGroups.filter((g: any) => g.name?.toLowerCase().includes(search));
-  //     setGroups(searchGroups);
-  //   }
-  // }
-  // const subscribe = async () => {
-  //   let session = await getSession();
-  //   if (session != null) {
-  //     let socket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToGroupsUpdates`, ["client", session.user.accessToken]);
-  //     socket.addEventListener('message', (event) => {
-  //       getGroups();
-  //     });
-  //     setInterval(() => {
-  //       socket.send("ping");
-  //     }, 30000);
-  //   }
-  // }
+
   return (
     <>
       <div className={styles.container}>

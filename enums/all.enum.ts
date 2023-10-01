@@ -72,8 +72,9 @@ export enum Role {
 }
 
 export enum EventType {
-    BirthDay = "BirthDay",
     Meeting = "Meeting",
+    Celebration = "Celebration",
+    BirthDay = "BirthDay",
 }
 
 export enum MessageStatus {

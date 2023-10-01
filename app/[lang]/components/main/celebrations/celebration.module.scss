@@ -14,4 +14,13 @@
 			@apply flex items-center;
 		}
 	}
+	.button {
+		@apply text-[#0f6fec] bg-button_blue_opacity transition-all duration-300 hover:bg-blue-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm text-center dark:bg-button_blue_opacity dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+	}
+	.headContainer {
+		@apply flex flex-row justify-between;
+	}
+	.dialog {
+		@apply bg-white dark:bg-dark_background border rounded-lg dark:border-dark_border border-light_border;
+	}
 }

@@ -36,9 +36,9 @@ export default function CardItem(props: any) {
           <div className={styles.headBlock}>
             <div className={styles.name}>
               <h4>{props.event.user.firstName} {props.event.user.lastName}</h4>
-              {props.event.eventType === EventType.BirthDay && props.BirthDayNow
+              {props.event.type === EventType.BirthDay && props.BirthDayNow
                 ? <p>Празднует свой день рождения сегодня </p>
-                : <p>Празднует свой день рождения скоро {new Date(props.event.user.birthDay).toDateString()} </p>
+                : <p>Празднует свой день рождения скоро {new Date(props.event.date).toDateString()} </p>
               }
 
             </div>
@@ -58,7 +58,7 @@ export default function CardItem(props: any) {
 
             </button>
           </div>
-          {props.event.eventType === EventType.BirthDay && props.BirthDayNow
+          {props.event.type === EventType.BirthDay && props.BirthDayNow
             ? <div className={styles.sendForm}>
               <textarea className={styles.textarea} placeholder="Hapy Birthday" rows={1}></textarea>
               <button onClick={() => setSend(true)}
