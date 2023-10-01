@@ -12,7 +12,7 @@ import { CelebrationService } from '../../../../../services/celebration.service'
 export const CreateEvent = (props: any) => {
   const closeDialog = () => {
     //  document.querySelector("dialog")?.close();
-    var dialog: any = document.getElementById("createEventDialog")
+    var dialog: any = document.getElementById("postDialog")
     dialog?.close();
   }
   // const { data: session, update } = useSession();
@@ -67,8 +67,8 @@ export const CreateEvent = (props: any) => {
         <div className={styles.dialogDivBody}>
           <div className="m-1 w-full">
             <div className={styles.topDiv}>
-              {props.session.user?.avatarUrl
-                ? <img className={styles.userIco} src={props.session.user.avatarUrl}></img>
+              {props.user?.avatarUrl
+                ? <img className={styles.userIco} src={props.user.avatarUrl}></img>
                 : <img className={styles.userIco} src={faker.image.avatar()}></img>
               }
               <textarea className={styles.grInput} rows={2} placeholder="Event Name" {...register('name')} required></textarea>
@@ -99,7 +99,7 @@ export const CreateEvent = (props: any) => {
             <select
               className={styles.select}
               id="eventType" {...register('eventType')}
-              key={props.session?.user?.id}
+              key={props.user?.id}
             >
               {options.map((option, index) => (
                 <option key={index} value={option.value} typeof="number">{option.label}</option>

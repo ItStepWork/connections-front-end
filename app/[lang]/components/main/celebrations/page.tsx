@@ -23,17 +23,17 @@ export default function Celebration(props: any) {
     getBirthDaysSoon()
   }, [])
   const getBirthDaysNow = async () => {
-    let result = await CelebrationService.getBirthdaysNow(props.session.user.id)
+    let result = await CelebrationService.getBirthdaysNow()
     // console.log(result)
     setBirthDaysNow(result)
   }
   const getBirthDaysSoon = async () => {
-    let result = await CelebrationService.getBirthdaysSoon(props.session.user.id)
+    let result = await CelebrationService.getBirthdaysSoon()
     // console.log(result)
     setBirthDaysSoon(result)
   }
   const openDialog = () => {
-    var dialog: any = document.getElementById("createEventDialog")
+    var dialog: any = document.getElementById("postDialog")
     dialog?.showModal();
   }
   return (
@@ -52,7 +52,7 @@ export default function Celebration(props: any) {
         <div className={styles.contentContainer}>
           <h2>Сегодня празднуют</h2>
           {birthDaysNow && birthDaysNow.map((value: any, key: any) => {
-            return (<CardItem key={key} session={props.session} event={value} BirthDayNow={true} />)
+            return (<CardItem key={key} user={props.user} event={value} BirthDayNow={true} />)
           })}
           {/* <CardItem date='' avatar={faker.image.avatar()} fullName={faker.person.fullName()} howCelebrating='Отправить поздравление' />
           <CardItem date='' avatar={faker.image.avatar()} fullName={faker.person.fullName()} howCelebrating='Отправить поздравление' />
@@ -63,15 +63,15 @@ export default function Celebration(props: any) {
         <div className={styles.contentContainer}>
           <h2>Скоро празднуют</h2>
           {birthDaysSoon && birthDaysSoon.map((value: any, key: any) => {
-            return (<CardItem key={key} session={props.session} event={value} BirthDayNow={false} />)
+            return (<CardItem key={key} user={props.user} event={value} BirthDayNow={false} />)
           })}
           {/* <CardItem date='12 марта' avatar={faker.image.avatar()} fullName={faker.person.fullName()} howCelebrating='напомнить о событии' />
           <CardItem date='12 марта' avatar={faker.image.avatar()} fullName={faker.person.fullName()} howCelebrating='напомнить о событии' />
           <CardItem date='12 марта' avatar={faker.image.avatar()} fullName={faker.person.fullName()} howCelebrating='напомнить о событии' />
           <CardItem date='12 марта' avatar={faker.image.avatar()} fullName={faker.person.fullName()} howCelebrating='напомнить о событии' /> */}
         </div>
-        <dialog className={styles.dialog} id='createEventDialog'>
-          {<CreateEvent session={props.session} local={props.local}></CreateEvent>}
+        <dialog className={styles.dialog} id='postDialog'>
+          {<CreateEvent user={props.user} local={props.local}></CreateEvent>}
         </dialog>
       </div>
 
