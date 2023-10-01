@@ -5,7 +5,7 @@ import { AiOutlinePlus, AiOutlineUsergroupAdd } from 'react-icons/ai';
 import { BiSolidUserCheck } from 'react-icons/bi';
 import { BsFillPatchCheckFill, BsPencilFill } from 'react-icons/bs';
 import { HiMiniPencilSquare } from 'react-icons/hi2';
-import { MdOutlineAdminPanelSettings } from 'react-icons/md';
+import { MdOutlineAdminPanelSettings, MdOutlineErrorOutline } from 'react-icons/md';
 import { TiCancel } from 'react-icons/ti';
 import { toast } from 'react-toastify';
 import { GroupService } from '../../../../../services/group.service';
@@ -13,9 +13,11 @@ import Window from '../../messaging/window/page';
 import { EditGroup } from '../editGroup/editGroup';
 import { FriendsBlock } from '../friends/friendsBlock';
 import styles from './styles.module.scss';
+import Complaint from '../../support/complaint/page';
 
 export function HeaderBlock(props: any) {
   const [isOpen, setIsOpen] = useState(false)
+  const [isOpenComplaint, setIsOpenComplaint] = useState<boolean>(false);
 
   const notifyError = (text: string) => toast.warning(text, {});
   const notifyInfo = (text: string) => toast.info(text, {});
@@ -100,15 +102,16 @@ export function HeaderBlock(props: any) {
             <div className={styles.buttonBlock}>
               {ifInGroup()
                 ? ifAdmin()
-                  ? <div title={props.local.groups.tooltip.admin} className={styles.greenButton}><MdOutlineAdminPanelSettings className={styles.btnPict + " " + styles.greenPict} />{props.local.groups.adminBtn}</div>
-                  : isMemberTrue()
-                    ? <button title={props.local.groups.tooltip.leave} className={styles.redButton} onClick={leaveGroup}><BiSolidUserCheck className={styles.btnPict + " " + styles.redPict} />{props.local.groups.leaveBtn}</button>
-                    : <button title={props.local.groups.tooltip.cancel} className={styles.yellowButton} onClick={leaveGroup}><TiCancel size={20} className={styles.btnPict + " " + styles.yellowPict} />{props.local.groups.cancelBtn}</button>
-                : <button title={props.local.groups.tooltip.join} className={styles.blueButton} onClick={joinGroup} ><AiOutlineUsergroupAdd className={styles.btnPict + " " + styles.bluePict} />{props.local.groups.joinBtn}</button>}
-              {ifInGroup() && isMemberTrue() && <button title={props.local.groups.tooltip.invite} className={styles.greenButton} onClick={() => setIsOpen(!isOpen)}><AiOutlinePlus />{props.local.groups.inviteBtn}</button>}
+                ? <button title={props.local.groups.tooltip.admin} className={styles.greenButton}><MdOutlineAdminPanelSettings size={20} className={styles.btnPict} />{props.local.groups.adminBtn}</button>
+                : isMemberTrue()
+                ? <button title={props.local.groups.tooltip.leave} className={styles.redButton} onClick={leaveGroup}><BiSolidUserCheck size={20} className={styles.btnPict} />{props.local.groups.leaveBtn}</button>
+                : <button title={props.local.groups.tooltip.cancel} className={styles.yellowButton} onClick={leaveGroup}><TiCancel size={20} className={styles.btnPict} />{props.local.groups.cancelBtn}</button>
+                : <button title={props.local.groups.tooltip.join} className={styles.blueButton} onClick={joinGroup} ><AiOutlineUsergroupAdd size={20} className={styles.btnPict} />{props.local.groups.joinBtn}</button>}
+              {ifInGroup() && isMemberTrue() && <button title={props.local.groups.tooltip.invite} className={styles.greenButton} onClick={() => setIsOpen(!isOpen)}><AiOutlinePlus className={styles.btnPict} size={20} />{props.local.groups.inviteBtn}</button>}
             </div>
-            {ifAdmin() ? <button className={styles.editButton} onClick={() => openDialog()}><span><BsPencilFill className={styles.btnPict + " " + styles.redPict} /></span>{props.local.groups.editGroupBtn}</button> : <></>}
+            {ifAdmin() ? <button className={styles.editButton} onClick={() => openDialog()}><BsPencilFill size={20} className={styles.btnPict} />{props.local.groups.editGroupBtn}</button> : <button title={props.local.groups.tooltip.cancel} className={styles.complaintButton} onClick={()=>{ setIsOpenComplaint(true); }}><MdOutlineErrorOutline size={20} className={styles.btnPict + " " + styles.yellowPict} />Complaint</button>}
           </div>
+          <Complaint isOpen={isOpenComplaint} setIsOpen={setIsOpenComplaint} userId={props.group.adminId} groupId={props.group.id}/>
           <div className={styles.membersContainer}>
             <div className={styles.members}>
               {props.members.map((user: any, index: any) => {
