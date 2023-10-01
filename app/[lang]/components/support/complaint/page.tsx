@@ -26,6 +26,7 @@ export default function Complaint(props: any) {
     if (props.userId !== undefined) formData.append("userId", props.userId);
     if (props.photoId !== undefined) formData.append("photoId", props.photoId);
     if (props.photoUrl !== undefined) formData.append("photoUrl", props.photoUrl);
+    if (props.groupId !== undefined) formData.append("groupId", props.groupId);
     if (file !== null) formData.append("file", file);
     await SupportService.sendComplaint(formData);
 
