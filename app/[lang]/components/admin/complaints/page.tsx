@@ -33,6 +33,16 @@ export default function Complaints(props: any) {
     load();
   }
 
+  const updateGroupBlockingTime = async (groupId: string, time: string, number: number) => {
+    let date = new Date();
+    if (time === "hour") date.setHours(date.getHours() + (Number)(number));
+    if (time === "day") date.setDate(date.getDate() + (Number)(number));
+    if (time === "month") date.setMonth(date.getMonth() + (Number)(number));
+    if (time === "year") date.setFullYear(date.getFullYear() + (Number)(number));
+    await AdminService.updateGroupBlockingTime(groupId, date.toUTCString());
+    load();
+  }
+
   const updateComplaintStatus = async (id: string) => {
     await AdminService.updateComplaintStatus(id)
     load();
@@ -101,6 +111,18 @@ export default function Complaints(props: any) {
             </div>
             {complaint.photoUrl && <div>Photo:</div>}
             {complaint.photoUrl && <img className='col-span-3' src={complaint.photoUrl}></img>}
+            {complaint.group && <div>Group:</div>}
+            {complaint.group &&
+              <div className='col-span-3 flex gap-6'>
+                <div className='word-break: break-all'>
+                  <div>{complaint.group.name}</div>
+                  <div>{complaint.group.email}</div>
+                </div>
+                {new Date(complaint.group.blockingTime) < new Date() ?
+                <button className={styles.button_red_BG} onClick={() => { updateGroupBlockingTime(complaint.group.id, time, number) }}>Block</button>
+                :
+                <button className={styles.button_blue_BG} onClick={() => { updateGroupBlockingTime(complaint.group.id, time, 0) }}>Unlock</button>}
+              </div>}
             <div>Text:</div>
             <div className='col-span-3'>{complaint.text}</div>
             {complaint.link && <div>Image:</div>}
