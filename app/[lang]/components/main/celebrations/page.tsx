@@ -1,4 +1,5 @@
-import { faker } from '@faker-js/faker';
+"use client"
+
 import styles from './celebration.module.scss';
 import CardItem from './cardItem/cardItem';
 import { useEffect, useState } from 'react';
