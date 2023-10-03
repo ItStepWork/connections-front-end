@@ -27,6 +27,7 @@ export const Header = (props: any) => {
   const [open, setOpen] = useState(false);
 
   const load = async () => {
+    if (Notification.permission !== "granted") Notification.requestPermission();
     let session = await getSession();
     if (session?.user.accessToken !== undefined) {
       let token = session.user.accessToken;
