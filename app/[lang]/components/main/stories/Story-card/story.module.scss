@@ -1,0 +1,6 @@
+.container {
+	@apply min-h-[140px] min-w-[120px] flex gap-1  items-center overflow-x-auto justify-center;
+	.img {
+		@apply max-h-[140px] max-w-[120px] outline-none object-cover;
+	}
+}

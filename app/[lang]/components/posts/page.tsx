@@ -1,22 +1,21 @@
+import dynamic from 'next/dynamic';
 import { PostsCard } from '../group/postsCard/postsCard';
 import { Feed } from '../main/feed/feed';
 import { FollowsBlock } from '../main/follows/followsBlock';
 import { News } from '../main/news/news';
-import { PostsBlock } from '../main/postBlock/postBlock';
-import { PostPanel } from '../main/postPanel/postPanel';
-import { AddStories } from '../main/stories/addStories';
-import { Stories } from '../main/stories/stories';
+import StoriesBlock from '../main/stories/stories-block/stories-block';
+
+
 import styles from './styles.module.scss';
 
 export default function Posts(props: any) {
-
+  
   return (
     props.local &&
     <>
-      <div>
+      <div className={styles.container}>
         <div className={styles.storiesBlock}>
-          <AddStories local={props.local} />
-          <Stories local={props.local} />
+          <StoriesBlock local={props.local} myId={props.myId} userId={props.userId}/>
         </div>
         {/* <PostPanel local={props.local}/> */}
         <PostsCard local={props.local} />
@@ -24,7 +23,6 @@ export default function Posts(props: any) {
       </div>
       <div>
         <FollowsBlock />
-        <News />
       </div>
     </>
   )

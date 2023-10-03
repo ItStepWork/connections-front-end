@@ -1,0 +1,40 @@
+.container {
+	@apply fixed inset-0 z-50 bg-black bg-opacity-25 drop-shadow-xl backdrop-blur-sm flex justify-center items-center;
+	.wrapper {
+		@apply flex flex-col justify-center items-center w-screen px-2 md:px-0 lg:px-0 md:max-w-[600px] lg:max-w-[600px] mx-6 md:mx-0 lg:mx-0;
+		.modalContainer {
+			@apply gap-6 bg-light_background flex w-full flex-col p-6 dark:bg-dark_background border
+				border-light_border dark:border-dark_border rounded-lg;
+			h2 {
+				@apply place-self-center text-gray-900 font-semibold dark:text-white text-2xl;
+			}
+			.button {
+				@apply text-white bg-blue-700 duration-300 transition-all ease-in
+				 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg 
+				 text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+			}
+		}
+		.closeButton {
+			@apply text-black dark:text-dark_text_gray transition-all ease-in duration-300
+			place-self-end text-xl hover:text-button_red_BG font-semibold;
+		}
+		.inputBlock {
+			@apply flex flex-col w-full;
+			.inputText {
+				@apply bg-gray-50 outline-none border border-gray-300 text-gray-900 text-sm rounded-lg
+         focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 
+				 dark:bg-main_background dark:border-dark_border dark:placeholder-gray-400 dark:text-dark_text_gray dark:focus:ring-blue-500 dark:focus:border-blue-500;
+			}
+		}
+		.inputBlockFile {
+			@apply cursor-pointer flex flex-col justify-between w-full items-center border-2 border-dashed border-light_border dark:border-dark_border rounded-lg
+			p-6;
+			.inputFile {
+				@apply hidden;
+			}
+			.icon {
+				@apply pb-6 text-dark_text_gray animate-pulse;
+			}
+		}
+	}
+}
