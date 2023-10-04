@@ -8,5 +8,5 @@
 	@apply absolute z-20 m-2 right-0 cursor-pointer lg:opacity-0 hover:fill-button_blue_BG;
 }
 .menu {
-	@apply relative flex flex-col m-6 lg:m-0 w-full;
+	@apply relative flex flex-col w-full gap-6;
 }

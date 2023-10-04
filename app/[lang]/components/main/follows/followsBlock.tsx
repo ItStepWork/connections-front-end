@@ -19,7 +19,7 @@ export const FollowsBlock = () => {
     let session = await getSession();
     if(session != null){
       let result = await FriendService.getFriends(session.user.id); 
-      let filter = result.filter((user: any)=>user.friendStatus === FriendStatus.Confirmed || user.friendStatus === FriendStatus.Other);
+      let filter = result.filter((user: any)=>user.friendStatus === FriendStatus.Other);
       setUsers(filter);
     }
   } 

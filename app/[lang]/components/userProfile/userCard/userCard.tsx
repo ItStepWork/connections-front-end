@@ -198,6 +198,9 @@ export function UserCard(props: any) {
             <div {...props.component === ComponentName.Gallery ? { className: `${styles.counterLink}` } : { className: "" }} >
               <button {...props.component === ComponentName.Gallery ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent(ComponentName.Gallery) }}>{props.local.profile.gallery}</button>
             </div>
+            <div {...props.component === ComponentName.Posts ? { className: `${styles.counterLink}` } : { className: "" }} >
+              <button {...props.component === ComponentName.Posts ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent(ComponentName.Posts) }}>Posts</button>
+            </div>
           </div>
           <Window name={user.firstName + " " + user.lastName} isOpen={isOpen} setIsOpen={setIsOpen}>
             <div className='flex h-5/6 justify-center items-end'>

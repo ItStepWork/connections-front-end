@@ -11,6 +11,7 @@ import PhotosCard from '../userProfile/photosCard/photosCard';
 import { ProfileInfo } from '../userProfile/profileInfo/profileInfo';
 import { UserCard } from '../userProfile/userCard/userCard';
 import styles from './profile.module.scss';
+import Posts from '../posts/page';
 
 export default function Profile(props: any) {
   const [component, setComponent] = useState<ComponentName>(ComponentName.Connections);
@@ -29,6 +30,7 @@ export default function Profile(props: any) {
     else if (component === ComponentName.Groups) return (<GroupsCard session={session} userId={props.id[0]} local={props.local} />)
     else if (component === ComponentName.Connections) return (<ConnectionsCard session={session} myId={session?.user.id} userId={props.id[0]} local={props.local} />)
     else if (component === ComponentName.Gallery) return (<Gallery myId={session?.user.id} userId={props.id[0]} local={props.local} />)
+    else if (component === ComponentName.Posts) return (<Posts local={props.local} session={session} myId={session.user.id} userId={props.id[0]}/>)
     else return (<></>)
   }
   return (

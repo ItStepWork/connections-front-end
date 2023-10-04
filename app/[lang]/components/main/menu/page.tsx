@@ -4,6 +4,7 @@ import { AiFillCloseSquare } from 'react-icons/ai';
 import { ImMenu } from 'react-icons/im';
 import { LeftUserBlock } from "../leftUserBlock/leftUserBlock";
 import styles from './styles.module.scss';
+import { FollowsBlock } from '../follows/followsBlock';
 
 export default function Menu(props: any) {
 
@@ -20,6 +21,7 @@ export default function Menu(props: any) {
           <AiFillCloseSquare className={styles.actionClose} size={24} onClick={() => { setIsOpen(false) }} />
           <LeftUserBlock setComponent={props.setComponent} setIsOpen={setIsOpen} local={props.local}/>
           {/* <LeftBlockFooter /> */}
+          <FollowsBlock/>
         </div>
       </div>
     </div>

@@ -1,0 +1,18 @@
+.container {
+	@apply flex flex-col my-6 p-3 bg-white dark:bg-dark_background rounded-lg border border-light_border dark:border-dark_border;
+	.verticalContainer {
+		@apply flex m-3 justify-between;
+	}
+	.buttonContainer {
+		@apply flex items-end;
+	}
+	.button {
+		@apply bg-blue-600 rounded px-2 py-1 transition duration-300 hover:bg-blue-700;
+	}
+	.textarea {
+		@apply w-full outline-none p-2.5 text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-dark_background dark:border-dark_border dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+	}
+	.hr {
+		@apply border-zinc-200 bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-700;
+	}
+}

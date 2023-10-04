@@ -21,7 +21,7 @@ export default function Main({ local, session }: { local: any, session: any }, p
     else if (component === ComponentName.Connections) return (<ConnectionsCard session={session} myId={session.user.id} userId={session.user.id} local={local} />)
     else if (component === ComponentName.Gallery) return (<Gallery myId={session.user.id} userId={session.user.id} local={local} />)
     else if (component === ComponentName.Notifications) return (<Notifications accessToken={session.user.accessToken} local={local} />)
-    else if (component === ComponentName.Posts) return (<Posts local={local} myId={session.user.id} userId={session.user.id}/>)
+    else if (component === ComponentName.Posts) return (<Posts local={local} session={session} myId={session.user.id} userId={session.user.id}/>)
     else return (<></>)
   }
 
