@@ -1,8 +1,7 @@
 "use client"
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ComponentName } from "../../../../../enums/all.enum";
-import { CelebrationService } from '../../../../../services/celebration.service';
 import Gallery from "../../gallery/main/page";
 import Notifications from "../../notifications/page";
 import Posts from "../../posts/page";
@@ -12,24 +11,10 @@ import Celebration from "../celebrations/page";
 import Menu from "../menu/page";
 import styles from './main.module.scss';
 
-
 export default function Main({ local, session }: { local: any, session: any }, props: any) {
 
   const [component, setComponent] = useState<ComponentName>(ComponentName.Posts);
-  const [birthDaysNow, setBirthDaysNow] = useState<any[]>([])
-  const [birthDaysSoon, setBirthDaysSoon] = useState<any[]>([])
-  useEffect(() => {
-    getBirthDaysNow()
-    getBirthDaysSoon()
-  }, [])
-  const getBirthDaysNow = async () => {
-    let result = await CelebrationService.getBirthdaysNow(session.user.id)
-    setBirthDaysNow(result)
-  }
-  const getBirthDaysSoon = async () => {
-    let result = await CelebrationService.getBirthdaysSoon(session.user.id)
-    setBirthDaysSoon(result)
-  }
+  
   const ChangeComponent = () => {
     if (component === ComponentName.Groups) return (<GroupsCard session={session} userId={session.user.id} local={local} />)
     else if (component === ComponentName.Celebration) return (<Celebration user={session.user} local={local} />)

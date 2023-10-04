@@ -1,72 +1,25 @@
-import axios from 'axios';
-import { getSession } from 'next-auth/react';
-import { CheckService } from './check.service';
+import { ApiService } from './api.service';
 
-  export class PostService {
+export class PostService {
 
     static async getPost(userId: string) {
-      const session = await getSession();
-      return await axios.get(process.env.NEXT_PUBLIC_API + "Post/GetPost?userId=" + userId, {
-          headers: {
-              "Accept": "application/json",
-              "Authorization": "Bearer " + session?.user.accessToken,
-          },
-      }).then(response => response.data)
-          .catch((error) => {
-              CheckService.signOut(session, error);
-              return [];
-          });
-  }
-   public async createPost(){
-      const session = await getSession();
-      return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + "Post/GetPost", {
-          headers: {
-              "Accept": "application/json",
-              "Authorization": "Bearer " + session?.user.accessToken,
-          },
-      }).then(response => response.data);
-  }
-  async getPostById(postId: string) {
-    const session = await getSession();
-        return await axios.get(process.env.NEXT_PUBLIC_STRAPI_API + `Post/GetPost?postId=${postId}`, {
-            headers: {
-                "Accept": "application/json",
-                "Authorization": "Bearer " + session?.user.accessToken,
-            },
-        }).then(response => response.data);
-  }
- async addComment(senderId: string, userId: string, postId: string, text: string) {
+        return await ApiService.get("Post/GetPost?userId=" + userId, null);
+    }
 
-    const session = await getSession();
-    const requestData = {
-      senderId: senderId,
-      userId: userId,
-      postId: postId,
-      text: text
-  };
-    return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "Post/AddComment", requestData, {
-        headers: {
-            "Accept": "application/json",
-            "Authorization": "Bearer " + session?.user.accessToken,
-        },
-    }).then(response => response.data);
-    };
+    static async getPosts(userId: string) {
+        return await ApiService.get("Post/GetPosts?userId=" + userId, []);
+    }
 
+    static async createPost(object: object) {
+        return await ApiService.post("Post/CreatePost", object, null);
+    }
 
+    static async setLike(userId: string, postId: string) {
+        return await ApiService.post("Post/SetLike", { userId: userId, postId: postId }, null);
+    }
 
+    static async sendComment(userId: string, postId: string, text: string) {
+        return await ApiService.post("Post/SendComment", { userId: userId, postId: postId, text: text }, null);
+    }
 
-  async likePost(senderId: string, userId: string, postId: string){
-    const session = await getSession();
-    const requestData = {
-      senderId: senderId,
-      userId: userId,
-      postId: postId,
-  };
-    return await axios.post(process.env.NEXT_PUBLIC_STRAPI_API + "Post/LikePost", requestData, {
-        headers: {
-            "Accept": "application/json",
-            "Authorization": "Bearer " + session?.user.accessToken,
-        },
-    }).then(response => response.data);
-  }
 }

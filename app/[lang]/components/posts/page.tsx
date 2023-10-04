@@ -1,12 +1,8 @@
-import dynamic from 'next/dynamic';
 import { PostsCard } from '../group/postsCard/postsCard';
-import { Feed } from '../main/feed/feed';
 import { FollowsBlock } from '../main/follows/followsBlock';
-import { News } from '../main/news/news';
 import StoriesBlock from '../main/stories/stories-block/stories-block';
-
-
 import styles from './styles.module.scss';
+import Feed from '../main/feed/feed';
 
 export default function Posts(props: any) {
   
@@ -19,7 +15,7 @@ export default function Posts(props: any) {
         </div>
         {/* <PostPanel local={props.local}/> */}
         <PostsCard local={props.local} />
-        <Feed />
+        <Feed userId={props.userId} />
       </div>
       <div>
         <FollowsBlock />
