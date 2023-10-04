@@ -17,7 +17,7 @@
 		@apply text-[#0f6fec] w-full mt-6 bg-button_blue_opacity transition-all duration-300 hover:bg-blue-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center dark:bg-button_blue_opacity dark:hover:bg-blue-700 dark:focus:ring-blue-800;
 	}
 	.followerContainer {
-		@apply flex justify-between pt-4 w-full bg-white dark:bg-dark_background text-gray-900;
+		@apply flex justify-between pt-4 w-full bg-white dark:bg-dark_background text-gray-600;
 		.userInfo {
 			@apply flex flex-col mx-1 w-[160px];
 			p {
@@ -28,7 +28,7 @@
 			}
 		}
 		.avatar {
-			@apply flex justify-around w-12 h-12 overflow-hidden rounded-full;
+			@apply flex justify-around w-12 h-12 overflow-hidden rounded-full border border-gray-500;
 		}
 	}
 }

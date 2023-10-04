@@ -1,10 +1,9 @@
-import { faker } from "@faker-js/faker";
-import Image from 'next/image';
 import { FC } from "react";
 import { BsFillPersonCheckFill, BsPlusLg } from "react-icons/bs";
 import { FriendService } from "../../../../../services/friend.service";
 import styles from "./follows.module.scss";
 import { FriendStatus } from "../../../../../enums/all.enum";
+import { FaUserCircle } from 'react-icons/fa';
 
 interface IFollowerProps {
   friendStatus: FriendStatus;
@@ -30,17 +29,7 @@ export const Follower:FC<IFollowerProps> = ({friendStatus, firstName, lastName, 
   return (
     <>
       <div className={styles.followerContainer}>
-        <div  className={styles.avatar}>
-        <Image
-              src={avatar === null ? faker.image.avatar() : avatar}
-              width={48}
-              height={48}
-              quality={80}
-              style={{ objectFit: "contain" }}
-              alt="avatar"
-              loading="lazy"
-            />
-        </div>
+        {avatar ? (<img className={styles.avatar} src={avatar} />) : (<FaUserCircle className={styles.avatar} />)}
         <div className={styles.userInfo}>
           <p>{firstName +' '+ lastName}</p>
           <span>{work === '' || work === undefined || work === null ? 'Не указано' : work}</span>
