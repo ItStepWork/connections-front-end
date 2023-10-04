@@ -1,5 +1,5 @@
 .container {
-	@apply flex flex-col my-6 p-3 bg-white dark:bg-dark_background rounded-lg border border-light_border dark:border-dark_border;
+	@apply flex flex-col p-3 bg-white dark:bg-dark_background rounded-lg border border-light_border dark:border-dark_border;
 	.verticalContainer {
 		@apply flex m-3 justify-between;
 	}

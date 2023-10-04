@@ -26,7 +26,6 @@ const AddStoryForm = (props: any) => {
       await StoriesServices.addStory(storyName, files);
       setStoryName("");
       setFiles([]);
-      props.setIsAdded(true);
     }
   }
 

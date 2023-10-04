@@ -37,7 +37,7 @@ const Story = (props: any) => {
       }       
       </div>
     }
-    <SelectedStory key={props.story.id} isSelected={isSelected} photos={photos} setIsSelected={setIsSelected} storyId={props.story.id} setIsDelete={props.setIsDelete}/>
+    <SelectedStory key={props.story.id} isSelected={isSelected} photos={photos} setIsSelected={setIsSelected} storyId={props.story.id}/>
     </>
   )
 };

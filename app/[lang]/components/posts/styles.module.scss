@@ -1,6 +1,3 @@
 .container {
-	@apply flex flex-col w-full;
-}
-.storiesBlock {
-	@apply flex overflow-hidden relative;
+	@apply flex flex-col w-full gap-6;
 }

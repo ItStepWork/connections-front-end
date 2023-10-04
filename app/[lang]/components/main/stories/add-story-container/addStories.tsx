@@ -22,7 +22,6 @@ export const AddStories = (props : any) => {
             local={props.local} 
             isVisible={showModal}
             onClose={() => setShowModal(false)}
-            setIsAdded={props.setIsAdded}
             />
         </Fragment>
       </div>

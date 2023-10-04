@@ -11,13 +11,11 @@ const SelectedStory = (props:any) => {
 
   const deleteStory = async () => {
     await StoriesServices.deleteStory(props.storyId);
-    props.setIsDelete(true);
     props.setIsSelected(false);
   }
 
   const deleteStoryAndPhotos = async () => {
     await StoriesServices.deleteStoryAndPhotos(props.storyId);
-    props.setIsDelete(true);
     props.setIsSelected(false);
   }
 

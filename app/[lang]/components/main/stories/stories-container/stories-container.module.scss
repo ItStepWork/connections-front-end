@@ -1,5 +1,5 @@
 .container {
-	@apply flex md:ml-2 lg:ml-2 w-full md:w-[410px] lg:w-[410px] outline-none rounded-xl snap-x bg-white dark:bg-dark_background border border-light_border dark:border-dark_border;
+	@apply grow flex md:ml-2 lg:ml-2 outline-none rounded-xl snap-x bg-white dark:bg-dark_background border border-light_border dark:border-dark_border;
 	.empty {
 		@apply w-full flex items-center justify-center;
 	}
