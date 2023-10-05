@@ -8,7 +8,7 @@ export default function Albums(props: any) {
     <div className={styles.container}>
       {props.albums && props.albums.map((album: any, index: any) => {
         return (
-          <Album key={index} album={album} myId={props.myId} userId={props.userId}  get={props.get} />
+          <Album key={index} album={album} local={props.local} myId={props.myId} userId={props.userId}  get={props.get} />
         );
       })}
     </div>

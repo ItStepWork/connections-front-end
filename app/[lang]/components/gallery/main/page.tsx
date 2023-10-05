@@ -2,15 +2,18 @@
 
 import { useEffect, useState } from 'react';
 import { GalleryService } from '../../../../../services/gallery.service';
+import { StoriesServices } from '../../../../../services/stories.service';
 import Albums from "../albums/page";
 import CreateAlbum from '../createAlbum/page';
 import Photos from "../photos/page";
+import StoriesAlbums from '../stories/page';
 import styles from './styles.module.scss';
 
 export default function Gallery(props: any) {
 
   const [component, setComponent] = useState("photos");
   const [albums, setAlbums] = useState<any[]>([]);
+  const [stories, setStories] = useState<any[]>([]);
   const [photos, setPhotos] = useState<any[]>([]);
 
   const get = async () => {
@@ -19,6 +22,9 @@ export default function Gallery(props: any) {
     
     let result2 = await GalleryService.getPhotos(props.userId);
     setPhotos(result2);
+
+    let result3 = await StoriesServices.getStories(props.userId);
+    setStories(result3);
   }
   
   useEffect(() => {
@@ -30,7 +36,10 @@ export default function Gallery(props: any) {
       return (<Photos myId={props.myId} userId={props.userId} get={get} photos={photos} albums={albums} local={props.local}/>);
     }
     else if(component === "albums"){
-      return (<Albums myId={props.myId} userId={props.userId} albums={albums}  get={get}/>);
+      return (<Albums myId={props.myId} userId={props.userId} albums={albums} local={props.local} get={get}/>);
+    }
+    else if(component === "stories"){
+      return (<StoriesAlbums myId={props.myId} userId={props.userId} stories={stories} local={props.local} get={get}/>);
     }
     else {
       return(<></>);
@@ -49,6 +58,9 @@ export default function Gallery(props: any) {
         </div>
         <div {...component === "albums" ? { className: `${styles.counterLink}` } : { className: "" }} >
           <button {...component === "albums" ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { setComponent("albums") }}>{props.local.gallery.album}</button>
+        </div>
+        <div {...component === "stories" ? { className: `${styles.counterLink}` } : { className: "" }} >
+          <button {...component === "stories" ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { setComponent("stories") }}>{props.local.gallery.stories}</button>
         </div>
       </div>
       {render()}

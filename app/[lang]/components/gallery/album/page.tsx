@@ -39,12 +39,12 @@ export default function Album(props: any) {
   }
 
   return (
-    <div className={styles.album}>
-      <div className=' absolute flex w-full justify-end items-start'>
-        <button className='mx-1' onClick={() => { setIsSelectedRemove(true); }}><MdClose className="hover:fill-red-500 w-6 h-6" /></button>
+    <div className={styles.container}>
+      <div className={styles.deleteContainer}>
+        <button className='mx-1' onClick={() => { setIsSelectedRemove(true); }}><MdClose className={styles.deleteAlbum} /></button>
       </div>
-      <div className='m-1 flex text-center w-4/6 overflow-hidden'>
-        <span className='whitespace-nowrap w-full'>{props.album.name}</span>
+      <div className={styles.labelContainer}>
+        <span className={styles.title}>{props.album.name}</span>
       </div>
       <div className={styles.photos} onClick={() => { if (!isSelected) select(0) }}>
         {photos.map((photo, index) => {
@@ -57,14 +57,14 @@ export default function Album(props: any) {
       </div>
       <SelectedPhoto isSelected={isSelected} setIsSelected={setIsSelected} photos={photos} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex}  myId={props.myId} userId={props.userId} get={get} />
       {isSelectedRemove ? (
-        <div className='fixed z-50 flex flex-col justify-center items-center left-0 top-0 h-screen w-full p-5 bg-black bg-opacity-70 '>
-          <div className='relative flex flex-col w-72 h-60 border rounded-lg bg-light_background dark:bg-dark_background border-light_border dark:border-dark_border'>
-            <div className='absolute right-0'>
-              <button onClick={() => { setIsSelectedRemove(false) }}><MdClose size={40} className="hover:fill-red-500"/></button>
+        <div className={styles.modalContainer}>
+          <div className={styles.modal}>
+            <div className={styles.close}>
+              <button onClick={() => { setIsSelectedRemove(false) }}><MdClose size={40} className={styles.deleteAlbum}/></button>
             </div>
-            <div className='flex flex-col h-full justify-center items-center text-white'>
-              <button className={styles.button} onClick={removeAlbum}>Удалить только альбом</button>
-              <button className={styles.button} onClick={removeAlbumAndPhotos}>Удалить альбом вместе с фотографиями</button>
+            <div className={styles.buttonContainer}>
+              <button className={styles.button} onClick={removeAlbum}>{props.local.gallery.deleteAlbum}</button>
+              <button className={styles.button} onClick={removeAlbumAndPhotos}>{props.local.gallery.deleteAlbumPhoto}</button>
             </div>
           </div>
         </div>

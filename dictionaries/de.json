@@ -323,6 +323,7 @@
     "photo" : "Foto",
     "addPhoto" : "Foto hinzufügen",
     "album" : "Alben",
+    "stories" : "Geschichten",
     "action" : {
       "toAvatar" : "Auf Avatar setzen",
       "toBackground" : "Auf Hintergrund einstellen",
@@ -330,7 +331,9 @@
     },
     "createAlbum" : "Album erstellen",
     "newAlbum" : "Neues Album",
-    "placeholder" : "Name eingeben..."
+    "placeholder" : "Name eingeben...",
+    "deleteAlbum" : "Nur Album löschen",
+    "deleteAlbumPhoto" : "Album und Fotos löschen"
   },
   "chat" : {
     "activeChat" : "Aktive Chats",
