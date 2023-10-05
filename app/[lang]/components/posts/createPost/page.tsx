@@ -4,9 +4,9 @@ import { useState } from 'react';
 import { BsFillSendFill } from 'react-icons/bs';
 import { FaRegWindowClose } from 'react-icons/fa';
 import { ImAttachment } from 'react-icons/im';
-import styles from './styles.module.scss';
-import DropDownEmoji from '../../messaging/dropDownEmoji/page';
 import { PostService } from '../../../../../services/post.service';
+import DropDownEmoji from '../../messaging/dropDownEmoji/page';
+import styles from './styles.module.scss';
 
 export default function CreatePost(props: any) {
 
@@ -41,19 +41,19 @@ export default function CreatePost(props: any) {
     <>
       <div className={styles.container}>
         <div className={styles.verticalContainer}>
-          <div className='flex flex-col w-11/12'>
-            {file ? (<div className='flex text-sm'>Прикреплён файл<button onClick={() => { setFile(null) }}><FaRegWindowClose className="m-1 fill-red-500 hover:fill-red-700" /></button></div>) : (<></>)}
-            <textarea className={styles.textarea} onChange={handleChange} value={text}></textarea>
+          <div className={styles.fileContainer}>
+            {file ? (<div className={styles.fileText}>{props.local.posts.file}<button onClick={() => { setFile(null) }}><FaRegWindowClose className={styles.fileIcon} /></button></div>) : (<></>)}
+            <textarea className={styles.textarea} placeholder={props.local.posts.placeholder} onChange={handleChange} value={text}></textarea>
           </div>
 
           <div className={styles.buttonContainer}>
             <div className='mx-1'>
               <DropDownEmoji addEmoji={addEmoji} isLower={false} />
             </div>
-            <div className='mx-1 my-0.5'>
-              <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center  border-gray-300 rounded-md cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                <div className="flex flex-col items-center justify-center px-2 py-1">
-                  <ImAttachment className="fill-black dark:fill-white" />
+            <div className={styles.fileInputContainer}>
+              <label htmlFor="dropzone-file" >
+                <div className={styles.iconContainer}>
+                  <ImAttachment className={styles.icon} />
                 </div>
                 <input id="dropzone-file" type="file" className="hidden" onChange={saveFile} />
               </label>

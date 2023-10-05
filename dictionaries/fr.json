@@ -34,6 +34,11 @@
     "event" : "Événement",
     "activity" : "Activité",
     "placeholder" : "Partage tes pensées...",
+    "file" : "Fichier joint",
+    "report" : "Rapport",
+    "comments" : "commentaires",
+    "delete" : "Supprimer",
+    "likes" : "Aime",
     "postPhoto" : {
       "title" : "Publier une photo",
       "upload" : "Télécharger la pièce jointe",
@@ -55,7 +60,8 @@
       "event" : "Événement",
       "activity" : "Activité",
       "location" : "Emplacement",
-      "tag" : "Taguer des personnes"
+      "tag" : "Taguer des personnes",
+      "send" : "Envoyer"
     }
   },
   "search" : {

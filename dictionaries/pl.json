@@ -34,6 +34,11 @@
     "event" : "Wydarzenie",
     "activity" : "Działalność",
     "placeholder" : "Podziel się swoimi przemyśleniami...",
+    "file" : "Załącznik",
+    "report" : "Raport",
+    "comments" : "Uwagi",
+    "delete" : "Usuwać",
+    "likes" : "Lubi",
     "postPhoto" : {
       "title" : "Publikacja zdjęcia",
       "upload" : "Prześlij załącznik",
@@ -55,7 +60,8 @@
       "event" : "Wydarzenie",
       "activity" : "Działalność",
       "location" : "Lokalizacja",
-      "tag" : "Oznaczać ludzi"
+      "tag" : "Oznaczać ludzi",
+      "send" : "Wysłać"
     }
   },
   "search" : {

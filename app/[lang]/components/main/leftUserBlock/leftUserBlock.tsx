@@ -1,42 +1,55 @@
 "use client"
-import { faker } from "@faker-js/faker"
 import { useSession } from "next-auth/react"
-import Image from 'next/image'
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { FcAdvertising, FcBusinessman, FcCalendar, FcCollaboration, FcHome, FcNews, FcSettings, FcStackOfPhotos } from "react-icons/fc"
 import { ComponentName } from "../../../../../enums/all.enum"
+import { FriendService } from "../../../../../services/friend.service"
+import { PostService } from "../../../../../services/post.service"
 import { useStore } from "../../../../../stores/userDataStore"
 import styles from "./leftUserBlock.module.scss"
 
 export const LeftUserBlock = (props:any) => {
   const [avatar, bg] = useStore((state) => [state.avatar, state.BgImage])
   const { data: session } = useSession();
-  const [hydrated, setHydrated] = useState(false);
+  const [friendsCount, setFriendsCount] = useState<number>(0);
+  const [postsCount, setPostsCount] = useState<number>(0);
   
+
+  const getData = async () => {
+    const postResult: any[] = await PostService.getPosts(props.myId);
+    setPostsCount(postResult.length);
+    
+    const friendsResult: any[] = await FriendService.getFriends(props.myId);
+    const sort = friendsResult.filter((obj) => {
+      return obj.friendStatus === 'Confirmed';
+    })
+    setFriendsCount(sort.length);
+  }
+  //const [hydrated, setHydrated] = useState(false);
+  
+  /*
   useEffect(() => {
     setHydrated(true);
   }, [session])
   if (!hydrated) {
     // Returns null on first render, so the client and server match
     return null;
-}
+  }
+  */
+
+  useEffect(() => {
+    getData();
+  }, [])
+
   return (
     <>
       <div className={styles.container}>
         <div className={styles.imagesBlock}>
           <div className={styles.bg}>
             {
-              bg && <Image
-              src={bg}
-              sizes="100vw"
-              priority={true}
-              quality={80}
-              alt="bg"
-              layout='fill'
-              style={{ objectFit: "cover" }}
-              className={styles.image}  
-            />
+              bg && 
+              <img src={bg}></img>
             }        
           </div>
 
@@ -45,14 +58,7 @@ export const LeftUserBlock = (props:any) => {
           <div className={styles.avatar}>
             {
               avatar &&
-              <Image
-                src={avatar}
-                width={64}
-                height={64}
-                quality={80}
-                style={{ objectFit: "contain" }}
-                alt="avatar"
-              />
+              <img src={avatar}></img>
             }
           </div>
           <h3>{session?.user?.firstName + ' ' + session?.user?.lastName}</h3>
@@ -60,12 +66,12 @@ export const LeftUserBlock = (props:any) => {
           <div className={styles.aboutMe}>{session?.user?.aboutMe}</div>
           <div className={styles.followsBlock}>
             <div className={styles.followers}>
-              <h3>{faker.number.int(111)}</h3>
+              <h3>{postsCount}</h3>
               <div>{props.local.main.header.posts}</div>
             </div>
             <div className={styles.vr}></div>
             <div className={styles.followers}>
-              <h3>{faker.number.int(111)}</h3>
+              <h3>{friendsCount}</h3>
               <div>{props.local.main.header.contacts}</div>
             </div>
           </div>

@@ -3,14 +3,14 @@
 import { useState } from "react";
 import { AiFillLike } from 'react-icons/ai';
 import { BsFillSendFill } from 'react-icons/bs';
-import styles from './styles.module.scss';
-import DropDownEmoji from "../../messaging/dropDownEmoji/page";
-import Complaint from "../../support/complaint/page";
-import Avatar from "../../gallery/avatar/page";
 import { HiDotsVertical } from 'react-icons/hi';
 import { ImArrowDown, ImArrowUp } from 'react-icons/im';
 import { PostService } from "../../../../../services/post.service";
+import Avatar from "../../gallery/avatar/page";
+import DropDownEmoji from "../../messaging/dropDownEmoji/page";
+import Complaint from "../../support/complaint/page";
 import Comment from "../comment/page";
+import styles from './styles.module.scss';
 
 export default function PostInfo(props: any) {
 
@@ -41,23 +41,22 @@ export default function PostInfo(props: any) {
   }
 
   return (
-    <div className="border border-light_border rounded-lg dark:border-dark_border p-3 my-3">
-      <div className="relative my-3 w-full flex flex-row flex-nowrap justify-between">
+    <div className={styles.container}>
+      <div className={styles.postHeaderContainer}>
         <Avatar userId={props.post.senderId} />
-        <div className="cursor-pointer" onClick={() => { setIsOpen(!isOpen); }}>
-          <HiDotsVertical size={20} {...isOpen ? { className: "mt-2 fill-light_button_BG_hover" } : { className: "mt-2 fill-button_blue_BG" }} />
+        <div className={isOpen ? styles.dropdownButtonPress : styles.dropdownButton} onClick={() => { setIsOpen(!isOpen); }}>
+          <HiDotsVertical size={20}  />
         </div>
         {isOpen &&
-          <div className="absolute z-50 p-3 flex flex-col top-[40px] right-0 bg-white text-gray-900 border border-light_border rounded-lg
-            dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border">
-            <div className='cursor-pointer text-dark_text_gray hover:text-button_blue_BG' onClick={() => { setIsOpen(false); setIsOpenComplaint(true); }}>Complain</div>
-            <div className='cursor-pointer text-dark_text_gray hover:text-button_blue_BG' onClick={() => { setIsOpen(false); setIsOpenComments(true); }}>Comments</div>
-            <div className='cursor-pointer text-dark_text_gray hover:text-button_blue_BG' onClick={() => { setIsOpen(false); removePost(); }}>Remove</div>
+          <div className={styles.dropdownContainer}>
+            <div className={styles.item} onClick={() => { setIsOpen(false); setIsOpenComplaint(true); }}>{props.local.posts.report} </div>
+            <div className={styles.item} onClick={() => { setIsOpen(false); setIsOpenComments(true); }}>{props.local.posts.likes} </div>
+            <div className={styles.item} onClick={() => { setIsOpen(false); removePost(); }}>{props.local.posts.delete} </div>
           </div>
         }
         <Complaint isOpen={isOpenComplaint} setIsOpen={setIsOpenComplaint} userId={props.post.senderId} />
       </div>
-      <div className='flex flex-col my-1'>
+      <div className={styles.postTextContainer}>
         <div className="my-3">
           {props.post.text}
         </div>
@@ -70,25 +69,25 @@ export default function PostInfo(props: any) {
           {props.post.likes.includes(props.myId) ? (
             <button onClick={like} className='flex items-center text-button_blue_BG'>
               <AiFillLike className="fill-button_blue_BG" />
-              Liked ({props.post.likes.length})
+              {props.local.posts.likes} ({props.post.likes.length})
             </button>
           ) : (
             <button onClick={like} className='flex items-center'>
               <AiFillLike className="fill-gray-500" />
-              Liked ({props.post.likes.length})
+              {props.local.posts.likes}  ({props.post.likes.length})
             </button>
           )}
-          <div className="cursor-pointer flex flex-row flex-nowrap items-center hover:text-button_blue_BG" onClick={() => { setIsOpenComments(!isOpenComments) }} >
+          <div className={styles.postFooterContainer} onClick={() => { setIsOpenComments(!isOpenComments) }} >
             {isOpenComments ? <ImArrowUp size={14} className="mx-1" />:<ImArrowDown size={14} className="mx-1" />}
-            Comments ({Object.entries(props.post.comments).length})
+            {props.local.posts.comments}  ({Object.entries(props.post.comments).length})
           </div>
 
         </div>
         {isOpenComments &&
           <div>
             <div className={styles.verticalContainer}>
-              <div className='flex flex-col w-11/12'>
-                <textarea className={styles.textarea} onChange={handleChange} value={text}></textarea>
+              <div className={styles.textareaContainer}>
+                <textarea placeholder={props.local.posts.placeholder} className={styles.textarea} onChange={handleChange} value={text}></textarea>
               </div>
 
               <div className={styles.buttonContainer}>
@@ -96,7 +95,7 @@ export default function PostInfo(props: any) {
                   <DropDownEmoji addEmoji={addEmoji} isLower={false} />
                 </div>
                 <div className='mx-1'>
-                  <button className={styles.button} onClick={sendComment}>
+                  <button className={styles.button} title={props.local.posts.tooltip.send} onClick={sendComment}>
                     <BsFillSendFill className='fill-white' />
                   </button>
                 </div>

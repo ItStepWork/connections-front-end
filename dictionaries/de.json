@@ -34,6 +34,11 @@
     "event" : "Ereignis",
     "activity" : "Aktivität",
     "placeholder" : "Teile deine Gedanken...",   
+    "file" : "Datei angehängt",   
+    "report" : "Beschweren",
+    "comments" : "Kommentare",
+    "delete" : "Löschen",
+    "likes" : "Likes",
     "postPhoto" : {
       "title" : "Foto veröffentlichen",
       "upload" : "Foto hochladen",
@@ -55,7 +60,8 @@
       "event" : "Ereignis",
       "activity" : "Aktivität",
       "location" : "Standort",
-      "tag" : "Personen Markieren"
+      "tag" : "Personen Markieren",
+      "send" : "Schicken"
     }
   },
   "search" : {

@@ -1,6 +1,6 @@
 import { FiSearch } from 'react-icons/fi';
-import styles from './postsCard.module.scss';
 import PostInfo from '../postInfo/postInfo';
+import styles from './postsCard.module.scss';
 
 export const PostsCard = (props: any) => {
 
@@ -11,10 +11,10 @@ export const PostsCard = (props: any) => {
           <span className={styles.iconSearch}>
             <FiSearch size={20} />
           </span>
-          <input type="text" className={styles.inputSearch} placeholder="Введите название" />
+          <input type="text" className={styles.inputSearch} placeholder={props.local.search.searchPost} />
         </div>
         {props.posts.map((post: any)=> (
-          <PostInfo key={post.id} myId={props.myId} userId={props.userId} post={post} />
+          <PostInfo key={post.id} myId={props.myId} local={props.local} userId={props.userId} post={post} />
         ))}
       </div >
     </>

@@ -27,7 +27,7 @@ export default function Main({ local, session }: { local: any, session: any }, p
 
   return (
     <div className={styles.container}>
-      <Menu setComponent={setComponent} local={local} />
+      <Menu setComponent={setComponent} local={local} myId={session.user.id} userId={session.user.id} />
       <div className={styles.containerContent}>
         {session ? ChangeComponent() : <></>}
       </div>

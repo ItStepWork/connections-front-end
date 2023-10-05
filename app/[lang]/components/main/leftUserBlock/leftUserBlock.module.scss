@@ -13,6 +13,9 @@
 		@apply relative w-full overflow-hidden h-[50px];
 		.bg {
 			@apply overflow-hidden;
+			img {
+				@apply w-screen h-[50px] object-cover outline-none;
+			}
 		}
 	}
 	.aboutMeBlock {
@@ -30,7 +33,10 @@
 			@apply dark:text-dark_text_gray text-gray-900 text-sm;
 		}
 		.avatar {
-			@apply border rounded-md overflow-hidden text-center absolute top-[-20px] left-[20px];
+			@apply border border-blue-500 backdrop-blur-md rounded-md overflow-hidden text-center absolute top-[-20px] left-[20px];
+			img {
+				@apply w-[64px] h-[64px] object-cover;
+			}
 		}
 		.followsBlock {
 			@apply flex items-center justify-center px-5 h-full w-full;

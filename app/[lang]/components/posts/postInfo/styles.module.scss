@@ -1,6 +1,38 @@
-.verticalContainer {
-	@apply flex my-3 justify-between;
+.container {
+	@apply border border-light_border rounded-lg dark:border-dark_border p-3 my-3;
+	.postHeaderContainer {
+		@apply relative my-3 w-full flex flex-row flex-nowrap justify-between;
+		.dropdownButton {
+			@apply cursor-pointer mt-2 text-button_blue_BG;
+		}
+		.dropdownButtonPress {
+			@apply cursor-pointer mt-2 text-light_button_BG_hover;
+		}
+		.dropdownContainer {
+			@apply absolute z-50 p-3 flex flex-col top-[40px] right-0 bg-white text-gray-900 border border-light_border rounded-lg
+			 dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border;
+			.item {
+				@apply cursor-pointer text-dark_text_gray hover:text-button_blue_BG transition-all duration-300 ease-in;
+			}
+			.item:last-child {
+				@apply hover:text-button_red_BG;
+			}
+		}
+	}
+	.postTextContainer {
+		@apply flex flex-col my-1;
+	}
+	.postFooterContainer {
+		@apply cursor-pointer flex flex-row flex-nowrap items-center hover:text-button_blue_BG;
+	}
+	.verticalContainer {
+		@apply flex my-3 justify-between;
+		.textareaContainer {
+			@apply flex flex-col w-11/12;
+		}
+	}
 }
+
 .buttonContainer {
 	@apply flex items-end;
 }

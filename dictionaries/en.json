@@ -34,6 +34,11 @@
     "event" : "Event",
     "activity" : "Activity",
     "placeholder" : "Share your thoughts...",   
+    "file" : "file ready",   
+    "report" : "Report",
+    "comments" : "Comments",
+    "delete" : "Delete",
+    "likes" : "Likes",
     "postPhoto" : {
       "title" : "Publish photo",
       "upload" : "Upload Photo",
@@ -55,7 +60,8 @@
       "event" : "Event",
       "activity" : "Activity",
       "location" : "Location",
-      "tag" : "Tag people"
+      "tag" : "Tag people",
+      "send" : "Send"
     }
   },
   "search" : {
