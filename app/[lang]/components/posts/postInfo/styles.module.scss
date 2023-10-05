@@ -23,7 +23,22 @@
 		@apply flex flex-col my-1;
 	}
 	.postFooterContainer {
-		@apply cursor-pointer flex flex-row flex-nowrap items-center hover:text-button_blue_BG;
+		@apply flex justify-between;
+		.postArrowContainer {
+			@apply cursor-pointer flex flex-row flex-nowrap items-center hover:text-button_blue_BG transition-all ease-in duration-300;
+		}
+		.buttonLikeActive {
+			@apply flex items-center text-button_blue_BG;
+			.icon {
+				@apply fill-button_blue_BG;
+			}
+		}
+		.buttonLikeInactive {
+			@apply flex items-center;
+			.icon {
+				@apply fill-gray-500;
+			}
+		}
 	}
 	.verticalContainer {
 		@apply flex my-3 justify-between;

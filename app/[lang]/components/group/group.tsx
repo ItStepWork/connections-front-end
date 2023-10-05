@@ -72,7 +72,7 @@ export function GroupPage(props: any) {
         else if (component === "about") return (<AboutCard group={group} members={Object.entries(membersFriends).length} local={props.local} />)
         else if (component === "photo") return (<Photos group={group} session={props.session} getPhotos={getPhotos} photos={photos} local={props.local} />)
         else if (component === "posts") return (<Posts local={props.local} session={props.session} myId={props.session.user.id} userId={props.id[0]}/>)
-        else return (<> "Блядська рука кремля"</>)
+        else return (<></>)
     }
     return (
         <>

@@ -1,13 +1,13 @@
 'use client'
 
 import { useEffect, useState } from 'react';
-import { AiOutlinePlus } from 'react-icons/ai';
+import { AiOutlineUsergroupAdd } from 'react-icons/ai';
 import { FiSearch } from 'react-icons/fi';
 import { CreateGroup } from '../../../../../app/[lang]/components/userProfile/groupsCard/createGroup/createGroup';
 import { GroupService } from '../../../../../services/group.service';
+import { SubscriptionService } from '../../../../../services/subscription.service';
 import { Card } from './card';
 import styles from './groupsCard.module.scss';
-import { SubscriptionService } from '../../../../../services/subscription.service';
 
 export function GroupsCard(props: any) {
 
@@ -48,7 +48,7 @@ export function GroupsCard(props: any) {
           </div>
           {props.session?.user?.id === props.userId &&
             <button className={styles.button} onClick={openDialog} >
-              <AiOutlinePlus className="dark:fill-blue" size={35}></AiOutlinePlus>
+              <AiOutlineUsergroupAdd className="dark:fill-blue" size={35}></AiOutlineUsergroupAdd>
             </button>}
         </div>
         <div className={styles.inputContainer}>

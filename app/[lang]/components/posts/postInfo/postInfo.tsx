@@ -65,19 +65,19 @@ export default function PostInfo(props: any) {
         }
       </div>
       <div>
-        <div className='flex justify-between'>
+        <div className={styles.postFooterContainer}>
           {props.post.likes.includes(props.myId) ? (
-            <button onClick={like} className='flex items-center text-button_blue_BG'>
-              <AiFillLike className="fill-button_blue_BG" />
+            <button onClick={like} className={styles.buttonLikeActive}>
+              <AiFillLike className={styles.icon} />
               {props.local.posts.likes} ({props.post.likes.length})
             </button>
           ) : (
-            <button onClick={like} className='flex items-center'>
-              <AiFillLike className="fill-gray-500" />
+            <button onClick={like} className={styles.buttonLikeInactive}>
+              <AiFillLike className={styles.icon} />
               {props.local.posts.likes}  ({props.post.likes.length})
             </button>
           )}
-          <div className={styles.postFooterContainer} onClick={() => { setIsOpenComments(!isOpenComments) }} >
+          <div className={styles.postArrowContainer} onClick={() => { setIsOpenComments(!isOpenComments) }} >
             {isOpenComments ? <ImArrowUp size={14} className="mx-1" />:<ImArrowDown size={14} className="mx-1" />}
             {props.local.posts.comments}  ({Object.entries(props.post.comments).length})
           </div>

@@ -14,7 +14,7 @@
 		.bg {
 			@apply overflow-hidden;
 			img {
-				@apply w-screen h-[50px] object-cover outline-none;
+				@apply w-full h-[50px] object-cover outline-none;
 			}
 		}
 	}
