@@ -7,9 +7,9 @@ import { AboutCard } from './aboutBlock/aboutCard';
 import { ConnectionsCard } from './connectionsCard/connectionsCard';
 import { HeaderBlock } from './headerBlock/headerBlock';
 import Photos from './photos/page';
-import { PostsCard } from './postsCard/postsCard';
 import styles from './styles.module.scss';
 import { SubscriptionService } from '../../../../services/subscription.service';
+import Posts from '../posts/page';
 
 export function GroupPage(props: any) {
     const [id, setId] = useState(0)
@@ -70,8 +70,8 @@ export function GroupPage(props: any) {
         if (component === "members") return (<ConnectionsCard key={"members" + membersFriends.length + id} isRequests={false} session={props.session} users={membersFriends} group={group} getGroup={getGroup} getUsers={getUsers} local={props.local} />)
         else if (component === "requests") return (<ConnectionsCard key={"requests" + usersRequests.length + id} isRequests={true} session={props.session} users={usersRequests} group={group} getGroup={getGroup} getUsers={getUsers} local={props.local} />)
         else if (component === "about") return (<AboutCard group={group} members={Object.entries(membersFriends).length} local={props.local} />)
-        else if (component === "posts") return (<PostsCard local={props.local} />)
         else if (component === "photo") return (<Photos group={group} session={props.session} getPhotos={getPhotos} photos={photos} local={props.local} />)
+        else if (component === "posts") return (<Posts local={props.local} session={props.session} myId={props.session.user.id} userId={props.id[0]}/>)
         else return (<> "Блядська рука кремля"</>)
     }
     return (

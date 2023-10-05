@@ -29,7 +29,7 @@ export default function PostInfo(props: any) {
   }
 
   const removePost = async () => {
-    await PostService.removePost(props.post.id);
+    await PostService.removePost(props.post.id, props.userId);
   }
 
   function handleChange(event: any) {

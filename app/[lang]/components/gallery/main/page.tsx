@@ -1,5 +1,5 @@
 "use client"
-import { getSession } from 'next-auth/react';
+
 import { useEffect, useState } from 'react';
 import { GalleryService } from '../../../../../services/gallery.service';
 import Albums from "../albums/page";
@@ -10,14 +10,8 @@ import styles from './styles.module.scss';
 export default function Gallery(props: any) {
 
   const [component, setComponent] = useState("photos");
-  const [user, setUser] = useState<any>(null);
   const [albums, setAlbums] = useState<any[]>([]);
   const [photos, setPhotos] = useState<any[]>([]);
-  const getUser = async()=>{
-    const session = await getSession();
-    setUser(session?.user)
-    get();
-  }
 
   const get = async () => {
     let result1 = await GalleryService.getAlbums(props.userId);
@@ -28,7 +22,7 @@ export default function Gallery(props: any) {
   }
   
   useEffect(() => {
-    getUser();
+    get();
   }, []);
 
   const render = () => {
