@@ -5,6 +5,7 @@ import FooterBlock from '../../messaging/footerBlock/page';
 import Window from '../../messaging/window/page';
 import { ConnectionBlock } from './connectionBlock';
 import styles from './connectionsCard.module.scss';
+import { SubscriptionService } from '../../../../../services/subscription.service';
 
 export const ConnectionsCard = (props: any) => {
 
@@ -17,18 +18,7 @@ export const ConnectionsCard = (props: any) => {
 
   useEffect(() => {
     getUsers();
-    let socket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToFriendsUpdates`, ["client", props.session.user.accessToken]);
-    socket.addEventListener('message', (event) => {
-      getUsers();
-    });
-    let intervalId = setInterval(() => {
-      if (socket.OPEN) socket.send("ping");
-      else clearInterval(intervalId);
-    }, 30000);
-    return () => {
-      setInterval(() => { if (socket.OPEN) socket.close(); }, 1000)
-      clearInterval(intervalId);
-    };
+    return SubscriptionService.subscribeToChannel(props.session.user.accessToken, `Subscription/SubscribeToFriendsUpdates`, getUsers);
   }, []);
 
   const changeSearch = (event: any) => {

@@ -9,6 +9,7 @@ import { HeaderBlock } from './headerBlock/headerBlock';
 import Photos from './photos/page';
 import { PostsCard } from './postsCard/postsCard';
 import styles from './styles.module.scss';
+import { SubscriptionService } from '../../../../services/subscription.service';
 
 export function GroupPage(props: any) {
     const [id, setId] = useState(0)
@@ -22,35 +23,11 @@ export function GroupPage(props: any) {
     useEffect(() => {
         getData();
         getPhotos();
-        let grpSocket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToGroupUpdates?id=${props.id}`, ["client", props.session.user.accessToken]);
-        let friendSocket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToFriendsUpdates`, ["client", props.session.user.accessToken]);
-        grpSocket.addEventListener('message', async (event) => {
-            await getUsers()
-            await getGroup();
-            // getUserSession();
-            await getPhotos();
-
-        });
-        friendSocket.addEventListener('message', async (event) => {
-            await getUsers();
-            await getGroup();
-        });
-        let grpIntervalId = setInterval(() => {
-            if (grpSocket.OPEN) grpSocket.send("ping");
-            else clearInterval(grpIntervalId);
-        }, 30000);
-        let frndIntervalId = setInterval(() => {
-            if (friendSocket.OPEN) friendSocket.send("ping");
-            else clearInterval(frndIntervalId);
-        }, 30000);
-        return () => {
-            setInterval(() => {
-                if (grpSocket.OPEN) grpSocket.close();
-                if (friendSocket.OPEN) friendSocket.close();
-            }, 1000)
-            clearInterval(grpIntervalId);
-            clearInterval(frndIntervalId);
-        };
+        return SubscriptionService.subscribeToTwoChannels(props.session.user.accessToken,
+            `Subscription/SubscribeToGroupUpdates?id=${props.id}`,
+            async () => { await getUsers(); await getGroup(); await getPhotos(); },
+            `Subscription/SubscribeToFriendsUpdates`,
+            async () => { await getUsers(); await getGroup(); });
     }, []);
     const getData = async () => {
         let result = await GroupService.getGroup(props.id);

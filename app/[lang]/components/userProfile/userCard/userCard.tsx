@@ -16,6 +16,7 @@ import FooterBlock from '../../messaging/footerBlock/page';
 import Window from '../../messaging/window/page';
 import OnlineUser from '../../onlineUser/page';
 import styles from './userCard.module.scss';
+import { SubscriptionService } from '../../../../../services/subscription.service';
 
 export function UserCard(props: any) {
 
@@ -26,30 +27,7 @@ export function UserCard(props: any) {
 
   useEffect(() => {
     getData();
-    let userSocket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToUserUpdates?id=${props.userId}`, ["client", props.session.user.accessToken]);
-    let friendSocket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToFriendsUpdates`, ["client", props.session.user.accessToken]);
-    userSocket.addEventListener('message', async (event) => {
-      await getUser();
-    });
-    friendSocket.addEventListener('message', async (event) => {
-      await getData();
-    });
-    let userIntervalId = setInterval(() => {
-      if (userSocket.OPEN) userSocket.send("ping");
-      else clearInterval(userIntervalId);
-    }, 30000);
-    let friendIntervalId = setInterval(() => {
-      if (friendSocket.OPEN) friendSocket.send("ping");
-      else clearInterval(friendIntervalId);
-    }, 30000);
-    return () => {
-      setInterval(() => {
-        if (userSocket.OPEN) userSocket.close();
-        if (friendSocket.OPEN) friendSocket.close();
-      }, 1000)
-      clearInterval(userIntervalId);
-      clearInterval(friendIntervalId);
-    };
+    return SubscriptionService.subscribeToTwoChannels(props.session.user.accessToken, `Subscription/SubscribeToUserUpdates?id=${props.userId}`, getUser, `Subscription/SubscribeToFriendsUpdates`, getData);
   }, []);
 
   const getUser = async () => {

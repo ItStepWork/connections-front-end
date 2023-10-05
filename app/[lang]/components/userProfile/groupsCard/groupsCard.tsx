@@ -7,6 +7,7 @@ import { CreateGroup } from '../../../../../app/[lang]/components/userProfile/gr
 import { GroupService } from '../../../../../services/group.service';
 import { Card } from './card';
 import styles from './groupsCard.module.scss';
+import { SubscriptionService } from '../../../../../services/subscription.service';
 
 export function GroupsCard(props: any) {
 
@@ -17,18 +18,7 @@ export function GroupsCard(props: any) {
 
   useEffect(() => {
     getGroups();
-    let socket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToGroupsUpdates`, ["client", props.session.user.accessToken]);
-    socket.addEventListener('message', (event) => {
-      getGroups();
-    });
-    let intervalId = setInterval(() => {
-      if (socket.OPEN) socket.send("ping");
-      else clearInterval(intervalId);
-    }, 30000);
-    return () => {
-      setInterval(() => { if (socket.OPEN) socket.close(); }, 1000)
-      clearInterval(intervalId);
-    };
+    return SubscriptionService.subscribeToChannel(props.session.user.accessToken, `Subscription/SubscribeToGroupsUpdates`, getGroups);
   }, []);
   const getGroups = async () => {
     let result = await GroupService.getGroups(props.userId);

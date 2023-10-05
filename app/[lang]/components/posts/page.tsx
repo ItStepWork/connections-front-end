@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useState } from "react";
-import { FollowsBlock } from '../main/follows/followsBlock';
 import StoriesBlock from '../main/stories/stories-block/stories-block';
 import styles from './styles.module.scss';
 import CreatePost from './createPost/page';

@@ -6,6 +6,7 @@ import styles from './styles.module.scss';
 import { Gender, NotificationType } from '../../../../enums/all.enum';
 import Link from 'next/link';
 import React from 'react';
+import { SubscriptionService } from '../../../../services/subscription.service';
 
 export default function Notifications(props: any) {
 
@@ -14,18 +15,7 @@ export default function Notifications(props: any) {
 
   useEffect(() => {
     getNotifications();
-    let socket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToNotificationUpdates`, ["client", props.accessToken]);
-    socket.addEventListener('message', (event) => {
-      getNotifications();
-    });
-    let intervalId = setInterval(() => {
-      if (socket.OPEN) socket.send("ping");
-      else clearInterval(intervalId);
-    }, 30000);
-    return () => {
-      setInterval(() => { if (socket.OPEN) socket.close(); }, 1000)
-      clearInterval(intervalId);
-    };
+    return SubscriptionService.subscribeToChannel(props.accessToken, `Subscription/SubscribeToNotificationUpdates`, getNotifications);
   }, []);
 
   const getNotifications = async () => {

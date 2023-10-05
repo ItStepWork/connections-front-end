@@ -13,6 +13,7 @@ import MainBlock from '../mainBlock/page';
 import NewMessage from '../newMessage/page';
 import Window from '../window/page';
 import styles from './styles.module.scss';
+import { SubscriptionService } from '../../../../../services/subscription.service';
 
 export default function Messaging({ local, session }: { local: any, session: any }, props: any) {
   const [user, setUser] = useState<any>(null);
@@ -56,21 +57,12 @@ export default function Messaging({ local, session }: { local: any, session: any
   useEffect(() => {
     loadDialogs();
     loadUsers();
-    let socket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToMessagesUpdates`, ["client", session.user.accessToken]);
-    socket.addEventListener('message', (event) => {
+    return SubscriptionService.subscribeToChannel(session.user.accessToken, `Subscription/SubscribeToMessagesUpdates`, ()=>{
       loadDialogs();
       if (user !== null) {
         loadMessages(user.id);
       }
     });
-    let intervalId = setInterval(() => {
-      if (socket.OPEN) socket.send("ping");
-      else clearInterval(intervalId);
-    }, 30000);
-    return () => {
-      setInterval(() => { if (socket.OPEN) socket.close(); }, 1000)
-      clearInterval(intervalId);
-    };
   }, [user]);
 
   return (

@@ -27,7 +27,7 @@ export function EditGroup(props: any) {
     const notifySuccess = (text: string) => toast.success(text, {});
     const router = useRouter();
     const deleteGroup = async () => {
-        props.groupSocket.close();
+        // props.groupSocket.close();
         let result = await GroupService.deleteGroup(props.group.id);
         if (result === null) notifyErrorServer()
         else {
