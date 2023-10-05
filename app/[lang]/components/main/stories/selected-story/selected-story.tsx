@@ -18,21 +18,20 @@ const SelectedStory = (props:any) => {
     await StoriesServices.deleteStoryAndPhotos(props.storyId);
     props.setIsSelected(false);
   }
-
   return (
     <>
     {props.isSelected ? (
         <div className={styles.container}>
           <div className={styles.close}>
-            <button title="delete with photo"
+            <button title={props.local.stories.selected.deleteAll}
               onClick={() => { deleteStoryAndPhotos() }}>
               <MdOutlineNoPhotography size={30} />
             </button>
-            <button title="delete story"
+            <button title={props.local.stories.selected.delete}
             onClick={() => { deleteStory() }}>
               <FaTrash size={26} />
             </button>
-            <button title="close" onClick={() => { props.setIsSelected(false) }}><MdClose size={40} /></button>
+            <button title={props.local.stories.selected.close} onClick={() => { props.setIsSelected(false) }}><MdClose size={40} /></button>
           </div>
           <div className={styles.carouselContainer}>          
             <div className={styles.carousel}>

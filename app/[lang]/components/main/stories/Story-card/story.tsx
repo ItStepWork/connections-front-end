@@ -20,7 +20,7 @@ const Story = (props: any) => {
           <img className={styles.img} src={props.story.photos[0].url} alt="cover" onClick={select} />
         </div>
       }
-      <SelectedStory key={props.story.id} isSelected={isSelected} photos={props.story.photos} setIsSelected={setIsSelected} storyId={props.story.id} />
+      <SelectedStory key={props.story.id} local={props.local} isSelected={isSelected} photos={props.story.photos} setIsSelected={setIsSelected} storyId={props.story.id} />
     </>
   )
 };

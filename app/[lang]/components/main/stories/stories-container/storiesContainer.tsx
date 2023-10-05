@@ -17,6 +17,7 @@ export const Stories = (props : any) => {
             myId={props.myId} 
             userId={props.userId} 
             index={index}
+            local={props.local}
             />)                
         })
         : <div className={styles.empty}><h2>у вас нет сторис</h2></div>

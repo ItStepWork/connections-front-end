@@ -316,7 +316,12 @@
   },
   "stories" : {
     "add" : "Add",
-    "story" : "story"
+    "story" : "story",
+    "selected" : {
+      "delete" : "Delete only Story",
+      "deleteAll" : "Delete Story and Photo",
+      "close" : "Close"
+    }
   },
   "gallery" : {
     "title" : "Gallery",

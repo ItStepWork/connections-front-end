@@ -316,7 +316,12 @@
   },
   "stories" : {
     "add" : "Ajouter",
-    "story" : "histoire"
+    "story" : "histoire",
+    "selected" : {
+      "delete" : "Supprimer uniquement l'histoire",
+      "deleteAll" : "Supprimer l'histoire et la photo",
+      "close" : "Fermer"
+    }
   },
   "gallery" : {
     "title" : "Galerie",
