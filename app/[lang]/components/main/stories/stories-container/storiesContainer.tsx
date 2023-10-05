@@ -1,5 +1,3 @@
-'use client'
-import { useState } from "react";
 import Story from "../Story-card/story";
 import styles from "./stories-container.module.scss";
 

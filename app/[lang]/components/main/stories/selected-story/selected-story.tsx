@@ -46,7 +46,7 @@ const SelectedStory = (props:any) => {
                 swipeable={true}
                 interval={15000}>
                   {props.photos.map((photo: any) => {
-                    return(<img src={photo.url} alt='photo' />)
+                    return(<img key={photo.id} src={photo.url} alt='photo' />)
                   })}
               </Carousel>
             </div>

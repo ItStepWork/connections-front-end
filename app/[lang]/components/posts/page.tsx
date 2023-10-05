@@ -8,6 +8,7 @@ import CreatePost from './createPost/page';
 import { PostsCard } from './postsCard/postsCard';
 import { PostService } from '../../../../services/post.service';
 import { StoriesServices } from "../../../../services/stories.service";
+import { SubscriptionService } from "../../../../services/subscription.service";
 
 export default function Posts(props: any) {
   
@@ -16,18 +17,7 @@ export default function Posts(props: any) {
 
   useEffect(() => {
     load();
-    let socket = new WebSocket(process.env.NEXT_PUBLIC_SUBSCRIPTION_API + `Subscription/SubscribeToPostsUpdates?id=${props.userId}`, ["client", props.session.user.accessToken]);
-    socket.addEventListener('message', (event) => {
-      getPosts();
-    });
-    let intervalId = setInterval(() => {
-      if (socket.OPEN) socket.send("ping");
-      else clearInterval(intervalId);
-    }, 30000);
-    return () => {
-      setInterval(() => { if (socket.OPEN) socket.close(); }, 1000)
-      clearInterval(intervalId);
-    };
+    return SubscriptionService.subscribeToTwoChannels(props.session.user.accessToken, `Subscription/SubscribeToPostsUpdates?id=${props.userId}`, getPosts, `Subscription/SubscribeToStoriesUpdates?id=${props.userId}`, getStories);
   }, [])
 
   const load = async () => {
