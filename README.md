@@ -47,3 +47,4 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 12. react-simple-maps
 13. react-toastify
 14. react-intersection-observer
+15. react-responsive-carousel
