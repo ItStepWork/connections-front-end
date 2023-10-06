@@ -1,5 +1,5 @@
 "use client"
-import { useSession } from "next-auth/react"
+import { getSession, useSession } from "next-auth/react"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { FcAdvertising, FcBusinessman, FcCalendar, FcCollaboration, FcHome, FcNews, FcSettings, FcStackOfPhotos } from "react-icons/fc"
@@ -9,6 +9,7 @@ import { PostService } from "../../../../../services/post.service"
 import { useStore } from "../../../../../stores/userDataStore"
 import styles from "./leftUserBlock.module.scss"
 import { UserService } from "../../../../../services/user.service"
+import { SubscriptionService } from "../../../../../services/subscription.service"
 
 export const LeftUserBlock = (props: any) => {
   const [avatar, bg] = useStore((state) => [state.avatar, state.BgImage])
@@ -48,6 +49,7 @@ export const LeftUserBlock = (props: any) => {
   useEffect(() => {
     getData();
     getUser();
+    return SubscriptionService.subscribeToChannel(props.session.user.accessToken, `Subscription/SubscribeToUserUpdates?id=${props.session.user.id}`, getUser);
   }, [])
 
   return (
