@@ -15,7 +15,7 @@ export default function Notifications(props: any) {
 
   useEffect(() => {
     getNotifications();
-    return SubscriptionService.subscribeToChannel(props.accessToken, `Subscription/SubscribeToNotificationUpdates`, getNotifications);
+    return SubscriptionService.subscribeToChannel(props.session.user.accessToken, `Subscription/SubscribeToNotificationUpdates`, getNotifications);
   }, []);
 
   const getNotifications = async () => {
