@@ -15,7 +15,10 @@ export enum ComponentName {
     Posts,
     Photos,
     Albums,
-    Stories
+    Stories,
+    Requests,
+    Members,
+    AboutGroup
 }
 
 export enum AdminComponentName {
@@ -94,4 +97,5 @@ export enum FileFormats {
     Gif = ".gif",
     Webp = ".webp",
     Avif = ".avif",
+    All = ".jpg, .jpeg, .png, .gif, .avif, .webp, .svg, .JPG, .JPEG"
 }
