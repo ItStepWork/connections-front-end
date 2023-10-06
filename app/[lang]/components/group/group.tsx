@@ -23,11 +23,10 @@ export function GroupPage(props: any) {
     useEffect(() => {
         getData();
         getPhotos();
-        return SubscriptionService.subscribeToTwoChannels(props.session.user.accessToken,
-            `Subscription/SubscribeToGroupUpdates?id=${props.id}`,
-            async () => { await getUsers(); await getGroup(); await getPhotos(); },
-            `Subscription/SubscribeToFriendsUpdates`,
-            async () => { await getUsers(); await getGroup(); });
+        return SubscriptionService.subscribeToChannels(props.session.user.accessToken, [
+            { path: `Subscription/SubscribeToGroupUpdates?id=${props.id}`, func: async () => { await getUsers(); await getGroup(); await getPhotos(); } },
+            { path: `Subscription/SubscribeToFriendsUpdates`, func: async () => { await getUsers(); await getGroup(); } }
+        ]);
     }, []);
     const getData = async () => {
         let result = await GroupService.getGroup(props.id);
@@ -71,7 +70,7 @@ export function GroupPage(props: any) {
         else if (component === "requests") return (<ConnectionsCard key={"requests" + usersRequests.length + id} isRequests={true} session={props.session} users={usersRequests} group={group} getGroup={getGroup} getUsers={getUsers} local={props.local} />)
         else if (component === "about") return (<AboutCard group={group} members={Object.entries(membersFriends).length} local={props.local} />)
         else if (component === "photo") return (<Photos group={group} session={props.session} getPhotos={getPhotos} photos={photos} local={props.local} />)
-        else if (component === "posts") return (<Posts local={props.local} session={props.session} myId={props.session.user.id} userId={props.id[0]}/>)
+        else if (component === "posts") return (<Posts local={props.local} session={props.session} myId={props.session.user.id} userId={props.id[0]} />)
         else return (<></>)
     }
     return (

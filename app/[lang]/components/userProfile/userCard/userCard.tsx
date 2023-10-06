@@ -27,7 +27,10 @@ export function UserCard(props: any) {
 
   useEffect(() => {
     getData();
-    return SubscriptionService.subscribeToTwoChannels(props.session.user.accessToken, `Subscription/SubscribeToUserUpdates?id=${props.userId}`, getUser, `Subscription/SubscribeToFriendsUpdates`, getData);
+    return SubscriptionService.subscribeToChannels(props.session.user.accessToken, [
+      { path: `Subscription/SubscribeToUserUpdates?id=${props.userId}`, func: getUser },
+      { path: `Subscription/SubscribeToFriendsUpdates`, func: getData },
+    ]);
   }, []);
 
   const getUser = async () => {
