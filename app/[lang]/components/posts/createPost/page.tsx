@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { BsFillSendFill } from 'react-icons/bs';
 import { FaRegWindowClose } from 'react-icons/fa';
 import { ImAttachment } from 'react-icons/im';
+import { FileFormats } from '../../../../../enums/all.enum';
 import { PostService } from '../../../../../services/post.service';
 import DropDownEmoji from '../../messaging/dropDownEmoji/page';
 import styles from './styles.module.scss';
@@ -14,7 +15,8 @@ export default function CreatePost(props: any) {
   const [file, setFile] = useState(null);
 
   const saveFile = (e: any) => {
-    if (e.target.files[0].name.endsWith('.jpg') || e.target.files[0].name.endsWith('.jpeg') || e.target.files[0].name.endsWith('.png')) {
+    if (e.target.files[0].name.endsWith(FileFormats.Jpg) || e.target.files[0].name.endsWith(FileFormats.JPG) || e.target.files[0].name.endsWith(FileFormats.Jpeg) || e.target.files[0].name.endsWith(FileFormats.JPEG) 
+    || e.target.files[0].name.endsWith(FileFormats.Avif) || e.target.files[0].name.endsWith(FileFormats.Gif) || e.target.files[0].name.endsWith(FileFormats.Svg) || e.target.files[0].name.endsWith(FileFormats.Webp)) {
       setFile(e.target.files[0]);
     }
   }

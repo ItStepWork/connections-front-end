@@ -84,3 +84,14 @@ export enum MessageStatus {
     Unread = "Unread",
     Read = "Read",
 }
+
+export enum FileFormats {
+    Jpg = ".jpg",
+    Jpeg = ".jpeg",
+    JPG = ".JPG",
+    JPEG = ".JPEG",
+    Svg = ".svg",
+    Gif = ".gif",
+    Webp = ".webp",
+    Avif = ".avif",
+}
