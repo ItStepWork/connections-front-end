@@ -8,26 +8,28 @@ import { FriendService } from "../../../../../services/friend.service"
 import { PostService } from "../../../../../services/post.service"
 import { useStore } from "../../../../../stores/userDataStore"
 import styles from "./leftUserBlock.module.scss"
+import { UserService } from "../../../../../services/user.service"
 
-export const LeftUserBlock = (props:any) => {
+export const LeftUserBlock = (props: any) => {
   const [avatar, bg] = useStore((state) => [state.avatar, state.BgImage])
   const { data: session } = useSession();
   const [friendsCount, setFriendsCount] = useState<number>(0);
   const [postsCount, setPostsCount] = useState<number>(0);
-  
+  const [user, setUser] = useState<any>(null);
 
   const getData = async () => {
     const postResult: any[] = await PostService.getPosts(props.myId);
     setPostsCount(postResult.length);
-    
+
     const friendsResult: any[] = await FriendService.getFriends(props.myId);
     const sort = friendsResult.filter((obj) => {
       return obj.friendStatus === 'Confirmed';
     })
     setFriendsCount(sort.length);
   }
+
   //const [hydrated, setHydrated] = useState(false);
-  
+
   /*
   useEffect(() => {
     setHydrated(true);
@@ -38,8 +40,14 @@ export const LeftUserBlock = (props:any) => {
   }
   */
 
+  const getUser = async () => {
+    let result = await UserService.getCurrentUser();
+    setUser(result);
+  }
+
   useEffect(() => {
     getData();
+    getUser();
   }, [])
 
   return (
@@ -48,17 +56,17 @@ export const LeftUserBlock = (props:any) => {
         <div className={styles.imagesBlock}>
           <div className={styles.bg}>
             {
-              bg && 
-              <img src={bg}></img>
-            }        
+              user?.backgroundUrl &&
+              <img src={user.backgroundUrl}></img>
+            }
           </div>
 
         </div>
         <div className={styles.aboutMeBlock}>
           <div className={styles.avatar}>
             {
-              avatar &&
-              <img src={avatar}></img>
+              user?.avatarUrl &&
+              <img src={user.avatarUrl}></img>
             }
           </div>
           <h3>{session?.user?.firstName + ' ' + session?.user?.lastName}</h3>
@@ -81,13 +89,13 @@ export const LeftUserBlock = (props:any) => {
             <div className={styles.icon}>
               <FcHome size={20} />
             </div>
-            <button onClick={()=>{props.setComponent(ComponentName.Posts); props.setIsOpen(false);}}>{props.local.main.feed}</button>
+            <button onClick={() => { props.setComponent(ComponentName.Posts); props.setIsOpen(false); }}>{props.local.main.feed}</button>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
               <FcBusinessman size={20} />
             </div>
-            <button onClick={()=>{props.setComponent(ComponentName.Connections); props.setIsOpen(false);}}>{props.local.main.contacts}</button>
+            <button onClick={() => { props.setComponent(ComponentName.Connections); props.setIsOpen(false); }}>{props.local.main.contacts}</button>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
@@ -99,26 +107,26 @@ export const LeftUserBlock = (props:any) => {
             <div className={styles.icon}>
               <FcCalendar size={20} />
             </div>
-            <button onClick={()=>{props.setComponent(ComponentName.Celebration); props.setIsOpen(false);}}>{props.local.main.events}</button>
+            <button onClick={() => { props.setComponent(ComponentName.Celebration); props.setIsOpen(false); }}>{props.local.main.events}</button>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
               <FcCollaboration size={20} />
             </div>
             {/* <Link href={'/profilePage'}>Группы</Link> */}
-            <button onClick={()=>{props.setComponent(ComponentName.Groups); props.setIsOpen(false);}}>{props.local.main.groups}</button>
+            <button onClick={() => { props.setComponent(ComponentName.Groups); props.setIsOpen(false); }}>{props.local.main.groups}</button>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
               <FcStackOfPhotos size={20} />
             </div>
-            <button onClick={()=>{props.setComponent(ComponentName.Gallery); props.setIsOpen(false);}}>{props.local.main.gallery}</button>
+            <button onClick={() => { props.setComponent(ComponentName.Gallery); props.setIsOpen(false); }}>{props.local.main.gallery}</button>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
               <FcAdvertising size={20} />
             </div>
-            <button onClick={()=>{props.setComponent(ComponentName.Notifications); props.setIsOpen(false);}}>{props.local.main.notifications}</button>
+            <button onClick={() => { props.setComponent(ComponentName.Notifications); props.setIsOpen(false); }}>{props.local.main.notifications}</button>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
