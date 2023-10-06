@@ -65,7 +65,7 @@ export const Header = (props: any) => {
                     <Link className={styles.navText} onClick={fetch} href={`/profile/${session.user.id}`}>{props.local.header.profile}</Link>
                   </li>
                   <li className={styles.listItem}>
-                    <Link className={styles.navText} onClick={fetch} href={`/support`}>Support</Link>
+                    <Link className={styles.navText} onClick={fetch} href={`/support`}>{props.local.header.support}</Link>
                   </li>
                   {session.user.role !== Role.User &&
                     <li className={styles.listItem}>

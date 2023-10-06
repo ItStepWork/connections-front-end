@@ -74,6 +74,7 @@
     "main" : "Dom",
     "profile" : "Profil",
     "admin" : "Administrator",
+    "support" : "wsparcie",
     "dropMenu" : {
       "profile" : "Profil",
       "settings" : "Ustawienia",
@@ -405,5 +406,22 @@
       "text2" : "Zarządzaj albumami, aby zapewnić najlepsze warunki przechowywania zdjęć.",
       "text3" : "Możesz nie tylko obejrzeć zdjęcie, ale także je ocenić i skomentować."
     }
+  },
+  "notifications" : {
+    "addFriend" : "szansa do piekła i przyjaciół",
+    "removeFriend" : "usunięte i od znajomych",
+    "refusedFriend" : "nie potwierdzono, że jesteście przyjaciółmi",
+    "cancelFriend" : "anulował zaproszenie do znajomych",
+    "confirmFriend" : "potwierdził, że jesteś jego przyjacielem",
+    "birthday" : "świętować wtedy jego urodziny",
+    "likePhoto" : "i polub zdjęcie Iura",
+    "commentPhoto" : "Proszę o komentarz do swojego zdjęcia",
+    "inviteToGroup" : "zaproś do grupy"
+  },
+  "events" : {
+    "title": "Wydarzenia i uroczystości",
+    "today" : "Dziś świętują",
+    "soon" : "Niedługo będą świętować",
+    "upcoming" : "Nadchodzące wydarzenia"
   }
 }

@@ -1,12 +1,11 @@
 'use client'
-import { FaUserCircle } from 'react-icons/fa';
-import { useEffect, useState } from 'react';
-import { NotificationService } from '../../../../services/notification.service';
-import styles from './styles.module.scss';
-import { Gender, NotificationType } from '../../../../enums/all.enum';
 import Link from 'next/link';
-import React from 'react';
+import { useEffect, useState } from 'react';
+import { FaUserCircle } from 'react-icons/fa';
+import { Gender, NotificationType } from '../../../../enums/all.enum';
+import { NotificationService } from '../../../../services/notification.service';
 import { SubscriptionService } from '../../../../services/subscription.service';
+import styles from './styles.module.scss';
 
 export default function Notifications(props: any) {
 
@@ -44,15 +43,15 @@ export default function Notifications(props: any) {
                   {n.user.firstName + " " + n.user.lastName}&nbsp;
                 </h2>
                 <div className='text-lg'>
-                  {n.notification.type === NotificationType.AddFriend ? (<>хоче додати вас до друзів</>) : (<></>)}
-                  {n.notification.type === NotificationType.RemoveFriend ? (<>видали{getGender(n.user)} вас із друзів</>) : (<></>)}
-                  {n.notification.type === NotificationType.RefusedFriend ? (<>не підтверди{getGender(n.user)} що ви друзі</>) : (<></>)}
-                  {n.notification.type === NotificationType.CancelFriend ? (<>відміни{getGender(n.user)} запит на дружбу</>) : (<></>)}
-                  {n.notification.type === NotificationType.ConfirmFriend ? (<>підтвердив, що ви його друг</>) : (<></>)}
-                  {n.notification.type === NotificationType.BirthDay ? (<>святкує сьогодні день народження</>) : (<></>)}
-                  {n.notification.type === NotificationType.LikePhoto ? (<>вподоба{getGender(n.user)} Ваше фото</>) : (<></>)}
-                  {n.notification.type === NotificationType.CommentPhoto ? (<>написа{getGender(n.user)} коментар до вашого фото</>) : (<></>)}
-                  {n.notification.type === NotificationType.InviteToGroup && n.notification.url ? (<>запрошує Вас до групи <Link className='underline text-blue-600 visited:text-purple-600' href={n.notification.url}>{n.notification.groupName}</Link></>) : (<></>)}
+                  {n.notification.type === NotificationType.AddFriend ? (<>{props.local.notifications.addFriend}</>) : (<></>)}
+                  {n.notification.type === NotificationType.RemoveFriend ? (<>{props.local.notifications.removeFriend}</>) : (<></>)}
+                  {n.notification.type === NotificationType.RefusedFriend ? (<>{props.local.notifications.refusedFriend}</>) : (<></>)}
+                  {n.notification.type === NotificationType.CancelFriend ? (<>{props.local.notifications.cancelFriend}</>) : (<></>)}
+                  {n.notification.type === NotificationType.ConfirmFriend ? (<>{props.local.notifications.confirmFriend}</>) : (<></>)}
+                  {n.notification.type === NotificationType.BirthDay ? (<>{props.local.notifications.birthday}</>) : (<></>)}
+                  {n.notification.type === NotificationType.LikePhoto ? (<>{props.local.notifications.likePhoto}</>) : (<></>)}
+                  {n.notification.type === NotificationType.CommentPhoto ? (<>{props.local.notifications.commentPhoto}</>) : (<></>)}
+                  {n.notification.type === NotificationType.InviteToGroup && n.notification.url ? (<>{props.local.notifications.inviteToGroup} <Link className='underline text-blue-600 visited:text-purple-600' href={n.notification.url}>{n.notification.groupName}</Link></>) : (<></>)}
                 </div>
                 <div className={styles.dateTime}>{new Date(n.notification.dateTime).toLocaleString()}</div>
               </div>

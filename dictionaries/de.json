@@ -74,6 +74,7 @@
     "main" : "Hauptsächlich",
     "profile" : "Profil",
     "admin" : "Administrator-Panel",
+    "support" : "Unterstützung",
     "dropMenu" : {
       "profile" : "Profil",
       "settings" : "Einstellungen",
@@ -405,5 +406,22 @@
       "text2" : "Verwalten Sie Alben für das beste Fotospeichererlebnis.",
       "text3" : "Sie können das Foto nicht nur ansehen, sondern auch bewerten und kommentieren."
     }
+  },
+  "notifications" : {
+    "addFriend" : "chance zur Hölle und Freunde",
+    "removeFriend" : "entfernt und von Freunden",
+    "refusedFriend" : "es wurde nicht bestätigt, dass Sie Freunde sind",
+    "cancelFriend" : "habe die Freundschaftsanfrage abgelehnt",
+    "confirmFriend" : "bestätigte, dass ich sein Freund bin",
+    "birthday" : "dann feiere ich seinen Geburtstag",
+    "likePhoto" : "und mag Iurs Foto",
+    "commentPhoto" : "bitte kommentieren Sie Ihr Foto",
+    "inviteToGroup" : "in die Gruppe einladen"
+  },
+  "events" : {
+    "title": "Veranstaltungen und Feiern",
+    "today" : "Heute feiern sie",
+    "soon" : "Bald werden sie feiern",
+    "upcoming" : "Kommende Veranstaltungen"
   }
 }
