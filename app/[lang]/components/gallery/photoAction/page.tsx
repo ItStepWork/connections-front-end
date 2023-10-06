@@ -20,12 +20,10 @@ export default function PhotoAction(props: any) {
   
   const setAlbum = async () => {
     await GalleryService.setAlbum(props.photo.id, selected.id);
-    props.get();
   }
 
   const removePhoto = async () => {
     await GalleryService.removePhoto(props.photo.id);
-    props.get();
   }
 
   return (

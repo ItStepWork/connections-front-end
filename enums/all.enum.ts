@@ -13,6 +13,9 @@ export enum ComponentName {
     Notifications,
     Celebration,
     Posts,
+    Photos,
+    Albums,
+    Stories
 }
 
 export enum AdminComponentName {

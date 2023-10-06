@@ -22,7 +22,6 @@ export default function Photos(props: any) {
     const formData = new FormData();
     formData.append("file", file);
     await GalleryService.addPhoto(formData);
-    props.get();
   }
 
 
@@ -46,13 +45,13 @@ export default function Photos(props: any) {
         return (
           <div key={index} className='relative'>
             <div className='absolute right-0 bottom-0'>
-              <PhotoAction get={props.get} photo={photo} albums={props.albums} local={props.local}/>
+              <PhotoAction photo={photo} albums={props.albums} local={props.local}/>
             </div>
             <img className={styles.image} src={photo.url} onClick={() => { select(index) }} />
           </div>
         );
       })}
-      <SelectedPhoto isSelected={isSelected} setIsSelected={setIsSelected} photos={props.photos} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} myId={props.myId} userId={props.userId} get={props.get} />
+      <SelectedPhoto isSelected={isSelected} setIsSelected={setIsSelected} photos={props.photos} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} myId={props.myId} userId={props.userId} />
     </div>
   );
 }

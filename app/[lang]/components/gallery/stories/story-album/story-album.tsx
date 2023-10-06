@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useState } from "react";
 import { MdClose } from "react-icons/md";
 import { StoriesServices } from "../../../../../../services/stories.service";
@@ -5,7 +6,7 @@ import SelectedPhoto from "../../selectedPhoto/page";
 import styles from './story-album.module.scss';
 
 const StoryAlbum = (props:any) => {
-  const [photos, setPhotos] = useState<any[]>([]);
+  
   const [isSelected, setIsSelected] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const [isSelectedRemove, setIsSelectedRemove] = useState(false);
@@ -15,25 +16,14 @@ const StoryAlbum = (props:any) => {
     setIsSelected(true);
   }
 
-  useEffect(() => {
-    get();
-  }, []);
-
-  const get = async () => {
-    let array = await StoriesServices.getStoryPhotos(props.userId, props.story.id);
-    setPhotos(array);
-  }
-
   const removeAlbum = async () => {
     await StoriesServices.deleteStory(props.story.id);
     setIsSelectedRemove(false);
-    props.get();
   }
 
   const removeAlbumAndPhotos = async () => {
     await StoriesServices.deleteStoryAndPhotos(props.story.id);
     setIsSelectedRemove(false);
-    props.get();
   }
 
   return (
@@ -46,7 +36,7 @@ const StoryAlbum = (props:any) => {
           <span className={styles.title}>{props.story.name}</span>
         </div>
         <div className={styles.photos} onClick={() => { if (!isSelected) select(0) }}>
-          {photos.map((photo, index) => {
+          {props.story.photos.map((photo: any, index: number) => {
             if (index < 4) return (
               <div key={index}>
                 <img className={styles.photo} src={photo.url}></img>
@@ -54,7 +44,7 @@ const StoryAlbum = (props:any) => {
             );
           })}
         </div>
-        <SelectedPhoto isSelected={isSelected} setIsSelected={setIsSelected} photos={photos} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex}  myId={props.myId} userId={props.userId} get={get} />
+        <SelectedPhoto isSelected={isSelected} setIsSelected={setIsSelected} photos={props.story.photos} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex}  myId={props.myId} userId={props.userId} />
         {isSelectedRemove ? (
           <div className={styles.modalContainer}>
             <div className={styles.modal}>

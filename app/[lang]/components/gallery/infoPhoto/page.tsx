@@ -18,13 +18,11 @@ export default function InfoPhoto(props: any) {
 
   const like = async () => {
     await GalleryService.setLikePhoto(props.userId, props.photo.id);
-    props.get();
   }
 
   const sendComment = async () => {
     await GalleryService.sendCommentPhoto(props.userId, props.photo.id, text);
     setText("");
-    props.get();
   }
 
   function handleChange(event: any) {

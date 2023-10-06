@@ -26,7 +26,7 @@ export default function Profile(props: any) {
     if (component === ComponentName.AboutMe) return (<ProfileInfo local={props.local} />)
     else if (component === ComponentName.Groups) return (<GroupsCard session={session} userId={props.id[0]} local={props.local} />)
     else if (component === ComponentName.Connections) return (<ConnectionsCard session={session} myId={session?.user.id} userId={props.id[0]} local={props.local} />)
-    else if (component === ComponentName.Gallery) return (<Gallery myId={session?.user.id} userId={props.id[0]} local={props.local} />)
+    else if (component === ComponentName.Gallery) return (<Gallery session={session} myId={session?.user.id} userId={props.id[0]} local={props.local} />)
     else if (component === ComponentName.Posts) return (<Posts local={props.local} session={session} myId={session.user.id} userId={props.id[0]}/>)
     else return (<></>)
   }

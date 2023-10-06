@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { MdClose } from 'react-icons/md';
 import { GalleryService } from '../../../../../services/gallery.service';
 import SelectedPhoto from '../selectedPhoto/page';
@@ -7,7 +7,6 @@ import styles from './styles.module.scss';
 
 export default function Album(props: any) {
 
-  const [photos, setPhotos] = useState<any[]>([]);
   const [isSelected, setIsSelected] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const [isSelectedRemove, setIsSelectedRemove] = useState(false);
@@ -17,25 +16,14 @@ export default function Album(props: any) {
     setIsSelected(true);
   }
 
-  useEffect(() => {
-    get();
-  }, []);
-
-  const get = async () => {
-    let array = await GalleryService.getAlbumPhotos(props.userId, props.album.id);
-    setPhotos(array);
-  }
-
   const removeAlbum = async () => {
     await GalleryService.removeAlbum(props.album.id);
     setIsSelectedRemove(false);
-    props.get();
   }
 
   const removeAlbumAndPhotos = async () => {
     await GalleryService.removeAlbumAndPhotos(props.album.id);
     setIsSelectedRemove(false);
-    props.get();
   }
 
   return (
@@ -47,7 +35,7 @@ export default function Album(props: any) {
         <span className={styles.title}>{props.album.name}</span>
       </div>
       <div className={styles.photos} onClick={() => { if (!isSelected) select(0) }}>
-        {photos.map((photo, index) => {
+        {props.album.photos.map((photo: any, index: number) => {
           if (index < 4) return (
             <div key={index}>
               <img className={styles.photo} src={photo.url}></img>
@@ -55,7 +43,7 @@ export default function Album(props: any) {
           );
         })}
       </div>
-      <SelectedPhoto isSelected={isSelected} setIsSelected={setIsSelected} photos={photos} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex}  myId={props.myId} userId={props.userId} get={get} />
+      <SelectedPhoto isSelected={isSelected} setIsSelected={setIsSelected} photos={props.album.photos} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex}  myId={props.myId} userId={props.userId} />
       {isSelectedRemove ? (
         <div className={styles.modalContainer}>
           <div className={styles.modal}>

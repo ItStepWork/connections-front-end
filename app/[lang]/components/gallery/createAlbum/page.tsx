@@ -28,7 +28,6 @@ export default function CreateAlbum(props: any) {
       await GalleryService.addAlbum(text, files);
       setText("");
       setFiles([]);
-      props.get();
     }
   }
 
