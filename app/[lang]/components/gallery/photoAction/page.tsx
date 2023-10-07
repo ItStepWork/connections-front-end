@@ -11,18 +11,22 @@ export default function PhotoAction(props: any) {
   const [selected, setSelected] = useState<any>({ id: "", name: "Без альбома" });
 
   const setAvatar = async () => {
+    setIsOpen(false);
     await GalleryService.setAvatar(props.photo.url);
   }
 
   const setBackground = async () => {
+    setIsOpen(false);
     await GalleryService.setBackground(props.photo.url);
   }
   
   const setAlbum = async () => {
+    setIsOpen(false);
     await GalleryService.setAlbum(props.photo.id, selected.id);
   }
 
   const removePhoto = async () => {
+    setIsOpen(false);
     await GalleryService.removePhoto(props.photo.id);
   }
 
