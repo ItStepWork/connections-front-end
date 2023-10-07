@@ -1,5 +1,5 @@
 .container {
-	@apply flex gap-x-1 items-center md:ml-2 lg:ml-2;
+	@apply relative flex gap-x-1 items-center md:ml-2 lg:ml-2;
 	img {
 		@apply w-6 h-4;
 	}
@@ -9,7 +9,7 @@
      		dark:bg-main_background dark:border-dark_border dark:placeholder-gray-400 dark:text-dark_text_gray dark:focus:ring-blue-500 dark:focus:border-blue-500;
 	}
 	.dropMenu {
-		@apply absolute flex gap-3 p-4 top-[55px] w-[90px] left-[310px] items-center  bg-white text-gray-900 border border-light_border rounded-lg
+		@apply absolute flex gap-3 p-4 top-[55px] w-[90px] right-0 items-center  bg-white text-gray-900 border border-light_border rounded-lg
   dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border;
 		.column {
 			@apply flex flex-col gap-3;
