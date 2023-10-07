@@ -19,6 +19,7 @@ export enum ComponentName {
 	Requests,
 	Members,
 	AboutGroup,
+	News
 }
 
 export enum AdminComponentName {

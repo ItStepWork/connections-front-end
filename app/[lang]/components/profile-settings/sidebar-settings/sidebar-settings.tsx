@@ -23,7 +23,7 @@ export const LeftSettingsMenu = ({ local, session, lang }: { local: any, session
             <div className={styles.icon}>
               <FcAdvertising size={24} />
             </div>
-            <Link onClick={notifyInfo} href={`/${lang}/settings`}>{local.settingsSide.notification}</Link>
+            <Link href={`/${lang}/main`}>{local.settingsSide.notification}</Link>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>

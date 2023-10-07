@@ -1,0 +1,12 @@
+.container {
+	@apply w-full flex flex-col p-6 border bg-light_background dark:bg-dark_background border-light_border dark:border-dark_border gap-y-6 mt-6 rounded-lg;
+	h3 {
+		@apply text-gray-900 dark:text-white font-semibold;
+	}
+	.link {
+		@apply text-button_blue_BG underline;
+	}
+	.footer {
+		@apply flex items-center justify-between;
+	}
+}

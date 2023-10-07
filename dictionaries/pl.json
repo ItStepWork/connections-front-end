@@ -496,6 +496,7 @@
     }
   },
   "followers" : "Możliwe subskrypcje",
+  "source" : "Źródło",
   "dataInfo" : {
     "notIndicated" : "Nie podano danych",
     "loadError" : "Błąd ładowania"

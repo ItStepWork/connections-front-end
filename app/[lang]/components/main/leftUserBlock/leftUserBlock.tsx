@@ -1,15 +1,15 @@
 "use client"
-import { getSession, useSession } from "next-auth/react"
+import { useSession } from "next-auth/react"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { FcAdvertising, FcBusinessman, FcCalendar, FcCollaboration, FcHome, FcNews, FcSettings, FcStackOfPhotos } from "react-icons/fc"
 import { ComponentName } from "../../../../../enums/all.enum"
 import { FriendService } from "../../../../../services/friend.service"
 import { PostService } from "../../../../../services/post.service"
+import { SubscriptionService } from "../../../../../services/subscription.service"
+import { UserService } from "../../../../../services/user.service"
 import { useStore } from "../../../../../stores/userDataStore"
 import styles from "./leftUserBlock.module.scss"
-import { UserService } from "../../../../../services/user.service"
-import { SubscriptionService } from "../../../../../services/subscription.service"
 
 export const LeftUserBlock = (props: any) => {
   const [avatar, bg] = useStore((state) => [state.avatar, state.BgImage])
@@ -91,7 +91,7 @@ export const LeftUserBlock = (props: any) => {
             <div className={styles.icon}>
               <FcNews size={20} />
             </div>
-            <Link href={'/news'}>{props.local.main.news}</Link>
+            <button onClick={() => { props.setComponent(ComponentName.News); props.setIsOpen(false); }}>{props.local.main.news}</button>
           </div>
           <div className={styles.link}>
             <div className={styles.icon}>
