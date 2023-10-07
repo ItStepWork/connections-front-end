@@ -81,7 +81,7 @@
       "exit" : "Exit",
       "theme" : "theme:" ,
       "messages" : "Messaging",
-      "exitAccount" : "You have successfully logged out of your account!"
+      "exitAccount" : "You have successfully logout of your account!"
     }
   },
   "footer" : {
@@ -155,7 +155,7 @@
     "open" : "Public",
     "closed" : "Private",
     "toasts" : {
-      "format" : "Wrong image file! <jpg, jpeg, png> only !!!",
+      "format" : "Wrong image file! <jpg, jpeg, png, gif, svg, avif, webp> only !!!",
       "ok" : "Group created !",
       "error" : "Server Error !"
     }
@@ -297,7 +297,7 @@
     "text1" : "Click to upload",
     "text2" : "or",
     "text3" : "drag image here",
-    "text4" : "SVG, PNG, JPG or JPEG",
+    "text4" : "JPG, JPEG, PNG, Gif, SVG, AVIF or WEBP",
     "uploadAvatar" : "Set avatar",
     "uploadBg" : "Set background",
     "toasts" : {
@@ -424,5 +424,80 @@
     "today" : "Today they celebrate",
     "soon" : "Soon they will celebrate",
     "upcoming" : "Upcoming Events"
+  },
+  "admin" : {
+    "title" : "Blocking settings:",
+    "ban" : {
+      "hour" : "hour",
+      "day" : "day",
+      "month" : "month",
+      "year" : "year"
+    },
+    "table" : {
+      "name" : "Name",
+      "status" :"Status",
+      "role" : "Role",
+      "users" : "Users", 
+      "action" : {
+        "title" : "Action",
+        "info" : "info",
+        "block" : "block",
+        "unblock" : "unblock",
+        "read" : "Read"
+      }
+    },
+    "save" : "save",
+    "info" : {
+      "role" :"Role",
+      "status" :"Status",
+      "blockTime" : "Block time",
+      "name" : "Name",
+      "lastName" :"LastName",
+      "phone" : "Phone",
+      "gender" : "Gender",
+      "lastVisit" : "Last visit",
+      "created" : "Created",
+      "birthday" : "Born",
+      "groupName" : "Name",
+      "description" : "Description",
+      "audience" : "Audience"
+    },
+    "sidebar" : {
+      "title" : "Charts",
+      "users" :"Users",
+      "groups" :"Groups",
+      "messages" :"Messages",
+      "complaints" : "Complaints",
+      "map" : "Map",
+      "all" : "All",
+      "genders" : "Genders",
+      "zodiacs" : "Zodiacs",
+      "pageActivity" : "Page activity",
+      "usersActivity" : "Users activity"
+    },
+    "dialogs" : "dialogs",
+    "complaints" : {
+      "status" : "Status:",
+      "sender" : "Sender:",
+      "user" : "User:",
+      "text" : "Text:",
+      "photo" : "Photo:",
+      "group" : "Group:",
+      "image" : "Image:"
+    },
+    "activity" : {
+      "daily" : "Daily",
+      "hourly" : "Hourly",
+      "contacts" : "Contacts",
+      "messaging" : "Messaging",
+      "gallery" : "Gallery",
+      "notifications" : "Notifications",
+      "groups" : "Groups"
+    }
+  },
+  "followers" : "Possible subscriptions",
+  "dataInfo" : {
+    "notIndicated" : "Data not provided",
+    "loadError" : "Load Error"
   }
 }

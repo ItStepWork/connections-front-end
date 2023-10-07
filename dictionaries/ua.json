@@ -155,7 +155,7 @@
     "open" : "Публічна",
     "closed" : "Приватна",
     "toasts" : {
-      "format" : "Невірний формат файла! Тільки <jpg, jpeg, png> !!!",
+      "format" : "Невірний формат файла! Тільки <jpg, jpeg, png, gif, svg, avif, webp> !!!",
       "ok" : "Група створена !",
       "error" : "Помилка сервера !"
     }
@@ -297,7 +297,7 @@
     "text1" : "Клік для завантаження",
     "text2" : "або",
     "text3" : "перетягніть файл",
-    "text4" : "SVG, PNG, JPG або JPEG",
+    "text4" : "JPG, JPEG, PNG, Gif, SVG, AVIF або WEBP",
     "uploadAvatar" : "Встановити аватар",
     "uploadBg" : "Встановити фон",
     "toasts" : {
@@ -424,5 +424,80 @@
     "today" : "Сьогодні Святкують",
     "soon" : "Скоро Святкують",
     "upcoming" : "Найближчі Заходи"
+  },
+  "admin" : {
+    "title" : "Налаштування блокування:",
+    "ban" : {
+      "hour" : "година",
+      "day" : "день",
+      "month" : "місяць",
+      "year" : "рік"
+    },
+    "table" : {
+      "name" : "Ім'я",
+      "status" :"Статус",
+      "role" : "Роль",
+      "users" : "Користувачі", 
+      "action" : {
+        "title" : "Дія",    
+        "info" : "инфо",
+        "block" : "блокувати",
+        "unblock" : "розблокувати",
+        "read" : "Перевірено"
+      }
+    },
+    "save" : "зберегти",
+    "info" : {
+      "role" :"Роль",
+      "status" :"Статус",
+      "blockTime" : "Блокування",
+      "name" : "Ім'я",
+      "lastName" :"Прізвище",
+      "phone" : "Телефон",
+      "gender" : "Стать",
+      "lastVisit" : "Останній візит",
+      "created" : "Створений",
+      "birthday" : "День народження",
+      "groupName" : "Назва",
+      "description" : "Опис групи",
+      "audience" : "Аудиторія"
+    },
+    "sidebar" : {
+      "title" : "Графіки",
+      "users" :"Користувачі",
+      "groups" :"Групи",
+      "messages" :"Повідомлення",
+      "complaints" : "Скарги",
+      "map" : "Мапа",
+      "all" : "Всі",
+      "genders" : "Гендери",
+      "zodiacs" : "Зодіаки",
+      "pageActivity" : "Активність сторінок",
+      "usersActivity" : "Активність користувачів"
+    },
+    "dialogs" : "Діалоги",
+    "complaints" : {
+      "status" : "Статус:",
+      "sender" : "Відправник:",
+      "user" : "Користувач:",
+      "text" : "Текст:",
+      "photo" : "Фото:",
+      "group" : "Група:",
+      "image" : "Зображення:"
+    },
+    "activity" : {
+      "daily" : "дні",
+      "hourly" : "години",
+      "contacts" : "Контакти",
+      "messaging" : "Повідомлення",
+      "gallery" : "Галерея",
+      "notifications" : "Сповіщення",
+      "groups" : "Групи"
+    }
+  },
+  "followers" : "Можливі подписки",
+  "dataInfo" : {
+    "notIndicated" : "Дані невказані",
+    "loadError" : "Помилка завантаження"
   }
 }

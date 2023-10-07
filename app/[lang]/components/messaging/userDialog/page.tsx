@@ -16,7 +16,8 @@ export default function UserDialog(props: any) {
             {minutes < 5?(<GoDotFill className="absolute fill-green-500 ml-7" />):(<GoDotFill className="absolute fill-red-500 ml-7" />)}
             <div className={styles.userInfo}>
                 <span className={styles.userName}>{props.dialog.user.lastName} {props.dialog.user.firstName}</span>
-                <span className={styles.userMessage}>{props.dialog.lastMessage.text}</span>
+                <span className={styles.userMessage}><span className='truncate'>{props.dialog.lastMessage.text}</span> {props.dialog.unreadMessages !== 0 && <span className={styles.unreadMessages}>{props.dialog.unreadMessages}</span>}</span>
+                
             </div>
         </div>
     )

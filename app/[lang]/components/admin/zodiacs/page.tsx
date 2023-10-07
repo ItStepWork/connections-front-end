@@ -1,7 +1,7 @@
 'use client'
 
-import styles from './styles.module.scss';
 import { VictoryBar, VictoryLabel } from 'victory';
+import styles from './styles.module.scss';
 
 export default function Zodiacs(props: any) {
 
@@ -77,7 +77,7 @@ export default function Zodiacs(props: any) {
   return (
     <div className={styles.container}>
       <h2 className='relative text-center text-sm md:text-lg lg:text-2xl mx-3 mt-3'>
-        Zodiacs
+        {props.local.admin.sidebar.zodiacs}
       </h2>
         <VictoryBar
           width={300} height={200}

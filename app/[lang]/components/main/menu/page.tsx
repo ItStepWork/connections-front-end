@@ -21,7 +21,7 @@ export default function Menu(props: any) {
           <AiFillCloseSquare className={styles.actionClose} size={24} onClick={() => { setIsOpen(false) }} />
           <LeftUserBlock session={props.session} setComponent={props.setComponent} setIsOpen={setIsOpen} myId={props.myId} userId={props.userId}  local={props.local}/>
           {/* <LeftBlockFooter /> */}
-          <FollowsBlock/>
+          <FollowsBlock local={props.local}/>
         </div>
       </div>
     </div>

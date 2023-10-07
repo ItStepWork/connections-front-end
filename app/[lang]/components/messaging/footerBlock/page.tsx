@@ -6,16 +6,19 @@ import { ImAttachment } from 'react-icons/im';
 import { MessagingService } from '../../../../../services/messaging.service';
 import DropDownEmoji from '../dropDownEmoji/page';
 import styles from './styles.module.scss';
+import { CheckService } from '../../../../../services/check.service';
+import { toast } from 'react-toastify';
 
 export default function FooterBlock(props: any) {
 
   const [text, setText] = useState("");
   const [file, setFile] = useState(null);
+  
+  const notifyError = () => toast.error(props.local.createGroup.toasts.format, {});
 
   const saveFile = (e: any) => {
-    if (e.target.files[0].name.endsWith('.jpg') || e.target.files[0].name.endsWith('.jpeg') || e.target.files[0].name.endsWith('.png')) {
-      setFile(e.target.files[0]);
-    }
+    if(CheckService.imageFormat(e.target.files[0].name)) setFile(e.target.files[0]);
+    else notifyError();
   }
 
   const click = async () => {
@@ -24,13 +27,9 @@ export default function FooterBlock(props: any) {
       formData.append("id", props.friendId);
       formData.append("text", text);
       if (file !== null) formData.append("file", file);
-      await MessagingService.sendMessage(formData);
-
       setText("");
       setFile(null);
-
-      if (props.loadMessages !== undefined) props.loadMessages(props.friendId);
-      if (props.loadDialogs !== undefined) props.loadDialogs();
+      await MessagingService.sendMessage(formData);
     }
   }
   function handleChange(event: any) {

@@ -20,16 +20,16 @@ export default function PostInfo(props: any) {
   const [isOpenComplaint, setIsOpenComplaint] = useState<boolean>(false);
 
   const like = async () => {
-    await PostService.setLike(props.userId, props.post.id);
+    await PostService.setLike(props.post.senderId, props.post.id);
   }
 
   const sendComment = async () => {
-    await PostService.sendComment(props.userId, props.post.id, text);
+    await PostService.sendComment(props.post.senderId, props.post.id, text);
     setText("");
   }
 
   const removePost = async () => {
-    await PostService.removePost(props.post.id, props.userId);
+    await PostService.removePost(props.post.senderId, props.userId);
   }
 
   function handleChange(event: any) {

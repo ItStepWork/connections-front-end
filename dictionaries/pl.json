@@ -155,7 +155,7 @@
     "open" : "otwarty",
     "closed" : "Zamknięte",
     "toasts" : {
-      "format" : "Nieprawidłowy format pliku! Tylko <jpg, jpeg, png> !!!",
+      "format" : "Nieprawidłowy format pliku! Tylko <jpg, jpeg, png, gif, svg, avif, webp> !!!",
       "ok" : "Grupy utworzone !",
       "error" : "błąd serwera !"
     }
@@ -297,7 +297,7 @@
     "text1" : "Kliknij, aby pobrać",
     "text2" : "lub",
     "text3" : "przeciągnij i upuść plik",
-    "text4" : "SVG, PNG, JPG lub JPEG",
+    "text4" : "JPG, JPEG, PNG, Gif, SVG, AVIF lub WEBP",
     "uploadAvatar" : "Ustaw awatar",
     "uploadBg" : "Ustaw tło",
     "toasts" : {
@@ -424,5 +424,80 @@
     "today" : "Dziś świętują",
     "soon" : "Niedługo będą świętować",
     "upcoming" : "Nadchodzące wydarzenia"
+  },
+  "admin" : {
+    "title" : "Ustawienia blokowania:",
+    "ban" : {
+      "hour" : "godzina",
+      "day" : "dzień",
+      "month" : "miesiąc",
+      "year" : "rok"
+    },
+    "table" : {
+      "name" : "Nazwa",
+      "status" :"Status",
+      "role" : "Rola",
+      "users" : "Użytkownicy", 
+      "action" : {
+        "title" : "Działanie",
+        "info" : "informacje",
+        "block" : "blok",
+        "unblock" : "odblokować",
+        "read" : "Czytać"
+      }
+    },
+    "save" : "ratować",
+    "info" : {
+      "role" :"Rola",
+      "status" :"Status",
+      "blockTime" : "Blokuj czas",
+      "name" : "Nazwa",
+      "lastName" :"Nazwisko",
+      "phone" : "Telefon",
+      "gender" : "Płeć",
+      "lastVisit" : "Ostatnia wizyta",
+      "created" : "Utworzony",
+      "birthday" : "urodziny",
+      "groupName" : "Nazwa",
+      "description" : "Opis",
+      "audience" : "Publiczność"
+    },
+    "sidebar" : {
+      "title" : "Wykresy",
+      "users" :"Użytkownicy",
+      "groups" :"Grupy",
+      "messages" :"Wiadomości",
+      "complaints" : "Uskarżanie się",
+      "map" : "Mapa",
+      "all" : "Wszystko",
+      "genders" : "Płeć",
+      "zodiacs" : "Zodiaki",
+      "pageActivity" : "Aktywność strony",
+      "usersActivity" : "Aktywność użytkowników"
+    },
+    "dialogs" : "Dialogi",
+    "complaints" : {
+      "status" : "Status:",
+      "sender" : "Nadawca:",
+      "user" : "Użytkownik:",
+      "text" : "Tekst:",
+      "photo" : "Zdjęcie:",
+      "group" : "Grupa:",
+      "image" : "Obraz:"
+    },
+    "activity" : {
+      "daily" : "Codziennie",
+      "hourly" : "Cogodzinny",
+      "contacts" : "Łączność",
+      "messaging" : "Wiadomości",
+      "gallery" : "Galeria",
+      "notifications" : "Powiadomienia",
+      "groups" : "Grupy"
+    }
+  },
+  "followers" : "Możliwe subskrypcje",
+  "dataInfo" : {
+    "notIndicated" : "Nie podano danych",
+    "loadError" : "Błąd ładowania"
   }
 }

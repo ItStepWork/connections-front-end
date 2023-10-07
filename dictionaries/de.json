@@ -155,7 +155,7 @@
     "open" : "Öffentlich",
     "closed" : "Privat",
     "toasts" : {
-      "format" : "Falsche Bilddatei! Nur <jpg, jpeg, png> !!!",
+      "format" : "Falsche Bilddatei! Nur <jpg, jpeg, png, gif, svg, avif, webp> !!!",
       "ok" : "Gruppe erstellt !",
       "error" : "Serverfehler !"
     }
@@ -297,7 +297,7 @@
     "text1" : "Klicken Sie zum Hochladen",
     "text2" : "oder",
     "text3" : "Bild hierher ziehen",
-    "text4" : "SVG, PNG, JPG oder JPEG",
+    "text4" : "JPG, JPEG, PNG, Gif, SVG, AVIF oder WEBP",
     "uploadAvatar" : "Avatar festlegen",
     "uploadBg" : "Hintergrund einstellen",
     "toasts" : {
@@ -424,5 +424,80 @@
     "today" : "Heute feiern sie",
     "soon" : "Bald werden sie feiern",
     "upcoming" : "Kommende Veranstaltungen"
+  },
+  "admin" : {
+    "title" : "Blockierungseinstellungen:",
+    "ban" : {
+      "hour" : "stunde",
+      "day" : "tag",
+      "month" : "monat",
+      "year" : "jahr"
+    },
+    "table" : {
+      "name" : "Name",
+      "status" :"Status",
+      "role" : "Rolle",
+      "users" : "Benutzer", 
+      "action" : {
+        "title" : "Aktion",
+        "info" : "die Info",
+        "block" : "block",
+        "unblock" : "entsperren",
+        "read" : "Lesen"
+      }
+    },
+    "save" : "speichern",
+    "info" : {
+      "role" :"Rolle",
+      "status" :"Status",
+      "blockTime" : "Temps de blocage",
+      "name" : "Name",
+      "lastName" :"Nachname",
+      "phone" : "Telefon",
+      "gender" : "Geschlecht",
+      "lastVisit" : "Letzter Besuch",
+      "created" : "Erstellt",
+      "birthday" : "Geburtstag",
+      "groupName" : "Name",
+      "description" : "Beschreibung",
+      "audience" : "Publikum"
+    },
+    "sidebar" : {
+      "title" : "Diagramme",
+      "users" : "Benutzer",
+      "groups" : "Gruppen",
+      "messages" : "Mitteilungen",
+      "complaints" : "Beschwerden",
+      "map" : "Karte",
+      "all" : "Alle",
+      "genders" : "Geschlechter",
+      "zodiacs" : "Zodiacs",
+      "pageActivity" : "Seitenaktivität",
+      "usersActivity" : "Benutzeraktivität"
+    },
+    "dialogs" : "Dialoge",
+    "complaints" : {
+      "status" : "Status:",
+      "sender" : "Absender:",
+      "user" : "Benutzer:",
+      "text" : "Text:",
+      "photo" : "Foto:",
+      "group" : "Gruppe:",
+      "image" : "Bild:"
+    },
+    "activity" : {
+      "daily" : "Täglich",
+      "hourly" : "Stündlich",
+      "contacts" : "Kontakte",
+      "messaging" : "Nachrichten",
+      "gallery" : "Galerie",
+      "notifications" : "Benachrichtigungen",
+      "groups" : "Gruppen"
+    }
+  },
+  "followers" : "Mögliche Abonnements",
+  "dataInfo" : {
+    "notIndicated" : "Daten nicht bereitgestellt",
+    "loadError" : "Ladefehler"
   }
 }

@@ -44,30 +44,28 @@ export default function CreatePost(props: any) {
 
   return (
     <>
-      <div className={styles.container}>
-        <div className={styles.verticalContainer}>
-          <div className={styles.fileContainer}>
-            {file ? (<div className={styles.fileText}>{props.local.posts.file}<button onClick={() => { setFile(null) }}><FaRegWindowClose className={styles.fileIcon} /></button></div>) : (<></>)}
-            <textarea className={styles.textarea} placeholder={props.local.posts.placeholder} onChange={handleChange} value={text}></textarea>
-          </div>
+      <div className={styles.verticalContainer}>
+        <div className={styles.fileContainer}>
+          {file ? (<div className={styles.fileText}>{props.local.posts.file}<button onClick={() => { setFile(null) }}><FaRegWindowClose className={styles.fileIcon} /></button></div>) : (<></>)}
+          <textarea className={styles.textarea} placeholder={props.placeholder} onChange={handleChange} value={text}></textarea>
+        </div>
 
-          <div className={styles.buttonContainer}>
-            <div className='mx-1'>
-              <DropDownEmoji addEmoji={addEmoji} isLower={false} />
-            </div>
-            <div className={styles.fileInputContainer}>
-              <label htmlFor="dropzone-file" >
-                <div className={styles.iconContainer}>
-                  <ImAttachment className={styles.icon} />
-                </div>
-                <input id="dropzone-file" type="file" accept={FileFormats.All} className="hidden" onChange={saveFile} />
-              </label>
-            </div>
-            <div className='mx-1'>
-              <button className={styles.button} onClick={click}>
-                <BsFillSendFill className='fill-white' />
-              </button>
-            </div>
+        <div className={styles.buttonContainer}>
+          <div className='mx-1'>
+            <DropDownEmoji addEmoji={addEmoji} isLower={false} />
+          </div>
+          <div className={styles.fileInputContainer}>
+            <label >
+              <div className={styles.iconContainer}>
+                <ImAttachment className={styles.icon} />
+              </div>
+              <input type="file" className="hidden" onChange={saveFile} />
+            </label>
+          </div>
+          <div className='mx-1'>
+            <button className={styles.button} onClick={click}>
+              <BsFillSendFill className='fill-white' />
+            </button>
           </div>
         </div>
       </div>
