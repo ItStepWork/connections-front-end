@@ -1,8 +1,8 @@
 'use client';
 
+import { useSession } from 'next-auth/react'
 import { signOut } from "next-auth/react";
 import { useTheme } from "next-themes";
-import Image from 'next/image';
 import Link from 'next/link';
 import { FC, useEffect, useRef, useState } from "react";
 import { AiOutlineSetting } from "react-icons/ai";
@@ -10,8 +10,6 @@ import { BiPowerOff } from "react-icons/bi";
 import { BsCircleHalf } from "react-icons/bs";
 import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 import { toast } from "react-toastify";
-import { useStore } from "../../../../../stores/userDataStore";
-import { NavigationAvatar } from "../../header/navigation/navigationAvatar";
 import styles from './dropMenu.module.scss';
 
 async function logOut() {
@@ -25,6 +23,8 @@ interface IDrop {
 }
 
 export const DropMenuProfile: FC<IDrop> = ({navbarOpen, local, lang}) => {
+  
+  const { data: session } = useSession();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const notifyLogout = () => toast.info(local.header.dropMenu.exitAccount,{});
@@ -43,7 +43,6 @@ export const DropMenuProfile: FC<IDrop> = ({navbarOpen, local, lang}) => {
     };
   }, []);
 
-  const [avatar, firsName, lastName, work] = useStore((state) => [state.avatar, state.firstName, state.lastName, state.work])
   return (
     <>
       <div className={styles.container} ref={dropdownRef}>
@@ -54,7 +53,7 @@ export const DropMenuProfile: FC<IDrop> = ({navbarOpen, local, lang}) => {
           onClick={toggleMenu}
           type="button" 
          >         
-            <NavigationAvatar />
+            {session?.user.avatarUrl && <img className='h-10 w-10' src={session.user.avatarUrl}></img>}
           </button>       
         }
           {isOpen &&
@@ -62,21 +61,13 @@ export const DropMenuProfile: FC<IDrop> = ({navbarOpen, local, lang}) => {
               <div className={styles.avatarContainer}>       
                 <div className={styles.avatar}>
                   {
-                    avatar &&
-                    <Image
-                      src={avatar}
-                      width={48}
-                      height={48}
-                      quality={80}
-                      style={{ objectFit: "cover" }}
-                      alt="avatar"
-                      loading="lazy"
-                    />
+                    session?.user.avatarUrl &&
+                    <img className='h-12 w-12' src={session.user.avatarUrl}></img>
                   }
                 </div>
                 <div className={styles.textContainer}>
-                  <h4>{firsName + ' ' + lastName}</h4>
-                  <p>{work}</p>
+                  <h4>{session?.user.firstName + ' ' + session?.user.lastName}</h4>
+                  <p>{session?.user.work}</p>
                 </div>
               </div>
               <Link href={`/${lang}/main`} className={styles.buttonViewProfile}>{local.header.dropMenu.profile}</Link>
