@@ -1,6 +1,8 @@
 "use client"
 import { useState } from 'react';
 import { MdOutlineAddAPhoto } from 'react-icons/md';
+import { FileFormats } from '../../../../../../enums/all.enum';
+import { CheckService } from '../../../../../../services/check.service';
 import { StoriesServices } from '../../../../../../services/stories.service';
 import styles from './add-story-form.module.scss';
 
@@ -14,7 +16,7 @@ const AddStoryForm = (props: any) => {
   const changeFiles = (e: any) => {
     let array: any[] = [];
     for (const iterator of e.target.files) {
-      if (iterator.name.endsWith('.jpg') || iterator.name.endsWith('.JPG') || iterator.name.endsWith('.jpeg') || iterator.name.endsWith('.png')) {
+      if (CheckService.imageFormat(iterator.name)){
         array.push(iterator);
       }
     }
@@ -49,7 +51,7 @@ const AddStoryForm = (props: any) => {
             <div className={styles.icon}><MdOutlineAddAPhoto size={50} /></div>
             <p>upload story images...</p>
             <input type="file" id='img'
-              accept=".jpg, .jpeg, .png"
+              accept={FileFormats.All}
               className={styles.inputFile}
               required
               multiple
