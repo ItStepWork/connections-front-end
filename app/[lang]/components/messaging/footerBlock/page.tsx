@@ -24,13 +24,9 @@ export default function FooterBlock(props: any) {
       formData.append("id", props.friendId);
       formData.append("text", text);
       if (file !== null) formData.append("file", file);
-      await MessagingService.sendMessage(formData);
-
       setText("");
       setFile(null);
-
-      if (props.loadMessages !== undefined) props.loadMessages(props.friendId);
-      if (props.loadDialogs !== undefined) props.loadDialogs();
+      await MessagingService.sendMessage(formData);
     }
   }
   function handleChange(event: any) {

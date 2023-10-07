@@ -5,11 +5,14 @@
 	@apply w-10 h-10 rounded-full border border-gray-500;
 }
 .userInfo{
-	@apply px-2 flex flex-col overflow-hidden text-left;
+	@apply px-2 flex flex-col overflow-hidden text-left  w-full;
 }
 .userName{
 	@apply whitespace-nowrap;
 }
 .userMessage{
-	@apply text-xs whitespace-nowrap;
+	@apply flex flex-row flex-nowrap justify-between text-xs whitespace-nowrap w-full;
+}
+.unreadMessages{
+	@apply bg-green-600 text-white rounded px-1;
 }
