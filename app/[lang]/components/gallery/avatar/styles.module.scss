@@ -7,7 +7,7 @@
 		@apply w-10 h-10 rounded-full border border-gray-500;
 	}
 	.userInfo{
-		@apply px-2 ml-2 w-full flex flex-col overflow-hidden;
+		@apply px-2 ml-2 flex flex-col overflow-hidden;
 	}
 	.userName{
 		@apply whitespace-nowrap font-bold text-lg;

@@ -93,7 +93,7 @@ export default function Messaging({ local, session }: { local: any, session: any
               <HeaderBlock user={user} removeDialog={removeDialog} local={local} />
               <MainBlock messages={messages} user={user} />
               <hr className={styles.horizontalHr} />
-              <FooterBlock friendId={user.id} />
+              <FooterBlock friendId={user.id} local={local}/>
             </div>
           ) : (<div className={styles.rightContainer}></div>)}
         </div>
