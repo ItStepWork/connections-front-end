@@ -14,7 +14,7 @@ export default function UserStatus(props: any) {
   }
 
   return (
-    <div className='flex w-full justify-between'>
+    <div className='flex w-full justify-end flex-wrap'>
       <select value={status} onChange={(e: any) => { setStatus(e.target.value) }} className={styles.select}>
         <option value={Status.Active}>{Status.Active}</option>
         <option value={Status.Deleted}>{Status.Deleted}</option>

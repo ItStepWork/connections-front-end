@@ -84,19 +84,19 @@ export default function Complaints(props: any) {
       </div>
       <div className='m-6 flex flex-col border-t border-x border-light_border dark:border-dark_border'>
         {filter().map(complaint => (
-          <div className='grid grid-cols-4 gap-4 p-3 border-b border-light_border dark:border-dark_border'>
+          <div key={complaint.id} className='grid grid-cols-4 gap-4 p-3 border-b border-light_border dark:border-dark_border'>
             <div>{props.local.admin.complaints.status}</div>
-            <div className='col-span-3 flex gap-6 items-center justify-between'>
+            <div className={styles.item}>
               {complaint.status}
               {complaint.status === MessageStatus.Unread && <button className={styles.button_blue_BG} onClick={() => { updateComplaintStatus(complaint.id) }} >{props.local.admin.table.action.read}</button>}
             </div>
             <div>{props.local.admin.complaints.sender}</div>
-            <div className='col-span-3 flex gap-6 items-center justify-between'>
+            <div className={styles.item}>
               <div className='word-break: break-all'>
                 <div>{complaint.sender.firstName} {complaint.sender.lastName}</div>
                 <div>{complaint.sender.email}</div>
               </div>
-              <div className='flex gap-3'>
+              <div className={styles.action}>
                 <div>
                   {new Date(complaint.sender.blockingTime) < new Date() ?
                     <button className={styles.button_red_BG} onClick={() => { updateUserBlockingTime(complaint.sender.id, time, number) }}>{props.local.admin.table.action.block}</button>
@@ -107,12 +107,12 @@ export default function Complaints(props: any) {
               </div>
             </div>
             <div>{props.local.admin.complaints.user}</div>
-            <div className='col-span-3 flex gap-6 items-center justify-between'>
+            <div className={styles.item}>
               <div className='word-break: break-all'>
                 <div>{complaint.user.firstName} {complaint.user.lastName}</div>
                 <div>{complaint.user.email}</div>
               </div>
-              <div className='flex gap-3'>
+              <div className={styles.action}>
                 <div>
                   {new Date(complaint.user.blockingTime) < new Date() ?
                     <button className={styles.button_red_BG} onClick={() => { updateUserBlockingTime(complaint.user.id, time, number) }}>{props.local.admin.table.action.block}</button>
@@ -126,7 +126,7 @@ export default function Complaints(props: any) {
             {complaint.photoUrl && <img className='col-span-3' src={complaint.photoUrl}></img>}
             {complaint.group && <div>{props.local.admin.complaints.group}</div>}
             {complaint.group &&
-              <div className='col-span-3 flex gap-6 items-center justify-between'>
+              <div className={styles.item}>
                 <div className='word-break: break-all'>
                   <div>{complaint.group.name}</div>
                   <div>{complaint.group.email}</div>
@@ -141,18 +141,19 @@ export default function Complaints(props: any) {
               </div>}
             {complaint.post && <div>Post:</div>}
             {complaint.post &&
-              <div className='col-span-3 flex gap-6 items-center justify-between'>
-                <div className='word-break: break-all'>
-                  <div>{complaint.post.text}</div>
-                  {complaint.post.imgUrl &&<img src={complaint.post.imgUrl}></img>}
+              <div className={styles.item}>
+                <div className='flex flex-col gap-3'>
+                  <div className='flex flex-nowrap justify-between'>
+                    <div className='word-break: break-all'>{complaint.post.text}</div>
+                    <div><PostStatus post={complaint.post} load={load} local={props.local} /></div>
+                  </div>
+                  {complaint.post.imgUrl && <img src={complaint.post.imgUrl}></img>}
                 </div>
-                <div><PostStatus post={complaint.post} load={load} local={props.local} /></div>
               </div>}
             <div>{props.local.admin.complaints.text}</div>
             <div className='col-span-3'>{complaint.text}</div>
             {complaint.link && <div>{props.local.admin.complaints.image}</div>}
             {complaint.link && <img className='col-span-3' src={complaint.link}></img>}
-
           </div>
         ))}
       </div>

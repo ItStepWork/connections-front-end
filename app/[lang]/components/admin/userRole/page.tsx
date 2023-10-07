@@ -14,7 +14,7 @@ export default function UserRole(props: any) {
   }
 
   return (
-    <div className='flex w-full justify-between'>
+    <div className='flex w-full justify-end flex-wrap'>
       <select value={role} onChange={(e: any) => { setRole(e.target.value) }} className={styles.select}>
         <option value={Role.User}>{Role.User}</option>
         <option value={Role.Moderator}>{Role.Moderator}</option>

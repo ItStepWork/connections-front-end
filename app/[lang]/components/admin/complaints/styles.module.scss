@@ -37,3 +37,9 @@
 .select{
   @apply ml-3 border bg-light_background border-light_border dark:bg-dark_background dark:border-dark_border;
 }
+.item{
+  @apply col-span-3 flex gap-6 items-center justify-between;
+}
+.action{
+  @apply flex gap-3 flex-wrap justify-end;
+}
