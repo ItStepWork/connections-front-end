@@ -25,6 +25,6 @@ export const useMainComponents = create<MainState>()(
         groupComponentName: component,
       })
     }
-  }), { name: 'mainComponentStorage', })
+  }), { name: 'mainComponentStorage', version: 1.0 })
 )
 

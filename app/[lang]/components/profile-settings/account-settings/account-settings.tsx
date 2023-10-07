@@ -4,29 +4,16 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { UserService } from "../../../../../services/user.service";
 import { useStore } from "../../../../../stores/userDataStore";
+import LocalSwitcherMinimal from "../../header/locale-switcher-minimal";
 import styles from "./account-settings.module.scss";
 
 export const AccountSettings = ({local} : {local : any}) => {
   
-  const options = [
-    {
-      label: local.settings.gender.none,
-      value: 0,
-    },
-    {
-      label: local.settings.gender.male,
-      value: 1,
-    },
-    {
-      label: local.settings.gender.female,
-      value: 2,
-    },
-  ];
   const { data: session, update } = useSession();
   const notifySuccess = () => toast.success(local.settings.toasts.ok, {});
   const notifyError = () => toast.error(local.settings.toasts.fail, {});
-  const [fetchUser, firstName, lastName, phone, email, gender, familyStatus, work, location, aboutMe] = useStore((state) => 
-  [state.fetchUser, state.firstName, state.lastName, state.phone, state.email, state.gender, state.familyStatus, state.work, state.location, state.aboutMe]);
+  const [fetchUser, firstName, lastName, phone, email, gender, familyStatus, work, location, aboutMe, userLocal] = useStore((state) => 
+  [state.fetchUser, state.firstName, state.lastName, state.phone, state.email, state.gender, state.familyStatus, state.work, state.location, state.aboutMe, state.local]);
 
   const {
     register,
@@ -36,10 +23,9 @@ export const AccountSettings = ({local} : {local : any}) => {
 
   const onSubmit = async (data: any) => {
     let result = await UserService.setUserProfile(data);
-    (result === null) ? notifyError() : notifySuccess();
-    
+    (result === null) ? notifyError() : notifySuccess(); 
   }
-  
+
   return (
     <>
       <section className={styles.container} key={session?.user.id}>
@@ -159,8 +145,11 @@ export const AccountSettings = ({local} : {local : any}) => {
             </div>
           </div>
           <div className={styles.formButton}>
+            <div className={styles.localeSwitcherContainer}>
+              <label className={styles.textLabel}>{local.settings.local}</label>
+              <LocalSwitcherMinimal/>
+            </div>
             <button type="submit" onClick={() => fetchUser()} className={styles.button}>{local.button.saveData}</button>
-
           </div>
         </form>
       </section>

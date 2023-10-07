@@ -26,15 +26,6 @@ export default function Genders(props: any) {
           {
             target: "data",
             eventHandlers: {
-              // onClick: () => {
-              //   return [{
-              //     target: "labels",
-              //     mutation: (props) => {
-              //       console.log(props);
-              //       return props.text === props.datum.y.toString() ? null : { text: props.datum.y.toString() }
-              //     }
-              //   }];
-              // },
               onMouseOver: () => {
                 return [{
                   mutation: (props) => {

@@ -19,7 +19,7 @@ export default async function SettingsPage({ params: { lang }}: { params: { lang
           <div className={styles.contentContainer}>
             <div className={styles.wrapper}>
               <div className={styles.leftMenu}>
-                <LeftSettingsMenu local={locDictionary} session={session}/>
+                <LeftSettingsMenu local={locDictionary} session={session} lang={lang}/>
               </div>
               <div className={styles.accSettings}>
                 <AccountSettings local={locDictionary} />

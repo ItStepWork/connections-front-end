@@ -239,13 +239,14 @@
     "live" : "żyję: "
   },
   "settings" :{
-    "title" : "ustawienia konta",
+    "title" : "Ustawienia konta",
     "subtitle" : "To są ustawienia Twojego konta, tutaj możesz zmienić informacje o swoim profilu.",
     "name" : "Nazwa:",
     "lastName" : "Nazwisko:",
     "born" : "Data urodzenia:",
     "email" : "E-mail:",
     "phone" : "Telefon:",
+    "local" : "Język witryny:",
     "gender" : {
       "title" : "Podłoga",
       "male" : "Mężczyzna",

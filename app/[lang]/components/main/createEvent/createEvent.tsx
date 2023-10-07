@@ -34,7 +34,7 @@ export const CreateEvent = (props: any) => {
   } = useForm();
   const onSubmit = async (data: any) => {
     data.date = new Date(data.date).toUTCString();
-    console.log(data)
+    
     let result = await CelebrationService.addEvent(data);
     if (result === null) notifyErrorServer();
     else notifySuccess(result);

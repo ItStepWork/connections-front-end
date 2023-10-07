@@ -21,9 +21,10 @@ async function logOut() {
 interface IDrop {
   navbarOpen: boolean;
   local : any;
+  lang: any
 }
 
-export const DropMenuProfile: FC<IDrop> = ({navbarOpen, local}) => {
+export const DropMenuProfile: FC<IDrop> = ({navbarOpen, local, lang}) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const notifyLogout = () => toast.info(local.header.dropMenu.exitAccount,{});
@@ -78,8 +79,8 @@ export const DropMenuProfile: FC<IDrop> = ({navbarOpen, local}) => {
                   <p>{work}</p>
                 </div>
               </div>
-              <Link href='/main' className={styles.buttonViewProfile}>{local.header.dropMenu.profile}</Link>
-              <Link href='/settings'>
+              <Link href={`/${lang}/main`} className={styles.buttonViewProfile}>{local.header.dropMenu.profile}</Link>
+              <Link href={`/${lang}/settings`}>
                 <div className={styles.settingsContainer}>
                   <AiOutlineSetting size={20} />
                   <p>{local.header.dropMenu.settings}</p>

@@ -59,27 +59,27 @@ export const Header = (props: any) => {
                 </div>
                 <ul className={`md:flex md:items-center pt-6 md:pt-0 lg:pt-0 md:pb-0 pb-12 lg:shadow-none md:shadow-none dark:shadow-customTransparent dark:backdrop-blur-[3px] md:backdrop-blur-0 absolute rounded-lg md:static md:z-auto z-[-10] left-4 w-11/12 md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in bg-light_background md:bg-glass_white lg:bg-glass_white md:border-none lg:border-none border dark:border-dark_border border-light_border md:dark:bg-transparent dark:bg-dark_button_BG ${open ? 'top-14 opacity-100' : 'top-[-500px] md:opacity-100 opacity-0'}`}>
                   <li className={styles.listItem}>
-                    <Link className={styles.navText} onClick={() => setComponent(ComponentName.Posts)} href={`/main`}>{props.local.header.main}</Link>
+                    <Link className={styles.navText} onClick={() => setComponent(ComponentName.Posts)} href={`/${props.lang}/main`}>{props.local.header.main}</Link>
                   </li>
                   <li className={styles.listItem}>
-                    <Link className={styles.navText} onClick={fetch} href={`/profile/${session.user.id}`}>{props.local.header.profile}</Link>
+                    <Link className={styles.navText} onClick={fetch} href={`/${props.lang}/profile/${session.user.id}`}>{props.local.header.profile}</Link>
                   </li>
                   <li className={styles.listItem}>
-                    <Link className={styles.navText} onClick={fetch} href={`/support`}>{props.local.header.support}</Link>
+                    <Link className={styles.navText} onClick={fetch} href={`/${props.lang}/support`}>{props.local.header.support}</Link>
                   </li>
                   {session.user.role !== Role.User &&
                     <li className={styles.listItem}>
-                      <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href='/admin'>{open ? "Admin panel" : <MdAdminPanelSettings size={20} />}</Link>
+                      <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href={`/${props.lang}/admin`}>{open ? "Admin panel" : <MdAdminPanelSettings size={20} />}</Link>
                     </li>
                   }
                   <li className={styles.listItem}>
-                    <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href='/messaging'>{open ? props.local.header.dropMenu.messages : <MdOutlineMessage size={20} />}</Link>
+                    <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href={`/${props.lang}/messaging`}>{open ? props.local.header.dropMenu.messages : <MdOutlineMessage size={20} />}</Link>
                   </li>
                   <li className={styles.listItem}>
-                    <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href='/settings'>{open ? props.local.header.dropMenu.settings : <AiOutlineSetting size={20} />}</Link>
+                    <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href={`/${props.lang}/settings`}>{open ? props.local.header.dropMenu.settings : <AiOutlineSetting size={20} />}</Link>
                   </li>
                   <li className={styles.listItem}>
-                    <DropMenuProfile navbarOpen={open} local={props.local} />
+                    <DropMenuProfile navbarOpen={open} lang={props.lang} local={props.local}/>
                   </li>
                   <li className={styles.listItem}>
                     {open ? <LocalSwitcherMinimal /> : <LocaleSwitcher local={props.lang} />}
@@ -90,8 +90,8 @@ export const Header = (props: any) => {
               </>)
               :
               (<div className="flex items-center">
-                <Link className={styles.navButton} href='/signIn'><FiLogIn size={20} /></Link>
-                <LocaleSwitcher />
+                <Link className={styles.navButton} href={`/${props.lang}/signIn`}><FiLogIn size={20} /></Link>
+                <LocaleSwitcher lang={props.lang}/>
               </div>
               )}
           </div>

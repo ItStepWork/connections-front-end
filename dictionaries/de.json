@@ -246,6 +246,7 @@
     "born" : "Geboren:",
     "email" : "Email:",
     "phone" : "Telefon:",
+    "local" : "Website-Sprache:",
     "gender" : {
       "title" : "Boden",
       "male" : "Männlich",

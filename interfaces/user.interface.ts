@@ -15,5 +15,5 @@ export interface IUser {
     accessToken: string;
     location: string | null;
     work: string | null;
-    joined: string | null;     
+    joined: string | null;      
 }

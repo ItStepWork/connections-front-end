@@ -246,6 +246,7 @@
     "born" : "Born:",
     "email" : "Email:",
     "phone" : "Phone:",
+    "local" : "Site language:",
     "gender" : {
       "title" : "Gender",
       "male" : "Male",
