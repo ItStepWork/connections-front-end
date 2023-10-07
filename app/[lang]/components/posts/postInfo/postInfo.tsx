@@ -53,7 +53,6 @@ export default function PostInfo(props: any) {
         {isOpen &&
           <div className={styles.dropdownContainer}>
             <div className={styles.item} onClick={() => { setIsOpen(false); setIsOpenComplaint(true); }}>{props.local.posts.report} </div>
-            <div className={styles.item} onClick={() => { setIsOpen(false); setIsOpenComments(true); }}>{props.local.posts.likes} </div>
             <div className={styles.item} onClick={() => { setIsOpen(false); removePost(); }}>{props.local.posts.delete} </div>
           </div>
         }
