@@ -1,5 +1,4 @@
 'use client'
-import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
@@ -9,7 +8,6 @@ import styles from "./locale-switcher.module.scss"
 export default function LocaleSwitcher(props: any) {
   
   const pathName = usePathname()
-  const { data: session, update } = useSession();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const [usrLang, setLang] = useLocalization((state) => [state.localization, state.setLocal])
