@@ -42,7 +42,9 @@ export default function Posts(props: any) {
     <>
       <div className={styles.container}>
         {(stories.length > 0 || props.myId === props.userId) && <StoriesBlock local={props.local} myId={props.myId} userId={props.userId} stories={stories} />}
-        <CreatePost local={props.local} userId={props.userId} />
+        <div className={styles.createPost}>
+          <CreatePost local={props.local} userId={props.userId} placeholder={props.local.posts.placeholder} />
+        </div>
         {posts.length > 0 && <PostsCard local={props.local} myId={props.myId} userId={props.userId} posts={posts} />}
       </div>
     </>
