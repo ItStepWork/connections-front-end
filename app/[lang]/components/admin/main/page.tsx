@@ -1,20 +1,20 @@
 'use client'
 
 import { useEffect, useState } from 'react';
-import styles from './styles.module.scss';
-import Navigation from "../navigation/page";
 import { AdminComponentName } from "../../../../../enums/all.enum";
-import Users from "../users/page";
-import Genders from "../genders/page";
 import { AdminService } from "../../../../../services/admin.service";
-import Zodiacs from "../zodiacs/page";
-import PagesActivity from "../pagesActivity/page";
-import UsersActivity from "../usersActivity/page";
-import Map from "../map/page";
 import AllCharts from "../allCharts/page";
-import Groups from '../groups/page';
-import Messaging from '../messaging/messaging';
 import Complaints from '../complaints/page';
+import Genders from "../genders/page";
+import Groups from '../groups/page';
+import Map from "../map/page";
+import Messaging from '../messaging/messaging';
+import Navigation from "../navigation/page";
+import PagesActivity from "../pagesActivity/page";
+import Users from "../users/page";
+import UsersActivity from "../usersActivity/page";
+import Zodiacs from "../zodiacs/page";
+import styles from './styles.module.scss';
 
 export default function Admin({ local, session }: { local: any, session: any }, props: any) {
 
@@ -25,22 +25,22 @@ export default function Admin({ local, session }: { local: any, session: any }, 
     let result = await AdminService.getUsers();
     setUsers(result);
   }
-
+  
   useEffect(() => {
     getUsers();
   }, [])
 
   const ChangeComponent = () => {
-    if (component === AdminComponentName.Users) return (<Users users={users} getUsers={getUsers}/>)
-    else if (component === AdminComponentName.Groups) return (<Groups/>)
-    else if (component === AdminComponentName.Genders) return (<Genders users={users}/>)
-    else if (component === AdminComponentName.Zodiacs) return (<Zodiacs users={users}/>)
-    else if (component === AdminComponentName.PagesActivity) return (<PagesActivity />)
-    else if (component === AdminComponentName.UsersActivity) return (<UsersActivity />)
+    if (component === AdminComponentName.Users) return (<Users users={users} getUsers={getUsers} local={local}/>)
+    else if (component === AdminComponentName.Groups) return (<Groups local={local}/>)
+    else if (component === AdminComponentName.Genders) return (<Genders users={users} local={local}/>)
+    else if (component === AdminComponentName.Zodiacs) return (<Zodiacs users={users} local={local}/>)
+    else if (component === AdminComponentName.PagesActivity) return (<PagesActivity local={local}/>)
+    else if (component === AdminComponentName.UsersActivity) return (<UsersActivity local={local}/>)
     else if (component === AdminComponentName.Map) return (<Map users={users}/>)
-    else if (component === AdminComponentName.AllCharts) return (<AllCharts users={users}/>)
-    else if (component === AdminComponentName.Messages) return (<Messaging/>)
-    else if (component === AdminComponentName.Complaints) return (<Complaints/>)
+    else if (component === AdminComponentName.AllCharts) return (<AllCharts users={users} local={local}/>)
+    else if (component === AdminComponentName.Messages) return (<Messaging local={local}/>)
+    else if (component === AdminComponentName.Complaints) return (<Complaints local={local}/>)
     else return (<></>)
   }
 

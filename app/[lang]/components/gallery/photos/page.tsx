@@ -6,6 +6,7 @@ import { GalleryService } from '../../../../../services/gallery.service';
 import PhotoAction from '../photoAction/page';
 import SelectedPhoto from '../selectedPhoto/page';
 import styles from './styles.module.scss';
+import { CheckService } from '../../../../../services/check.service';
 
 export default function Photos(props: any) {
 
@@ -14,8 +15,7 @@ export default function Photos(props: any) {
 
 
   const change = (e: any) => {
-    if (e.target.files[0].name.endsWith(FileFormats.Jpg) || e.target.files[0].name.endsWith(FileFormats.JPG) || e.target.files[0].name.endsWith(FileFormats.Jpeg) || e.target.files[0].name.endsWith(FileFormats.JPEG) 
-    || e.target.files[0].name.endsWith(FileFormats.Avif) || e.target.files[0].name.endsWith(FileFormats.Gif) || e.target.files[0].name.endsWith(FileFormats.Svg) || e.target.files[0].name.endsWith(FileFormats.Webp)) {
+    if (CheckService.imageFormat(e.target.files[0].name)) {
       add(e.target.files[0]);
     }
   }
@@ -47,7 +47,7 @@ export default function Photos(props: any) {
         return (
           <div key={index} className='relative'>
             <div className='absolute right-0 bottom-0'>
-              <PhotoAction photo={photo} albums={props.albums} local={props.local}/>
+              <PhotoAction photo={photo} albums={props.albums} local={props.local} />
             </div>
             <img className={styles.image} src={photo.url} onClick={() => { select(index) }} />
           </div>

@@ -8,17 +8,20 @@ import { FileFormats } from '../../../../../enums/all.enum';
 import { PostService } from '../../../../../services/post.service';
 import DropDownEmoji from '../../messaging/dropDownEmoji/page';
 import styles from './styles.module.scss';
+import { CheckService } from '../../../../../services/check.service';
+import { toast } from 'react-toastify';
 
 export default function CreatePost(props: any) {
 
   const [text, setText] = useState("");
   const [file, setFile] = useState(null);
 
+  const notifyError = () => toast.error(props.local.createGroup.toasts.format, {});
+
   const saveFile = (e: any) => {
-    if (e.target.files[0].name.endsWith(FileFormats.Jpg) || e.target.files[0].name.endsWith(FileFormats.JPG) || e.target.files[0].name.endsWith(FileFormats.Jpeg) || e.target.files[0].name.endsWith(FileFormats.JPEG) 
-    || e.target.files[0].name.endsWith(FileFormats.Avif) || e.target.files[0].name.endsWith(FileFormats.Gif) || e.target.files[0].name.endsWith(FileFormats.Svg) || e.target.files[0].name.endsWith(FileFormats.Webp)) {
+    if (CheckService.imageFormat(e.target.files[0].name))
       setFile(e.target.files[0]);
-    }
+    else notifyError()
   }
 
   const click = async () => {

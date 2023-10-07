@@ -424,5 +424,75 @@
     "today" : "Aujourd'hui, ils célèbrent",
     "soon" : "Bientôt ils fêteront",
     "upcoming" : "Événements à venir"
+  },
+  "admin" : {
+    "title" : "Paramètres de blocage:",
+    "ban" : {
+      "hour" : "heure",
+      "day" : "jour",
+      "month" : "mois",
+      "year" : "année"
+    },
+    "table" : {
+      "name" : "Nom",
+      "status" :"Statut",
+      "role" : "Rôle",
+      "users" : "Utilisateurs", 
+      "action" : {
+        "title" : "Action",
+        "info" : "info",
+        "block" : "bloc",
+        "unblock" : "débloquer",
+        "read" : "Lire"
+      }
+    },
+    "save" : "sauvegarder",
+    "info" : {
+      "role" :"Rôle",
+      "status" :"Statut",
+      "blockTime" : "Temps de blocage",
+      "name" : "Nom",
+      "lastName" :"Nom de famille",
+      "phone" : "Téléphone",
+      "gender" : "Genre",
+      "lastVisit" : "Derniere visite",
+      "created" : "Créé",
+      "birthday" : "anniversaire",
+      "groupName" : "Nom",
+      "description" : "Description",
+      "audience" : "Public"
+    },
+    "sidebar" : {
+      "title" : "Graphiques",
+      "users" :"Utilisateurs",
+      "groups" :"Groupes",
+      "messages" :"Messages",
+      "complaints" : "Plaintes",
+      "map" : "Carte",
+      "all" : "Tout",
+      "genders" : "Genres",
+      "zodiacs" : "Zodiaques",
+      "pageActivity" : "Activité des pages",
+      "usersActivity" : "Activité des utilisateurs"
+    },
+    "dialogs" : "Dialogues",
+    "complaints" : {
+      "status" : "Statut:",
+      "sender" : "Expéditeur:",
+      "user" : "Utilisateur:",
+      "text" : "Texte:",
+      "photo" : "Photo:",
+      "group" : "Groupe:",
+      "image" : "Image:"
+    },
+    "activity" : {
+      "daily" : "Tous les jours",
+      "hourly" : "Horaire",
+      "contacts" : "Contacts",
+      "messaging" : "Messagerie",
+      "gallery" : "Galerie",
+      "notifications" : "Notifications",
+      "groups" : "Groupes"
+    }
   }
 }

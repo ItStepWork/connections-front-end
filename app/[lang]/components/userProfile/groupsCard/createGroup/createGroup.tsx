@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { FileFormats } from "../../../../../../enums/all.enum";
 import { GroupService } from '../../../../../../services/group.service';
 import styles from './styles.module.scss';
+import { CheckService } from "../../../../../../services/check.service";
 
 export function CreateGroup(props: any) {
     const [avatar, setAvatar] = useState<any>(null);
@@ -35,8 +36,7 @@ export function CreateGroup(props: any) {
         formState: { errors },
     } = useForm();
     const onSubmit = async (data: any) => {
-        if (data.target.files[0].name.endsWith(FileFormats.Jpg) || data.target.files[0].name.endsWith(FileFormats.JPG) || data.target.files[0].name.endsWith(FileFormats.Jpeg) || data.target.files[0].name.endsWith(FileFormats.JPEG) 
-        || data.target.files[0].name.endsWith(FileFormats.Avif) || data.target.files[0].name.endsWith(FileFormats.Gif) || data.target.files[0].name.endsWith(FileFormats.Svg) || data.target.files[0].name.endsWith(FileFormats.Webp)) {
+        if (CheckService.imageFormat(data.file[0].name)) {
             let formData = new FormData();
             formData.append("file", data.file[0]);
             formData.append("name", data.name);
