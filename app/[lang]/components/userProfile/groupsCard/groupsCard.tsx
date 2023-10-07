@@ -12,7 +12,7 @@ import styles from './groupsCard.module.scss';
 export function GroupsCard(props: any) {
 
   const [groups, setGroups] = useState([]);
-  // const [allGroups, setAllGroups] = useState([]);
+
   const [count, setCount] = useState(3);
   const [search, setSearch] = useState("");
 
@@ -23,7 +23,6 @@ export function GroupsCard(props: any) {
   const getGroups = async () => {
     let result = await GroupService.getGroups(props.userId);
     setGroups(result);
-    // setAllGroups(result);
   }
   const openDialog = () => {
     var dialog: any = document.getElementById("createGroupDialog")

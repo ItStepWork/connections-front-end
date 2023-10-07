@@ -36,13 +36,6 @@ export default function Profile(props: any) {
           {session ? <UserCard setComponent={setComponent} component={component} session={session} userId={props.id[0]} lang={props.lang} local={props.local} /> : <></>}
           {session ? changeComponent() : <></>}
         </div>
-        {/* <div className={styles.rightContainer}>
-
-            <AboutCard local={props.local}/>
-            <PhotosCard local={props.local}/>
-            <FriendsCard local={props.local}/>
-
-          </div> */}
       </div>
     </>
   )

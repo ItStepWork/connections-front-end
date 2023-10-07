@@ -155,7 +155,7 @@
     "open" : "Öffentlich",
     "closed" : "Privat",
     "toasts" : {
-      "format" : "Falsche Bilddatei! Nur <jpg, jpeg, png> !!!",
+      "format" : "Falsche Bilddatei! Nur <jpg, jpeg, png, gif, svg, avif, webp> !!!",
       "ok" : "Gruppe erstellt !",
       "error" : "Serverfehler !"
     }
@@ -297,7 +297,7 @@
     "text1" : "Klicken Sie zum Hochladen",
     "text2" : "oder",
     "text3" : "Bild hierher ziehen",
-    "text4" : "SVG, PNG, JPG oder JPEG",
+    "text4" : "JPG, JPEG, PNG, Gif, SVG, AVIF oder WEBP",
     "uploadAvatar" : "Avatar festlegen",
     "uploadBg" : "Hintergrund einstellen",
     "toasts" : {
@@ -494,5 +494,10 @@
       "notifications" : "Benachrichtigungen",
       "groups" : "Gruppen"
     }
+  },
+  "followers" : "Mögliche Abonnements",
+  "dataInfo" : {
+    "notIndicated" : "Daten nicht bereitgestellt",
+    "loadError" : "Ladefehler"
   }
 }

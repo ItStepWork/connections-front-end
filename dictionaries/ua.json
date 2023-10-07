@@ -155,7 +155,7 @@
     "open" : "Публічна",
     "closed" : "Приватна",
     "toasts" : {
-      "format" : "Невірний формат файла! Тільки <jpg, jpeg, png> !!!",
+      "format" : "Невірний формат файла! Тільки <jpg, jpeg, png, gif, svg, avif, webp> !!!",
       "ok" : "Група створена !",
       "error" : "Помилка сервера !"
     }
@@ -297,7 +297,7 @@
     "text1" : "Клік для завантаження",
     "text2" : "або",
     "text3" : "перетягніть файл",
-    "text4" : "SVG, PNG, JPG або JPEG",
+    "text4" : "JPG, JPEG, PNG, Gif, SVG, AVIF або WEBP",
     "uploadAvatar" : "Встановити аватар",
     "uploadBg" : "Встановити фон",
     "toasts" : {
@@ -494,5 +494,10 @@
       "notifications" : "Сповіщення",
       "groups" : "Групи"
     }
+  },
+  "followers" : "Можливі подписки",
+  "dataInfo" : {
+    "notIndicated" : "Дані невказані",
+    "loadError" : "Помилка завантаження"
   }
 }

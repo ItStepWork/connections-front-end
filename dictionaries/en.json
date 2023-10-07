@@ -155,7 +155,7 @@
     "open" : "Public",
     "closed" : "Private",
     "toasts" : {
-      "format" : "Wrong image file! <jpg, jpeg, png> only !!!",
+      "format" : "Wrong image file! <jpg, jpeg, png, gif, svg, avif, webp> only !!!",
       "ok" : "Group created !",
       "error" : "Server Error !"
     }
@@ -297,7 +297,7 @@
     "text1" : "Click to upload",
     "text2" : "or",
     "text3" : "drag image here",
-    "text4" : "SVG, PNG, JPG or JPEG",
+    "text4" : "JPG, JPEG, PNG, Gif, SVG, AVIF or WEBP",
     "uploadAvatar" : "Set avatar",
     "uploadBg" : "Set background",
     "toasts" : {
@@ -494,5 +494,10 @@
       "notifications" : "Notifications",
       "groups" : "Groups"
     }
+  },
+  "followers" : "Possible subscriptions",
+  "dataInfo" : {
+    "notIndicated" : "Data not provided",
+    "loadError" : "Load Error"
   }
 }
