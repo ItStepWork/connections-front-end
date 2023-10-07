@@ -73,7 +73,7 @@ export const AccountSettings = ({local} : {local : any}) => {
                 key={session?.user?.id}
                 className={styles.label}
                 placeholder={phone === '' ? local.settings.placeholders.notIndicated : phone}
-                {...register('phone')} />
+                {...register('phone')} required/>
             </div>
             <div className={styles.inputContainer}>
               <label htmlFor="email" className={styles.inputLabel}>{local.settings.email}</label>
@@ -84,7 +84,7 @@ export const AccountSettings = ({local} : {local : any}) => {
                 className={styles.label}
                 autoComplete="new-email"
                 placeholder={email === '' ? local.settings.placeholders.notIndicated : email}
-                required {...register('email')}  />
+                required {...register('email')} />
             </div>
           </div>
 
@@ -94,11 +94,11 @@ export const AccountSettings = ({local} : {local : any}) => {
                 <select
                 className={styles.label}
                 id="gender"
-   
+                required
                 {...register('gender')}
                 key={session?.user?.id}
                 >
-                  <option value=''>{gender}</option>
+                  <option value='NotSelected'>{gender}</option>
                   <option value='NotSelected'>{local.settings.gender.none}</option>
                   <option value='Male'>{local.settings.gender.male}</option>
                   <option value='Female'>{local.settings.gender.female}</option>
@@ -113,7 +113,7 @@ export const AccountSettings = ({local} : {local : any}) => {
                 id="familyStatus"
                 className={styles.label}
                 placeholder={familyStatus === '' ? local.settings.placeholders.notIndicated : familyStatus}
-                {...register('familyStatus')} />
+                {...register('familyStatus')} required/>
             </div>
             <div className={styles.inputContainer}>
               <label htmlFor="work" className={styles.inputLabel}>{local.settings.work}</label>
@@ -122,7 +122,7 @@ export const AccountSettings = ({local} : {local : any}) => {
                 id="work"
                 className={styles.label}
                 placeholder={work === '' ? local.settings.placeholders.notIndicated : work}
-                {...register('work')} />
+                {...register('work')}/>
             </div>
             <div className={styles.inputContainer}>
               <label htmlFor="location" className={styles.inputLabel}>{local.settings.location}</label>

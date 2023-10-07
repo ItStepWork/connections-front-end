@@ -155,7 +155,7 @@
     "open" : "otwarty",
     "closed" : "Zamknięte",
     "toasts" : {
-      "format" : "Nieprawidłowy format pliku! Tylko <jpg, jpeg, png> !!!",
+      "format" : "Nieprawidłowy format pliku! Tylko <jpg, jpeg, png, gif, svg, avif, webp> !!!",
       "ok" : "Grupy utworzone !",
       "error" : "błąd serwera !"
     }
@@ -297,7 +297,7 @@
     "text1" : "Kliknij, aby pobrać",
     "text2" : "lub",
     "text3" : "przeciągnij i upuść plik",
-    "text4" : "SVG, PNG, JPG lub JPEG",
+    "text4" : "JPG, JPEG, PNG, Gif, SVG, AVIF lub WEBP",
     "uploadAvatar" : "Ustaw awatar",
     "uploadBg" : "Ustaw tło",
     "toasts" : {
@@ -494,5 +494,10 @@
       "notifications" : "Powiadomienia",
       "groups" : "Grupy"
     }
+  },
+  "followers" : "Możliwe subskrypcje",
+  "dataInfo" : {
+    "notIndicated" : "Nie podano danych",
+    "loadError" : "Błąd ładowania"
   }
 }

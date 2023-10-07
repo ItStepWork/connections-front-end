@@ -21,18 +21,19 @@ export function HeaderBlock(props: any) {
   const [isOpen, setIsOpen] = useState(false)
   const [isOpenComplaint, setIsOpenComplaint] = useState<boolean>(false);
 
-  const notifyError = (text: string) => toast.warning(text, {});
-  const notifyInfo = (text: string) => toast.info(text, {});
-  const notifySuccess = (text: string) => toast.success(text, {});
+  const notifyError = () => toast.warning(props.local.createGroup.toasts.format, {});
+  const notifyInfo = () => toast.info(props.local.groups.toasts.join, {});
+  const notifySuccess = () => toast.success(props.local.groups.toasts.leave, {});
+  const notifySuccess2 = () => toast.success(props.local.setImages.toasts.ok, {});
   const joinGroup = async () => {
     let result = await GroupService.joinGroup(props.group.id);
-    notifySuccess("Заявку подано");
+    notifyInfo();
     props.getUsers();
     props.getGroup();
   }
   const leaveGroup = async () => {
     let result = await GroupService.leaveGroup(props.group.id);
-    notifySuccess("Вы вышли из группы");
+    notifySuccess();
     props.getUsers();
     props.getGroup();
   }
@@ -42,10 +43,10 @@ export function HeaderBlock(props: any) {
       formData.append('file', e.target.files[0]);
       formData.append('id', props.group.id);
       let result = await GroupService.updateAvatar(formData)
-      notifySuccess("Аватар обновлен");;
+      notifySuccess2();;
       props.getGroup();
     }
-    else notifyError("Wrong file type");
+    else notifyError();
   }
   let ifInGroup = () => {
     let find = Object.entries(props.group.users).find(([key, value]) => key === props.session?.user.id);

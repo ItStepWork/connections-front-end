@@ -1,12 +1,12 @@
 'use client'
+import { getSession } from "next-auth/react"
 import { useEffect, useState } from "react"
+import { FriendStatus } from "../../../../../enums/all.enum"
+import { FriendService } from "../../../../../services/friend.service"
 import { Follower } from "./follower"
 import styles from "./follows.module.scss"
-import { getSession } from "next-auth/react"
-import { FriendService } from "../../../../../services/friend.service"
-import { FriendStatus } from "../../../../../enums/all.enum"
 
-export const FollowsBlock = () => {
+export const FollowsBlock = (props : any) => {
 
   const [users, setUsers] = useState<any[]>([]);
   const [elements, setElements] = useState(5);
@@ -31,17 +31,25 @@ export const FollowsBlock = () => {
   return (
     <>
       <div className={styles.container}>
-        <h2>На кого подписаться</h2>
+        <h2>{props.local.followers}</h2>
         <div className={styles.followersBlock}>
           {
             users.map((user: any, index) => {
               if(index < elements){
-                return(<Follower key={user.id} friendStatus={user.friendStatus} firstName={user.firstName} lastName={user.lastName} work={user.work} avatar={user.avatarUrl} id={user.id} getUsers={getUsers}/>)
+                return(<Follower key={user.id} 
+                  friendStatus={user.friendStatus} 
+                  firstName={user.firstName} 
+                  lastName={user.lastName} 
+                  work={user.work} 
+                  avatar={user.avatarUrl} 
+                  id={user.id} 
+                  getUsers={getUsers}
+                  local={props.local}/>)
               }
             })
           }           
         </div>
-        <button className={styles.buttonLoadMore} onClick={() => loadMore()}>Загрузить еще</button>
+        <button className={styles.buttonLoadMore} onClick={() => loadMore()}>{props.local.button.uploadMore}</button>
       </div>
     </>
   )

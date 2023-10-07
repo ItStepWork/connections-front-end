@@ -155,7 +155,7 @@
     "open" : "Ouvrir",
     "closed" : "Fermé",
     "toasts" : {
-      "format" : "Format de fichier invalide ! Seulement <jpg, jpeg, png> !!!",
+      "format" : "Format de fichier invalide ! Seulement <jpg, jpeg, png, gif, svg, avif, webp> !!!",
       "ok" : "Groupes créés !",
       "error" : "erreur du serveur !"
     }
@@ -297,7 +297,7 @@
     "text1" : "Cliquez pour télécharger",
     "text2" : "ou",
     "text3" : "glisser-déposer un fichier",
-    "text4" : "SVG, PNG, JPG ou JPEG",
+    "text4" : "JPG, JPEG, PNG, Gif, SVG, AVIF ou WEBP",
     "uploadAvatar" : "Définir un avatar",
     "uploadBg" : "Définir l'arrière-plan",
     "toasts" : {
@@ -494,5 +494,10 @@
       "notifications" : "Notifications",
       "groups" : "Groupes"
     }
+  },
+  "followers" : "Abonnements possibles",
+  "dataInfo" : {
+    "notIndicated" : "Données non fournies",
+    "loadError" : "Erreur de chargement"
   }
 }
