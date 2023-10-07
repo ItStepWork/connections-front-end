@@ -7,6 +7,7 @@ import { AdminService } from '../../../../../services/admin.service';
 import GroupStatus from '../groupStatus/page';
 import UserStatus from '../userStatus/page';
 import styles from './styles.module.scss';
+import PostStatus from '../postStatus/page';
 
 const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
 
@@ -85,43 +86,47 @@ export default function Complaints(props: any) {
         {filter().map(complaint => (
           <div className='grid grid-cols-4 gap-4 p-3 border-b border-light_border dark:border-dark_border'>
             <div>{props.local.admin.complaints.status}</div>
-            <div className='col-span-3 flex gap-6'>
+            <div className='col-span-3 flex gap-6 items-center justify-between'>
               {complaint.status}
               {complaint.status === MessageStatus.Unread && <button className={styles.button_blue_BG} onClick={() => { updateComplaintStatus(complaint.id) }} >{props.local.admin.table.action.read}</button>}
             </div>
             <div>{props.local.admin.complaints.sender}</div>
-            <div className='col-span-3 flex gap-6 items-center'>
+            <div className='col-span-3 flex gap-6 items-center justify-between'>
               <div className='word-break: break-all'>
                 <div>{complaint.sender.firstName} {complaint.sender.lastName}</div>
                 <div>{complaint.sender.email}</div>
               </div>
-              <div>
-                {new Date(complaint.sender.blockingTime) < new Date() ?
-                  <button className={styles.button_red_BG} onClick={() => { updateUserBlockingTime(complaint.sender.id, time, number) }}>{props.local.admin.table.action.block}</button>
-                  :
-                  <button className={styles.button_blue_BG} onClick={() => { updateUserBlockingTime(complaint.sender.id, time, 0) }}>{props.local.admin.table.action.unblock}</button>}
+              <div className='flex gap-3'>
+                <div>
+                  {new Date(complaint.sender.blockingTime) < new Date() ?
+                    <button className={styles.button_red_BG} onClick={() => { updateUserBlockingTime(complaint.sender.id, time, number) }}>{props.local.admin.table.action.block}</button>
+                    :
+                    <button className={styles.button_blue_BG} onClick={() => { updateUserBlockingTime(complaint.sender.id, time, 0) }}>{props.local.admin.table.action.unblock}</button>}
+                </div>
+                <div><UserStatus user={complaint.sender} getUsers={load} local={props.local} /></div>
               </div>
-              <div><UserStatus user={complaint.sender} getUsers={load} local={props.local}/></div>
             </div>
             <div>{props.local.admin.complaints.user}</div>
-            <div className='col-span-3 flex gap-6 items-center'>
+            <div className='col-span-3 flex gap-6 items-center justify-between'>
               <div className='word-break: break-all'>
                 <div>{complaint.user.firstName} {complaint.user.lastName}</div>
                 <div>{complaint.user.email}</div>
               </div>
-              <div>
-                {new Date(complaint.user.blockingTime) < new Date() ?
-                  <button className={styles.button_red_BG} onClick={() => { updateUserBlockingTime(complaint.user.id, time, number) }}>{props.local.admin.table.action.block}</button>
-                  :
-                  <button className={styles.button_blue_BG} onClick={() => { updateUserBlockingTime(complaint.user.id, time, 0) }}>{props.local.admin.table.action.unblock}</button>}
+              <div className='flex gap-3'>
+                <div>
+                  {new Date(complaint.user.blockingTime) < new Date() ?
+                    <button className={styles.button_red_BG} onClick={() => { updateUserBlockingTime(complaint.user.id, time, number) }}>{props.local.admin.table.action.block}</button>
+                    :
+                    <button className={styles.button_blue_BG} onClick={() => { updateUserBlockingTime(complaint.user.id, time, 0) }}>{props.local.admin.table.action.unblock}</button>}
+                </div>
+                <div><UserStatus user={complaint.user} getUsers={load} local={props.local} /></div>
               </div>
-              <div><UserStatus user={complaint.user} getUsers={load} local={props.local}/></div>
             </div>
             {complaint.photoUrl && <div>{props.local.admin.complaints.photo}</div>}
             {complaint.photoUrl && <img className='col-span-3' src={complaint.photoUrl}></img>}
             {complaint.group && <div>{props.local.admin.complaints.group}</div>}
             {complaint.group &&
-              <div className='col-span-3 flex gap-6 items-center'>
+              <div className='col-span-3 flex gap-6 items-center justify-between'>
                 <div className='word-break: break-all'>
                   <div>{complaint.group.name}</div>
                   <div>{complaint.group.email}</div>
@@ -132,7 +137,16 @@ export default function Complaints(props: any) {
                     :
                     <button className={styles.button_blue_BG} onClick={() => { updateGroupBlockingTime(complaint.group.id, time, 0) }}>{props.local.admin.table.action.unblock}</button>}
                 </div>
-                <div><GroupStatus group={complaint.group} getGroups={load} local={props.local}/></div>
+                <div><GroupStatus group={complaint.group} getGroups={load} local={props.local} /></div>
+              </div>}
+            {complaint.post && <div>Post:</div>}
+            {complaint.post &&
+              <div className='col-span-3 flex gap-6 items-center justify-between'>
+                <div className='word-break: break-all'>
+                  <div>{complaint.post.text}</div>
+                  {complaint.post.imgUrl &&<img src={complaint.post.imgUrl}></img>}
+                </div>
+                <div><PostStatus post={complaint.post} load={load} local={props.local} /></div>
               </div>}
             <div>{props.local.admin.complaints.text}</div>
             <div className='col-span-3'>{complaint.text}</div>

@@ -54,11 +54,11 @@ export default function FooterBlock(props: any) {
               <DropDownEmoji addEmoji={addEmoji} isLower={false} />
             </div>
             <div className='mx-1 my-0.5'>
-              <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center  border-gray-300 rounded-md cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+              <label className="flex flex-col items-center justify-center  border-gray-300 rounded-md cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                 <div className="flex flex-col items-center justify-center px-2 py-1">
                   <ImAttachment className="fill-black dark:fill-white" />
                 </div>
-                <input id="dropzone-file" type="file" className="hidden" onChange={saveFile} />
+                <input type="file" className="hidden" onChange={saveFile} />
               </label>
             </div>
             <div className='mx-1'>

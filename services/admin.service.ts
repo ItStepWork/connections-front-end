@@ -63,4 +63,8 @@ export class AdminService {
     return await ApiService.post("Admin/UpdateComplaintStatus", { id: id }, null);
   }
 
+  static async updatePostStatus(recipientId: string, postId: string, status: Status) {
+    return await ApiService.post("Admin/UpdatePostStatus", { recipientId: recipientId, postId: postId, status: status }, null);
+  }
+
 } 

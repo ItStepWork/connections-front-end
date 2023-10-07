@@ -57,7 +57,7 @@ export default function PostInfo(props: any) {
             <div className={styles.item} onClick={() => { setIsOpen(false); removePost(); }}>{props.local.posts.delete} </div>
           </div>
         }
-        <Complaint isOpen={isOpenComplaint} setIsOpen={setIsOpenComplaint} userId={props.post.senderId} />
+        <Complaint isOpen={isOpenComplaint} setIsOpen={setIsOpenComplaint} userId={props.post.senderId} postId={props.post.id} />
       </div>
       <div className={styles.postTextContainer}>
         <div className="my-3">
