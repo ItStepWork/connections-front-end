@@ -14,6 +14,7 @@ module.exports = withPWA({
 			'cloudflare-ipfs.com',
 			'avatars.githubusercontent.com',
 			'firebasestorage.googleapis.com',
+			'news.google.com',
 		],
 		formats: ['image/avif', 'image/webp'],
 	},

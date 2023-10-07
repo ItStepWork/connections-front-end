@@ -1,7 +1,7 @@
 "use client"
 
-import { useState } from 'react';
 import { ComponentName } from "../../../../../enums/all.enum";
+import { useMainComponents } from '../../../../../stores/mainStateStore';
 import Gallery from "../../gallery/main/page";
 import Notifications from "../../notifications/page";
 import Posts from "../../posts/page";
@@ -9,8 +9,8 @@ import { ConnectionsCard } from "../../userProfile/connectionsCard/connectionsCa
 import { GroupsCard } from "../../userProfile/groupsCard/groupsCard";
 import Celebration from "../celebrations/page";
 import Menu from "../menu/page";
+import { News } from "../news/news";
 import styles from './main.module.scss';
-import { useMainComponents } from '../../../../../stores/mainStateStore';
 
 export default function Main({ local, session }: { local: any, session: any }, props: any) {
 
@@ -23,6 +23,7 @@ export default function Main({ local, session }: { local: any, session: any }, p
     else if (component === ComponentName.Gallery) return (<Gallery session={session} myId={session.user.id} userId={session.user.id} local={local} />)
     else if (component === ComponentName.Notifications) return (<Notifications session={session} local={local} />)
     else if (component === ComponentName.Posts) return (<Posts local={local} session={session} myId={session.user.id} userId={session.user.id} />)
+    else if (component === ComponentName.News) return (<News local={local} session={session} />)
     else return (<></>)
   }
 
