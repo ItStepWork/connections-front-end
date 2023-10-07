@@ -22,6 +22,7 @@ declare module "next-auth" {
       location: string | null;
       work: string | null;
       joined: string | null;
+      localization: string; 
     }
   }
 }

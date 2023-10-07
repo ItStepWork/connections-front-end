@@ -29,7 +29,6 @@ export const SignIn = ({local} : {local : any}, props : any) => {
       notifyLogin();
       router.push('/main');
     } else {
-      console.log(res);
       notifyError();
     }
   };

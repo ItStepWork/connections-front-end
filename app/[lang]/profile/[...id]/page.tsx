@@ -9,5 +9,5 @@ interface PageProps {
 
 export default async function Page({params}: PageProps) {
   const localDictionary = await getDictionary(params.lang)
-  return <Profile id={params.id} local={localDictionary} />
+  return <Profile id={params.id} local={localDictionary} lang={params.lang}/>
 }

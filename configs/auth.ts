@@ -31,17 +31,6 @@ export const authConfig: AuthOptions = {
         catch (error) {
           console.error('Ошибка:', error);
         }
-
-        // return await axios
-        //   .get(url)
-        //   .then((response) => {
-        //     return response.data;
-        //   })
-        //   .catch((error) => {
-        //     console.log("error: " + error);
-        //     throw new Error(error.response.data.message);
-        //   }) || null;
-
       },
     }),
   ],

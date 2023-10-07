@@ -20,6 +20,7 @@ interface User {
   joined: string;
   friendsCount: number;
   gender: number;
+  local: string;
   fetchUser: any;
 }
 
@@ -46,6 +47,7 @@ export const useStore = create<User>()(
       joined: '',
       friendsCount: 0,
       gender: 0,
+      local: '',
        
       fetchUser: async () => {
         const session = await getSession()
@@ -68,6 +70,7 @@ export const useStore = create<User>()(
           set((state) => ({ joined: (state.joined = responseUser?.joined!)}));
           set((state) => ({ gender: (state.gender = responseUser?.gender!)}));
           set((state) => ({ friendsCount: (state.friendsCount = responseFriends?.friendsCount!)}));
+          set((state) => ({ local: (state.local = responseUser?.localization!)}));
         }catch (error){
           console.log(error)
         }

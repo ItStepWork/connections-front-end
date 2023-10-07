@@ -246,6 +246,7 @@
     "born" : "Date de naissance:",
     "email" : "E-mail:",
     "phone" : "Téléphone:",
+    "local" : "Langue du site:",
     "gender" : {
       "title" : "Sol",
       "male" : "Mâle",

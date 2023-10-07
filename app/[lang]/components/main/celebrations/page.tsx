@@ -30,7 +30,6 @@ export default function Celebration(props: any) {
   }
   const getEvents = async () => {
     let result = await CelebrationService.getEvents()
-    console.log(result)
     setEvents(result)
   }
   const openDialog = () => {

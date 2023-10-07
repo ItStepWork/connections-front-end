@@ -3,12 +3,12 @@ import { getSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import { ComponentName } from '../../../../enums/all.enum';
 import Gallery from '../gallery/main/page';
+import Posts from '../posts/page';
 import { ConnectionsCard } from '../userProfile/connectionsCard/connectionsCard';
 import { GroupsCard } from '../userProfile/groupsCard/groupsCard';
 import { ProfileInfo } from '../userProfile/profileInfo/profileInfo';
 import { UserCard } from '../userProfile/userCard/userCard';
 import styles from './profile.module.scss';
-import Posts from '../posts/page';
 
 export default function Profile(props: any) {
   const [component, setComponent] = useState<ComponentName>(ComponentName.Connections);
@@ -17,7 +17,6 @@ export default function Profile(props: any) {
     const result = await getSession();
     setSession(result);
   }
-
   useEffect(() => {
     load();
   }, []);
@@ -34,7 +33,7 @@ export default function Profile(props: any) {
     <>
       <div className={styles.container}>
         <div className={styles.leftContainer}>
-          {session ? <UserCard setComponent={setComponent} component={component} session={session} userId={props.id[0]} local={props.local} /> : <></>}
+          {session ? <UserCard setComponent={setComponent} component={component} session={session} userId={props.id[0]} lang={props.lang} local={props.local} /> : <></>}
           {session ? changeComponent() : <></>}
         </div>
         {/* <div className={styles.rightContainer}>

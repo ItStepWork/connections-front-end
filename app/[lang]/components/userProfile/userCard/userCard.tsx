@@ -1,6 +1,5 @@
 "use client"
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { AiOutlineUserDelete } from 'react-icons/ai';
@@ -9,14 +8,14 @@ import { BsBriefcase, BsCalendar2Plus, BsFillPatchCheckFill, BsGeoAlt, BsPencilF
 import { GoPersonAdd } from 'react-icons/go';
 import { HiMiniPencilSquare } from 'react-icons/hi2';
 import { MdSentimentSatisfiedAlt, MdSentimentVeryDissatisfied } from 'react-icons/md';
-import { ComponentName, FriendStatus } from '../../../../../enums/all.enum';
+import { ComponentName, FileFormats, FriendStatus } from '../../../../../enums/all.enum';
 import { FriendService } from '../../../../../services/friend.service';
+import { SubscriptionService } from '../../../../../services/subscription.service';
 import { UserService } from '../../../../../services/user.service';
 import FooterBlock from '../../messaging/footerBlock/page';
 import Window from '../../messaging/window/page';
 import OnlineUser from '../../onlineUser/page';
 import styles from './userCard.module.scss';
-import { SubscriptionService } from '../../../../../services/subscription.service';
 
 export function UserCard(props: any) {
 
@@ -60,7 +59,8 @@ export function UserCard(props: any) {
   }
 
   const saveAvatar = async (e: any) => {
-    if (e.target.files[0].name.endsWith('.jpg') || e.target.files[0].name.endsWith('.jpeg') || e.target.files[0].name.endsWith('.png')) {
+    if (e.target.files[0].name.endsWith(FileFormats.Jpg) || e.target.files[0].name.endsWith(FileFormats.JPG) || e.target.files[0].name.endsWith(FileFormats.Jpeg) || e.target.files[0].name.endsWith(FileFormats.JPEG) 
+    || e.target.files[0].name.endsWith(FileFormats.Avif) || e.target.files[0].name.endsWith(FileFormats.Gif) || e.target.files[0].name.endsWith(FileFormats.Svg) || e.target.files[0].name.endsWith(FileFormats.Webp)) {
 
       var formData = new FormData();
       formData.append('file', e.target.files[0]);
@@ -69,7 +69,8 @@ export function UserCard(props: any) {
   }
 
   const saveBackground = async (e: any) => {
-    if (e.target.files[0].name.endsWith('.jpg') || e.target.files[0].name.endsWith('.jpeg') || e.target.files[0].name.endsWith('.png')) {
+    if (e.target.files[0].name.endsWith(FileFormats.Jpg) || e.target.files[0].name.endsWith(FileFormats.JPG) || e.target.files[0].name.endsWith(FileFormats.Jpeg) || e.target.files[0].name.endsWith(FileFormats.JPEG) 
+    || e.target.files[0].name.endsWith(FileFormats.Avif) || e.target.files[0].name.endsWith(FileFormats.Gif) || e.target.files[0].name.endsWith(FileFormats.Svg) || e.target.files[0].name.endsWith(FileFormats.Webp)) {
 
       var formData = new FormData();
       formData.append('file', e.target.files[0])
@@ -104,7 +105,7 @@ export function UserCard(props: any) {
                 <div className={styles.backgroundIcon}>
                   <HiMiniPencilSquare className="fill-white" />
                 </div>
-                <input id="background-file" type="file" className="hidden" onChange={saveBackground} />
+                <input id="background-file" type="file" accept={FileFormats.All} className="hidden" onChange={saveBackground} />
               </label>
             </div>
           }
@@ -128,7 +129,7 @@ export function UserCard(props: any) {
                         <div className={styles.avatarIcon}>
                           <HiMiniPencilSquare className="fill-white" />
                         </div>
-                        <input id="avatar-file" type="file" className="hidden" onChange={saveAvatar} />
+                        <input id="avatar-file" type="file" accept={FileFormats.All} className="hidden" onChange={saveAvatar} />
                       </label>
                     </div>
                   }
@@ -153,7 +154,7 @@ export function UserCard(props: any) {
                   <button title="Send Message" className={styles.button_blue_BG} onClick={() => { setIsOpen(true); }}><BsSend size={20} />{props.local.profile.connect.write}</button>
                 </div>
                 : <div className={styles.buttonBlock}>
-                  <Link href='/settings' className={styles.button_red_BG}><span><BsPencilFill size={15} /></span>{props.local.button.editProfile}</Link>
+                  <Link href={`/${props.lang}/settings`} className={styles.button_red_BG}><span><BsPencilFill size={15} /></span>{props.local.button.editProfile}</Link>
                 </div>
 
               }
