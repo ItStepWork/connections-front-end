@@ -1,10 +1,10 @@
 'use client'
 
-import styles from './styles.module.scss';
-import { VictoryLabel, VictoryChart, VictoryLine, VictoryZoomContainer, VictoryLegend, VictoryAxis } from 'victory';
 import { useEffect, useState } from 'react';
-import { AdminService } from '../../../../../services/admin.service';
+import { VictoryAxis, VictoryChart, VictoryLabel, VictoryLegend, VictoryLine, VictoryZoomContainer } from 'victory';
 import { Chart } from '../../../../../enums/all.enum';
+import { AdminService } from '../../../../../services/admin.service';
+import styles from './styles.module.scss';
 
 export default function PagesActivity(props: any) {
 
@@ -37,17 +37,17 @@ export default function PagesActivity(props: any) {
   return (
     <div className={styles.container}>
       <h2 className='relative text-sm md:text-lg lg:text-2xl mx-3 mt-3'>
-        Pages activity
+      {props.local.admin.sidebar.pageActivity}
       </h2>
       <div className="absolute top-0 right-0">
         <div className='flex p-3 text-sm lg:text-lg'>
           <div className="flex mr-4" onClick={()=>{ load(Chart.Daily); }}>
             <input id="daily-radio-pages" type="radio" className='cursor-pointer' value={Chart.Daily} checked={chart === Chart.Daily} onChange={()=>{}} name="radio-pages" />
-            <label htmlFor="daily-radio-pages" className='cursor-pointer'>Daily</label>
+            <label htmlFor="daily-radio-pages" className='cursor-pointer'>{props.local.admin.activity.daily}</label>
           </div>
           <div className="flex cursor-pointer" onClick={()=>{ load(Chart.Hourly); }} >
             <input id="hourly-radio-pages" type="radio" className='cursor-pointer' value={Chart.Hourly} checked={chart === Chart.Hourly} onChange={()=>{}} name="radio-pages" />
-            <label htmlFor="hourly-radio-pages" className='cursor-pointer'>Hourly</label>
+            <label htmlFor="hourly-radio-pages" className='cursor-pointer'>{props.local.admin.activity.hourly}</label>
           </div>
         </div>
       </div>
@@ -59,11 +59,11 @@ export default function PagesActivity(props: any) {
           orientation="horizontal"
           gutter={5}
           data={[
-            { name: "Contacts", symbol: { fill: "red" } },
-            { name: "Messaging", symbol: { fill: "orange" } },
-            { name: "Gallery", symbol: { fill: "violet" } },
-            { name: "Notifications", symbol: { fill: "lime" } },
-            { name: "Groups", symbol: { fill: "dodgerBlue" } },
+            { name: props.local.admin.activity.contacts, symbol: { fill: "red" } },
+            { name: props.local.admin.activity.messaging, symbol: { fill: "orange" } },
+            { name: props.local.admin.activity.gallery, symbol: { fill: "violet" } },
+            { name: props.local.admin.activity.notifications, symbol: { fill: "lime" } },
+            { name: props.local.admin.activity.groups, symbol: { fill: "dodgerBlue" } },
           ]}
           labelComponent={<VictoryLabel style={{ fontSize: 12, fill: "gray" }} />}
         />

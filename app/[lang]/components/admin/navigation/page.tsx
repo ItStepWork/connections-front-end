@@ -1,15 +1,15 @@
 'use client'
-import DropDownMenu from '../dropDownMenu/page';
-import styles from './styles.module.scss';
 import { useState } from 'react';
-import { ImMenu } from 'react-icons/im';
-import { IoMdClose } from 'react-icons/io';
+import { BiMessageRoundedError, BiWorld } from 'react-icons/bi';
 import { FaUsers } from 'react-icons/fa';
 import { FaUserGroup } from 'react-icons/fa6';
-import { BiWorld, BiMessageRoundedError } from 'react-icons/bi';
 import { HiOutlineMail } from 'react-icons/hi';
+import { ImMenu } from 'react-icons/im';
+import { IoMdClose } from 'react-icons/io';
 import { AdminComponentName } from '../../../../../enums/all.enum';
+import DropDownMenu from '../dropDownMenu/page';
 import LiMenu from '../liMenu/page';
+import styles from './styles.module.scss';
 
 export default function Navigation(props: any) {
 
@@ -25,12 +25,12 @@ export default function Navigation(props: any) {
           <IoMdClose className={styles.actionClose} size={24} onClick={() => { setIsOpen(false) }} />
           <div className="mt-2 p-4 overflow-y-auto">
             <ul className="space-y-2 font-medium">
-              <LiMenu name="Users" icon={FaUserGroup} component={AdminComponentName.Users} setComponent={props.setComponent}/>
-              <LiMenu name="Groups" icon={FaUsers} component={AdminComponentName.Groups} setComponent={props.setComponent}/>
-              <LiMenu name="Messages" icon={HiOutlineMail} component={AdminComponentName.Messages} setComponent={props.setComponent}/>
-              <LiMenu name="Complaints" icon={BiMessageRoundedError} component={AdminComponentName.Complaints} setComponent={props.setComponent}/>
-              <LiMenu name="Map" icon={BiWorld} component={AdminComponentName.Map} setComponent={props.setComponent}/>
-              <DropDownMenu  setComponent={props.setComponent}/>
+              <LiMenu name={props.local.admin.sidebar.users} icon={FaUserGroup} component={AdminComponentName.Users} setComponent={props.setComponent} local={props.local}/>
+              <LiMenu name={props.local.admin.sidebar.groups} icon={FaUsers} component={AdminComponentName.Groups} setComponent={props.setComponent}/>
+              <LiMenu name={props.local.admin.sidebar.messages} icon={HiOutlineMail} component={AdminComponentName.Messages} setComponent={props.setComponent}/>
+              <LiMenu name={props.local.admin.sidebar.complaints} icon={BiMessageRoundedError} component={AdminComponentName.Complaints} setComponent={props.setComponent}/>
+              <LiMenu name={props.local.admin.sidebar.map} icon={BiWorld} component={AdminComponentName.Map} setComponent={props.setComponent}/>
+              <DropDownMenu  setComponent={props.setComponent} local={props.local}/>
             </ul>
           </div>
         </div>

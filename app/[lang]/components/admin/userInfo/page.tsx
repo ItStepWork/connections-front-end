@@ -1,9 +1,9 @@
 "use client"
 
 import { toast } from 'react-toastify';
-import styles from './styles.module.scss';
 import UserRole from '../userRole/page';
 import UserStatus from '../userStatus/page';
+import styles from './styles.module.scss';
 
 export default function UserInfo(props: any) {
 
@@ -18,17 +18,17 @@ export default function UserInfo(props: any) {
         <thead>
           <tr className={styles.tr}>
             <th className={styles.th}>Id</th>
-            <th className={styles.th}>Role</th>
-            <th className={styles.th}>Status</th>
-            <th className={styles.th}>BlockTime</th>
-            <th className={styles.th}>FirstName</th>
-            <th className={styles.th}>LastName</th>
+            <th className={styles.th}>{props.local.admin.info.role}</th>
+            <th className={styles.th}>{props.local.admin.info.status}</th>
+            <th className={styles.th}>{props.local.admin.info.blockTime}</th>
+            <th className={styles.th}>{props.local.admin.info.name}</th>
+            <th className={styles.th}>{props.local.admin.info.lastName}</th>
             <th className={styles.th}>Email</th>
-            <th className={styles.th}>Phone</th>
-            <th className={styles.th}>Gender</th>
-            <th className={styles.th}>LastVisit</th>
-            <th className={styles.th}>Created</th>
-            <th className={styles.th}>BirthDay</th>
+            <th className={styles.th}>{props.local.admin.info.phone}</th>
+            <th className={styles.th}>{props.local.admin.info.gender}</th>
+            <th className={styles.th}>{props.local.admin.info.lastVisit}</th>
+            <th className={styles.th}>{props.local.admin.info.created}</th>
+            <th className={styles.th}>{props.local.admin.info.birthday}</th>
             <th className={styles.th}>IpAddress</th>
           </tr>
         </thead>
@@ -36,10 +36,10 @@ export default function UserInfo(props: any) {
           <tr className={styles.tr}>
             <td className={styles.td} onClick={() => { navigator.clipboard.writeText(props.user.id) }}>{props.user.id}</td>
             <td className={styles.td}>
-              <UserRole user={props.user} getUsers={props.getUsers} />
+              <UserRole user={props.user} getUsers={props.getUsers} local={props.local}/>
             </td>
             <td className={styles.td}>
-              <UserStatus user={props.user} getUsers={props.getUsers} />
+              <UserStatus user={props.user} getUsers={props.getUsers} local={props.local}/>
             </td>
             <td className={styles.td}>
               {new Date(props.user.blockingTime) > new Date() ? 

@@ -1,13 +1,13 @@
 'use client'
 
 import { useEffect, useState } from 'react';
-import styles from './styles.module.scss';
+import { IoMdClose } from 'react-icons/io';
+import { TiMessages } from 'react-icons/ti';
+import { AdminService } from '../../../../../services/admin.service';
+import MessagingFooterBlock from '../messagingFooterBlock/page';
 import MessagingLeftBlock from '../messagingLeftBlock/page';
 import MessagingMainBlock from '../messagingMainBlock/page';
-import MessagingFooterBlock from '../messagingFooterBlock/page';
-import { AdminService } from '../../../../../services/admin.service';
-import { TiMessages } from 'react-icons/ti';
-import { IoMdClose } from 'react-icons/io';
+import styles from './styles.module.scss';
 
 export default function Messaging(props: any) {
 
@@ -41,7 +41,7 @@ export default function Messaging(props: any) {
   return (
     <div className='w-full' style={{ height: "calc(100vh - 200px)", minHeight: "500px" }}>
       <div className="flex m-3 cursor-pointer absolute right-0 mt-[-38px] md:invisible hover:text-button_blue_BG" onClick={() => { setIsOpen(!isOpen) }} >
-        <h2 className="text-xl mx-1">Dialogs</h2>
+        <h2 className="text-xl mx-1">{props.local.admin.dialogs}</h2>
         <TiMessages size={24} />
       </div>
       <div className={styles.centerContainer}>

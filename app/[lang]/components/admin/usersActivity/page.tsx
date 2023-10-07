@@ -1,10 +1,10 @@
 'use client'
 
-import styles from './styles.module.scss';
-import { VictoryLabel, VictoryChart, VictoryBar, VictoryZoomContainer, VictoryLegend, VictoryAxis } from 'victory';
 import { useEffect, useState } from 'react';
-import { AdminService } from '../../../../../services/admin.service';
+import { VictoryAxis, VictoryBar, VictoryChart, VictoryLabel, VictoryZoomContainer } from 'victory';
 import { Chart } from '../../../../../enums/all.enum';
+import { AdminService } from '../../../../../services/admin.service';
+import styles from './styles.module.scss';
 
 export default function UsersActivity(props: any) {
 
@@ -25,17 +25,17 @@ export default function UsersActivity(props: any) {
   return (
     <div className={styles.container}>
       <h2 className='relative text-sm md:text-lg lg:text-2xl mx-3 mt-3'>
-        Users activity
+        {props.local.admin.sidebar.usersActivity}
       </h2>
       <div className="absolute top-0 right-0">
         <div className='flex p-3 text-sm lg:text-lg'>
           <div className="flex mr-4" onClick={()=>{ load(Chart.Daily); }}>
             <input id="daily-radio-users" type="radio" className='cursor-pointer' value={Chart.Daily} checked={chart === Chart.Daily} onChange={()=>{}} name="radio-users" />
-            <label htmlFor="daily-radio-users" className='cursor-pointer'>Daily</label>
+            <label htmlFor="daily-radio-users" className='cursor-pointer'>{props.local.admin.activity.daily}</label>
           </div>
           <div className="flex cursor-pointer" onClick={()=>{ load(Chart.Hourly); }}>
             <input id="hourly-radio-users" type="radio" className='cursor-pointer' value={Chart.Hourly} checked={chart === Chart.Hourly} onChange={()=>{}} name="radio-users" />
-            <label htmlFor="hourly-radio-users" className='cursor-pointer'>Hourly</label>
+            <label htmlFor="hourly-radio-users" className='cursor-pointer'>{props.local.admin.activity.hourly}</label>
           </div>
         </div>
       </div>

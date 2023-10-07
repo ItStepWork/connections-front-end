@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { Role } from '../../../../../enums/all.enum';
-import styles from './styles.module.scss';
 import { AdminService } from '../../../../../services/admin.service';
+import styles from './styles.module.scss';
 
 export default function UserRole(props: any) {
   const [role, setRole] = useState<Role>(props.user.role);
@@ -20,7 +20,7 @@ export default function UserRole(props: any) {
         <option value={Role.Moderator}>{Role.Moderator}</option>
         <option value={Role.Admin}>{Role.Admin}</option>
       </select>
-      <button  className={props.user.role === role ? styles.button_blue_BG : styles.button_red_BG} onClick={updateUserRole}>Save</button>
+      <button  className={props.user.role === role ? styles.button_blue_BG : styles.button_red_BG} onClick={updateUserRole}>{props.local.admin.save}</button>
     </div>
   )
 }

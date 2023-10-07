@@ -1,8 +1,8 @@
 "use client"
 
 import { toast } from 'react-toastify';
-import styles from './styles.module.scss';
 import GroupStatus from '../groupStatus/page';
+import styles from './styles.module.scss';
 
 export default function GroupInfo(props: any) {
 
@@ -17,14 +17,14 @@ export default function GroupInfo(props: any) {
         <thead>
           <tr className={styles.tr}>
             <th className={styles.th}>Id</th>
-            <th className={styles.th}>Users</th>
-            <th className={styles.th}>Audience</th>
-            <th className={styles.th}>Status</th>
-            <th className={styles.th}>BlockTime</th>
-            <th className={styles.th}>Name</th>
+            <th className={styles.th}>{props.local.admin.table.users}</th>
+            <th className={styles.th}>{props.local.admin.info.audience}</th>
+            <th className={styles.th}>{props.local.admin.info.status}</th>
+            <th className={styles.th}>{props.local.admin.info.blockTime}</th>
+            <th className={styles.th}>{props.local.admin.info.groupName}</th>
             <th className={styles.th}>Email</th>
-            <th className={styles.th}>Created</th>
-            <th className={styles.th}>Description</th>
+            <th className={styles.th}>{props.local.admin.info.created}</th>
+            <th className={styles.th}>{props.local.admin.info.description}</th>
           </tr>
         </thead>
         <tbody className="flex">
@@ -33,7 +33,7 @@ export default function GroupInfo(props: any) {
             <td className={styles.td}>{Object.entries(props.group.users).filter(u=>u[1]).length}</td>
             <td className={styles.td}>{props.group.audience}</td>
             <td className={styles.td}>
-              <GroupStatus group={props.group} getGroups={props.getGroups} />
+              <GroupStatus group={props.group} getGroups={props.getGroups} local={props.local}/>
             </td>
             <td className={styles.td}>
               {new Date(props.group.blockingTime) > new Date() ? 
