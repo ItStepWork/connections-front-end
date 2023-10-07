@@ -7,6 +7,7 @@ import styles from "./friends.module.scss";
 import { FriendStatus } from "../../../../../enums/all.enum";
 import { NotificationService } from "../../../../../services/notification.service";
 import { getSession } from "next-auth/react";
+import { FaUserCircle } from "react-icons/fa";
 
 interface IFriendProps {
   friendStatus: FriendStatus;
@@ -31,12 +32,11 @@ export const Friend: FC<IFriendProps> = ({ friendStatus, firstName, lastName, wo
   return (
     <>
       <div className={styles.followerContainer}>
-        <img className={styles.avatar}
-          src={avatar}
-          style={{ objectFit: "contain" }}
-          alt="avatar"
-          loading="lazy"
-        />
+        {avatar
+          ? <img className={styles.avatar} src={avatar} style={{ objectFit: "contain" }} alt="avatar" loading="lazy" />
+          : <FaUserCircle className={styles.avatar} />
+        }
+
         <div className={styles.userInfo}>
           <p>{firstName + ' ' + lastName}</p>
           <span>{work === '' || work === undefined || work === null ? 'Не указано' : work}</span>

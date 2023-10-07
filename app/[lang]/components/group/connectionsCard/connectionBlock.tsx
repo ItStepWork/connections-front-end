@@ -10,6 +10,7 @@ import { FriendService } from "../../../../../services/friend.service";
 import { GroupService } from "../../../../../services/group.service";
 import OnlineUser from "../../onlineUser/page";
 import styles from './connectionBlock.module.scss';
+import { FaUserCircle } from "react-icons/fa";
 
 export const ConnectionBlock = (props: any) => {
   const notifyError = (text: string) => toast.warning(text, {});
@@ -43,6 +44,10 @@ export const ConnectionBlock = (props: any) => {
       <div className={styles.container}>
         <Link href={"/profile/" + props.user.id} className={styles.userContainer}>
           <div className={styles.avatar}>
+            {props.user.avatarUrl
+              ? <img className='h-full w-full' src={props.user.avatarUrl} alt="avatar" loading="lazy" sizes="100vw" style={{ objectFit: "cover" }} />
+              : <FaUserCircle className='h-full w-full' />
+            }
             <img className='h-full w-full' src={props.user.avatarUrl} alt="avatar" loading="lazy" sizes="100vw" style={{ objectFit: "cover" }} />
           </div>
           <div className={styles.textContainer}>

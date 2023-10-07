@@ -6,6 +6,9 @@ import { IoIosNotificationsOutline } from 'react-icons/io';
 import { MdOutlineNotificationsOff } from 'react-icons/md';
 import styles from './cardItem.module.scss';
 import { EventType } from '../../../../../../enums/all.enum';
+import { PostService } from '../../../../../../services/post.service';
+import { toast } from 'react-toastify';
+import CreatePost from '../../../posts/createPost/page';
 
 // interface ICardProps {
 //   howCelebrating: string;
@@ -17,6 +20,22 @@ import { EventType } from '../../../../../../enums/all.enum';
 export default function CardItem(props: any) {
   const [isSend, setSend] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [congratulations, setCongratulations] = useState<string>("Happy Birthday !")
+
+  const notifySuccess = () => toast.success(props.local.createGroup.toasts.ok, {});
+  const notifyErrorServer = () => toast.error(props.local.createGroup.toasts.error, {});
+  const changeCongrats = (e: any) => {
+    setCongratulations(e.target.value)
+  }
+  const sendCongrats = async () => {
+    const data = new FormData()
+    data.append("recipientId", props.event.user.id)
+    data.append("text", congratulations);
+    let result = await PostService.createPost(data);
+    alert(result)
+    // if (result != null && result != undefined) notifySuccess();
+    // else notifyErrorServer();
+  }
 
   return (
     <>{props.event.user &&
@@ -34,7 +53,7 @@ export default function CardItem(props: any) {
               }
 
             </div>
-            <button type="button"
+            {/* <button type="button"
               onClick={() => { if (!isOpen) setIsOpen(true) }}
               onFocus={() => { if (!isOpen) setIsOpen(true) }}
               onBlur={() => setIsOpen(false)}
@@ -48,16 +67,17 @@ export default function CardItem(props: any) {
                 </div>
               }
 
-            </button>
+            </button> */}
           </div>
           {props.event.type === EventType.BirthDay && props.BirthDayNow
-            ? <div className={styles.sendForm}>
-              <textarea className={styles.textarea} placeholder="Hapy Birthday" rows={1}></textarea>
-              <button onClick={() => setSend(true)}
-                className={isSend ? styles.buttonChecked : styles.button}>
-                {isSend ? <BsFillSendCheckFill size={16} /> : <BsFillSendFill size={16} />}
-              </button>
-            </div>
+            // ? <div className={styles.sendForm}>
+            //   <textarea className={styles.textarea} defaultValue={congratulations} placeholder="Write your congratulations" rows={1} onChange={(e) => changeCongrats(e)}></textarea>
+            //   <button onClick={() => { sendCongrats(); setSend(true); }}
+            //     className={isSend ? styles.buttonChecked : styles.button}>
+            //     {isSend ? <BsFillSendCheckFill size={16} /> : <BsFillSendFill size={16} />}
+            //   </button>
+            // </div>
+            ? <CreatePost local={props.local} userId={props.event.user.id} placeholder={"Write your congratulations"} />
             : <></>
           }
           {props.event.type === EventType.BirthDay && !props.BirthDayNow

@@ -9,7 +9,7 @@ import styles from './celebration.module.scss';
 
 
 export default function Celebration(props: any) {
- 
+
   const [birthDaysNow, setBirthDaysNow] = useState<any[]>([])
   const [birthDaysSoon, setBirthDaysSoon] = useState<any[]>([])
   const [events, setEvents] = useState<any[]>([])
@@ -42,7 +42,7 @@ export default function Celebration(props: any) {
 
         <div className={styles.contentContainer}>
           <div className={styles.headContainer}>
-            <h2>{props.local.events.title}</h2>
+            <div className={styles.headText}>{props.local.events.title}</div>
             <button className={styles.button} onClick={openDialog} >
               <AiOutlinePlus className="dark:fill-blue" size={35}></AiOutlinePlus>
             </button>
@@ -50,22 +50,22 @@ export default function Celebration(props: any) {
 
         </div>
         <div className={styles.contentContainer}>
-          <h2>{props.local.events.today}</h2>
+          <div className={styles.headText}>{props.local.events.today}</div>
           {birthDaysNow && birthDaysNow.map((value: any, key: any) => {
-            return (<CardItem key={key} user={props.user} event={value} BirthDayNow={true} />)
+            return (<CardItem key={key} user={props.user} event={value} BirthDayNow={true} local={props.local} />)
           })}
         </div>
 
         <div className={styles.contentContainer}>
-          <h2>{props.local.events.soon}</h2>
+          <div className={styles.headText}>{props.local.events.soon}</div>
           {birthDaysSoon && birthDaysSoon.map((value: any, key: any) => {
-            return (<CardItem key={key} user={props.user} event={value} BirthDayNow={false} />)
+            return (<CardItem key={key} user={props.user} event={value} BirthDayNow={false} local={props.local} />)
           })}
         </div>
         <div className={styles.contentContainer}>
-          <h2>{props.local.events.upcoming}</h2>
+          <div className={styles.headText}>{props.local.events.upcoming}</div>
           {events && events.map((value: any, key: any) => {
-            return (<CardItem key={key} user={props.user} event={value} />)
+            return (<CardItem key={key} user={props.user} event={value} local={props.local} />)
           })
 
           }
