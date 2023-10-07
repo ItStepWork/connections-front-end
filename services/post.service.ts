@@ -18,7 +18,7 @@ export class PostService {
         return await ApiService.post("Post/SendComment", { id: id, recipientId: recipientId, text: text }, null);
     }
 
-    static async removePost(id: string, userId: string) {
+    static async removePost( userId: string, id: string) {
         return await ApiService.post("Post/RemovePost", { id: id, userId: userId }, null);
     }
 

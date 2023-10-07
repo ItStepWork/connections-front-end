@@ -14,7 +14,7 @@ export const PostsCard = (props: any) => {
           <input type="text" className={styles.inputSearch} placeholder={props.local.search.searchPost} />
         </div>
         {props.posts.map((post: any)=> (
-          <PostInfo key={post.id} myId={props.myId} local={props.local} userId={props.userId} post={post} />
+          <PostInfo key={post.id} myId={props.myId} local={props.local} userId={props.userId} post={post} getPosts={props.getPosts}/>
         ))}
       </div >
     </>

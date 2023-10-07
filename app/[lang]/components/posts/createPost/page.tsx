@@ -59,7 +59,7 @@ export default function CreatePost(props: any) {
               <div className={styles.iconContainer}>
                 <ImAttachment className={styles.icon} />
               </div>
-              <input type="file" className="hidden" onChange={saveFile} />
+              <input type="file" accept={FileFormats.All} className="hidden" onChange={saveFile} />
             </label>
           </div>
           <div className='mx-1'>

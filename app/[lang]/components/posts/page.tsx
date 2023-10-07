@@ -45,7 +45,7 @@ export default function Posts(props: any) {
         <div className={styles.createPost}>
           <CreatePost local={props.local} userId={props.userId} placeholder={props.local.posts.placeholder} />
         </div>
-        {posts.length > 0 && <PostsCard local={props.local} myId={props.myId} userId={props.userId} posts={posts} />}
+        {posts.length > 0 && <PostsCard local={props.local} myId={props.myId} userId={props.userId} posts={posts} getPosts={getPosts} />}
       </div>
     </>
   )
