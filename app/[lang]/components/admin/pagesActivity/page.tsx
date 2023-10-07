@@ -56,7 +56,7 @@ export default function PagesActivity(props: any) {
           </div>
         </div>
       </div>
-      <div className='absolute z-50 w-full flex justify-around pt-3 flex-wrap text-sm md:text-lg'>
+      <div className='absolute z-50 w-full flex justify-around pt-3 flex-wrap text-xs md:text-sm'>
         <label className='p-1 text-red-500 cursor-pointer'>
           <input type='checkbox' checked={isContacts} onChange={(e)=>{setIsContacts(e.target.checked)}} />
           <span className='p-1'>{props.local.admin.activity.contacts}</span>
