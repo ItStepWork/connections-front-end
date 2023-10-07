@@ -15,6 +15,7 @@ import Complaint from '../../support/complaint/page';
 import { EditGroup } from '../editGroup/editGroup';
 import { FriendsBlock } from '../friends/friendsBlock';
 import styles from './styles.module.scss';
+import { CheckService } from '../../../../../services/check.service';
 
 export function HeaderBlock(props: any) {
   const [isOpen, setIsOpen] = useState(false)
@@ -36,8 +37,7 @@ export function HeaderBlock(props: any) {
     props.getGroup();
   }
   const saveAvatar = async (e: any) => {
-    if (e.target.files[0].name.endsWith(FileFormats.Jpg) || e.target.files[0].name.endsWith(FileFormats.JPG) || e.target.files[0].name.endsWith(FileFormats.Jpeg) || e.target.files[0].name.endsWith(FileFormats.JPEG) 
-    || e.target.files[0].name.endsWith(FileFormats.Avif) || e.target.files[0].name.endsWith(FileFormats.Gif) || e.target.files[0].name.endsWith(FileFormats.Svg) || e.target.files[0].name.endsWith(FileFormats.Webp)) {
+    if (CheckService.imageFormat(e.target.files[0].name)) {
       var formData = new FormData();
       formData.append('file', e.target.files[0]);
       formData.append('id', props.group.id);
@@ -104,16 +104,16 @@ export function HeaderBlock(props: any) {
             <div className={styles.buttonBlock}>
               {ifInGroup()
                 ? ifAdmin()
-                ? <button title={props.local.groups.tooltip.admin} className={styles.greenButton}><MdOutlineAdminPanelSettings size={20} className={styles.btnPict} />{props.local.groups.adminBtn}</button>
-                : isMemberTrue()
-                ? <button title={props.local.groups.tooltip.leave} className={styles.redButton} onClick={leaveGroup}><BiSolidUserCheck size={20} className={styles.btnPict} />{props.local.groups.leaveBtn}</button>
-                : <button title={props.local.groups.tooltip.cancel} className={styles.yellowButton} onClick={leaveGroup}><TiCancel size={20} className={styles.btnPict} />{props.local.groups.cancelBtn}</button>
+                  ? <button title={props.local.groups.tooltip.admin} className={styles.greenButton}><MdOutlineAdminPanelSettings size={20} className={styles.btnPict} />{props.local.groups.adminBtn}</button>
+                  : isMemberTrue()
+                    ? <button title={props.local.groups.tooltip.leave} className={styles.redButton} onClick={leaveGroup}><BiSolidUserCheck size={20} className={styles.btnPict} />{props.local.groups.leaveBtn}</button>
+                    : <button title={props.local.groups.tooltip.cancel} className={styles.yellowButton} onClick={leaveGroup}><TiCancel size={20} className={styles.btnPict} />{props.local.groups.cancelBtn}</button>
                 : <button title={props.local.groups.tooltip.join} className={styles.blueButton} onClick={joinGroup} ><AiOutlineUsergroupAdd size={20} className={styles.btnPict} />{props.local.groups.joinBtn}</button>}
               {ifInGroup() && isMemberTrue() && <button title={props.local.groups.tooltip.invite} className={styles.greenButton} onClick={() => setIsOpen(!isOpen)}><AiOutlinePlus className={styles.btnPict} size={20} />{props.local.groups.inviteBtn}</button>}
             </div>
-            {ifAdmin() ? <button className={styles.editButton} onClick={() => openDialog()}><BsPencilFill size={20} className={styles.btnPict} />{props.local.groups.editGroupBtn}</button> : <button title={props.local.groups.tooltip.cancel} className={styles.complaintButton} onClick={()=>{ setIsOpenComplaint(true); }}><MdOutlineErrorOutline size={20} className={styles.btnPict + " " + styles.yellowPict} />Complaint</button>}
+            {ifAdmin() ? <button className={styles.editButton} onClick={() => openDialog()}><BsPencilFill size={20} className={styles.btnPict} />{props.local.groups.editGroupBtn}</button> : <button title={props.local.groups.tooltip.cancel} className={styles.complaintButton} onClick={() => { setIsOpenComplaint(true); }}><MdOutlineErrorOutline size={20} className={styles.btnPict + " " + styles.yellowPict} />Complaint</button>}
           </div>
-          <Complaint isOpen={isOpenComplaint} setIsOpen={setIsOpenComplaint} userId={props.group.adminId} groupId={props.group.id}/>
+          <Complaint isOpen={isOpenComplaint} setIsOpen={setIsOpenComplaint} userId={props.group.adminId} groupId={props.group.id} />
           <div className={styles.membersContainer}>
             <div className={styles.members}>
               {props.members.map((user: any, index: any) => {

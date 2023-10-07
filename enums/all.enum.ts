@@ -1,101 +1,100 @@
 export enum FriendStatus {
-    Confirmed = "Confirmed",
-    Unconfirmed = "Unconfirmed",
-    Waiting = "Waiting",
-    Other = "Other",
+	Confirmed = 'Confirmed',
+	Unconfirmed = 'Unconfirmed',
+	Waiting = 'Waiting',
+	Other = 'Other',
 }
 
 export enum ComponentName {
-    AboutMe,
-    Groups,
-    Connections,
-    Gallery,
-    Notifications,
-    Celebration,
-    Posts,
-    Photos,
-    Albums,
-    Stories,
-    Requests,
-    Members,
-    AboutGroup
+	AboutMe,
+	Groups,
+	Connections,
+	Gallery,
+	Notifications,
+	Celebration,
+	Posts,
+	Photos,
+	Albums,
+	Stories,
+	Requests,
+	Members,
+	AboutGroup,
 }
 
 export enum AdminComponentName {
-    Users,
-    Groups,
-    Genders,
-    Zodiacs,
-    PagesActivity,
-    UsersActivity,
-    Map,
-    AllCharts,
-    Messages,
-    Complaints,
+	Users,
+	Groups,
+	Genders,
+	Zodiacs,
+	PagesActivity,
+	UsersActivity,
+	Map,
+	AllCharts,
+	Messages,
+	Complaints,
 }
 
 export enum NotificationType {
-    AddFriend = "AddFriend",
-    RemoveFriend = "RemoveFriend",
-    ConfirmFriend = "ConfirmFriend",
-    CancelFriend = "CancelFriend",
-    RefusedFriend = "RefusedFriend",
-    BirthDay = "BirthDay",
-    InviteToGroup = "InviteToGroup",
-    LikePhoto = "LikePhoto",
-    CommentPhoto = "CommentPhoto",
+	AddFriend = 'AddFriend',
+	RemoveFriend = 'RemoveFriend',
+	ConfirmFriend = 'ConfirmFriend',
+	CancelFriend = 'CancelFriend',
+	RefusedFriend = 'RefusedFriend',
+	BirthDay = 'BirthDay',
+	InviteToGroup = 'InviteToGroup',
+	LikePhoto = 'LikePhoto',
+	CommentPhoto = 'CommentPhoto',
 }
 
 export enum Gender {
-    NotSelected = "NotSelected",
-    Male = "Male",
-    Female = "Female",
+	NotSelected = 'NotSelected',
+	Male = 'Male',
+	Female = 'Female',
 }
 
 export enum Page {
-    Contacts = "Contacts",
-    Messaging = "Messaging",
-    Gallery = "Gallery",
-    Notifications = "Notifications",
-    Groups = "Groups",
-    Authorization = "Authorization",
+	Contacts = 'Contacts',
+	Messaging = 'Messaging',
+	Gallery = 'Gallery',
+	Notifications = 'Notifications',
+	Groups = 'Groups',
+	Authorization = 'Authorization',
 }
 
 export enum Chart {
-    Daily = "Daily",
-    Hourly = "Hourly",
+	Daily = 'Daily',
+	Hourly = 'Hourly',
 }
 
 export enum Status {
-    Active = "Active",
-    Deleted = "Deleted",
+	Active = 'Active',
+	Deleted = 'Deleted',
 }
 
 export enum Role {
-    User = "User",
-    Moderator = "Moderator",
-    Admin = "Admin",
+	User = 'User',
+	Moderator = 'Moderator',
+	Admin = 'Admin',
 }
 
 export enum EventType {
-    Meeting = "Meeting",
-    Celebration = "Celebration",
-    BirthDay = "BirthDay",
+	Meeting = 'Meeting',
+	Celebration = 'Celebration',
+	BirthDay = 'BirthDay',
 }
 
 export enum MessageStatus {
-    Unread = "Unread",
-    Read = "Read",
+	Unread = 'Unread',
+	Read = 'Read',
 }
 
 export enum FileFormats {
-    Jpg = ".jpg",
-    Jpeg = ".jpeg",
-    JPG = ".JPG",
-    JPEG = ".JPEG",
-    Svg = ".svg",
-    Gif = ".gif",
-    Webp = ".webp",
-    Avif = ".avif",
-    All = ".jpg, .jpeg, .png, .gif, .avif, .webp, .svg, .JPG, .JPEG"
+	Jpg = '.jpg',
+	Jpeg = '.jpeg',
+	Svg = '.svg',
+	Gif = '.gif',
+	Webp = '.webp',
+	Avif = '.avif',
+	Png = '.png',
+	All = '.jpg, .jpeg, .png, .gif, .avif, .webp, .svg',
 }

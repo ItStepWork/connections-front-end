@@ -16,6 +16,8 @@ import FooterBlock from '../../messaging/footerBlock/page';
 import Window from '../../messaging/window/page';
 import OnlineUser from '../../onlineUser/page';
 import styles from './userCard.module.scss';
+import { CheckService } from '../../../../../services/check.service';
+import { toast } from 'react-toastify';
 
 export function UserCard(props: any) {
 
@@ -23,6 +25,10 @@ export function UserCard(props: any) {
   const [friendsCount, setSetFriendsCount] = useState(0);
   const [user, setUser] = useState<any>(null);
   const [isOpen, setIsOpen] = useState(false)
+
+  const notifyError = () => toast.error(props.local.createGroup.toasts.format, {});
+  const notifyErrorServer = () => toast.error(props.local.createGroup.toasts.error, {});
+  const notifySuccess = () => toast.success(props.local.createGroup.toasts.ok, {});
 
   useEffect(() => {
     getData();
@@ -59,24 +65,23 @@ export function UserCard(props: any) {
   }
 
   const saveAvatar = async (e: any) => {
-    if (e.target.files[0].name.endsWith(FileFormats.Jpg) || e.target.files[0].name.endsWith(FileFormats.JPG) || e.target.files[0].name.endsWith(FileFormats.Jpeg) || e.target.files[0].name.endsWith(FileFormats.JPEG) 
-    || e.target.files[0].name.endsWith(FileFormats.Avif) || e.target.files[0].name.endsWith(FileFormats.Gif) || e.target.files[0].name.endsWith(FileFormats.Svg) || e.target.files[0].name.endsWith(FileFormats.Webp)) {
-
+    if (CheckService.imageFormat(e.target.files[0].name)) {
       var formData = new FormData();
       formData.append('file', e.target.files[0]);
       UserService.setUserAvatarImage(formData)
     }
+    else notifyError();
   }
 
   const saveBackground = async (e: any) => {
-    if (e.target.files[0].name.endsWith(FileFormats.Jpg) || e.target.files[0].name.endsWith(FileFormats.JPG) || e.target.files[0].name.endsWith(FileFormats.Jpeg) || e.target.files[0].name.endsWith(FileFormats.JPEG) 
-    || e.target.files[0].name.endsWith(FileFormats.Avif) || e.target.files[0].name.endsWith(FileFormats.Gif) || e.target.files[0].name.endsWith(FileFormats.Svg) || e.target.files[0].name.endsWith(FileFormats.Webp)) {
+    if (await CheckService.imageFormat(e.target.files[0].name)) {
 
       var formData = new FormData();
       formData.append('file', e.target.files[0])
 
       UserService.setUserBgImage(formData)
     }
+    else notifyError();
   }
 
   if (loading) {
