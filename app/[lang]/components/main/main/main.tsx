@@ -10,11 +10,12 @@ import { GroupsCard } from "../../userProfile/groupsCard/groupsCard";
 import Celebration from "../celebrations/page";
 import Menu from "../menu/page";
 import styles from './main.module.scss';
+import { useMainComponents } from '../../../../../stores/mainStateStore';
 
 export default function Main({ local, session }: { local: any, session: any }, props: any) {
 
-  const [component, setComponent] = useState<ComponentName>(ComponentName.Posts);
-
+  //const [component, setComponent] = useState<ComponentName>(ComponentName.Posts);
+  const [component, setComponent] = useMainComponents((state) => [state.componentName, state.setComponent]);
   const ChangeComponent = () => {
     if (component === ComponentName.Groups) return (<GroupsCard session={session} userId={session.user.id} local={local} />)
     else if (component === ComponentName.Celebration) return (<Celebration user={session.user} local={local} />)

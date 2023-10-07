@@ -6,14 +6,14 @@ import { useEffect, useState } from 'react'
 import { AiOutlineSetting } from 'react-icons/ai'
 import { BiMenu } from 'react-icons/bi'
 import { FiLogIn } from 'react-icons/fi'
-import { MdOutlineClose, MdOutlineMessage } from 'react-icons/md'
+import { MdAdminPanelSettings, MdOutlineClose, MdOutlineMessage } from 'react-icons/md'
+import { ComponentName, Role } from '../../../../enums/all.enum'
+import { useMainComponents } from '../../../../stores/mainStateStore'
 import { useStore } from '../../../../stores/userDataStore'
 import { DropMenuProfile } from '../userProfile/dropMenu/dropMenu'
 import styles from './header.module.scss'
 import LocaleSwitcher from './locale-switcher'
 import LocalSwitcherMinimal from './locale-switcher-minimal'
-import { MdAdminPanelSettings } from 'react-icons/md'
-import { Role } from '../../../../enums/all.enum'
 
 const oneDay = localFont({ src: '../../../../fonts/ONEDAY.ttf' })
 
@@ -23,6 +23,8 @@ const channelWorkerBroadcast = new BroadcastChannel('channelWorker');
 export const Header = (props: any) => {
 
   const [fetch] = useStore((state) => [state.fetchUser])
+  const setComponent = useMainComponents((state) => state.setComponent)
+
   const { data: session } = useSession();
   const [open, setOpen] = useState(false);
 
@@ -57,13 +59,13 @@ export const Header = (props: any) => {
                 </div>
                 <ul className={`md:flex md:items-center pt-6 md:pt-0 lg:pt-0 md:pb-0 pb-12 lg:shadow-none md:shadow-none dark:shadow-customTransparent dark:backdrop-blur-[3px] md:backdrop-blur-0 absolute rounded-lg md:static md:z-auto z-[-10] left-4 w-11/12 md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in bg-light_background md:bg-glass_white lg:bg-glass_white md:border-none lg:border-none border dark:border-dark_border border-light_border md:dark:bg-transparent dark:bg-dark_button_BG ${open ? 'top-14 opacity-100' : 'top-[-500px] md:opacity-100 opacity-0'}`}>
                   <li className={styles.listItem}>
-                    <Link className={styles.navText} onClick={fetch} href={`/main`}>{props.local.header.main}</Link>
+                    <Link className={styles.navText} onClick={() => setComponent(ComponentName.Posts)} href={`/main`}>{props.local.header.main}</Link>
                   </li>
                   <li className={styles.listItem}>
                     <Link className={styles.navText} onClick={fetch} href={`/profile/${session.user.id}`}>{props.local.header.profile}</Link>
                   </li>
                   <li className={styles.listItem}>
-                    <Link className={styles.navText} onClick={fetch} href={`/support`}>Support</Link>
+                    <Link className={styles.navText} onClick={fetch} href={`/support`}>{props.local.header.support}</Link>
                   </li>
                   {session.user.role !== Role.User &&
                     <li className={styles.listItem}>

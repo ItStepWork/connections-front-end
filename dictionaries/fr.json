@@ -74,6 +74,7 @@
     "main" : "Maison",
     "profile" : "Profil",
     "admin" : "Administrateur",
+    "support" : "Soutien",
     "dropMenu" : {
       "profile" : "Profil",
       "settings" : "Paramètres",
@@ -405,5 +406,22 @@
       "text2" : "Gérez les albums pour la meilleure expérience de stockage de photos.",
       "text3" : "Vous pouvez non seulement regarder la photo, mais aussi l'évaluer et la commenter."
     }
+  },
+  "notifications" : {
+    "addFriend" : "chance en enfer et amis",
+    "removeFriend" : "retiré et des amis",
+    "refusedFriend" : "je n'ai pas confirmé que vous étiez amis",
+    "cancelFriend" : "j'ai annulé la demande d'ami",
+    "confirmFriend" : "j'ai confirmé que tu es son ami",
+    "birthday" : "fêter son anniversaire alors",
+    "likePhoto" : "et j'aime la photo de Iur",
+    "commentPhoto" : "merci de commenter votre photo",
+    "inviteToGroup" : "inviter au groupe"
+  },
+  "events" : {
+    "title": "Événements et célébrations",
+    "today" : "Aujourd'hui, ils célèbrent",
+    "soon" : "Bientôt ils fêteront",
+    "upcoming" : "Événements à venir"
   }
 }

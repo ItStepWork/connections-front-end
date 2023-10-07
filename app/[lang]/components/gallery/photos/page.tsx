@@ -1,6 +1,7 @@
 "use client"
 import { useState } from 'react';
 import { MdOutlineAddAPhoto } from "react-icons/md";
+import { FileFormats } from '../../../../../enums/all.enum';
 import { GalleryService } from '../../../../../services/gallery.service';
 import PhotoAction from '../photoAction/page';
 import SelectedPhoto from '../selectedPhoto/page';
@@ -13,7 +14,8 @@ export default function Photos(props: any) {
 
 
   const change = (e: any) => {
-    if (e.target.files[0].name.endsWith('.jpg') || e.target.files[0].name.endsWith('.jpeg') || e.target.files[0].name.endsWith('.png')) {
+    if (e.target.files[0].name.endsWith(FileFormats.Jpg) || e.target.files[0].name.endsWith(FileFormats.JPG) || e.target.files[0].name.endsWith(FileFormats.Jpeg) || e.target.files[0].name.endsWith(FileFormats.JPEG) 
+    || e.target.files[0].name.endsWith(FileFormats.Avif) || e.target.files[0].name.endsWith(FileFormats.Gif) || e.target.files[0].name.endsWith(FileFormats.Svg) || e.target.files[0].name.endsWith(FileFormats.Webp)) {
       add(e.target.files[0]);
     }
   }
@@ -37,7 +39,7 @@ export default function Photos(props: any) {
           <label className={styles.addPhoto}>
             <MdOutlineAddAPhoto size={50} className="fill-button_blue_BG" />
             <p className='text-center'>{props.local.gallery.addPhoto}</p>
-            <input type='file' className='hidden' onChange={change}></input>
+            <input type='file' accept={FileFormats.All} className='hidden' onChange={change}></input>
           </label>
         </div>
       ) : (<></>)}

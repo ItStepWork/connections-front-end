@@ -15,7 +15,10 @@ export enum ComponentName {
     Posts,
     Photos,
     Albums,
-    Stories
+    Stories,
+    Requests,
+    Members,
+    AboutGroup
 }
 
 export enum AdminComponentName {
@@ -83,4 +86,16 @@ export enum EventType {
 export enum MessageStatus {
     Unread = "Unread",
     Read = "Read",
+}
+
+export enum FileFormats {
+    Jpg = ".jpg",
+    Jpeg = ".jpeg",
+    JPG = ".JPG",
+    JPEG = ".JPEG",
+    Svg = ".svg",
+    Gif = ".gif",
+    Webp = ".webp",
+    Avif = ".avif",
+    All = ".jpg, .jpeg, .png, .gif, .avif, .webp, .svg, .JPG, .JPEG"
 }

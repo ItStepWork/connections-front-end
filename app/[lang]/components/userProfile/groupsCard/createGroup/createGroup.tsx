@@ -5,6 +5,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 import { BsUpload } from 'react-icons/bs';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { FileFormats } from "../../../../../../enums/all.enum";
 import { GroupService } from '../../../../../../services/group.service';
 import styles from './styles.module.scss';
 
@@ -34,7 +35,8 @@ export function CreateGroup(props: any) {
         formState: { errors },
     } = useForm();
     const onSubmit = async (data: any) => {
-        if (data.file[0].name.endsWith('.jpg') || data.file[0].name.endsWith('.jpeg') || data.file[0].name.endsWith('.png')) {
+        if (data.target.files[0].name.endsWith(FileFormats.Jpg) || data.target.files[0].name.endsWith(FileFormats.JPG) || data.target.files[0].name.endsWith(FileFormats.Jpeg) || data.target.files[0].name.endsWith(FileFormats.JPEG) 
+        || data.target.files[0].name.endsWith(FileFormats.Avif) || data.target.files[0].name.endsWith(FileFormats.Gif) || data.target.files[0].name.endsWith(FileFormats.Svg) || data.target.files[0].name.endsWith(FileFormats.Webp)) {
             let formData = new FormData();
             formData.append("file", data.file[0]);
             formData.append("name", data.name);
@@ -67,7 +69,7 @@ export function CreateGroup(props: any) {
                         <label className={styles.label}>{props.local.createGroup.image}</label>
                         <div className={styles.dialogDivHeader}>
                             <div className={styles.input_div}>
-                                <input className={styles.input} type="file" accept=".jpg, .jpeg, .png" {...register('file')} required onChange={(e: any) => { setAvatar(e.target.files[0]) }}></input>
+                                <input className={styles.input} type="file" accept={FileFormats.All} {...register('file')} required onChange={(e: any) => { setAvatar(e.target.files[0]) }}></input>
                                 {(avatar === null || avatar === undefined) ? (<BsUpload size={36} className="dark:fill-white" ></BsUpload>) : (<img src={URL.createObjectURL(avatar)} ></img>)}
                             </div>
                         </div>

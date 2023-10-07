@@ -2,19 +2,22 @@
 import { getSession } from 'next-auth/react';
 import { useEffect, useState } from "react";
 import 'react-toastify/dist/ReactToastify.css';
+import { ComponentName } from '../../../../enums/all.enum';
 import { GroupService } from '../../../../services/group.service';
+import { SubscriptionService } from '../../../../services/subscription.service';
+import { useMainComponents } from '../../../../stores/mainStateStore';
+import Posts from '../posts/page';
 import { AboutCard } from './aboutBlock/aboutCard';
 import { ConnectionsCard } from './connectionsCard/connectionsCard';
 import { HeaderBlock } from './headerBlock/headerBlock';
 import Photos from './photos/page';
 import styles from './styles.module.scss';
-import { SubscriptionService } from '../../../../services/subscription.service';
-import Posts from '../posts/page';
 
 export function GroupPage(props: any) {
     const [id, setId] = useState(0)
     const [groupSocket, setGroupSocket] = useState<WebSocket>()
-    const [component, setComponent] = useState("about");
+    //const [component, setComponent] = useState("about");
+    const [component, setComponent] = useMainComponents((state) => [state.groupComponentName, state.setGroupComponent]);
     const [usersRequests, setUsersRequests] = useState<any[]>([])
     const [membersFriends, setMembersFriends] = useState<any[]>([])
     const [group, setGroup] = useState<any>(null);
@@ -66,11 +69,11 @@ export function GroupPage(props: any) {
         setPhotos(result2);
     }
     const changeComponent = () => {
-        if (component === "members") return (<ConnectionsCard key={"members" + membersFriends.length + id} isRequests={false} session={props.session} users={membersFriends} group={group} getGroup={getGroup} getUsers={getUsers} local={props.local} />)
-        else if (component === "requests") return (<ConnectionsCard key={"requests" + usersRequests.length + id} isRequests={true} session={props.session} users={usersRequests} group={group} getGroup={getGroup} getUsers={getUsers} local={props.local} />)
-        else if (component === "about") return (<AboutCard group={group} members={Object.entries(membersFriends).length} local={props.local} />)
-        else if (component === "photo") return (<Photos group={group} session={props.session} getPhotos={getPhotos} photos={photos} local={props.local} />)
-        else if (component === "posts") return (<Posts local={props.local} session={props.session} myId={props.session.user.id} userId={props.id[0]} />)
+        if (component === ComponentName.Members) return (<ConnectionsCard key={"members" + membersFriends.length + id} isRequests={false} session={props.session} users={membersFriends} group={group} getGroup={getGroup} getUsers={getUsers} local={props.local} />)
+        else if (component === ComponentName.Requests) return (<ConnectionsCard key={"requests" + usersRequests.length + id} isRequests={true} session={props.session} users={usersRequests} group={group} getGroup={getGroup} getUsers={getUsers} local={props.local} />)
+        else if (component === ComponentName.AboutGroup) return (<AboutCard group={group} members={Object.entries(membersFriends).length} local={props.local} />)
+        else if (component === ComponentName.Photos) return (<Photos group={group} session={props.session} getPhotos={getPhotos} photos={photos} local={props.local} />)
+        else if (component === ComponentName.Posts) return (<Posts local={props.local} session={props.session} myId={props.session.user.id} userId={props.id[0]} />)
         else return (<></>)
     }
     return (

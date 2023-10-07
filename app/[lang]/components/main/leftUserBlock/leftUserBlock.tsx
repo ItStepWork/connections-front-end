@@ -29,18 +29,6 @@ export const LeftUserBlock = (props: any) => {
     setFriendsCount(sort.length);
   }
 
-  //const [hydrated, setHydrated] = useState(false);
-
-  /*
-  useEffect(() => {
-    setHydrated(true);
-  }, [session])
-  if (!hydrated) {
-    // Returns null on first render, so the client and server match
-    return null;
-  }
-  */
-
   const getUser = async () => {
     let result = await UserService.getCurrentUser();
     setUser(result);

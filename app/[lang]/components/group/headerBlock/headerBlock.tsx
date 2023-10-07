@@ -8,12 +8,13 @@ import { HiMiniPencilSquare } from 'react-icons/hi2';
 import { MdOutlineAdminPanelSettings, MdOutlineErrorOutline } from 'react-icons/md';
 import { TiCancel } from 'react-icons/ti';
 import { toast } from 'react-toastify';
+import { ComponentName, FileFormats } from '../../../../../enums/all.enum';
 import { GroupService } from '../../../../../services/group.service';
 import Window from '../../messaging/window/page';
+import Complaint from '../../support/complaint/page';
 import { EditGroup } from '../editGroup/editGroup';
 import { FriendsBlock } from '../friends/friendsBlock';
 import styles from './styles.module.scss';
-import Complaint from '../../support/complaint/page';
 
 export function HeaderBlock(props: any) {
   const [isOpen, setIsOpen] = useState(false)
@@ -35,7 +36,8 @@ export function HeaderBlock(props: any) {
     props.getGroup();
   }
   const saveAvatar = async (e: any) => {
-    if (e.target.files[0].name.endsWith('.jpg') || e.target.files[0].name.endsWith('.jpeg') || e.target.files[0].name.endsWith('.png')) {
+    if (e.target.files[0].name.endsWith(FileFormats.Jpg) || e.target.files[0].name.endsWith(FileFormats.JPG) || e.target.files[0].name.endsWith(FileFormats.Jpeg) || e.target.files[0].name.endsWith(FileFormats.JPEG) 
+    || e.target.files[0].name.endsWith(FileFormats.Avif) || e.target.files[0].name.endsWith(FileFormats.Gif) || e.target.files[0].name.endsWith(FileFormats.Svg) || e.target.files[0].name.endsWith(FileFormats.Webp)) {
       var formData = new FormData();
       formData.append('file', e.target.files[0]);
       formData.append('id', props.group.id);
@@ -82,7 +84,7 @@ export function HeaderBlock(props: any) {
                       <div className={styles.avatarIcon}>
                         <HiMiniPencilSquare className="fill-white" />
                       </div>
-                      <input id="avatar-file" type="file" accept=".jpg, .jpeg, .png" className="hidden" onChange={saveAvatar} />
+                      <input id="avatar-file" type="file" accept={FileFormats.All} className="hidden" onChange={saveAvatar} />
                     </label>
                   </div>
                   : <></>
@@ -134,22 +136,22 @@ export function HeaderBlock(props: any) {
           </div>
         </div>
         <div className={styles.cardNav}>
-          <div {...props.component === "about" ? { className: `${styles.counterLink}` } : { className: "" }} >
-            <button {...props.component === "about" ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent("about") }}>{props.local.groups.aboutGroup.about}</button>
+          <div {...props.component === ComponentName.AboutGroup ? { className: `${styles.counterLink}` } : { className: "" }} >
+            <button {...props.component === ComponentName.AboutGroup ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent(ComponentName.AboutGroup) }}>{props.local.groups.aboutGroup.about}</button>
           </div>
-          <div {...props.component === "posts" ? { className: `${styles.counterLink}` } : { className: "" }} >
-            <button {...props.component === "posts" ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent("posts") }}>{props.local.groups.posts}</button>
+          <div {...props.component === ComponentName.Posts ? { className: `${styles.counterLink}` } : { className: "" }} >
+            <button {...props.component === ComponentName.Posts ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent(ComponentName.Posts) }}>{props.local.groups.posts}</button>
           </div>
-          <div {...props.component === "photo" ? { className: `${styles.counterLink}` } : { className: "" }} >
-            <button {...props.component === "photo" ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent("photo"); }}>{props.local.groups.photo}</button>
+          <div {...props.component === ComponentName.Photos ? { className: `${styles.counterLink}` } : { className: "" }} >
+            <button {...props.component === ComponentName.Photos ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent(ComponentName.Photos); }}>{props.local.groups.photo}</button>
           </div>
-          <div {...props.component === "members" ? { className: `${styles.counterLink}` } : { className: "flex items-center" }} >
-            <button {...props.component === "members" ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent("members"); }}>{props.local.groups.members}</button>
+          <div {...props.component === ComponentName.Members ? { className: `${styles.counterLink}` } : { className: "flex items-center" }} >
+            <button {...props.component === ComponentName.Members ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent(ComponentName.Members); }}>{props.local.groups.members}</button>
             <div className={styles.counter}>{Object.entries(props.members).length}</div>
           </div>
           {ifAdmin() &&
-            <div {...props.component === "requests" ? { className: `${styles.counterLink}` } : { className: "flex items-center" }} >
-              <button {...props.component === "requests" ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent("requests"); }}>{props.local.groups.requests}</button>
+            <div {...props.component === ComponentName.Requests ? { className: `${styles.counterLink}` } : { className: "flex items-center" }} >
+              <button {...props.component === ComponentName.Requests ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent(ComponentName.Requests); }}>{props.local.groups.requests}</button>
               <div className={styles.counter}>{Object.entries(props.usersRequests).length}</div>
             </div>
           }

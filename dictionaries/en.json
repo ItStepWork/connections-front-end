@@ -74,6 +74,7 @@
     "main" : "Main",
     "profile" : "Profile",
     "admin" : "Administrator-Panel",
+    "support" : "Support",
     "dropMenu" : {
       "profile" : "Profile",
       "settings" : "Settings",
@@ -405,5 +406,22 @@
       "text2" : "Manage albums for the best photo storage experience.",
       "text3" : "You can not only look at the photo, but also evaluate and comment on it."
     }
+  },
+  "notifications" : {
+    "addFriend" : "wants to add you to friends",
+    "removeFriend" : "removed you from friends",
+    "refusedFriend" : "did not confirm that you are friends",
+    "cancelFriend" : "canceled the friend request",
+    "confirmFriend" : "confirmed that you are his friend",
+    "birthday" : "celebrates his birthday today",
+    "likePhoto" : "i like Your photo",
+    "commentPhoto" : "wrote a comment on your photo",
+    "inviteToGroup" : "invites you to the group"
+  },
+  "events" : {
+    "title": "Events and Celebrations",
+    "today" : "Today they celebrate",
+    "soon" : "Soon they will celebrate",
+    "upcoming" : "Upcoming Events"
   }
 }

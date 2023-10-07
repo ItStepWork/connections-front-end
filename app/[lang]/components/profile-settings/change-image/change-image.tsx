@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { UserService } from "../../../../../services/user.service";
 import { useStore } from "../../../../../stores/userDataStore";
 import styles from './change-image.module.scss';
+import { FileFormats } from "../../../../../enums/all.enum";
 
 const ChangeImage = ({local} : {local : any}) => {
 
@@ -29,16 +30,17 @@ const ChangeImage = ({local} : {local : any}) => {
     handleSubmit,
     formState: { errors },
 } = useForm();
-const onSubmit = async (data: any) => {
-    if (data.file[0].name.endsWith('.jpg') || data.file[0].name.endsWith('.jpeg') || data.file[0].name.endsWith('.png')) {
+const onSubmit = async (e: any) => {
+    if (e.target.files[0].name.endsWith(FileFormats.Jpg) || e.target.files[0].name.endsWith(FileFormats.JPG) || e.target.files[0].name.endsWith(FileFormats.Jpeg) || e.target.files[0].name.endsWith(FileFormats.JPEG) 
+    || e.target.files[0].name.endsWith(FileFormats.Avif) || e.target.files[0].name.endsWith(FileFormats.Gif) || e.target.files[0].name.endsWith(FileFormats.Svg) || e.target.files[0].name.endsWith(FileFormats.Webp)) {
         let formData = new FormData();
-        formData.append("file", data.file[0]);
-        if (data.imageSelect === '0'){
+        formData.append("file", e.file[0]);
+        if (e.imageSelect === '0'){
           let result = await UserService.setUserAvatarImage(formData);
           if (result === null) notifyErrorServer();
           else notifySuccess();
         }
-        if (data.imageSelect === '1'){
+        if (e.imageSelect === '1'){
           let result = await UserService.setUserBgImage(formData);
           if (result === null) notifyErrorServer();
           else notifySuccess();
@@ -63,7 +65,7 @@ const onSubmit = async (data: any) => {
                 <p>{local.settingsImages.text3}</p>
                 <p>{local.settingsImages.text4}</p>
               </div>
-              <input id="dropzone-file" type="file" accept=".jpg, .jpeg, .png, .svg" {...register('file')} required className="hidden" />
+              <input id="dropzone-file" type="file" accept={FileFormats.All} {...register('file')} required className="hidden" />
             </label>
           </div> 
           <div className={styles.buttonContainer}>
