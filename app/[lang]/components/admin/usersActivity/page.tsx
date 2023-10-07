@@ -24,11 +24,11 @@ export default function UsersActivity(props: any) {
 
   return (
     <div className={styles.container}>
-      <h2 className='relative text-sm md:text-lg lg:text-2xl mx-3 mt-3'>
+      <h2 className='relative text-center text-sm md:text-lg lg:text-2xl mx-3 mt-3'>
         {props.local.admin.sidebar.usersActivity}
       </h2>
-      <div className="absolute top-0 right-0">
-        <div className='flex p-3 text-sm lg:text-lg'>
+      <div className="absolute z-50 bottom-0 right-0">
+        <div className='flex px-3 text-sm lg:text-lg'>
           <div className="flex mr-4" onClick={()=>{ load(Chart.Daily); }}>
             <input id="daily-radio-users" type="radio" className='cursor-pointer' value={Chart.Daily} checked={chart === Chart.Daily} onChange={()=>{}} name="radio-users" />
             <label htmlFor="daily-radio-users" className='cursor-pointer'>{props.local.admin.activity.daily}</label>
