@@ -14,6 +14,7 @@ import { DropMenuProfile } from '../userProfile/dropMenu/dropMenu'
 import styles from './header.module.scss'
 import LocaleSwitcher from './locale-switcher'
 import LocalSwitcherMinimal from './locale-switcher-minimal'
+import { UserService } from '../../../../services/user.service'
 
 const oneDay = localFont({ src: '../../../../fonts/ONEDAY.ttf' })
 
@@ -30,8 +31,8 @@ export const Header = (props: any) => {
 
   const load = async () => {
     if (Notification.permission !== "granted") Notification.requestPermission();
-    let session = await getSession();
-    if (session?.user.accessToken !== undefined) {
+    let user = await UserService.getCurrentUser();
+    if (session?.user.accessToken !== undefined && user !== null) {
       let token = session.user.accessToken;
       setInterval(() => tick(token), 1000);
     }
@@ -43,7 +44,7 @@ export const Header = (props: any) => {
 
   useEffect(() => {
     load();
-  }, []);
+  }, [session]);
 
   return (
     <>
@@ -53,11 +54,11 @@ export const Header = (props: any) => {
             <Link href="/" className={styles.logoLink}>
               <span className={styles.logo}><p className={oneDay.className}>Connections</p></span>
             </Link>
-            {session ?
-              (<>
-                <div className={styles.burgerButton} onClick={() => setOpen(!open)}>{open ? <MdOutlineClose size={24} /> : <BiMenu size={24} />}
-                </div>
-                <ul className={`md:flex md:items-center pt-6 md:pt-0 lg:pt-0 md:pb-0 pb-12 lg:shadow-none md:shadow-none dark:shadow-customTransparent dark:backdrop-blur-[3px] md:backdrop-blur-0 absolute rounded-lg md:static md:z-auto z-[-10] left-4 w-11/12 md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in bg-light_background md:bg-glass_white lg:bg-glass_white md:border-none lg:border-none border dark:border-dark_border border-light_border md:dark:bg-transparent dark:bg-dark_button_BG ${open ? 'top-14 opacity-100' : 'top-[-500px] md:opacity-100 opacity-0'}`}>
+            <div className={styles.burgerButton} onClick={() => setOpen(!open)}>{open ? <MdOutlineClose size={24} /> : <BiMenu size={24} />}
+            </div>
+            <ul className={`md:flex md:items-center pt-6 md:pt-0 lg:pt-0 md:pb-0 pb-12 lg:shadow-none md:shadow-none dark:shadow-customTransparent dark:backdrop-blur-[3px] md:backdrop-blur-0 absolute rounded-lg md:static md:z-auto z-[-10] left-4 w-11/12 md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in bg-light_background md:bg-glass_white lg:bg-glass_white md:border-none lg:border-none border dark:border-dark_border border-light_border md:dark:bg-transparent dark:bg-dark_button_BG ${open ? 'top-14 opacity-100' : 'top-[-500px] md:opacity-100 opacity-0'}`}>
+              {session ?
+                <>
                   <li className={styles.listItem}>
                     <Link className={styles.navText} onClick={() => setComponent(ComponentName.Posts)} href={`/${props.lang}/main`}>{props.local.header.main}</Link>
                   </li>
@@ -79,21 +80,19 @@ export const Header = (props: any) => {
                     <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href={`/${props.lang}/settings`}>{open ? props.local.header.dropMenu.settings : <AiOutlineSetting size={20} />}</Link>
                   </li>
                   <li className={styles.listItem}>
-                    <DropMenuProfile navbarOpen={open} lang={props.lang} local={props.local}/>
+                    <DropMenuProfile navbarOpen={open} lang={props.lang} local={props.local} />
                   </li>
+                </>
+                :
+                <>
                   <li className={styles.listItem}>
-                    {open ? <LocalSwitcherMinimal /> : <LocaleSwitcher local={props.lang} />}
-
+                    <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href={`/${props.lang}/signIn`}>{open ? "Sign In" : <FiLogIn size={20} />}</Link>
                   </li>
-                </ul>
-
-              </>)
-              :
-              (<div className="flex items-center">
-                <Link className={styles.navButton} href={`/${props.lang}/signIn`}><FiLogIn size={20} /></Link>
-                <LocaleSwitcher lang={props.lang}/>
-              </div>
-              )}
+                </>}
+              <li className={styles.listItem}>
+                {open ? <LocalSwitcherMinimal /> : <LocaleSwitcher local={props.lang} />}
+              </li>
+            </ul>
           </div>
         </div>
       </header>
