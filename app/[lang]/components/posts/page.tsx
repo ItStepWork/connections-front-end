@@ -10,12 +10,13 @@ import { PostsCard } from './postsCard/postsCard';
 import styles from './styles.module.scss';
 
 export default function Posts(props: any) {
-  
+  console.log(props)
   const {
     local,
     myId,
     session,
-    userId
+    userId,
+    groupId
   } = props;
 
   const [posts, setPosts] = useState<any[]>([]);
@@ -24,8 +25,8 @@ export default function Posts(props: any) {
   useEffect(() => {
     load();
     return SubscriptionService.subscribeToChannels(session.user.accessToken, [
-      { path: `Subscription/SubscribeToPostsUpdates?id=${userId ? props.userId : props.groupId}`, func: getPosts },
-      { path: `Subscription/SubscribeToStoriesUpdates?id=${userId ? props.userId : props.groupId}`, func: getStories },
+      { path: `Subscription/SubscribeToPostsUpdates?id=${userId ? userId : groupId}`, func: getPosts },
+      { path: `Subscription/SubscribeToStoriesUpdates?id=${userId ? userId : groupId}`, func: getStories },
     ]);
   }, [])
 
@@ -56,12 +57,13 @@ export default function Posts(props: any) {
       <div className={styles.container}>
         {(stories.length > 0 || myId === userId) && <StoriesBlock local={local} myId={myId} userId={userId} stories={stories} />}
         <div className={styles.createPost}>
-          <CreatePost local={local} userId={userId} groupId={props.groupId} placeholder={local.posts.placeholder} />
+          <CreatePost local={local} userId={userId} groupId={groupId} placeholder={local.posts.placeholder} />
         </div>
         {posts.length > 0 && <PostsCard 
           local={local} 
           myId={myId} 
-          userId={userId} groupId={props.groupId} 
+          userId={userId} 
+          groupId={groupId} 
           posts={posts} 
           getPosts={getPosts} />}
       </div>
