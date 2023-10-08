@@ -27,7 +27,6 @@ export default function Profile(props: any) {
   const getUser = async () => {
     let result = await FriendService.getFriend(props.id);
     setUser(result);
-    // setLoading(false);
   }
 
   const changeComponent = () => {

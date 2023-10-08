@@ -8,8 +8,6 @@ import { FiPhoneCall } from 'react-icons/fi';
 
 export const ProfileInfo = (props: any) => {
 
-  // const [aboutMe, born, work, familyStatus, location, joined, email] = useStore ((state) => [state.aboutMe, state.born, state.work, state.familyStatus, state.location, state.joined, state.email])
-
   return (
     <>
       <div className={styles.container}>
@@ -21,7 +19,7 @@ export const ProfileInfo = (props: any) => {
         <div className={styles.dataContainer}>
           <div className={styles.cont}>
             <BsCalendarDate size={18} />
-            <p>{props.local.profile.aboutMe.born}<span>{new Date(props.user.birthDay).toDateString()}</span></p>
+            <p>{props.local.profile.aboutMe.born}<span>{new Date(props.user.birthDay).toLocaleDateString()}</span></p>
           </div>
           <div className={styles.cont}>
             <BsHeart size={18} />
@@ -41,7 +39,7 @@ export const ProfileInfo = (props: any) => {
         <div className={styles.dataContainer}>
           <div className={styles.cont}>
             <BsCalendar2Plus size={16} />
-            <p>{props.local.profile.aboutMe.join}<span>{new Date(props.user.createdTime).toDateString()} </span></p>
+            <p>{props.local.profile.aboutMe.join}<span>{new Date(props.user.createdTime).toLocaleDateString()} </span></p>
           </div>
           <div className={styles.cont}>
             <AiOutlineMail size={18} />

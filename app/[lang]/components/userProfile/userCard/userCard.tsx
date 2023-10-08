@@ -171,7 +171,7 @@ export function UserCard(props: any) {
             <div className={styles.bottomInfo}>
               <p><span><BsBriefcase /></span>{props.user.work}</p>
               <p><span><BsGeoAlt /></span>{props.user.location}</p>
-              <p><span><BsCalendar2Plus /></span>{props.local.profile.join} {new Date(props.user.createdTime).toDateString()}</p>
+              <p><span><BsCalendar2Plus /></span>{props.local.profile.join} {new Date(props.user.createdTime).toLocaleDateString()}</p>
             </div>
           </div>
           <div className={styles.cardNav}>
