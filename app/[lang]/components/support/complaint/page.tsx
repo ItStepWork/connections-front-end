@@ -4,12 +4,23 @@ import { useState } from 'react';
 import { BsFillSendFill } from 'react-icons/bs';
 import { FaRegWindowClose } from 'react-icons/fa';
 import { ImAttachment } from 'react-icons/im';
-import styles from './styles.module.scss';
-import DropDownEmoji from '../../messaging/dropDownEmoji/page';
 import { SupportService } from '../../../../../services/support.service';
+import DropDownEmoji from '../../messaging/dropDownEmoji/page';
 import Window from '../../messaging/window/page';
+import styles from './styles.module.scss';
 
 export default function Complaint(props: any) {
+
+  const {
+    isOpen,
+    local,
+    photoId,
+    photoUrl,
+    setIsOpen,
+    userId,
+    groupId,
+    postId
+  } = props;
 
   const [text, setText] = useState("");
   const [file, setFile] = useState(null);
@@ -23,17 +34,17 @@ export default function Complaint(props: any) {
   const click = async () => {
     const formData = new FormData();
     formData.append("text", text);
-    if (props.userId !== undefined) formData.append("userId", props.userId);
-    if (props.photoId !== undefined) formData.append("photoId", props.photoId);
-    if (props.photoUrl !== undefined) formData.append("photoUrl", props.photoUrl);
-    if (props.groupId !== undefined) formData.append("groupId", props.groupId);
-    if (props.postId !== undefined) formData.append("postId", props.postId);
+    if (userId !== undefined) formData.append("userId", userId);
+    if (photoId !== undefined) formData.append("photoId", photoId);
+    if (photoUrl !== undefined) formData.append("photoUrl", photoUrl);
+    if (groupId !== undefined) formData.append("groupId", groupId);
+    if (postId !== undefined) formData.append("postId", postId);
     if (file !== null) formData.append("file", file);
     await SupportService.sendComplaint(formData);
 
     setText("");
     setFile(null);
-    if (props.setIsOpen !== undefined) props.setIsOpen(false);
+    if (setIsOpen !== undefined) setIsOpen(false);
   }
 
   function handleChange(event: any) {
@@ -46,11 +57,11 @@ export default function Complaint(props: any) {
 
   return (
     <>
-      <Window name="Send complaint" isOpen={props.isOpen} setIsOpen={props.setIsOpen}>
+      <Window name="Send complaint" isOpen={isOpen} setIsOpen={setIsOpen}>
         <div className={styles.container}>
           <div className='flex h-5/6 justify-center items-end'><div className={styles.verticalContainer}>
             <div className='flex flex-col w-11/12'>
-              {file ? (<div className='flex text-sm'>Прикреплён файл<button onClick={() => { setFile(null) }}><FaRegWindowClose className="m-1 fill-red-500 hover:fill-red-700" /></button></div>) : (<></>)}
+              {file ? (<div className='flex text-sm'>{local.posts.file}<button onClick={() => { setFile(null) }}><FaRegWindowClose className="m-1 fill-red-500 hover:fill-red-700" /></button></div>) : (<></>)}
               <textarea className={styles.textarea} onChange={handleChange} value={text}></textarea>
             </div>
 

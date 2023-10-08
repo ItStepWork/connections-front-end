@@ -6,19 +6,24 @@ import { BsUpload } from 'react-icons/bs';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FileFormats } from "../../../../../../enums/all.enum";
+import { CheckService } from "../../../../../../services/check.service";
 import { GroupService } from '../../../../../../services/group.service';
 import styles from './styles.module.scss';
-import { CheckService } from "../../../../../../services/check.service";
 
 export function CreateGroup(props: any) {
+
+    const {
+        local
+    } = props;
+
     const [avatar, setAvatar] = useState<any>(null);
     const options = [
         {
-            label: props.local.createGroup.open,
+            label: local.createGroup.open,
             value: '0',
         },
         {
-            label: props.local.createGroup.closed,
+            label: local.createGroup.closed,
             value: '1',
         },
     ];
@@ -26,9 +31,9 @@ export function CreateGroup(props: any) {
         var dialog: any = document.getElementById("createGroupDialog")
         dialog?.close();
     }
-    const notifyError = () => toast.error(props.local.createGroup.toasts.format, {});
-    const notifyErrorServer = () => toast.error(props.local.createGroup.toasts.error, {});
-    const notifySuccess = () => toast.success(props.local.createGroup.toasts.ok, {});
+    const notifyError = () => toast.error(local.createGroup.toasts.format, {});
+    const notifyErrorServer = () => toast.error(local.createGroup.toasts.error, {});
+    const notifySuccess = () => toast.success(local.createGroup.toasts.ok, {});
     const { data: session, update } = useSession();
     const {
         register,
@@ -45,7 +50,6 @@ export function CreateGroup(props: any) {
             let result = await GroupService.addGroup(formData);
             if (result === null) notifyErrorServer();
             else notifySuccess();
-            // props.getGroups();
             closeDialog();
         }
         else notifyError();
@@ -54,19 +58,19 @@ export function CreateGroup(props: any) {
         <>
             <form className={styles.dialogDiv} onSubmit={handleSubmit(onSubmit)}>
                 <div className={styles.dialogDivHeader}>
-                    <h2 className={styles.h2}>{props.local.createGroup.title}</h2>
+                    <h2 className={styles.h2}>{local.createGroup.title}</h2>
                     <button type="button" className={styles.closeButton} onClick={closeDialog}>
                         <AiOutlineClose size={16}></AiOutlineClose>
                     </button>
                 </div>
                 <div className={styles.dialogDivBody}>
                     <div className="mb-3">
-                        <label className={styles.label}>{props.local.createGroup.name}</label>
+                        <label className={styles.label}>{local.createGroup.name}</label>
                         <br></br>
-                        <input type="text" className={styles.grInput} placeholder={props.local.createGroup.placeholderName} {...register('name')} required></input>
+                        <input type="text" className={styles.grInput} placeholder={local.createGroup.placeholderName} {...register('name')} required></input>
                     </div>
                     <div className="mb-3 ">
-                        <label className={styles.label}>{props.local.createGroup.image}</label>
+                        <label className={styles.label}>{local.createGroup.image}</label>
                         <div className={styles.dialogDivHeader}>
                             <div className={styles.input_div}>
                                 <input className={styles.input} type="file" accept={FileFormats.All} {...register('file')} required onChange={(e: any) => { setAvatar(e.target.files[0]) }}></input>
@@ -74,7 +78,7 @@ export function CreateGroup(props: any) {
                             </div>
                         </div>
                     </div>
-                    <label className={styles.label}>{props.local.createGroup.type}</label>
+                    <label className={styles.label}>{local.createGroup.type}</label>
                     <div className={styles.checkDiv}>
                         <select
                             className={styles.select}
@@ -88,12 +92,12 @@ export function CreateGroup(props: any) {
                         </select>
                     </div>
                     <div className="mb-3 mt-3">
-                        <label className={styles.label}>{props.local.createGroup.description}</label>
-                        <textarea className={styles.grInput} rows={2} placeholder={props.local.createGroup.placeholderDesc} {...register('description')} required></textarea>
+                        <label className={styles.label}>{local.createGroup.description}</label>
+                        <textarea className={styles.grInput} rows={2} placeholder={local.createGroup.placeholderDesc} {...register('description')} required></textarea>
                     </div>
                 </div>
                 <div className={styles.dialogDivFooter}>
-                    <button type="submit" className={styles.greenButton}>{props.local.button.create}</button>
+                    <button type="submit" className={styles.greenButton}>{local.button.create}</button>
                 </div>
             </form>
 

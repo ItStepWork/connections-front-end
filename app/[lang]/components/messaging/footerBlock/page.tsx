@@ -11,10 +11,15 @@ import { toast } from 'react-toastify';
 
 export default function FooterBlock(props: any) {
 
+  const {
+    local,
+    friendId
+  } = props
+
   const [text, setText] = useState("");
   const [file, setFile] = useState(null);
   
-  const notifyError = () => toast.error(props.local.createGroup.toasts.format, {});
+  const notifyError = () => toast.error(local.createGroup.toasts.format, {});
 
   const saveFile = (e: any) => {
     if(CheckService.imageFormat(e.target.files[0].name)) setFile(e.target.files[0]);
@@ -22,9 +27,9 @@ export default function FooterBlock(props: any) {
   }
 
   const click = async () => {
-    if (props.friendId !== undefined) {
+    if (friendId !== undefined) {
       const formData = new FormData();
-      formData.append("id", props.friendId);
+      formData.append("id", friendId);
       formData.append("text", text);
       if (file !== null) formData.append("file", file);
       setText("");
@@ -45,7 +50,7 @@ export default function FooterBlock(props: any) {
       <div className={styles.container}>
         <div className={styles.verticalContainer}>
           <div className='flex flex-col w-11/12'>
-            {file ? (<div className='flex text-sm'>Прикреплён файл<button onClick={() => { setFile(null) }}><FaRegWindowClose className="m-1 fill-red-500 hover:fill-red-700" /></button></div>) : (<></>)}
+            {file ? (<div className='flex text-sm'>{local.posts.file}<button onClick={() => { setFile(null) }}><FaRegWindowClose className="m-1 fill-red-500 hover:fill-red-700" /></button></div>) : (<></>)}
             <textarea className={styles.textarea} onChange={handleChange} value={text}></textarea>
           </div>
 

@@ -1,5 +1,6 @@
 .container {
-	@apply grow flex md:ml-2 lg:ml-2 outline-none rounded-xl snap-x bg-white dark:bg-dark_background border border-light_border dark:border-dark_border;
+	@apply grow flex md:ml-2 lg:ml-2 outline-none rounded-xl snap-x bg-white
+	 dark:bg-dark_background border relative w-full border-light_border dark:border-dark_border;
 	.empty {
 		@apply w-full flex items-center justify-center;
 	}
@@ -7,7 +8,7 @@
 		@apply text-gray-900 dark:text-dark_text_gray;
 	}
 	.storyContainer {
-		@apply flex gap-2 relative overflow-x-auto rounded-lg;
+		@apply flex gap-2 outline-none overflow-x-auto rounded-lg md:max-w-2xl lg:max-w-2xl;
 	}
 }
 .notEmpty {

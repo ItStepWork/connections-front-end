@@ -1,17 +1,24 @@
 "use client"
 
 import { useEffect, useState } from 'react';
+import { ComponentName } from '../../../../../enums/all.enum';
 import { GalleryService } from '../../../../../services/gallery.service';
 import { StoriesServices } from '../../../../../services/stories.service';
+import { SubscriptionService } from '../../../../../services/subscription.service';
 import Albums from "../albums/page";
 import CreateAlbum from '../createAlbum/page';
 import Photos from "../photos/page";
 import StoriesAlbums from '../stories/page';
 import styles from './styles.module.scss';
-import { SubscriptionService } from '../../../../../services/subscription.service';
-import { ComponentName } from '../../../../../enums/all.enum';
 
 export default function Gallery(props: any) {
+
+  const {
+    local,
+    myId,
+    session,
+    userId
+  } = props
 
   const [component, setComponent] = useState<ComponentName>(ComponentName.Photos);
   const [albums, setAlbums] = useState<any[]>([]);
@@ -19,17 +26,17 @@ export default function Gallery(props: any) {
   const [photos, setPhotos] = useState<any[]>([]);
 
   const getAlbums = async ()=>{
-    let result = await GalleryService.getAlbums(props.userId);
+    let result = await GalleryService.getAlbums(userId);
     setAlbums(result);
   }
 
   const getPhotos = async () => {
-    let result = await GalleryService.getPhotos(props.userId);
+    let result = await GalleryService.getPhotos(userId);
     setPhotos(result);
   }
 
   const getStories = async () => {
-    let result = await StoriesServices.getStories(props.userId);
+    let result = await StoriesServices.getStories(userId);
     setStories(result);
   }
 
@@ -41,22 +48,22 @@ export default function Gallery(props: any) {
   
   useEffect(() => {
     get();
-    return SubscriptionService.subscribeToChannels(props.session.user.accessToken, [
-      { path: `Subscription/SubscribeToAlbumsUpdates?id=${props.userId}`, func: ()=>{ getAlbums(); } },
-      { path: `Subscription/SubscribeToPhotosUpdates?id=${props.userId}`, func: ()=>{ get(); } },
-      { path: `Subscription/SubscribeToStoriesUpdates?id=${props.userId}`, func: ()=>{ getStories(); } },
+    return SubscriptionService.subscribeToChannels(session.user.accessToken, [
+      { path: `Subscription/SubscribeToAlbumsUpdates?id=${userId}`, func: ()=>{ getAlbums(); } },
+      { path: `Subscription/SubscribeToPhotosUpdates?id=${userId}`, func: ()=>{ get(); } },
+      { path: `Subscription/SubscribeToStoriesUpdates?id=${userId}`, func: ()=>{ getStories(); } },
     ])
   }, []);
 
   const render = () => {
     if(component === ComponentName.Photos){
-      return (<Photos myId={props.myId} userId={props.userId} photos={photos} albums={albums} local={props.local}/>);
+      return (<Photos myId={myId} userId={userId} photos={photos} albums={albums} local={local}/>);
     }
     else if(component === ComponentName.Albums){
-      return (<Albums myId={props.myId} userId={props.userId} albums={albums} local={props.local}/>);
+      return (<Albums myId={myId} userId={userId} albums={albums} local={local}/>);
     }
     else if(component === ComponentName.Stories){
-      return (<StoriesAlbums myId={props.myId} userId={props.userId} stories={stories} local={props.local}/>);
+      return (<StoriesAlbums myId={myId} userId={userId} stories={stories} local={local}/>);
     }
     else {
       return(<></>);
@@ -66,18 +73,18 @@ export default function Gallery(props: any) {
   return (
     <div className={styles.container}>
       <div className="flex justify-between items-center">
-        <h2>{props.local.gallery.title}</h2>
-        {props.userId === props.myId?(<CreateAlbum local={props.local}/>):(<></>)}
+        <h2>{local.gallery.title}</h2>
+        {userId === myId?(<CreateAlbum local={local}/>):(<></>)}
       </div>
       <div className={styles.nav}>
         <div {...component === ComponentName.Photos ? { className: `${styles.counterLink}` } : { className: "" }} >
-          <button {...component === ComponentName.Photos ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { setComponent(ComponentName.Photos) }}>{props.local.gallery.photo}</button>
+          <button {...component === ComponentName.Photos ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { setComponent(ComponentName.Photos) }}>{local.gallery.photo}</button>
         </div>
         <div {...component === ComponentName.Albums ? { className: `${styles.counterLink}` } : { className: "" }} >
-          <button {...component === ComponentName.Albums ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { setComponent(ComponentName.Albums) }}>{props.local.gallery.album}</button>
+          <button {...component === ComponentName.Albums ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { setComponent(ComponentName.Albums) }}>{local.gallery.album}</button>
         </div>
         <div {...component === ComponentName.Stories ? { className: `${styles.counterLink}` } : { className: "" }} >
-          <button {...component === ComponentName.Stories ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { setComponent(ComponentName.Stories) }}>{props.local.gallery.stories}</button>
+          <button {...component === ComponentName.Stories ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { setComponent(ComponentName.Stories) }}>{local.gallery.stories}</button>
         </div>
       </div>
       {render()}

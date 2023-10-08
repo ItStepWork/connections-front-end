@@ -2,13 +2,21 @@
 import { useState } from 'react';
 import { MdOutlineAddAPhoto } from "react-icons/md";
 import { FileFormats } from '../../../../../enums/all.enum';
+import { CheckService } from '../../../../../services/check.service';
 import { GalleryService } from '../../../../../services/gallery.service';
 import PhotoAction from '../photoAction/page';
 import SelectedPhoto from '../selectedPhoto/page';
 import styles from './styles.module.scss';
-import { CheckService } from '../../../../../services/check.service';
 
 export default function Photos(props: any) {
+
+  const {
+    albums,
+    local,
+    myId,
+    photos,
+    userId
+  } = props;
 
   const [isSelected, setIsSelected] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
@@ -34,26 +42,39 @@ export default function Photos(props: any) {
 
   return (
     <div className={styles.container}>
-      {props.userId === props.myId ? (
+      {userId === myId ? (
         <div>
           <label className={styles.addPhoto}>
-            <MdOutlineAddAPhoto size={50} className="fill-button_blue_BG" />
-            <p className='text-center'>{props.local.gallery.addPhoto}</p>
-            <input type='file' accept={FileFormats.All} className='hidden' onChange={change}></input>
+            <MdOutlineAddAPhoto size={50} className={styles.icon}/>
+            <p>{local.gallery.addPhoto}</p>
+            <input type='file' accept={FileFormats.All} onChange={change}></input>
           </label>
         </div>
       ) : (<></>)}
-      {props.photos.map((photo: any, index: any) => {
+      {photos.map((photo: any, index: any) => {
         return (
-          <div key={index} className='relative'>
-            <div className='absolute right-0 bottom-0'>
-              <PhotoAction photo={photo} albums={props.albums} local={props.local} />
+          <div key={index} className={styles.photoActionContainer}>
+            <div className={styles.wrapper}>
+              <PhotoAction 
+                photo={photo} 
+                albums={albums} 
+                local={local} 
+              />
             </div>
             <img className={styles.image} src={photo.url} onClick={() => { select(index) }} />
           </div>
         );
       })}
-      <SelectedPhoto isSelected={isSelected} setIsSelected={setIsSelected} photos={props.photos} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} myId={props.myId} userId={props.userId} />
+      <SelectedPhoto 
+        isSelected={isSelected} 
+        setIsSelected={setIsSelected} 
+        photos={photos} 
+        selectedIndex={selectedIndex} 
+        setSelectedIndex={setSelectedIndex} 
+        myId={myId} 
+        userId={userId} 
+        local={local}
+      />
     </div>
   );
 }

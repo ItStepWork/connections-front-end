@@ -11,17 +11,22 @@ import styles from './groupsCard.module.scss';
 
 export function GroupsCard(props: any) {
 
-  const [groups, setGroups] = useState([]);
+  const {
+    local, 
+    session, 
+    userId
+  } = props;
 
+  const [groups, setGroups] = useState([]);
   const [count, setCount] = useState(3);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
     getGroups();
-    return SubscriptionService.subscribeToChannel(props.session.user.accessToken, `Subscription/SubscribeToGroupsUpdates`, getGroups);
+    return SubscriptionService.subscribeToChannel(session.user.accessToken, `Subscription/SubscribeToGroupsUpdates`, getGroups);
   }, []);
   const getGroups = async () => {
-    let result = await GroupService.getGroups(props.userId);
+    let result = await GroupService.getGroups(userId);
     setGroups(result);
   }
   const openDialog = () => {
@@ -42,10 +47,10 @@ export function GroupsCard(props: any) {
 
         <div className={styles.header}>
           <div className={styles.groups}>
-            <h2>{props.local.profile.groups}</h2>
+            <h2>{local.profile.groups}</h2>
             <div className={styles.counter}>{groups.length}</div>
           </div>
-          {props.session?.user?.id === props.userId &&
+          {session?.user?.id === userId &&
             <button className={styles.button} onClick={openDialog} >
               <AiOutlineUsergroupAdd className="dark:fill-blue" size={35}></AiOutlineUsergroupAdd>
             </button>}
@@ -54,20 +59,31 @@ export function GroupsCard(props: any) {
           <span className={styles.iconSearch}>
             <FiSearch size={20} />
           </span>
-          <input type="text" className={styles.inputSearch} placeholder={props.local.search.searchGroup} onChange={(e) => { changeSearch(e) }} value={search} />
+          <input type="text" 
+            className={styles.inputSearch} 
+            placeholder={local.search.searchGroup} 
+            onChange={(e) => { changeSearch(e) }} 
+            value={search} 
+          />
         </div>
         <div className={styles.cardsContainer}>
           <div className={styles.cards}>
             {filter(groups).map((group: any, index) => {
               if (index <= count)
-                return (<Card key={group.id + Object.entries(group.users).length} group={group} getGroups={getGroups} session={props.session} local={props.local}></Card>)
-            })}
+                return (
+                <Card 
+                  key={group.id + Object.entries(group.users).length} 
+                  group={group} 
+                  session={session} 
+                  local={local}>
+                </Card>
+            )})}
           </div>
-          {count < groups.length - 1 && <button className={styles.buttonLoadMore} onClick={() => setCount(count + 4)}>{props.local.button.uploadMore}</button>}
+          {count < groups.length - 1 && <button className={styles.buttonLoadMore} onClick={() => setCount(count + 4)}>{local.button.uploadMore}</button>}
         </div>
       </div>
       <dialog className={styles.dialog} id='createGroupDialog'>
-        {<CreateGroup getGroups={getGroups} local={props.local}></CreateGroup>}
+        {<CreateGroup local={local}></CreateGroup>}
       </dialog>
 
     </>

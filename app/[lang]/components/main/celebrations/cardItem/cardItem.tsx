@@ -9,6 +9,7 @@ import { EventType } from '../../../../../../enums/all.enum';
 import { PostService } from '../../../../../../services/post.service';
 import { toast } from 'react-toastify';
 import CreatePost from '../../../posts/createPost/page';
+import Link from 'next/link';
 
 // interface ICardProps {
 //   howCelebrating: string;
@@ -40,11 +41,11 @@ export default function CardItem(props: any) {
   return (
     <>{props.event.user &&
       <div className={styles.container}>
-        <div className={styles.avatarContainer}>
+        <Link href={"/profile/" + props.event.user.id} className={styles.avatarContainer}>
           <img className=' rounded-full overflow-hidden w-20 h-20' src={props.event.user.avatarUrl} alt="avatar" loading="lazy" />
-        </div>
+        </Link>
         <div className={styles.fromContainer}>
-          <div className={styles.headBlock}>
+          <Link href={"/profile/" + props.event.user.id} className={styles.headBlock}>
             <div className={styles.name}>
               <h4>{props.event.user.firstName} {props.event.user.lastName}</h4>
               {props.event.type === EventType.BirthDay && props.BirthDayNow
@@ -68,7 +69,7 @@ export default function CardItem(props: any) {
               }
 
             </button> */}
-          </div>
+          </Link>
           {props.event.type === EventType.BirthDay && props.BirthDayNow
             // ? <div className={styles.sendForm}>
             //   <textarea className={styles.textarea} defaultValue={congratulations} placeholder="Write your congratulations" rows={1} onChange={(e) => changeCongrats(e)}></textarea>

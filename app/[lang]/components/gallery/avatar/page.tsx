@@ -6,6 +6,10 @@ import styles from './styles.module.scss';
 
 export default function Avatar(props: any) {
 
+  const { 
+    userId 
+  } = props;
+  
   const [user, setUser] = useState<any>(null);
 
   const getUser = async () => {

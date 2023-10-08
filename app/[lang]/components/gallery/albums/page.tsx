@@ -3,12 +3,24 @@ import styles from './styles.module.scss';
 
 export default function Albums(props: any) {
 
+  const {
+    albums,
+    local,
+    myId,
+    userId
+  } = props;
 
   return (
     <div className={styles.container}>
-      {props.albums && props.albums.map((album: any, index: any) => {
+      {albums && albums.map((album: any, index: any) => {
         return (
-          <Album key={index} album={album} local={props.local} myId={props.myId} userId={props.userId} />
+          <Album 
+            key={index} 
+            album={album} 
+            local={local} 
+            myId={myId} 
+            userId={userId} 
+          />
         );
       })}
     </div>
