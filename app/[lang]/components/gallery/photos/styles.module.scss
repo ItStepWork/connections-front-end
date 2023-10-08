@@ -3,8 +3,23 @@
 	.addPhoto {
 		@apply flex flex-col border-dashed cursor-pointer justify-center items-center h-[130px] md:h-[150px] lg:h-[180px] w-[130px] md:w-[150px] lg:w-[180px] bg-white text-gray-900 border-2 border-light_border rounded-xl
   dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border;
+		.icon {
+			@apply fill-button_blue_BG;
+		}
+		p {
+			@apply text-center;
+		}
+		input {
+			@apply hidden;
+		}
 	}
 	.image {
 		@apply cursor-pointer h-[130px] md:h-[150px] lg:h-[180px] w-[130px] md:w-[150px] lg:w-[180px] rounded-lg;
+	}
+	.photoActionContainer {
+		@apply relative;
+		.wrapper {
+			@apply absolute right-0 bottom-0;
+		}
 	}
 }

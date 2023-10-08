@@ -1,13 +1,20 @@
 import { useEffect, useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import { FriendService } from '../../../../../services/friend.service';
+import { SubscriptionService } from '../../../../../services/subscription.service';
 import FooterBlock from '../../messaging/footerBlock/page';
 import Window from '../../messaging/window/page';
 import { ConnectionBlock } from './connectionBlock';
 import styles from './connectionsCard.module.scss';
-import { SubscriptionService } from '../../../../../services/subscription.service';
 
 export const ConnectionsCard = (props: any) => {
+
+  const {
+    local,
+    myId,
+    session,
+    userId
+  } = props
 
   const [friends, setFriends] = useState<any[]>([]);
   const [friendsFilter, setFriendsFilter] = useState<any[]>([]);
@@ -18,7 +25,7 @@ export const ConnectionsCard = (props: any) => {
 
   useEffect(() => {
     getUsers();
-    return SubscriptionService.subscribeToChannel(props.session.user.accessToken, `Subscription/SubscribeToFriendsUpdates`, getUsers);
+    return SubscriptionService.subscribeToChannel(session.user.accessToken, `Subscription/SubscribeToFriendsUpdates`, getUsers);
   }, []);
 
   const changeSearch = (event: any) => {
@@ -34,7 +41,7 @@ export const ConnectionsCard = (props: any) => {
   }
 
   const getUsers = async () => {
-    let result = await FriendService.getFriends(props.userId);
+    let result = await FriendService.getFriends(userId);
     setFriends(result);
     setFriendsFilter(result);
   }
@@ -46,22 +53,42 @@ export const ConnectionsCard = (props: any) => {
   return (
     <>
       <div className={styles.container}>
-        <h2>{props.local.profile.connect.title}</h2>
+        <h2>{local.profile.connect.title}</h2>
         <div className={styles.inputContainer}>
           <span className={styles.iconSearch}>
             <FiSearch size={20} />
           </span>
-          <input type="text" className={styles.inputSearch} placeholder={props.local.search.searchNameOrEmail} onChange={(e) => { changeSearch(e) }} value={search} />
+          <input 
+            type="text" 
+            className={styles.inputSearch} 
+            placeholder={local.search.searchNameOrEmail} 
+            onChange={(e) => { changeSearch(e) }} 
+            value={search} 
+          />
         </div>
         {friendsFilter && friendsFilter.map((user: any, index: number) => {
-          if (index < count) return <ConnectionBlock key={user.id} myId={props.myId} user={user} setSelectedUser={setSelectedUser} setIsOpen={setIsOpen} local={props.local} />
+          if (index < count) 
+          return <ConnectionBlock 
+            key={user.id} 
+            myId={myId} 
+            user={user} 
+            setSelectedUser={setSelectedUser} 
+            setIsOpen={setIsOpen} 
+            local={local} 
+          />
         })}
-        {friendsFilter.length > count && <button className={styles.buttonLoadMore} onClick={loadMore}>{props.local.button.uploadMore}</button>}
+        {friendsFilter.length > count && 
+          <button 
+            className={styles.buttonLoadMore} 
+            onClick={loadMore}>
+              {local.button.uploadMore}
+          </button>
+        }
       </div >
       {selectedUser &&
         <Window name={selectedUser.firstName + " " + selectedUser.lastName} isOpen={isOpen} setIsOpen={setIsOpen}>
           <div className='flex h-5/6 justify-center items-end'>
-            <FooterBlock friendId={selectedUser.id} />
+            <FooterBlock friendId={selectedUser.id} local={local}/>
           </div>
         </Window>
       }

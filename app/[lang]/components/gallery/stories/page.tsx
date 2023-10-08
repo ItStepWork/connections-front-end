@@ -3,11 +3,23 @@ import styles from './styles.module.scss';
 
 export default function StoriesAlbums(props: any) {
 
+  const {
+    stories,
+    local,
+    myId,
+    userId
+  } = props;
+
   return (
     <div className={styles.container}>
-      {props.stories && props.stories.map((story: any, index: any) => {
+      {stories && stories.map((story: any, index: any) => {
         return (
-          <StoryAlbum key={index} story={story} myId={props.myId} userId={props.userId} local={props.local} />
+          <StoryAlbum 
+            key={index} 
+            story={story} 
+            myId={myId} 
+            userId={userId} 
+            local={local} />
         );
       })}
     </div>
