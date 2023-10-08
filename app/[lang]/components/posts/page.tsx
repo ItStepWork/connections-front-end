@@ -10,7 +10,7 @@ import { PostsCard } from './postsCard/postsCard';
 import styles from './styles.module.scss';
 
 export default function Posts(props: any) {
-  console.log(props)
+  
   const {
     local,
     myId,
