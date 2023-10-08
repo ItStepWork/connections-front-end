@@ -1,5 +1,5 @@
 "use client"
-import { getSession, useSession } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
 import localFont from "next/font/local"
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
@@ -8,20 +8,24 @@ import { BiMenu } from 'react-icons/bi'
 import { FiLogIn } from 'react-icons/fi'
 import { MdAdminPanelSettings, MdOutlineClose, MdOutlineMessage } from 'react-icons/md'
 import { ComponentName, Role } from '../../../../enums/all.enum'
+import { UserService } from '../../../../services/user.service'
 import { useMainComponents } from '../../../../stores/mainStateStore'
 import { useStore } from '../../../../stores/userDataStore'
 import { DropMenuProfile } from '../userProfile/dropMenu/dropMenu'
 import styles from './header.module.scss'
 import LocaleSwitcher from './locale-switcher'
 import LocalSwitcherMinimal from './locale-switcher-minimal'
-import { UserService } from '../../../../services/user.service'
 
 const oneDay = localFont({ src: '../../../../fonts/ONEDAY.ttf' })
 
 const channelWorkerBroadcast = new BroadcastChannel('channelWorker');
 
-
 export const Header = (props: any) => {
+
+  const { 
+    local,
+    lang
+  } = props;
 
   const [fetch] = useStore((state) => [state.fetchUser])
   const setComponent = useMainComponents((state) => state.setComponent)
@@ -60,37 +64,37 @@ export const Header = (props: any) => {
               {session ?
                 <>
                   <li className={styles.listItem}>
-                    <Link className={styles.navText} onClick={() => setComponent(ComponentName.Posts)} href={`/${props.lang}/main`}>{props.local.header.main}</Link>
+                    <Link className={styles.navText} onClick={() => setComponent(ComponentName.Posts)} href={`/${lang}/main`}>{local.header.main}</Link>
                   </li>
                   <li className={styles.listItem}>
-                    <Link className={styles.navText} onClick={fetch} href={`/${props.lang}/profile/${session.user.id}`}>{props.local.header.profile}</Link>
+                    <Link className={styles.navText} onClick={fetch} href={`/${lang}/profile/${session.user.id}`}>{local.header.profile}</Link>
                   </li>
                   <li className={styles.listItem}>
-                    <Link className={styles.navText} onClick={fetch} href={`/${props.lang}/support`}>{props.local.header.support}</Link>
+                    <Link className={styles.navText} onClick={fetch} href={`/${lang}/support`}>{local.header.support}</Link>
                   </li>
                   {session.user.role !== Role.User &&
                     <li className={styles.listItem}>
-                      <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href={`/${props.lang}/admin`}>{open ? "Admin panel" : <MdAdminPanelSettings size={20} />}</Link>
+                      <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href={`/${lang}/admin`}>{open ? "Admin panel" : <MdAdminPanelSettings size={20} />}</Link>
                     </li>
                   }
                   <li className={styles.listItem}>
-                    <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href={`/${props.lang}/messaging`}>{open ? props.local.header.dropMenu.messages : <MdOutlineMessage size={20} />}</Link>
+                    <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href={`/${lang}/messaging`}>{open ? local.header.dropMenu.messages : <MdOutlineMessage size={20} />}</Link>
                   </li>
                   <li className={styles.listItem}>
-                    <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href={`/${props.lang}/settings`}>{open ? props.local.header.dropMenu.settings : <AiOutlineSetting size={20} />}</Link>
+                    <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href={`/${lang}/settings`}>{open ? local.header.dropMenu.settings : <AiOutlineSetting size={20} />}</Link>
                   </li>
                   <li className={styles.listItem}>
-                    <DropMenuProfile navbarOpen={open} lang={props.lang} local={props.local} />
+                    <DropMenuProfile navbarOpen={open} lang={lang} local={local} />
                   </li>
                 </>
                 :
                 <>
                   <li className={styles.listItem}>
-                    <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href={`/${props.lang}/signIn`}>{open ? "Sign In" : <FiLogIn size={20} />}</Link>
+                    <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href={`/${lang}/signIn`}>{open ? "Sign In" : <FiLogIn size={20} />}</Link>
                   </li>
                 </>}
               <li className={styles.listItem}>
-                {open ? <LocalSwitcherMinimal /> : <LocaleSwitcher local={props.lang} />}
+                {open ? <LocalSwitcherMinimal /> : <LocaleSwitcher local={lang} />}
               </li>
             </ul>
           </div>

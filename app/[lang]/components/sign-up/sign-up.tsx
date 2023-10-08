@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import styles from './sign-up.module.scss';
 
 
-export default function SignUp({local} : {local : any}, props : any) {
+export default function SignUp({local} : {local : any}) {
   const {
     register,
     handleSubmit,

@@ -14,9 +14,15 @@ import Photos from './photos/page';
 import styles from './styles.module.scss';
 
 export function GroupPage(props: any) {
-    const [id, setId] = useState(0)
+
+    const {
+        id,
+        local,
+        session
+    } = props;
+
+    const [idMember, setIdMember] = useState(0)
     const [groupSocket, setGroupSocket] = useState<WebSocket>()
-    //const [component, setComponent] = useState("about");
     const [component, setComponent] = useMainComponents((state) => [state.groupComponentName, state.setGroupComponent]);
     const [usersRequests, setUsersRequests] = useState<any[]>([])
     const [membersFriends, setMembersFriends] = useState<any[]>([])
@@ -26,54 +32,54 @@ export function GroupPage(props: any) {
     useEffect(() => {
         getData();
         getPhotos();
-        return SubscriptionService.subscribeToChannels(props.session.user.accessToken, [
-            { path: `Subscription/SubscribeToGroupUpdates?id=${props.id}`, func: async () => { await getUsers(); await getGroup(); await getPhotos(); } },
+        return SubscriptionService.subscribeToChannels(session.user.accessToken, [
+            { path: `Subscription/SubscribeToGroupUpdates?id=${id}`, func: async () => { await getUsers(); await getGroup(); await getPhotos(); } },
             { path: `Subscription/SubscribeToFriendsUpdates`, func: async () => { await getUsers(); await getGroup(); } }
         ]);
     }, []);
     const getData = async () => {
-        let result = await GroupService.getGroup(props.id);
+        let result = await GroupService.getGroup(id);
         await setGroup(result);
         let result2 = await GroupService.getRequestsToGroup(result?.id);
         await setUsersRequests(result2);
-        let result3 = await GroupService.getFriendsInGroup(props.id);
+        let result3 = await GroupService.getFriendsInGroup(id);
         setMembersFriends(result3);
-        let result4 = await GroupService.getFriendsForInvitation(props.id);
+        let result4 = await GroupService.getFriendsForInvitation(id);
         setFriendsForInvitation(result4);
     }
     const getGroup = async () => {
-        let result = await GroupService.getGroup(props.id);
+        let result = await GroupService.getGroup(id);
         setGroup(result);
     }
     const getUsersRequests = async () => {
-        let result = await GroupService.getRequestsToGroup(props.id);
+        let result = await GroupService.getRequestsToGroup(id);
         setUsersRequests(result);
     }
     const getFriendsInGroup = async () => {
-        let result = await GroupService.getFriendsInGroup(props.id);
+        let result = await GroupService.getFriendsInGroup(id);
         setMembersFriends(result);
     }
     const getFriendsForInvitation = async () => {
-        let result = await GroupService.getFriendsForInvitation(props.id);
+        let result = await GroupService.getFriendsForInvitation(id);
         setFriendsForInvitation(result);
     }
     const getUsers = async () => {
         await getUsersRequests();
         await getFriendsInGroup();
         await getFriendsForInvitation();
-        setId(Math.random())
+        setIdMember(Math.random())
     }
 
     const getPhotos = async () => {
-        let result2 = await GroupService.getPhotos(props.id);
+        let result2 = await GroupService.getPhotos(id);
         setPhotos(result2);
     }
     const changeComponent = () => {
-        if (component === ComponentName.Members) return (<ConnectionsCard key={"members" + membersFriends.length + id} isRequests={false} session={props.session} users={membersFriends} group={group} getGroup={getGroup} getUsers={getUsers} local={props.local} />)
-        else if (component === ComponentName.Requests) return (<ConnectionsCard key={"requests" + usersRequests.length + id} isRequests={true} session={props.session} users={usersRequests} group={group} getGroup={getGroup} getUsers={getUsers} local={props.local} />)
-        else if (component === ComponentName.AboutGroup) return (<AboutCard group={group} members={Object.entries(membersFriends).length} local={props.local} />)
-        else if (component === ComponentName.Photos) return (<Photos group={group} session={props.session} getPhotos={getPhotos} photos={photos} local={props.local} />)
-        else if (component === ComponentName.Posts) return (<Posts local={props.local} session={props.session} myId={props.session.user.id} groupId={props.id[0]} />)
+        if (component === ComponentName.Members) return (<ConnectionsCard key={"members" + membersFriends.length + idMember} isRequests={false} session={session} users={membersFriends} group={group} getGroup={getGroup} getUsers={getUsers} local={local} />)
+        else if (component === ComponentName.Requests) return (<ConnectionsCard key={"requests" + usersRequests.length + idMember} isRequests={true} session={session} users={usersRequests} group={group} getGroup={getGroup} getUsers={getUsers} local={local} />)
+        else if (component === ComponentName.AboutGroup) return (<AboutCard group={group} members={Object.entries(membersFriends).length} local={local} />)
+        else if (component === ComponentName.Photos) return (<Photos group={group} session={session} getPhotos={getPhotos} photos={photos} local={local} />)
+        else if (component === ComponentName.Posts) return (<Posts local={local} session={session} myId={session.user.id} groupId={id[0]} />)
         else return (<></>)
     }
     return (
@@ -82,8 +88,8 @@ export function GroupPage(props: any) {
                 <div className={styles.container}>
                     {group
                         && <div className='gap-5'>
-                            < HeaderBlock groupSocket={groupSocket} session={props.session} group={group} usersRequests={usersRequests} members={membersFriends}
-                                getGroup={getGroup} getUsers={getUsers} component={component} setComponent={setComponent} local={props.local} friendsForInvitation={friendsForInvitation} getFriendsForInvitation={getFriendsForInvitation} />
+                            < HeaderBlock groupSocket={groupSocket} session={session} group={group} usersRequests={usersRequests} members={membersFriends}
+                                getGroup={getGroup} getUsers={getUsers} component={component} setComponent={setComponent} local={local} friendsForInvitation={friendsForInvitation} getFriendsForInvitation={getFriendsForInvitation} />
                             {changeComponent()}
                         </div>
                     }
@@ -93,6 +99,12 @@ export function GroupPage(props: any) {
     )
 }
 export default function Group(props: any) {
+
+    const {
+        id,
+        local
+    } = props;
+
     const [session, setSession] = useState<any>()
     const getUserSession = async () => {
         const result = await getSession();
@@ -103,7 +115,7 @@ export default function Group(props: any) {
     }, [])
     return (
         <>
-            {session && <GroupPage session={session} local={props.local} id={props.id} />}
+            {session && <GroupPage session={session} local={local} id={id} />}
         </>
     )
 }

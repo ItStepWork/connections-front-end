@@ -1,24 +1,32 @@
 "use client"
 
 import { useEffect, useState } from "react";
-import StoriesBlock from '../main/stories/stories-block/stories-block';
-import styles from './styles.module.scss';
-import CreatePost from './createPost/page';
-import { PostsCard } from './postsCard/postsCard';
 import { PostService } from '../../../../services/post.service';
 import { StoriesServices } from "../../../../services/stories.service";
 import { SubscriptionService } from "../../../../services/subscription.service";
+import StoriesBlock from '../main/stories/stories-block/stories-block';
+import CreatePost from './createPost/page';
+import { PostsCard } from './postsCard/postsCard';
+import styles from './styles.module.scss';
 
 export default function Posts(props: any) {
+  
+  const {
+    local,
+    myId,
+    session,
+    userId,
+    groupId
+  } = props;
 
   const [posts, setPosts] = useState<any[]>([]);
   const [stories, setStories] = useState<any[]>([]);
 
   useEffect(() => {
     load();
-    return SubscriptionService.subscribeToChannels(props.session.user.accessToken, [
-      { path: `Subscription/SubscribeToPostsUpdates?id=${props.userId ? props.userId : props.groupId}`, func: getPosts },
-      { path: `Subscription/SubscribeToStoriesUpdates?id=${props.userId ? props.userId : props.groupId}`, func: getStories },
+    return SubscriptionService.subscribeToChannels(session.user.accessToken, [
+      { path: `Subscription/SubscribeToPostsUpdates?id=${userId ? userId : groupId}`, func: getPosts },
+      { path: `Subscription/SubscribeToStoriesUpdates?id=${userId ? userId : groupId}`, func: getStories },
     ]);
   }, [])
 
@@ -29,7 +37,7 @@ export default function Posts(props: any) {
 
   const getPosts = async () => {
     if (props.userId != undefined) {
-      let result = await PostService.getPosts(props.userId);
+      let result = await PostService.getPosts(userId);
       setPosts(result);
     }
     if (props.groupId != undefined) {
@@ -39,19 +47,25 @@ export default function Posts(props: any) {
   }
 
   const getStories = async () => {
-    let result = await StoriesServices.getStories(props.userId);
+    let result = await StoriesServices.getStories(userId);
     setStories(result);
   }
 
   return (
-    props.local &&
+    local &&
     <>
       <div className={styles.container}>
-        {(stories.length > 0 || props.myId === props.userId) && <StoriesBlock local={props.local} myId={props.myId} userId={props.userId} stories={stories} />}
+        {(stories.length > 0 || myId === userId) && <StoriesBlock local={local} myId={myId} userId={userId} stories={stories} />}
         <div className={styles.createPost}>
-          <CreatePost local={props.local} userId={props.userId} groupId={props.groupId} placeholder={props.local.posts.placeholder} />
+          <CreatePost local={local} userId={userId} groupId={groupId} placeholder={local.posts.placeholder} />
         </div>
-        {posts.length > 0 && <PostsCard local={props.local} myId={props.myId} userId={props.userId} groupId={props.groupId} posts={posts} getPosts={getPosts} />}
+        {posts.length > 0 && <PostsCard 
+          local={local} 
+          myId={myId} 
+          userId={userId} 
+          groupId={groupId} 
+          posts={posts} 
+          getPosts={getPosts} />}
       </div>
     </>
   )
