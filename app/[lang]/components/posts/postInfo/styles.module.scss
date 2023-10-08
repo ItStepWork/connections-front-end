@@ -60,3 +60,15 @@
 .horizontalHr {
 	@apply my-3 border-zinc-200 bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-700;
 }
+.user{
+	@apply flex w-full;
+}
+.userImage{
+	@apply w-10 h-10 rounded-full border border-gray-500;
+}
+.userInfo{
+	@apply px-2 ml-2 flex overflow-hidden gap-6;
+}
+.userName{
+	@apply flex gap-6 whitespace-nowrap font-bold text-lg;
+}

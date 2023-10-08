@@ -26,7 +26,8 @@ export default function CreatePost(props: any) {
 
   const click = async () => {
     const formData = new FormData();
-    formData.append("recipientId", props.userId);
+    if(props.userId != undefined) formData.append("recipientId", props.userId);
+    if(props.groupId != undefined) formData.append("groupId", props.groupId);
     formData.append("text", text);
     if (file !== null) formData.append("file", file);
     await PostService.createPost(formData);

@@ -6,11 +6,13 @@ import { BsFillSendFill } from 'react-icons/bs';
 import { HiDotsVertical } from 'react-icons/hi';
 import { ImArrowDown, ImArrowUp } from 'react-icons/im';
 import { PostService } from "../../../../../services/post.service";
-import Avatar from "../../gallery/avatar/page";
 import DropDownEmoji from "../../messaging/dropDownEmoji/page";
 import Complaint from "../../support/complaint/page";
 import Comment from "../comment/page";
+import { FaUserCircle } from 'react-icons/fa';
+import { LuArrowBigRight } from 'react-icons/lu';
 import styles from './styles.module.scss';
+import Link from "next/link";
 
 export default function PostInfo(props: any) {
 
@@ -20,18 +22,21 @@ export default function PostInfo(props: any) {
   const [isOpenComplaint, setIsOpenComplaint] = useState<boolean>(false);
 
   const like = async () => {
-    await PostService.setLike(props.post.recipientId, props.post.id);
+    if (props.post.recipientId != undefined) await PostService.setLike(props.post.recipientId, props.post.id);
+    if (props.post.groupId != undefined) await PostService.setLike(props.post.groupId, props.post.id);
     props.getPosts();
   }
 
   const sendComment = async () => {
-    await PostService.sendComment(props.post.recipientId, props.post.id, text);
+    if (props.post.recipientId != undefined) await PostService.sendComment(props.post.recipientId, props.post.id, text);
+    if (props.post.groupId != undefined) await PostService.sendComment(props.post.groupId, props.post.id, text);
     props.getPosts();
     setText("");
   }
 
   const removePost = async () => {
-    await PostService.removePost(props.post.recipientId, props.post.id);
+    if (props.post.recipientId != undefined) await PostService.removePost(props.post.recipientId, props.post.id);
+    if (props.post.groupId != undefined) await PostService.removePost(props.post.groupId, props.post.id);
     props.getPosts();
   }
 
@@ -46,9 +51,24 @@ export default function PostInfo(props: any) {
   return (
     <div className={styles.container}>
       <div className={styles.postHeaderContainer}>
-        <Avatar userId={props.post.senderId} />
+        <div className="flex">
+        {props.post.sender &&
+          <div className={styles.user}>
+            {props.post.sender?.avatarUrl ? (<img className={styles.userImage} src={props.post.sender.avatarUrl} />) : (<FaUserCircle className={styles.userImage} />)}
+            <div className={styles.userInfo}>
+              <Link className={styles.userName} href={"profile/" + props.post.sender.id}>{props.post.sender.lastName} {props.post.sender.firstName}</Link>
+              {props.post.recipient && props.post.recipientId !== props.post.senderId &&
+                <><LuArrowBigRight size={24}/><Link className={styles.userName} href={"profile/" + props.post.recipient.id}>{props.post.recipient.lastName} {props.post.recipient.firstName}</Link></>
+              }
+              {props.post.group && 
+                <><LuArrowBigRight size={24}/><Link className={styles.userName} href={"group/" + props.post.group.id}>{props.post.group.name}</Link></>
+              }
+            </div>
+          </div>
+        }
+        </div>
         <div className={isOpen ? styles.dropdownButtonPress : styles.dropdownButton} onClick={() => { setIsOpen(!isOpen); }}>
-          <HiDotsVertical size={20}  />
+          <HiDotsVertical size={20} />
         </div>
         {isOpen &&
           <div className={styles.dropdownContainer}>
@@ -80,7 +100,7 @@ export default function PostInfo(props: any) {
             </button>
           )}
           <div className={styles.postArrowContainer} onClick={() => { setIsOpenComments(!isOpenComments) }} >
-            {isOpenComments ? <ImArrowUp size={14} className="mx-1" />:<ImArrowDown size={14} className="mx-1" />}
+            {isOpenComments ? <ImArrowUp size={14} className="mx-1" /> : <ImArrowDown size={14} className="mx-1" />}
             {props.local.posts.comments}  ({Object.entries(props.post.comments).length})
           </div>
 

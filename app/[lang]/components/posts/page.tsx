@@ -17,8 +17,8 @@ export default function Posts(props: any) {
   useEffect(() => {
     load();
     return SubscriptionService.subscribeToChannels(props.session.user.accessToken, [
-      { path: `Subscription/SubscribeToPostsUpdates?id=${props.userId}`, func: getPosts },
-      { path: `Subscription/SubscribeToStoriesUpdates?id=${props.userId}`, func: getStories },
+      { path: `Subscription/SubscribeToPostsUpdates?id=${props.userId ? props.userId : props.groupId}`, func: getPosts },
+      { path: `Subscription/SubscribeToStoriesUpdates?id=${props.userId ? props.userId : props.groupId}`, func: getStories },
     ]);
   }, [])
 
@@ -28,8 +28,14 @@ export default function Posts(props: any) {
   }
 
   const getPosts = async () => {
-    let result = await PostService.getPosts(props.userId);
-    setPosts(result);
+    if (props.userId != undefined) {
+      let result = await PostService.getPosts(props.userId);
+      setPosts(result);
+    }
+    if (props.groupId != undefined) {
+      let result = await PostService.getPosts(props.groupId);
+      setPosts(result);
+    }
   }
 
   const getStories = async () => {
@@ -43,9 +49,9 @@ export default function Posts(props: any) {
       <div className={styles.container}>
         {(stories.length > 0 || props.myId === props.userId) && <StoriesBlock local={props.local} myId={props.myId} userId={props.userId} stories={stories} />}
         <div className={styles.createPost}>
-          <CreatePost local={props.local} userId={props.userId} placeholder={props.local.posts.placeholder} />
+          <CreatePost local={props.local} userId={props.userId} groupId={props.groupId} placeholder={props.local.posts.placeholder} />
         </div>
-        {posts.length > 0 && <PostsCard local={props.local} myId={props.myId} userId={props.userId} posts={posts} getPosts={getPosts} />}
+        {posts.length > 0 && <PostsCard local={props.local} myId={props.myId} userId={props.userId} groupId={props.groupId} posts={posts} getPosts={getPosts} />}
       </div>
     </>
   )
