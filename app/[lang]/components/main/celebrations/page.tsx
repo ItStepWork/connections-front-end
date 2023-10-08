@@ -42,34 +42,40 @@ export default function Celebration(props: any) {
 
         <div className={styles.contentContainer}>
           <div className={styles.headContainer}>
-            <div className={styles.headText}>{props.local.events.title}</div>
+            <h2>{props.local.events.title}</h2>
             <button className={styles.button} onClick={openDialog} >
               <AiOutlinePlus className="dark:fill-blue" size={35}></AiOutlinePlus>
             </button>
           </div>
 
         </div>
-        <div className={styles.contentContainer}>
-          <div className={styles.headText}>{props.local.events.today}</div>
-          {birthDaysNow && birthDaysNow.map((value: any, key: any) => {
-            return (<CardItem key={key} user={props.user} event={value} BirthDayNow={true} local={props.local} />)
-          })}
-        </div>
+        {birthDaysNow.length > 0 &&
+          <div className={styles.contentContainer}>
+            <h2>{props.local.events.today}</h2>
+            {birthDaysNow && birthDaysNow.map((value: any, key: any) => {
+              return (<CardItem key={key} user={props.user} event={value} BirthDayNow={true} local={props.local} />)
+            })}
+          </div>
+        }
 
-        <div className={styles.contentContainer}>
-          <div className={styles.headText}>{props.local.events.soon}</div>
-          {birthDaysSoon && birthDaysSoon.map((value: any, key: any) => {
-            return (<CardItem key={key} user={props.user} event={value} BirthDayNow={false} local={props.local} />)
-          })}
-        </div>
-        <div className={styles.contentContainer}>
-          <div className={styles.headText}>{props.local.events.upcoming}</div>
-          {events && events.map((value: any, key: any) => {
-            return (<CardItem key={key} user={props.user} event={value} local={props.local} />)
-          })
+        {birthDaysSoon.length > 0 &&
+          <div className={styles.contentContainer}>
+            <h2>{props.local.events.soon}</h2>
+            {birthDaysSoon && birthDaysSoon.map((value: any, key: any) => {
+              return (<CardItem key={key} user={props.user} event={value} BirthDayNow={false} local={props.local} />)
+            })}
+          </div>
+        }
+        {events.length > 0 &&
+          <div className={styles.contentContainer}>
+            <h2>{props.local.events.upcoming}</h2>
+            {events && events.map((value: any, key: any) => {
+              return (<CardItem key={key} user={props.user} event={value} local={props.local} />)
+            })
+            }
+          </div>
+        }
 
-          }
-        </div>
         <dialog className={styles.dialog} id='postDialog'>
           {<CreateEvent user={props.user} local={props.local}></CreateEvent>}
         </dialog>

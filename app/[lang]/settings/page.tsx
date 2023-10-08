@@ -7,11 +7,20 @@ import { ChangePassword } from "../components/profile-settings/change-password/c
 import ChangeImages from "../components/profile-settings/change-profile-images/main";
 import { LeftSettingsMenu } from "../components/profile-settings/sidebar-settings/sidebar-settings";
 import styles from './styles.module.scss';
+import { useEffect, useState } from "react";
+import { UserService } from "../../../services/user.service";
 
-export default async function SettingsPage({ params: { lang }}: { params: { lang: Locale }}, props : any) {
-
+export default async function SettingsPage({ params: { lang } }: { params: { lang: Locale } }, props: any) {
+  // const [user, setUser] = useState()
   const locDictionary = await getDictionary(lang)
   const session = await getServerSession(authConfig);
+  // const getUser = async () => {
+  //   let result = await UserService.getCurrentUser()
+  //   setUser(result)
+  // }
+  // useEffect(() => {
+  //   getUser()
+  // }, [])
   return (
     <>
       <main>
@@ -19,7 +28,7 @@ export default async function SettingsPage({ params: { lang }}: { params: { lang
           <div className={styles.contentContainer}>
             <div className={styles.wrapper}>
               <div className={styles.leftMenu}>
-                <LeftSettingsMenu local={locDictionary} session={session} lang={lang}/>
+                <LeftSettingsMenu local={locDictionary} session={session} lang={lang} />
               </div>
               <div className={styles.accSettings}>
                 <AccountSettings local={locDictionary} />

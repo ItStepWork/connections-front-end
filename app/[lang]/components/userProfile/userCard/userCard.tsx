@@ -23,7 +23,7 @@ export function UserCard(props: any) {
 
   const [loading, setLoading] = useState(true);
   const [friendsCount, setSetFriendsCount] = useState(0);
-  const [user, setUser] = useState<any>(null);
+  // const [user, setUser] = useState<any>(null);
   const [isOpen, setIsOpen] = useState(false)
 
   const notifyError = () => toast.error(props.local.createGroup.toasts.format, {});
@@ -31,37 +31,39 @@ export function UserCard(props: any) {
   const notifySuccess = () => toast.success(props.local.createGroup.toasts.ok, {});
 
   useEffect(() => {
-    getData();
+    // getData();
+    getFriendsCount();
+    setLoading(false);
     return SubscriptionService.subscribeToChannels(props.session.user.accessToken, [
-      { path: `Subscription/SubscribeToUserUpdates?id=${props.userId}`, func: getUser },
+      { path: `Subscription/SubscribeToUserUpdates?id=${props.user.id}`, func: props.getUser },
       { path: `Subscription/SubscribeToFriendsUpdates`, func: getData },
     ]);
   }, []);
 
-  const getUser = async () => {
-    let result = await FriendService.getFriend(props.userId);
-    setUser(result);
-    // setLoading(false);
-  }
+  // const getUser = async () => {
+  //   let result = await FriendService.getFriend(props.userId);
+  //   setUser(result);
+  //   // setLoading(false);
+  // }
   const getFriendsCount = async () => {
-    let result = await FriendService.getFriendsCount(props.userId);
+    let result = await FriendService.getFriendsCount(props.user.id);
     setSetFriendsCount(result);
   }
   const getData = async () => {
-    await getUser();
+    await props.getUser();
     await getFriendsCount();
     setLoading(false);
   }
   const addFriend = async () => {
-    await FriendService.addFriend(props.userId);
+    await FriendService.addFriend(props.user.id);
   }
 
   const confirmFriend = async () => {
-    await FriendService.confirmFriend(props.userId);
+    await FriendService.confirmFriend(props.user.id);
   }
 
   const removeFriend = async () => {
-    await FriendService.removeFriend(props.userId);
+    await FriendService.removeFriend(props.user.id);
   }
 
   const saveAvatar = async (e: any) => {
@@ -90,13 +92,13 @@ export function UserCard(props: any) {
 
   return (
     <>
-      {user &&
+      {props.user &&
         <div className={styles.container}>
           <div className={styles.bannerImage}>
             {
-              user.backgroundUrl &&
+              props.user.backgroundUrl &&
               <img className='h-full w-full'
-                src={user.backgroundUrl}
+                src={props.user.backgroundUrl}
                 sizes="100vw"
                 alt="bg"
                 style={{ objectFit: "cover" }}
@@ -104,7 +106,7 @@ export function UserCard(props: any) {
               />
             }
           </div>
-          {props.userId === props.session.user.id &&
+          {props.user.id === props.session.user.id &&
             <div className={styles.editBgImage}>
               <label htmlFor="background-file" className={styles.backgroundImageLabel}>
                 <div className={styles.backgroundIcon}>
@@ -120,15 +122,15 @@ export function UserCard(props: any) {
                 <div className={styles.avatarContainer}>
                   <div className={styles.avatar}>
                     {
-                      user.avatarUrl &&
+                      props.user.avatarUrl &&
                       <img className='rounded-full h-full w-full'
-                        src={user.avatarUrl}
+                        src={props.user.avatarUrl}
                         style={{ objectFit: "cover" }}
                         alt="avatar"
                       />
                     }
                   </div>
-                  {props.userId === props.session.user.id &&
+                  {props.user.id === props.session.user.id &&
                     <div className={styles.editAvatar}>
                       <label htmlFor="avatar-file" className={styles.avatarLabel}>
                         <div className={styles.avatarIcon}>
@@ -142,20 +144,20 @@ export function UserCard(props: any) {
                 </div>
                 <div className={styles.nameBlock}>
                   <div className={styles.name}>
-                    <h2>{user.firstName + ' ' + user.lastName}</h2>
+                    <h2>{props.user.firstName + ' ' + props.user.lastName}</h2>
                     <span><BsFillPatchCheckFill size={18} /></span>
                   </div>
-                  <OnlineUser user={user} local={props.local}></OnlineUser>
+                  <OnlineUser user={props.user} local={props.local}></OnlineUser>
                   <p>{friendsCount} {props.local.profile.friendsCount}</p>
                 </div>
               </div>
-              {props.userId !== props.session.user.id
+              {props.user.id !== props.session.user.id
                 ? <div className={styles.buttonBlock}>
-                  {user.friendStatus === FriendStatus.Confirmed ? (<button className={styles.button_red_BG} onClick={removeFriend}><AiOutlineUserDelete size={20} />{props.local.profile.connect.delete}</button>) : (<></>)}
-                  {user.friendStatus === FriendStatus.Unconfirmed ? (<button className={styles.button_green_BG} onClick={confirmFriend}><MdSentimentSatisfiedAlt size={20} />{props.local.profile.connect.confirm}</button>) : (<></>)}
-                  {user.friendStatus === FriendStatus.Unconfirmed ? (<button className={styles.button_red_BG} onClick={removeFriend}><MdSentimentVeryDissatisfied size={20} />{props.local.profile.connect.cancel}</button>) : (<></>)}
-                  {user.friendStatus === FriendStatus.Waiting ? (<button className={styles.button_yellow_BG} onClick={removeFriend}><BiTimeFive size={20} />{props.local.profile.connect.cancel}</button>) : (<></>)}
-                  {user.friendStatus === FriendStatus.Other ? (<button className={styles.button_green_BG} onClick={addFriend}><GoPersonAdd size={20} />{props.local.profile.connect.beFriends}</button>) : (<></>)}
+                  {props.user.friendStatus === FriendStatus.Confirmed ? (<button className={styles.button_red_BG} onClick={removeFriend}><AiOutlineUserDelete size={20} />{props.local.profile.connect.delete}</button>) : (<></>)}
+                  {props.user.friendStatus === FriendStatus.Unconfirmed ? (<button className={styles.button_green_BG} onClick={confirmFriend}><MdSentimentSatisfiedAlt size={20} />{props.local.profile.connect.confirm}</button>) : (<></>)}
+                  {props.user.friendStatus === FriendStatus.Unconfirmed ? (<button className={styles.button_red_BG} onClick={removeFriend}><MdSentimentVeryDissatisfied size={20} />{props.local.profile.connect.cancel}</button>) : (<></>)}
+                  {props.user.friendStatus === FriendStatus.Waiting ? (<button className={styles.button_yellow_BG} onClick={removeFriend}><BiTimeFive size={20} />{props.local.profile.connect.cancel}</button>) : (<></>)}
+                  {props.user.friendStatus === FriendStatus.Other ? (<button className={styles.button_green_BG} onClick={addFriend}><GoPersonAdd size={20} />{props.local.profile.connect.beFriends}</button>) : (<></>)}
                   <button title="Send Message" className={styles.button_blue_BG} onClick={() => { setIsOpen(true); }}><BsSend size={20} />{props.local.profile.connect.write}</button>
                 </div>
                 : <div className={styles.buttonBlock}>
@@ -167,9 +169,9 @@ export function UserCard(props: any) {
 
             </div>
             <div className={styles.bottomInfo}>
-              <p><span><BsBriefcase /></span>{user.work}</p>
-              <p><span><BsGeoAlt /></span>{user.location}</p>
-              <p><span><BsCalendar2Plus /></span>{props.local.profile.join} {user.joined}</p>
+              <p><span><BsBriefcase /></span>{props.user.work}</p>
+              <p><span><BsGeoAlt /></span>{props.user.location}</p>
+              <p><span><BsCalendar2Plus /></span>{props.local.profile.join} {new Date(props.user.createdTime).toDateString()}</p>
             </div>
           </div>
           <div className={styles.cardNav}>
@@ -189,9 +191,9 @@ export function UserCard(props: any) {
               <button {...props.component === ComponentName.Posts ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent(ComponentName.Posts) }}>Posts</button>
             </div>
           </div>
-          <Window name={user.firstName + " " + user.lastName} isOpen={isOpen} setIsOpen={setIsOpen}>
+          <Window name={props.user.firstName + " " + props.user.lastName} isOpen={isOpen} setIsOpen={setIsOpen}>
             <div className='flex h-5/6 justify-center items-end'>
-              <FooterBlock friendId={user.id} />
+              <FooterBlock friendId={props.user.id} />
             </div>
           </Window>
         </div>
