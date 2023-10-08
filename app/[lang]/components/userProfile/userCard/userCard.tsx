@@ -196,7 +196,7 @@ export function UserCard(props: any) {
           </div>
           <Window name={user.firstName + " " + user.lastName} isOpen={isOpen} setIsOpen={setIsOpen}>
             <div className='flex h-5/6 justify-center items-end'>
-              <FooterBlock friendId={user.id} />
+              <FooterBlock friendId={user.id} local={local} />
             </div>
           </Window>
         </div>

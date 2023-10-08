@@ -38,7 +38,7 @@ export const ConnectionsCard = (props: any) => {
       {user
         && <Window name={user.firstName + " " + user.lastName} isOpen={isOpen} setIsOpen={setIsOpen}>
           <div className='flex h-5/6 justify-center items-end'>
-            <FooterBlock friendId={user.id} />
+            <FooterBlock friendId={user.id}  local={props.local}/>
           </div>
         </Window>
       }

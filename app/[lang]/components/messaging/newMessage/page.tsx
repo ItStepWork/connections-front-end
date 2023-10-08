@@ -48,7 +48,7 @@ export default function NewMessage(props: any) {
           </li>
         )}
       </ul>
-      {findUser?(<FooterBlock friendId={findUser.id}/>):(<></>)}
+      {findUser?(<FooterBlock friendId={findUser.id} local={props.local}/>):(<></>)}
     </div>
   )
 }
