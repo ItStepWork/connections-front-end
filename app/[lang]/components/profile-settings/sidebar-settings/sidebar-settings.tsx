@@ -5,7 +5,7 @@ import { toast } from "react-toastify"
 import styles from './sidebar-settings.module.scss'
 
 
-export const LeftSettingsMenu = ({ local, session, lang }: { local: any, session: any, lang: any }, props: any) => {
+export const LeftSettingsMenu = ({ local, session, lang }: { local: any, session: any, lang: any }) => {
 
   const notifyInfo = () => toast.info("В разработке!",{});
 

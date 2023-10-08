@@ -6,11 +6,12 @@ import { useLocalization } from '../../../../stores/localizationStore'
 import styles from "./locale-switcher.module.scss"
 
 export default function LocaleSwitcher(props: any) {
-  
+
+  const { local } = props;
+
   const pathName = usePathname()
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
-  const [usrLang, setLang] = useLocalization((state) => [state.localization, state.setLocal])
 
   const toggleMenu = () => { setIsOpen(!isOpen)};
   const redirectedPathName = (locale: string) => {
@@ -36,7 +37,7 @@ export default function LocaleSwitcher(props: any) {
     <>
       <div className={styles.container} ref={dropdownRef}>
         <button className={styles.dropBtn} onClick={toggleMenu}>
-          {props.local}
+          {local}
         </button>
         {isOpen &&
         <div className={isOpen ? styles.dropMenu : styles.dropMenuHidden}>

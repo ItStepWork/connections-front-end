@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useStore } from '../../../../stores/userDataStore';
 import styles from './sign-in.module.scss';
 
-export const SignIn = ({local} : {local : any}, props : any) => {
+export const SignIn = ({local} : {local : any}) => {
 
   const router = useRouter();
   const { fetchUser } = useStore((state) => state)

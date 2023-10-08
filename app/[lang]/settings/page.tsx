@@ -7,20 +7,12 @@ import { ChangePassword } from "../components/profile-settings/change-password/c
 import ChangeImages from "../components/profile-settings/change-profile-images/main";
 import { LeftSettingsMenu } from "../components/profile-settings/sidebar-settings/sidebar-settings";
 import styles from './styles.module.scss';
-import { useEffect, useState } from "react";
-import { UserService } from "../../../services/user.service";
 
-export default async function SettingsPage({ params: { lang } }: { params: { lang: Locale } }, props: any) {
-  // const [user, setUser] = useState()
+export default async function SettingsPage({ params: { lang } }: { params: { lang: Locale } }) {
+
   const locDictionary = await getDictionary(lang)
   const session = await getServerSession(authConfig);
-  // const getUser = async () => {
-  //   let result = await UserService.getCurrentUser()
-  //   setUser(result)
-  // }
-  // useEffect(() => {
-  //   getUser()
-  // }, [])
+  
   return (
     <>
       <main>

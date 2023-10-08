@@ -10,8 +10,6 @@ import { CheckService } from "../../../../../services/check.service";
 
 const ChangeImage = ({ local }: { local: any }) => {
 
-  const [fetchUser] = useStore((state) => [state.fetchUser]);
-
   const notifyFormatError = () => toast.error(local.setImages.toasts.formatErr, {});
   const notifyErrorServer = () => toast.error(local.setImages.toasts.serverErr, {});
   const notifySuccess = () => toast.success(local.setImages.toasts.ok, {});
@@ -76,7 +74,7 @@ const ChangeImage = ({ local }: { local: any }) => {
                 </option>))
               }
             </select>
-            <button className={styles.button} onClick={fetchUser} type='submit'>{local.button.set}</button>
+            <button className={styles.button} type='submit'>{local.button.set}</button>
           </div>
         </form>
       </div>
