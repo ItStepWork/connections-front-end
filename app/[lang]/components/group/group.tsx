@@ -73,7 +73,7 @@ export function GroupPage(props: any) {
         else if (component === ComponentName.Requests) return (<ConnectionsCard key={"requests" + usersRequests.length + id} isRequests={true} session={props.session} users={usersRequests} group={group} getGroup={getGroup} getUsers={getUsers} local={props.local} />)
         else if (component === ComponentName.AboutGroup) return (<AboutCard group={group} members={Object.entries(membersFriends).length} local={props.local} />)
         else if (component === ComponentName.Photos) return (<Photos group={group} session={props.session} getPhotos={getPhotos} photos={photos} local={props.local} />)
-        else if (component === ComponentName.Posts) return (<Posts local={props.local} session={props.session} myId={props.session.user.id} userId={props.id[0]} />)
+        else if (component === ComponentName.Posts) return (<Posts local={props.local} session={props.session} myId={props.session.user.id} groupId={props.id[0]} />)
         else return (<></>)
     }
     return (
