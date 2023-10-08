@@ -7,16 +7,19 @@ import { ImAttachment } from 'react-icons/im';
 import styles from './styles.module.scss';
 import DropDownEmoji from '../../messaging/dropDownEmoji/page';
 import { SupportService } from '../../../../../services/support.service';
+import { CheckService } from '../../../../../services/check.service';
+import { toast } from 'react-toastify';
 
 export default function FooterBlock(props: any) {
 
   const [text, setText] = useState("");
   const [file, setFile] = useState(null);
+  
+  const notifyError = () => toast.error(props.local.createGroup.toasts.format, {});
 
   const saveFile = (e: any) => {
-    if (e.target.files[0].name.endsWith('.jpg') || e.target.files[0].name.endsWith('.jpeg') || e.target.files[0].name.endsWith('.png')) {
-      setFile(e.target.files[0]);
-    }
+    if(CheckService.imageFormat(e.target.files[0].name)) setFile(e.target.files[0]);
+    else notifyError();
   }
 
   const click = async () => {
@@ -44,7 +47,7 @@ export default function FooterBlock(props: any) {
       <div className={styles.container}>
         <div className={styles.verticalContainer}>
           <div className='flex flex-col w-11/12'>
-            {file ? (<div className='flex text-sm'>Прикреплён файл<button onClick={() => { setFile(null) }}><FaRegWindowClose className="m-1 fill-red-500 hover:fill-red-700" /></button></div>) : (<></>)}
+            {file ? (<div className='flex text-sm'>{props.local.posts.file}<button onClick={() => { setFile(null) }}><FaRegWindowClose className="m-1 fill-red-500 hover:fill-red-700" /></button></div>) : (<></>)}
             <textarea className={styles.textarea} onChange={handleChange} value={text}></textarea>
           </div>
 
@@ -53,11 +56,11 @@ export default function FooterBlock(props: any) {
               <DropDownEmoji addEmoji={addEmoji} isLower={false} />
             </div>
             <div className='mx-1 my-0.5'>
-              <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center  border-gray-300 rounded-md cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+              <label className="flex flex-col items-center justify-center  border-gray-300 rounded-md cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                 <div className="flex flex-col items-center justify-center px-2 py-1">
                   <ImAttachment className="fill-black dark:fill-white" />
                 </div>
-                <input id="dropzone-file" type="file" className="hidden" onChange={saveFile} />
+                <input type="file" className="hidden" onChange={saveFile} />
               </label>
             </div>
             <div className='mx-1'>

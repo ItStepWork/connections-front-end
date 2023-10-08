@@ -26,7 +26,7 @@ export default function Support({ local, session }: { local: any, session: any }
           <div className={styles.centerContainer}>
             <MainBlock messages={messages} user={session.user} />
             <hr className={styles.horizontalHr} />
-            <FooterBlock load={load} />
+            <FooterBlock load={load} local={local}/>
           </div>
         }
       </div>
