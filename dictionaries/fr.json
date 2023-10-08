@@ -329,7 +329,8 @@
       "delete" : "Supprimer uniquement l'histoire",
       "deleteAll" : "Supprimer l'histoire et la photo",
       "close" : "Fermer"
-    }
+    },
+    "empty" : "Vous n'avez pas encore d'histoires intéressantes"
   },
   "gallery" : {
     "title" : "Galerie",
@@ -496,7 +497,10 @@
     }
   },
   "followers" : "Abonnements possibles",
-  "source" : "Source",
+  "news" : {
+    "source" : "Source",
+    "categories" : "Rechercher par une des catégories"
+  },
   "dataInfo" : {
     "notIndicated" : "Données non fournies",
     "loadError" : "Erreur de chargement"

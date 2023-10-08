@@ -20,7 +20,7 @@ export const Stories = (props : any) => {
             local={props.local}
             />)                
         })
-        : <div className={styles.empty}><h2>у вас нет сторис</h2></div>
+        : <div className={styles.empty}><h2>{props.local.stories.empty}</h2></div>
         }
         
         </div>
