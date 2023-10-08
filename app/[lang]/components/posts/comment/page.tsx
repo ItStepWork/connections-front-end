@@ -25,7 +25,7 @@ export default function Comment(props: any) {
           {user?.avatarUrl ? (<img className={styles.userImage} src={user.avatarUrl} />) : (<FaUserCircle className={styles.userImage} />)}
           <div className={styles.userInfo}>
             <span className={styles.userName}>{user.lastName} {user.firstName}</span>
-            <div className='text-xs break-all'>{props.comment.text}</div>
+            <div className='text-xs md:text-sm lg:text-lg break-all'>{props.comment.text}</div>
             <div className='text-xs break-all text-right'>{new Date(props.comment.createTime).toLocaleString()}</div>
             
           </div>

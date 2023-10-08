@@ -10,6 +10,6 @@
 		@apply grow px-2 mx-3 flex flex-col overflow-hidden bg-light_background dark:bg-dark_background rounded-lg border border-light_border dark:border-dark_border;
 	}
 	.userName {
-		@apply whitespace-nowrap font-bold;
+		@apply whitespace-nowrap truncate font-bold  text-xs md:text-sm lg:text-lg;
 	}
 }
