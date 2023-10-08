@@ -21,7 +21,7 @@ const NewsCard:FC<NewsType> = ({header, url, text, webUrl, local, category, sour
         <p>{text}</p>
         <p>Media: {source}</p>
         <div className={styles.footer}>
-          <Link className={styles.link} href={webUrl}>{local.source}</Link>
+          <Link className={styles.link} href={webUrl}>{local.news.source}</Link>
           <p>#{category}</p>
         </div>
       </div>

@@ -329,7 +329,8 @@
       "delete" : "Nur Story löschen",
       "deleteAll" : "Story und Foto löschen",
       "close" : "Schließen"
-    }
+    },
+    "empty" : "Sie haben noch keine interessanten Geschichten"
   },
   "gallery" : {
     "title" : "Galerie",
@@ -496,7 +497,10 @@
     }
   },
   "followers" : "Mögliche Abonnements",
-  "source" : "Quelle",
+  "news" : {
+    "source" : "Quelle",
+    "categories" : "Suchen Sie nach einer der Kategorien"
+  },
   "dataInfo" : {
     "notIndicated" : "Daten nicht bereitgestellt",
     "loadError" : "Ladefehler"

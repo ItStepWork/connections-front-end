@@ -329,7 +329,8 @@
       "delete" : "Delete only Story",
       "deleteAll" : "Delete Story and Photo",
       "close" : "Close"
-    }
+    },
+    "empty" : "You have no interesting stories yet"
   },
   "gallery" : {
     "title" : "Gallery",
@@ -496,7 +497,10 @@
     }
   },
   "followers" : "Possible subscriptions",
-  "source" : "Source",
+  "news" : {
+    "source" : "Source",
+    "categories" : "Search by one of the categories"
+  },
   "dataInfo" : {
     "notIndicated" : "Data not provided",
     "loadError" : "Load Error"

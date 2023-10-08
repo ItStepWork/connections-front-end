@@ -329,7 +329,8 @@
       "delete" : "Usuń tylko historię",
       "deleteAll" : "Usuń historię i zdjęcie",
       "close" : "Zamknąć"
-    }
+    },
+    "empty" : "Nie masz jeszcze żadnych ciekawych historii"
   },
   "gallery" : {
     "title" : "Galeria",
@@ -496,7 +497,10 @@
     }
   },
   "followers" : "Możliwe subskrypcje",
-  "source" : "Źródło",
+  "news" : {
+    "source" : "Źródło",
+    "categories" : "Wyszukaj według jednej z kategorii"
+  },
   "dataInfo" : {
     "notIndicated" : "Nie podano danych",
     "loadError" : "Błąd ładowania"
