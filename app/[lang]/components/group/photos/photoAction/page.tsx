@@ -7,25 +7,34 @@ import { GroupService } from '../../../../../../services/group.service';
 import styles from './styles.module.scss';
 
 export default function PhotoAction(props: any) {
+
+  const {
+    getPhotos,
+    photo,
+    albums,
+    group,
+    local
+  } = props;
+
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState<any>({ id: "", name: "Без альбома" });
+  const [selected, setSelected] = useState<any>({ id: "", name: local.gallery.action.notAlbum });
 
   const setAvatar = async () => {
-    await GalleryService.setAvatar(props.photo.url);
+    await GalleryService.setAvatar(photo.url);
   }
 
   const setBackground = async () => {
-    await GalleryService.setBackground(props.photo.url);
+    await GalleryService.setBackground(photo.url);
   }
 
   const setAlbum = async () => {
-    await GalleryService.setAlbum(props.photo.id, selected.id);
-    props.getPhotos();
+    await GalleryService.setAlbum(photo.id, selected.id);
+    getPhotos();
   }
 
   const removePhoto = async () => {
-    await GroupService.removePhoto(props.group.id, props.photo.id);
-    props.getPhotos();
+    await GroupService.removePhoto(group.id, photo.id);
+    getPhotos();
   }
 
   return (
@@ -36,12 +45,10 @@ export default function PhotoAction(props: any) {
 
           {isOpen &&
             <div className={styles.dropMenu}>
-              {/* <Select albums={props.albums} selected={selected} setSelected={setSelected} photo={props.photo} setAlbum={setAlbum} /> */}
-              {/* <a className={styles.action}  href={props.photo.url} download><BsDownload />&nbsp;Скачать</a> */}
-              <div className={styles.action} onClick={setAvatar}><PiUserCircleBold />&nbsp;Сделать аватаром</div>
-              <div className={styles.action} onClick={setBackground}><PiUserFocusBold />&nbsp;Сделать обложкой</div>
+              <div className={styles.action} onClick={setAvatar}><PiUserCircleBold />&nbsp;{local.gallery.action.toAvatar}</div>
+              <div className={styles.action} onClick={setBackground}><PiUserFocusBold />&nbsp;{local.gallery.action.toBackground}</div>
               <hr className={styles.hr} />
-              <div className={styles.actionDelete} onClick={removePhoto}><BsXLg />&nbsp;Удалить</div>
+              <div className={styles.actionDelete} onClick={removePhoto}><BsXLg />&nbsp;{local.gallery.action.delete}</div>
             </div>
           }
         </button>

@@ -14,7 +14,8 @@ export function GroupsCard(props: any) {
   const {
     local, 
     session, 
-    userId
+    userId,
+    lang
   } = props;
 
   const [groups, setGroups] = useState([]);
@@ -75,7 +76,8 @@ export function GroupsCard(props: any) {
                   key={group.id + Object.entries(group.users).length} 
                   group={group} 
                   session={session} 
-                  local={local}>
+                  local={local}
+                  lang={lang}>
                 </Card>
             )})}
           </div>

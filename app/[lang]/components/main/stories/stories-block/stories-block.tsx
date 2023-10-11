@@ -4,11 +4,18 @@ import styles from './stories-block.module.scss';
 
 const StoriesBlock = (props: any) => {
 
+  const {
+    local, 
+    myId,
+    userId,
+    stories
+  } = props;
+
   return (
     <div className={styles.storiesBlock}>
       <div className={styles.container}>
-        {props.myId === props.userId && <AddStories local={props.local} />}
-        {props.stories.length > 0 && <Stories local={props.local} myId={props.myId} userId={props.userId} stories={props.stories} />}
+        {myId === userId && <AddStories local={local} />}
+        {stories.length > 0 && <Stories local={local} myId={myId} userId={userId} stories={stories} />}
       </div>
     </div>
   )

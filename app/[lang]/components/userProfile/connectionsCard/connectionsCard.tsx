@@ -13,7 +13,8 @@ export const ConnectionsCard = (props: any) => {
     local,
     myId,
     session,
-    userId
+    userId,
+    lang
   } = props
 
   const [friends, setFriends] = useState<any[]>([]);
@@ -53,7 +54,7 @@ export const ConnectionsCard = (props: any) => {
   return (
     <>
       <div className={styles.container}>
-        <h2>{local.profile.connect.title}</h2>
+        <h2>{local.connections.title}</h2>
         <div className={styles.inputContainer}>
           <span className={styles.iconSearch}>
             <FiSearch size={20} />
@@ -75,6 +76,7 @@ export const ConnectionsCard = (props: any) => {
             setSelectedUser={setSelectedUser} 
             setIsOpen={setIsOpen} 
             local={local} 
+            lang={lang}
           />
         })}
         {friendsFilter.length > count && 

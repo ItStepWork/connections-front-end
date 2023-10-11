@@ -14,7 +14,8 @@ export const Card = (props: any) => {
   const {
     group,
     local,
-    session
+    session,
+    lang
   } = props
 
   const [users, setUsers] = useState<any[]>([])
@@ -58,7 +59,7 @@ export const Card = (props: any) => {
             ? <RiGitRepositoryPrivateLine className="absolute" title={local.editGroup.privacy.private}></RiGitRepositoryPrivateLine>
             : <></>}
         </div>
-        <Link className='pt-1' href={"/group/" + group.id}>
+        <Link className='pt-1' href={`/${lang}/group/` + group.id}>
           <div className={styles.avatar}>
             <img className='rounded-full w-[84px] h-[84px]'
               src={group.pictureUrl}

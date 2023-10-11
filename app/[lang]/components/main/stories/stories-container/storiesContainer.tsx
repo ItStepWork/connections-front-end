@@ -4,23 +4,27 @@ import styles from "./stories-container.module.scss";
 
 export const Stories = (props : any) => {
 
+  const {
+    local, 
+    myId,
+    userId,
+    stories
+  } = props;
+
   return (
     <>
       <div className={styles.container}>
-        <div className={props.stories.length !== 0 ? styles.storyContainer : styles.notEmpty}>
-        {(props.stories.length !== 0)
-        ? props.stories.map((story: any, index: number) => {      
+        <div className={stories.length !== 0 ? styles.storyContainer : styles.notEmpty}>
+        {(stories.length !== 0)
+        ? stories.map((story: any, index: number) => {      
           return(      
           <Story 
             key={index} 
             story={story} 
-            myId={props.myId} 
-            userId={props.userId} 
-            index={index}
-            local={props.local}
+            local={local}
             />)                
         })
-        : <div className={styles.empty}><h2>{props.local.stories.empty}</h2></div>
+        : <div className={styles.empty}><h2>{local.stories.empty}</h2></div>
         }
         
         </div>

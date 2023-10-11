@@ -312,7 +312,7 @@
       "contacts" : "Connections"
     },
     "feed" : "Feed",
-    "contacts" : "Contacts",
+    "contacts" : "Connections",
     "news" : "Last news",
     "events" : "Events",
     "groups" : "Groups",
@@ -341,7 +341,8 @@
     "action" : {
       "toAvatar" : "Set to avatar",
       "toBackground" : "Set to background",
-      "delete": "Delete"
+      "delete": "Delete",
+      "notAlbum" : "No album"
     },
     "createAlbum" : "Create Album",
     "newAlbum" : "New album",
@@ -352,7 +353,9 @@
   "chat" : {
     "activeChat" : "Active chats",
     "new" : "New message",
-    "enterName" : "Enter name..."
+    "enterName" : "Enter name...",
+    "title" : "Chats",
+    "delete" : "Delete chat"
   },
   "setImages" : {
     "avatar" : "Avatar",
@@ -424,7 +427,16 @@
     "title": "Events and Celebrations",
     "today" : "Today they celebrate",
     "soon" : "Soon they will celebrate",
-    "upcoming" : "Upcoming Events"
+    "upcoming" : "Upcoming Events",
+    "create" : {
+      "title" : "Create event",
+      "name" : "Event name...",
+      "type" : "Event type",
+      "date" : "Event date",
+      "meeting" : "Meeting",
+      "celebration" : "Celebration",
+      "birthday" : "Birthday"
+     }
   },
   "admin" : {
     "title" : "Blocking settings:",

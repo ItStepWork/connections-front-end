@@ -15,7 +15,7 @@ export default function PhotoAction(props: any) {
   } = props;
 
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState<any>({ id: "", name: "Без альбома" });
+  const [selected, setSelected] = useState<any>({ id: "", name: local.gallery.action.noAlbum });
 
   const setAvatar = async () => {
     setIsOpen(false);
@@ -51,8 +51,8 @@ export default function PhotoAction(props: any) {
                 setSelected={setSelected} 
                 photo={photo} 
                 setAlbum={setAlbum}
+                local={local}
               />
-              {/* <a className={styles.action}  href={props.photo.url} download><BsDownload />&nbsp;Скачать</a> */}
               <div 
                 className={styles.action} 
                 onClick={setAvatar}>

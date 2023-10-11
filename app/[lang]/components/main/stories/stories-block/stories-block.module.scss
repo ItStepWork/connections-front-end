@@ -2,5 +2,5 @@
 	@apply flex flex-col gap-2 md:gap-0 lg:gap-0 overflow-hidden w-full md:flex-row lg:flex-row;
 }
 .storiesBlock {
-	@apply flex overflow-hidden relative;
+	@apply flex overflow-hidden relative w-full;
 }

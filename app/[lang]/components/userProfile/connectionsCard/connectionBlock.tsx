@@ -6,43 +6,53 @@ import OnlineUser from '../../onlineUser/page';
 import styles from './connectionBlock.module.scss';
 
 export const ConnectionBlock = (props: any) => {
+
+  const {
+    myId,
+    user,
+    setSelectedUser,
+    setIsOpen,
+    local,
+    lang
+  } = props
+
   const addFriend = async () => {
-    await FriendService.addFriend(props.user.id);
+    await FriendService.addFriend(user.id);
   }
 
   const confirmFriend = async () => {
-    await FriendService.confirmFriend(props.user.id);
+    await FriendService.confirmFriend(user.id);
   }
 
   const removeFriend = async () => {
-    await FriendService.removeFriend(props.user.id);
+    await FriendService.removeFriend(user.id);
   }
 
   return (
     <>
       <div className={styles.container}>
-        <Link className={styles.userContainer} href={`/profile/${props.user.id}`}>
-          {props.user.avatarUrl ? (
-            <img src={props.user.avatarUrl} className={styles.avatar} alt="avatar"></img>
+        <Link className={styles.userContainer} href={`/${lang}/profile/${user.id}`}>
+          {user.avatarUrl ? (
+            <img src={user.avatarUrl} className={styles.avatar} alt="avatar"></img>
           ) : (<FaUserCircle className={styles.avatar} />)}
           <div className={styles.textContainer}>
             <div className={styles.headerText}>
-              <span>{props.user.firstName} {props.user.lastName}</span>
-              <span>{props.user.FamilyStatus}</span>
+              <span>{user.firstName} {user.lastName}</span>
+              <span>{user.FamilyStatus}</span>
             </div>
-            <OnlineUser user={props.user} local={props.local}></OnlineUser>
-            <div className={styles.description}>{props.user.aboutMe}</div>
+            <OnlineUser user={user} local={local}></OnlineUser>
+            <div className={styles.description}>{user.aboutMe}</div>
 
           </div>
         </Link>
-        {(props.myId !== props.user.id) &&
+        {(myId !== user.id) &&
           <div className={styles.buttonsContainer}>
-            {props.user.friendStatus === FriendStatus.Confirmed ? (<button className={styles.button_red_BG} onClick={removeFriend}>{props.local.profile.connect.delete}</button>) : (<></>)}
-            {props.user.friendStatus === FriendStatus.Unconfirmed ? (<button className={styles.button_green_BG} onClick={confirmFriend}>{props.local.profile.connect.confirm}</button>) : (<></>)}
-            {props.user.friendStatus === FriendStatus.Unconfirmed ? (<button className={styles.button_red_BG} onClick={removeFriend}>{props.local.profile.connect.cancel}</button>) : (<></>)}
-            {props.user.friendStatus === FriendStatus.Waiting ? (<button className={styles.button_red_BG} onClick={removeFriend}>{props.local.profile.connect.cancel}</button>) : (<></>)}
-            {props.user.friendStatus === FriendStatus.Other ? (<button className={styles.button_green_BG} onClick={addFriend}>{props.local.profile.connect.beFriends}</button>) : (<></>)}
-            <button className={styles.button_blue_BG} onClick={() => { props.setSelectedUser(props.user); props.setIsOpen(true); }}>{props.local.profile.connect.write}</button>
+            {user.friendStatus === FriendStatus.Confirmed ? (<button className={styles.button_red_BG} onClick={removeFriend}>{local.profile.connect.delete}</button>) : (<></>)}
+            {user.friendStatus === FriendStatus.Unconfirmed ? (<button className={styles.button_green_BG} onClick={confirmFriend}>{local.profile.connect.confirm}</button>) : (<></>)}
+            {user.friendStatus === FriendStatus.Unconfirmed ? (<button className={styles.button_red_BG} onClick={removeFriend}>{local.profile.connect.cancel}</button>) : (<></>)}
+            {user.friendStatus === FriendStatus.Waiting ? (<button className={styles.button_red_BG} onClick={removeFriend}>{local.profile.connect.cancel}</button>) : (<></>)}
+            {user.friendStatus === FriendStatus.Other ? (<button className={styles.button_green_BG} onClick={addFriend}>{local.profile.connect.beFriends}</button>) : (<></>)}
+            <button className={styles.button_blue_BG} onClick={() => { setSelectedUser(user); setIsOpen(true); }}>{local.profile.connect.write}</button>
           </div>
         }
 

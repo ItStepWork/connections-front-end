@@ -9,29 +9,37 @@ import styles from './selected-story.module.scss';
 
 const SelectedStory = (props:any) => {
 
+  const {
+    local,
+    isSelected,
+    photos,
+    setIsSelected,
+    storyId
+  } = props;
+
   const deleteStory = async () => {
-    await StoriesServices.deleteStory(props.storyId);
-    props.setIsSelected(false);
+    await StoriesServices.deleteStory(storyId);
+    setIsSelected(false);
   }
 
   const deleteStoryAndPhotos = async () => {
-    await StoriesServices.deleteStoryAndPhotos(props.storyId);
-    props.setIsSelected(false);
+    await StoriesServices.deleteStoryAndPhotos(storyId);
+    setIsSelected(false);
   }
   return (
     <>
-    {props.isSelected ? (
+    {isSelected ? (
         <div className={styles.container}>
           <div className={styles.close}>
-            <button title={props.local.stories.selected.deleteAll}
+            <button title={local.stories.selected.deleteAll}
               onClick={() => { deleteStoryAndPhotos() }}>
               <MdOutlineNoPhotography size={30} />
             </button>
-            <button title={props.local.stories.selected.delete}
+            <button title={local.stories.selected.delete}
             onClick={() => { deleteStory() }}>
               <FaTrash size={26} />
             </button>
-            <button title={props.local.stories.selected.close} onClick={() => { props.setIsSelected(false) }}><MdClose size={40} /></button>
+            <button title={local.stories.selected.close} onClick={() => { setIsSelected(false) }}><MdClose size={40} /></button>
           </div>
           <div className={styles.carouselContainer}>          
             <div className={styles.carousel}>
@@ -44,7 +52,7 @@ const SelectedStory = (props:any) => {
                 showStatus={false}           
                 swipeable={true}
                 interval={15000}>
-                  {props.photos.map((photo: any) => {
+                  {photos.map((photo: any) => {
                     return(<img key={photo.id} src={photo.url} alt='photo' />)
                   })}
               </Carousel>

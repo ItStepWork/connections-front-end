@@ -4,10 +4,17 @@ import { HiDotsVertical } from 'react-icons/hi';
 import styles from './styles.module.scss';
 
 export default function DropDownItem(props: any) {
+
+  const {
+    removeDialog,
+    id,
+    local
+  } = props;
+
   const [isOpen, setIsOpen] = useState(false);
 
   const click = () =>{
-    props.removeDialog(props.id);
+    removeDialog(id);
   }
 
   return (
@@ -18,8 +25,8 @@ export default function DropDownItem(props: any) {
           
           {isOpen &&
             <div className={styles.dropMenu}>
-              <div className='text-dark_text_gray hover:text-button_blue_BG'>View profile</div>
-              <div className='text-dark_text_gray hover:text-button_red_BG' onClick={click}>Delete chat</div>
+              <div className='text-dark_text_gray hover:text-button_blue_BG'>{local.main.profile}</div>
+              <div className='text-dark_text_gray hover:text-button_red_BG' onClick={click}>{local.chat.delete}</div>
             </div>
           }
         </button>

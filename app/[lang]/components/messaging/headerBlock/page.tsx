@@ -6,20 +6,30 @@ import DropDownItem from '../dropDownItem/page';
 import styles from './styles.module.scss';
 
 export default function HeaderBlock(props: any) {
+
+  const {
+    user, 
+    removeDialog, 
+    local 
+  } = props;
+
   return (
     <>
       <div>
         <div className={styles.container}>
           <div className={styles.user}>
-            {props.user.avatarUrl?(<img className={styles.userImage} src={props.user.avatarUrl}/>):(<FaUserCircle className={styles.userImage} />)}
+            {user.avatarUrl?(<img className={styles.userImage} src={user.avatarUrl}/>):(<FaUserCircle className={styles.userImage} />)}
             <div className={styles.userInfo}>
-              <span className={styles.userName}>{props.user.lastName} {props.user.firstName}</span>
+              <span className={styles.userName}>{user.lastName} {user.firstName}</span>
               <div className='text-sm'>
-                <OnlineUser user={props.user} local={props.local}/>
+                <OnlineUser user={user} local={local}/>
               </div>
             </div>
           </div>
-          <DropDownItem removeDialog={props.removeDialog} id={props.user.id} />
+          <DropDownItem 
+            removeDialog={removeDialog} 
+            id={user.id} 
+            local={local}/>
         </div>
         <hr className={styles.hr} />
       </div>

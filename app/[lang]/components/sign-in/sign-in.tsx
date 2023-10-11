@@ -7,7 +7,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useStore } from '../../../../stores/userDataStore';
 import styles from './sign-in.module.scss';
 
-export const SignIn = ({local} : {local : any}) => {
+export const SignIn = (props: any) => {
+
+  const {
+    local,
+    lang
+  } = props
 
   const router = useRouter();
   const { fetchUser } = useStore((state) => state)
@@ -27,7 +32,7 @@ export const SignIn = ({local} : {local : any}) => {
 
     if (res && !res.error) {
       notifyLogin();
-      router.push('/main');
+      router.push(`main`);
     } else {
       notifyError();
     }

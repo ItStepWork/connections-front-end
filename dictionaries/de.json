@@ -312,7 +312,7 @@
       "contacts" : "Verbindungen"
     },
     "feed" : "Füttern",
-    "contacts" : "Kontakte",
+    "contacts" : "Verbindungen",
     "news" : "Letzte Neuigkeiten",
     "events" : "Veranstaltungen",
     "groups" : "Gruppen",
@@ -341,7 +341,8 @@
     "action" : {
       "toAvatar" : "Auf Avatar setzen",
       "toBackground" : "Auf Hintergrund einstellen",
-      "delete": "Löschen"
+      "delete": "Löschen",
+      "notAlbum" : "Kein Album"
     },
     "createAlbum" : "Album erstellen",
     "newAlbum" : "Neues Album",
@@ -352,7 +353,9 @@
   "chat" : {
     "activeChat" : "Aktive Chats",
     "new" : "Neue Nachricht",
-    "enterName" : "Name eingeben..."
+    "enterName" : "Name eingeben...",
+    "title" : "Chats",
+    "delete" : "Löschen Chat"
   },
   "setImages" : {
     "avatar" : "Benutzerbild",
@@ -424,7 +427,16 @@
     "title": "Veranstaltungen und Feiern",
     "today" : "Heute feiern sie",
     "soon" : "Bald werden sie feiern",
-    "upcoming" : "Kommende Veranstaltungen"
+    "upcoming" : "Kommende Veranstaltungen",
+    "create" : {
+      "title" : "Veranstaltung erstellen",
+      "name" : "Veranstaltungsname...",
+      "type" : "Ereignistyp",
+      "date" : "Veranstaltungsdatum",
+      "meeting" : "Treffen",
+      "celebration" : "Feier",
+      "birthday" : "Geburtstag"
+     }
   },
   "admin" : {
     "title" : "Blockierungseinstellungen:",

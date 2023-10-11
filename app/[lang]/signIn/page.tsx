@@ -8,7 +8,7 @@ export default async function SignInPage({ params: { lang }}: { params: { lang: 
   
   return (
     <>
-      <SignIn local={localDictionary}/>
+      <SignIn local={localDictionary} lang={lang}/>
     </>  
   )
 }

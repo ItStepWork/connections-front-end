@@ -38,7 +38,7 @@ export default function Profile(props: any) {
 
   const changeComponent = () => {
     if (component === ComponentName.AboutMe) return (user && <ProfileInfo local={local} user={user} />)
-    else if (component === ComponentName.Groups) return (<GroupsCard session={session} userId={id[0]} local={local} />)
+    else if (component === ComponentName.Groups) return (<GroupsCard session={session} userId={id[0]} local={local} lang={lang}/>)
     else if (component === ComponentName.Connections) return (<ConnectionsCard session={session} myId={session?.user.id} userId={id[0]} local={local} />)
     else if (component === ComponentName.Gallery) return (<Gallery session={session} myId={session?.user.id} userId={id[0]} local={local} />)
     else if (component === ComponentName.Posts) return (<Posts local={local} session={session} myId={session.user.id} userId={id[0]} />)

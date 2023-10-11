@@ -12,7 +12,8 @@ export default function Celebration(props: any) {
 
   const {
     local,
-    user
+    user,
+    lang
   } = props;
 
   const [birthDaysNow, setBirthDaysNow] = useState<any[]>([]);

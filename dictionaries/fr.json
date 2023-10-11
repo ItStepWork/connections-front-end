@@ -161,7 +161,7 @@
     }
   },
   "connections" : {
-    "title" : "Contacts",
+    "title" : "Connexions",
     "confirmBtn" : "Confirmer",
     "deleteBtn" : "Supprimer",
     "writeBtn" : "Écrire",
@@ -341,7 +341,8 @@
     "action" : {
       "toAvatar" : "Défini comme Avatar",
       "toBackground" : "Définir comme arrière-plan",
-      "delete": "Supprimer"
+      "delete": "Supprimer",
+      "notAlbum" : "Pas d'album"
     },
     "createAlbum" : "Créer un album",
     "newAlbum" : "Nouvel album",
@@ -352,7 +353,9 @@
   "chat" : {
     "activeChat" : "Discussions actives",
     "new" : "Nouveau message",
-    "enterName" : "Entrez le nom..."
+    "enterName" : "Entrez le nom...",
+    "title" : "Discussions",
+    "delete" : "Supprimer discussions"
   },
   "setImages" : {
     "avatar" : "Avatar",
@@ -424,7 +427,16 @@
     "title": "Événements et célébrations",
     "today" : "Aujourd'hui, ils célèbrent",
     "soon" : "Bientôt ils fêteront",
-    "upcoming" : "Événements à venir"
+    "upcoming" : "Événements à venir",
+    "create" : {
+      "title" : "Créer un évènement",
+      "name" : "Nom de l'événement...",
+      "type" : "Type d'événement",
+      "date" : "Date de l'événement",
+      "meeting" : "Réunion",
+      "celebration" : "Fête",
+      "birthday" : "Anniversaire"
+     }
   },
   "admin" : {
     "title" : "Paramètres de blocage:",

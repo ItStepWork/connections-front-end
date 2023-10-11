@@ -161,7 +161,7 @@
     }
   },
   "connections" : {
-    "title" : "Łączność",
+    "title" : "Znajomości",
     "confirmBtn" : "Potwierdzać",
     "deleteBtn" : "Usuwać",
     "writeBtn" : "Pisać",
@@ -341,7 +341,8 @@
     "action" : {
       "toAvatar" : "Ustaw jako awatar",
       "toBackground" : "Ustaw jako tło",
-      "delete": "Usuwać"
+      "delete": "Usuwać",
+      "notAlbum" : "Zadnego albumu"
     },
     "createAlbum" : "Utwórz album",
     "newAlbum" : "Nowy album",
@@ -352,7 +353,9 @@
   "chat" : {
     "activeChat" : "Aktywne czaty",
     "new" : "Nowa wiadomość",
-    "enterName" : "Wprowadź imię..."
+    "enterName" : "Wprowadź imię...",
+    "title" : "Czaty",
+    "delete" : "Usuwać Czat"
   },
   "setImages" : {
     "avatar" : "Awatara",
@@ -424,7 +427,16 @@
     "title": "Wydarzenia i uroczystości",
     "today" : "Dziś świętują",
     "soon" : "Niedługo będą świętować",
-    "upcoming" : "Nadchodzące wydarzenia"
+    "upcoming" : "Nadchodzące wydarzenia",
+    "create" : {
+      "title" : "Stworzyć wydarzenie",
+      "name" : "Nazwa wydarzenia...",
+      "type" : "Typ wydarzenia",
+      "date" : "Data wydarzenia",
+      "meeting" : "Spotkanie",
+      "celebration" : "Uroczystość",
+      "birthday" : "Urodziny"
+     }
   },
   "admin" : {
     "title" : "Ustawienia blokowania:",

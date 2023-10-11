@@ -12,14 +12,14 @@ import Menu from "../menu/page";
 import { News } from "../news/news";
 import styles from './main.module.scss';
 
-export default function Main({ local, session }: { local: any, session: any }) {
+export default function Main({ local, session, lang }: { local: any, session: any, lang: any }) {
 
   //const [component, setComponent] = useState<ComponentName>(ComponentName.Posts);
   const [component, setComponent] = useMainComponents((state) => [state.componentName, state.setComponent]);
   const ChangeComponent = () => {
-    if (component === ComponentName.Groups) return (<GroupsCard session={session} userId={session.user.id} local={local} />)
+    if (component === ComponentName.Groups) return (<GroupsCard session={session} userId={session.user.id} local={local} lang={lang} />)
     else if (component === ComponentName.Celebration) return (<Celebration user={session.user} local={local} />)
-    else if (component === ComponentName.Connections) return (<ConnectionsCard session={session} myId={session.user.id} userId={session.user.id} local={local} />)
+    else if (component === ComponentName.Connections) return (<ConnectionsCard session={session} myId={session.user.id} userId={session.user.id} local={local} lang={lang}/>)
     else if (component === ComponentName.Gallery) return (<Gallery session={session} myId={session.user.id} userId={session.user.id} local={local} />)
     else if (component === ComponentName.Notifications) return (<Notifications session={session} local={local} />)
     else if (component === ComponentName.Posts) return (<Posts local={local} session={session} myId={session.user.id} userId={session.user.id} />)
@@ -31,7 +31,13 @@ export default function Main({ local, session }: { local: any, session: any }) {
     <>
       {session &&
         <div className={styles.container}>
-          <Menu setComponent={setComponent} local={local} session={session} myId={session.user.id} userId={session.user.id} />
+          <Menu 
+            setComponent={setComponent} 
+            local={local} 
+            session={session} 
+            myId={session.user.id} 
+            userId={session.user.id}
+            lang={lang}/>
           <div className={styles.containerContent}>
             {ChangeComponent()}
           </div>

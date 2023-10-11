@@ -6,6 +6,15 @@ import styles from './story.module.scss';
 
 const Story = (props: any) => {
 
+  const {
+    local, 
+    myId,
+    userId,
+    stories,
+    index,
+    story
+  } = props;
+
   const [isSelected, setIsSelected] = useState<boolean>(false);
 
   const select = () => {
@@ -15,12 +24,19 @@ const Story = (props: any) => {
   return (
     <>
       {
-        props.story.photos.length > 0 &&
+        story.photos.length > 0 &&
         <div className={styles.container}>
-          <img className={styles.img} src={props.story.photos[0].url} alt="cover" onClick={select} />
+          <img className={styles.img} src={story.photos[0].url} alt="cover" onClick={select} />
         </div>
       }
-      <SelectedStory key={props.story.id} local={props.local} isSelected={isSelected} photos={props.story.photos} setIsSelected={setIsSelected} storyId={props.story.id} />
+      <SelectedStory 
+        key={story.id} 
+        local={local} 
+        isSelected={isSelected} 
+        photos={story.photos} 
+        setIsSelected={setIsSelected} 
+        storyId={story.id} 
+      />
     </>
   )
 };
