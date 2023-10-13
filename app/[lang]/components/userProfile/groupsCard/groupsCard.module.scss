@@ -17,7 +17,7 @@
 		@apply flex flex-col justify-center;
 	}
 	.cards {
-		@apply w-full flex items-center justify-center flex-wrap gap-6;
+		@apply w-full flex items-center justify-center flex-wrap gap-2 md:gap-6 lg:gap-6;
 	}
 	.buttonLoadMore {
 		@apply text-[#0f6fec] w-full mt-6 bg-button_blue_opacity transition-all duration-300 hover:bg-blue-800 hover:text-white focus:ring-4 focus:outline-none

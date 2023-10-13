@@ -57,7 +57,7 @@ export default function Complaint(props: any) {
 
   return (
     <>
-      <Window name="Send complaint" isOpen={isOpen} setIsOpen={setIsOpen}>
+      <Window name={local.sendReport} isOpen={isOpen} setIsOpen={setIsOpen}>
         <div className={styles.container}>
           <div className='flex h-5/6 justify-center items-end'><div className={styles.verticalContainer}>
             <div className='flex flex-col w-11/12'>

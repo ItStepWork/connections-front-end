@@ -75,6 +75,7 @@
     "profile" : "Profile",
     "admin" : "Administrator-Panel",
     "support" : "Support",
+    "login" : "Sign in",
     "dropMenu" : {
       "profile" : "Profile",
       "settings" : "Settings",
@@ -330,6 +331,11 @@
       "deleteAll" : "Delete Story and Photo",
       "close" : "Close"
     },
+    "title" : "Post story",
+    "name" : "Story name...",
+    "post" : "Post",
+    "upload" : "Upload photos",
+    "placeholder" : "Enter story name...",
     "empty" : "You have no interesting stories yet"
   },
   "gallery" : {
@@ -516,5 +522,6 @@
   "dataInfo" : {
     "notIndicated" : "Data not provided",
     "loadError" : "Load Error"
-  }
+  },
+  "sendReport" : "Send report"
 }

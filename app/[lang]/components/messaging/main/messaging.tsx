@@ -68,7 +68,7 @@ export default function Messaging({ local, session }: { local: any, session: any
 
   return (
     <div className={styles.container}>
-      <div className='z-50 absolute flex mt-16 lg:invisible'>
+      <div className='z-40 absolute flex mt-16 lg:invisible'>
         <DropDownDialogues dialogs={dialogs} click={click} user={user} isOpen={isOpenDialogs} setIsOpen={setIsOpenDialogs} /><h2 className='my-1 mx-2'>{local.chat.title}</h2>
       </div>
       <div className='relative md:absolute py-0 container lg:py-20 md:py-28 pt-28 md:mt-0 h-screen min-h-[500px]'>

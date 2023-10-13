@@ -1,5 +1,5 @@
 .container {
-	@apply flex flex-col items-center p-1  bg-white text-gray-900 border border-light_border rounded-xl h-56 md:h-60 lg:h-60 md:w-40 w-32
+	@apply flex flex-col max-w-[48%] items-center p-1 w-full bg-white text-gray-900 border border-light_border rounded-xl h-56 md:h-60 lg:h-60 md:w-40
   dark:text-dark_text_gray dark:bg-dark_background dark:border-dark_border;
 	.audienceDiv {
 		@apply w-full flex justify-end;

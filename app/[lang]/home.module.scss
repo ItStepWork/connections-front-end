@@ -5,10 +5,10 @@
 		.textContainer {
 			@apply flex items-center justify-center w-3/4;
 			p {
-				@apply text-3xl;
+				@apply text-3xl text-white;
 			}
 			span {
-				@apply dark:text-white text-2xl text-gray-900;
+				@apply text-white text-2xl;
 			}
 		}
 		.imageContainer {
@@ -29,12 +29,12 @@
 		.messagingContainer {
 			@apply flex flex-col w-full;
 			h2 {
-				@apply text-3xl pt-6 lg:pt-20 md:pt-20 lg:pb-10 pb-6 md:pb-10;
+				@apply text-3xl pt-6 text-white lg:pt-20 md:pt-20 lg:pb-10 pb-6 md:pb-10;
 			}
 		}
 	}
 	.background {
-		@apply w-screen min-h-full object-fill bg-repeat z-0 bg-glass_gray absolute top-0 left-0 blur-3xl;
+		@apply w-screen min-h-full object-fill pt-20 bg-repeat z-0 bg-glass_gray absolute top-0 left-0 blur-3xl;
 	}
 	.cardContainer {
 		@apply flex justify-around md:items-baseline lg:items-baseline items-center 

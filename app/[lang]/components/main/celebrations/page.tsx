@@ -66,6 +66,7 @@ export default function Celebration(props: any) {
               event={value} 
               BirthDayNow={true} 
               local={local} 
+              lang={lang}
             />)
             })}
           </div>
@@ -82,6 +83,7 @@ export default function Celebration(props: any) {
               event={value} 
               BirthDayNow={false} 
               local={local} 
+              lang={lang}
             />)
             })}
           </div>
@@ -96,6 +98,7 @@ export default function Celebration(props: any) {
               user={user} 
               event={value} 
               local={local} 
+              lang={lang}
             />)
             })
             }

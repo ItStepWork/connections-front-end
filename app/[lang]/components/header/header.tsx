@@ -55,7 +55,7 @@ export const Header = (props: any) => {
       <header className={styles.header} onLoad={fetch}>
         <div>
           <div className={styles.contentContainer}>
-            <Link href="/" className={styles.logoLink}>
+            <Link href={`/${lang}/`} className={styles.logoLink}>
               <span className={styles.logo}><p className={oneDay.className}>Connections</p></span>
             </Link>
             <div className={styles.burgerButton} onClick={() => setOpen(!open)}>{open ? <MdOutlineClose size={24} /> : <BiMenu size={24} />}
@@ -74,7 +74,7 @@ export const Header = (props: any) => {
                   </li>
                   {session.user.role !== Role.User &&
                     <li className={styles.listItem}>
-                      <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href={`/${lang}/admin`}>{open ? "Admin panel" : <MdAdminPanelSettings size={20} />}</Link>
+                      <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href={`/${lang}/admin`}>{open ? local.header.admin : <MdAdminPanelSettings size={20} />}</Link>
                     </li>
                   }
                   <li className={styles.listItem}>
@@ -90,7 +90,7 @@ export const Header = (props: any) => {
                 :
                 <>
                   <li className={styles.listItem}>
-                    <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href={`/${lang}/signIn`}>{open ? "Sign In" : <FiLogIn size={20} />}</Link>
+                    <Link className={open ? styles.navText : styles.navButton} onClick={fetch} href={`/${lang}/signIn`}>{open ? local.header.login : <FiLogIn size={20} />}</Link>
                   </li>
                 </>}
               <li className={styles.listItem}>

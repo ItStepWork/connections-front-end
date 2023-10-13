@@ -5,6 +5,11 @@ import AddStoryForm from "../add-story-form/add-story-form"
 import styles from "./addStories.module.scss"
 
 export const AddStories = (props : any) => {
+
+  const {
+    local
+  } = props
+
   const [showModal, setShowModal] = useState<boolean>(false)
 
   return (
@@ -15,11 +20,11 @@ export const AddStories = (props : any) => {
             <div className={styles.plusButton}>
               <MdOutlineAddAPhoto size={30} onClick={() => setShowModal(true)}/>
             </div>
-            <p>{props.local.stories.add}</p>
-            <p>{props.local.stories.story}</p>
+            <p>{local.stories.add}</p>
+            <p>{local.stories.story}</p>
           </div>
           <AddStoryForm 
-            local={props.local} 
+            local={local} 
             isVisible={showModal}
             onClose={() => setShowModal(false)}
             />

@@ -9,6 +9,7 @@ import { GalleryService } from '../../../../../services/gallery.service';
 import styles from './styles.module.scss';
 
 export default function CreateAlbum(props: any) {
+  const {local} = props;
   const [isOpen, setIsOpen] = useState(false);
   const [files, setFiles] = useState<any[]>([]);
   const [text, setText] = useState("");
@@ -34,13 +35,13 @@ export default function CreateAlbum(props: any) {
   return (
     <div>
       <button className={styles.button} onClick={() => { if (!isOpen) setIsOpen(true); }}>
-        <AiOutlinePlus />&nbsp; {props.local.gallery.createAlbum}
+        <AiOutlinePlus />&nbsp; {local.gallery.createAlbum}
       </button>
 
       <div {...isOpen ? { className: styles.createAlbum + " visible z-50" } : { className: styles.createAlbum + " invisible z-50" }}>
         <div className={styles.createAlbumContainer}>
           <div className={styles.createAlbumHeader}>
-            <h2>{props.local.gallery.newAlbum}</h2>
+            <h2>{local.gallery.newAlbum}</h2>
             <button onClick={() => setIsOpen(false)}>
               <IoMdClose size={26} className={styles.buttonClose} />
             </button>
@@ -51,7 +52,7 @@ export default function CreateAlbum(props: any) {
               <span className={styles.icon}>
                 <MdDriveFileRenameOutline size={20} className="fill-white" />
               </span>
-              <input type="text" className={styles.input} placeholder={props.local.gallery.placeholder} onChange={(e) => { setText(e.target.value); }} value={text} />
+              <input type="text" className={styles.input} placeholder={local.gallery.placeholder} onChange={(e) => { setText(e.target.value); }} value={text} />
 
               <span className={styles.iconGallery}>
                 <label className='cursor-pointer'>

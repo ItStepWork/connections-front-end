@@ -18,7 +18,8 @@ export function GroupPage(props: any) {
     const {
         id,
         local,
-        session
+        session,
+        lang
     } = props;
 
     const [idMember, setIdMember] = useState(0)
@@ -88,8 +89,20 @@ export function GroupPage(props: any) {
                 <div className={styles.container}>
                     {group
                         && <div className='gap-5'>
-                            < HeaderBlock groupSocket={groupSocket} session={session} group={group} usersRequests={usersRequests} members={membersFriends}
-                                getGroup={getGroup} getUsers={getUsers} component={component} setComponent={setComponent} local={local} friendsForInvitation={friendsForInvitation} getFriendsForInvitation={getFriendsForInvitation} />
+                            < HeaderBlock 
+                                groupSocket={groupSocket} 
+                                session={session} 
+                                group={group} 
+                                usersRequests={usersRequests} 
+                                members={membersFriends}
+                                getGroup={getGroup} 
+                                getUsers={getUsers} 
+                                component={component} 
+                                setComponent={setComponent} 
+                                local={local} 
+                                friendsForInvitation={friendsForInvitation} 
+                                getFriendsForInvitation={getFriendsForInvitation} 
+                                lang={lang}/>
                             {changeComponent()}
                         </div>
                     }
@@ -102,7 +115,8 @@ export default function Group(props: any) {
 
     const {
         id,
-        local
+        local,
+        lang
     } = props;
 
     const [session, setSession] = useState<any>()
@@ -115,7 +129,7 @@ export default function Group(props: any) {
     }, [])
     return (
         <>
-            {session && <GroupPage session={session} local={local} id={id} />}
+            {session && <GroupPage session={session} local={local} id={id} lang={lang}/>}
         </>
     )
 }

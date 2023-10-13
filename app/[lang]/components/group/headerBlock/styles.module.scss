@@ -108,7 +108,7 @@
 		}
 	}
 	.cardNav {
-		@apply flex px-6 w-full items-center justify-center gap-6 border-t flex-wrap 
+		@apply flex px-6 w-full items-center justify-center gap-2 lg:gap-6 md:gap-6 border-t flex-wrap 
     md:flex-nowrap md:justify-start lg:justify-start lg:flex-nowrap 
     dark:border-dark_border;
 		.counterLink {
@@ -118,10 +118,10 @@
 			@apply ml-1 text-lg bg-button_green_opacity px-2  rounded-md text-button_green_BG;
 		}
 		.link {
-			@apply my-4  hover:text-blue-500 transition-all duration-300 font-bold;
+			@apply mt-4 md:my-4 lg:my-4 hover:text-blue-500 transition-all duration-300 font-bold;
 		}
 		.linkUnderline {
-			@apply text-button_blue_BG my-4 hover:text-blue-500 transition-all duration-300 font-bold;
+			@apply text-button_blue_BG my-2 hover:text-blue-500 transition-all duration-300 font-bold;
 		}
 	}
 
@@ -135,6 +135,6 @@
 .dialog {
 	@apply bg-white dark:bg-dark_background border rounded-lg dark:border-dark_border border-light_border;
 }
-.btnPict{
+.btnPict {
 	@apply mr-2;
 }

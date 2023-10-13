@@ -1,15 +1,11 @@
 "use client"
-import Image from 'next/image';
-import { FC, useState } from "react";
-import { BsFillSendCheckFill, BsFillSendFill, BsThreeDots, BsTrash } from 'react-icons/bs';
-import { IoIosNotificationsOutline } from 'react-icons/io';
-import { MdOutlineNotificationsOff } from 'react-icons/md';
-import styles from './cardItem.module.scss';
+import Link from 'next/link';
+import { useState } from "react";
+import { toast } from 'react-toastify';
 import { EventType } from '../../../../../../enums/all.enum';
 import { PostService } from '../../../../../../services/post.service';
-import { toast } from 'react-toastify';
 import CreatePost from '../../../posts/createPost/page';
-import Link from 'next/link';
+import styles from './cardItem.module.scss';
 
 // interface ICardProps {
 //   howCelebrating: string;
@@ -19,6 +15,15 @@ import Link from 'next/link';
 // }
 
 export default function CardItem(props: any) {
+
+  const {
+    lang,
+    user,
+    event,
+    BirthDayNow,
+    local, 
+  } = props;
+
   const [isSend, setSend] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [congratulations, setCongratulations] = useState<string>("Happy Birthday !")
@@ -39,16 +44,16 @@ export default function CardItem(props: any) {
   }
 
   return (
-    <>{props.event.user &&
+    <>{event.user &&
       <div className={styles.container}>
-        <Link href={"/profile/" + props.event.user.id} className={styles.avatarContainer}>
-          <img className=' rounded-full overflow-hidden w-20 h-20' src={props.event.user.avatarUrl} alt="avatar" loading="lazy" />
+        <Link href={`/${lang}/profile/` + event.user.id} className={styles.avatarContainer}>
+          <img className=' rounded-full overflow-hidden w-20 h-20' src={event.user.avatarUrl} alt="avatar" loading="lazy" />
         </Link>
         <div className={styles.fromContainer}>
-          <Link href={"/profile/" + props.event.user.id} className={styles.headBlock}>
+          <Link href={`/${lang}/profile/` + event.user.id} className={styles.headBlock}>
             <div className={styles.name}>
-              <h4>{props.event.user.firstName} {props.event.user.lastName}</h4>
-              {props.event.type === EventType.BirthDay && props.BirthDayNow
+              <h4>{event.user.firstName} {event.user.lastName}</h4>
+              {event.type === EventType.BirthDay && BirthDayNow
                 ? <p>Святкує свій день народження сьогодні </p>
                 : <></>
               }
@@ -70,7 +75,7 @@ export default function CardItem(props: any) {
 
             </button> */}
           </Link>
-          {props.event.type === EventType.BirthDay && props.BirthDayNow
+          {event.type === EventType.BirthDay && BirthDayNow
             // ? <div className={styles.sendForm}>
             //   <textarea className={styles.textarea} defaultValue={congratulations} placeholder="Write your congratulations" rows={1} onChange={(e) => changeCongrats(e)}></textarea>
             //   <button onClick={() => { sendCongrats(); setSend(true); }}
@@ -78,18 +83,18 @@ export default function CardItem(props: any) {
             //     {isSend ? <BsFillSendCheckFill size={16} /> : <BsFillSendFill size={16} />}
             //   </button>
             // </div>
-            ? <CreatePost local={props.local} userId={props.event.user.id} placeholder={"Write your congratulations"} />
+            ? <CreatePost local={local} userId={event.user.id} placeholder={"Write your congratulations"} />
             : <></>
           }
-          {props.event.type === EventType.BirthDay && !props.BirthDayNow
-            ? <p>Святкує свій день народження {new Date(props.event.date).toLocaleDateString()} </p>
+          {event.type === EventType.BirthDay && !BirthDayNow
+            ? <p>Святкує свій день народження {new Date(event.date).toLocaleDateString()} </p>
             : <></>
           }
-          {props.event.type === EventType.Meeting || props.event.type === EventType.Celebration
+          {event.type === EventType.Meeting || event.type === EventType.Celebration
             ? <div>
-              <p>{props.event.type} </p>
-              <p>{props.event.name} </p>
-              <p>{new Date(props.event.date).toLocaleString()} </p>
+              <p>{event.type} </p>
+              <p>{event.name} </p>
+              <p>{new Date(event.date).toLocaleString()} </p>
             </div>
             : <></>
           }

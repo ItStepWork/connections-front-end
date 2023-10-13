@@ -75,6 +75,7 @@
     "profile" : "Profil",
     "admin" : "Administrateur",
     "support" : "Soutien",
+    "login" : "Se connecter",
     "dropMenu" : {
       "profile" : "Profil",
       "settings" : "Paramètres",
@@ -330,6 +331,11 @@
       "deleteAll" : "Supprimer l'histoire et la photo",
       "close" : "Fermer"
     },
+    "title" : "Publier une histoire",
+    "name" : "Nom de l'histoire...",
+    "post" : "Poste",
+    "upload" : "Télécharger des photos",
+    "placeholder" : "Entrez le nom de l'histoire...",
     "empty" : "Vous n'avez pas encore d'histoires intéressantes"
   },
   "gallery" : {
@@ -516,5 +522,6 @@
   "dataInfo" : {
     "notIndicated" : "Données non fournies",
     "loadError" : "Erreur de chargement"
-  }
+  },
+  "sendReport" : "Envoyer un rapport"
 }

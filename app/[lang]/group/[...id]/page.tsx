@@ -10,5 +10,5 @@ interface PageProps {
 
 export default async function Page({ params }: PageProps) {
   const localDictionary = await getDictionary(params.lang)
-  return <Group id={params.id} local={localDictionary} />
+  return <Group id={params.id} local={localDictionary} lang={params.lang}/>
 }

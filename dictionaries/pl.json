@@ -75,6 +75,7 @@
     "profile" : "Profil",
     "admin" : "Administrator",
     "support" : "wsparcie",
+    "login" : "Zalogować się",
     "dropMenu" : {
       "profile" : "Profil",
       "settings" : "Ustawienia",
@@ -330,6 +331,11 @@
       "deleteAll" : "Usuń historię i zdjęcie",
       "close" : "Zamknąć"
     },
+    "title" : "Opublikuj historię",
+    "name" : "Nazwa historii...",
+    "post" : "Post",
+    "upload" : "Załadować zdjęcia",
+    "placeholder" : "Wpisz nazwę historii...",
     "empty" : "Nie masz jeszcze żadnych ciekawych historii"
   },
   "gallery" : {
@@ -516,5 +522,6 @@
   "dataInfo" : {
     "notIndicated" : "Nie podano danych",
     "loadError" : "Błąd ładowania"
-  }
+  },
+  "sendReport" : "Wyślij raport"
 }

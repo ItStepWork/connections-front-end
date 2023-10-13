@@ -18,7 +18,7 @@ export default function Main({ local, session, lang }: { local: any, session: an
   const [component, setComponent] = useMainComponents((state) => [state.componentName, state.setComponent]);
   const ChangeComponent = () => {
     if (component === ComponentName.Groups) return (<GroupsCard session={session} userId={session.user.id} local={local} lang={lang} />)
-    else if (component === ComponentName.Celebration) return (<Celebration user={session.user} local={local} />)
+    else if (component === ComponentName.Celebration) return (<Celebration user={session.user} local={local} lang={lang}/>)
     else if (component === ComponentName.Connections) return (<ConnectionsCard session={session} myId={session.user.id} userId={session.user.id} local={local} lang={lang}/>)
     else if (component === ComponentName.Gallery) return (<Gallery session={session} myId={session.user.id} userId={session.user.id} local={local} />)
     else if (component === ComponentName.Notifications) return (<Notifications session={session} local={local} />)

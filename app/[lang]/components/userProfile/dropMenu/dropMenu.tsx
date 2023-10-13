@@ -81,15 +81,18 @@ export const DropMenuProfile: FC<IDrop> = ({navbarOpen, local, lang}) => {
                 <BiPowerOff size={20} />
                 <button onClick={() => {logOut(), notifyLogout()}}>{local.header.dropMenu.exit}</button>
               </div>
-              <div className={styles.modeContainer}>
+              {
+                /*
+                <div className={styles.modeContainer}>
                 <p>Тема:</p>
                 <button className={styles.modeButton} onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}><MdOutlineLightMode /></button>
                 <button className={styles.modeButton} onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}><MdOutlineDarkMode /></button>
                 <button className={styles.modeButton}><BsCircleHalf /></button>
-              </div>
+                </div>
+                */
+              }
             </div>
-          }
-        
+          }     
       </div>
     </>
   )

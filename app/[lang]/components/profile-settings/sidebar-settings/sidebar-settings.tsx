@@ -45,7 +45,7 @@ export const LeftSettingsMenu = ({ local, session, lang }: { local: any, session
           </div>
         </div>
         <div className={styles.profile}>
-          <Link href={`/${lang}/main`}>{local.settingsSide.watch}</Link>
+          <Link href={`/${lang}/profile`}>{local.settingsSide.watch}</Link>
         </div>
       </section>
     </>

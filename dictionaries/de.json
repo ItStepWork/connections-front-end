@@ -75,6 +75,7 @@
     "profile" : "Profil",
     "admin" : "Administrator-Panel",
     "support" : "Unterstützung",
+    "login" : "anmelden",
     "dropMenu" : {
       "profile" : "Profil",
       "settings" : "Einstellungen",
@@ -330,6 +331,11 @@
       "deleteAll" : "Story und Foto löschen",
       "close" : "Schließen"
     },
+    "title" : "Geschichte posten",
+    "name" : "Name der Geschichte...",
+    "post" : "Post",
+    "upload" : "Fotos hochladen",
+    "placeholder" : "Geben Sie den Story-Namen ein...",
     "empty" : "Sie haben noch keine interessanten Geschichten"
   },
   "gallery" : {
@@ -516,5 +522,6 @@
   "dataInfo" : {
     "notIndicated" : "Daten nicht bereitgestellt",
     "loadError" : "Ladefehler"
-  }
+  },
+  "sendReport" : "Bericht senden"
 }

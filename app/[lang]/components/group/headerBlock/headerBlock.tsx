@@ -9,56 +9,73 @@ import { MdOutlineAdminPanelSettings, MdOutlineErrorOutline } from 'react-icons/
 import { TiCancel } from 'react-icons/ti';
 import { toast } from 'react-toastify';
 import { ComponentName, FileFormats } from '../../../../../enums/all.enum';
+import { CheckService } from '../../../../../services/check.service';
 import { GroupService } from '../../../../../services/group.service';
 import Window from '../../messaging/window/page';
 import Complaint from '../../support/complaint/page';
 import { EditGroup } from '../editGroup/editGroup';
 import { FriendsBlock } from '../friends/friendsBlock';
 import styles from './styles.module.scss';
-import { CheckService } from '../../../../../services/check.service';
 
 export function HeaderBlock(props: any) {
+
+  const {
+    groupSocket,
+    session,
+    group,
+    usersRequests,
+    members,
+    getGroup,
+    getUsers,
+    component,
+    setComponent,
+    local,
+    friendsForInvitation,
+    getFriendsForInvitation,
+    lang
+  } = props
+
   const [isOpen, setIsOpen] = useState(false)
   const [isOpenComplaint, setIsOpenComplaint] = useState<boolean>(false);
 
-  const notifyError = () => toast.warning(props.local.createGroup.toasts.format, {});
-  const notifyInfo = () => toast.info(props.local.groups.toasts.join, {});
-  const notifySuccess = () => toast.success(props.local.groups.toasts.leave, {});
-  const notifySuccess2 = () => toast.success(props.local.setImages.toasts.ok, {});
+  const notifyError = () => toast.warning(local.createGroup.toasts.format, {});
+  const notifyInfo = () => toast.info(local.groups.toasts.join, {});
+  const notifySuccess = () => toast.success(local.groups.toasts.leave, {});
+  const notifySuccess2 = () => toast.success(local.setImages.toasts.ok, {});
   const joinGroup = async () => {
-    let result = await GroupService.joinGroup(props.group.id);
+    let result = await GroupService.joinGroup(group.id);
     notifyInfo();
-    props.getUsers();
-    props.getGroup();
+    getUsers();
+    getGroup();
   }
   const leaveGroup = async () => {
-    let result = await GroupService.leaveGroup(props.group.id);
+    let result = await GroupService.leaveGroup(group.id);
     notifySuccess();
-    props.getUsers();
-    props.getGroup();
+    getUsers();
+    getGroup();
   }
   const saveAvatar = async (e: any) => {
     if (CheckService.imageFormat(e.target.files[0].name)) {
       var formData = new FormData();
       formData.append('file', e.target.files[0]);
-      formData.append('id', props.group.id);
+      formData.append('id', group.id);
       let result = await GroupService.updateAvatar(formData)
       notifySuccess2();;
-      props.getGroup();
+      getGroup();
     }
     else notifyError();
   }
   let ifInGroup = () => {
-    let find = Object.entries(props.group.users).find(([key, value]) => key === props.session?.user.id);
+    let find = Object.entries(group.users).find(([key, value]) => key === session?.user.id);
     if (find === undefined) return false;
     else return true;
   };
   let ifAdmin = () => {
-    if (props.group.adminId === props.session?.user.id) return true;
+    if (group.adminId === session?.user.id) return true;
     else return false;
   };
   let isMemberTrue = () => {
-    let find = Object.entries(props.group.users).find(([key, value]) => key === props.session?.user.id && value === true);
+    let find = Object.entries(group.users).find(([key, value]) => key === session?.user.id && value === true);
     if (find === undefined) return false;
     else return true;
   };
@@ -75,7 +92,7 @@ export function HeaderBlock(props: any) {
               <div className={styles.avatarContainer}>
                 <div className={styles.avatar}>
                   <img className='rounded-full w-full h-full'
-                    src={props.group.pictureUrl}
+                    src={group.pictureUrl}
                     alt="Picture of the author"
                   />
                 </div>
@@ -93,41 +110,60 @@ export function HeaderBlock(props: any) {
               </div>
               <div className={styles.nameBlock}>
                 <div className={styles.name}>
-                  <h2>{props.group.name}</h2>
+                  <h2>{group.name}</h2>
                   <span><BsFillPatchCheckFill size={18} /></span>
                 </div>
-                <p> {props.group.audience} {props.local.groups.privacy} : {props.local.groups.subtitle} - {Object.entries(props.members).length}</p>
+                <p> {group.audience} {local.groups.privacy} : {local.groups.subtitle} - {Object.entries(members).length}</p>
                 <div className={styles.description}>
-                  <p className="word-break: break-all"> {props.group.description}</p>
+                  <p className="word-break: break-all"> {group.description}</p>
                 </div>
               </div>
             </div>
             <div className={styles.buttonBlock}>
               {ifInGroup()
                 ? ifAdmin()
-                  ? <button title={props.local.groups.tooltip.admin} className={styles.greenButton}><MdOutlineAdminPanelSettings size={20} className={styles.btnPict} />{props.local.groups.adminBtn}</button>
+                  ? <button title={local.groups.tooltip.admin} className={styles.greenButton}><MdOutlineAdminPanelSettings size={20} className={styles.btnPict} />{local.groups.adminBtn}</button>
                   : isMemberTrue()
-                    ? <button title={props.local.groups.tooltip.leave} className={styles.redButton} onClick={leaveGroup}><BiSolidUserCheck size={20} className={styles.btnPict} />{props.local.groups.leaveBtn}</button>
-                    : <button title={props.local.groups.tooltip.cancel} className={styles.yellowButton} onClick={leaveGroup}><TiCancel size={20} className={styles.btnPict} />{props.local.groups.cancelBtn}</button>
-                : <button title={props.local.groups.tooltip.join} className={styles.blueButton} onClick={joinGroup} ><AiOutlineUsergroupAdd size={20} className={styles.btnPict} />{props.local.groups.joinBtn}</button>}
-              {ifInGroup() && isMemberTrue() && <button title={props.local.groups.tooltip.invite} className={styles.greenButton} onClick={() => setIsOpen(!isOpen)}><AiOutlinePlus className={styles.btnPict} size={20} />{props.local.groups.inviteBtn}</button>}
+                    ? <button title={local.groups.tooltip.leave} className={styles.redButton} onClick={leaveGroup}><BiSolidUserCheck size={20} className={styles.btnPict} />{local.groups.leaveBtn}</button>
+                    : <button title={local.groups.tooltip.cancel} className={styles.yellowButton} onClick={leaveGroup}><TiCancel size={20} className={styles.btnPict} />{local.groups.cancelBtn}</button>
+                : <button title={local.groups.tooltip.join} className={styles.blueButton} onClick={joinGroup} ><AiOutlineUsergroupAdd size={20} className={styles.btnPict} />{local.groups.joinBtn}</button>}
+              {ifInGroup() && isMemberTrue() && <button title={local.groups.tooltip.invite} className={styles.greenButton} onClick={() => setIsOpen(!isOpen)}><AiOutlinePlus className={styles.btnPict} size={20} />{local.groups.inviteBtn}</button>}
             </div>
-            {ifAdmin() ? <button className={styles.editButton} onClick={() => openDialog()}><BsPencilFill size={20} className={styles.btnPict} />{props.local.groups.editGroupBtn}</button> : <button title={props.local.groups.tooltip.cancel} className={styles.complaintButton} onClick={() => { setIsOpenComplaint(true); }}><MdOutlineErrorOutline size={20} className={styles.btnPict + " " + styles.yellowPict} />Complaint</button>}
+            {ifAdmin() 
+            ? <button 
+                className={styles.editButton} 
+                onClick={() => openDialog()}>
+                  <BsPencilFill size={20} className={styles.btnPict} />
+                  {local.groups.editGroupBtn}
+              </button> 
+            : <button 
+                title={local.groups.tooltip.cancel} 
+                className={styles.complaintButton} 
+                onClick={() => { setIsOpenComplaint(true); }}>
+                  <MdOutlineErrorOutline size={20} className={styles.btnPict + " " + styles.yellowPict} />
+                  {local.posts.report}
+              </button>}
           </div>
-          <Complaint isOpen={isOpenComplaint} setIsOpen={setIsOpenComplaint} userId={props.group.adminId} groupId={props.group.id} />
+          <Complaint 
+            isOpen={isOpenComplaint} 
+            setIsOpen={setIsOpenComplaint} 
+            userId={group.adminId} 
+            groupId={group.id} 
+            local={local}
+          />
           <div className={styles.membersContainer}>
             <div className={styles.members}>
-              {props.members.map((user: any, index: any) => {
+              {members.map((user: any, index: any) => {
                 if (index < 12) {
                   if (user.avatarUrl !== undefined && user.avatarUrl !== null && user.avatarUrl !== "") return (<div key={index} className="w-4"><img className={styles.memberIco} src={user.avatarUrl}></img></div>)
                   else return (<div key={index} className="w-4"><img className={styles.memberIco} src={faker.image.avatar()}></img></div>)
                 }
               })}
-              <div className="w-4"><div className={styles.membersDiv}>{Object.entries(props.members).length}</div></div>
+              <div className="w-4"><div className={styles.membersDiv}>{Object.entries(members).length}</div></div>
             </div>
             <div className={styles.membersNames}>
               <p>
-                {props.members.map((user: any, index: any) => {
+                {members.map((user: any, index: any) => {
                   if (index < 6) {
                     if (user.firstName || user.lastName) return (<a key={index}>{user.firstName + " " + user.lastName}, </a>)
                     else return (<a key={index}>no name,</a>)
@@ -137,35 +173,41 @@ export function HeaderBlock(props: any) {
           </div>
         </div>
         <div className={styles.cardNav}>
-          <div {...props.component === ComponentName.AboutGroup ? { className: `${styles.counterLink}` } : { className: "" }} >
-            <button {...props.component === ComponentName.AboutGroup ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent(ComponentName.AboutGroup) }}>{props.local.groups.aboutGroup.about}</button>
+          <div {...component === ComponentName.AboutGroup ? { className: `${styles.counterLink}` } : { className: "" }} >
+            <button {...component === ComponentName.AboutGroup ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { setComponent(ComponentName.AboutGroup) }}>{local.groups.aboutGroup.about}</button>
           </div>
-          <div {...props.component === ComponentName.Posts ? { className: `${styles.counterLink}` } : { className: "" }} >
-            <button {...props.component === ComponentName.Posts ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent(ComponentName.Posts) }}>{props.local.groups.posts}</button>
+          <div {...component === ComponentName.Posts ? { className: `${styles.counterLink}` } : { className: "" }} >
+            <button {...component === ComponentName.Posts ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { setComponent(ComponentName.Posts) }}>{local.groups.posts}</button>
           </div>
-          <div {...props.component === ComponentName.Photos ? { className: `${styles.counterLink}` } : { className: "" }} >
-            <button {...props.component === ComponentName.Photos ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent(ComponentName.Photos); }}>{props.local.groups.photo}</button>
+          <div {...component === ComponentName.Photos ? { className: `${styles.counterLink}` } : { className: "" }} >
+            <button {...component === ComponentName.Photos ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { setComponent(ComponentName.Photos); }}>{local.groups.photo}</button>
           </div>
-          <div {...props.component === ComponentName.Members ? { className: `${styles.counterLink}` } : { className: "flex items-center" }} >
-            <button {...props.component === ComponentName.Members ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent(ComponentName.Members); }}>{props.local.groups.members}</button>
-            <div className={styles.counter}>{Object.entries(props.members).length}</div>
+          <div {...component === ComponentName.Members ? { className: `${styles.counterLink}` } : { className: "flex items-center" }} >
+            <button {...component === ComponentName.Members ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { setComponent(ComponentName.Members); }}>{local.groups.members}</button>
+            <div className={styles.counter}>{Object.entries(members).length}</div>
           </div>
           {ifAdmin() &&
-            <div {...props.component === ComponentName.Requests ? { className: `${styles.counterLink}` } : { className: "flex items-center" }} >
-              <button {...props.component === ComponentName.Requests ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { props.setComponent(ComponentName.Requests); }}>{props.local.groups.requests}</button>
-              <div className={styles.counter}>{Object.entries(props.usersRequests).length}</div>
+            <div {...component === ComponentName.Requests ? { className: `${styles.counterLink}` } : { className: "flex items-center" }} >
+              <button {...component === ComponentName.Requests ? { className: `${styles.linkUnderline}` } : { className: `${styles.link}` }} onClick={() => { setComponent(ComponentName.Requests); }}>{local.groups.requests}</button>
+              <div className={styles.counter}>{Object.entries(usersRequests).length}</div>
             </div>
           }
         </div>
       </div>
       <dialog className={styles.dialog} id='editGroupDialog'>
-        {<EditGroup groupSocket={props.groupSocket} group={props.group} getGroup={props.getGroup} local={props.local}></EditGroup>}
+        {<EditGroup 
+          groupSocket={groupSocket} 
+          group={group} 
+          getGroup={getGroup} 
+          local={local} 
+          lang={lang}>
+        </EditGroup>}
       </dialog>
-      {props.group &&
-        <Window name={props.group.name} isOpen={isOpen} setIsOpen={setIsOpen}>
+      {group &&
+        <Window name={group.name} isOpen={isOpen} setIsOpen={setIsOpen}>
           <div className='flex h-5/6 justify-center items-end'>
             {/* <FooterBlock friendId={user.id} /> */}
-            <FriendsBlock group={props.group} friendsForInvitation={props.friendsForInvitation} getFriendsForInvitation={props.getFriendsForInvitation} local={props.local}></FriendsBlock>
+            <FriendsBlock group={group} friendsForInvitation={friendsForInvitation} getFriendsForInvitation={getFriendsForInvitation} local={local}></FriendsBlock>
           </div>
         </Window>
 

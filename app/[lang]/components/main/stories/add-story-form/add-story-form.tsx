@@ -8,7 +8,14 @@ import styles from './add-story-form.module.scss';
 
 
 const AddStoryForm = (props: any) => {
-  if ( !props.isVisible ) return null;
+
+  const {
+    local,
+    isVisible,
+    onClose
+  } = props;
+
+  if ( !isVisible ) return null;
 
   const [files, setFiles] = useState<any[]>([]);
   const [storyName, setStoryName] = useState("");
@@ -34,14 +41,14 @@ const AddStoryForm = (props: any) => {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <button className={styles.closeButton} onClick={() => props.onClose()}>X</button>
+        <button className={styles.closeButton} onClick={() => onClose()}>X</button>
         <div className={styles.modalContainer}>
-          <h2>Post Story</h2>
+          <h2>{local.stories.title}</h2>
           <div className={styles.inputBlock}>
 
-          <label htmlFor="img">story name.</label>
+          <label htmlFor="img">{local.stories.name}</label>
             <input type="text" 
-              placeholder="Enter story name..." 
+              placeholder={local.stories.placeholder}
               className={styles.inputText}
               onChange={(e) => { setStoryName(e.target.value);}} 
               value={storyName} />
@@ -49,18 +56,17 @@ const AddStoryForm = (props: any) => {
           </div>
           <label className={styles.inputBlockFile} htmlFor="img">
             <div className={styles.icon}><MdOutlineAddAPhoto size={50} /></div>
-            <p>upload story images...</p>
+            <p>{local.stories.upload}</p>
             <input type="file" id='img'
               accept={FileFormats.All}
               className={styles.inputFile}
               required
               multiple
-              placeholder='story images...'
               onChange={(e) => { changeFiles(e) }}
               />
             </label>
   
-          <button className={styles.button} onClick={() => [createStory(), props.onClose()]}>post story</button>
+          <button className={styles.button} onClick={() => [createStory(), onClose()]}>{local.stories.post}</button>
 
         </div>
       </div>

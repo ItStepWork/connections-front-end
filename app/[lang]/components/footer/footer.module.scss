@@ -15,6 +15,9 @@
 			@apply flex items-center;
 			.brandLink {
 				@apply no-underline text-button_blue_BG visited:text-button_blue_BG;
+				span {
+					@apply font-semibold;
+				}
 			}
 		}
 	}
