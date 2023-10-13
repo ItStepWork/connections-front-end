@@ -7,7 +7,7 @@
 		@apply p-3 flex items-center dark:bg-dark_button_BG hover:bg-blue-500 transition-all ease-in-out duration-500 bg-light_button_BG rounded-lg;
 	}
 	.navText {
-		@apply font-bold text-gray-900 dark:text-dark_text_gray bg-light_button_BG rounded-lg p-3 hover:text-blue-500 transition-all ease-in-out duration-500;
+		@apply font-bold text-gray-900 dark:text-dark_text_gray bg-light_button_BG dark:bg-dark_button_BG rounded-lg p-3 hover:text-blue-500 transition-all ease-in-out duration-500;
 	}
 	.logo {
 		@apply self-center font-logo tracking-widest text-2xl font-semibold whitespace-nowrap text-button_blue_BG;
