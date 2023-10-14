@@ -4,11 +4,12 @@ import { useState } from 'react';
 import { BsFillSendFill } from 'react-icons/bs';
 import { FaRegWindowClose } from 'react-icons/fa';
 import { ImAttachment } from 'react-icons/im';
-import styles from './styles.module.scss';
-import DropDownEmoji from '../../messaging/dropDownEmoji/page';
-import { SupportService } from '../../../../../services/support.service';
-import { CheckService } from '../../../../../services/check.service';
 import { toast } from 'react-toastify';
+import { FileFormats } from '../../../../../enums/all.enum';
+import { CheckService } from '../../../../../services/check.service';
+import { SupportService } from '../../../../../services/support.service';
+import DropDownEmoji from '../../messaging/dropDownEmoji/page';
+import styles from './styles.module.scss';
 
 export default function FooterBlock(props: any) {
 
@@ -65,7 +66,7 @@ export default function FooterBlock(props: any) {
                 <div className="flex flex-col items-center justify-center px-2 py-1">
                   <ImAttachment className="fill-black dark:fill-white" />
                 </div>
-                <input type="file" className="hidden" onChange={saveFile} />
+                <input type="file" accept={FileFormats.All} className="hidden" onChange={saveFile} />
               </label>
             </div>
             <div className='mx-1'>

@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { BsFillSendFill } from 'react-icons/bs';
 import { FaRegWindowClose } from 'react-icons/fa';
 import { ImAttachment } from 'react-icons/im';
+import { toast } from 'react-toastify';
+import { CheckService } from '../../../../../services/check.service';
 import { SupportService } from '../../../../../services/support.service';
 import DropDownEmoji from '../../messaging/dropDownEmoji/page';
 import Window from '../../messaging/window/page';
@@ -25,10 +27,12 @@ export default function Complaint(props: any) {
   const [text, setText] = useState("");
   const [file, setFile] = useState(null);
 
+  const notifyError = () => toast.error(local.createGroup.toasts.format, {});
+
   const saveFile = (e: any) => {
-    if (e.target.files[0].name.endsWith('.jpg') || e.target.files[0].name.endsWith('.jpeg') || e.target.files[0].name.endsWith('.png')) {
+    if (CheckService.imageFormat(e.target.files[0].name))
       setFile(e.target.files[0]);
-    }
+    else notifyError()
   }
 
   const click = async () => {
