@@ -6,6 +6,12 @@ import FooterBlock from '../footerBlock/page';
 import styles from './styles.module.scss';
 
 export default function NewMessage(props: any) {
+
+  const {
+    users,
+    local
+  } = props; 
+
   const [search, setSearch] = useState("");
   const [filterUsers, setFilterUsers] = useState([]);
   const [findUser, setFindUser] = useState<any>(null);
@@ -13,12 +19,12 @@ export default function NewMessage(props: any) {
   const changeSearch = (event: any) => {
     setSearch(event.target.value);
     if (event.target.value === "") {
-      setFilterUsers(props.users);
+      setFilterUsers(users);
     }
     else {
       let search = event.target.value.toLowerCase();
-      let users = props.users.filter((u: any) => u.firstName?.toLowerCase().includes(search) || u.lastName?.toLowerCase().includes(search) || u.email?.toLowerCase().includes(search) || u.phone?.toLowerCase().includes(search) || (u.firstName?.toLowerCase() + " " + u.lastName?.toLowerCase()).includes(search) || (u.lastName?.toLowerCase() + " " + u.firstName?.toLowerCase()).includes(search));
-      setFilterUsers(users);
+      let usersSearch = users.filter((u: any) => u.firstName?.toLowerCase().includes(search) || u.lastName?.toLowerCase().includes(search) || u.email?.toLowerCase().includes(search) || u.phone?.toLowerCase().includes(search) || (u.firstName?.toLowerCase() + " " + u.lastName?.toLowerCase()).includes(search) || (u.lastName?.toLowerCase() + " " + u.firstName?.toLowerCase()).includes(search));
+      setFilterUsers(usersSearch);
     }
   }
 
@@ -34,7 +40,7 @@ export default function NewMessage(props: any) {
         <span className={styles.iconSearch}>
           <FaCircleUser size={20} />
         </span>
-        <input type="text" className={styles.inputSearch} placeholder={props.local.chat.enterName} onChange={(e) => { changeSearch(e) }} value={search} />
+        <input type="text" className={styles.inputSearch} placeholder={local.chat.enterName} onChange={(e) => { changeSearch(e) }} value={search} />
       </div>
       <ul className={styles.users + " h-max overflow-y-auto mx-3"}>
         {filterUsers.map((user: any, index: any) =>
@@ -48,7 +54,7 @@ export default function NewMessage(props: any) {
           </li>
         )}
       </ul>
-      {findUser?(<FooterBlock friendId={findUser.id} local={props.local}/>):(<></>)}
+      {findUser?(<FooterBlock friendId={findUser.id} local={local}/>):(<></>)}
     </div>
   )
 }

@@ -40,7 +40,7 @@ export const News = (props: any) => {
       <div className={styles.container}>
         <h2>{local.main.news}</h2>
         <div className="">
-          <h3>{props.local.news.categories}</h3>
+          <h3>{local.news.categories}</h3>
           {
             categories.map((item: string) => (
               <button className={styles.category} onClick={() => setCategory(item)}>{item}</button>

@@ -5,18 +5,20 @@ import { MessagingService } from '../../../../../services/messaging.service';
 import styles from './styles.module.scss';
 
 export default function RightMessage(props: any) {
+
+  const { message } = props;
   const [isOpen, setIsOpen] = useState(false);
 
   const removeMessageFull = async () => {
-    await MessagingService.removeMessageFull(props.message.id);
+    await MessagingService.removeMessageFull(message.id);
   }
 
   const removeMessage = async () => {
-    await MessagingService.removeMessage(props.message.id);
+    await MessagingService.removeMessage(message.id);
   }
 
   const copyMessage = () => {
-    navigator.clipboard.writeText(props.message.text);
+    navigator.clipboard.writeText(message.text);
   }
 
 
@@ -26,12 +28,12 @@ export default function RightMessage(props: any) {
         <button className='relative flex flex-col items-end' onClick={() => { if (!isOpen) setIsOpen(true) }} onFocus={() => { if (isOpen) setIsOpen(true) }} onBlur={() => setIsOpen(false)}>
 
         <div className={styles.content}>
-          {props.message.link?(<img src={props.message.link} alt="Image" />):(<></>)}
-          {props.message.text}
+          {message.link?(<img src={message.link} alt="Image" />):(<></>)}
+          {message.text}
         </div>
         <div className='flex m-1'>
-          <div className={styles.time}>{new Date(props.message.createTime).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</div>
-          {props.message.status === "Unread"? (<FaCheck className="fill-gray-400 p-0.5"/>):(<FaCheckDouble className="fill-blue-400 p-0.5"/>)}
+          <div className={styles.time}>{new Date(message.createTime).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</div>
+          {message.status === "Unread"? (<FaCheck className="fill-gray-400 p-0.5"/>):(<FaCheckDouble className="fill-blue-400 p-0.5"/>)}
         </div>
         {isOpen &&
             <div className='z-50 absolute top-0 right-0 text-sm'>

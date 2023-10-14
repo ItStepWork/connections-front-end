@@ -5,17 +5,22 @@ import styles from './styles.module.scss';
 
 export default function LeftMessage(props: any) {
 
+  const {
+    user,
+    message
+  } = props;
+
   return (
     <>
       <div className={styles.container}>
         <button className='relative flex'>
-          {props.user.avatarUrl ? (<img className={styles.userImage} src={props.user.avatarUrl} />) : (<FaUserCircle className={styles.userImage} />)}
+          {user.avatarUrl ? (<img className={styles.userImage} src={user.avatarUrl} />) : (<FaUserCircle className={styles.userImage} />)}
           <div className={styles.verticalContainer}>
             <div className={styles.content}>
-              {props.message.link ? (<img src={props.message.link} alt="Image" />) : (<></>)}
-              {props.message.text}
+              {message.link ? (<img src={message.link} alt="Image" />) : (<></>)}
+              {message.text}
             </div>
-            <div className={styles.time}>{new Date(props.message.createTime).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</div>
+            <div className={styles.time}>{new Date(message.createTime).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</div>
           </div>
 
         </button>

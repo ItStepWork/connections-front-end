@@ -4,6 +4,14 @@ import styles from './postsCard.module.scss';
 
 export const PostsCard = (props: any) => {
 
+  const {
+    posts,
+    local,
+    getPosts,
+    myId,
+    userId
+  } = props;
+
   return (
     <>
       <div className={styles.container}>
@@ -11,10 +19,16 @@ export const PostsCard = (props: any) => {
           <span className={styles.iconSearch}>
             <FiSearch size={20} />
           </span>
-          <input type="text" className={styles.inputSearch} placeholder={props.local.search.searchPost} />
+          <input type="text" className={styles.inputSearch} placeholder={local.search.searchPost} />
         </div>
-        {props.posts.map((post: any)=> (
-          <PostInfo key={post.id} myId={props.myId} local={props.local} userId={props.userId} post={post} getPosts={props.getPosts}/>
+        {posts.map((post: any)=> (
+          <PostInfo 
+            key={post.id} 
+            myId={myId} 
+            local={local} 
+            userId={userId} 
+            post={post} 
+            getPosts={getPosts}/>
         ))}
       </div >
     </>

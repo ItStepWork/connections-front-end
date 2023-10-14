@@ -16,7 +16,8 @@ export default function CreatePost(props: any) {
   const {
     local,
     placeholder,
-    userId
+    userId,
+    groupId
    } = props;
 
   const [text, setText] = useState("");
@@ -32,8 +33,8 @@ export default function CreatePost(props: any) {
 
   const click = async () => {
     const formData = new FormData();
-    if(props.userId != undefined) formData.append("recipientId", userId);
-    if(props.groupId != undefined) formData.append("groupId", props.groupId);
+    if(userId != undefined) formData.append("recipientId", userId);
+    if(groupId != undefined) formData.append("groupId", groupId);
     formData.append("text", text);
     if (file !== null) formData.append("file", file);
     await PostService.createPost(formData);

@@ -6,7 +6,7 @@ import styles from './card.module.scss';
 
 export const Card = (props: any) => {
 
-
+  const { local } = props;
 
   return (
     <>
@@ -23,7 +23,7 @@ export const Card = (props: any) => {
         </div>
         <div className={styles.fio}>
           <h4>{faker.person.fullName()}</h4>
-          <p>{faker.number.int(22)} {props.local.friends.subtitle}</p>
+          <p>{faker.number.int(22)} {local.friends.subtitle}</p>
         </div>
         <div className={styles.buttons}>
           <Link href='/' className={styles.blueButton}><BsChatLeftText size={16} /></Link>

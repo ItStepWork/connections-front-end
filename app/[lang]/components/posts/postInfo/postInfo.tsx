@@ -16,28 +16,36 @@ import Link from "next/link";
 
 export default function PostInfo(props: any) {
 
+  const {
+    myId,
+    local,
+    userId, 
+    post,
+    getPosts
+  } = props;
+
   const [text, setText] = useState("");
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isOpenComments, setIsOpenComments] = useState<boolean>(false);
   const [isOpenComplaint, setIsOpenComplaint] = useState<boolean>(false);
 
   const like = async () => {
-    if (props.post.recipientId != undefined) await PostService.setLike(props.post.recipientId, props.post.id);
-    if (props.post.groupId != undefined) await PostService.setLike(props.post.groupId, props.post.id);
-    props.getPosts();
+    if (post.recipientId != undefined) await PostService.setLike(post.recipientId, post.id);
+    if (post.groupId != undefined) await PostService.setLike(post.groupId, post.id);
+    getPosts();
   }
 
   const sendComment = async () => {
-    if (props.post.recipientId != undefined) await PostService.sendComment(props.post.recipientId, props.post.id, text);
-    if (props.post.groupId != undefined) await PostService.sendComment(props.post.groupId, props.post.id, text);
-    props.getPosts();
+    if (post.recipientId != undefined) await PostService.sendComment(post.recipientId, post.id, text);
+    if (post.groupId != undefined) await PostService.sendComment(post.groupId, post.id, text);
+    getPosts();
     setText("");
   }
 
   const removePost = async () => {
-    if (props.post.recipientId != undefined) await PostService.removePost(props.post.recipientId, props.post.id);
-    if (props.post.groupId != undefined) await PostService.removePost(props.post.groupId, props.post.id);
-    props.getPosts();
+    if (post.recipientId != undefined) await PostService.removePost(post.recipientId, post.id);
+    if (post.groupId != undefined) await PostService.removePost(post.groupId, post.id);
+    getPosts();
   }
 
   function handleChange(event: any) {
@@ -51,23 +59,23 @@ export default function PostInfo(props: any) {
   return (
     <div className={styles.container}>
       <div className={styles.postHeaderContainer}>
-        {props.post.sender &&
+        {post.sender &&
           <div className="flex gap-6 flex-wrap">
             <div className={styles.user}>
-              {props.post.sender.avatarUrl ? (<img className={styles.userImage} src={props.post.sender.avatarUrl} />) : (<FaUserCircle className={styles.userImage} />)}
-              <Link className={styles.userName} href={"profile/" + props.post.sender.id}>{props.post.sender.lastName} {props.post.sender.firstName}</Link>
+              {post.sender.avatarUrl ? (<img className={styles.userImage} src={post.sender.avatarUrl} />) : (<FaUserCircle className={styles.userImage} />)}
+              <Link className={styles.userName} href={"profile/" + post.sender.id}>{post.sender.lastName} {post.sender.firstName}</Link>
             </div>
-            {((props.post.recipient && props.post.recipientId !== props.post.senderId) || props.post.group) && <LuArrowBigRight className="w-6 h-6 md:w-10 md:h-10" />}
-            {props.post.recipient && props.post.recipientId !== props.post.senderId &&
+            {((post.recipient && post.recipientId !== post.senderId) || post.group) && <LuArrowBigRight className="w-6 h-6 md:w-10 md:h-10" />}
+            {post.recipient && post.recipientId !== post.senderId &&
               <div className={styles.user}>
-                {props.post.recipientId.avatarUrl ? (<img className={styles.userImage} src={props.post.recipientId.avatarUrl} />) : (<FaUserCircle className={styles.userImage} />)}
-                <Link className={styles.userName} href={"profile/" + props.post.recipient.id}>{props.post.recipient.lastName} {props.post.recipient.firstName}</Link>
+                {post.recipientId.avatarUrl ? (<img className={styles.userImage} src={post.recipientId.avatarUrl} />) : (<FaUserCircle className={styles.userImage} />)}
+                <Link className={styles.userName} href={"profile/" + post.recipient.id}>{post.recipient.lastName} {post.recipient.firstName}</Link>
               </div>
             }
-            {props.post.group &&
+            {post.group &&
               <div className={styles.user}>
-                {props.post.group.pictureUrl ? (<img className={styles.userImage} src={props.post.group.pictureUrl} />) : (<FaUserCircle className={styles.userImage} />)}
-                <Link className={styles.userName} href={"group/" + props.post.group.id}>{props.post.group.name}</Link>
+                {post.group.pictureUrl ? (<img className={styles.userImage} src={post.group.pictureUrl} />) : (<FaUserCircle className={styles.userImage} />)}
+                <Link className={styles.userName} href={"group/" + post.group.id}>{post.group.name}</Link>
               </div>
             }
           </div>
@@ -77,36 +85,42 @@ export default function PostInfo(props: any) {
         </div>
         {isOpen &&
           <div className={styles.dropdownContainer}>
-            <div className={styles.item} onClick={() => { setIsOpen(false); setIsOpenComplaint(true); }}>{props.local.posts.report} </div>
-            <div className={styles.item} onClick={() => { setIsOpen(false); removePost(); }}>{props.local.posts.delete} </div>
+            <div className={styles.item} onClick={() => { setIsOpen(false); setIsOpenComplaint(true); }}>{local.posts.report} </div>
+            <div className={styles.item} onClick={() => { setIsOpen(false); removePost(); }}>{local.posts.delete} </div>
           </div>
         }
-        <Complaint isOpen={isOpenComplaint} setIsOpen={setIsOpenComplaint} userId={props.post.senderId} postId={props.post.id} />
+        <Complaint 
+        isOpen={isOpenComplaint} 
+        setIsOpen={setIsOpenComplaint} 
+        userId={post.senderId} 
+        postId={post.id} 
+        local={local}
+        />
       </div>
       <div className={styles.postTextContainer}>
         <div className="my-3">
-          {props.post.text}
+          {post.text}
         </div>
-        {props.post.imgUrl &&
-          <img className="my-3" src={props.post.imgUrl} />
+        {post.imgUrl &&
+          <img className="my-3" src={post.imgUrl} />
         }
       </div>
       <div>
         <div className={styles.postFooterContainer}>
-          {props.post.likes.includes(props.myId) ? (
+          {post.likes.includes(myId) ? (
             <button onClick={like} className={styles.buttonLikeActive}>
               <AiFillLike className={styles.icon} />
-              {props.local.posts.likes} ({props.post.likes.length})
+              {local.posts.likes} ({post.likes.length})
             </button>
           ) : (
             <button onClick={like} className={styles.buttonLikeInactive}>
               <AiFillLike className={styles.icon} />
-              {props.local.posts.likes}  ({props.post.likes.length})
+              {local.posts.likes}  ({post.likes.length})
             </button>
           )}
           <div className={styles.postArrowContainer} onClick={() => { setIsOpenComments(!isOpenComments) }} >
             {isOpenComments ? <ImArrowUp size={14} className="mx-1" /> : <ImArrowDown size={14} className="mx-1" />}
-            {props.local.posts.comments}  ({Object.entries(props.post.comments).length})
+            {local.posts.comments}  ({Object.entries(post.comments).length})
           </div>
 
         </div>
@@ -114,7 +128,7 @@ export default function PostInfo(props: any) {
           <div>
             <div className={styles.verticalContainer}>
               <div className={styles.textareaContainer}>
-                <textarea placeholder={props.local.posts.placeholder} className={styles.textarea} onChange={handleChange} value={text}></textarea>
+                <textarea placeholder={local.posts.placeholder} className={styles.textarea} onChange={handleChange} value={text}></textarea>
               </div>
 
               <div className={styles.buttonContainer}>
@@ -122,13 +136,13 @@ export default function PostInfo(props: any) {
                   <DropDownEmoji addEmoji={addEmoji} isLower={false} />
                 </div>
                 <div className='mx-1'>
-                  <button className={styles.button} title={props.local.posts.tooltip.send} onClick={sendComment}>
+                  <button className={styles.button} title={local.posts.tooltip.send} onClick={sendComment}>
                     <BsFillSendFill className='fill-white' />
                   </button>
                 </div>
               </div>
             </div>
-            {Object.entries(props.post.comments).map(([key, value]) => {
+            {Object.entries(post.comments).map(([key, value]) => {
               return (<Comment key={key} comment={value} />);
             })}
           </div>}

@@ -8,6 +8,7 @@ import styles from './friendsCard.module.scss';
 
 export const FriendsCard = (props: any) => {
 
+  const { local } = props;
   const friendCount = useStore((state) => state.friendsCount);
 
   const [aboutMe, born, email, familyStatus] = 
@@ -33,19 +34,19 @@ export const FriendsCard = (props: any) => {
       <div className={styles.container}>
         <div className={styles.header}>
           <div className={styles.friends}>
-            <h2>{props.local.friends.title}</h2>
+            <h2>{local.friends.title}</h2>
             <div className={styles.counter}>{friendCount}</div>
           </div>
-          <Link href='/' className={styles.button}>{props.local.button.allFriends}</Link>
+          <Link href='/' className={styles.button}>{local.button.allFriends}</Link>
         </div>
         <div className={styles.cardsContainer}>
           <div className={styles.cards}>
-            <Card local={props.local}/>
-            <Card local={props.local}/>
+            <Card local={local}/>
+            <Card local={local}/>
           </div>
           <div className={styles.cards}>
-            <Card local={props.local}/>
-            <Card local={props.local}/>
+            <Card local={local}/>
+            <Card local={local}/>
           </div>
         </div>
       </div>

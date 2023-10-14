@@ -36,12 +36,12 @@ export default function Posts(props: any) {
   }
 
   const getPosts = async () => {
-    if (props.userId != undefined) {
+    if (userId != undefined) {
       let result = await PostService.getPosts(userId);
       setPosts(result);
     }
-    if (props.groupId != undefined) {
-      let result = await PostService.getPosts(props.groupId);
+    if (groupId != undefined) {
+      let result = await PostService.getPosts(groupId);
       setPosts(result);
     }
   }

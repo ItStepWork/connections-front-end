@@ -6,6 +6,17 @@ import { ConnectionBlock } from './connectionBlock';
 import styles from './connectionsCard.module.scss';
 
 export const ConnectionsCard = (props: any) => {
+
+  const {
+    local,
+    users,
+    isRequests,
+    getUsers,
+    getGroup,
+    group, 
+    session
+  } = props;
+
   const [count, setCount] = useState(3)
   const [isOpen, setIsOpen] = useState(false)
   const [user, setUser] = useState<any>(null)
@@ -26,19 +37,19 @@ export const ConnectionsCard = (props: any) => {
           <span className={styles.iconSearch}>
             <FiSearch size={20} />
           </span>
-          <input type="text" className={styles.inputSearch} placeholder={props.local.search.searchFullName} onChange={(e) => { changeSearch(e) }} value={search} />
+          <input type="text" className={styles.inputSearch} placeholder={local.search.searchFullName} onChange={(e) => { changeSearch(e) }} value={search} />
         </div>
-        {props.users && filter(props.users).map((user: any, index: any) => {
+        {users && filter(users).map((user: any, index: any) => {
           if (index <= count)
-            return (<ConnectionBlock isRequests={props.isRequests} setUser={setUser} setIsOpen={setIsOpen} key={user.id + user.friendStatus} user={user} group={props.group} session={props.session}
-              getGroup={props.getGroup} getUsers={props.getUsers} local={props.local}/>)
+            return (<ConnectionBlock isRequests={isRequests} setUser={setUser} setIsOpen={setIsOpen} key={user.id + user.friendStatus} user={user} group={group} session={session}
+              getGroup={getGroup} getUsers={getUsers} local={local}/>)
         })}
-        {count < props.users.length - 1 && <button className={styles.buttonLoadMore} onClick={() => setCount(count + 4)}>{props.local.button.uploadMore}</button>}
+        {count < users.length - 1 && <button className={styles.buttonLoadMore} onClick={() => setCount(count + 4)}>{local.button.uploadMore}</button>}
       </div >
       {user
         && <Window name={user.firstName + " " + user.lastName} isOpen={isOpen} setIsOpen={setIsOpen}>
           <div className='flex h-5/6 justify-center items-end'>
-            <FooterBlock friendId={user.id}  local={props.local}/>
+            <FooterBlock friendId={user.id}  local={local}/>
           </div>
         </Window>
       }

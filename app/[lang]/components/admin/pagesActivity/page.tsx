@@ -8,6 +8,10 @@ import styles from './styles.module.scss';
 
 export default function PagesActivity(props: any) {
 
+  const {
+    local
+  } = props;
+
   const [chart, setChart] = useState<Chart>(Chart.Daily);
   const [contacts, setContacts] = useState<any[]>([]);
   const [messaging, setMessaging] = useState<any[]>([]);
@@ -42,40 +46,40 @@ export default function PagesActivity(props: any) {
   return (
     <div className={styles.container}>
       <h2 className='relative text-center text-sm md:text-lg lg:text-2xl mx-3 mt-3'>
-        {props.local.admin.sidebar.pageActivity}
+        {local.admin.sidebar.pageActivity}
       </h2>
       <div className="absolute z-50 bottom-0 right-0">
         <div className='flex px-3 text-sm lg:text-lg'>
           <div className="flex mr-4" onClick={() => { load(Chart.Daily); }}>
             <input id="daily-radio-pages" type="radio" className='cursor-pointer' value={Chart.Daily} checked={chart === Chart.Daily} onChange={() => { }} name="radio-pages" />
-            <label htmlFor="daily-radio-pages" className='cursor-pointer'>{props.local.admin.activity.daily}</label>
+            <label htmlFor="daily-radio-pages" className='cursor-pointer'>{local.admin.activity.daily}</label>
           </div>
           <div className="flex cursor-pointer" onClick={() => { load(Chart.Hourly); }} >
             <input id="hourly-radio-pages" type="radio" className='cursor-pointer' value={Chart.Hourly} checked={chart === Chart.Hourly} onChange={() => { }} name="radio-pages" />
-            <label htmlFor="hourly-radio-pages" className='cursor-pointer'>{props.local.admin.activity.hourly}</label>
+            <label htmlFor="hourly-radio-pages" className='cursor-pointer'>{local.admin.activity.hourly}</label>
           </div>
         </div>
       </div>
       <div className='absolute z-50 w-full flex justify-around pt-3 flex-wrap text-xs md:text-sm'>
         <label className='p-1 text-red-500 cursor-pointer'>
           <input type='checkbox' checked={isContacts} onChange={(e)=>{setIsContacts(e.target.checked)}} />
-          <span className='p-1'>{props.local.admin.activity.contacts}</span>
+          <span className='p-1'>{local.admin.activity.contacts}</span>
         </label>
         <label className='p-1 text-orange-500 cursor-pointer'>
           <input type='checkbox' checked={isMessaging} onChange={(e)=>{setIsMessaging(e.target.checked)}}  />
-          <span className='p-1'>{props.local.admin.activity.messaging}</span>
+          <span className='p-1'>{local.admin.activity.messaging}</span>
         </label>
         <label className='p-1 text-violet-500 cursor-pointer'>
           <input type='checkbox' checked={isGallery}  onChange={(e)=>{setIsGallery(e.target.checked)}} />
-          <span className='p-1'>{props.local.admin.activity.gallery}</span>
+          <span className='p-1'>{local.admin.activity.gallery}</span>
         </label>
         <label className='p-1 text-lime-500 cursor-pointer'>
           <input type='checkbox' checked={isNotifications}  onChange={(e)=>{setIsNotifications(e.target.checked)}} />
-          <span className='p-1'>{props.local.admin.activity.notifications}</span>
+          <span className='p-1'>{local.admin.activity.notifications}</span>
         </label>
         <label className='p-1 text-blue-400 cursor-pointer'>
           <input type='checkbox' checked={isGroups}  onChange={(e)=>{setIsGroups(e.target.checked)}} />
-          <span className='p-1'>{props.local.admin.activity.groups}</span>
+          <span className='p-1'>{local.admin.activity.groups}</span>
         </label>
       </div>
       <VictoryChart

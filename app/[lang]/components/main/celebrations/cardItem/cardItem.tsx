@@ -7,13 +7,6 @@ import { PostService } from '../../../../../../services/post.service';
 import CreatePost from '../../../posts/createPost/page';
 import styles from './cardItem.module.scss';
 
-// interface ICardProps {
-//   howCelebrating: string;
-//   avatar: string;
-//   fullName: string;
-//   date: string;
-// }
-
 export default function CardItem(props: any) {
 
   const {
@@ -28,14 +21,14 @@ export default function CardItem(props: any) {
   const [isOpen, setIsOpen] = useState(false);
   const [congratulations, setCongratulations] = useState<string>("Happy Birthday !")
 
-  const notifySuccess = () => toast.success(props.local.createGroup.toasts.ok, {});
-  const notifyErrorServer = () => toast.error(props.local.createGroup.toasts.error, {});
+  const notifySuccess = () => toast.success(local.createGroup.toasts.ok, {});
+  const notifyErrorServer = () => toast.error(local.createGroup.toasts.error, {});
   const changeCongrats = (e: any) => {
     setCongratulations(e.target.value)
   }
   const sendCongrats = async () => {
     const data = new FormData()
-    data.append("recipientId", props.event.user.id)
+    data.append("recipientId", event.user.id)
     data.append("text", congratulations);
     let result = await PostService.createPost(data);
     alert(result)

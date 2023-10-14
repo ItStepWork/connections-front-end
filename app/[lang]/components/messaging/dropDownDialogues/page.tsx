@@ -6,18 +6,26 @@ import styles from './styles.module.scss';
 
 export default function DropDownDialogues(props: any) {
 
+  const {
+    isOpen,
+    setIsOpen,
+    dialogs,
+    click,
+    user
+  } = props;
+
   return (
     <>
-      <button type="button"  {...props.isOpen ? { className: "bg-button_blue_BG rounded-lg px-3 py-2" } : { className: "bg-button_blue_opacity rounded-lg px-3 py-2" }} onClick={() => { if (!props.isOpen) props.setIsOpen(true) }} onFocus={() => { if (props.isOpen) props.setIsOpen(true) }} onBlur={() => props.setIsOpen(false)}>
-        <ImMenu {...props.isOpen ? { className: "fill-white" } : { className: "fill-button_blue_BG" }} />
+      <button type="button"  {...isOpen ? { className: "bg-button_blue_BG rounded-lg px-3 py-2" } : { className: "bg-button_blue_opacity rounded-lg px-3 py-2" }} onClick={() => { if (!isOpen) setIsOpen(true) }} onFocus={() => { if (isOpen) setIsOpen(true) }} onBlur={() => setIsOpen(false)}>
+        <ImMenu {...isOpen ? { className: "fill-white" } : { className: "fill-button_blue_BG" }} />
 
-        {props.isOpen &&
+        {isOpen &&
           <div className={styles.container}>
             <div className='flex w-full justify-end p-2'>
-              <IoMdClose size={36} className={styles.buttonClose} onClick={()=>{{props.setIsOpen(false)}}}/>
+              <IoMdClose size={36} className={styles.buttonClose} onClick={()=>{{setIsOpen(false)}}}/>
             </div>
             <div className={styles.dropMenu}>
-              <Dialogues dialogs={props.dialogs} click={props.click} user={props.user} />
+              <Dialogues dialogs={dialogs} click={click} user={user} />
             </div>
           </div>
         }

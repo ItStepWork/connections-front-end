@@ -12,6 +12,9 @@ import { CreateEvent } from '../createEvent/createEvent';
 
 export const PostPanel = (props: any) => {
 
+  const {
+    local
+  } = props;
   // const closeDialog = () => { document.querySelector("dialog")?.close(); }
   const openDialog = () => {
     //  document.querySelector("dialog")?.showModal(); 
@@ -33,10 +36,10 @@ export const PostPanel = (props: any) => {
     openDialog();
   }
   const showComponent = () => {
-    if (component == "createPost") return <CreatePost user={user} local={props.local}></CreatePost>
-    else if (component == "postPhoto") return <PostPhoto user={user} local={props.local}></PostPhoto>
-    else if (component == "postVideo") return <PostVideo user={user} local={props.local}></PostVideo>
-    else if (component == "createEvent") return <CreateEvent user={user} local={props.local}></CreateEvent>
+    if (component == "createPost") return <CreatePost user={user} local={local}></CreatePost>
+    else if (component == "postPhoto") return <PostPhoto user={user} local={local}></PostPhoto>
+    else if (component == "postVideo") return <PostVideo user={user} local={local}></PostVideo>
+    else if (component == "createEvent") return <CreateEvent user={user} local={local}></CreateEvent>
   }
   return (
     <>
@@ -46,24 +49,24 @@ export const PostPanel = (props: any) => {
             ? <img className={styles.userIco} src={user.avatarUrl}></img>
             : <img className={styles.userIco} src={faker.image.avatar()}></img>
           }
-          <input type="text" className={styles.grInput} onClick={() => { getComponent("createPost") }} placeholder={props.local.posts.placeholder}></input>
+          <input type="text" className={styles.grInput} onClick={() => { getComponent("createPost") }} placeholder={local.posts.placeholder}></input>
         </div>
         <div className={styles.bottomDiv}>
           <div className={styles.btnDiv} onClick={() => { getComponent("postPhoto") }}>
             <HiPhoto size={16} className="fill-green-500"></HiPhoto>
-            <a>{props.local.posts.photo}</a>
+            <a>{local.posts.photo}</a>
           </div>
           <div className={styles.btnDiv} onClick={() => { getComponent("postVideo") }}>
             <BsCameraReelsFill size={16} className="fill-blue-500"></BsCameraReelsFill>
-            <a>{props.local.posts.video}</a>
+            <a>{local.posts.video}</a>
           </div>
           <div className={styles.btnDiv} onClick={() => { getComponent("createEvent") }}>
             <BsCalendar2EventFill size={16} className="fill-red-500"></BsCalendar2EventFill>
-            <a>{props.local.posts.event}</a>
+            <a>{local.posts.event}</a>
           </div>
           <div className={styles.btnDiv} onClick={() => { getComponent("createPost") }}>
             <BsFillEmojiSmileFill size={16} className="fill-yellow-500" ></BsFillEmojiSmileFill>
-            <a>{props.local.posts.activity}</a>
+            <a>{local.posts.activity}</a>
           </div>
         </div>
       </div>

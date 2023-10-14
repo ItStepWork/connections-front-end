@@ -9,6 +9,12 @@ import { AdminService } from '../../../../../services/admin.service';
 
 export default function MessagingFooterBlock(props: any) {
 
+  const {
+    userId,
+    loadMessages,
+    loadDialogs
+  } = props;
+  
   const [text, setText] = useState("");
   const [file, setFile] = useState(null);
 
@@ -19,9 +25,9 @@ export default function MessagingFooterBlock(props: any) {
   }
 
   const click = async () => {
-    if (props.userId !== undefined) {
+    if (userId !== undefined) {
       const formData = new FormData();
-      formData.append("userId", props.userId);
+      formData.append("userId", userId);
       formData.append("text", text);
       if (file !== null) formData.append("file", file);
       await AdminService.sendSupportMessage(formData);
@@ -29,8 +35,8 @@ export default function MessagingFooterBlock(props: any) {
       setText("");
       setFile(null);
 
-      if (props.loadMessages !== undefined) props.loadMessages(props.userId);
-      if (props.loadDialogs !== undefined) props.loadDialogs();
+      if (loadMessages !== undefined) loadMessages(userId);
+      if (loadDialogs !== undefined) loadDialogs();
     }
   }
   function handleChange(event: any) {

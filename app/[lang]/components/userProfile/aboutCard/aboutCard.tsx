@@ -8,6 +8,7 @@ import styles from './aboutCard.module.scss';
 
 export const AboutCard = (props: any) => {
 
+  const { local } = props;
   const [aboutMe, born, email, familyStatus] = 
   useStore((state) => [state.aboutMe, state.born, state.email, state.familyStatus])
 
@@ -30,20 +31,20 @@ export const AboutCard = (props: any) => {
     <>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2>{props.local.aboutMe.subtitle}</h2>
+          <h2>{local.aboutMe.subtitle}</h2>
           <span>{aboutMe}</span>
         </div>
         <div className={styles.iconText}>
           <div className={styles.icon}>
             <BsCalendarDate size={18} />
           </div>
-          <p>{props.local.aboutMe.birthday}<span>{born}</span></p>
+          <p>{local.aboutMe.birthday}<span>{born}</span></p>
         </div>
         <div className={styles.iconText}>
           <div className={styles.icon}>
             <BsHeart size={18} />
           </div>
-          <p>{props.local.aboutMe.familyStatus}<span>{familyStatus}</span></p>
+          <p>{local.aboutMe.familyStatus}<span>{familyStatus}</span></p>
         </div>  
         <div className={styles.iconText}>
           <div className={styles.icon}>

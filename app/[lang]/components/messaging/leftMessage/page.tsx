@@ -8,25 +8,32 @@ import { MessageStatus } from '../../../../../enums/all.enum';
 
 export default function LeftMessage(props: any) {
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [status, setStatus] = useState<MessageStatus>(props.message.status);
+  const {
+    message,
+    loadMessages,
+    loadDialogs,
+    user,
+  } = props;
 
-  const { ref, inView, entry } = useInView({
+  const [isOpen, setIsOpen] = useState(false);
+  const [status, setStatus] = useState<MessageStatus>(message.status);
+
+  const { ref, inView} = useInView({
     threshold: 0.5,
   });
 
   const removeMessage = async () => {
-    await MessagingService.removeMessage(props.message.id);
-    props.loadMessages(props.user.id);
-    props.loadDialogs();
+    await MessagingService.removeMessage(message.id);
+    loadMessages(user.id);
+    loadDialogs();
   }
 
   const copyMessage = () => {
-    navigator.clipboard.writeText(props.message.text);
+    navigator.clipboard.writeText(message.text);
   }
 
   const updateMessageStatus = async () => {
-    await MessagingService.updateMessageStatus(props.message.id, props.message.senderId)
+    await MessagingService.updateMessageStatus(message.id, message.senderId)
     setStatus(MessageStatus.Read);
     return <></>;
   }
@@ -36,13 +43,13 @@ export default function LeftMessage(props: any) {
       <div className={styles.container} ref={ref}>
         <button className='relative flex' onClick={() => { if (!isOpen) setIsOpen(true) }} onFocus={() => { if (isOpen) setIsOpen(true) }} onBlur={() => setIsOpen(false)}>
 
-          {props.user.avatarUrl ? (<img className={styles.userImage} src={props.user.avatarUrl} />) : (<FaUserCircle className={styles.userImage} />)}
+          {user.avatarUrl ? (<img className={styles.userImage} src={user.avatarUrl} />) : (<FaUserCircle className={styles.userImage} />)}
           <div className={styles.verticalContainer}>
             <div className={styles.content}>
-              {props.message.link ? (<img src={props.message.link} alt="Image" />) : (<></>)}
-              {props.message.text}
+              {message.link ? (<img src={message.link} alt="Image" />) : (<></>)}
+              {message.text}
             </div>
-            <div className={styles.time}>{new Date(props.message.createTime).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</div>
+            <div className={styles.time}>{new Date(message.createTime).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</div>
           </div>
 
           {isOpen &&

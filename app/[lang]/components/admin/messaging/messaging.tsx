@@ -11,6 +11,7 @@ import styles from './styles.module.scss';
 
 export default function Messaging(props: any) {
 
+  const { local } = props;
   const [user, setUser] = useState<any>(null);
   const [dialogs, setDialogs] = useState<any[]>([]);
   const [messages, setMessages] = useState<any[]>([]);
@@ -41,7 +42,7 @@ export default function Messaging(props: any) {
   return (
     <div className='w-full' style={{ height: "calc(100vh - 200px)", minHeight: "500px" }}>
       <div className="flex m-3 cursor-pointer absolute right-0 mt-[-38px] md:invisible hover:text-button_blue_BG" onClick={() => { setIsOpen(!isOpen) }} >
-        <h2 className="text-xl mx-1">{props.local.admin.dialogs}</h2>
+        <h2 className="text-xl mx-1">{local.admin.dialogs}</h2>
         <TiMessages size={24} />
       </div>
       <div className={styles.centerContainer}>

@@ -2,14 +2,8 @@
 import { useState } from "react";
 import { AiFillLike } from 'react-icons/ai';
 import { BsFillSendFill } from 'react-icons/bs';
-
-
-
-
-import styles from './styles.module.scss';
-import Avatar from "../../../gallery/avatar/page";
 import DropDownEmoji from "../../../messaging/dropDownEmoji/page";
-import Comment from "../../../gallery/comment/page";
+import styles from './styles.module.scss';
 
 export default function PostInfo() {
 

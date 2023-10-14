@@ -1,11 +1,15 @@
-import { getSession } from "next-auth/react"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { FiSearch } from "react-icons/fi"
-import { GroupService } from "../../../../../services/group.service"
 import { Friend } from "./friend"
 import styles from "./friends.module.scss"
 
 export const FriendsBlock = (props: any) => {
+
+  const {
+    local,
+    friendsForInvitation,
+    group
+  } = props;
 
   const [elements, setElements] = useState(5);
   const [search, setSearch] = useState("");
@@ -29,20 +33,30 @@ export const FriendsBlock = (props: any) => {
           <span className={styles.iconSearch}>
             <FiSearch size={20} />
           </span>
-          <input type="text" className={styles.inputSearch} placeholder={props.local.search.searchFullName} onChange={(e) => { changeSearch(e) }} value={search} />
+          <input type="text" className={styles.inputSearch} placeholder={local.search.searchFullName} onChange={(e) => { changeSearch(e) }} value={search} />
         </div>
         <div className={styles.followersBlock}>
 
           {
-            props.friendsForInvitation && filter(props.friendsForInvitation).map((user: any, index: number) => {
+            friendsForInvitation && filter(friendsForInvitation).map((user: any, index: number) => {
               if (index < elements) {
-                return (<Friend key={user.id} friendStatus={user.friendStatus} firstName={user.firstName} lastName={user.lastName} work={user.work} avatar={user.avatarUrl} id={user.id} groupId={props.group.id} />)
+                return (
+                <Friend 
+                  key={user.id} 
+                  friendStatus={user.friendStatus} 
+                  firstName={user.firstName} 
+                  lastName={user.lastName} 
+                  work={user.work} 
+                  avatar={user.avatarUrl} 
+                  id={user.id} 
+                  groupId={group.id} />
+                  )
               }
             })
           }
         </div>
         <div className="flex flex-grow items-end">
-          {elements < props.friendsForInvitation?.length && <button className={styles.buttonLoadMore} onClick={() => loadMore()}>{props.local.button.uploadMore}</button>}
+          {elements < friendsForInvitation?.length && <button className={styles.buttonLoadMore} onClick={() => loadMore()}>{local.button.uploadMore}</button>}
         </div>
 
       </div>

@@ -12,6 +12,7 @@ const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19
 
 export default function Groups(props: any) {
 
+  const { local } = props;
   const [groups, setGroups] = useState<any[]>([]);
   const [isSelected, setIsSelected] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
@@ -49,24 +50,24 @@ export default function Groups(props: any) {
   return (
     <div className={styles.container}>
       <div className='flex m-6'>
-        {props.local.admin.title}
+        {local.admin.title}
         <select className={styles.select} value={number} onChange={(e: any) => { setNumber(e.target.value); }}>
           {array.map(number => (
             <option key={number} value={number}>{number}</option>
           ))}
         </select>
         <select className={styles.select} value={time} onChange={(e: any) => { setTime(e.target.value); }}>
-          <option value={"hour"}>{props.local.admin.ban.hour}</option>
-          <option value={"day"}>{props.local.admin.ban.day}</option>
-          <option value={"month"}>{props.local.admin.ban.month}</option>
-          <option value={"year"}>{props.local.admin.ban.year}</option>
+          <option value={"hour"}>{local.admin.ban.hour}</option>
+          <option value={"day"}>{local.admin.ban.day}</option>
+          <option value={"month"}>{local.admin.ban.month}</option>
+          <option value={"year"}>{local.admin.ban.year}</option>
         </select>
       </div>
       <div className={styles.inputContainer}>
         <span className={styles.iconSearch}>
           <FiSearch size={20} />
         </span>
-        <input type="text" className={styles.inputSearch} placeholder={props.local.search.searchNameOrEmail} value={search} onChange={(e) => { setSearch(e.target.value) }} />
+        <input type="text" className={styles.inputSearch} placeholder={local.search.searchNameOrEmail} value={search} onChange={(e) => { setSearch(e.target.value) }} />
       </div>
       <div className='m-6'>
         <table className={styles.table}>
@@ -74,11 +75,11 @@ export default function Groups(props: any) {
             {filter().map((group, index) => {
               return (
                 <tr key={group.id} className={styles.tr}>
-                  <th className={styles.th}>{props.local.admin.table.name}</th>
+                  <th className={styles.th}>{local.admin.table.name}</th>
                   <th className={styles.th}>Email</th>
-                  <th className={styles.th}>{props.local.admin.table.users}</th>
-                  <th className={styles.th}>{props.local.admin.table.status}</th>
-                  <th className={styles.th}>{props.local.admin.table.action.title}</th>
+                  <th className={styles.th}>{local.admin.table.users}</th>
+                  <th className={styles.th}>{local.admin.table.status}</th>
+                  <th className={styles.th}>{local.admin.table.action.title}</th>
                 </tr>
               );
             })}
@@ -90,14 +91,14 @@ export default function Groups(props: any) {
                   <td className={styles.td + " word-break: break-all"}>{group.name}</td>
                   <td className={styles.td + " word-break: break-all"}>{group.email}</td>
                   <td className={styles.td}>{Object.entries(group.users).filter(u=>u[1]).length}</td>
-                  <td className={styles.td}><GroupStatus group={group} getGroups={getGroups} local={props.local} /></td>
+                  <td className={styles.td}><GroupStatus group={group} getGroups={getGroups} local={local} /></td>
                   <td className={styles.td}>
                     <div className='flex gap-3'>
-                      <button className={styles.button_green_BG} onClick={() => { setSelectedIndex(index); setIsSelected(true); }}>{props.local.admin.table.action.info}</button>
+                      <button className={styles.button_green_BG} onClick={() => { setSelectedIndex(index); setIsSelected(true); }}>{local.admin.table.action.info}</button>
                       {new Date(group.blockingTime) < new Date() ?
-                        <button className={styles.button_red_BG} onClick={() => { updateGroupBlockingTime(group.id, time, number) }}>{props.local.admin.table.action.block}</button>
+                        <button className={styles.button_red_BG} onClick={() => { updateGroupBlockingTime(group.id, time, number) }}>{local.admin.table.action.block}</button>
                         :
-                        <button className={styles.button_blue_BG} onClick={() => { updateGroupBlockingTime(group.id, time, 0) }}>{props.local.admin.table.action.unblock}</button>}
+                        <button className={styles.button_blue_BG} onClick={() => { updateGroupBlockingTime(group.id, time, 0) }}>{local.admin.table.action.unblock}</button>}
                     </div>
                   </td>
                 </tr>
@@ -107,7 +108,7 @@ export default function Groups(props: any) {
         </table>
       </div>
       <SelectedItem array={filter()} isSelected={isSelected} setIsSelected={setIsSelected} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex}>
-        <GroupInfo group={filter()[selectedIndex]} getGroups={getGroups} local={props.local}/>
+        <GroupInfo group={filter()[selectedIndex]} getGroups={getGroups} local={local}/>
       </SelectedItem>
     </div>
   )

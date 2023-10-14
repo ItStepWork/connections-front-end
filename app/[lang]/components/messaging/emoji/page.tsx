@@ -2,10 +2,15 @@ import styles from './styles.module.scss'
 
 export default function Emoji(props: any) {
 
+  const {
+    emoji,
+    addEmoji
+  } = props;
+
   return (
-    props.emoji &&
-    <div className={styles.container} onClick={()=>{props.addEmoji(props.emoji)}}>
-      {props.emoji}
+    emoji &&
+    <div className={styles.container} onClick={()=>{addEmoji(emoji)}}>
+      {emoji}
     </div>
   )
 }

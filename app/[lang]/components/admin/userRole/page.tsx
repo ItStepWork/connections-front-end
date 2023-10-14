@@ -6,11 +6,18 @@ import { AdminService } from '../../../../../services/admin.service';
 import styles from './styles.module.scss';
 
 export default function UserRole(props: any) {
-  const [role, setRole] = useState<Role>(props.user.role);
+
+  const {
+    user,
+    getUsers,
+    local
+  } = props;
+  
+  const [role, setRole] = useState<Role>(user.role);
 
   const updateUserRole = async () => {
-    await AdminService.updateUserRole(props.user.id, role);
-    props.getUsers();
+    await AdminService.updateUserRole(user.id, role);
+    getUsers();
   }
 
   return (
@@ -20,7 +27,7 @@ export default function UserRole(props: any) {
         <option value={Role.Moderator}>{Role.Moderator}</option>
         <option value={Role.Admin}>{Role.Admin}</option>
       </select>
-      <button  className={props.user.role === role ? styles.button_blue_BG : styles.button_red_BG} onClick={updateUserRole}>{props.local.admin.save}</button>
+      <button  className={user.role === role ? styles.button_blue_BG : styles.button_red_BG} onClick={updateUserRole}>{local.admin.save}</button>
     </div>
   )
 }

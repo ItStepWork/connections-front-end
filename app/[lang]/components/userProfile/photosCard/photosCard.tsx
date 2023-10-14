@@ -8,6 +8,7 @@ import styles from './photosCard.module.scss';
 
 export default function PhotosCard(props: any) {
 
+  const { local } = props;
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -28,8 +29,8 @@ export default function PhotosCard(props: any) {
     <>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2>{props.local.gallery.photo}</h2>
-          <Link href='/' className={styles.button}>{props.local.button.showAll}</Link>
+          <h2>{local.gallery.photo}</h2>
+          <Link href='/' className={styles.button}>{local.button.showAll}</Link>
         </div>
         <div className={styles.photoContainer}>
           <div className={styles.photo}>
