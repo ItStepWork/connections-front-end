@@ -20,9 +20,9 @@ export default function Genders(props: any) {
       <VictoryPie
         width={300} height={200}
         data={[
-          { x: 1, y: local.filter((u: any) => u.gender === Gender.NotSelected).length, label: local.settings.gender.none },
-          { x: 2, y: local.filter((u: any) => u.gender === Gender.Female).length, label: local.settings.gender.female },
-          { x: 3, y: local.filter((u: any) => u.gender === Gender.Male).length, label: local.settings.gender.male }
+          { x: 1, y: users.filter((u: any) => u.gender === Gender.NotSelected).length, label: local.settings.gender.none },
+          { x: 2, y: users.filter((u: any) => u.gender === Gender.Female).length, label: local.settings.gender.female },
+          { x: 3, y: users.filter((u: any) => u.gender === Gender.Male).length, label: local.settings.gender.male }
         ]}
         labelComponent={
           <VictoryLabel
