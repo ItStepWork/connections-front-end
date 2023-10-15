@@ -60,7 +60,7 @@ export default function Map(props: any) {
   }, []);
 
   const updateUserBlockingTime = async (userId: string, time: string, number: number) => {
-    console.log(userId)
+
     let date = new Date();
     if (time === "hour") date.setHours(date.getHours() + (Number)(number));
     if (time === "day") date.setDate(date.getDate() + (Number)(number));

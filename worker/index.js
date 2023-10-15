@@ -42,5 +42,5 @@ channelWorkerBroadcast.onmessage = (event) => {
   token = event.data.token;
 }
 
-console.log("Worker run!");
+//console.log("Worker run!");
 setInterval(subscribe, 5000);
