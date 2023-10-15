@@ -17,7 +17,7 @@
 		}
 	}
 	.buttonInActive {
-		@apply fill-button_blue_BG;
+		@apply flex items-center;
 		.icon {
 			@apply fill-gray-500;
 		}
