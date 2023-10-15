@@ -37,7 +37,7 @@ export default function Admin({ local, session }: { local: any, session: any }, 
     else if (component === AdminComponentName.Zodiacs) return (<Zodiacs users={users} local={local}/>)
     else if (component === AdminComponentName.PagesActivity) return (<PagesActivity local={local}/>)
     else if (component === AdminComponentName.UsersActivity) return (<UsersActivity local={local}/>)
-    else if (component === AdminComponentName.Map) return (<Map users={users} getUsers={getUsers} local={local}/>)
+    else if (component === AdminComponentName.Map) return (<Map allUsers={users} getUsers={getUsers} local={local}/>)
     else if (component === AdminComponentName.AllCharts) return (<AllCharts users={users} local={local}/>)
     else if (component === AdminComponentName.Messages) return (<Messaging local={local}/>)
     else if (component === AdminComponentName.Complaints) return (<Complaints local={local}/>)

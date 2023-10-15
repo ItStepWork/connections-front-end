@@ -14,6 +14,7 @@ const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19
 export default function Map(props: any) {
 
   const {
+    allUsers,
     getUsers,
     local
   } = props;
@@ -44,7 +45,7 @@ export default function Map(props: any) {
 
   const load = async () => {
     let array: any[] = [];
-    filter(users).forEach(async user => {
+    filter(allUsers).forEach(async user => {
       let result = await getGeoInfo(user.ipAddress);
       if (result !== null) {
         result.user = user;
