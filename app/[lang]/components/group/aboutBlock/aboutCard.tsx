@@ -21,7 +21,7 @@ export const AboutCard = (props: any) => {
         <div className={styles.header}>
           <h2>{local.groups.aboutGroup.about}</h2>
           <div className={styles.description}>
-            <p className="  word-break: break-all"> {group.description}</p>
+            <p className="  word-break: break-all"> {group.description ? group.description : local.settings.placeholders.notIndicated}</p>
           </div>
         </div>
         <div className={styles.iconText}>
@@ -34,13 +34,13 @@ export const AboutCard = (props: any) => {
           <div className={styles.icon}>
             <BsHeart size={18} />
           </div>
-          <p>{local.groups.aboutGroup.status} <span>{group.audience}</span></p>
+          <p>{local.groups.aboutGroup.status} <span>{group.audience === "Private" ? local.createGroup.closed : local.createGroup.open}</span></p>
         </div>
         <div className={styles.iconText}>
           <div className={styles.icon}>
             <BsEnvelope size={18} />
           </div>
-          <p>{local.groups.aboutGroup.mail}<span>{group.email}</span></p>
+          <p>{local.groups.aboutGroup.mail}<span>{group.email ? group.email : local.settings.placeholders.notIndicated}</span></p>
         </div>
       </div>
     </>

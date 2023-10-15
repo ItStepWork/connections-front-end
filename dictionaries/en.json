@@ -112,6 +112,7 @@
     },
     "posts" : "Posts",
     "photo" : "Photo",
+    "empty" : "There are no photos in the group yet",
     "members" : "Members",
     "requests" : "Requests",
     "privacy" : "group",

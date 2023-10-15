@@ -53,7 +53,7 @@ export default function Photos(props: any) {
             <input type='file' className='hidden' onChange={change}></input>
           </label>
         </div>
-      ) : (<></>)}
+      ) : (<>{local.groups.empty}</>)}
       {photos.map((photo: any, index: any) => {
         return (
           <div key={index} className='relative'>
