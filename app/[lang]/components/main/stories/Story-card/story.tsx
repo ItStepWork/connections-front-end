@@ -27,6 +27,9 @@ const Story = (props: any) => {
         story.photos.length > 0 &&
         <div className={styles.container}>
           <img className={styles.img} src={story.photos[0].url} alt="cover" onClick={select} />
+          <div className={styles.storyName}>
+            <p>{story.name}</p>
+          </div>
         </div>
       }
       <SelectedStory 
