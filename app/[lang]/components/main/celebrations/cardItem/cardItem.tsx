@@ -6,6 +6,7 @@ import { EventType } from '../../../../../../enums/all.enum';
 import { PostService } from '../../../../../../services/post.service';
 import CreatePost from '../../../posts/createPost/page';
 import styles from './cardItem.module.scss';
+import { FaUserCircle } from 'react-icons/fa';
 
 export default function CardItem(props: any) {
 
@@ -14,7 +15,7 @@ export default function CardItem(props: any) {
     user,
     event,
     BirthDayNow,
-    local, 
+    local,
   } = props;
 
   const [isSend, setSend] = useState(false);
@@ -40,7 +41,11 @@ export default function CardItem(props: any) {
     <>{event.user &&
       <div className={styles.container}>
         <Link href={`/${lang}/profile/` + event.user.id} className={styles.avatarContainer}>
-          <img className=' rounded-full overflow-hidden w-20 h-20' src={event.user.avatarUrl} alt="avatar" loading="lazy" />
+          {event.user.avatarUrl
+            ? <img className=' rounded-full overflow-hidden w-20 h-20' src={event.user.avatarUrl} alt="avatar" loading="lazy" />
+            : <FaUserCircle className=' rounded-full overflow-hidden w-20 h-20' />
+          }
+          {/* <img className=' rounded-full overflow-hidden w-20 h-20' src={event.user.avatarUrl} alt="avatar" loading="lazy" /> */}
         </Link>
         <div className={styles.fromContainer}>
           <Link href={`/${lang}/profile/` + event.user.id} className={styles.headBlock}>
