@@ -112,6 +112,7 @@
     },
     "posts" : "Beiträge",
     "photo" : "Foto",
+    "empty" : "Es sind noch keine Fotos in der Gruppe vorhanden",
     "members" : "Mitglieder",
     "requests" : "Anfragen",
     "privacy" : "gruppe",
