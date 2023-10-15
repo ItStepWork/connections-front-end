@@ -23,27 +23,27 @@ export const ProfileInfo = (props: any) => {
         <div className={styles.dataContainer}>
           <div className={styles.cont}>
             <BsCalendarDate size={18} />
-            <p>{local.profile.aboutMe.born}<span>{new Date(user.birthDay).toLocaleDateString()}</span></p>
+            <p>{local.profile.aboutMe.born}<span>{user.createdTime ? new Date(user.birthDay).toLocaleDateString() : local.settings.placeholders.notIndicated}</span></p>
           </div>
           <div className={styles.cont}>
             <BsHeart size={18} />
-            <p>{local.profile.aboutMe.status}<span>{user.familyStatus}</span></p>
+            <p>{local.profile.aboutMe.status}<span>{user.familyStatus ? user.familyStatus : local.settings.placeholders.notIndicated}</span></p>
           </div>
         </div>
         <div className={styles.dataContainer}>
           <div className={styles.cont}>
             <BsBriefcase size={18} />
-            <p>{local.profile.aboutMe.work}<span>{user.work}</span></p>
+            <p>{local.profile.aboutMe.work}<span>{user.work ? user.work : local.settings.placeholders.notIndicated}</span></p>
           </div>
           <div className={styles.cont}>
             <BsGeoAlt size={18} />
-            <p>{local.profile.aboutMe.live}<span>{user.location}</span></p>
+            <p>{local.profile.aboutMe.live}<span>{user.location ? user.location : local.settings.placeholders.notIndicated}</span></p>
           </div>
         </div>
         <div className={styles.dataContainer}>
           <div className={styles.cont}>
             <BsCalendar2Plus size={16} />
-            <p>{local.profile.aboutMe.join}<span>{new Date(user.createdTime).toLocaleDateString()} </span></p>
+            <p>{local.profile.aboutMe.join}<span>{user.createdTime ? new Date(user.createdTime).toLocaleDateString() : local.settings.placeholders.notIndicated} </span></p>
           </div>
           <div className={styles.cont}>
             <AiOutlineMail size={18} />
@@ -53,11 +53,11 @@ export const ProfileInfo = (props: any) => {
         <div className={styles.dataContainer}>
           <div className={styles.cont}>
             <FiPhoneCall size={16} />
-            <p>{local.settings.phone} <span>{user.phone} </span></p>
+            <p>{local.settings.phone} <span>{user.phone ? user.phone : local.settings.placeholders.notIndicated} </span></p>
           </div>
           <div className={styles.cont}>
             <BsGenderAmbiguous size={18} />
-            <p>{local.settings.gender.title}: <span>{user.gender}</span></p>
+            <p>{local.settings.gender.title}: <span>{user.gender ? user.gender : local.settings.placeholders.notIndicated}</span></p>
           </div>
         </div>
       </div >
