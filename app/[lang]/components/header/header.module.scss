@@ -1,5 +1,5 @@
 .header {
-	@apply w-full h-14 fixed z-50 bg-glass_white dark:bg-glass_gray backdrop-blur-[3px];
+	@apply w-full h-14 fixed z-40 bg-glass_white dark:bg-glass_gray backdrop-blur-[3px];
 	.contentContainer {
 		@apply flex items-center z-10 m-auto max-w-[1200px] justify-between gap-6 h-14 px-3;
 	}
