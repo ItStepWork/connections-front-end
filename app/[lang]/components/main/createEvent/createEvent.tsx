@@ -25,10 +25,10 @@ export const CreateEvent = (props: any) => {
       label: local.events.create.celebration,
       value: 'Celebration',
     },
-    {
-      label: local.events.create.birthday,
-      value: 'BirthDay',
-    },
+    // {
+    //   label: local.events.create.birthday,
+    //   value: 'BirthDay',
+    // },
   ];
   const notifyError = () => toast.error(local.createGroup.toasts.format, {});
   const notifyErrorServer = () => toast.error(local.createGroup.toasts.error, {});
@@ -40,10 +40,11 @@ export const CreateEvent = (props: any) => {
   } = useForm();
   const onSubmit = async (data: any) => {
     data.date = new Date(data.date).toUTCString();
-    
+
     let result = await CelebrationService.addEvent(data);
     if (result === null) notifyErrorServer();
     else notifySuccess(result);
+    props.getEvents();
     closeDialog();
   }
   return (

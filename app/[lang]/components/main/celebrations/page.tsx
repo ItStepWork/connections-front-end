@@ -60,14 +60,14 @@ export default function Celebration(props: any) {
             <h2>{local.events.today}</h2>
             {birthDaysNow && birthDaysNow.map((value: any, key: any) => {
               return (
-            <CardItem 
-              key={key} 
-              user={user} 
-              event={value} 
-              BirthDayNow={true} 
-              local={local} 
-              lang={lang}
-            />)
+                <CardItem
+                  key={key}
+                  user={user}
+                  event={value}
+                  BirthDayNow={true}
+                  local={local}
+                  lang={lang}
+                />)
             })}
           </div>
         }
@@ -77,14 +77,14 @@ export default function Celebration(props: any) {
             <h2>{local.events.soon}</h2>
             {birthDaysSoon && birthDaysSoon.map((value: any, key: any) => {
               return (
-            <CardItem 
-              key={key} 
-              user={user} 
-              event={value} 
-              BirthDayNow={false} 
-              local={local} 
-              lang={lang}
-            />)
+                <CardItem
+                  key={key}
+                  user={user}
+                  event={value}
+                  BirthDayNow={false}
+                  local={local}
+                  lang={lang}
+                />)
             })}
           </div>
         }
@@ -93,20 +93,20 @@ export default function Celebration(props: any) {
             <h2>{local.events.upcoming}</h2>
             {events && events.map((value: any, key: any) => {
               return (
-            <CardItem 
-              key={key} 
-              user={user} 
-              event={value} 
-              local={local} 
-              lang={lang}
-            />)
+                <CardItem
+                  key={key}
+                  user={user}
+                  event={value}
+                  local={local}
+                  lang={lang}
+                />)
             })
             }
           </div>
         }
 
         <dialog className={styles.dialog} id='postDialog'>
-          {<CreateEvent user={user} local={local}></CreateEvent>}
+          {<CreateEvent user={user} getEvents={getEvents} local={local}></CreateEvent>}
         </dialog>
       </div>
 
