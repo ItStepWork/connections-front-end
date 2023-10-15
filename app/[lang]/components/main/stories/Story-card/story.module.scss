@@ -1,7 +1,7 @@
 .container {
 	@apply max-h-[140px] min-w-[120px] flex rounded-lg outline-none items-center overflow-x-hidden relative overflow-y-hidden justify-center;
 	.img {
-		@apply max-h-[140px] min-w-[140px] outline-none object-cover overflow-x-hidden;
+		@apply max-h-[140px] w-[140px] outline-none object-cover overflow-x-hidden;
 	}
 	.storyName {
 		@apply absolute flex items-center justify-center bottom-0 left-0 bg-dark_text_gray opacity-60 w-full;
