@@ -26,7 +26,7 @@ export default function Navigation(props: any) {
         <ImMenu size={24} />
         <h2 className="text-xl mx-1">{local.main.menu}</h2>
       </div>
-      <div className={`z-10 absolute lg:static transition-all duration-500 ease-in ${isOpen ? 'left-[0px]' : 'left-[-400px]'}`}>
+      <div className={`z-50 absolute lg:static transition-all duration-500 ease-in ${isOpen ? 'left-[0px]' : 'left-[-400px]'}`}>
         <div className={styles.menu}>
           <IoMdClose className={styles.actionClose} size={24} onClick={() => { setIsOpen(false) }} />
           <div className="mt-2 p-4 overflow-y-auto">

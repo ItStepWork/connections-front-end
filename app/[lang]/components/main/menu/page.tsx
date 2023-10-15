@@ -35,7 +35,7 @@ export default function Menu(props: any) {
             userId={userId} 
             local={local}
             lang={lang}/>
-          <FollowsBlock local={local}/>
+          {/* <FollowsBlock local={local}/> */}
         </div>
       </div>
     </div>
