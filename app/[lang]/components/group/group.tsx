@@ -76,8 +76,8 @@ export function GroupPage(props: any) {
         setPhotos(result2);
     }
     const changeComponent = () => {
-        if (component === ComponentName.Members) return (<ConnectionsCard key={"members" + membersFriends.length + idMember} isRequests={false} session={session} users={membersFriends} group={group} getGroup={getGroup} getUsers={getUsers} local={local} />)
-        else if (component === ComponentName.Requests) return (<ConnectionsCard key={"requests" + usersRequests.length + idMember} isRequests={true} session={session} users={usersRequests} group={group} getGroup={getGroup} getUsers={getUsers} local={local} />)
+        if (component === ComponentName.Members) return (<ConnectionsCard key={"members" + membersFriends.length + idMember} isRequests={false} session={session} users={membersFriends} group={group} getGroup={getGroup} getUsers={getUsers} local={local} lang={lang}/>)
+        else if (component === ComponentName.Requests) return (<ConnectionsCard key={"requests" + usersRequests.length + idMember} isRequests={true} session={session} users={usersRequests} group={group} getGroup={getGroup} getUsers={getUsers} local={local} lang={lang}/>)
         else if (component === ComponentName.AboutGroup) return (<AboutCard group={group} members={Object.entries(membersFriends).length} local={local} />)
         else if (component === ComponentName.Photos) return (<Photos group={group} session={session} getPhotos={getPhotos} photos={photos} local={local} />)
         else if (component === ComponentName.Posts) return (<Posts local={local} session={session} myId={session.user.id} groupId={id[0]} />)

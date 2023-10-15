@@ -22,7 +22,6 @@ export default function Photos(props: any) {
 
   const [isSelected, setIsSelected] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
-  console.log(props)
 
   const change = (e: any) => {
     if (e.target.files[0].name.endsWith('.jpg') || e.target.files[0].name.endsWith('.jpeg') || e.target.files[0].name.endsWith('.png')) {

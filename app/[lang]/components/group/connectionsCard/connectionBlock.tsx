@@ -2,6 +2,7 @@ import Link from "next/link";
 import { AiOutlineUserDelete, AiOutlineUsergroupAdd, AiOutlineUsergroupDelete } from "react-icons/ai";
 import { BiTimeFive } from "react-icons/bi";
 import { BsSendPlus } from "react-icons/bs";
+import { FaUserCircle } from "react-icons/fa";
 import { GoPersonAdd } from "react-icons/go";
 import { MdOutlineAdminPanelSettings, MdSentimentSatisfiedAlt } from "react-icons/md";
 import { toast } from "react-toastify";
@@ -10,7 +11,6 @@ import { FriendService } from "../../../../../services/friend.service";
 import { GroupService } from "../../../../../services/group.service";
 import OnlineUser from "../../onlineUser/page";
 import styles from './connectionBlock.module.scss';
-import { FaUserCircle } from "react-icons/fa";
 
 export const ConnectionBlock = (props: any) => {
 
@@ -21,7 +21,8 @@ export const ConnectionBlock = (props: any) => {
     isRequests,
     local,
     setUser,
-    setIsOpen
+    setIsOpen,
+    lang
   } = props;
 
   const notifySuccess = (text: string) => toast.success(text, {});
@@ -51,7 +52,7 @@ export const ConnectionBlock = (props: any) => {
   return (
     <>
       <div className={styles.container}>
-        <Link href={"/profile/" + user.id} className={styles.userContainer}>
+        <Link href={`/${lang}/profile/` + user.id} className={styles.userContainer}>
           <div className={styles.avatar}>
             {user.avatarUrl
               ? <img className='h-full w-full' src={user.avatarUrl} alt="avatar" loading="lazy" sizes="100vw" style={{ objectFit: "cover" }} />
